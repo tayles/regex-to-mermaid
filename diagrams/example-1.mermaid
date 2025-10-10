@@ -1,0 +1,90 @@
+%% /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+
+graph LR
+    %% Nodes
+    start@{ shape: f-circ, label: "Start" };
+    fin@{ shape: f-circ, label: "End" };
+
+    start_of_line("^<br>Start of Line");
+    http["http"];
+    s["s (Optional)"];
+    colon_slash_slash["://"];
+    domain_name["Lowercase letter<br>Uppercase letter<br>Digit<br>'.', '-'<br><i><small>One or more</small></i>"];
+    dot["."];
+    tld["Lowercase letter<br>Uppercase letter<br><i><small>Two or more</small></i>"];
+    slash["/"];
+    any_char["Any character<br><i><small>Zero or more</small></i>"];
+    end_of_line("$<br>End of Line");
+
+    %% Subgraphs
+    subgraph protocol_group ["#protocol (Optional)"];
+        http
+        s
+        colon_slash_slash
+    end
+
+    subgraph domain_group ["#domain"];
+        domain_name
+        dot
+        tld;
+    end
+
+    subgraph path_group ["#path (Optional)"];
+        slash
+        any_char
+    end
+
+    %% Edges
+    start --> start_of_line;
+    start_of_line --> http;
+    http --> s;
+    s --> colon_slash_slash;
+    colon_slash_slash --> domain_name;
+    domain_name --> dot;
+    dot --> tld;
+    tld --> slash;
+    slash --> any_char;
+    any_char --> end_of_line;
+    end_of_line --> fin;
+
+    %% Styling Definitions
+    %% Node Styling
+    classDef zeroOrMore fill:#FFE599,stroke:#333,stroke-width:2px,color:black;
+    classDef oneOrMore fill:#B6D7A8,stroke:#333,stroke-width:2px,color:black;
+    classDef range fill:#76A5AF,stroke:#333,stroke-width:2px,color:black;
+    classDef oneOf fill:#F6B26B,stroke:#333,stroke-width:2px,color:black;
+    classDef noneOf fill:#E06666,stroke:#333,stroke-width:2px,color:black;
+    classDef start fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
+    classDef fin fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
+    classDef literal fill:#F9CB9C,stroke:#333,stroke-width:2px,color:black;
+    classDef terminator fill:#CCCCCC,stroke:#333,stroke-width:2px,color:black;
+
+    %% Group Styling
+    classDef captureGroup fill:#FFF2CC,stroke:#333,stroke-width:2px,color:black;
+    classDef namedCaptureGroup fill:#D9EAD3,stroke:#333,stroke-width:2px,color:black;
+    classDef nonCapturingGroup fill:#CFE2F3,stroke:#333,stroke-width:2px,color:black;
+    classDef positiveLookahead fill:#D5A6BD,stroke:#333,stroke-width:2px,color:black;
+    classDef negativeLookahead fill:#A4C2F4,stroke:#333,stroke-width:2px,color:black;
+    classDef positiveLookbehind fill:#B7B7B7,stroke:#333,stroke-width:2px,color:black;
+    classDef negativeLookbehind fill:#EAD1DC,stroke:#333,stroke-width:2px,color:black;
+    classDef optional fill:#D9D2E9,stroke:#333,stroke-width:2px,color:black;
+
+    %% Apply Styling Classes
+    %% Node Classes
+    class start start;
+    class start_of_line terminator;
+    class http literal;
+    class s literal;
+    class colon_slash_slash literal;
+    class domain_name oneOrMore;
+    class dot literal;
+    class tld twoOrMore;
+    class slash literal;
+    class any_char zeroOrMore;
+    class end_of_line terminator;
+    class fin fin;
+
+    %% Group Classes
+    class protocol_group namedCaptureGroup;
+    class domain_group namedCaptureGroup;
+    class path_group namedCaptureGroup;
