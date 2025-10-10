@@ -1,0 +1,33 @@
+{
+  "name": "regex-to-mermaid",
+  "version": "1.0.0",
+  "description": "Visualize regular expressions as Mermaid flowchart diagrams",
+  "module": "index.ts",
+  "bin": {
+    "regex-to-mermaid": "index.ts"
+  },
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "keywords": [
+    "regex",
+    "regexp",
+    "mermaid",
+    "visualization",
+    "flowchart",
+    "diagram",
+    "cli"
+  ],
+  "dependencies": {
+    "regexp-tree": "^0.1.27"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "type": "module",
+  "author": "",
+  "license": "MIT"
+}
