@@ -1,4 +1,5 @@
-%% /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/
+%% email
 
 graph LR
     %% Nodes
@@ -6,45 +7,30 @@ graph LR
     fin@{ shape: f-circ, label: "End" };
 
     start_of_line("^<br><i><small>Start of Line</small></i>");
-    http["http"];
-    s["s<br><i><small>Optional</small></i>"];
-    colon_slash_slash["://"];
-    domain_name["Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"];
+    prefix["Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i><small>One or more</small></i>"];
+    at["@"];
+    domain["Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"];
     dot["."];
-    tld["Any lowercase<br>Any uppercase<br><i><small>Two or more</small></i>"];
-    slash["/"];
-    any_char["Any character<br><i><small>Zero or more</small></i>"];
+    tld["Any lowercase<br>Any uppercase<br><i><small>2 - 6</small></i>"];
     end_of_line("$<br><i><small>End of Line</small></i>");
 
     %% Subgraphs
-    subgraph protocol_group ["<small>#1</small> protocol <i><small>Optional</small></i>"];
-        http
-        s
-        colon_slash_slash
-    end
-
-    subgraph domain_group ["<small>#2</small> domain"];
-        domain_name
+    subgraph group_1 ["<small>#1</small> <i><small>Optional</small></i>"];
+        prefix
+        at
+        domain
         dot
-        tld;
-    end
-
-    subgraph path_group ["<small>#3</small> path <i><small>Optional</small></i>"];
-        slash
-        any_char
+        tld
     end
 
     %% Edges
     start --- start_of_line;
-    start_of_line --- http;
-    http --- s;
-    s --- colon_slash_slash;
-    colon_slash_slash --- domain_name;
-    domain_name --- dot;
+    start_of_line --- prefix;
+    prefix --- at;
+    at --- domain;
+    domain --- dot;
     dot --- tld;
-    tld --- slash;
-    slash --- any_char;
-    any_char --- end_of_line;
+    tld --- end_of_line;
     end_of_line --- fin;
 
     %% Styling Definitions
@@ -73,11 +59,9 @@ graph LR
     %% Node Classes
     class start,fin circle;
     class start_of_line,end_of_line terminator;
-    class http,dot,colon_slash_slash,slash literal;
-    class s zeroOrOne;
-    class domain_name oneOrMore;
+    class at,dot literal;
+    class prefix,domain oneOrMore;
     class tld twoOrMore;
-    class any_char zeroOrMore;
 
     %% Group Classes
-    class protocol_group,domain_group,path_group namedCaptureGroup;
+    class group_1 captureGroup;

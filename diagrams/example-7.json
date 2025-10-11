@@ -1,0 +1,385 @@
+{
+  "type": "RegExp",
+  "body": {
+    "type": "Disjunction",
+    "left": {
+      "type": "Alternative",
+      "expressions": [
+        {
+          "type": "Char",
+          "value": "<",
+          "kind": "simple",
+          "symbol": "<",
+          "codePoint": 60,
+          "loc": {
+            "source": "<",
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 2,
+              "offset": 2
+            }
+          }
+        },
+        {
+          "type": "Repetition",
+          "expression": {
+            "type": "Char",
+            "value": "/",
+            "kind": "simple",
+            "symbol": "/",
+            "codePoint": 47,
+            "loc": {
+              "source": "\\/",
+              "start": {
+                "line": 1,
+                "column": 2,
+                "offset": 2
+              },
+              "end": {
+                "line": 1,
+                "column": 4,
+                "offset": 4
+              }
+            },
+            "escaped": true
+          },
+          "quantifier": {
+            "type": "Quantifier",
+            "kind": "?",
+            "greedy": true,
+            "loc": {
+              "source": "?",
+              "start": {
+                "line": 1,
+                "column": 4,
+                "offset": 4
+              },
+              "end": {
+                "line": 1,
+                "column": 5,
+                "offset": 5
+              }
+            }
+          },
+          "loc": {
+            "source": "\\/?",
+            "start": {
+              "line": 1,
+              "column": 2,
+              "offset": 2
+            },
+            "end": {
+              "line": 1,
+              "column": 5,
+              "offset": 5
+            }
+          }
+        },
+        {
+          "type": "Repetition",
+          "expression": {
+            "type": "CharacterClass",
+            "expressions": [
+              {
+                "type": "Char",
+                "value": "\\w",
+                "kind": "meta",
+                "codePoint": null,
+                "loc": {
+                  "source": "\\w",
+                  "start": {
+                    "line": 1,
+                    "column": 6,
+                    "offset": 6
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 8,
+                    "offset": 8
+                  }
+                }
+              },
+              {
+                "type": "Char",
+                "value": "\\s",
+                "kind": "meta",
+                "codePoint": null,
+                "loc": {
+                  "source": "\\s",
+                  "start": {
+                    "line": 1,
+                    "column": 8,
+                    "offset": 8
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 10,
+                    "offset": 10
+                  }
+                }
+              }
+            ],
+            "loc": {
+              "source": "[\\w\\s]",
+              "start": {
+                "line": 1,
+                "column": 5,
+                "offset": 5
+              },
+              "end": {
+                "line": 1,
+                "column": 11,
+                "offset": 11
+              }
+            }
+          },
+          "quantifier": {
+            "type": "Quantifier",
+            "kind": "*",
+            "greedy": true,
+            "loc": {
+              "source": "*",
+              "start": {
+                "line": 1,
+                "column": 11,
+                "offset": 11
+              },
+              "end": {
+                "line": 1,
+                "column": 12,
+                "offset": 12
+              }
+            }
+          },
+          "loc": {
+            "source": "[\\w\\s]*",
+            "start": {
+              "line": 1,
+              "column": 5,
+              "offset": 5
+            },
+            "end": {
+              "line": 1,
+              "column": 12,
+              "offset": 12
+            }
+          }
+        },
+        {
+          "type": "Char",
+          "value": ">",
+          "kind": "simple",
+          "symbol": ">",
+          "codePoint": 62,
+          "loc": {
+            "source": ">",
+            "start": {
+              "line": 1,
+              "column": 12,
+              "offset": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 13,
+              "offset": 13
+            }
+          }
+        }
+      ],
+      "loc": {
+        "source": "<\\/?[\\w\\s]*>",
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 13,
+          "offset": 13
+        }
+      }
+    },
+    "right": {
+      "type": "Alternative",
+      "expressions": [
+        {
+          "type": "Char",
+          "value": "<",
+          "kind": "simple",
+          "symbol": "<",
+          "codePoint": 60,
+          "loc": {
+            "source": "<",
+            "start": {
+              "line": 1,
+              "column": 14,
+              "offset": 14
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "offset": 15
+            }
+          }
+        },
+        {
+          "type": "Repetition",
+          "expression": {
+            "type": "Char",
+            "value": ".",
+            "kind": "meta",
+            "symbol": ".",
+            "codePoint": null,
+            "loc": {
+              "source": ".",
+              "start": {
+                "line": 1,
+                "column": 15,
+                "offset": 15
+              },
+              "end": {
+                "line": 1,
+                "column": 16,
+                "offset": 16
+              }
+            }
+          },
+          "quantifier": {
+            "type": "Quantifier",
+            "kind": "+",
+            "greedy": true,
+            "loc": {
+              "source": "+",
+              "start": {
+                "line": 1,
+                "column": 16,
+                "offset": 16
+              },
+              "end": {
+                "line": 1,
+                "column": 17,
+                "offset": 17
+              }
+            }
+          },
+          "loc": {
+            "source": ".+",
+            "start": {
+              "line": 1,
+              "column": 15,
+              "offset": 15
+            },
+            "end": {
+              "line": 1,
+              "column": 17,
+              "offset": 17
+            }
+          }
+        },
+        {
+          "type": "CharacterClass",
+          "expressions": [
+            {
+              "type": "Char",
+              "value": "\\W",
+              "kind": "meta",
+              "codePoint": null,
+              "loc": {
+                "source": "\\W",
+                "start": {
+                  "line": 1,
+                  "column": 18,
+                  "offset": 18
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20,
+                  "offset": 20
+                }
+              }
+            }
+          ],
+          "loc": {
+            "source": "[\\W]",
+            "start": {
+              "line": 1,
+              "column": 17,
+              "offset": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 21,
+              "offset": 21
+            }
+          }
+        },
+        {
+          "type": "Char",
+          "value": ">",
+          "kind": "simple",
+          "symbol": ">",
+          "codePoint": 62,
+          "loc": {
+            "source": ">",
+            "start": {
+              "line": 1,
+              "column": 21,
+              "offset": 21
+            },
+            "end": {
+              "line": 1,
+              "column": 22,
+              "offset": 22
+            }
+          }
+        }
+      ],
+      "loc": {
+        "source": "<.+[\\W]>",
+        "start": {
+          "line": 1,
+          "column": 14,
+          "offset": 14
+        },
+        "end": {
+          "line": 1,
+          "column": 22,
+          "offset": 22
+        }
+      }
+    },
+    "loc": {
+      "source": "<\\/?[\\w\\s]*>|<.+[\\W]>",
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 1
+      },
+      "end": {
+        "line": 1,
+        "column": 22,
+        "offset": 22
+      }
+    }
+  },
+  "flags": "",
+  "loc": {
+    "source": "/<\\/?[\\w\\s]*>|<.+[\\W]>/",
+    "start": {
+      "line": 1,
+      "column": 0,
+      "offset": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 23,
+      "offset": 23
+    }
+  }
+}

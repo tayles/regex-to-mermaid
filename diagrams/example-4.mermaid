@@ -1,50 +1,73 @@
-%% /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
-
+%% ^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
+%% date in YYYY-MM-DD format
 graph LR
     %% Nodes
     start@{ shape: f-circ, label: "Start" };
     fin@{ shape: f-circ, label: "End" };
 
     start_of_line("^<br><i><small>Start of Line</small></i>");
-    http["http"];
-    s["s<br><i><small>Optional</small></i>"];
-    colon_slash_slash["://"];
-    domain_name["Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"];
-    dot["."];
-    tld["Any lowercase<br>Any uppercase<br><i><small>Two or more</small></i>"];
-    slash["/"];
-    any_char["Any character<br><i><small>Zero or more</small></i>"];
+    year_1("19 or 20");
+    year_2["Any digit<br><i><small>2x</small></i>"];
+    separator["- Space / ."];
+    month_1["0"];
+    month_2["1 - 9"];
+    month_3["1 or 0"];
+    month_4["0 or 1 or 2"];
+    back_ref["Back Reference #2"];
+    day_1["0"];
+    day_2["1 - 9"];
+    day_3["1 or 2"];
+    day_4["0 - 9"];
+    day_5["3"];
+    day_6["0 or 1"];
     end_of_line("$<br><i><small>End of Line</small></i>");
 
     %% Subgraphs
-    subgraph protocol_group ["<small>#1</small> protocol <i><small>Optional</small></i>"];
-        http
-        s
-        colon_slash_slash
+    subgraph group_1 ["<small>#1</small>"];
+        year_1
+        year_2
     end
 
-    subgraph domain_group ["<small>#2</small> domain"];
-        domain_name
-        dot
-        tld;
+    subgraph group_2 ["<small>#2</small>"];
+        separator
     end
 
-    subgraph path_group ["<small>#3</small> path <i><small>Optional</small></i>"];
-        slash
-        any_char
+    subgraph group_3 ["<small>#3</small>"];
+        month_1
+        month_2
+        month_3
+        month_4
+    end
+
+    subgraph group_4 ["<small>#4</small>"];
+        day_1
+        day_2
+        day_3
+        day_4
+        day_5
+        day_6
     end
 
     %% Edges
     start --- start_of_line;
-    start_of_line --- http;
-    http --- s;
-    s --- colon_slash_slash;
-    colon_slash_slash --- domain_name;
-    domain_name --- dot;
-    dot --- tld;
-    tld --- slash;
-    slash --- any_char;
-    any_char --- end_of_line;
+    start_of_line --- year_1;
+    year_1 --- year_2;
+    year_2 --- separator;
+    separator --- month_1;
+    separator --- month_3;
+    month_1 --- month_2;
+    month_3 --- month_4;
+    month_2 --- back_ref;
+    month_4 --- back_ref;
+    back_ref --- day_1;
+    back_ref --- day_3;
+    back_ref --- day_5;
+    day_1 --- day_2;
+    day_3 --- day_4;
+    day_5 --- day_6;
+    day_2 --- end_of_line;
+    day_4 --- end_of_line;
+    day_6 --- end_of_line;
     end_of_line --- fin;
 
     %% Styling Definitions
@@ -73,11 +96,18 @@ graph LR
     %% Node Classes
     class start,fin circle;
     class start_of_line,end_of_line terminator;
-    class http,dot,colon_slash_slash,slash literal;
-    class s zeroOrOne;
-    class domain_name oneOrMore;
-    class tld twoOrMore;
-    class any_char zeroOrMore;
+    class year_1 oneOf;
+    class year_2 twoOf;
+    class separator,day_1,day_5 literal;
+    class month_1 literal;
+    class month_2 range;
+    class month_3 oneOf;
+    class month_4 oneOf;
+    class back_ref backReference;
+    class day_2 range;
+    class day_3 oneOf;
+    class day_4 range;
+    class day_6 oneOf;
 
     %% Group Classes
-    class protocol_group,domain_group,path_group namedCaptureGroup;
+    class group_1,group_2,group_3,group_4 captureGroup;
