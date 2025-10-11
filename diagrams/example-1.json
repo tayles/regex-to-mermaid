@@ -1,0 +1,292 @@
+{
+  "type": "RegExp",
+  "body": {
+    "type": "Alternative",
+    "expressions": [
+      {
+        "type": "Assertion",
+        "kind": "^"
+      },
+      {
+        "type": "Repetition",
+        "expression": {
+          "type": "Group",
+          "capturing": true,
+          "name": "protocol",
+          "nameRaw": "protocol",
+          "number": 1,
+          "expression": {
+            "type": "Alternative",
+            "expressions": [
+              {
+                "type": "Char",
+                "value": "h",
+                "kind": "simple",
+                "symbol": "h",
+                "codePoint": 104
+              },
+              {
+                "type": "Char",
+                "value": "t",
+                "kind": "simple",
+                "symbol": "t",
+                "codePoint": 116
+              },
+              {
+                "type": "Char",
+                "value": "t",
+                "kind": "simple",
+                "symbol": "t",
+                "codePoint": 116
+              },
+              {
+                "type": "Char",
+                "value": "p",
+                "kind": "simple",
+                "symbol": "p",
+                "codePoint": 112
+              },
+              {
+                "type": "Repetition",
+                "expression": {
+                  "type": "Char",
+                  "value": "s",
+                  "kind": "simple",
+                  "symbol": "s",
+                  "codePoint": 115
+                },
+                "quantifier": {
+                  "type": "Quantifier",
+                  "kind": "?",
+                  "greedy": true
+                }
+              },
+              {
+                "type": "Char",
+                "value": ":",
+                "kind": "simple",
+                "symbol": ":",
+                "codePoint": 58
+              },
+              {
+                "type": "Char",
+                "value": "/",
+                "kind": "simple",
+                "symbol": "/",
+                "codePoint": 47,
+                "escaped": true
+              },
+              {
+                "type": "Char",
+                "value": "/",
+                "kind": "simple",
+                "symbol": "/",
+                "codePoint": 47,
+                "escaped": true
+              }
+            ]
+          }
+        },
+        "quantifier": {
+          "type": "Quantifier",
+          "kind": "?",
+          "greedy": true
+        }
+      },
+      {
+        "type": "Group",
+        "capturing": true,
+        "name": "domain",
+        "nameRaw": "domain",
+        "number": 2,
+        "expression": {
+          "type": "Alternative",
+          "expressions": [
+            {
+              "type": "Repetition",
+              "expression": {
+                "type": "CharacterClass",
+                "expressions": [
+                  {
+                    "type": "ClassRange",
+                    "from": {
+                      "type": "Char",
+                      "value": "a",
+                      "kind": "simple",
+                      "symbol": "a",
+                      "codePoint": 97
+                    },
+                    "to": {
+                      "type": "Char",
+                      "value": "z",
+                      "kind": "simple",
+                      "symbol": "z",
+                      "codePoint": 122
+                    }
+                  },
+                  {
+                    "type": "ClassRange",
+                    "from": {
+                      "type": "Char",
+                      "value": "A",
+                      "kind": "simple",
+                      "symbol": "A",
+                      "codePoint": 65
+                    },
+                    "to": {
+                      "type": "Char",
+                      "value": "Z",
+                      "kind": "simple",
+                      "symbol": "Z",
+                      "codePoint": 90
+                    }
+                  },
+                  {
+                    "type": "ClassRange",
+                    "from": {
+                      "type": "Char",
+                      "value": "0",
+                      "kind": "simple",
+                      "symbol": "0",
+                      "codePoint": 48
+                    },
+                    "to": {
+                      "type": "Char",
+                      "value": "9",
+                      "kind": "simple",
+                      "symbol": "9",
+                      "codePoint": 57
+                    }
+                  },
+                  {
+                    "type": "Char",
+                    "value": ".",
+                    "kind": "simple",
+                    "symbol": ".",
+                    "codePoint": 46
+                  },
+                  {
+                    "type": "Char",
+                    "value": "-",
+                    "kind": "simple",
+                    "symbol": "-",
+                    "codePoint": 45
+                  }
+                ]
+              },
+              "quantifier": {
+                "type": "Quantifier",
+                "kind": "+",
+                "greedy": true
+              }
+            },
+            {
+              "type": "Char",
+              "value": ".",
+              "kind": "simple",
+              "symbol": ".",
+              "codePoint": 46,
+              "escaped": true
+            },
+            {
+              "type": "Repetition",
+              "expression": {
+                "type": "CharacterClass",
+                "expressions": [
+                  {
+                    "type": "ClassRange",
+                    "from": {
+                      "type": "Char",
+                      "value": "a",
+                      "kind": "simple",
+                      "symbol": "a",
+                      "codePoint": 97
+                    },
+                    "to": {
+                      "type": "Char",
+                      "value": "z",
+                      "kind": "simple",
+                      "symbol": "z",
+                      "codePoint": 122
+                    }
+                  },
+                  {
+                    "type": "ClassRange",
+                    "from": {
+                      "type": "Char",
+                      "value": "A",
+                      "kind": "simple",
+                      "symbol": "A",
+                      "codePoint": 65
+                    },
+                    "to": {
+                      "type": "Char",
+                      "value": "Z",
+                      "kind": "simple",
+                      "symbol": "Z",
+                      "codePoint": 90
+                    }
+                  }
+                ]
+              },
+              "quantifier": {
+                "type": "Quantifier",
+                "kind": "Range",
+                "from": 2,
+                "greedy": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "Repetition",
+        "expression": {
+          "type": "Group",
+          "capturing": true,
+          "name": "path",
+          "nameRaw": "path",
+          "number": 3,
+          "expression": {
+            "type": "Alternative",
+            "expressions": [
+              {
+                "type": "Char",
+                "value": "/",
+                "kind": "simple",
+                "symbol": "/",
+                "codePoint": 47,
+                "escaped": true
+              },
+              {
+                "type": "Repetition",
+                "expression": {
+                  "type": "Char",
+                  "value": ".",
+                  "kind": "meta",
+                  "symbol": ".",
+                  "codePoint": null
+                },
+                "quantifier": {
+                  "type": "Quantifier",
+                  "kind": "*",
+                  "greedy": true
+                }
+              }
+            ]
+          }
+        },
+        "quantifier": {
+          "type": "Quantifier",
+          "kind": "?",
+          "greedy": true
+        }
+      },
+      {
+        "type": "Assertion",
+        "kind": "$"
+      }
+    ]
+  },
+  "flags": ""
+}
