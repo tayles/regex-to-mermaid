@@ -100,3 +100,16 @@ graph LR
     class domain_group namedCaptureGroup;
     class path_group namedCaptureGroup;
 ```
+
+Using [regexp-tree-cli](https://github.com/dtinth/regexp-tree-cli) to output the AST as JSON with location data:
+
+```shell
+regexp-tree-cli --expression '/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/' --loc
+```
+
+## xkcd
+
+- [Regular Expressions](https://xkcd.com/208/)
+- [Perl Problems](https://xkcd.com/1171/)
+- [Regex Golf](https://xkcd.com/1313/)
+- [Backslashes](https://xkcd.com/1638/)
