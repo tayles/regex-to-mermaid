@@ -1,0 +1,51 @@
+import type { DiagramData, DiagramNode, Edge, Group } from './types';
+
+export function buildMermaidDiagram(data: DiagramData): string {
+  // Placeholder implementation
+  return `graph LR
+    %% Nodes
+    start@{ shape: f-circ, label: "Start" };
+    fin@{ shape: f-circ, label: "End" };
+
+${buildNodes(data.nodes)}
+
+    %% Subgraphs
+${buildSubgraphs(data.groups)}
+
+    %% Edges
+${buildEdges(data.edges)}
+
+    %% Styling Definitions
+    %% Node Styling
+    %% TODO
+
+    %% Group Styling
+    %% TODO
+
+    %% Apply Styling Classes
+    %% Group Classes
+    %% TODO
+`;
+}
+
+export function buildNodes(nodes: DiagramNode[]): string {
+  return `    ${nodes.map(node => `${node.id}:::${node.type}("${node.label}");`).join('\n    ')}`;
+}
+
+export function buildSubgraphs(groups: Group[]): string {
+  return `    ${groups
+    .map(
+      group => `subgraph ${group.id} ["<small>#${group.number}</small> ${group.label} ${
+        group.optional ? '<small><i>Optional</i></small>' : ''
+      }"];
+        ${group.nodes.join('\n        ')}
+    end`,
+    )
+    .join('\n\n    ')}`;
+}
+
+export function buildEdges(edges: Edge[]): string {
+  return `    ${edges
+    .map(edge => `${edge.from} --- ${edge.to}${edge.label ? `|${edge.label}|` : ''};`)
+    .join('\n    ')}`;
+}
