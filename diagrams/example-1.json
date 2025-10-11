@@ -5,7 +5,20 @@
     "expressions": [
       {
         "type": "Assertion",
-        "kind": "^"
+        "kind": "^",
+        "loc": {
+          "source": "^",
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 2,
+            "offset": 2
+          }
+        }
       },
       {
         "type": "Repetition",
@@ -23,28 +36,80 @@
                 "value": "h",
                 "kind": "simple",
                 "symbol": "h",
-                "codePoint": 104
+                "codePoint": 104,
+                "loc": {
+                  "source": "h",
+                  "start": {
+                    "line": 1,
+                    "column": 14,
+                    "offset": 14
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 15,
+                    "offset": 15
+                  }
+                }
               },
               {
                 "type": "Char",
                 "value": "t",
                 "kind": "simple",
                 "symbol": "t",
-                "codePoint": 116
+                "codePoint": 116,
+                "loc": {
+                  "source": "t",
+                  "start": {
+                    "line": 1,
+                    "column": 15,
+                    "offset": 15
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 16,
+                    "offset": 16
+                  }
+                }
               },
               {
                 "type": "Char",
                 "value": "t",
                 "kind": "simple",
                 "symbol": "t",
-                "codePoint": 116
+                "codePoint": 116,
+                "loc": {
+                  "source": "t",
+                  "start": {
+                    "line": 1,
+                    "column": 16,
+                    "offset": 16
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 17,
+                    "offset": 17
+                  }
+                }
               },
               {
                 "type": "Char",
                 "value": "p",
                 "kind": "simple",
                 "symbol": "p",
-                "codePoint": 112
+                "codePoint": 112,
+                "loc": {
+                  "source": "p",
+                  "start": {
+                    "line": 1,
+                    "column": 17,
+                    "offset": 17
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 18,
+                    "offset": 18
+                  }
+                }
               },
               {
                 "type": "Repetition",
@@ -53,12 +118,51 @@
                   "value": "s",
                   "kind": "simple",
                   "symbol": "s",
-                  "codePoint": 115
+                  "codePoint": 115,
+                  "loc": {
+                    "source": "s",
+                    "start": {
+                      "line": 1,
+                      "column": 18,
+                      "offset": 18
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 19,
+                      "offset": 19
+                    }
+                  }
                 },
                 "quantifier": {
                   "type": "Quantifier",
                   "kind": "?",
-                  "greedy": true
+                  "greedy": true,
+                  "loc": {
+                    "source": "?",
+                    "start": {
+                      "line": 1,
+                      "column": 19,
+                      "offset": 19
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20,
+                      "offset": 20
+                    }
+                  }
+                },
+                "loc": {
+                  "source": "s?",
+                  "start": {
+                    "line": 1,
+                    "column": 18,
+                    "offset": 18
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 20,
+                    "offset": 20
+                  }
                 }
               },
               {
@@ -66,7 +170,20 @@
                 "value": ":",
                 "kind": "simple",
                 "symbol": ":",
-                "codePoint": 58
+                "codePoint": 58,
+                "loc": {
+                  "source": ":",
+                  "start": {
+                    "line": 1,
+                    "column": 20,
+                    "offset": 20
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 21,
+                    "offset": 21
+                  }
+                }
               },
               {
                 "type": "Char",
@@ -74,6 +191,19 @@
                 "kind": "simple",
                 "symbol": "/",
                 "codePoint": 47,
+                "loc": {
+                  "source": "\\/",
+                  "start": {
+                    "line": 1,
+                    "column": 21,
+                    "offset": 21
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 23,
+                    "offset": 23
+                  }
+                },
                 "escaped": true
               },
               {
@@ -82,15 +212,80 @@
                 "kind": "simple",
                 "symbol": "/",
                 "codePoint": 47,
+                "loc": {
+                  "source": "\\/",
+                  "start": {
+                    "line": 1,
+                    "column": 23,
+                    "offset": 23
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 25,
+                    "offset": 25
+                  }
+                },
                 "escaped": true
               }
-            ]
+            ],
+            "loc": {
+              "source": "https?:\\/\\/",
+              "start": {
+                "line": 1,
+                "column": 14,
+                "offset": 14
+              },
+              "end": {
+                "line": 1,
+                "column": 25,
+                "offset": 25
+              }
+            }
+          },
+          "loc": {
+            "source": "(?<protocol>https?:\\/\\/)",
+            "start": {
+              "line": 1,
+              "column": 2,
+              "offset": 2
+            },
+            "end": {
+              "line": 1,
+              "column": 26,
+              "offset": 26
+            }
           }
         },
         "quantifier": {
           "type": "Quantifier",
           "kind": "?",
-          "greedy": true
+          "greedy": true,
+          "loc": {
+            "source": "?",
+            "start": {
+              "line": 1,
+              "column": 26,
+              "offset": 26
+            },
+            "end": {
+              "line": 1,
+              "column": 27,
+              "offset": 27
+            }
+          }
+        },
+        "loc": {
+          "source": "(?<protocol>https?:\\/\\/)?",
+          "start": {
+            "line": 1,
+            "column": 2,
+            "offset": 2
+          },
+          "end": {
+            "line": 1,
+            "column": 27,
+            "offset": 27
+          }
         }
       },
       {
@@ -114,14 +309,53 @@
                       "value": "a",
                       "kind": "simple",
                       "symbol": "a",
-                      "codePoint": 97
+                      "codePoint": 97,
+                      "loc": {
+                        "source": "a",
+                        "start": {
+                          "line": 1,
+                          "column": 38,
+                          "offset": 38
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 39,
+                          "offset": 39
+                        }
+                      }
                     },
                     "to": {
                       "type": "Char",
                       "value": "z",
                       "kind": "simple",
                       "symbol": "z",
-                      "codePoint": 122
+                      "codePoint": 122,
+                      "loc": {
+                        "source": "z",
+                        "start": {
+                          "line": 1,
+                          "column": 40,
+                          "offset": 40
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 41,
+                          "offset": 41
+                        }
+                      }
+                    },
+                    "loc": {
+                      "source": "a-z",
+                      "start": {
+                        "line": 1,
+                        "column": 38,
+                        "offset": 38
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 41,
+                        "offset": 41
+                      }
                     }
                   },
                   {
@@ -131,14 +365,53 @@
                       "value": "A",
                       "kind": "simple",
                       "symbol": "A",
-                      "codePoint": 65
+                      "codePoint": 65,
+                      "loc": {
+                        "source": "A",
+                        "start": {
+                          "line": 1,
+                          "column": 41,
+                          "offset": 41
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 42,
+                          "offset": 42
+                        }
+                      }
                     },
                     "to": {
                       "type": "Char",
                       "value": "Z",
                       "kind": "simple",
                       "symbol": "Z",
-                      "codePoint": 90
+                      "codePoint": 90,
+                      "loc": {
+                        "source": "Z",
+                        "start": {
+                          "line": 1,
+                          "column": 43,
+                          "offset": 43
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 44,
+                          "offset": 44
+                        }
+                      }
+                    },
+                    "loc": {
+                      "source": "A-Z",
+                      "start": {
+                        "line": 1,
+                        "column": 41,
+                        "offset": 41
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 44,
+                        "offset": 44
+                      }
                     }
                   },
                   {
@@ -148,14 +421,53 @@
                       "value": "0",
                       "kind": "simple",
                       "symbol": "0",
-                      "codePoint": 48
+                      "codePoint": 48,
+                      "loc": {
+                        "source": "0",
+                        "start": {
+                          "line": 1,
+                          "column": 44,
+                          "offset": 44
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 45,
+                          "offset": 45
+                        }
+                      }
                     },
                     "to": {
                       "type": "Char",
                       "value": "9",
                       "kind": "simple",
                       "symbol": "9",
-                      "codePoint": 57
+                      "codePoint": 57,
+                      "loc": {
+                        "source": "9",
+                        "start": {
+                          "line": 1,
+                          "column": 46,
+                          "offset": 46
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 47,
+                          "offset": 47
+                        }
+                      }
+                    },
+                    "loc": {
+                      "source": "0-9",
+                      "start": {
+                        "line": 1,
+                        "column": 44,
+                        "offset": 44
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 47,
+                        "offset": 47
+                      }
                     }
                   },
                   {
@@ -163,21 +475,86 @@
                     "value": ".",
                     "kind": "simple",
                     "symbol": ".",
-                    "codePoint": 46
+                    "codePoint": 46,
+                    "loc": {
+                      "source": ".",
+                      "start": {
+                        "line": 1,
+                        "column": 47,
+                        "offset": 47
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 48,
+                        "offset": 48
+                      }
+                    }
                   },
                   {
                     "type": "Char",
                     "value": "-",
                     "kind": "simple",
                     "symbol": "-",
-                    "codePoint": 45
+                    "codePoint": 45,
+                    "loc": {
+                      "source": "-",
+                      "start": {
+                        "line": 1,
+                        "column": 48,
+                        "offset": 48
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 49,
+                        "offset": 49
+                      }
+                    }
                   }
-                ]
+                ],
+                "loc": {
+                  "source": "[a-zA-Z0-9.-]",
+                  "start": {
+                    "line": 1,
+                    "column": 37,
+                    "offset": 37
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 50,
+                    "offset": 50
+                  }
+                }
               },
               "quantifier": {
                 "type": "Quantifier",
                 "kind": "+",
-                "greedy": true
+                "greedy": true,
+                "loc": {
+                  "source": "+",
+                  "start": {
+                    "line": 1,
+                    "column": 50,
+                    "offset": 50
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 51,
+                    "offset": 51
+                  }
+                }
+              },
+              "loc": {
+                "source": "[a-zA-Z0-9.-]+",
+                "start": {
+                  "line": 1,
+                  "column": 37,
+                  "offset": 37
+                },
+                "end": {
+                  "line": 1,
+                  "column": 51,
+                  "offset": 51
+                }
               }
             },
             {
@@ -186,6 +563,19 @@
               "kind": "simple",
               "symbol": ".",
               "codePoint": 46,
+              "loc": {
+                "source": "\\.",
+                "start": {
+                  "line": 1,
+                  "column": 51,
+                  "offset": 51
+                },
+                "end": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 53
+                }
+              },
               "escaped": true
             },
             {
@@ -200,14 +590,53 @@
                       "value": "a",
                       "kind": "simple",
                       "symbol": "a",
-                      "codePoint": 97
+                      "codePoint": 97,
+                      "loc": {
+                        "source": "a",
+                        "start": {
+                          "line": 1,
+                          "column": 54,
+                          "offset": 54
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 55,
+                          "offset": 55
+                        }
+                      }
                     },
                     "to": {
                       "type": "Char",
                       "value": "z",
                       "kind": "simple",
                       "symbol": "z",
-                      "codePoint": 122
+                      "codePoint": 122,
+                      "loc": {
+                        "source": "z",
+                        "start": {
+                          "line": 1,
+                          "column": 56,
+                          "offset": 56
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 57,
+                          "offset": 57
+                        }
+                      }
+                    },
+                    "loc": {
+                      "source": "a-z",
+                      "start": {
+                        "line": 1,
+                        "column": 54,
+                        "offset": 54
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 57,
+                        "offset": 57
+                      }
                     }
                   },
                   {
@@ -217,26 +646,130 @@
                       "value": "A",
                       "kind": "simple",
                       "symbol": "A",
-                      "codePoint": 65
+                      "codePoint": 65,
+                      "loc": {
+                        "source": "A",
+                        "start": {
+                          "line": 1,
+                          "column": 57,
+                          "offset": 57
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 58,
+                          "offset": 58
+                        }
+                      }
                     },
                     "to": {
                       "type": "Char",
                       "value": "Z",
                       "kind": "simple",
                       "symbol": "Z",
-                      "codePoint": 90
+                      "codePoint": 90,
+                      "loc": {
+                        "source": "Z",
+                        "start": {
+                          "line": 1,
+                          "column": 59,
+                          "offset": 59
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 60,
+                          "offset": 60
+                        }
+                      }
+                    },
+                    "loc": {
+                      "source": "A-Z",
+                      "start": {
+                        "line": 1,
+                        "column": 57,
+                        "offset": 57
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 60,
+                        "offset": 60
+                      }
                     }
                   }
-                ]
+                ],
+                "loc": {
+                  "source": "[a-zA-Z]",
+                  "start": {
+                    "line": 1,
+                    "column": 53,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 61,
+                    "offset": 61
+                  }
+                }
               },
               "quantifier": {
                 "type": "Quantifier",
                 "kind": "Range",
                 "from": 2,
-                "greedy": true
+                "greedy": true,
+                "loc": {
+                  "source": "{2,}",
+                  "start": {
+                    "line": 1,
+                    "column": 61,
+                    "offset": 61
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 65,
+                    "offset": 65
+                  }
+                }
+              },
+              "loc": {
+                "source": "[a-zA-Z]{2,}",
+                "start": {
+                  "line": 1,
+                  "column": 53,
+                  "offset": 53
+                },
+                "end": {
+                  "line": 1,
+                  "column": 65,
+                  "offset": 65
+                }
               }
             }
-          ]
+          ],
+          "loc": {
+            "source": "[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+            "start": {
+              "line": 1,
+              "column": 37,
+              "offset": 37
+            },
+            "end": {
+              "line": 1,
+              "column": 65,
+              "offset": 65
+            }
+          }
+        },
+        "loc": {
+          "source": "(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})",
+          "start": {
+            "line": 1,
+            "column": 27,
+            "offset": 27
+          },
+          "end": {
+            "line": 1,
+            "column": 66,
+            "offset": 66
+          }
         }
       },
       {
@@ -256,6 +789,19 @@
                 "kind": "simple",
                 "symbol": "/",
                 "codePoint": 47,
+                "loc": {
+                  "source": "\\/",
+                  "start": {
+                    "line": 1,
+                    "column": 74,
+                    "offset": 74
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 76,
+                    "offset": 76
+                  }
+                },
                 "escaped": true
               },
               {
@@ -265,28 +811,158 @@
                   "value": ".",
                   "kind": "meta",
                   "symbol": ".",
-                  "codePoint": null
+                  "codePoint": null,
+                  "loc": {
+                    "source": ".",
+                    "start": {
+                      "line": 1,
+                      "column": 76,
+                      "offset": 76
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 77,
+                      "offset": 77
+                    }
+                  }
                 },
                 "quantifier": {
                   "type": "Quantifier",
                   "kind": "*",
-                  "greedy": true
+                  "greedy": true,
+                  "loc": {
+                    "source": "*",
+                    "start": {
+                      "line": 1,
+                      "column": 77,
+                      "offset": 77
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 78,
+                      "offset": 78
+                    }
+                  }
+                },
+                "loc": {
+                  "source": ".*",
+                  "start": {
+                    "line": 1,
+                    "column": 76,
+                    "offset": 76
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 78,
+                    "offset": 78
+                  }
                 }
               }
-            ]
+            ],
+            "loc": {
+              "source": "\\/.*",
+              "start": {
+                "line": 1,
+                "column": 74,
+                "offset": 74
+              },
+              "end": {
+                "line": 1,
+                "column": 78,
+                "offset": 78
+              }
+            }
+          },
+          "loc": {
+            "source": "(?<path>\\/.*)",
+            "start": {
+              "line": 1,
+              "column": 66,
+              "offset": 66
+            },
+            "end": {
+              "line": 1,
+              "column": 79,
+              "offset": 79
+            }
           }
         },
         "quantifier": {
           "type": "Quantifier",
           "kind": "?",
-          "greedy": true
+          "greedy": true,
+          "loc": {
+            "source": "?",
+            "start": {
+              "line": 1,
+              "column": 79,
+              "offset": 79
+            },
+            "end": {
+              "line": 1,
+              "column": 80,
+              "offset": 80
+            }
+          }
+        },
+        "loc": {
+          "source": "(?<path>\\/.*)?",
+          "start": {
+            "line": 1,
+            "column": 66,
+            "offset": 66
+          },
+          "end": {
+            "line": 1,
+            "column": 80,
+            "offset": 80
+          }
         }
       },
       {
         "type": "Assertion",
-        "kind": "$"
+        "kind": "$",
+        "loc": {
+          "source": "$",
+          "start": {
+            "line": 1,
+            "column": 80,
+            "offset": 80
+          },
+          "end": {
+            "line": 1,
+            "column": 81,
+            "offset": 81
+          }
+        }
       }
-    ]
+    ],
+    "loc": {
+      "source": "^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$",
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 1
+      },
+      "end": {
+        "line": 1,
+        "column": 81,
+        "offset": 81
+      }
+    }
   },
-  "flags": ""
+  "flags": "",
+  "loc": {
+    "source": "/^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$/",
+    "start": {
+      "line": 1,
+      "column": 0,
+      "offset": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 82,
+      "offset": 82
+    }
+  }
 }
