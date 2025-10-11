@@ -9,9 +9,7 @@ describe('buildNodes', () => {
   });
 
   test('builds single node correctly', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: 'a' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
     const result = buildNodes(nodes);
     expect(result).toContain('node1:::Character("a");');
   });
@@ -41,25 +39,19 @@ describe('buildNodes', () => {
   });
 
   test('escapes special characters in labels', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: '"quote"' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '"quote"' }];
     const result = buildNodes(nodes);
     expect(result).toContain('node1:::Character');
   });
 
   test('handles multiline labels', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: 'line1<br>line2' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'line1<br>line2' }];
     const result = buildNodes(nodes);
     expect(result).toContain('node1:::Character("line1<br>line2");');
   });
 
   test('maintains proper indentation', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: 'a' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
     const result = buildNodes(nodes);
     expect(result.startsWith('    ')).toBe(true);
   });
@@ -221,25 +213,19 @@ describe('buildEdges', () => {
   });
 
   test('builds single edge correctly', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
   });
 
   test('builds edge with label correctly', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2', label: 'optional' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'optional' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|optional|;');
   });
 
   test('builds edge without label correctly', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
     expect(result).not.toContain('||');
@@ -258,25 +244,19 @@ describe('buildEdges', () => {
   });
 
   test('handles special characters in node IDs', () => {
-    const edges: Edge[] = [
-      { from: 'node_1', to: 'node-2' },
-    ];
+    const edges: Edge[] = [{ from: 'node_1', to: 'node-2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node_1 --- node-2;');
   });
 
   test('handles special characters in labels', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2', label: 'a-z' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'a-z' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|a-z|;');
   });
 
   test('maintains proper indentation', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result.startsWith('    ')).toBe(true);
   });
@@ -416,7 +396,7 @@ describe('buildMermaidDiagram', () => {
     const subgraphsIndex = result.indexOf('%% Subgraphs');
     const edgesIndex = result.indexOf('%% Edges');
     const stylingIndex = result.indexOf('%% Styling Definitions');
-    
+
     expect(graphIndex).toBeLessThan(nodesIndex);
     expect(nodesIndex).toBeLessThan(subgraphsIndex);
     expect(subgraphsIndex).toBeLessThan(edgesIndex);
@@ -426,9 +406,7 @@ describe('buildMermaidDiagram', () => {
 
 describe('Edge cases and error handling', () => {
   test('buildNodes handles nodes with empty labels', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: '' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '' }];
     const result = buildNodes(nodes);
     expect(result).toContain('node1:::Character("");');
   });
@@ -449,9 +427,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles same node connected to itself', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node1' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node1' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node1;');
   });
@@ -561,17 +537,13 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildNodes handles labels with HTML entities', () => {
-    const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: '&lt;test&gt;' },
-    ];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '&lt;test&gt;' }];
     const result = buildNodes(nodes);
     expect(result).toContain('node1:::Character("&lt;test&gt;");');
   });
 
   test('buildEdges handles edges with empty labels', () => {
-    const edges: Edge[] = [
-      { from: 'node1', to: 'node2', label: '' },
-    ];
+    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: '' }];
     const result = buildEdges(edges);
     // Empty label is treated as no label because empty string is falsy
     expect(result).toContain('node1 --- node2;');

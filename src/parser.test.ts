@@ -42,7 +42,8 @@ describe('buildRegexAst', () => {
   });
 
   test('parses complex URL regex pattern', () => {
-    const pattern = /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/;
+    const pattern =
+      /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/;
     const ast = buildRegexAst(pattern);
     expect(ast).toBeDefined();
     expect(ast.type).toBe('RegExp');
@@ -196,7 +197,7 @@ describe('Integration tests', () => {
     const pattern = /^(?<protocol>https?):\/\/(?<domain>[a-z]+)$/;
     const ast = buildRegexAst(pattern);
     expect(ast.type).toBe('RegExp');
-    
+
     const data = generateDiagramData(ast);
     expect(Array.isArray(data.nodes)).toBe(true);
     expect(Array.isArray(data.edges)).toBe(true);
@@ -208,7 +209,7 @@ describe('Integration tests', () => {
     const ast = buildRegexAst(pattern);
     expect(ast.type).toBe('RegExp');
     expect(ast.flags).toBe('i');
-    
+
     const data = generateDiagramData(ast);
     expect(data).toBeDefined();
   });
