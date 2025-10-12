@@ -176,6 +176,20 @@ describe('generateDiagramData', () => {
     expect(data.groups.length).toBe(1);
     expect(data.groups[0]?.type).toBe('named-capture');
     expect(data.groups[0]?.label).toBe('name');
+    expect(data.groups[0]?.id).toBe('group_1');
+    expect(data.groups[0]?.number).toBe(1);
+  });
+
+  test('groups are numbered starting from 1', () => {
+    const ast = buildRegexAst(/(a+)(b*)(c?)/);
+    const data = generateDiagramData(ast);
+    expect(data.groups.length).toBe(3);
+    expect(data.groups[0]?.id).toBe('group_1');
+    expect(data.groups[0]?.number).toBe(1);
+    expect(data.groups[1]?.id).toBe('group_2');
+    expect(data.groups[1]?.number).toBe(2);
+    expect(data.groups[2]?.id).toBe('group_3');
+    expect(data.groups[2]?.number).toBe(3);
   });
 
   test('handles assertions with friendly labels', () => {
@@ -290,7 +304,11 @@ describe('Integration tests', () => {
     expect(Array.isArray(data.groups)).toBe(true);
     expect(data.groups.length).toBe(2);
     expect(data.groups[0]?.type).toBe('named-capture');
+    expect(data.groups[0]?.id).toBe('group_1');
+    expect(data.groups[0]?.number).toBe(1);
     expect(data.groups[1]?.type).toBe('named-capture');
+    expect(data.groups[1]?.id).toBe('group_2');
+    expect(data.groups[1]?.number).toBe(2);
   });
 
   test('handles various regex features together', () => {

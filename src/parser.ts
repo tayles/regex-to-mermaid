@@ -9,12 +9,18 @@ export function buildRegexAst(pattern: string | RegExp) {
   return ast;
 }
 
-let nodeCounter = 0;
-let groupCounter = 0;
+const nodeCounters: Map<string, number> = new Map();
+let groupCounter = 1;
+
+function getNextNodeId(nodeType: string): string {
+  const count = nodeCounters.get(nodeType) || 1;
+  nodeCounters.set(nodeType, count + 1);
+  return buildFriendlyId(`${nodeType}_${count}`);
+}
 
 export function generateDiagramData(ast: AstRegExp): DiagramData {
-  nodeCounter = 0;
-  groupCounter = 0;
+  nodeCounters.clear();
+  groupCounter = 1;
 
   const nodes: DiagramNode[] = [];
   const edges: Edge[] = [];
@@ -114,7 +120,7 @@ function processCombinedChars(
   edges: Edge[],
 ): string {
   const text = chars.map(c => c.value).join('');
-  const nodeId = buildFriendlyId(`literal_${nodeCounter++}`);
+  const nodeId = getNextNodeId('literal');
   const label = buildFriendlyLabel(text, 'literal');
 
   nodes.push({
@@ -133,7 +139,7 @@ function processChar(
   nodes: DiagramNode[],
   edges: Edge[],
 ): string {
-  const nodeId = buildFriendlyId(`char_${nodeCounter++}`);
+  const nodeId = getNextNodeId('literal');
   const label = buildFriendlyLabel(node.value, 'literal');
 
   nodes.push({
@@ -152,9 +158,9 @@ function processCharacterClass(
   nodes: DiagramNode[],
   edges: Edge[],
 ): string {
-  const nodeId = buildFriendlyId(`charclass_${nodeCounter++}`);
-  const label = buildCharacterClassLabel(node);
   const nodeType = node.negative ? 'negated-char-class' : 'char-class';
+  const nodeId = getNextNodeId(nodeType);
+  const label = buildCharacterClassLabel(node);
 
   nodes.push({
     id: nodeId,
@@ -303,8 +309,8 @@ function processDisjunction(
   edges: Edge[],
   groups: Group[],
 ): string {
-  const disjunctionNodeId = buildFriendlyId(`disjunction_${nodeCounter++}`);
-  const mergeNodeId = buildFriendlyId(`merge_${nodeCounter++}`);
+  const disjunctionNodeId = getNextNodeId('disjunction');
+  const mergeNodeId = getNextNodeId('disjunction');
 
   nodes.push({
     id: disjunctionNodeId,
@@ -337,7 +343,7 @@ function processAssertion(
   nodes: DiagramNode[],
   edges: Edge[],
 ): string {
-  const nodeId = buildFriendlyId(`assertion_${nodeCounter++}`);
+  const nodeId = getNextNodeId('assertion');
   let label = '';
 
   switch (node.kind) {
@@ -373,7 +379,7 @@ function processBackreference(
   nodes: DiagramNode[],
   edges: Edge[],
 ): string {
-  const nodeId = buildFriendlyId(`backref_${nodeCounter++}`);
+  const nodeId = getNextNodeId('back-reference');
   const label = `\\${node.reference}<br><i><small>Back-reference</small></i>`;
 
   nodes.push({
