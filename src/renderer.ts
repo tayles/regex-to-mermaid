@@ -6,42 +6,53 @@ export function buildMermaidDiagram(
   direction: Direction = 'LR',
   theme: Theme = 'default',
 ): string {
-  // Placeholder implementation
-  return `graph ${direction}
-    %% Nodes
-    start@{ shape: f-circ, label: "Start" };
-    fin@{ shape: f-circ, label: "End" };
+  const diagram = `
+%% Nodes
+start@{ shape: f-circ };
+fin@{ shape: f-circ };
 
 ${buildNodes(data.nodes)}
 
-    %% Subgraphs
+%% Subgraphs
 ${buildSubgraphs(data.groups)}
 
-    %% Edges
+%% Edges
 ${buildEdges(data.edges)}
 
 ${buildStyles(theme, data)}
 `;
+
+  return `graph ${direction}${diagram
+    .split('\n')
+    // Indent all lines by two spaces for better formatting
+    .map(line => `  ${line}`)
+    .join('\n')}`;
 }
 
 export function buildNodes(nodes: DiagramNode[]): string {
-  return `    ${nodes.map(node => `${node.id}("${node.label}"):::${node.type};`).join('\n    ')}`;
+  return nodes.map(node => `${node.id}("${node.label}"):::${node.type};`).join('\n');
 }
 
 export function buildSubgraphs(groups: Group[]): string {
-  return `    ${groups
-    .map(
-      group => `subgraph ${group.id} ["<small>#${group.number}</small> ${group.label} ${
-        group.optional ? '<small><i>Optional</i></small>' : ''
-      }"];
-        ${group.nodes.join('\n        ')}
-    end`,
-    )
-    .join('\n\n    ')}`;
+  return groups
+    .map(group => {
+      const label = [
+        `<small>#${group.number}</small>`,
+        group.label,
+        group.optional && '<small><i>Optional</i></small>',
+      ]
+        .filter(Boolean)
+        .join(' ');
+
+      return `subgraph ${group.id} ["${label}"]
+  ${group.nodes.join('\n  ')}
+end`;
+    })
+    .join('\n\n');
 }
 
 export function buildEdges(edges: Edge[]): string {
-  return `    ${edges
+  return edges
     .map(edge => `${edge.from} --- ${edge.to}${edge.label ? `|${edge.label}|` : ''};`)
-    .join('\n    ')}`;
+    .join('\n');
 }

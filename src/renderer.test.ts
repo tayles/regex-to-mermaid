@@ -5,7 +5,7 @@ import type { DiagramData, DiagramNode, Edge, Group } from './types';
 describe('buildNodes', () => {
   test('builds empty string for empty nodes array', () => {
     const result = buildNodes([]);
-    expect(result).toBe('    ');
+    expect(result).toBe('');
   });
 
   test('builds single node correctly', () => {
@@ -50,17 +50,17 @@ describe('buildNodes', () => {
     expect(result).toContain('node1("line1<br>line2"):::Character');
   });
 
-  test('maintains proper indentation', () => {
+  test('does not include indentation', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
     const result = buildNodes(nodes);
-    expect(result.startsWith('    ')).toBe(true);
+    expect(result.startsWith('    ')).toBe(false);
   });
 });
 
 describe('buildSubgraphs', () => {
   test('builds empty string for empty groups array', () => {
     const result = buildSubgraphs([]);
-    expect(result).toBe('    ');
+    expect(result).toBe('');
   });
 
   test('builds single group correctly', () => {
@@ -209,7 +209,7 @@ describe('buildSubgraphs', () => {
 describe('buildEdges', () => {
   test('builds empty string for empty edges array', () => {
     const result = buildEdges([]);
-    expect(result).toBe('    ');
+    expect(result).toBe('');
   });
 
   test('builds single edge correctly', () => {
@@ -255,10 +255,10 @@ describe('buildEdges', () => {
     expect(result).toContain('node1 --- node2|a-z|;');
   });
 
-  test('maintains proper indentation', () => {
+  test('does not include indentation', () => {
     const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
-    expect(result.startsWith('    ')).toBe(true);
+    expect(result.startsWith('    ')).toBe(false);
   });
 });
 
@@ -271,8 +271,8 @@ describe('buildMermaidDiagram', () => {
     };
     const result = buildMermaidDiagram(data);
     expect(result).toContain('graph LR');
-    expect(result).toContain('start@{ shape: f-circ, label: "Start" };');
-    expect(result).toContain('fin@{ shape: f-circ, label: "End" };');
+    expect(result).toContain('start@{ shape: f-circ };');
+    expect(result).toContain('fin@{ shape: f-circ };');
     expect(result).toContain('%% Nodes');
     expect(result).toContain('%% Subgraphs');
     expect(result).toContain('%% Edges');
@@ -386,8 +386,8 @@ describe('buildMermaidDiagram', () => {
     };
     const result = buildMermaidDiagram(data);
     expect(result).toContain('graph LR');
-    expect(result).toContain('start@{ shape: f-circ, label: "Start" };');
-    expect(result).toContain('fin@{ shape: f-circ, label: "End" };');
+    expect(result).toContain('start@{ shape: f-circ };');
+    expect(result).toContain('fin@{ shape: f-circ };');
   });
 
   test('includes styling comments', () => {
