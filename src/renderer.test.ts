@@ -263,7 +263,7 @@ describe('buildEdges', () => {
 });
 
 describe('buildMermaidDiagram', () => {
-  test('builds basic diagram structure', () => {
+  test('builds basic diagram structure with default LR direction', () => {
     const data: DiagramData = {
       nodes: [],
       edges: [],
@@ -277,6 +277,26 @@ describe('buildMermaidDiagram', () => {
     expect(result).toContain('%% Subgraphs');
     expect(result).toContain('%% Edges');
     expect(result).toContain('%% Styling Definitions');
+  });
+
+  test('builds diagram with TD direction', () => {
+    const data: DiagramData = {
+      nodes: [],
+      edges: [],
+      groups: [],
+    };
+    const result = buildMermaidDiagram(data, 'TD');
+    expect(result).toContain('graph TD');
+  });
+
+  test('builds diagram with LR direction explicitly', () => {
+    const data: DiagramData = {
+      nodes: [],
+      edges: [],
+      groups: [],
+    };
+    const result = buildMermaidDiagram(data, 'LR');
+    expect(result).toContain('graph LR');
   });
 
   test('includes all nodes in diagram', () => {

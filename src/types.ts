@@ -46,3 +46,8 @@ export interface DiagramData {
   edges: Edge[];
   groups: Group[];
 }
+
+export type Direction = 'LR' | 'TD';
+
+export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;
+export type Theme = (typeof THEMES)[number];

@@ -1,8 +1,8 @@
-import type { DiagramData, DiagramNode, Edge, Group } from './types';
+import type { DiagramData, DiagramNode, Direction, Edge, Group } from './types';
 
-export function buildMermaidDiagram(data: DiagramData): string {
+export function buildMermaidDiagram(data: DiagramData, direction: Direction = 'LR'): string {
   // Placeholder implementation
-  return `graph LR
+  return `graph ${direction}
     %% Nodes
     start@{ shape: f-circ, label: "Start" };
     fin@{ shape: f-circ, label: "End" };
