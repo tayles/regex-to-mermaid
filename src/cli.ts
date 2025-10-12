@@ -3,6 +3,7 @@ import { buildRegexAst, generateDiagramData } from './parser';
 import { buildMermaidDiagram } from './renderer';
 import { THEMES, type Theme } from './theme';
 import type { Direction } from './types';
+import packageJson from '../package.json';
 
 export interface CLIOptions {
   output?: string;
@@ -80,8 +81,8 @@ export function processRegex(regex: string, options: CLIOptions): string {
   // Build the Mermaid diagram
   let diagram = buildMermaidDiagram(data, direction, theme);
 
-  // Add regex pattern as comment
-  diagram = `%% ${regex}\n\n${diagram}`;
+  // Add regex pattern as comment and suffix with package info
+  diagram = `%% Regex: ${regex}\n\n${diagram}\n\n%% Generated with ${packageJson.name}@${packageJson.version}`;
 
   return diagram;
 }

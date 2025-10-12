@@ -53,7 +53,7 @@ describe('processRegex', () => {
   test('processes simple regex pattern', () => {
     const result = processRegex('test', { direction: 'LR', theme: 'default' });
     expect(result).toContain('graph LR');
-    expect(result).toContain('%% test');
+    expect(result).toContain('%% Regex: test');
   });
 
   test('processes regex with flags', () => {
@@ -91,7 +91,13 @@ describe('processRegex', () => {
 
   test('includes regex pattern as comment', () => {
     const result = processRegex('hello.*world', { direction: 'LR', theme: 'default' });
-    expect(result).toContain('%% hello.*world');
+    expect(result).toContain('%% Regex: hello.*world');
+  });
+
+  test('includes generated with comment', () => {
+    const result = processRegex('test', { direction: 'LR', theme: 'default' });
+    expect(result).toContain('%% Generated with regex-to-mermaid@');
+    expect(result).toMatch(/%% Generated with regex-to-mermaid@\d+\.\d+\.\d+/);
   });
 
   test('processes complex regex pattern', () => {
@@ -196,7 +202,8 @@ describe('Integration tests', () => {
     const result = processRegex(regex, options);
 
     expect(result).toContain('graph TD');
-    expect(result).toContain(`%% ${regex}`);
+    expect(result).toContain(`%% Regex: ${regex}`);
+    expect(result).toContain('%% Generated with regex-to-mermaid@');
     expect(result).toContain('start');
     expect(result).toContain('fin');
   });
