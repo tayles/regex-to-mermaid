@@ -80,13 +80,8 @@ export function processRegex(regex: string, options: CLIOptions): string {
   // Build the Mermaid diagram
   let diagram = buildMermaidDiagram(data, direction, theme);
 
-  // // Add theme directive if not 'none'
-  // if (theme !== 'none') {
-  //   diagram = `%%{init: {'theme':'${theme}'}}%%\n${diagram}`;
-  // }
-
   // Add regex pattern as comment
-  // diagram = `%% ${regex}\n\n${diagram}`;
+  diagram = `%% ${regex}\n\n${diagram}`;
 
   return diagram;
 }

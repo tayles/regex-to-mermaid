@@ -83,31 +83,6 @@ describe('processRegex', () => {
     }).toThrow('Invalid direction');
   });
 
-  test('includes theme directive for default theme', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'default' });
-    expect(result).toContain("%%{init: {'theme':'default'}}%%");
-  });
-
-  test('includes theme directive for neutral theme', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'neutral' });
-    expect(result).toContain("%%{init: {'theme':'neutral'}}%%");
-  });
-
-  test('includes theme directive for dark theme', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'dark' });
-    expect(result).toContain("%%{init: {'theme':'dark'}}%%");
-  });
-
-  test('includes theme directive for forest theme', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'forest' });
-    expect(result).toContain("%%{init: {'theme':'forest'}}%%");
-  });
-
-  test('omits theme directive when theme is none', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'none' });
-    expect(result).not.toContain("%%{init: {'theme':");
-  });
-
   test('throws error for invalid theme', () => {
     expect(() => {
       processRegex('test', { direction: 'LR', theme: 'invalid' as any });
@@ -221,7 +196,6 @@ describe('Integration tests', () => {
     const result = processRegex(regex, options);
 
     expect(result).toContain('graph TD');
-    expect(result).toContain("%%{init: {'theme':'dark'}}%%");
     expect(result).toContain(`%% ${regex}`);
     expect(result).toContain('start');
     expect(result).toContain('fin');
@@ -233,7 +207,6 @@ describe('Integration tests', () => {
 
     expect(result).toBeDefined();
     expect(result).toContain('graph LR');
-    expect(result).toContain('neutral');
   });
 
   test('handles URL regex pattern', () => {
@@ -242,7 +215,6 @@ describe('Integration tests', () => {
 
     expect(result).toBeDefined();
     expect(result).toContain('graph LR');
-    expect(result).toContain('forest');
   });
 
   test('handles phone number pattern', () => {
@@ -266,8 +238,11 @@ describe('Integration tests', () => {
     themes.forEach(theme => {
       const result = processRegex(regex, { direction: 'LR', theme });
       expect(result).toBeDefined();
-      if (theme !== 'none') {
-        expect(result).toContain(theme);
+      expect(result).toContain('graph LR');
+      if (theme === 'none') {
+        expect(result).not.toContain('%% Node Styling');
+      } else {
+        expect(result).toContain('%% Node Styling');
       }
     });
   });

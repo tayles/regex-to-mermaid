@@ -399,8 +399,7 @@ describe('buildMermaidDiagram', () => {
     const result = buildMermaidDiagram(data);
     expect(result).toContain('%% Node Styling');
     expect(result).toContain('%% Group Styling');
-    expect(result).toContain('%% Apply Styling Classes');
-    expect(result).toContain('%% Group Classes');
+    expect(result).toContain('%% Apply Group Classes');
   });
 
   test('maintains proper structure and formatting', () => {
