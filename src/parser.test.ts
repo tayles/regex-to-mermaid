@@ -115,59 +115,145 @@ describe('generateDiagramData', () => {
     expect(data.groups).toBeDefined();
   });
 
-  test('returns empty arrays for placeholder implementation', () => {
+  test('generates nodes and edges for simple pattern', () => {
     const ast = buildRegexAst(/test/);
     const data = generateDiagramData(ast);
-    // Current placeholder implementation returns empty arrays
-    expect(data.nodes.length).toBe(0);
-    expect(data.edges.length).toBe(0);
-    expect(data.groups.length).toBe(0);
+    expect(data.nodes.length).toBeGreaterThan(0);
+    expect(data.edges.length).toBeGreaterThan(0);
+    expect(data.nodes[0]?.label).toBe('test');
+  });
+
+  test('combines consecutive characters into single node', () => {
+    const ast = buildRegexAst(/hello/);
+    const data = generateDiagramData(ast);
+    // Should create one node with "hello" instead of 5 separate char nodes
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toBe('hello');
+    expect(data.nodes[0]?.type).toBe('literal');
+  });
+
+  test('handles character classes with friendly labels', () => {
+    const ast = buildRegexAst(/[a-z]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toBe('Any lowercase');
+    expect(data.nodes[0]?.type).toBe('char-class');
+  });
+
+  test('handles multiple character ranges', () => {
+    const ast = buildRegexAst(/[a-zA-Z0-9]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('Any lowercase');
+    expect(data.nodes[0]?.label).toContain('Any uppercase');
+    expect(data.nodes[0]?.label).toContain('Any digit');
+  });
+
+  test('handles quantifiers with descriptive text', () => {
+    const ast = buildRegexAst(/a+/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('One or more');
+  });
+
+  test('handles optional quantifier', () => {
+    const ast = buildRegexAst(/a?/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('Optional');
+  });
+
+  test('handles zero or more quantifier', () => {
+    const ast = buildRegexAst(/a*/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('Zero or more');
+  });
+
+  test('handles named capture groups', () => {
+    const ast = buildRegexAst(/(?<name>[a-z]+)/);
+    const data = generateDiagramData(ast);
+    expect(data.groups.length).toBe(1);
+    expect(data.groups[0]?.type).toBe('named-capture');
+    expect(data.groups[0]?.label).toBe('name');
+  });
+
+  test('handles assertions with friendly labels', () => {
+    const ast = buildRegexAst(/^test$/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(3); // ^, test, $
+    expect(data.nodes[0]?.type).toBe('assertion');
+    expect(data.nodes[0]?.label).toContain('Start of line');
+    expect(data.nodes[2]?.type).toBe('assertion');
+    expect(data.nodes[2]?.label).toContain('End of line');
   });
 });
 
 describe('buildFriendlyLabel', () => {
-  test('returns the input label unchanged (placeholder)', () => {
-    expect(buildFriendlyLabel('test')).toBe('test');
+  test('returns literal text unchanged for literal type', () => {
+    expect(buildFriendlyLabel('test', 'literal')).toBe('test');
   });
 
   test('handles empty string', () => {
     expect(buildFriendlyLabel('')).toBe('');
   });
 
-  test('handles special characters', () => {
-    expect(buildFriendlyLabel('a-z')).toBe('a-z');
+  test('converts \\d to friendly text', () => {
+    expect(buildFriendlyLabel('\\d')).toBe('Any digit');
   });
 
-  test('handles long strings', () => {
-    const longLabel = 'a'.repeat(100);
-    expect(buildFriendlyLabel(longLabel)).toBe(longLabel);
+  test('converts \\D to friendly text', () => {
+    expect(buildFriendlyLabel('\\D')).toBe('Not a digit');
   });
 
-  test('handles unicode characters', () => {
-    expect(buildFriendlyLabel('hello 世界')).toBe('hello 世界');
+  test('converts \\w to friendly text', () => {
+    expect(buildFriendlyLabel('\\w')).toBe('Any word character');
   });
 
-  test('handles regex special characters', () => {
-    expect(buildFriendlyLabel('^$.*+?')).toBe('^$.*+?');
+  test('converts \\W to friendly text', () => {
+    expect(buildFriendlyLabel('\\W')).toBe('Not a word character');
+  });
+
+  test('converts \\s to friendly text', () => {
+    expect(buildFriendlyLabel('\\s')).toBe('Any whitespace');
+  });
+
+  test('converts \\S to friendly text', () => {
+    expect(buildFriendlyLabel('\\S')).toBe('Not whitespace');
+  });
+
+  test('converts . to friendly text', () => {
+    expect(buildFriendlyLabel('.')).toBe('Any character');
+  });
+
+  test('handles unknown escape sequences', () => {
+    expect(buildFriendlyLabel('\\x')).toBe('\\x');
+  });
+
+  test('handles literal text without type', () => {
+    expect(buildFriendlyLabel('hello')).toBe('hello');
   });
 });
 
 describe('buildFriendlyId', () => {
-  test('returns the input id unchanged', () => {
+  test('returns alphanumeric and underscore unchanged', () => {
     expect(buildFriendlyId('test_id')).toBe('test_id');
+    expect(buildFriendlyId('test123')).toBe('test123');
   });
 
   test('handles empty string', () => {
     expect(buildFriendlyId('')).toBe('');
   });
 
-  test('handles ids with special characters', () => {
-    expect(buildFriendlyId('node-1')).toBe('node-1');
-    expect(buildFriendlyId('node_1')).toBe('node_1');
+  test('replaces hyphens with underscores', () => {
+    expect(buildFriendlyId('node-1')).toBe('node_1');
+    expect(buildFriendlyId('my-node-id')).toBe('my_node_id');
   });
 
-  test('handles numeric ids', () => {
-    expect(buildFriendlyId('123')).toBe('123');
+  test('replaces special characters with underscores', () => {
+    expect(buildFriendlyId('node#1')).toBe('node_1');
+    expect(buildFriendlyId('test@node')).toBe('test_node');
+    expect(buildFriendlyId('a.b.c')).toBe('a_b_c');
   });
 
   test('handles camelCase ids', () => {
@@ -178,8 +264,8 @@ describe('buildFriendlyId', () => {
     expect(buildFriendlyId('my_node_id')).toBe('my_node_id');
   });
 
-  test('handles kebab-case ids', () => {
-    expect(buildFriendlyId('my-node-id')).toBe('my-node-id');
+  test('handles numeric ids', () => {
+    expect(buildFriendlyId('123')).toBe('123');
   });
 });
 
@@ -202,6 +288,9 @@ describe('Integration tests', () => {
     expect(Array.isArray(data.nodes)).toBe(true);
     expect(Array.isArray(data.edges)).toBe(true);
     expect(Array.isArray(data.groups)).toBe(true);
+    expect(data.groups.length).toBe(2);
+    expect(data.groups[0]?.type).toBe('named-capture');
+    expect(data.groups[1]?.type).toBe('named-capture');
   });
 
   test('handles various regex features together', () => {
@@ -212,6 +301,7 @@ describe('Integration tests', () => {
 
     const data = generateDiagramData(ast);
     expect(data).toBeDefined();
+    expect(data.nodes.length).toBeGreaterThan(0);
   });
 
   test('AST structure contains expected properties', () => {
@@ -219,5 +309,77 @@ describe('Integration tests', () => {
     expect(ast).toHaveProperty('type');
     expect(ast).toHaveProperty('body');
     expect(ast).toHaveProperty('flags');
+  });
+
+  test('handles email-like pattern', () => {
+    const pattern = /^[a-z]+@[a-z]+\.[a-z]{2,}$/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBeGreaterThan(0);
+    expect(data.edges.length).toBeGreaterThan(0);
+
+    // Check for character class nodes
+    const charClassNodes = data.nodes.filter(n => n.type === 'char-class');
+    expect(charClassNodes.length).toBeGreaterThan(0);
+  });
+
+  test('handles disjunction (alternation)', () => {
+    const pattern = /cat|dog/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBeGreaterThan(0);
+    // Should have disjunction nodes
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBeGreaterThan(0);
+  });
+
+  test('combines multiple literal characters', () => {
+    const pattern = /hello world/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should combine "hello" and " world" into nodes
+    expect(data.nodes.length).toBeGreaterThanOrEqual(1);
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBeGreaterThan(0);
+  });
+
+  test('handles range quantifiers', () => {
+    const pattern = /a{2,5}/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('2 to 5');
+  });
+
+  test('handles exact quantifiers', () => {
+    const pattern = /a{3}/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('Exactly 3');
+  });
+
+  test('handles open-ended quantifiers', () => {
+    const pattern = /a{2,}/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toContain('2 or more');
+  });
+
+  test('handles negated character classes', () => {
+    const pattern = /[^a-z]/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.type).toBe('negated-char-class');
+    expect(data.nodes[0]?.label).toContain('Not');
   });
 });

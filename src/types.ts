@@ -1,14 +1,22 @@
-export const GROUP_TYPES = ['standard', 'named-capture', 'non-capturing'] as const;
+export const GROUP_TYPES = [
+  'standard',
+  'named-capture',
+  'non-capturing',
+  'positive-lookahead',
+  'negative-lookahead',
+  'positive-lookbehind',
+  'negative-lookbehind',
+] as const;
 export type GroupType = (typeof GROUP_TYPES)[number];
 
 export const NODE_TYPES = [
-  'Character',
-  'CharacterClass',
-  'CharacterClassRange',
-  'Disjunction',
-  'Group',
-  'Repetition',
-  'Assertion',
+  'literal',
+  'char-class',
+  'negated-char-class',
+  'modifier',
+  'disjunction',
+  'assertion',
+  'back-reference',
 ] as const;
 export type NodeType = (typeof NODE_TYPES)[number];
 

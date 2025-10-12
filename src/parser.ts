@@ -1,28 +1,420 @@
 import regexpTree from 'regexp-tree';
-import type { DiagramData } from './types';
+import type { DiagramData, DiagramNode, Edge, Group, NodeType } from './types';
 import type { AstRegExp } from 'regexp-tree/ast';
 
 export function buildRegexAst(pattern: string | RegExp) {
   const ast = regexpTree.parse(pattern, {
-    // captureLocations: true,
+    captureLocations: true,
   });
   return ast;
 }
 
+let nodeCounter = 0;
+let groupCounter = 0;
+
 export function generateDiagramData(ast: AstRegExp): DiagramData {
-  // Placeholder implementation
-  return {
-    nodes: [],
-    edges: [],
-    groups: [],
-  };
+  nodeCounter = 0;
+  groupCounter = 0;
+
+  const nodes: DiagramNode[] = [];
+  const edges: Edge[] = [];
+  const groups: Group[] = [];
+
+  if (!ast.body) {
+    return { nodes, edges, groups };
+  }
+
+  // Process the regex body
+  const startNodeId = 'start';
+  const endNodeId = 'fin';
+  const lastNodeId = processNode(ast.body, startNodeId, nodes, edges, groups);
+
+  // Connect the last node to the end
+  if (lastNodeId) {
+    edges.push({ from: lastNodeId, to: endNodeId });
+  }
+
+  return { nodes, edges, groups };
 }
 
-export function buildFriendlyLabel(label: string): string {
-  // Placeholder implementation
-  return label;
+function processNode(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+  groups: Group[],
+): string {
+  switch (node.type) {
+    case 'Alternative':
+      return processAlternative(node, previousNodeId, nodes, edges, groups);
+    case 'Char':
+      return processChar(node, previousNodeId, nodes, edges);
+    case 'CharacterClass':
+      return processCharacterClass(node, previousNodeId, nodes, edges);
+    case 'Repetition':
+      return processRepetition(node, previousNodeId, nodes, edges, groups);
+    case 'Group':
+      return processGroup(node, previousNodeId, nodes, edges, groups);
+    case 'Disjunction':
+      return processDisjunction(node, previousNodeId, nodes, edges, groups);
+    case 'Assertion':
+      return processAssertion(node, previousNodeId, nodes, edges);
+    case 'Backreference':
+      return processBackreference(node, previousNodeId, nodes, edges);
+    default:
+      return previousNodeId;
+  }
+}
+
+function processAlternative(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+  groups: Group[],
+): string {
+  let currentNodeId = previousNodeId;
+
+  // Combine consecutive Char nodes into a single literal node
+  const expressions = node.expressions || [];
+  const combined: any[] = [];
+
+  let i = 0;
+  while (i < expressions.length) {
+    if (expressions[i].type === 'Char') {
+      // Collect consecutive Char nodes
+      const chars: any[] = [];
+      while (i < expressions.length && expressions[i].type === 'Char') {
+        chars.push(expressions[i]);
+        i++;
+      }
+      // Create a combined node
+      combined.push({ type: 'CombinedChars', chars });
+    } else {
+      combined.push(expressions[i]);
+      i++;
+    }
+  }
+
+  for (const expr of combined) {
+    if (expr.type === 'CombinedChars') {
+      currentNodeId = processCombinedChars(expr.chars, currentNodeId, nodes, edges);
+    } else {
+      currentNodeId = processNode(expr, currentNodeId, nodes, edges, groups);
+    }
+  }
+
+  return currentNodeId;
+}
+
+function processCombinedChars(
+  chars: any[],
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+): string {
+  const text = chars.map(c => c.value).join('');
+  const nodeId = buildFriendlyId(`literal_${nodeCounter++}`);
+  const label = buildFriendlyLabel(text, 'literal');
+
+  nodes.push({
+    id: nodeId,
+    type: 'literal',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function processChar(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+): string {
+  const nodeId = buildFriendlyId(`char_${nodeCounter++}`);
+  const label = buildFriendlyLabel(node.value, 'literal');
+
+  nodes.push({
+    id: nodeId,
+    type: 'literal',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function processCharacterClass(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+): string {
+  const nodeId = buildFriendlyId(`charclass_${nodeCounter++}`);
+  const label = buildCharacterClassLabel(node);
+  const nodeType = node.negative ? 'negated-char-class' : 'char-class';
+
+  nodes.push({
+    id: nodeId,
+    type: nodeType,
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function buildCharacterClassLabel(node: any): string {
+  if (!node.expressions || node.expressions.length === 0) {
+    return node.negative ? 'Not []' : '[]';
+  }
+
+  const parts: string[] = [];
+
+  for (const expr of node.expressions) {
+    if (expr.type === 'Char') {
+      parts.push(expr.value);
+    } else if (expr.type === 'ClassRange') {
+      const from = expr.from.value;
+      const to = expr.to.value;
+      const rangeName = getFriendlyRangeName(from, to);
+      if (rangeName) {
+        parts.push(rangeName);
+      } else {
+        parts.push(`${from}-${to}`);
+      }
+    } else if (expr.type === 'CharacterClass') {
+      // Nested character class (shouldn't normally happen)
+      parts.push(buildCharacterClassLabel(expr));
+    }
+  }
+
+  const label = parts.join('<br>');
+  return node.negative ? `Not ${label}` : label;
+}
+
+function getFriendlyRangeName(from: string, to: string): string | null {
+  if (from === 'a' && to === 'z') return 'Any lowercase';
+  if (from === 'A' && to === 'Z') return 'Any uppercase';
+  if (from === '0' && to === '9') return 'Any digit';
+  return null;
+}
+
+function processRepetition(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+  groups: Group[],
+): string {
+  const quantifier = node.quantifier;
+  const innerNodeId = processNode(node.expression, previousNodeId, nodes, edges, groups);
+
+  // Update the last node's label to include the quantifier
+  const lastNode = nodes[nodes.length - 1];
+  if (lastNode && lastNode.id === innerNodeId) {
+    const quantifierText = getQuantifierText(quantifier);
+    if (quantifierText) {
+      lastNode.label += `<br><i><small>${quantifierText}</small></i>`;
+    }
+  }
+
+  return innerNodeId;
+}
+
+function getQuantifierText(quantifier: any): string {
+  if (!quantifier) return '';
+
+  switch (quantifier.kind) {
+    case '*':
+      return 'Zero or more';
+    case '+':
+      return 'One or more';
+    case '?':
+      return 'Optional';
+    case 'Range':
+      if (quantifier.from === quantifier.to) {
+        return `Exactly ${quantifier.from}`;
+      } else if (quantifier.to === undefined || quantifier.to === null) {
+        return `${quantifier.from} or more`;
+      } else {
+        return `${quantifier.from} to ${quantifier.to}`;
+      }
+    default:
+      return '';
+  }
+}
+
+function processGroup(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+  groups: Group[],
+): string {
+  const groupId = buildFriendlyId(`group_${groupCounter++}`);
+  const groupNumber = node.number || 0;
+  const groupName = node.name || (node.capturing ? `Group ${groupNumber}` : 'Non-capturing');
+
+  let groupType: any = 'standard';
+  if (node.name) {
+    groupType = 'named-capture';
+  } else if (!node.capturing) {
+    groupType = 'non-capturing';
+  } else if (node.kind === 'Lookahead') {
+    groupType = node.negative ? 'negative-lookahead' : 'positive-lookahead';
+  } else if (node.kind === 'Lookbehind') {
+    groupType = node.negative ? 'negative-lookbehind' : 'positive-lookbehind';
+  }
+
+  // Track the index before processing to know which nodes belong to this group
+  const startNodeIndex = nodes.length;
+
+  // Process the group's content
+  const innerEndNode = processNode(node.expression, previousNodeId, nodes, edges, groups);
+
+  // Collect all nodes created for this group
+  const groupNodeIds: string[] = [];
+  for (let i = startNodeIndex; i < nodes.length; i++) {
+    const nodeItem = nodes[i];
+    if (nodeItem) {
+      groupNodeIds.push(nodeItem.id);
+    }
+  }
+
+  groups.push({
+    id: groupId,
+    type: groupType,
+    number: groupNumber,
+    optional: false, // Will be updated if the group has a quantifier
+    label: groupName,
+    nodes: groupNodeIds,
+  });
+
+  return innerEndNode;
+}
+
+function processDisjunction(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+  groups: Group[],
+): string {
+  const disjunctionNodeId = buildFriendlyId(`disjunction_${nodeCounter++}`);
+  const mergeNodeId = buildFriendlyId(`merge_${nodeCounter++}`);
+
+  nodes.push({
+    id: disjunctionNodeId,
+    type: 'disjunction',
+    label: 'OR',
+  });
+
+  nodes.push({
+    id: mergeNodeId,
+    type: 'disjunction',
+    label: '',
+  });
+
+  edges.push({ from: previousNodeId, to: disjunctionNodeId });
+
+  // Process left branch
+  const leftEndNode = processNode(node.left, disjunctionNodeId, nodes, edges, groups);
+  edges.push({ from: leftEndNode, to: mergeNodeId });
+
+  // Process right branch
+  const rightEndNode = processNode(node.right, disjunctionNodeId, nodes, edges, groups);
+  edges.push({ from: rightEndNode, to: mergeNodeId });
+
+  return mergeNodeId;
+}
+
+function processAssertion(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+): string {
+  const nodeId = buildFriendlyId(`assertion_${nodeCounter++}`);
+  let label = '';
+
+  switch (node.kind) {
+    case '^':
+      label = '^<br><i><small>Start of line</small></i>';
+      break;
+    case '$':
+      label = '$<br><i><small>End of line</small></i>';
+      break;
+    case '\\b':
+      label = '\\b<br><i><small>Word boundary</small></i>';
+      break;
+    case '\\B':
+      label = '\\B<br><i><small>Non-word boundary</small></i>';
+      break;
+    default:
+      label = node.kind;
+  }
+
+  nodes.push({
+    id: nodeId,
+    type: 'assertion',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function processBackreference(
+  node: any,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: Edge[],
+): string {
+  const nodeId = buildFriendlyId(`backref_${nodeCounter++}`);
+  const label = `\\${node.reference}<br><i><small>Back-reference</small></i>`;
+
+  nodes.push({
+    id: nodeId,
+    type: 'back-reference',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+export function buildFriendlyLabel(text: string, type?: string): string {
+  if (type === 'literal') {
+    return text;
+  }
+
+  // Handle character class escapes
+  const escapeMap: Record<string, string> = {
+    '\\d': 'Any digit',
+    '\\D': 'Not a digit',
+    '\\w': 'Any word character',
+    '\\W': 'Not a word character',
+    '\\s': 'Any whitespace',
+    '\\S': 'Not whitespace',
+    '\\t': 'Tab',
+    '\\r': 'Return',
+    '\\n': 'Newline',
+    '\\f': 'Form feed',
+    '\\v': 'Vertical tab',
+    '.': 'Any character',
+  };
+
+  if (escapeMap[text]) {
+    return escapeMap[text];
+  }
+
+  return text;
 }
 
 export function buildFriendlyId(id: string): string {
-  return id;
+  // Replace any characters that might cause issues in Mermaid
+  return id.replace(/[^a-zA-Z0-9_]/g, '_');
 }
