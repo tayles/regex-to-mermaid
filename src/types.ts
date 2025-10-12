@@ -48,6 +48,3 @@ export interface DiagramData {
 }
 
 export type Direction = 'LR' | 'TD';
-
-export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;
-export type Theme = (typeof THEMES)[number];

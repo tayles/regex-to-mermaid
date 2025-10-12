@@ -1,6 +1,11 @@
+import { buildStyles, type Theme } from './theme';
 import type { DiagramData, DiagramNode, Direction, Edge, Group } from './types';
 
-export function buildMermaidDiagram(data: DiagramData, direction: Direction = 'LR'): string {
+export function buildMermaidDiagram(
+  data: DiagramData,
+  direction: Direction = 'LR',
+  theme: Theme = 'default',
+): string {
   // Placeholder implementation
   return `graph ${direction}
     %% Nodes
@@ -15,16 +20,7 @@ ${buildSubgraphs(data.groups)}
     %% Edges
 ${buildEdges(data.edges)}
 
-    %% Styling Definitions
-    %% Node Styling
-    %% TODO
-
-    %% Group Styling
-    %% TODO
-
-    %% Apply Styling Classes
-    %% Group Classes
-    %% TODO
+${buildStyles(theme, data)}
 `;
 }
 

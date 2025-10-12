@@ -1,7 +1,8 @@
 import { Command } from 'commander';
 import { buildRegexAst, generateDiagramData } from './parser';
 import { buildMermaidDiagram } from './renderer';
-import { THEMES, type Direction, type Theme } from './types';
+import { THEMES, type Theme } from './theme';
+import type { Direction } from './types';
 
 export interface CLIOptions {
   output?: string;
@@ -44,7 +45,8 @@ export function processRegex(regex: string, options: CLIOptions): string {
   }
 
   // Validate theme
-  if (!THEMES.includes(options.theme)) {
+  const theme = options.theme.toLowerCase() as Theme;
+  if (!THEMES.includes(theme)) {
     throw new Error(`Invalid theme: ${options.theme}. Must be one of: ${THEMES.join(', ')}.`);
   }
 
@@ -76,15 +78,15 @@ export function processRegex(regex: string, options: CLIOptions): string {
   const data = generateDiagramData(ast);
 
   // Build the Mermaid diagram
-  let diagram = buildMermaidDiagram(data, direction);
+  let diagram = buildMermaidDiagram(data, direction, theme);
 
-  // Add theme directive if not 'none'
-  if (options.theme !== 'none') {
-    diagram = `%%{init: {'theme':'${options.theme}'}}%%\n${diagram}`;
-  }
+  // // Add theme directive if not 'none'
+  // if (theme !== 'none') {
+  //   diagram = `%%{init: {'theme':'${theme}'}}%%\n${diagram}`;
+  // }
 
   // Add regex pattern as comment
-  diagram = `%% ${regex}\n\n${diagram}`;
+  // diagram = `%% ${regex}\n\n${diagram}`;
 
   return diagram;
 }
