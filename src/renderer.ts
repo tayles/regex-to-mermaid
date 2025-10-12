@@ -29,7 +29,7 @@ ${buildEdges(data.edges)}
 }
 
 export function buildNodes(nodes: DiagramNode[]): string {
-  return `    ${nodes.map(node => `${node.id}:::${node.type}("${node.label}");`).join('\n    ')}`;
+  return `    ${nodes.map(node => `${node.id}("${node.label}"):::${node.type};`).join('\n    ')}`;
 }
 
 export function buildSubgraphs(groups: Group[]): string {

@@ -11,7 +11,7 @@ describe('buildNodes', () => {
   test('builds single node correctly', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character("a");');
+    expect(result).toContain('node1("a"):::Character');
   });
 
   test('builds multiple nodes correctly', () => {
@@ -20,8 +20,8 @@ describe('buildNodes', () => {
       { id: 'node2', type: 'Character', label: 'b' },
     ];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character("a");');
-    expect(result).toContain('node2:::Character("b");');
+    expect(result).toContain('node1("a"):::Character');
+    expect(result).toContain('node2("b"):::Character');
   });
 
   test('handles different node types', () => {
@@ -32,22 +32,22 @@ describe('buildNodes', () => {
       { id: 'group1', type: 'Group', label: '(...)' },
     ];
     const result = buildNodes(nodes);
-    expect(result).toContain('char1:::Character("a");');
-    expect(result).toContain('class1:::CharacterClass("[a-z]");');
-    expect(result).toContain('rep1:::Repetition("*");');
-    expect(result).toContain('group1:::Group("(...)");');
+    expect(result).toContain('char1("a"):::Character');
+    expect(result).toContain('class1("[a-z]"):::CharacterClass');
+    expect(result).toContain('rep1("*"):::Repetition');
+    expect(result).toContain('group1("(...)"):::Group');
   });
 
   test('escapes special characters in labels', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '"quote"' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character');
+    expect(result).toContain('node1(""quote""):::Character');
   });
 
   test('handles multiline labels', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'line1<br>line2' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character("line1<br>line2");');
+    expect(result).toContain('node1("line1<br>line2"):::Character');
   });
 
   test('maintains proper indentation', () => {
@@ -309,8 +309,8 @@ describe('buildMermaidDiagram', () => {
       groups: [],
     };
     const result = buildMermaidDiagram(data);
-    expect(result).toContain('node1:::Character("a");');
-    expect(result).toContain('node2:::Character("b");');
+    expect(result).toContain('node1("a"):::Character');
+    expect(result).toContain('node2("b"):::Character');
   });
 
   test('includes all edges in diagram', () => {
@@ -371,8 +371,8 @@ describe('buildMermaidDiagram', () => {
     };
     const result = buildMermaidDiagram(data);
     expect(result).toContain('graph LR');
-    expect(result).toContain('node1:::Character("h");');
-    expect(result).toContain('node2:::Character("t");');
+    expect(result).toContain('node1("h"):::Character');
+    expect(result).toContain('node2("t"):::Character');
     expect(result).toContain('start --- node1;');
     expect(result).toContain('subgraph group1');
     expect(result).toContain('protocol');
@@ -428,7 +428,7 @@ describe('Edge cases and error handling', () => {
   test('buildNodes handles nodes with empty labels', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character("");');
+    expect(result).toContain('node1(""):::Character');
   });
 
   test('buildSubgraphs handles groups with very high numbers', () => {
@@ -460,28 +460,28 @@ describe('Edge cases and error handling', () => {
     }));
     const data: DiagramData = { nodes, edges: [], groups: [] };
     const result = buildMermaidDiagram(data);
-    expect(result).toContain('node0:::Character("0");');
-    expect(result).toContain('node99:::Character("99");');
+    expect(result).toContain('node0("0"):::Character');
+    expect(result).toContain('node99("99"):::Character');
   });
 
   test('buildNodes handles all node types', () => {
     const nodes: DiagramNode[] = [
-      { id: 'n1', type: 'Character', label: 'a' },
-      { id: 'n2', type: 'CharacterClass', label: '[a-z]' },
-      { id: 'n3', type: 'CharacterClassRange', label: 'a-z' },
-      { id: 'n4', type: 'Disjunction', label: '|' },
-      { id: 'n5', type: 'Group', label: '(...)' },
-      { id: 'n6', type: 'Repetition', label: '*' },
-      { id: 'n7', type: 'Assertion', label: '^' },
+      { id: 'n1', type: 'literal', label: 'a' },
+      { id: 'n2', type: 'char-class', label: '[a-z]' },
+      { id: 'n3', type: 'negated-char-class', label: 'a-z' },
+      { id: 'n4', type: 'disjunction', label: '|' },
+      { id: 'n5', type: 'modifier', label: '(...)' },
+      { id: 'n6', type: 'assertion', label: '^' },
+      { id: 'n7', type: 'back-reference', label: '\\1' },
     ];
     const result = buildNodes(nodes);
-    expect(result).toContain('n1:::Character');
-    expect(result).toContain('n2:::CharacterClass');
-    expect(result).toContain('n3:::CharacterClassRange');
-    expect(result).toContain('n4:::Disjunction');
-    expect(result).toContain('n5:::Group');
-    expect(result).toContain('n6:::Repetition');
-    expect(result).toContain('n7:::Assertion');
+    expect(result).toContain('n1("a"):::literal');
+    expect(result).toContain('n2("[a-z]"):::char-class');
+    expect(result).toContain('n3("a-z"):::negated-char-class');
+    expect(result).toContain('n4("|"):::disjunction');
+    expect(result).toContain('n5("(...)"):::modifier');
+    expect(result).toContain('n6("^"):::assertion');
+    expect(result).toContain('n7("\\1"):::back-reference');
   });
 
   test('buildSubgraphs handles all group types', () => {
@@ -559,7 +559,7 @@ describe('Edge cases and error handling', () => {
   test('buildNodes handles labels with HTML entities', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '&lt;test&gt;' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1:::Character("&lt;test&gt;");');
+    expect(result).toContain('node1("&lt;test&gt;"):::Character');
   });
 
   test('buildEdges handles edges with empty labels', () => {
