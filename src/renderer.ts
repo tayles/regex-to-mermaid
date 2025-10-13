@@ -56,7 +56,7 @@ export function buildSubgraphs(groups: Group[]): string {
         .join(' ');
 
       return `subgraph ${group.id} ["${label}"]
-  ${group.nodes.join('\n  ')}
+  ${group.children.join('\n  ')}
 end`;
     })
     .join('\n\n');

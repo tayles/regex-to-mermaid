@@ -270,18 +270,32 @@ function processGroup(
 
   const groupId = getNextNodeId(groupType);
 
-  // Track the index before processing to know which nodes belong to this group
+  // Track the indices before processing to identify direct children
   const startNodeIndex = nodes.length;
+  const startGroupIndex = groups.length;
 
   // Process the group's content
   const innerEndNode = processNode(node.expression, previousNodeId, nodes, edges, groups);
 
-  // Collect all nodes created for this group
-  const groupNodeIds: string[] = [];
+  // Collect direct children (nodes and groups created at this level)
+  const children: string[] = [];
+
+  // Add nodes that were created at this level (not nested in child groups)
+  const childGroupIds = new Set<string>();
+  for (let i = startGroupIndex; i < groups.length; i++) {
+    const childGroup = groups[i];
+    if (childGroup) {
+      children.push(childGroup.id);
+      // Track all nodes that belong to child groups
+      childGroup.children.forEach(childId => childGroupIds.add(childId));
+    }
+  }
+
+  // Add only nodes that don't belong to any child group
   for (let i = startNodeIndex; i < nodes.length; i++) {
     const nodeItem = nodes[i];
-    if (nodeItem) {
-      groupNodeIds.push(nodeItem.id);
+    if (nodeItem && !childGroupIds.has(nodeItem.id)) {
+      children.push(nodeItem.id);
     }
   }
 
@@ -291,7 +305,7 @@ function processGroup(
     number: groupNumber,
     optional: false, // Will be updated if the group has a quantifier
     label: groupName,
-    nodes: groupNodeIds,
+    children,
   });
 
   return innerEndNode;

@@ -26,7 +26,7 @@ export interface Group {
   number: number;
   optional: boolean;
   label: string;
-  nodes: string[];
+  children: string[];
 }
 
 export interface DiagramNode {

@@ -71,7 +71,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'protocol',
-        nodes: ['node1', 'node2'],
+        children: ['node1', 'node2'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -90,7 +90,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: true,
         label: 'optional_part',
-        nodes: ['node1'],
+        children: ['node1'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -105,7 +105,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'required_part',
-        nodes: ['node1'],
+        children: ['node1'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -120,7 +120,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'protocol',
-        nodes: ['node1'],
+        children: ['node1'],
       },
       {
         id: 'group2',
@@ -128,7 +128,7 @@ describe('buildSubgraphs', () => {
         number: 2,
         optional: true,
         label: 'path',
-        nodes: ['node2'],
+        children: ['node2'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -146,7 +146,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'standard',
-        nodes: ['n1'],
+        children: ['n1'],
       },
       {
         id: 'g2',
@@ -154,7 +154,7 @@ describe('buildSubgraphs', () => {
         number: 2,
         optional: false,
         label: 'named',
-        nodes: ['n2'],
+        children: ['n2'],
       },
       {
         id: 'g3',
@@ -162,7 +162,7 @@ describe('buildSubgraphs', () => {
         number: 3,
         optional: false,
         label: 'non-capturing',
-        nodes: ['n3'],
+        children: ['n3'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -179,7 +179,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'test',
-        nodes: ['node1', 'node2', 'node3', 'node4'],
+        children: ['node1', 'node2', 'node3', 'node4'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -189,7 +189,7 @@ describe('buildSubgraphs', () => {
     expect(result).toContain('node4');
   });
 
-  test('handles empty nodes array in group', () => {
+  test('handles empty children array in group', () => {
     const groups: Group[] = [
       {
         id: 'group1',
@@ -197,7 +197,7 @@ describe('buildSubgraphs', () => {
         number: 1,
         optional: false,
         label: 'empty',
-        nodes: [],
+        children: [],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -339,7 +339,7 @@ describe('buildMermaidDiagram', () => {
           number: 1,
           optional: false,
           label: 'protocol',
-          nodes: ['node1'],
+          children: ['node1'],
         },
       ],
     };
@@ -366,7 +366,7 @@ describe('buildMermaidDiagram', () => {
           number: 1,
           optional: true,
           label: 'protocol',
-          nodes: ['node1', 'node2'],
+          children: ['node1', 'node2'],
         },
       ],
     };
@@ -401,7 +401,7 @@ describe('buildMermaidDiagram', () => {
           type: 'standard',
           label: 'Test',
           number: 1,
-          nodes: ['n1'],
+          children: ['n1'],
           optional: false,
         },
       ],
@@ -422,7 +422,7 @@ describe('buildMermaidDiagram', () => {
           type: 'standard',
           label: 'Test',
           number: 1,
-          nodes: ['n1'],
+          children: ['n1'],
           optional: false,
         },
       ],
@@ -457,7 +457,7 @@ describe('Edge cases and error handling', () => {
         number: 999,
         optional: false,
         label: 'test',
-        nodes: ['n1'],
+        children: ['n1'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -510,7 +510,7 @@ describe('Edge cases and error handling', () => {
         number: 1,
         optional: false,
         label: 'standard',
-        nodes: ['n1'],
+        children: ['n1'],
       },
       {
         id: 'g2',
@@ -518,7 +518,7 @@ describe('Edge cases and error handling', () => {
         number: 2,
         optional: false,
         label: 'named',
-        nodes: ['n2'],
+        children: ['n2'],
       },
       {
         id: 'g3',
@@ -526,7 +526,7 @@ describe('Edge cases and error handling', () => {
         number: 3,
         optional: false,
         label: 'non-capturing',
-        nodes: ['n3'],
+        children: ['n3'],
       },
     ];
     const result = buildSubgraphs(groups);
@@ -556,7 +556,7 @@ describe('Edge cases and error handling', () => {
           number: 1,
           optional: true,
           label: 'optional',
-          nodes: ['n1'],
+          children: ['n1'],
         },
         {
           id: 'g2',
@@ -564,7 +564,7 @@ describe('Edge cases and error handling', () => {
           number: 2,
           optional: false,
           label: 'required',
-          nodes: ['n2'],
+          children: ['n2'],
         },
       ],
     };
