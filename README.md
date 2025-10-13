@@ -107,6 +107,62 @@ Using [regexp-tree-cli](https://github.com/dtinth/regexp-tree-cli) to output the
 regexp-tree-cli --expression '/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/' --loc
 ```
 
+## Examples
+
+See more [examples](./EXAMPLES.md).
+
+## CLI
+
+Call like so:
+
+```shell
+regex-to-mermaid 'foo|bar'
+```
+
+## Development
+
+### Generating Examples
+
+The `EXAMPLES.md` file is automatically generated from the regex files in the `diagrams/` directory. Each `.regex` file should include YAML frontmatter with a `name` and optional `description`:
+
+```yaml
+---
+name: URL
+description: A simplified URL pattern
+---
+/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+```
+
+To regenerate the examples documentation:
+
+```bash
+bun run generate-examples
+```
+
+This script will:
+
+1. Read all `.regex` files from the `diagrams/` directory
+2. Parse the frontmatter and regex pattern
+3. Generate Mermaid diagrams for each pattern
+4. Update the `EXAMPLES.md` file with a table of contents and all examples
+
+### Generating Theme Previews
+
+The `THEMES.md` file is automatically generated to showcase all available themes using the URL pattern from `diagrams/example-1.regex`.
+
+To regenerate the theme documentation:
+
+```bash
+bun run generate-themes
+```
+
+This script will:
+
+1. Read the regex pattern from `diagrams/example-1.regex`
+2. Generate diagrams for each theme (default, neutral, dark, forest, none)
+3. Include the command to recreate each theme (using `/foo|bar/` as the example)
+4. Update the `THEMES.md` file with previews of all themes
+
 ## xkcd
 
 - [Regular Expressions](https://xkcd.com/208/)

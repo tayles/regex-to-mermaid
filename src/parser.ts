@@ -308,7 +308,7 @@ function processGroup(
   // Lookahead/lookbehind use 'assertion' field, groups use 'expression' field
   const content = node.assertion || node.expression;
   let innerEndNode = previousNodeId;
-  
+
   // Only process content if it exists (handles empty groups/assertions)
   if (content) {
     innerEndNode = processNode(content, previousNodeId, nodes, edges, groups);

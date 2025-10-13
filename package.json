@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "bun run index.ts",
-    "format": "bunx prettier --write ."
+    "format": "bunx prettier --write .",
+    "generate-examples": "bun scripts/generate-examples.ts",
+    "generate-themes": "bun scripts/generate-themes.ts"
   },
   "keywords": [
     "regex",
