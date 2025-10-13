@@ -184,7 +184,7 @@ function buildCharacterClassLabel(node: any): string {
 
   for (const expr of node.expressions) {
     if (expr.type === 'Char') {
-      singleChars.push(expr.value);
+      singleChars.push(escapeSingleChar(expr.value));
     } else if (expr.type === 'ClassRange') {
       const from = expr.from.value;
       const to = expr.to.value;
@@ -460,6 +460,20 @@ function processBackreference(
   return nodeId;
 }
 
+export function escapeSingleChar(text: string): string {
+  // Handle character class escapes
+  const escapeMap: Record<string, string> = {
+    ' ': 'Space',
+    '"': '#quot;',
+  };
+
+  if (escapeMap[text]) {
+    return escapeMap[text];
+  }
+
+  return text;
+}
+
 export function buildFriendlyLabel(text: string, type?: string): string {
   // Handle character class escapes
   const escapeMap: Record<string, string> = {
@@ -475,8 +489,6 @@ export function buildFriendlyLabel(text: string, type?: string): string {
     '\\f': 'Form feed',
     '\\v': 'Vertical tab',
     '.': 'Any character',
-    ' ': 'Space',
-    '"': '#quot;',
   };
 
   if (escapeMap[text]) {

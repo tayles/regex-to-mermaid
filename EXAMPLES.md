@@ -420,7 +420,7 @@ graph LR
   literal_1("19"):::literal;
   literal_2("20"):::literal;
   literal_3("\d\d"):::literal;
-  char_class_1("-   / ."):::char-class;
+  char_class_1("- Space / ."):::char-class;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_4("0"):::literal;
@@ -612,7 +612,7 @@ graph LR
   literal_1("Any character<br><i><small>Zero or more</small></i>"):::literal;
   char_class_1("Any digit"):::char-class;
   literal_2("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  char_class_2("! @ # $ % ^ & * ( ) \ [ ] { } - _ + = ~ ` | : ; " ' < > , . / ?"):::char-class;
+  char_class_2("! @ # $ % ^ & * ( ) \ [ ] { } - _ + = ~ ` | : ; #quot; ' < > , . / ?"):::char-class;
   literal_3("Any character<br><i><small>Zero or more</small></i>"):::literal;
   char_class_3("Any lowercase"):::char-class;
   literal_4("Any character<br><i><small>Zero or more</small></i>"):::literal;
