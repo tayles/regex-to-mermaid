@@ -97,7 +97,7 @@ export const THEME_STYLES: Record<ThemeWithStyles, Record<NodeType | GroupType, 
  *   ...
  */
 export function buildStyles(theme: Theme, data: DiagramData): string {
-  if (theme === 'none') {
+  if (theme === 'none' || (data.nodes.length === 0 && data.groups.length === 0)) {
     return '';
   }
 
@@ -116,13 +116,20 @@ export function buildStyles(theme: Theme, data: DiagramData): string {
 
   const styles = THEME_STYLES[theme];
 
-  return `%% Styling Definitions
-%% Node Styling
-${[...usedNodeTypes].map(type => `classDef ${type} ${styles[type]};`).join('\n')}
+  const nodeClassDefs =
+    usedNodeTypes.size > 0
+      ? `%% Node Styling
+${[...usedNodeTypes].map(type => `classDef ${type} ${styles[type]};`).join('\n')}`
+      : '';
 
-%% Group Styling
+  const groupClassDefs =
+    groupMap.size > 0
+      ? `%% Group Styling
 ${[...groupMap.keys()].map(type => `classDef ${type} ${styles[type]};`).join('\n')}
 
 %% Apply Group Classes
-${[...groupMap.entries()].map(([type, ids]) => `class ${ids.join(',')} ${type};`).join('\n')}`;
+${[...groupMap.entries()].map(([type, ids]) => `class ${ids.join(',')} ${type};`).join('\n')}`
+      : '';
+
+  return [nodeClassDefs, groupClassDefs].filter(Boolean).join('\n\n');
 }

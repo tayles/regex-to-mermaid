@@ -186,11 +186,7 @@ function buildCharacterClassLabel(node: any): string {
       const from = expr.from.value;
       const to = expr.to.value;
       const rangeName = getFriendlyRangeName(from, to);
-      if (rangeName) {
-        parts.push(rangeName);
-      } else {
-        parts.push(`${from}-${to}`);
-      }
+      parts.push(rangeName ?? `${from}-${to}`);
     } else if (expr.type === 'CharacterClass') {
       // Nested character class (shouldn't normally happen)
       parts.push(buildCharacterClassLabel(expr));

@@ -6,27 +6,31 @@ export function buildMermaidDiagram(
   direction: Direction = 'LR',
   theme: Theme = 'default',
 ): string {
-  const diagram = `
-%% Nodes
+  const nodeStr = buildNodes(data.nodes);
+  const subgraphStr = buildSubgraphs(data.groups);
+  const edgeStr = buildEdges(data.edges);
+  const styleStr = buildStyles(theme, data);
+
+  const diagram = [
+    `%% Nodes
 start@{ shape: f-circ };
-fin@{ shape: f-circ };
+fin@{ shape: f-circ };`,
+    nodeStr && `${nodeStr}`,
+    subgraphStr && `\n%% Subgraphs\n${subgraphStr}`,
+    edgeStr && `\n%% Edges\n${edgeStr}`,
+    styleStr && `\n%% Styles\n${styleStr}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
 
-${buildNodes(data.nodes)}
-
-%% Subgraphs
-${buildSubgraphs(data.groups)}
-
-%% Edges
-${buildEdges(data.edges)}
-
-${buildStyles(theme, data)}
-`;
-
-  return `graph ${direction}${diagram
+  const indentedDiagram = diagram
     .split('\n')
+    // .filter(Boolean)
     // Indent all lines by two spaces for better formatting
     .map(line => `  ${line}`)
-    .join('\n')}`;
+    .join('\n');
+
+  return `graph ${direction}\n${indentedDiagram}`;
 }
 
 export function buildNodes(nodes: DiagramNode[]): string {

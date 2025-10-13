@@ -274,9 +274,10 @@ describe('buildMermaidDiagram', () => {
     expect(result).toContain('start@{ shape: f-circ };');
     expect(result).toContain('fin@{ shape: f-circ };');
     expect(result).toContain('%% Nodes');
-    expect(result).toContain('%% Subgraphs');
-    expect(result).toContain('%% Edges');
-    expect(result).toContain('%% Styling Definitions');
+    // Empty data should not contain subgraphs, edges, or styles sections
+    expect(result).not.toContain('%% Subgraphs');
+    expect(result).not.toContain('%% Edges');
+    expect(result).not.toContain('%% Styles');
   });
 
   test('builds diagram with TD direction', () => {
@@ -392,9 +393,18 @@ describe('buildMermaidDiagram', () => {
 
   test('includes styling comments', () => {
     const data: DiagramData = {
-      nodes: [],
+      nodes: [{ id: 'n1', type: 'literal', label: 'a' }],
       edges: [],
-      groups: [],
+      groups: [
+        {
+          id: 'group_1',
+          type: 'standard',
+          label: 'Test',
+          number: 1,
+          nodes: ['n1'],
+          optional: false,
+        },
+      ],
     };
     const result = buildMermaidDiagram(data);
     expect(result).toContain('%% Node Styling');
@@ -404,9 +414,18 @@ describe('buildMermaidDiagram', () => {
 
   test('maintains proper structure and formatting', () => {
     const data: DiagramData = {
-      nodes: [{ id: 'n1', type: 'Character', label: 'a' }],
+      nodes: [{ id: 'n1', type: 'literal', label: 'a' }],
       edges: [{ from: 'start', to: 'n1' }],
-      groups: [],
+      groups: [
+        {
+          id: 'group_1',
+          type: 'standard',
+          label: 'Test',
+          number: 1,
+          nodes: ['n1'],
+          optional: false,
+        },
+      ],
     };
     const result = buildMermaidDiagram(data);
     // Check sections appear in correct order
@@ -414,7 +433,7 @@ describe('buildMermaidDiagram', () => {
     const nodesIndex = result.indexOf('%% Nodes');
     const subgraphsIndex = result.indexOf('%% Subgraphs');
     const edgesIndex = result.indexOf('%% Edges');
-    const stylingIndex = result.indexOf('%% Styling Definitions');
+    const stylingIndex = result.indexOf('%% Styles');
 
     expect(graphIndex).toBeLessThan(nodesIndex);
     expect(nodesIndex).toBeLessThan(subgraphsIndex);
@@ -425,9 +444,9 @@ describe('buildMermaidDiagram', () => {
 
 describe('Edge cases and error handling', () => {
   test('buildNodes handles nodes with empty labels', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: '' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1(""):::Character');
+    expect(result).toContain('node1(""):::literal');
   });
 
   test('buildSubgraphs handles groups with very high numbers', () => {
@@ -454,13 +473,13 @@ describe('Edge cases and error handling', () => {
   test('buildMermaidDiagram handles large numbers of nodes', () => {
     const nodes: DiagramNode[] = Array.from({ length: 100 }, (_, i) => ({
       id: `node${i}`,
-      type: 'Character' as const,
+      type: 'literal' as const,
       label: `${i}`,
     }));
     const data: DiagramData = { nodes, edges: [], groups: [] };
     const result = buildMermaidDiagram(data);
-    expect(result).toContain('node0("0"):::Character');
-    expect(result).toContain('node99("99"):::Character');
+    expect(result).toContain('node0("0"):::literal');
+    expect(result).toContain('node99("99"):::literal');
   });
 
   test('buildNodes handles all node types', () => {
@@ -556,9 +575,9 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildNodes handles labels with HTML entities', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '&lt;test&gt;' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: '&lt;test&gt;' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1("&lt;test&gt;"):::Character');
+    expect(result).toContain('node1("&lt;test&gt;"):::literal');
   });
 
   test('buildEdges handles edges with empty labels', () => {
