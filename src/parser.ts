@@ -476,6 +476,7 @@ export function buildFriendlyLabel(text: string, type?: string): string {
     '\\v': 'Vertical tab',
     '.': 'Any character',
     ' ': 'Space',
+    '"': '#quot;',
   };
 
   if (escapeMap[text]) {

@@ -27,7 +27,7 @@ fin@{ shape: f-circ };`,
     .split('\n')
     // .filter(Boolean)
     // Indent all lines by two spaces for better formatting
-    .map(line => `  ${line}`)
+    .map(line => (line ? `  ${line}` : ''))
     .join('\n');
 
   return `graph ${direction}\n${indentedDiagram}`;
