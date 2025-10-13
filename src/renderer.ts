@@ -34,14 +34,21 @@ fin@{ shape: f-circ };`,
 }
 
 export function buildNodes(nodes: DiagramNode[]): string {
-  return nodes.map(node => `${node.id}("${node.label}"):::${node.type};`).join('\n');
+  return nodes
+    .map(node => {
+      const label = node.label ? `("${node.label}")` : '';
+      const shape = node.type === 'disjunction' ? '@{ shape: f-circ }' : '';
+
+      return `${node.id}${label}:::${node.type}${shape};`;
+    })
+    .join('\n');
 }
 
 export function buildSubgraphs(groups: Group[]): string {
   return groups
     .map(group => {
       const label = [
-        `<small>#${group.number}</small>`,
+        group.number > 0 && `<small>#${group.number}</small>`,
         group.label,
         group.optional && '<small><i>Optional</i></small>',
       ]

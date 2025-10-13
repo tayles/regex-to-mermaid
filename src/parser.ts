@@ -10,7 +10,6 @@ export function buildRegexAst(pattern: string | RegExp) {
 }
 
 const nodeCounters: Map<string, number> = new Map();
-let groupCounter = 1;
 
 function getNextNodeId(nodeType: string): string {
   const count = nodeCounters.get(nodeType) || 1;
@@ -20,7 +19,6 @@ function getNextNodeId(nodeType: string): string {
 
 export function generateDiagramData(ast: AstRegExp): DiagramData {
   nodeCounters.clear();
-  groupCounter = 1;
 
   const nodes: DiagramNode[] = [];
   const edges: Edge[] = [];
@@ -256,7 +254,6 @@ function processGroup(
   edges: Edge[],
   groups: Group[],
 ): string {
-  const groupId = buildFriendlyId(`group_${groupCounter++}`);
   const groupNumber = node.number || 0;
   const groupName = node.name || (node.capturing ? `Group ${groupNumber}` : 'Non-capturing');
 
@@ -270,6 +267,8 @@ function processGroup(
   } else if (node.kind === 'Lookbehind') {
     groupType = node.negative ? 'negative-lookbehind' : 'positive-lookbehind';
   }
+
+  const groupId = getNextNodeId(groupType);
 
   // Track the index before processing to know which nodes belong to this group
   const startNodeIndex = nodes.length;
@@ -311,7 +310,7 @@ function processDisjunction(
   nodes.push({
     id: disjunctionNodeId,
     type: 'disjunction',
-    label: 'OR',
+    label: '',
   });
 
   nodes.push({
@@ -389,10 +388,6 @@ function processBackreference(
 }
 
 export function buildFriendlyLabel(text: string, type?: string): string {
-  if (type === 'literal') {
-    return text;
-  }
-
   // Handle character class escapes
   const escapeMap: Record<string, string> = {
     '\\d': 'Any digit',
@@ -407,6 +402,7 @@ export function buildFriendlyLabel(text: string, type?: string): string {
     '\\f': 'Form feed',
     '\\v': 'Vertical tab',
     '.': 'Any character',
+    ' ': 'Space',
   };
 
   if (escapeMap[text]) {

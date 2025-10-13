@@ -446,7 +446,7 @@ describe('Edge cases and error handling', () => {
   test('buildNodes handles nodes with empty labels', () => {
     const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: '' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1(""):::literal');
+    expect(result).toContain('node1:::literal');
   });
 
   test('buildSubgraphs handles groups with very high numbers', () => {
