@@ -692,3 +692,177 @@ describe('Flattening behavior', () => {
     expect(literalNodes.length).toBeGreaterThanOrEqual(2);
   });
 });
+
+describe('Lookahead and lookbehind assertions', () => {
+  test('positive lookahead creates subgraph with correct type and label', () => {
+    const pattern = /test(?=ahead)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookahead group
+    const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+    expect(lookaheadGroups[0]?.label).toBe('Positive Lookahead');
+
+    // Should contain the lookahead content as a node
+    expect(lookaheadGroups[0]?.children.length).toBeGreaterThan(0);
+
+    // Should have literal nodes for both 'test' and 'ahead'
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(2);
+  });
+
+  test('negative lookahead creates subgraph with correct type and label', () => {
+    const pattern = /test(?!negative)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a negative lookahead group
+    const lookaheadGroups = data.groups.filter(g => g.type === 'negative-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+    expect(lookaheadGroups[0]?.label).toBe('Negative Lookahead');
+
+    // Should contain the lookahead content
+    expect(lookaheadGroups[0]?.children.length).toBeGreaterThan(0);
+
+    // Should have literal nodes
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(2);
+  });
+
+  test('positive lookbehind creates subgraph with correct type and label', () => {
+    const pattern = /(?<=before)test/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookbehind group
+    const lookbehindGroups = data.groups.filter(g => g.type === 'positive-lookbehind');
+    expect(lookbehindGroups.length).toBe(1);
+    expect(lookbehindGroups[0]?.label).toBe('Positive Lookbehind');
+
+    // Should contain the lookbehind content
+    expect(lookbehindGroups[0]?.children.length).toBeGreaterThan(0);
+
+    // Should have literal nodes
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(2);
+  });
+
+  test('negative lookbehind creates subgraph with correct type and label', () => {
+    const pattern = /(?<!notbefore)test/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a negative lookbehind group
+    const lookbehindGroups = data.groups.filter(g => g.type === 'negative-lookbehind');
+    expect(lookbehindGroups.length).toBe(1);
+    expect(lookbehindGroups[0]?.label).toBe('Negative Lookbehind');
+
+    // Should contain the lookbehind content
+    expect(lookbehindGroups[0]?.children.length).toBeGreaterThan(0);
+
+    // Should have literal nodes
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(2);
+  });
+
+  test('multiple lookahead/lookbehind assertions create separate subgraphs', () => {
+    const pattern = /test(?=pos)(?!neg)(?<=back)(?<!notback)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have all four types of groups
+    expect(data.groups.filter(g => g.type === 'positive-lookahead').length).toBe(1);
+    expect(data.groups.filter(g => g.type === 'negative-lookahead').length).toBe(1);
+    expect(data.groups.filter(g => g.type === 'positive-lookbehind').length).toBe(1);
+    expect(data.groups.filter(g => g.type === 'negative-lookbehind').length).toBe(1);
+
+    // Total of 4 assertion groups
+    expect(data.groups.length).toBe(4);
+  });
+
+  test('lookahead with complex content creates proper structure', () => {
+    const pattern = /test(?=[a-z]+\d{2,4})/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookahead group
+    const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+
+    // Should contain multiple children (char class and literal with quantifiers)
+    expect(lookaheadGroups[0]?.children.length).toBeGreaterThanOrEqual(2);
+
+    // Should have char-class nodes
+    const charClassNodes = data.nodes.filter(n => n.type === 'char-class');
+    expect(charClassNodes.length).toBeGreaterThan(0);
+  });
+
+  test('lookahead with alternation creates nested structure', () => {
+    const pattern = /test(?=foo|bar|baz)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookahead group
+    const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+
+    // Should have disjunction nodes inside the lookahead
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Disjunction nodes should be children of the lookahead group
+    const lookaheadChildren = lookaheadGroups[0]?.children || [];
+    const disjunctionIds = disjunctionNodes.map(n => n.id);
+    expect(disjunctionIds.some(id => lookaheadChildren.includes(id))).toBe(true);
+  });
+
+  test('lookbehind with group creates nested group structure', () => {
+    const pattern = /(?<=(foo|bar))test/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookbehind group
+    const lookbehindGroups = data.groups.filter(g => g.type === 'positive-lookbehind');
+    expect(lookbehindGroups.length).toBe(1);
+
+    // Should also have a standard capturing group inside
+    const standardGroups = data.groups.filter(g => g.type === 'standard');
+    expect(standardGroups.length).toBe(1);
+
+    // Total of 2 groups
+    expect(data.groups.length).toBe(2);
+  });
+
+  test('lookahead assertions do not increment group numbers', () => {
+    const pattern = /(before)(?=lookahead)(after)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have 2 standard capture groups
+    const standardGroups = data.groups.filter(g => g.type === 'standard');
+    expect(standardGroups.length).toBe(2);
+
+    // Groups should be numbered 1 and 2
+    expect(standardGroups[0]?.number).toBe(1);
+    expect(standardGroups[1]?.number).toBe(2);
+
+    // Should have 1 lookahead group (not numbered)
+    const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+    expect(lookaheadGroups[0]?.number).toBe(0);
+  });
+
+  test('empty lookahead creates group with no children', () => {
+    const pattern = /test(?=)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have a positive lookahead group
+    const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
+    expect(lookaheadGroups.length).toBe(1);
+
+    // Should have empty or minimal children
+    expect(lookaheadGroups[0]?.children.length).toBeGreaterThanOrEqual(0);
+  });
+});

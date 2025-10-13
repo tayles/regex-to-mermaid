@@ -62,6 +62,10 @@ function processNode(
     case 'Disjunction':
       return processDisjunction(node, previousNodeId, nodes, edges, groups);
     case 'Assertion':
+      // Lookahead and lookbehind assertions should be treated as groups
+      if (node.kind === 'Lookahead' || node.kind === 'Lookbehind') {
+        return processGroup(node, previousNodeId, nodes, edges, groups);
+      }
       return processAssertion(node, previousNodeId, nodes, edges);
     case 'Backreference':
       return processBackreference(node, previousNodeId, nodes, edges);
@@ -274,17 +278,24 @@ function processGroup(
   groups: Group[],
 ): string {
   const groupNumber = node.number || 0;
-  const groupName = node.name || (node.capturing ? `Group ${groupNumber}` : 'Non-capturing');
 
+  let groupName: string;
   let groupType: any = 'standard';
-  if (node.name) {
-    groupType = 'named-capture';
-  } else if (!node.capturing) {
-    groupType = 'non-capturing';
-  } else if (node.kind === 'Lookahead') {
+
+  if (node.kind === 'Lookahead') {
     groupType = node.negative ? 'negative-lookahead' : 'positive-lookahead';
+    groupName = node.negative ? 'Negative Lookahead' : 'Positive Lookahead';
   } else if (node.kind === 'Lookbehind') {
     groupType = node.negative ? 'negative-lookbehind' : 'positive-lookbehind';
+    groupName = node.negative ? 'Negative Lookbehind' : 'Positive Lookbehind';
+  } else if (node.name) {
+    groupType = 'named-capture';
+    groupName = node.name;
+  } else if (!node.capturing) {
+    groupType = 'non-capturing';
+    groupName = 'Non-capturing';
+  } else {
+    groupName = `Group ${groupNumber}`;
   }
 
   const groupId = getNextNodeId(groupType);
@@ -294,7 +305,14 @@ function processGroup(
   const startGroupIndex = groups.length;
 
   // Process the group's content
-  const innerEndNode = processNode(node.expression, previousNodeId, nodes, edges, groups);
+  // Lookahead/lookbehind use 'assertion' field, groups use 'expression' field
+  const content = node.assertion || node.expression;
+  let innerEndNode = previousNodeId;
+  
+  // Only process content if it exists (handles empty groups/assertions)
+  if (content) {
+    innerEndNode = processNode(content, previousNodeId, nodes, edges, groups);
+  }
 
   // Collect direct children (nodes and groups created at this level)
   const children: string[] = [];

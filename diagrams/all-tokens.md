@@ -17,7 +17,7 @@ This regex demonstrates all possible token types that can be visualized by regex
 3. **negated-char-class** - Negated character classes: `[^\s]`, `[^abc]`
 4. **modifier** - Quantifiers on nodes: `?`, `*`, `+`, `{3,5}`
 5. **disjunction** - Alternation: `|` (creates disjunction_begin and disjunction_end nodes)
-6. **assertion** - Anchors and boundaries: `^`, `$`, `(?=...)`, `(?!...)`, `(?<=...)`, `(?<!...)`, `\b`, `\B`
+6. **assertion** - Anchors and boundaries: `^`, `$`, `\b`, `\B` (Note: lookahead/lookbehind are group types, not assertions)
 7. **back-reference** - Backreferences: `\1`
 
 ### Group Types (7 types)
@@ -25,10 +25,10 @@ This regex demonstrates all possible token types that can be visualized by regex
 1. **standard** - Capturing group: `([a-z0-9\-]+)` - Numbered group
 2. **named-capture** - Named capturing group: `(?<protocol>https?)`
 3. **non-capturing** - Non-capturing group: `(?:www\.)?`, `(?:com|org|net)`, `(?:\/[^\s]*)?`
-4. **positive-lookahead** - Positive lookahead assertion: `(?=query)`
-5. **negative-lookahead** - Negative lookahead assertion: `(?!neg)`
-6. **positive-lookbehind** - Positive lookbehind assertion: `(?<=back)` _(Note: shown as (?<!back) in diagram)_
-7. **negative-lookbehind** - Negative lookbehind assertion: `(?<!back)`
+4. **positive-lookahead** - Positive lookahead assertion: `(?=query)` - Displayed as subgraph
+5. **negative-lookahead** - Negative lookahead assertion: `(?!neg)` - Displayed as subgraph
+6. **positive-lookbehind** - Positive lookbehind assertion: `(?<=back)` - Displayed as subgraph
+7. **negative-lookbehind** - Negative lookbehind assertion: `(?<!back)` - Displayed as subgraph
 
 ### Quantifiers
 

@@ -1,6 +1,8 @@
 import regexpTree from 'regexp-tree';
 
-const ast = regexpTree.parse(/foo|bar/, {
+const pattern = process.argv[2] || 'foo|bar';
+
+const ast = regexpTree.parse(pattern, {
   captureLocations: true,
 });
 

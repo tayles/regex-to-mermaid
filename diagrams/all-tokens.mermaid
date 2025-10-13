@@ -15,27 +15,25 @@ graph LR
   literal_5("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  disjunction_begin_3:::disjunction@{ shape: f-circ };
-  disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_6("com"):::literal;
   literal_7("org"):::literal;
   literal_8("net"):::literal;
   literal_9("/"):::literal;
-  negated_char_class_1("Not \s<br><i><small>Zero or more</small></i>"):::negated-char-class;
-  assertion_2("Lookahead"):::assertion;
+  negated_char_class_1("\s<br><i><small>Zero or more</small></i>"):::negated-char-class;
+  literal_10("query"):::literal;
   back_reference_1("\1<br><i><small>Back-reference</small></i>"):::back-reference;
-  literal_10("Any digit<br><i><small>3 to 5</small></i>"):::literal;
-  literal_11("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_12("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
-  literal_13("Not whitespace<br><i><small>One or more</small></i>"):::literal;
-  negated_char_class_2("Not a<br>b<br>c"):::negated-char-class;
-  assertion_3("Lookahead"):::assertion;
-  assertion_4("Lookbehind"):::assertion;
-  assertion_5("$<br><i><small>Ends with</small></i>"):::assertion;
-  literal_14("alt"):::literal;
-  assertion_6("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_7("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
-  literal_15("Any character"):::literal;
+  literal_11("Any digit<br><i><small>3 to 5</small></i>"):::literal;
+  literal_12("Any word character<br><i><small>One or more</small></i>"):::literal;
+  literal_13("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
+  literal_14("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  negated_char_class_2("a b c"):::negated-char-class;
+  literal_15("neg"):::literal;
+  literal_16("back"):::literal;
+  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_17("alt"):::literal;
+  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_4("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
+  literal_18("Any character"):::literal;
   
   %% Subgraphs
   subgraph named_capture_1 ["<small>#1</small> protocol"]
@@ -54,8 +52,6 @@ graph LR
   subgraph non_capturing_2 ["Non-capturing"]
     disjunction_begin_2
     disjunction_end_2
-    disjunction_begin_3
-    disjunction_end_3
     literal_6
     literal_7
     literal_8
@@ -64,6 +60,18 @@ graph LR
   subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
     literal_9
     negated_char_class_1
+  end
+  
+  subgraph positive_lookahead_1 ["Positive Lookahead"]
+    literal_10
+  end
+  
+  subgraph negative_lookahead_1 ["Negative Lookahead"]
+    literal_15
+  end
+  
+  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
+    literal_16
   end
   
   %% Edges
@@ -76,32 +84,30 @@ graph LR
   literal_4 --- char_class_1;
   char_class_1 --- literal_5;
   literal_5 --- disjunction_begin_2;
-  disjunction_begin_2 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_6;
-  literal_6 --- disjunction_end_3;
-  disjunction_begin_3 --- literal_7;
-  literal_7 --- disjunction_end_3;
-  disjunction_end_3 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_6;
+  literal_6 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_7;
+  literal_7 --- disjunction_end_2;
   disjunction_begin_2 --- literal_8;
   literal_8 --- disjunction_end_2;
   disjunction_end_2 --- literal_9;
   literal_9 --- negated_char_class_1;
-  negated_char_class_1 --- assertion_2;
-  assertion_2 --- back_reference_1;
-  back_reference_1 --- literal_10;
-  literal_10 --- literal_11;
+  negated_char_class_1 --- literal_10;
+  literal_10 --- back_reference_1;
+  back_reference_1 --- literal_11;
   literal_11 --- literal_12;
   literal_12 --- literal_13;
-  literal_13 --- negated_char_class_2;
-  negated_char_class_2 --- assertion_3;
+  literal_13 --- literal_14;
+  literal_14 --- negated_char_class_2;
+  negated_char_class_2 --- literal_15;
+  literal_15 --- literal_16;
+  literal_16 --- assertion_2;
+  assertion_2 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_17;
+  literal_17 --- assertion_3;
   assertion_3 --- assertion_4;
-  assertion_4 --- assertion_5;
-  assertion_5 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_14;
-  literal_14 --- assertion_6;
-  assertion_6 --- assertion_7;
-  assertion_7 --- literal_15;
-  literal_15 --- disjunction_end_1;
+  assertion_4 --- literal_18;
+  literal_18 --- disjunction_end_1;
   disjunction_end_1 --- fin;
   
   %% Styles
@@ -117,10 +123,16 @@ graph LR
   classDef named-capture fill:#D9EAD3,stroke:#93C47D;
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB;
   classDef standard fill:#FFF2CC,stroke:#F1C232;
+  classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666;
+  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138;
   
   %% Apply Group Classes
   class named_capture_1 named-capture;
   class non_capturing_1,non_capturing_2,non_capturing_3 non-capturing;
   class standard_1 standard;
+  class positive_lookahead_1 positive-lookahead;
+  class negative_lookahead_1 negative-lookahead;
+  class negative_lookbehind_1 negative-lookbehind;
 
 %% Generated with regex-to-mermaid@1.0.0
