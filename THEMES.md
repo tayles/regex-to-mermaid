@@ -11,7 +11,7 @@ The default theme provides a colorful and vibrant color scheme.
 **Command:**
 
 ```bash
-regex-to-mermaid '/foo|bar/' --theme default
+regex-to-mermaid 'foo|bar' --theme default
 ```
 
 **Preview:**
@@ -89,7 +89,7 @@ The neutral theme provides a muted and professional color scheme.
 **Command:**
 
 ```bash
-regex-to-mermaid '/foo|bar/' --theme neutral
+regex-to-mermaid 'foo|bar' --theme neutral
 ```
 
 **Preview:**
@@ -167,7 +167,7 @@ The dark theme provides a dark mode friendly color scheme.
 **Command:**
 
 ```bash
-regex-to-mermaid '/foo|bar/' --theme dark
+regex-to-mermaid 'foo|bar' --theme dark
 ```
 
 **Preview:**
@@ -245,7 +245,7 @@ The forest theme provides a nature-inspired green and brown color scheme.
 **Command:**
 
 ```bash
-regex-to-mermaid '/foo|bar/' --theme forest
+regex-to-mermaid 'foo|bar' --theme forest
 ```
 
 **Preview:**
@@ -323,7 +323,7 @@ No styling applied - uses default Mermaid colors.
 **Command:**
 
 ```bash
-regex-to-mermaid '/foo|bar/' --theme none
+regex-to-mermaid 'foo|bar' --theme none
 ```
 
 **Preview:**

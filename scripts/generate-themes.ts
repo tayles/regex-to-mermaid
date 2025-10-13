@@ -48,7 +48,7 @@ async function generateThemes() {
     // Add command to recreate
     content += '**Command:**\n\n';
     content += '```bash\n';
-    content += `regex-to-mermaid '/foo|bar/' --theme ${theme}\n`;
+    content += `regex-to-mermaid 'foo|bar' --theme ${theme}\n`;
     content += '```\n\n';
 
     // Generate the diagram

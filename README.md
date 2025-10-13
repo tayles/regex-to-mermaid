@@ -107,10 +107,6 @@ Using [regexp-tree-cli](https://github.com/dtinth/regexp-tree-cli) to output the
 regexp-tree-cli --expression '/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/' --loc
 ```
 
-## Examples
-
-See more [examples](./EXAMPLES.md).
-
 ## CLI
 
 Call like so:
@@ -118,6 +114,14 @@ Call like so:
 ```shell
 regex-to-mermaid 'foo|bar'
 ```
+
+## Examples
+
+See more [examples](./EXAMPLES.md).
+
+## Themes
+
+See available [themes](./THEMES.md).
 
 ## Development
 
