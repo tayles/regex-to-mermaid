@@ -203,6 +203,127 @@ describe('generateDiagramData', () => {
   });
 });
 
+describe('Character class label formatting', () => {
+  test('displays single characters on one line', () => {
+    const ast = buildRegexAst(/[abc]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.type).toBe('char-class');
+    expect(data.nodes[0]?.label).toBe('a b c');
+    // Should not contain <br>
+    expect(data.nodes[0]?.label).not.toContain('<br>');
+  });
+
+  test('displays single characters with special chars on one line', () => {
+    const ast = buildRegexAst(/[abc123!@#]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toBe('a b c 1 2 3 ! @ #');
+  });
+
+  test('displays ranges on separate lines from single chars', () => {
+    const ast = buildRegexAst(/[a-z-=_]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    // Single chars should be on first line
+    expect(label).toContain('- = _');
+    // Range should be on separate line
+    expect(label).toContain('Any lowercase');
+    // Should have line break between them
+    expect(label).toContain('<br>');
+  });
+
+  test('handles multiple ranges with single chars', () => {
+    const ast = buildRegexAst(/[a-zA-Z0-9@#$%]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    // Single chars on first line
+    expect(label).toContain('@ # $ %');
+    // All ranges on separate lines
+    expect(label).toContain('Any lowercase');
+    expect(label).toContain('Any uppercase');
+    expect(label).toContain('Any digit');
+    // Multiple line breaks for multiple ranges
+    const brCount = (label.match(/<br>/g) || []).length;
+    expect(brCount).toBe(3); // 3 ranges
+  });
+
+  test('handles only ranges without single chars', () => {
+    const ast = buildRegexAst(/[a-zA-Z]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    expect(label).toContain('Any lowercase');
+    expect(label).toContain('Any uppercase');
+    expect(label).toContain('<br>');
+  });
+
+  test('handles character class with spaces and special chars', () => {
+    const ast = buildRegexAst(/[a-z-=_. ?]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    // Ranges first, then single chars on one line
+    expect(label).toMatch(/^Any lowercase<br>- = _ \.   \?/);
+    expect(label).toContain('Any lowercase');
+  });
+
+  test('negated character class displays single chars on one line', () => {
+    const ast = buildRegexAst(/[^abc]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.type).toBe('negated-char-class');
+    expect(data.nodes[0]?.label).toBe('a b c');
+  });
+
+  test('negated character class with ranges separates correctly', () => {
+    const ast = buildRegexAst(/[^a-z123]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    expect(label).toContain('1 2 3');
+    expect(label).toContain('Any lowercase');
+    expect(label).toContain('<br>');
+  });
+
+  test('empty character class handled correctly', () => {
+    const ast = buildRegexAst(/[]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toBe('[]');
+  });
+
+  test('negated empty character class handled correctly', () => {
+    const ast = buildRegexAst(/[^]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    expect(data.nodes[0]?.label).toBe('[]');
+  });
+
+  test('handles custom ranges without friendly names', () => {
+    const ast = buildRegexAst(/[!-/]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    // Should show the range as-is since no friendly name exists
+    expect(label).toBe('!-/');
+  });
+
+  test('mixes custom ranges with friendly ranges and single chars', () => {
+    const ast = buildRegexAst(/[a-z!-/xyz]/);
+    const data = generateDiagramData(ast);
+    expect(data.nodes.length).toBe(1);
+    const label = data.nodes[0]?.label || '';
+    // Single chars on first line
+    expect(label).toContain('x y z');
+    // Ranges on separate lines
+    expect(label).toContain('Any lowercase');
+    expect(label).toContain('!-/');
+  });
+});
+
 describe('buildFriendlyLabel', () => {
   test('returns literal text unchanged for literal type', () => {
     expect(buildFriendlyLabel('test', 'literal')).toBe('test');
@@ -398,7 +519,7 @@ describe('Integration tests', () => {
 
     expect(data.nodes.length).toBe(1);
     expect(data.nodes[0]?.type).toBe('negated-char-class');
-    expect(data.nodes[0]?.label).toContain('Not');
+    expect(data.nodes[0]?.label).toBe('Any lowercase');
   });
 });
 

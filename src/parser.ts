@@ -172,27 +172,37 @@ function processCharacterClass(
 
 function buildCharacterClassLabel(node: any): string {
   if (!node.expressions || node.expressions.length === 0) {
-    return node.negative ? 'Not []' : '[]';
+    return '[]';
   }
 
-  const parts: string[] = [];
+  const singleChars: string[] = [];
+  const ranges: string[] = [];
 
   for (const expr of node.expressions) {
     if (expr.type === 'Char') {
-      parts.push(expr.value);
+      singleChars.push(expr.value);
     } else if (expr.type === 'ClassRange') {
       const from = expr.from.value;
       const to = expr.to.value;
       const rangeName = getFriendlyRangeName(from, to);
-      parts.push(rangeName ?? `${from}-${to}`);
+      ranges.push(rangeName ?? `${from}-${to}`);
     } else if (expr.type === 'CharacterClass') {
       // Nested character class (shouldn't normally happen)
-      parts.push(buildCharacterClassLabel(expr));
+      ranges.push(buildCharacterClassLabel(expr));
     }
   }
 
+  // Build the label: ranges first, then single chars on one line
+  const parts: string[] = [];
+  if (ranges.length > 0) {
+    parts.push(...ranges);
+  }
+  if (singleChars.length > 0) {
+    parts.push(singleChars.join(' '));
+  }
+
   const label = parts.join('<br>');
-  return node.negative ? `Not ${label}` : label;
+  return label;
 }
 
 function getFriendlyRangeName(from: string, to: string): string | null {
