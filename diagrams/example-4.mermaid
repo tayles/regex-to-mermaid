@@ -5,7 +5,7 @@ graph LR
     start@{ shape: f-circ, label: "Start" };
     fin@{ shape: f-circ, label: "End" };
 
-    start_of_line("^<br><i><small>Start of Line</small></i>");
+    start_of_line("^<br><i><small>Begins with</small></i>");
     year_1("19 or 20");
     year_2["Any digit<br><i><small>2x</small></i>"];
     separator["- Space / ."];
@@ -20,7 +20,7 @@ graph LR
     day_4["0 - 9"];
     day_5["3"];
     day_6["0 or 1"];
-    end_of_line("$<br><i><small>End of Line</small></i>");
+    end_of_line("$<br><i><small>Ends with</small></i>");
 
     %% Subgraphs
     subgraph group_1 ["<small>#1</small>"];

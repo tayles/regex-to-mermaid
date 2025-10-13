@@ -197,9 +197,9 @@ describe('generateDiagramData', () => {
     const data = generateDiagramData(ast);
     expect(data.nodes.length).toBe(3); // ^, test, $
     expect(data.nodes[0]?.type).toBe('assertion');
-    expect(data.nodes[0]?.label).toContain('Start of line');
+    expect(data.nodes[0]?.label).toContain('Begins with');
     expect(data.nodes[2]?.type).toBe('assertion');
-    expect(data.nodes[2]?.label).toContain('End of line');
+    expect(data.nodes[2]?.label).toContain('Ends with');
   });
 });
 

@@ -5,7 +5,7 @@ graph LR
     start@{ shape: f-circ, label: "Start" };
     fin@{ shape: f-circ, label: "End" };
 
-    start_of_line("^<br><i><small>Start of Line</small></i>");
+    start_of_line("^<br><i><small>Begins with</small></i>");
     http["http"];
     s["s<br><i><small>Optional</small></i>"];
     colon_slash_slash["://"];
@@ -14,7 +14,7 @@ graph LR
     tld["Any lowercase<br>Any uppercase<br><i><small>Two or more</small></i>"];
     slash["/"];
     any_char["Any character<br><i><small>Zero or more</small></i>"];
-    end_of_line("$<br><i><small>End of Line</small></i>");
+    end_of_line("$<br><i><small>Ends with</small></i>");
 
     %% Subgraphs
     subgraph protocol_group ["<small>#1</small> protocol <i><small>Optional</small></i>"];

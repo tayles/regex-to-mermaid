@@ -326,8 +326,8 @@ function processDisjunction(
   edges: Edge[],
   groups: Group[],
 ): string {
-  const disjunctionNodeId = getNextNodeId('disjunction');
-  const mergeNodeId = getNextNodeId('disjunction');
+  const disjunctionNodeId = getNextNodeId('disjunction-begin');
+  const mergeNodeId = getNextNodeId('disjunction-end');
 
   nodes.push({
     id: disjunctionNodeId,
@@ -365,10 +365,10 @@ function processAssertion(
 
   switch (node.kind) {
     case '^':
-      label = '^<br><i><small>Start of line</small></i>';
+      label = '^<br><i><small>Begins with</small></i>';
       break;
     case '$':
-      label = '$<br><i><small>End of line</small></i>';
+      label = '$<br><i><small>Ends with</small></i>';
       break;
     case '\\b':
       label = '\\b<br><i><small>Word boundary</small></i>';
