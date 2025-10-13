@@ -401,3 +401,173 @@ describe('Integration tests', () => {
     expect(data.nodes[0]?.label).toContain('Not');
   });
 });
+
+describe('Flattening behavior', () => {
+  test('flattens simple alternation with 3 branches', () => {
+    const pattern = /foo|bar|baz/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have exactly 2 disjunction nodes (begin and end)
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 3 literal nodes (foo, bar, baz)
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(3);
+    expect(literalNodes[0]?.label).toBe('foo');
+    expect(literalNodes[1]?.label).toBe('bar');
+    expect(literalNodes[2]?.label).toBe('baz');
+
+    // Each literal should connect from begin to end
+    const beginNode = disjunctionNodes.find(n => n.id.includes('begin'));
+    const endNode = disjunctionNodes.find(n => n.id.includes('end'));
+    expect(beginNode).toBeDefined();
+    expect(endNode).toBeDefined();
+
+    // Should have edges from begin to each literal
+    literalNodes.forEach(literal => {
+      const edgeToLiteral = data.edges.find(e => e.from === beginNode?.id && e.to === literal.id);
+      expect(edgeToLiteral).toBeDefined();
+    });
+
+    // Should have edges from each literal to end
+    literalNodes.forEach(literal => {
+      const edgeFromLiteral = data.edges.find(e => e.from === literal.id && e.to === endNode?.id);
+      expect(edgeFromLiteral).toBeDefined();
+    });
+  });
+
+  test('flattens alternation with many branches', () => {
+    const pattern = /a|b|c|d|e|f|g/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have exactly 2 disjunction nodes (begin and end) - flat structure
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 7 literal nodes
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(7);
+
+    // Verify all literals are present
+    const labels = literalNodes.map(n => n.label).sort();
+    expect(labels).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+  });
+
+  test('flattens single-character alternations', () => {
+    const pattern = /x|y/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(2);
+    expect(literalNodes[0]?.label).toBe('x');
+    expect(literalNodes[1]?.label).toBe('y');
+  });
+
+  test('flattens alternation with complex branches', () => {
+    const pattern = /hello|world|test/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have exactly 2 disjunction nodes
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 3 literal nodes (combined chars)
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(3);
+    expect(literalNodes[0]?.label).toBe('hello');
+    expect(literalNodes[1]?.label).toBe('world');
+    expect(literalNodes[2]?.label).toBe('test');
+  });
+
+  test('flattens alternation within groups', () => {
+    const pattern = /(a|b|c)/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should still flatten the alternation inside the group
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 1 group
+    expect(data.groups.length).toBe(1);
+    expect(data.groups[0]?.type).toBe('standard');
+
+    // Should have 3 literal nodes
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(3);
+  });
+
+  test('flattens mixed alternation with quantifiers', () => {
+    const pattern = /a+|b*|c?/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have exactly 2 disjunction nodes
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 3 literal nodes with quantifiers
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(3);
+    expect(literalNodes[0]?.label).toContain('One or more');
+    expect(literalNodes[1]?.label).toContain('Zero or more');
+    expect(literalNodes[2]?.label).toContain('Optional');
+  });
+
+  test('flattens alternation with character classes', () => {
+    const pattern = /[a-z]|[0-9]|[A-Z]/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have exactly 2 disjunction nodes
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 3 character class nodes
+    const charClassNodes = data.nodes.filter(n => n.type === 'char-class');
+    expect(charClassNodes.length).toBe(3);
+    expect(charClassNodes[0]?.label).toContain('Any lowercase');
+    expect(charClassNodes[1]?.label).toContain('Any digit');
+    expect(charClassNodes[2]?.label).toContain('Any uppercase');
+  });
+
+  test('handles nested alternatives in complex patterns', () => {
+    const pattern = /^(foo|bar|baz)$/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should have assertions
+    const assertionNodes = data.nodes.filter(n => n.type === 'assertion');
+    expect(assertionNodes.length).toBe(2);
+
+    // Should have flattened disjunction
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have 3 literals
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBe(3);
+  });
+
+  test('flattens empty alternatives correctly', () => {
+    const pattern = /a||b/;
+    const ast = buildRegexAst(pattern);
+    const data = generateDiagramData(ast);
+
+    // Should handle empty alternative branch
+    const disjunctionNodes = data.nodes.filter(n => n.type === 'disjunction');
+    expect(disjunctionNodes.length).toBe(2);
+
+    // Should have at least 2 literal nodes (a and b)
+    const literalNodes = data.nodes.filter(n => n.type === 'literal');
+    expect(literalNodes.length).toBeGreaterThanOrEqual(2);
+  });
+});

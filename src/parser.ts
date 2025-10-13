@@ -326,6 +326,9 @@ function processDisjunction(
   edges: Edge[],
   groups: Group[],
 ): string {
+  // Flatten nested disjunctions to create a single level of branching
+  const branches = flattenDisjunction(node);
+
   const disjunctionNodeId = getNextNodeId('disjunction-begin');
   const mergeNodeId = getNextNodeId('disjunction-end');
 
@@ -343,15 +346,35 @@ function processDisjunction(
 
   edges.push({ from: previousNodeId, to: disjunctionNodeId });
 
-  // Process left branch
-  const leftEndNode = processNode(node.left, disjunctionNodeId, nodes, edges, groups);
-  edges.push({ from: leftEndNode, to: mergeNodeId });
-
-  // Process right branch
-  const rightEndNode = processNode(node.right, disjunctionNodeId, nodes, edges, groups);
-  edges.push({ from: rightEndNode, to: mergeNodeId });
+  // Process each branch
+  for (const branch of branches) {
+    const branchEndNode = processNode(branch, disjunctionNodeId, nodes, edges, groups);
+    edges.push({ from: branchEndNode, to: mergeNodeId });
+  }
 
   return mergeNodeId;
+}
+
+function flattenDisjunction(node: any): any[] {
+  const branches: any[] = [];
+
+  // Recursively collect all branches from nested disjunctions
+  function collectBranches(n: any): void {
+    // Handle null or undefined nodes (empty alternatives)
+    if (!n) {
+      return;
+    }
+
+    if (n.type === 'Disjunction') {
+      collectBranches(n.left);
+      collectBranches(n.right);
+    } else {
+      branches.push(n);
+    }
+  }
+
+  collectBranches(node);
+  return branches;
 }
 
 function processAssertion(
