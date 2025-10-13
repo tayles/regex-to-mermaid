@@ -1,1 +1,5 @@
+---
+name: Stocks
+---
+
 /(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim

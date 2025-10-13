@@ -1,1 +1,6 @@
+---
+name: Phone Number
+description: US and International phone numbers
+---
+
 ^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$

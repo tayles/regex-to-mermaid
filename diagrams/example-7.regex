@@ -1,1 +1,6 @@
+---
+name: HTML Tags
+description: Naive html tags
+---
+
 /<\/?[\w\s]*>|<.+[\W]>/
