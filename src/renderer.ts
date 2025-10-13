@@ -50,7 +50,7 @@ export function buildSubgraphs(groups: Group[]): string {
       const label = [
         group.number > 0 && `<small>#${group.number}</small>`,
         group.label,
-        group.optional && '<small><i>Optional</i></small>',
+        group.quantifier && `<small><i>${group.quantifier}</i></small>`,
       ]
         .filter(Boolean)
         .join(' ');

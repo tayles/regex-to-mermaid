@@ -210,13 +210,22 @@ function processRepetition(
   groups: Group[],
 ): string {
   const quantifier = node.quantifier;
+  const groupsLengthBefore = groups.length;
   const innerNodeId = processNode(node.expression, previousNodeId, nodes, edges, groups);
 
-  // Update the last node's label to include the quantifier
-  const lastNode = nodes[nodes.length - 1];
-  if (lastNode && lastNode.id === innerNodeId) {
-    const quantifierText = getQuantifierText(quantifier);
-    if (quantifierText) {
+  const quantifierText = getQuantifierText(quantifier);
+
+  // Check if a group was created during processing
+  if (groups.length > groupsLengthBefore) {
+    // A group was added, update its quantifier
+    const lastGroup = groups[groups.length - 1];
+    if (lastGroup && quantifierText) {
+      lastGroup.quantifier = quantifierText;
+    }
+  } else {
+    // Update the last node's label to include the quantifier
+    const lastNode = nodes[nodes.length - 1];
+    if (lastNode && lastNode.id === innerNodeId && quantifierText) {
       lastNode.label += `<br><i><small>${quantifierText}</small></i>`;
     }
   }
@@ -303,7 +312,6 @@ function processGroup(
     id: groupId,
     type: groupType,
     number: groupNumber,
-    optional: false, // Will be updated if the group has a quantifier
     label: groupName,
     children,
   });

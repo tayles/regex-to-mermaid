@@ -24,9 +24,9 @@ export interface Group {
   id: string;
   type: GroupType;
   number: number;
-  optional: boolean;
   label: string;
   children: string[];
+  quantifier?: string;
 }
 
 export interface DiagramNode {

@@ -69,7 +69,6 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        optional: false,
         label: 'protocol',
         children: ['node1', 'node2'],
       },
@@ -88,9 +87,9 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'standard',
         number: 1,
-        optional: true,
         label: 'optional_part',
         children: ['node1'],
+        quantifier: 'Optional',
       },
     ];
     const result = buildSubgraphs(groups);
@@ -103,7 +102,6 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'standard',
         number: 1,
-        optional: false,
         label: 'required_part',
         children: ['node1'],
       },
@@ -112,13 +110,27 @@ describe('buildSubgraphs', () => {
     expect(result).not.toContain('Optional');
   });
 
+  test('builds group with quantifier text', () => {
+    const groups: Group[] = [
+      {
+        id: 'group1',
+        type: 'standard',
+        number: 1,
+        label: 'repeated',
+        children: ['node1'],
+        quantifier: 'One or more',
+      },
+    ];
+    const result = buildSubgraphs(groups);
+    expect(result).toContain('<small><i>One or more</i></small>');
+  });
+
   test('builds multiple groups correctly', () => {
     const groups: Group[] = [
       {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        optional: false,
         label: 'protocol',
         children: ['node1'],
       },
@@ -126,7 +138,6 @@ describe('buildSubgraphs', () => {
         id: 'group2',
         type: 'named-capture',
         number: 2,
-        optional: true,
         label: 'path',
         children: ['node2'],
       },
@@ -144,7 +155,6 @@ describe('buildSubgraphs', () => {
         id: 'g1',
         type: 'standard',
         number: 1,
-        optional: false,
         label: 'standard',
         children: ['n1'],
       },
@@ -152,7 +162,6 @@ describe('buildSubgraphs', () => {
         id: 'g2',
         type: 'named-capture',
         number: 2,
-        optional: false,
         label: 'named',
         children: ['n2'],
       },
@@ -160,7 +169,6 @@ describe('buildSubgraphs', () => {
         id: 'g3',
         type: 'non-capturing',
         number: 3,
-        optional: false,
         label: 'non-capturing',
         children: ['n3'],
       },
@@ -177,7 +185,6 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'standard',
         number: 1,
-        optional: false,
         label: 'test',
         children: ['node1', 'node2', 'node3', 'node4'],
       },
@@ -195,7 +202,6 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'standard',
         number: 1,
-        optional: false,
         label: 'empty',
         children: [],
       },
@@ -337,7 +343,6 @@ describe('buildMermaidDiagram', () => {
           id: 'group1',
           type: 'named-capture',
           number: 1,
-          optional: false,
           label: 'protocol',
           children: ['node1'],
         },
@@ -364,7 +369,6 @@ describe('buildMermaidDiagram', () => {
           id: 'group1',
           type: 'named-capture',
           number: 1,
-          optional: true,
           label: 'protocol',
           children: ['node1', 'node2'],
         },
@@ -402,7 +406,6 @@ describe('buildMermaidDiagram', () => {
           label: 'Test',
           number: 1,
           children: ['n1'],
-          optional: false,
         },
       ],
     };
@@ -423,7 +426,6 @@ describe('buildMermaidDiagram', () => {
           label: 'Test',
           number: 1,
           children: ['n1'],
-          optional: false,
         },
       ],
     };
@@ -455,7 +457,6 @@ describe('Edge cases and error handling', () => {
         id: 'group999',
         type: 'standard',
         number: 999,
-        optional: false,
         label: 'test',
         children: ['n1'],
       },
@@ -508,7 +509,6 @@ describe('Edge cases and error handling', () => {
         id: 'g1',
         type: 'standard',
         number: 1,
-        optional: false,
         label: 'standard',
         children: ['n1'],
       },
@@ -516,7 +516,6 @@ describe('Edge cases and error handling', () => {
         id: 'g2',
         type: 'named-capture',
         number: 2,
-        optional: false,
         label: 'named',
         children: ['n2'],
       },
@@ -524,7 +523,6 @@ describe('Edge cases and error handling', () => {
         id: 'g3',
         type: 'non-capturing',
         number: 3,
-        optional: false,
         label: 'non-capturing',
         children: ['n3'],
       },
@@ -554,15 +552,14 @@ describe('Edge cases and error handling', () => {
           id: 'g1',
           type: 'standard',
           number: 1,
-          optional: true,
           label: 'optional',
           children: ['n1'],
+          quantifier: 'Optional',
         },
         {
           id: 'g2',
           type: 'standard',
           number: 2,
-          optional: false,
           label: 'required',
           children: ['n2'],
         },
