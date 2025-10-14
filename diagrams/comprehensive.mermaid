@@ -1,4 +1,4 @@
-%% Regex: ^(?<named>[A-Z]\w{2,5}):\s+(?:https?:\/\/)?(?<domain>[a-z0-9.-]+)(?=\.com)(?!\.org)(?<=example)(?<!test)[a-z]{1,3}\.com(?:\/\S+)?(?:\?[a-zA-Z0-9&=]+)?(?<digit>\d+)\k<digit>\1\b\B\d+\D+\w+\W+\s+\S+[^xyz]+\t\r\n|alt$
+%% Regex: ^(?<named>[A-Z]\w{2,5}):\s+(a|b|cd)(?:https?:\/\/)?(?<domain>[a-z0-9.-]+)(?=\.com)(?!\.org)(?<=example)(?<!test)[a-z]{1,3}\.com(?:\/\S+)?(?:\?[a-zA-Z0-9&=]+)?(?<digit>\d+)\k<digit>\1\b\B\d+\D+\w+\W+\s+\S+[^xyz]+\t\r\n|alt$
 
 graph LR
   %% Nodes
@@ -11,34 +11,39 @@ graph LR
   literal_1("Any word character<br><i><small>2 to 5</small></i>"):::literal;
   literal_2(":"):::literal;
   literal_3("Any whitespace<br><i><small>One or more</small></i>"):::literal;
-  literal_4("http"):::literal;
-  literal_5("s<br><i><small>Optional</small></i>"):::literal;
-  literal_6("://"):::literal;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  literal_4("a"):::literal;
+  literal_5("b"):::literal;
+  literal_6("cd"):::literal;
+  literal_7("http"):::literal;
+  literal_8("s<br><i><small>Optional</small></i>"):::literal;
+  literal_9("://"):::literal;
   char_class_2("Any lowercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
-  literal_7(".com"):::literal;
-  literal_8(".org"):::literal;
-  literal_9("example"):::literal;
-  literal_10("test"):::literal;
+  literal_10(".com"):::literal;
+  literal_11(".org"):::literal;
+  literal_12("example"):::literal;
+  literal_13("test"):::literal;
   char_class_3("Any lowercase<br><i><small>1 to 3</small></i>"):::char-class;
-  literal_11(".com"):::literal;
-  literal_12("/"):::literal;
-  literal_13("Not whitespace<br><i><small>One or more</small></i>"):::literal;
-  literal_14("?"):::literal;
+  literal_14(".com"):::literal;
+  literal_15("/"):::literal;
+  literal_16("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_17("?"):::literal;
   char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i><small>One or more</small></i>"):::char-class;
-  literal_15("Any digit<br><i><small>One or more</small></i>"):::literal;
+  literal_18("Any digit<br><i><small>One or more</small></i>"):::literal;
   back_reference_1("\digit<br><i><small>Back-reference</small></i>"):::back-reference;
   back_reference_2("\1<br><i><small>Back-reference</small></i>"):::back-reference;
   assertion_2("\b<br><i><small>Word boundary</small></i>"):::assertion;
   assertion_3("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
-  literal_16("Any digit<br><i><small>One or more</small></i>"):::literal;
-  literal_17("Not a digit<br><i><small>One or more</small></i>"):::literal;
-  literal_18("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_19("Not a word character<br><i><small>One or more</small></i>"):::literal;
-  literal_20("Any whitespace<br><i><small>One or more</small></i>"):::literal;
-  literal_21("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_19("Any digit<br><i><small>One or more</small></i>"):::literal;
+  literal_20("Not a digit<br><i><small>One or more</small></i>"):::literal;
+  literal_21("Any word character<br><i><small>One or more</small></i>"):::literal;
+  literal_22("Not a word character<br><i><small>One or more</small></i>"):::literal;
+  literal_23("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_24("Not whitespace<br><i><small>One or more</small></i>"):::literal;
   negated_char_class_1("x y z<br><i><small>One or more</small></i>"):::negated-char-class;
-  literal_22("\t\r\n"):::literal;
-  literal_23("alt"):::literal;
+  literal_25("\t\r\n"):::literal;
+  literal_26("alt"):::literal;
   assertion_4("$<br><i><small>Ends with</small></i>"):::assertion;
 
   %% Subgraphs
@@ -47,44 +52,52 @@ graph LR
     literal_1
   end
 
-  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph standard_1 ["<small>#2</small> Group 2"]
+    disjunction_begin_2
+    disjunction_end_2
     literal_4
     literal_5
     literal_6
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+    literal_7
+    literal_8
+    literal_9
+  end
+
+  subgraph named_capture_2 ["<small>#3</small> domain"]
     char_class_2
   end
 
   subgraph positive_lookahead_1 ["Positive Lookahead"]
-    literal_7
-  end
-
-  subgraph negative_lookahead_1 ["Negative Lookahead"]
-    literal_8
-  end
-
-  subgraph positive_lookbehind_1 ["Positive Lookbehind"]
-    literal_9
-  end
-
-  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
     literal_10
   end
 
-  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph negative_lookahead_1 ["Negative Lookahead"]
+    literal_11
+  end
+
+  subgraph positive_lookbehind_1 ["Positive Lookbehind"]
     literal_12
+  end
+
+  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
     literal_13
   end
 
+  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+    literal_15
+    literal_16
+  end
+
   subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
-    literal_14
+    literal_17
     char_class_4
   end
 
-  subgraph named_capture_3 ["<small>#3</small> digit"]
-    literal_15
+  subgraph named_capture_3 ["<small>#4</small> digit"]
+    literal_18
   end
 
   %% Edges
@@ -94,36 +107,43 @@ graph LR
   char_class_1 --- literal_1;
   literal_1 --- literal_2;
   literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- char_class_2;
-  char_class_2 --- literal_7;
+  literal_3 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_4;
+  literal_4 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_5;
+  literal_5 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_6;
+  literal_6 --- disjunction_end_2;
+  disjunction_end_2 --- literal_7;
   literal_7 --- literal_8;
   literal_8 --- literal_9;
-  literal_9 --- literal_10;
-  literal_10 --- char_class_3;
-  char_class_3 --- literal_11;
+  literal_9 --- char_class_2;
+  char_class_2 --- literal_10;
+  literal_10 --- literal_11;
   literal_11 --- literal_12;
   literal_12 --- literal_13;
-  literal_13 --- literal_14;
-  literal_14 --- char_class_4;
-  char_class_4 --- literal_15;
-  literal_15 --- back_reference_1;
+  literal_13 --- char_class_3;
+  char_class_3 --- literal_14;
+  literal_14 --- literal_15;
+  literal_15 --- literal_16;
+  literal_16 --- literal_17;
+  literal_17 --- char_class_4;
+  char_class_4 --- literal_18;
+  literal_18 --- back_reference_1;
   back_reference_1 --- back_reference_2;
   back_reference_2 --- assertion_2;
   assertion_2 --- assertion_3;
-  assertion_3 --- literal_16;
-  literal_16 --- literal_17;
-  literal_17 --- literal_18;
-  literal_18 --- literal_19;
+  assertion_3 --- literal_19;
   literal_19 --- literal_20;
   literal_20 --- literal_21;
-  literal_21 --- negated_char_class_1;
-  negated_char_class_1 --- literal_22;
-  literal_22 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_23;
-  literal_23 --- assertion_4;
+  literal_21 --- literal_22;
+  literal_22 --- literal_23;
+  literal_23 --- literal_24;
+  literal_24 --- negated_char_class_1;
+  negated_char_class_1 --- literal_25;
+  literal_25 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_26;
+  literal_26 --- assertion_4;
   assertion_4 --- disjunction_end_1;
   disjunction_end_1 --- fin;
 
@@ -138,6 +158,7 @@ graph LR
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
   classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3,color:#000000;
   classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
@@ -146,6 +167,7 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
+  class standard_1 standard;
   class non_capturing_1,non_capturing_2,non_capturing_3 non-capturing;
   class positive_lookahead_1 positive-lookahead;
   class negative_lookahead_1 negative-lookahead;
