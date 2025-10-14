@@ -67,12 +67,12 @@ graph LR
 
   %% Styles
   %% Node Styling
-  classDef assertion fill:#B6D7A8,stroke:#93C47D;
-  classDef literal fill:#F9CB9C,stroke:#E69138;
-  classDef char-class fill:#B4A7D6,stroke:#8E7CC3;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
-  classDef named-capture fill:#D9EAD3,stroke:#93C47D;
+  classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;

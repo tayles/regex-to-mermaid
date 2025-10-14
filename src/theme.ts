@@ -8,21 +8,21 @@ type ThemeWithStyles = Exclude<Theme, 'none'>;
 export const THEME_STYLES: Record<ThemeWithStyles, Record<NodeType | GroupType, string>> = {
   default: {
     // Node types
-    literal: 'fill:#F9CB9C,stroke:#E69138',
-    'char-class': 'fill:#B4A7D6,stroke:#8E7CC3',
-    'negated-char-class': 'fill:#EA9999,stroke:#CC0000',
-    modifier: 'fill:#A2C4C9,stroke:#6D9EEB',
-    disjunction: 'fill:#FFD966,stroke:#F1C232',
-    assertion: 'fill:#B6D7A8,stroke:#93C47D',
-    'back-reference': 'fill:#F4CCCC,stroke:#E06666',
+    literal: 'fill:#F9CB9C,stroke:#E69138,color:#000000',
+    'char-class': 'fill:#B4A7D6,stroke:#8E7CC3,color:#000000',
+    'negated-char-class': 'fill:#EA9999,stroke:#CC0000,color:#000000',
+    modifier: 'fill:#A2C4C9,stroke:#6D9EEB,color:#000000',
+    disjunction: 'fill:#FFD966,stroke:#F1C232,color:#000000',
+    assertion: 'fill:#B6D7A8,stroke:#93C47D,color:#000000',
+    'back-reference': 'fill:#F4CCCC,stroke:#E06666,color:#000000',
     // Group types
-    standard: 'fill:#FFF2CC,stroke:#F1C232',
-    'named-capture': 'fill:#D9EAD3,stroke:#93C47D',
-    'non-capturing': 'fill:#CFE2F3,stroke:#6D9EEB',
-    'positive-lookahead': 'fill:#D9D2E9,stroke:#8E7CC3',
-    'negative-lookahead': 'fill:#F4CCCC,stroke:#E06666',
-    'positive-lookbehind': 'fill:#EAD1DC,stroke:#C27BA0',
-    'negative-lookbehind': 'fill:#FCE5CD,stroke:#E69138',
+    standard: 'fill:#FFF2CC,stroke:#F1C232,color:#000000',
+    'named-capture': 'fill:#D9EAD3,stroke:#93C47D,color:#000000',
+    'non-capturing': 'fill:#CFE2F3,stroke:#6D9EEB,color:#000000',
+    'positive-lookahead': 'fill:#D9D2E9,stroke:#8E7CC3,color:#000000',
+    'negative-lookahead': 'fill:#F4CCCC,stroke:#E06666,color:#000000',
+    'positive-lookbehind': 'fill:#EAD1DC,stroke:#C27BA0,color:#000000',
+    'negative-lookbehind': 'fill:#FCE5CD,stroke:#E69138,color:#000000',
   },
   neutral: {
     // Node types - muted grays and subtle tones
