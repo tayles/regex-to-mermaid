@@ -1,113 +1,107 @@
-%% ^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
-%% date in YYYY-MM-DD format
+%% Regex: ^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
+
 graph LR
-    %% Nodes
-    start@{ shape: f-circ, label: "Start" };
-    fin@{ shape: f-circ, label: "End" };
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  literal_1("19"):::literal;
+  literal_2("20"):::literal;
+  literal_3("\d\d"):::literal;
+  char_class_1("- Space / ."):::char-class;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  literal_4("0"):::literal;
+  char_class_2("1-9"):::char-class;
+  literal_5("1"):::literal;
+  char_class_3("0 1 2"):::char-class;
+  back_reference_1("\2<br><i><small>Back-reference</small></i>"):::back-reference;
+  disjunction_begin_3:::disjunction@{ shape: f-circ };
+  disjunction_end_3:::disjunction@{ shape: f-circ };
+  literal_6("0"):::literal;
+  char_class_4("1-9"):::char-class;
+  char_class_5("1 2"):::char-class;
+  char_class_6("Any digit"):::char-class;
+  literal_7("3"):::literal;
+  char_class_7("0 1"):::char-class;
+  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
 
-    start_of_line("^<br><i><small>Begins with</small></i>");
-    year_1("19 or 20");
-    year_2["Any digit<br><i><small>2x</small></i>"];
-    separator["- Space / ."];
-    month_1["0"];
-    month_2["1 - 9"];
-    month_3["1 or 0"];
-    month_4["0 or 1 or 2"];
-    back_ref["Back Reference #2"];
-    day_1["0"];
-    day_2["1 - 9"];
-    day_3["1 or 2"];
-    day_4["0 - 9"];
-    day_5["3"];
-    day_6["0 or 1"];
-    end_of_line("$<br><i><small>Ends with</small></i>");
+  %% Subgraphs
+  subgraph standard_1 ["<small>#1</small> Group 1"]
+    disjunction_begin_1
+    disjunction_end_1
+    literal_1
+    literal_2
+  end
 
-    %% Subgraphs
-    subgraph group_1 ["<small>#1</small>"];
-        year_1
-        year_2
-    end
+  subgraph standard_2 ["<small>#2</small> Group 2"]
+    char_class_1
+  end
 
-    subgraph group_2 ["<small>#2</small>"];
-        separator
-    end
+  subgraph standard_3 ["<small>#3</small> Group 3"]
+    disjunction_begin_2
+    disjunction_end_2
+    literal_4
+    char_class_2
+    literal_5
+    char_class_3
+  end
 
-    subgraph group_3 ["<small>#3</small>"];
-        month_1
-        month_2
-        month_3
-        month_4
-    end
+  subgraph standard_4 ["<small>#4</small> Group 4"]
+    disjunction_begin_3
+    disjunction_end_3
+    literal_6
+    char_class_4
+    char_class_5
+    char_class_6
+    literal_7
+    char_class_7
+  end
 
-    subgraph group_4 ["<small>#4</small>"];
-        day_1
-        day_2
-        day_3
-        day_4
-        day_5
-        day_6
-    end
+  %% Edges
+  start --- assertion_1;
+  assertion_1 --- disjunction_begin_1;
+  disjunction_begin_1 --- literal_1;
+  literal_1 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_2;
+  literal_2 --- disjunction_end_1;
+  disjunction_end_1 --- literal_3;
+  literal_3 --- char_class_1;
+  char_class_1 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_4;
+  literal_4 --- char_class_2;
+  char_class_2 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_5;
+  literal_5 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
+  disjunction_end_2 --- back_reference_1;
+  back_reference_1 --- disjunction_begin_3;
+  disjunction_begin_3 --- literal_6;
+  literal_6 --- char_class_4;
+  char_class_4 --- disjunction_end_3;
+  disjunction_begin_3 --- char_class_5;
+  char_class_5 --- char_class_6;
+  char_class_6 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_7;
+  literal_7 --- char_class_7;
+  char_class_7 --- disjunction_end_3;
+  disjunction_end_3 --- assertion_2;
+  assertion_2 --- fin;
 
-    %% Edges
-    start --- start_of_line;
-    start_of_line --- year_1;
-    year_1 --- year_2;
-    year_2 --- separator;
-    separator --- month_1;
-    separator --- month_3;
-    month_1 --- month_2;
-    month_3 --- month_4;
-    month_2 --- back_ref;
-    month_4 --- back_ref;
-    back_ref --- day_1;
-    back_ref --- day_3;
-    back_ref --- day_5;
-    day_1 --- day_2;
-    day_3 --- day_4;
-    day_5 --- day_6;
-    day_2 --- end_of_line;
-    day_4 --- end_of_line;
-    day_6 --- end_of_line;
-    end_of_line --- fin;
+  %% Styles
+  %% Node Styling
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
 
-    %% Styling Definitions
-    %% Node Styling
-    classDef circle fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrMore fill:#FFE599,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOrMore fill:#B6D7A8,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrOne fill:#A2C4C9,stroke:#333,stroke-width:2px,color:black;
-    classDef range fill:#76A5AF,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOf fill:#F6B26B,stroke:#333,stroke-width:2px,color:black;
-    classDef noneOf fill:#E06666,stroke:#333,stroke-width:2px,color:black;
-    classDef literal fill:#F9CB9C,stroke:#333,stroke-width:2px,color:black;
-    classDef terminator fill:#CCCCCC,stroke:#333,stroke-width:2px,color:black;
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
 
-    %% Group Styling
-    classDef captureGroup fill:#FFF2CC,stroke:#333,stroke-width:2px,color:black;
-    classDef namedCaptureGroup fill:#D9EAD3,stroke:#333,stroke-width:2px,color:black;
-    classDef nonCapturingGroup fill:#CFE2F3,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookahead fill:#D5A6BD,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookahead fill:#A4C2F4,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookbehind fill:#B7B7B7,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookbehind fill:#EAD1DC,stroke:#333,stroke-width:2px,color:black;
-    classDef optionalGroup fill:#D9D2E9,stroke:#333,stroke-width:2px,color:black;
+  %% Apply Group Classes
+  class standard_1,standard_2,standard_3,standard_4 standard;
 
-    %% Apply Styling Classes
-    %% Node Classes
-    class start,fin circle;
-    class start_of_line,end_of_line terminator;
-    class year_1 oneOf;
-    class year_2 twoOf;
-    class separator,day_1,day_5 literal;
-    class month_1 literal;
-    class month_2 range;
-    class month_3 oneOf;
-    class month_4 oneOf;
-    class back_ref backReference;
-    class day_2 range;
-    class day_3 oneOf;
-    class day_4 range;
-    class day_6 oneOf;
-
-    %% Group Classes
-    class group_1,group_2,group_3,group_4 captureGroup;
+%% Generated with regex-to-mermaid@1.0.0

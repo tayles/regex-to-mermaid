@@ -34,21 +34,21 @@ graph LR
   assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
   assertion_4("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
   literal_18("Any character"):::literal;
-  
+
   %% Subgraphs
   subgraph named_capture_1 ["<small>#1</small> protocol"]
     literal_1
     literal_2
   end
-  
+
   subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
     literal_4
   end
-  
+
   subgraph standard_1 ["<small>#2</small> Group 2"]
     char_class_1
   end
-  
+
   subgraph non_capturing_2 ["Non-capturing"]
     disjunction_begin_2
     disjunction_end_2
@@ -56,24 +56,24 @@ graph LR
     literal_7
     literal_8
   end
-  
+
   subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
     literal_9
     negated_char_class_1
   end
-  
+
   subgraph positive_lookahead_1 ["Positive Lookahead"]
     literal_10
   end
-  
+
   subgraph negative_lookahead_1 ["Negative Lookahead"]
     literal_15
   end
-  
+
   subgraph negative_lookbehind_1 ["Negative Lookbehind"]
     literal_16
   end
-  
+
   %% Edges
   start --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_1;
@@ -109,24 +109,24 @@ graph LR
   assertion_4 --- literal_18;
   literal_18 --- disjunction_end_1;
   disjunction_end_1 --- fin;
-  
+
   %% Styles
   %% Node Styling
-  classDef disjunction fill:#FFD966,stroke:#F1C232;
-  classDef assertion fill:#B6D7A8,stroke:#93C47D;
-  classDef literal fill:#F9CB9C,stroke:#E69138;
-  classDef char-class fill:#B4A7D6,stroke:#8E7CC3;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000;
-  classDef back-reference fill:#F4CCCC,stroke:#E06666;
-  
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
+  classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
+
   %% Group Styling
-  classDef named-capture fill:#D9EAD3,stroke:#93C47D;
-  classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB;
-  classDef standard fill:#FFF2CC,stroke:#F1C232;
-  classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666;
-  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138;
-  
+  classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
+  classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+  classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3,color:#000000;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
+  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000;
+
   %% Apply Group Classes
   class named_capture_1 named-capture;
   class non_capturing_1,non_capturing_2,non_capturing_3 non-capturing;

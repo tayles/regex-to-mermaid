@@ -1,67 +1,46 @@
-%% /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/
-%% email
+%% Regex: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/
 
 graph LR
-    %% Nodes
-    start@{ shape: f-circ, label: "Start" };
-    fin@{ shape: f-circ, label: "End" };
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i><small>One or more</small></i>"):::char-class;
+  literal_1("@"):::literal;
+  char_class_2("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  literal_2("Any character"):::literal;
+  char_class_3("Any lowercase<br>Any uppercase<br><i><small>2 to 6</small></i>"):::char-class;
+  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
 
-    start_of_line("^<br><i><small>Begins with</small></i>");
-    prefix["Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i><small>One or more</small></i>"];
-    at["@"];
-    domain["Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"];
-    dot["."];
-    tld["Any lowercase<br>Any uppercase<br><i><small>2 - 6</small></i>"];
-    end_of_line("$<br><i><small>Ends with</small></i>");
+  %% Subgraphs
+  subgraph standard_1 ["<small>#1</small> Group 1 <small><i>Zero or more</i></small>"]
+    char_class_1
+    literal_1
+    char_class_2
+    literal_2
+    char_class_3
+  end
 
-    %% Subgraphs
-    subgraph group_1 ["<small>#1</small> <i><small>Optional</small></i>"];
-        prefix
-        at
-        domain
-        dot
-        tld
-    end
+  %% Edges
+  start --- assertion_1;
+  assertion_1 --- char_class_1;
+  char_class_1 --- literal_1;
+  literal_1 --- char_class_2;
+  char_class_2 --- literal_2;
+  literal_2 --- char_class_3;
+  char_class_3 --- assertion_2;
+  assertion_2 --- fin;
 
-    %% Edges
-    start --- start_of_line;
-    start_of_line --- prefix;
-    prefix --- at;
-    at --- domain;
-    domain --- dot;
-    dot --- tld;
-    tld --- end_of_line;
-    end_of_line --- fin;
+  %% Styles
+  %% Node Styling
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
 
-    %% Styling Definitions
-    %% Node Styling
-    classDef circle fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrMore fill:#FFE599,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOrMore fill:#B6D7A8,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrOne fill:#A2C4C9,stroke:#333,stroke-width:2px,color:black;
-    classDef range fill:#76A5AF,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOf fill:#F6B26B,stroke:#333,stroke-width:2px,color:black;
-    classDef noneOf fill:#E06666,stroke:#333,stroke-width:2px,color:black;
-    classDef literal fill:#F9CB9C,stroke:#333,stroke-width:2px,color:black;
-    classDef terminator fill:#CCCCCC,stroke:#333,stroke-width:2px,color:black;
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
 
-    %% Group Styling
-    classDef captureGroup fill:#FFF2CC,stroke:#333,stroke-width:2px,color:black;
-    classDef namedCaptureGroup fill:#D9EAD3,stroke:#333,stroke-width:2px,color:black;
-    classDef nonCapturingGroup fill:#CFE2F3,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookahead fill:#D5A6BD,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookahead fill:#A4C2F4,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookbehind fill:#B7B7B7,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookbehind fill:#EAD1DC,stroke:#333,stroke-width:2px,color:black;
-    classDef optionalGroup fill:#D9D2E9,stroke:#333,stroke-width:2px,color:black;
+  %% Apply Group Classes
+  class standard_1 standard;
 
-    %% Apply Styling Classes
-    %% Node Classes
-    class start,fin circle;
-    class start_of_line,end_of_line terminator;
-    class at,dot literal;
-    class prefix,domain oneOrMore;
-    class tld twoOrMore;
-
-    %% Group Classes
-    class group_1 captureGroup;
+%% Generated with regex-to-mermaid@1.0.0

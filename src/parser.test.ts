@@ -266,7 +266,7 @@ describe('Character class label formatting', () => {
     expect(data.nodes.length).toBe(1);
     const label = data.nodes[0]?.label || '';
     // Ranges first, then single chars on one line
-    expect(label).toMatch(/^Any lowercase<br>- = _ \.   \?/);
+    expect(label).toMatch(/^Any lowercase<br>- = _ \. Space \?/);
     expect(label).toContain('Any lowercase');
   });
 

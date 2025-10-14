@@ -118,6 +118,11 @@ async function generateExamples() {
       content += '```mermaid\n';
       content += diagram + '\n';
       content += '```\n\n';
+
+      // Write the mermaid diagram to a separate file
+      const mermaidFilename = example.filename.replace('.regex', '.mermaid');
+      const mermaidPath = join(diagramsDir, mermaidFilename);
+      await writeFile(mermaidPath, diagram, 'utf-8');
     } catch (error) {
       console.error(`Error processing ${example.filename}:`, error);
       content += '*Error generating diagram*\n\n';

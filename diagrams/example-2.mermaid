@@ -1,76 +1,68 @@
-%% /(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim
+%% Regex: /(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim
 
 graph LR
-    %% Nodes
-    start@{ shape: f-circ, label: "Start" };
-    fin@{ shape: f-circ, label: "End" };
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  literal_1("Not a word character"):::literal;
+  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  literal_2("stock"):::literal;
+  literal_3("Any whitespace<br><i><small>0 to 3</small></i>"):::literal;
+  literal_4("tip"):::literal;
+  literal_5("s"):::literal;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  literal_6("Not a word character"):::literal;
+  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
 
-    non_alpha("Non alphanumeric");
-    start_of_line("^<br><i><small>Begins with</small></i>");
-    stock["stock"];
-    whitespace["Whitespace<br><i><small>0 - 3</small></i>"];
-    tip["tip"];
-    s["s"];
-    non_alpha_2("Non alphanumeric");
-    end_of_line("$<br><i><small>Ends with</small></i>");
+  %% Subgraphs
+  subgraph standard_1 ["<small>#1</small> Group 1"]
+    disjunction_begin_1
+    disjunction_end_1
+    literal_1
+    assertion_1
+  end
 
-    %% Subgraphs
-    subgraph group_1 ["<small>#1</small>"];
-        non_alpha
-        start_of_line
-    end
+  subgraph standard_2 ["<small>#2</small> Group 2 <small><i>0 to 1</i></small>"]
+    literal_5
+  end
 
-    subgraph group_2 ["<small>#2</small> <i><small>Zero or one</small></i>"];
-        s
-    end
+  subgraph standard_3 ["<small>#3</small> Group 3"]
+    disjunction_begin_2
+    disjunction_end_2
+    literal_6
+    assertion_2
+  end
 
-    subgraph group_3 ["<small>#3</small>"];
-        non_alpha_2
-        end_of_line
-    end
+  %% Edges
+  start --- disjunction_begin_1;
+  disjunction_begin_1 --- literal_1;
+  literal_1 --- disjunction_end_1;
+  disjunction_begin_1 --- assertion_1;
+  assertion_1 --- disjunction_end_1;
+  disjunction_end_1 --- literal_2;
+  literal_2 --- literal_3;
+  literal_3 --- literal_4;
+  literal_4 --- literal_5;
+  literal_5 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_6;
+  literal_6 --- disjunction_end_2;
+  disjunction_begin_2 --- assertion_2;
+  assertion_2 --- disjunction_end_2;
+  disjunction_end_2 --- fin;
 
-    %% Edges
-    start --- non_alpha;
-    start --- start_of_line;
-    non_alpha --- stock;
-    start_of_line --- stock;
-    stock --- whitespace;
-    whitespace --- tip;
-    tip --- s;
-    s --- non_alpha_2;
-    s --- end_of_line;
-    non_alpha_2 --- fin;
-    end_of_line --- fin;
+  %% Styles
+  %% Node Styling
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
 
-    %% Styling Definitions
-    %% Node Styling
-    classDef circle fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrMore fill:#FFE599,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOrMore fill:#B6D7A8,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrOne fill:#A2C4C9,stroke:#333,stroke-width:2px,color:black;
-    classDef range fill:#76A5AF,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOf fill:#F6B26B,stroke:#333,stroke-width:2px,color:black;
-    classDef noneOf fill:#E06666,stroke:#333,stroke-width:2px,color:black;
-    classDef literal fill:#F9CB9C,stroke:#333,stroke-width:2px,color:black;
-    classDef terminator fill:#CCCCCC,stroke:#333,stroke-width:2px,color:black;
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
 
-    %% Group Styling
-    classDef captureGroup fill:#FFF2CC,stroke:#333,stroke-width:2px,color:black;
-    classDef namedCaptureGroup fill:#D9EAD3,stroke:#333,stroke-width:2px,color:black;
-    classDef nonCapturingGroup fill:#CFE2F3,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookahead fill:#D5A6BD,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookahead fill:#A4C2F4,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookbehind fill:#B7B7B7,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookbehind fill:#EAD1DC,stroke:#333,stroke-width:2px,color:black;
-    classDef optionalGroup fill:#D9D2E9,stroke:#333,stroke-width:2px,color:black;
+  %% Apply Group Classes
+  class standard_1,standard_2,standard_3 standard;
 
-    %% Apply Styling Classes
-    %% Node Classes
-    class start,fin circle;
-    class start_of_line,end_of_line terminator;
-    class stock,tip,s literal;
-    class whitespace zeroOrOne;
-    class non_alpha,non_alpha_2 range;
-
-    %% Group Classes
-    class group_1,group_2,group_3 captureGroup;
+%% Generated with regex-to-mermaid@1.0.0

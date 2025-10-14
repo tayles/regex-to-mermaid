@@ -1,83 +1,61 @@
-%% /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
 
 graph LR
-    %% Nodes
-    start@{ shape: f-circ, label: "Start" };
-    fin@{ shape: f-circ, label: "End" };
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  literal_1("http"):::literal;
+  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_3("://"):::literal;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  literal_4("Any character"):::literal;
+  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  literal_5("/"):::literal;
+  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
+  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
 
-    start_of_line("^<br><i><small>Begins with</small></i>");
-    http["http"];
-    s["s<br><i><small>Optional</small></i>"];
-    colon_slash_slash["://"];
-    domain_name["Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"];
-    dot["."];
-    tld["Any lowercase<br>Any uppercase<br><i><small>Two or more</small></i>"];
-    slash["/"];
-    any_char["Any character<br><i><small>Zero or more</small></i>"];
-    end_of_line("$<br><i><small>Ends with</small></i>");
+  %% Subgraphs
+  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+    literal_1
+    literal_2
+    literal_3
+  end
 
-    %% Subgraphs
-    subgraph protocol_group ["<small>#1</small> protocol <i><small>Optional</small></i>"];
-        http
-        s
-        colon_slash_slash
-    end
+  subgraph named_capture_2 ["<small>#2</small> domain"]
+    char_class_1
+    literal_4
+    char_class_2
+  end
 
-    subgraph domain_group ["<small>#2</small> domain"];
-        domain_name
-        dot
-        tld;
-    end
+  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+    literal_5
+    literal_6
+  end
 
-    subgraph path_group ["<small>#3</small> path <i><small>Optional</small></i>"];
-        slash
-        any_char
-    end
+  %% Edges
+  start --- assertion_1;
+  assertion_1 --- literal_1;
+  literal_1 --- literal_2;
+  literal_2 --- literal_3;
+  literal_3 --- char_class_1;
+  char_class_1 --- literal_4;
+  literal_4 --- char_class_2;
+  char_class_2 --- literal_5;
+  literal_5 --- literal_6;
+  literal_6 --- assertion_2;
+  assertion_2 --- fin;
 
-    %% Edges
-    start --- start_of_line;
-    start_of_line --- http;
-    http --- s;
-    s --- colon_slash_slash;
-    colon_slash_slash --- domain_name;
-    domain_name --- dot;
-    dot --- tld;
-    tld --- slash;
-    slash --- any_char;
-    any_char --- end_of_line;
-    end_of_line --- fin;
+  %% Styles
+  %% Node Styling
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
-    %% Styling Definitions
-    %% Node Styling
-    classDef circle fill:#B4A7D6,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrMore fill:#FFE599,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOrMore fill:#B6D7A8,stroke:#333,stroke-width:2px,color:black;
-    classDef zeroOrOne fill:#A2C4C9,stroke:#333,stroke-width:2px,color:black;
-    classDef range fill:#76A5AF,stroke:#333,stroke-width:2px,color:black;
-    classDef oneOf fill:#F6B26B,stroke:#333,stroke-width:2px,color:black;
-    classDef noneOf fill:#E06666,stroke:#333,stroke-width:2px,color:black;
-    classDef literal fill:#F9CB9C,stroke:#333,stroke-width:2px,color:black;
-    classDef terminator fill:#CCCCCC,stroke:#333,stroke-width:2px,color:black;
+  %% Group Styling
+  classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
 
-    %% Group Styling
-    classDef captureGroup fill:#FFF2CC,stroke:#333,stroke-width:2px,color:black;
-    classDef namedCaptureGroup fill:#D9EAD3,stroke:#333,stroke-width:2px,color:black;
-    classDef nonCapturingGroup fill:#CFE2F3,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookahead fill:#D5A6BD,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookahead fill:#A4C2F4,stroke:#333,stroke-width:2px,color:black;
-    classDef positiveLookbehind fill:#B7B7B7,stroke:#333,stroke-width:2px,color:black;
-    classDef negativeLookbehind fill:#EAD1DC,stroke:#333,stroke-width:2px,color:black;
-    classDef optionalGroup fill:#D9D2E9,stroke:#333,stroke-width:2px,color:black;
+  %% Apply Group Classes
+  class named_capture_1,named_capture_2,named_capture_3 named-capture;
 
-    %% Apply Styling Classes
-    %% Node Classes
-    class start,fin circle;
-    class start_of_line,end_of_line terminator;
-    class http,dot,colon_slash_slash,slash literal;
-    class s zeroOrOne;
-    class domain_name oneOrMore;
-    class tld twoOrMore;
-    class any_char zeroOrMore;
-
-    %% Group Classes
-    class protocol_group,domain_group,path_group namedCaptureGroup;
+%% Generated with regex-to-mermaid@1.0.0
