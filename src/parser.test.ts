@@ -1,5 +1,215 @@
 import { test, expect, describe } from 'bun:test';
-import { buildRegexAst, generateDiagramData, buildFriendlyLabel, buildFriendlyId } from './parser';
+import {
+  buildRegexAst,
+  generateDiagramData,
+  buildFriendlyLabel,
+  buildFriendlyId,
+  parseJavaScriptRegex,
+  parseRegexByFlavor,
+} from './parser';
+
+describe('parseJavaScriptRegex', () => {
+  test('parses pattern without slashes as plain string', () => {
+    const result = parseJavaScriptRegex('test');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('test');
+    expect(result.flags).toBe('');
+  });
+
+  test('parses regex literal with slashes', () => {
+    const result = parseJavaScriptRegex('/test/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('test');
+    expect(result.flags).toBe('');
+  });
+
+  test('parses regex literal with flags', () => {
+    const result = parseJavaScriptRegex('/test/gi');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('test');
+    expect(result.flags).toBe('gi');
+  });
+
+  test('parses regex literal with single flag', () => {
+    const result = parseJavaScriptRegex('/test/i');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('test');
+    expect(result.flags).toBe('i');
+  });
+
+  test('parses complex pattern with special characters', () => {
+    const result = parseJavaScriptRegex('/^[a-z]+$/i');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('^[a-z]+$');
+    expect(result.flags).toBe('i');
+  });
+
+  test('parses pattern with escaped characters', () => {
+    const result = parseJavaScriptRegex('/\\d+\\.\\d+/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('\\d+\\.\\d+');
+  });
+
+  test('parses pattern with named groups', () => {
+    const result = parseJavaScriptRegex('/(?<name>[a-z]+)/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('(?<name>[a-z]+)');
+  });
+
+  test('handles pattern with only opening slash', () => {
+    const result = parseJavaScriptRegex('/test');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('\\/test'); // Slash gets escaped when treated as plain string
+  });
+
+  test('throws error for invalid regex pattern', () => {
+    expect(() => {
+      parseJavaScriptRegex('(?<');
+    }).toThrow();
+  });
+
+  test('throws error for invalid flags', () => {
+    expect(() => {
+      parseJavaScriptRegex('/test/xyz');
+    }).toThrow();
+  });
+
+  test('parses pattern with alternation', () => {
+    const result = parseJavaScriptRegex('/foo|bar|baz/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('foo|bar|baz');
+  });
+
+  test('parses pattern with lookahead', () => {
+    const result = parseJavaScriptRegex('/test(?=ing)/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('test(?=ing)');
+  });
+
+  test('parses pattern with lookbehind', () => {
+    const result = parseJavaScriptRegex('/(?<=\\$)\\d+/');
+    expect(result).toBeInstanceOf(RegExp);
+    expect(result.source).toBe('(?<=\\$)\\d+');
+  });
+});
+
+describe('parseRegexByFlavor', () => {
+  describe('regexp flavor', () => {
+    test('parses JavaScript RegExp pattern', () => {
+      const result = parseRegexByFlavor('/test/i', 'regexp');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+      expect(result.flags).toBe('i');
+    });
+
+    test('parses pattern without slashes', () => {
+      const result = parseRegexByFlavor('test', 'regexp');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+    });
+
+    test('parses named capture groups', () => {
+      const result = parseRegexByFlavor('(?<name>[a-z]+)', 'regexp');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('(?<name>[a-z]+)');
+    });
+
+    test('throws error for invalid JavaScript RegExp', () => {
+      expect(() => {
+        parseRegexByFlavor('(?<', 'regexp');
+      }).toThrow();
+    });
+  });
+
+  describe('pcre flavor', () => {
+    test('converts PCRE pattern to JavaScript RegExp', () => {
+      const result = parseRegexByFlavor('/test/i', 'pcre');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+      expect(result.flags).toBe('i');
+    });
+
+    test('converts PCRE named groups to JavaScript', () => {
+      const result = parseRegexByFlavor('/(?P<name>\\w+)/', 'pcre');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('(\\w+)');
+    });
+
+    test('handles PCRE pattern with delimiter', () => {
+      const result = parseRegexByFlavor('/(foo|bar)/', 'pcre');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('(foo|bar)');
+    });
+
+    test('handles PCRE with flags', () => {
+      const result = parseRegexByFlavor('/^start.*end$/i', 'pcre');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('^start.*end$');
+      expect(result.flags).toBe('i');
+    });
+
+    test('handles PCRE character classes', () => {
+      const result = parseRegexByFlavor('/[a-z]+/', 'pcre');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('[a-z]+');
+    });
+  });
+
+  describe('auto flavor', () => {
+    test('parses valid JavaScript RegExp first', () => {
+      const result = parseRegexByFlavor('/test/i', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+      expect(result.flags).toBe('i');
+    });
+
+    test('handles JavaScript named groups', () => {
+      const result = parseRegexByFlavor('(?<name>[a-z]+)', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('(?<name>[a-z]+)');
+    });
+
+    test('falls back to PCRE for PCRE-specific syntax', () => {
+      // PCRE named groups: (?P<name>...) should fallback and get converted
+      const result = parseRegexByFlavor('/(?P<name>\\w+)/', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      // PCRE converts named groups, so source will be different
+      expect(result.source).toBe('(\\w+)');
+    });
+
+    test('handles simple patterns without slashes', () => {
+      const result = parseRegexByFlavor('test', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+    });
+
+    test('handles complex JavaScript patterns', () => {
+      const result = parseRegexByFlavor('/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\\.[a-z]{2,}$/', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\\.[a-z]{2,}$');
+    });
+
+    test('throws error when both JavaScript and PCRE parsing fail', () => {
+      // This pattern should fail in both parsers
+      expect(() => {
+        parseRegexByFlavor('(?<', 'auto');
+      }).toThrow();
+    });
+
+    test('successfully parses patterns that work in both', () => {
+      const result = parseRegexByFlavor('/foo|bar/', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('foo|bar');
+    });
+
+    test('prefers JavaScript RegExp over PCRE when both work', () => {
+      // Simple pattern should use JavaScript RegExp (faster path)
+      const result = parseRegexByFlavor('/test/', 'auto');
+      expect(result).toBeInstanceOf(RegExp);
+      expect(result.source).toBe('test');
+    });
+  });
+});
 
 describe('buildRegexAst', () => {
   test('parses a simple string pattern', () => {

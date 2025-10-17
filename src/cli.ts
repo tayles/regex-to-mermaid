@@ -1,14 +1,15 @@
 import { Command } from 'commander';
-import { buildRegexAst, generateDiagramData } from './parser';
+import { buildRegexAst, generateDiagramData, parseRegexByFlavor } from './parser';
 import { buildMermaidDiagram } from './renderer';
 import { THEMES, type Theme } from './theme';
-import type { Direction } from './types';
+import { FLAVORS, type Direction, type Flavor } from './types';
 import packageJson from '../package.json';
 
 export interface CLIOptions {
   output?: string;
   direction: Direction;
   theme: Theme;
+  flavor: Flavor;
 }
 
 export function createCLI(): Command {
@@ -30,6 +31,11 @@ export function createCLI(): Command {
       'Mermaid theme: default, neutral, dark, forest, or none',
       'default',
     )
+    .option(
+      '-f, --flavor <flavor>',
+      'Regex flavor: regexp (JavaScript), pcre (PCRE), or auto (detect automatically)',
+      'auto',
+    )
     .action((regex: string, options: CLIOptions) => {
       const diagram = processRegex(regex, options);
       writeOutput(diagram, options.output);
@@ -39,6 +45,15 @@ export function createCLI(): Command {
 }
 
 export function processRegex(regex: string, options: CLIOptions): string {
+  // merge options with defaults
+  options = {
+    output: undefined,
+    ...options,
+    direction: options.direction ?? 'LR',
+    theme: options.theme ?? 'default',
+    flavor: options.flavor ?? 'auto',
+  };
+
   // Validate direction
   const direction = options.direction.toUpperCase() as Direction;
   if (direction !== 'TD' && direction !== 'LR') {
@@ -51,23 +66,16 @@ export function processRegex(regex: string, options: CLIOptions): string {
     throw new Error(`Invalid theme: ${options.theme}. Must be one of: ${THEMES.join(', ')}.`);
   }
 
-  // Parse the regex
+  // Validate flavor
+  const flavor = options.flavor.toLowerCase() as Flavor;
+  if (!FLAVORS.includes(flavor)) {
+    throw new Error(`Invalid flavor: ${options.flavor}. Must be one of: ${FLAVORS.join(', ')}.`);
+  }
+
+  // Parse the regex based on flavor
   let pattern: RegExp;
   try {
-    // Try to parse as a regex literal first
-    if (regex.startsWith('/')) {
-      const lastSlash = regex.lastIndexOf('/');
-      if (lastSlash > 0) {
-        const patternStr = regex.slice(1, lastSlash);
-        const flags = regex.slice(lastSlash + 1);
-        pattern = new RegExp(patternStr, flags);
-      } else {
-        pattern = new RegExp(regex);
-      }
-    } else {
-      // Treat as plain string pattern
-      pattern = new RegExp(regex);
-    }
+    pattern = parseRegexByFlavor(regex, flavor);
   } catch (error) {
     throw new Error(
       `Invalid regular expression: ${error instanceof Error ? error.message : error}`,

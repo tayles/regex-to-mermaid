@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "commander": "^14.0.1",
+    "pcre-to-regexp": "^1.1.0",
     "regexp-tree": "^0.1.27"
   },
   "devDependencies": {

@@ -48,3 +48,6 @@ export interface DiagramData {
 }
 
 export type Direction = 'LR' | 'TD';
+
+export const FLAVORS = ['regexp', 'pcre', 'auto'] as const;
+export type Flavor = (typeof FLAVORS)[number];

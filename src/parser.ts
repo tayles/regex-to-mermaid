@@ -1,6 +1,46 @@
 import regexpTree from 'regexp-tree';
-import type { DiagramData, DiagramNode, Edge, Group, NodeType } from './types';
+import pcreToRegexp from 'pcre-to-regexp';
+import type { DiagramData, DiagramNode, Edge, Group, NodeType, Flavor } from './types';
 import type { AstRegExp } from 'regexp-tree/ast';
+
+export function parseJavaScriptRegex(regex: string): RegExp {
+  // Try to parse as a regex literal first
+  if (regex.startsWith('/')) {
+    const lastSlash = regex.lastIndexOf('/');
+    if (lastSlash > 0) {
+      const patternStr = regex.slice(1, lastSlash);
+      const flags = regex.slice(lastSlash + 1);
+      return new RegExp(patternStr, flags);
+    } else {
+      return new RegExp(regex);
+    }
+  } else {
+    // Treat as plain string pattern
+    return new RegExp(regex);
+  }
+}
+
+export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
+  if (flavor === 'pcre') {
+    // PCRE: Convert using pcre-to-regexp
+    return pcreToRegexp(regex);
+  } else if (flavor === 'regexp') {
+    // JavaScript RegExp: Parse directly
+    return parseJavaScriptRegex(regex);
+  } else {
+    // Auto: Try JavaScript RegExp first, fallback to PCRE
+    try {
+      return parseJavaScriptRegex(regex);
+    } catch (regexpError) {
+      try {
+        return pcreToRegexp(regex);
+      } catch (pcreError) {
+        // If both fail, throw the original RegExp error
+        throw regexpError;
+      }
+    }
+  }
+}
 
 export function buildRegexAst(pattern: string | RegExp) {
   const ast = regexpTree.parse(pattern, {
