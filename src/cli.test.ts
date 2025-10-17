@@ -81,7 +81,11 @@ describe('processRegex', () => {
   });
 
   test('handles lowercase direction by converting to uppercase', () => {
-    const result = processRegex('test', { direction: 'lr' as any, theme: 'default', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'lr' as any,
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
   });
 
@@ -98,7 +102,11 @@ describe('processRegex', () => {
   });
 
   test('includes regex pattern as comment', () => {
-    const result = processRegex('hello.*world', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('hello.*world', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('%% Regex: hello.*world');
   });
 
@@ -119,7 +127,11 @@ describe('processRegex', () => {
   });
 
   test('handles regex with character classes', () => {
-    const result = processRegex('[a-zA-Z0-9]', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('[a-zA-Z0-9]', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
@@ -131,7 +143,11 @@ describe('processRegex', () => {
   });
 
   test('handles regex with groups', () => {
-    const result = processRegex('(?<name>[a-z]+)', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('(?<name>[a-z]+)', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
@@ -155,7 +171,11 @@ describe('processRegex', () => {
   });
 
   test('handles escaped characters', () => {
-    const result = processRegex('\\d+\\.\\d+', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('\\d+\\.\\d+', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
@@ -313,7 +333,11 @@ describe('Edge cases', () => {
   });
 
   test('handles unicode characters', () => {
-    const result = processRegex('[\\u0000-\\uFFFF]', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('[\\u0000-\\uFFFF]', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 });
@@ -321,13 +345,21 @@ describe('Edge cases', () => {
 describe('Flavor option', () => {
   describe('regexp flavor', () => {
     test('processes JavaScript RegExp pattern', () => {
-      const result = processRegex('/test/i', { direction: 'LR', theme: 'default', flavor: 'regexp' });
+      const result = processRegex('/test/i', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'regexp',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
 
     test('processes named capture groups', () => {
-      const result = processRegex('(?<name>[a-z]+)', { direction: 'LR', theme: 'default', flavor: 'regexp' });
+      const result = processRegex('(?<name>[a-z]+)', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'regexp',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -353,19 +385,31 @@ describe('Flavor option', () => {
     });
 
     test('converts PCRE named groups to JavaScript', () => {
-      const result = processRegex('/(?P<name>\\w+)/', { direction: 'LR', theme: 'default', flavor: 'pcre' });
+      const result = processRegex('/(?P<name>\\w+)/', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'pcre',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
 
     test('handles PCRE pattern with delimiter', () => {
-      const result = processRegex('/(foo|bar)/', { direction: 'LR', theme: 'default', flavor: 'pcre' });
+      const result = processRegex('/(foo|bar)/', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'pcre',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
 
     test('handles PCRE with flags', () => {
-      const result = processRegex('/^start.*end$/i', { direction: 'LR', theme: 'default', flavor: 'pcre' });
+      const result = processRegex('/^start.*end$/i', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'pcre',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -379,14 +423,22 @@ describe('Flavor option', () => {
     });
 
     test('handles JavaScript named groups', () => {
-      const result = processRegex('(?<name>[a-z]+)', { direction: 'LR', theme: 'default', flavor: 'auto' });
+      const result = processRegex('(?<name>[a-z]+)', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'auto',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
 
     test('falls back to PCRE for PCRE-specific syntax', () => {
       // This uses PCRE named group syntax which differs from JavaScript
-      const result = processRegex('/(?P<name>\\w+)/', { direction: 'LR', theme: 'default', flavor: 'auto' });
+      const result = processRegex('/(?P<name>\\w+)/', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'auto',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -412,7 +464,11 @@ describe('Flavor option', () => {
   });
 
   test('validates flavor is case-insensitive', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'REGEXP' as any });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'REGEXP' as any,
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
