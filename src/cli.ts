@@ -1,18 +1,13 @@
 import { Command } from 'commander';
-import { buildRegexAst, generateDiagramData, parseRegexByFlavor } from './parser';
-import { buildMermaidDiagram } from './renderer';
-import { THEMES, type Theme } from './theme';
-import { FLAVORS, type Direction, type Flavor } from './types';
-import packageJson from '../package.json';
+import { regexToMermaid } from './regex-to-mermaid';
+import type { Direction, Flavor, Options, Theme } from './types';
+import { DEFAULT_OPTIONS } from './types';
 
-export interface CLIOptions {
+interface CLIOptions extends Options {
   output?: string;
-  direction: Direction;
-  theme: Theme;
-  flavor: Flavor;
 }
 
-export function createCLI(): Command {
+function createCLI(): Command {
   const program = new Command();
 
   program
@@ -24,17 +19,17 @@ export function createCLI(): Command {
     .option(
       '-d, --direction <direction>',
       'Diagram direction: TD (top-down) or LR (left-right)',
-      'LR',
+      DEFAULT_OPTIONS.direction,
     )
     .option(
       '-t, --theme <theme>',
       'Mermaid theme: default, neutral, dark, forest, or none',
-      'default',
+      DEFAULT_OPTIONS.theme,
     )
     .option(
       '-f, --flavor <flavor>',
       'Regex flavor: regexp (JavaScript), pcre (PCRE), or auto (detect automatically)',
-      'auto',
+      DEFAULT_OPTIONS.flavor,
     )
     .action((regex: string, options: CLIOptions) => {
       const diagram = processRegex(regex, options);
@@ -44,58 +39,23 @@ export function createCLI(): Command {
   return program;
 }
 
-export function processRegex(regex: string, options: CLIOptions): string {
-  // merge options with defaults
-  options = {
-    output: undefined,
-    ...options,
-    direction: options.direction ?? 'LR',
-    theme: options.theme ?? 'default',
-    flavor: options.flavor ?? 'auto',
-  };
+function processRegex(regex: string, options: CLIOptions): string {
+  // Normalize and validate options
+  const direction = (options.direction?.toUpperCase() ?? DEFAULT_OPTIONS.direction) as Direction;
+  const theme = (options.theme?.toLowerCase() ?? DEFAULT_OPTIONS.theme) as Theme;
+  const flavor = (options.flavor?.toLowerCase() ?? DEFAULT_OPTIONS.flavor) as Flavor;
 
-  // Validate direction
-  const direction = options.direction.toUpperCase() as Direction;
-  if (direction !== 'TD' && direction !== 'LR') {
-    throw new Error(`Invalid direction: ${options.direction}. Must be TD or LR.`);
-  }
-
-  // Validate theme
-  const theme = options.theme.toLowerCase() as Theme;
-  if (!THEMES.includes(theme)) {
-    throw new Error(`Invalid theme: ${options.theme}. Must be one of: ${THEMES.join(', ')}.`);
-  }
-
-  // Validate flavor
-  const flavor = options.flavor.toLowerCase() as Flavor;
-  if (!FLAVORS.includes(flavor)) {
-    throw new Error(`Invalid flavor: ${options.flavor}. Must be one of: ${FLAVORS.join(', ')}.`);
-  }
-
-  // Parse the regex based on flavor
-  let pattern: RegExp;
-  try {
-    pattern = parseRegexByFlavor(regex, flavor);
-  } catch (error) {
-    throw new Error(
-      `Invalid regular expression: ${error instanceof Error ? error.message : error}`,
-    );
-  }
-
-  // Generate diagram data
-  const ast = buildRegexAst(pattern);
-  const data = generateDiagramData(ast);
-
-  // Build the Mermaid diagram
-  let diagram = buildMermaidDiagram(data, direction, theme);
-
-  // Add regex pattern as comment and suffix with package info
-  diagram = `%% Regex: ${regex}\n\n${diagram}\n\n%% Generated with ${packageJson.name}@${packageJson.version}`;
+  // Generate diagram using the main function
+  const diagram = regexToMermaid(regex, {
+    direction,
+    theme,
+    flavor,
+  });
 
   return diagram;
 }
 
-export function writeOutput(content: string, outputPath?: string): void {
+function writeOutput(content: string, outputPath?: string): void {
   if (outputPath) {
     // Write to file
     Bun.write(outputPath, content);
@@ -105,7 +65,13 @@ export function writeOutput(content: string, outputPath?: string): void {
   }
 }
 
-export async function runCLI(args: string[]): Promise<void> {
+async function runCLI(args: string[]): Promise<void> {
   const program = createCLI();
   await program.parseAsync(args);
 }
+
+// Run the CLI with process arguments
+runCLI(process.argv).catch(error => {
+  console.error('Error:', error.message);
+  process.exit(1);
+});

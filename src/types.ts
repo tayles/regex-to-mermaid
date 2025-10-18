@@ -47,7 +47,23 @@ export interface DiagramData {
   groups: Group[];
 }
 
-export type Direction = 'LR' | 'TD';
+export const DIRECTIONS = ['LR', 'TD'] as const;
+export type Direction = (typeof DIRECTIONS)[number];
 
 export const FLAVORS = ['regexp', 'pcre', 'auto'] as const;
 export type Flavor = (typeof FLAVORS)[number];
+
+export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;
+export type Theme = (typeof THEMES)[number];
+
+export interface Options {
+  direction?: Direction;
+  flavor?: Flavor;
+  theme?: Theme;
+}
+
+export const DEFAULT_OPTIONS = {
+  direction: 'LR',
+  flavor: 'auto',
+  theme: 'default',
+} as const satisfies Options;

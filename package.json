@@ -33,19 +33,25 @@
   "license": "MIT",
   "author": "tayles",
   "type": "module",
-  "module": "index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/regex-to-mermaid.ts",
+      "types": "./src/regex-to-mermaid.ts"
+    }
+  },
+  "main": "./src/regex-to-mermaid.ts",
+  "module": "./src/regex-to-mermaid.ts",
   "bin": {
-    "regex-to-mermaid": "index.ts"
+    "regex-to-mermaid": "./src/cli.ts"
   },
   "files": [
-    "index.ts",
-    "src/",
+    "src/regex-to-mermaid.ts",
     "LICENSE",
     "README.md",
     "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "bun run index.ts",
+    "dev": "bun run src/cli.ts",
     "test": "bun test",
     "format": "bunx prettier --write .",
     "typecheck": "bunx tsc --noEmit",
