@@ -25,6 +25,8 @@ For example, visualise this:
 
 as this:
 
+![regex-to-mermaid](docs/regex-to-mermaid.png)
+
 ```mermaid
 graph LR
     %% Nodes
@@ -158,23 +160,58 @@ With options:
 # Use a different theme
 regex-to-mermaid 'foo|bar' --theme dark
 
+# Change diagram direction
+regex-to-mermaid 'foo|bar' --direction TD
+
+# Specify regex flavor
+regex-to-mermaid '\d+' --flavor pcre
+
 # Output to file
 regex-to-mermaid 'foo|bar' --output diagram.mermaid
+
+# Combine options
+regex-to-mermaid 'https?://.*' --theme dark --direction TD --flavor auto
 
 # Show help
 regex-to-mermaid --help
 ```
 
+#### CLI Options
+
+- `-d, --direction <direction>` - Diagram direction: `LR` (left-right) or `TD` (top-down). Default: `LR`
+- `-f, --flavor <flavor>` - Regex flavor: `regexp` (JavaScript), `pcre` (PCRE), or `auto` (detect automatically). Default: `auto`
+- `-t, --theme <theme>` - Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`. Default: `default`
+- `-o, --output <file>` - Output file (if not specified, outputs to stdout)
+
 ### As a Library
 
 ```typescript
-import { parseRegex, renderMermaid } from 'regex-to-mermaid';
+import { regexToMermaid } from 'regex-to-mermaid';
 
-const pattern = /^foo|bar$/;
-const ast = parseRegex(pattern);
-const diagram = renderMermaid(ast, { theme: 'default' });
-
+// Basic usage
+const diagram = regexToMermaid(/^foo|bar$/);
 console.log(diagram);
+
+// With options
+const diagram2 = regexToMermaid('https?://.*', {
+  direction: 'TD', // 'LR' (left-right) or 'TD' (top-down)
+  theme: 'dark', // 'default', 'neutral', 'dark', 'forest', or 'none'
+  flavor: 'regexp', // 'regexp' (JavaScript), 'pcre', or 'auto'
+});
+console.log(diagram2);
+```
+
+#### API
+
+```typescript
+function regexToMermaid(
+  pattern: string | RegExp,
+  options?: {
+    direction?: 'LR' | 'TD'; // Default: 'LR'
+    flavor?: 'regexp' | 'pcre' | 'auto'; // Default: 'auto'
+    theme?: 'default' | 'neutral' | 'dark' | 'forest' | 'none'; // Default: 'default'
+  },
+): string;
 ```
 
 ## Examples
