@@ -125,6 +125,16 @@ See available [themes](./THEMES.md).
 
 ## Development
 
+### Version Management
+
+This project uses [Changesets](https://github.com/changesets/changesets) for version management and changelog generation.
+
+Quick reference:
+
+- **Add a changeset**: `bun run changeset`
+- **Update versions**: `bun run version`
+- **Publish**: `bun run release`
+
 ### Generating Examples
 
 The `EXAMPLES.md` file is automatically generated from the regex files in the `diagrams/` directory. Each `.regex` file should include YAML frontmatter with a `name` and optional `description`:

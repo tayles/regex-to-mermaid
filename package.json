@@ -10,7 +10,10 @@
     "start": "bun run index.ts",
     "format": "bunx prettier --write .",
     "generate-examples": "bun scripts/generate-examples.ts",
-    "generate-themes": "bun scripts/generate-themes.ts"
+    "generate-themes": "bun scripts/generate-themes.ts",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
   },
   "keywords": [
     "regex",
@@ -27,6 +30,7 @@
     "regexp-tree": "^0.1.27"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@types/bun": "latest"
   },
   "peerDependencies": {
