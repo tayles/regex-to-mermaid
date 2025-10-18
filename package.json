@@ -2,38 +2,6 @@
   "name": "regex-to-mermaid",
   "version": "1.0.0",
   "description": "Visualize regular expressions as Mermaid flowchart diagrams",
-  "author": "tayles",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tayles/regex-to-mermaid.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tayles/regex-to-mermaid/issues"
-  },
-  "homepage": "https://github.com/tayles/regex-to-mermaid#readme",
-  "type": "module",
-  "module": "index.ts",
-  "bin": {
-    "regex-to-mermaid": "index.ts"
-  },
-  "files": [
-    "index.ts",
-    "src/",
-    "LICENSE",
-    "README.md",
-    "CHANGELOG.md"
-  ],
-  "scripts": {
-    "start": "bun run index.ts",
-    "test": "bun test",
-    "format": "bunx prettier --write .",
-    "generate-examples": "bun scripts/generate-examples.ts",
-    "generate-themes": "bun scripts/generate-themes.ts",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
-  },
   "keywords": [
     "regex",
     "regexp",
@@ -54,6 +22,39 @@
     "parser",
     "ast"
   ],
+  "homepage": "https://github.com/tayles/regex-to-mermaid#readme",
+  "bugs": {
+    "url": "https://github.com/tayles/regex-to-mermaid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tayles/regex-to-mermaid.git"
+  },
+  "license": "MIT",
+  "author": "tayles",
+  "type": "module",
+  "module": "index.ts",
+  "bin": {
+    "regex-to-mermaid": "index.ts"
+  },
+  "files": [
+    "index.ts",
+    "src/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "dev": "bun run index.ts",
+    "test": "bun test",
+    "format": "bunx prettier --write .",
+    "typecheck": "bunx tsc --noEmit",
+    "generate-examples": "bun scripts/generate-examples.ts",
+    "generate-themes": "bun scripts/generate-themes.ts",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
   "dependencies": {
     "commander": "^14.0.1",
     "pcre-to-regexp": "^1.1.0",
