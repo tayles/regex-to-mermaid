@@ -1,6 +1,21 @@
 # regex-to-mermaid
 
+[![npm version](https://img.shields.io/npm/v/regex-to-mermaid.svg)](https://www.npmjs.com/package/regex-to-mermaid)
+[![CI](https://github.com/tayles/regex-to-mermaid/actions/workflows/ci.yml/badge.svg)](https://github.com/tayles/regex-to-mermaid/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Made with Bun](https://img.shields.io/badge/Made%20with-Bun-fb923c?logo=bun&logoColor=white)](https://bun.sh)
+
 A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams.
+
+## Features
+
+✨ **Visual Regex Understanding** - Convert complex regex patterns into intuitive flowcharts  
+🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling  
+📦 **CLI & Library** - Use as a command-line tool or integrate into your projects  
+🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more  
+⚡ **Fast & Modern** - Built with Bun and TypeScript for optimal performance
+
+## Quick Start
 
 For example, visualise this:
 
@@ -107,12 +122,59 @@ Using [regexp-tree-cli](https://github.com/dtinth/regexp-tree-cli) to output the
 regexp-tree-cli --expression '/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/' --loc
 ```
 
-## CLI
+## Installation
 
-Call like so:
+### Using Bun (Recommended)
 
-```shell
+```bash
+bun install -g regex-to-mermaid
+```
+
+### Using npm
+
+```bash
+npm install -g regex-to-mermaid
+```
+
+### Using npx (No Installation)
+
+```bash
+npx regex-to-mermaid 'your-regex-here'
+```
+
+## Usage
+
+### Command Line
+
+Basic usage:
+
+```bash
 regex-to-mermaid 'foo|bar'
+```
+
+With options:
+
+```bash
+# Use a different theme
+regex-to-mermaid 'foo|bar' --theme dark
+
+# Output to file
+regex-to-mermaid 'foo|bar' --output diagram.mermaid
+
+# Show help
+regex-to-mermaid --help
+```
+
+### As a Library
+
+```typescript
+import { parseRegex, renderMermaid } from 'regex-to-mermaid';
+
+const pattern = /^foo|bar$/;
+const ast = parseRegex(pattern);
+const diagram = renderMermaid(ast, { theme: 'default' });
+
+console.log(diagram);
 ```
 
 ## Examples
@@ -123,7 +185,37 @@ See more [examples](./EXAMPLES.md).
 
 See available [themes](./THEMES.md).
 
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- 📋 How to report bugs
+- 💡 How to suggest features
+- 🔧 How to set up your development environment
+- ✅ How to submit pull requests
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
 ## Development
+
+This project uses **Bun** (not Node.js). Make sure you have [Bun installed](https://bun.sh).
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/tayles/regex-to-mermaid.git
+cd regex-to-mermaid
+
+# Install dependencies
+bun install
+
+# Run tests
+bun test
+
+# Format code
+bun run format
+```
 
 ### Version Management
 
@@ -177,9 +269,28 @@ This script will:
 3. Include the command to recreate each theme (using `/foo|bar/` as the example)
 4. Update the `THEMES.md` file with previews of all themes
 
-## xkcd
+## License
 
-- [Regular Expressions](https://xkcd.com/208/)
-- [Perl Problems](https://xkcd.com/1171/)
-- [Regex Golf](https://xkcd.com/1313/)
-- [Backslashes](https://xkcd.com/1638/)
+[MIT](LICENSE) © David Taylor
+
+## Acknowledgments
+
+Built with:
+
+- [regexp-tree](https://github.com/DmitrySoshnikov/regexp-tree) - Regex parsing
+- [Mermaid](https://mermaid.js.org/) - Diagram generation
+- [Bun](https://bun.sh) - Fast JavaScript runtime
+
+## Support
+
+- 📖 [Documentation](https://github.com/tayles/regex-to-mermaid#readme)
+- 🐛 [Report a Bug](https://github.com/tayles/regex-to-mermaid/issues/new?template=bug_report.yml)
+- 💡 [Request a Feature](https://github.com/tayles/regex-to-mermaid/issues/new?template=feature_request.yml)
+- 💬 [Discussions](https://github.com/tayles/regex-to-mermaid/discussions)
+
+## Related
+
+- [Regular Expressions (xkcd)](https://xkcd.com/208/)
+- [Perl Problems (xkcd)](https://xkcd.com/1171/)
+- [Regex Golf (xkcd)](https://xkcd.com/1313/)
+- [Backslashes (xkcd)](https://xkcd.com/1638/)

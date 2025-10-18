@@ -1,0 +1,16 @@
+# Prettier Ignore
+
+# Dependencies
+node_modules/
+bun.lock
+
+# Build output
+dist/
+out/
+*.tgz
+
+# Logs
+*.log
+
+# OS
+.DS_Store

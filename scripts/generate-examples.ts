@@ -13,7 +13,11 @@ interface RegexFile {
 /**
  * Parse a regex file with YAML frontmatter
  */
-function parseRegexFile(content: string): { name: string; description?: string; pattern: string } {
+function parseRegexFile(content: string): {
+  name: string;
+  description?: string;
+  pattern: string;
+} {
   const lines = content.trim().split('\n');
 
   let name = '';

@@ -59,24 +59,40 @@ describe('createCLI', () => {
 
 describe('processRegex', () => {
   test('processes simple regex pattern', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toContain('%% Regex: test');
   });
 
   test('processes regex with flags', () => {
-    const result = processRegex('/test/i', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('/test/i', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
 
   test('handles TD direction', () => {
-    const result = processRegex('test', { direction: 'TD', theme: 'default', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'TD',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph TD');
   });
 
   test('handles LR direction', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
   });
 
@@ -91,13 +107,21 @@ describe('processRegex', () => {
 
   test('throws error for invalid direction', () => {
     expect(() => {
-      processRegex('test', { direction: 'INVALID' as any, theme: 'default', flavor: 'auto' });
+      processRegex('test', {
+        direction: 'INVALID' as any,
+        theme: 'default',
+        flavor: 'auto',
+      });
     }).toThrow('Invalid direction');
   });
 
   test('throws error for invalid theme', () => {
     expect(() => {
-      processRegex('test', { direction: 'LR', theme: 'invalid' as any, flavor: 'auto' });
+      processRegex('test', {
+        direction: 'LR',
+        theme: 'invalid' as any,
+        flavor: 'auto',
+      });
     }).toThrow('Invalid theme');
   });
 
@@ -111,7 +135,11 @@ describe('processRegex', () => {
   });
 
   test('includes generated with comment', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('%% Generated with regex-to-mermaid@');
     expect(result).toMatch(/%% Generated with regex-to-mermaid@\d+\.\d+\.\d+/);
   });
@@ -137,7 +165,11 @@ describe('processRegex', () => {
   });
 
   test('handles regex with quantifiers', () => {
-    const result = processRegex('a+b*c?', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('a+b*c?', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
@@ -154,18 +186,30 @@ describe('processRegex', () => {
 
   test('throws error for invalid regex', () => {
     expect(() => {
-      processRegex('(?<', { direction: 'LR', theme: 'default', flavor: 'auto' });
+      processRegex('(?<', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'auto',
+      });
     }).toThrow('Invalid regular expression');
   });
 
   test('processes regex literal with slashes', () => {
-    const result = processRegex('/^test$/', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('/^test$/', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
 
   test('processes regex literal with flags', () => {
-    const result = processRegex('/test/gi', { direction: 'LR', theme: 'default', flavor: 'auto' });
+    const result = processRegex('/test/gi', {
+      direction: 'LR',
+      theme: 'default',
+      flavor: 'auto',
+    });
     expect(result).toContain('graph LR');
     expect(result).toBeDefined();
   });
@@ -181,13 +225,21 @@ describe('processRegex', () => {
   });
 
   test('result contains start and end nodes', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toContain('start');
     expect(result).toContain('fin');
   });
 
   test('result contains mermaid diagram structure', () => {
-    const result = processRegex('test', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('test', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toContain('%% Nodes');
     expect(result).toContain('%% Edges');
   });
@@ -240,7 +292,11 @@ describe('Integration tests', () => {
 
   test('handles email regex pattern', () => {
     const regex = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$';
-    const result = processRegex(regex, { direction: 'LR', theme: 'neutral', flavor: 'auto' });
+    const result = processRegex(regex, {
+      direction: 'LR',
+      theme: 'neutral',
+      flavor: 'auto',
+    });
 
     expect(result).toBeDefined();
     expect(result).toContain('graph LR');
@@ -248,7 +304,11 @@ describe('Integration tests', () => {
 
   test('handles URL regex pattern', () => {
     const regex = '/^https?:\\/\\/[\\w\\-.]+(:[0-9]+)?(\\/.*)?$/';
-    const result = processRegex(regex, { direction: 'LR', theme: 'forest', flavor: 'auto' });
+    const result = processRegex(regex, {
+      direction: 'LR',
+      theme: 'forest',
+      flavor: 'auto',
+    });
 
     expect(result).toBeDefined();
     expect(result).toContain('graph LR');
@@ -256,7 +316,11 @@ describe('Integration tests', () => {
 
   test('handles phone number pattern', () => {
     const regex = '^\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$';
-    const result = processRegex(regex, { direction: 'TD', theme: 'default', flavor: 'auto' });
+    const result = processRegex(regex, {
+      direction: 'TD',
+      theme: 'default',
+      flavor: 'auto',
+    });
 
     expect(result).toBeDefined();
     expect(result).toContain('graph TD');
@@ -273,7 +337,11 @@ describe('Integration tests', () => {
     ];
 
     themes.forEach(theme => {
-      const result = processRegex(regex, { direction: 'LR', theme, flavor: 'auto' });
+      const result = processRegex(regex, {
+        direction: 'LR',
+        theme,
+        flavor: 'auto',
+      });
       expect(result).toBeDefined();
       expect(result).toContain('graph LR');
       if (theme === 'none') {
@@ -289,7 +357,11 @@ describe('Integration tests', () => {
     const directions: Array<'TD' | 'LR'> = ['TD', 'LR'];
 
     directions.forEach(direction => {
-      const result = processRegex(regex, { direction, theme: 'default', flavor: 'auto' });
+      const result = processRegex(regex, {
+        direction,
+        theme: 'default',
+        flavor: 'auto',
+      });
       expect(result).toContain(`graph ${direction}`);
     });
   });
@@ -297,38 +369,66 @@ describe('Integration tests', () => {
 
 describe('Edge cases', () => {
   test('handles empty character class', () => {
-    const result = processRegex('[]', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('[]', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
   test('handles alternation', () => {
-    const result = processRegex('cat|dog|bird', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('cat|dog|bird', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
     expect(result).toContain('graph LR');
   });
 
   test('handles backreferences', () => {
-    const result = processRegex('(\\w+)\\s\\1', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('(\\w+)\\s\\1', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
   test('handles lookahead', () => {
-    const result = processRegex('test(?=ing)', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('test(?=ing)', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
   test('handles lookbehind', () => {
-    const result = processRegex('(?<=\\$)\\d+', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('(?<=\\$)\\d+', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
   test('handles word boundaries', () => {
-    const result = processRegex('\\bword\\b', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('\\bword\\b', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
   test('handles anchors', () => {
-    const result = processRegex('^start.*end$', { direction: 'LR', theme: 'none', flavor: 'auto' });
+    const result = processRegex('^start.*end$', {
+      direction: 'LR',
+      theme: 'none',
+      flavor: 'auto',
+    });
     expect(result).toBeDefined();
   });
 
@@ -365,21 +465,33 @@ describe('Flavor option', () => {
     });
 
     test('handles simple pattern without slashes', () => {
-      const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'regexp' });
+      const result = processRegex('test', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'regexp',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
 
     test('throws error for invalid JavaScript RegExp', () => {
       expect(() => {
-        processRegex('(?<', { direction: 'LR', theme: 'default', flavor: 'regexp' });
+        processRegex('(?<', {
+          direction: 'LR',
+          theme: 'default',
+          flavor: 'regexp',
+        });
       }).toThrow('Invalid regular expression');
     });
   });
 
   describe('pcre flavor', () => {
     test('converts PCRE pattern to JavaScript RegExp', () => {
-      const result = processRegex('/test/i', { direction: 'LR', theme: 'default', flavor: 'pcre' });
+      const result = processRegex('/test/i', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'pcre',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -417,7 +529,11 @@ describe('Flavor option', () => {
 
   describe('auto flavor (default)', () => {
     test('parses valid JavaScript RegExp first', () => {
-      const result = processRegex('/test/i', { direction: 'LR', theme: 'default', flavor: 'auto' });
+      const result = processRegex('/test/i', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'auto',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -444,7 +560,11 @@ describe('Flavor option', () => {
     });
 
     test('handles simple patterns without slashes', () => {
-      const result = processRegex('test', { direction: 'LR', theme: 'default', flavor: 'auto' });
+      const result = processRegex('test', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'auto',
+      });
       expect(result).toContain('graph LR');
       expect(result).toBeDefined();
     });
@@ -452,14 +572,22 @@ describe('Flavor option', () => {
     test('throws error when both JavaScript and PCRE parsing fail', () => {
       // This pattern should fail in both parsers
       expect(() => {
-        processRegex('(?<', { direction: 'LR', theme: 'default', flavor: 'auto' });
+        processRegex('(?<', {
+          direction: 'LR',
+          theme: 'default',
+          flavor: 'auto',
+        });
       }).toThrow('Invalid regular expression');
     });
   });
 
   test('throws error for invalid flavor', () => {
     expect(() => {
-      processRegex('test', { direction: 'LR', theme: 'default', flavor: 'invalid' as any });
+      processRegex('test', {
+        direction: 'LR',
+        theme: 'default',
+        flavor: 'invalid' as any,
+      });
     }).toThrow('Invalid flavor');
   });
 

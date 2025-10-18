@@ -1,0 +1,95 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior
+title: '[Bug]: '
+labels: ['bug', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: regex-pattern
+    attributes:
+      label: Regex Pattern
+      description: The regex pattern that causes the issue
+      placeholder: |
+        /^your-pattern-here$/
+      render: regex
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Run the command: regex-to-mermaid 'your-pattern-here'
+        2. Observe the output...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: A clear and concise description of what actually happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagram
+    attributes:
+      label: Generated Diagram
+      description: If applicable, paste the generated Mermaid diagram
+      render: mermaid
+
+  - type: input
+    id: bun-version
+    attributes:
+      label: Bun Version
+      description: Run `bun --version`
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: regex-to-mermaid Version
+      description: Run `regex-to-mermaid --version`
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      placeholder: e.g. macOS 14.0, Ubuntu 22.04, Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here.

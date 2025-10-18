@@ -1,0 +1,29 @@
+name: ❓ Question
+description: Ask a question about using regex-to-mermaid
+title: '[Question]: '
+labels: ['question']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your question! Please search existing issues first to see if your question has been answered.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Ask your question here
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any relevant context that might help answer your question
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What I've Tried
+      description: Describe what you've already tried, if applicable

@@ -2,12 +2,31 @@
   "name": "regex-to-mermaid",
   "version": "1.0.0",
   "description": "Visualize regular expressions as Mermaid flowchart diagrams",
+  "author": "tayles",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tayles/regex-to-mermaid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tayles/regex-to-mermaid/issues"
+  },
+  "homepage": "https://github.com/tayles/regex-to-mermaid#readme",
+  "type": "module",
   "module": "index.ts",
   "bin": {
     "regex-to-mermaid": "index.ts"
   },
+  "files": [
+    "index.ts",
+    "src/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "start": "bun run index.ts",
+    "test": "bun test",
     "format": "bunx prettier --write .",
     "generate-examples": "bun scripts/generate-examples.ts",
     "generate-themes": "bun scripts/generate-themes.ts",
@@ -18,11 +37,22 @@
   "keywords": [
     "regex",
     "regexp",
+    "regular-expression",
     "mermaid",
-    "visualization",
     "flowchart",
     "diagram",
-    "cli"
+    "markdown",
+    "graph",
+    "pcre",
+    "pcre2",
+    "re2",
+    "posix",
+    "visualization",
+    "visualize",
+    "cli",
+    "tool",
+    "parser",
+    "ast"
   ],
   "dependencies": {
     "commander": "^14.0.1",
@@ -36,7 +66,7 @@
   "peerDependencies": {
     "typescript": "^5"
   },
-  "type": "module",
-  "author": "",
-  "license": "MIT"
+  "engines": {
+    "bun": ">=1.0.0"
+  }
 }
