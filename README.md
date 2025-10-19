@@ -1,31 +1,19 @@
 # regex-to-mermaid
 
-[![npm version](https://img.shields.io/npm/v/regex-to-mermaid.svg)](https://www.npmjs.com/package/regex-to-mermaid)
-[![CI](https://github.com/tayles/regex-to-mermaid/actions/workflows/ci.yml/badge.svg)](https://github.com/tayles/regex-to-mermaid/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Made with Bun](https://img.shields.io/badge/Made%20with-Bun-fb923c?logo=bun&logoColor=white)](https://bun.sh)
-
-A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams.
-
-## Features
-
-✨ **Visual Regex Understanding** - Convert complex regex patterns into intuitive flowcharts  
-🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling  
-📦 **CLI & Library** - Use as a command-line tool or integrate into your projects  
-🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more  
-⚡ **Fast & Modern** - Built with Bun and TypeScript for optimal performance
-
-## Quick Start
+Visualize regular expressions as Mermaid flowchart diagrams.
 
 For example, visualise this:
 
 ```regex
-/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 ```
 
 as this:
 
 ![regex-to-mermaid](docs/regex-to-mermaid.png)
+
+<details>
+<summary>Generated Mermaid Diagram</summary>
 
 ```mermaid
 graph LR
@@ -118,90 +106,53 @@ graph LR
     class path_group namedCaptureGroup;
 ```
 
-Using [regexp-tree-cli](https://github.com/dtinth/regexp-tree-cli) to output the AST as JSON with location data:
-
-```shell
-regexp-tree-cli --expression '/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/' --loc
-```
+</details>
 
 ## Installation
 
-### Using Bun (Recommended)
-
-```bash
+```shell
 bun install -g regex-to-mermaid
-```
 
-### Using npm
+pnpm install -g regex-to-mermaid
 
-```bash
 npm install -g regex-to-mermaid
+
+yarn global add regex-to-mermaid
 ```
 
-### Using npx (No Installation)
+## CLI Usage
 
-```bash
-npx regex-to-mermaid 'your-regex-here'
-```
-
-## Usage
-
-### Command Line
-
-Basic usage:
-
-```bash
+```shell
 regex-to-mermaid 'foo|bar'
+
+# all options
+regex-to-mermaid 'foo|bar' \
+  --theme dark \
+  --direction TD \
+  --flavor pcre \
+  --output diagram.mmd
 ```
 
-With options:
+### Options
 
-```bash
-# Use a different theme
-regex-to-mermaid 'foo|bar' --theme dark
+| Option              | Description                                                                          | Default   |
+| ------------------- | ------------------------------------------------------------------------------------ | --------- |
+| `-d`, `--direction` | Diagram direction: `LR` (left-right) or `TD` (top-down)                              | `LR`      |
+| `-f`, `--flavor`    | Regex flavor: `regexp` (JavaScript), `pcre` (PCRE), or `auto` (detect automatically) | `auto`    |
+| `-t`, `--theme`     | Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`                     | `default` |
+| `-o`, `--output`    | Output file (if not specified, outputs to stdout)                                    | `stdout`  |
 
-# Change diagram direction
-regex-to-mermaid 'foo|bar' --direction TD
-
-# Specify regex flavor
-regex-to-mermaid '\d+' --flavor pcre
-
-# Output to file
-regex-to-mermaid 'foo|bar' --output diagram.mermaid
-
-# Combine options
-regex-to-mermaid 'https?://.*' --theme dark --direction TD --flavor auto
-
-# Show help
-regex-to-mermaid --help
-```
-
-#### CLI Options
-
-- `-d, --direction <direction>` - Diagram direction: `LR` (left-right) or `TD` (top-down). Default: `LR`
-- `-f, --flavor <flavor>` - Regex flavor: `regexp` (JavaScript), `pcre` (PCRE), or `auto` (detect automatically). Default: `auto`
-- `-t, --theme <theme>` - Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`. Default: `default`
-- `-o, --output <file>` - Output file (if not specified, outputs to stdout)
-
-### As a Library
+## Library Usage
 
 ```typescript
 import { regexToMermaid } from 'regex-to-mermaid';
 
-// Basic usage
-const diagram = regexToMermaid(/^foo|bar$/);
-console.log(diagram);
+const diagram = regexToMermaid('foo|bar');
 
-// With options
-const diagram2 = regexToMermaid('https?://.*', {
-  direction: 'TD', // 'LR' (left-right) or 'TD' (top-down)
-  theme: 'dark', // 'default', 'neutral', 'dark', 'forest', or 'none'
-  flavor: 'regexp', // 'regexp' (JavaScript), 'pcre', or 'auto'
-});
-console.log(diagram2);
+console.log(diagram);
 ```
 
-#### API
+### API
 
 ```typescript
 function regexToMermaid(
@@ -216,26 +167,15 @@ function regexToMermaid(
 
 ## Examples
 
-See more [examples](./EXAMPLES.md).
+See more [EXAMPLES.md](./EXAMPLES.md).
 
 ## Themes
 
-See available [themes](./THEMES.md).
+See available [THEMES.md](./THEMES.md).
 
-## Contributing
+## Local Development
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
-
-- 📋 How to report bugs
-- 💡 How to suggest features
-- 🔧 How to set up your development environment
-- ✅ How to submit pull requests
-
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
-
-## Development
-
-This project uses **Bun** (not Node.js). Make sure you have [Bun installed](https://bun.sh).
+This project uses [Bun](https://bun.sh).
 
 ### Setup
 
@@ -250,73 +190,27 @@ bun install
 # Run tests
 bun test
 
-# Format code
-bun run format
+# Check types
+bun run type-check
+
+# Format/lint code
+bun run lint
 ```
 
-### Version Management
+## Tech Stack
 
-This project uses [Changesets](https://github.com/changesets/changesets) for version management and changelog generation.
+| Project                                                                                                                                                                   | Description               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)                | Typesafe JavaScript       |
+| [![Bun](https://img.shields.io/badge/bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)                                                     | Fast JavaScript runtime   |
+| [![Mermaid](https://img.shields.io/badge/mermaid-%2300ACC1.svg?style=for-the-badge&logo=mermaid&logoColor=white)](https://mermaid.js.org)                                 | Diagram generation        |
+| [![regexp-tree](https://img.shields.io/badge/regexp--tree-%23000000.svg?style=for-the-badge&logo=regexp-tree&logoColor=white)](https://www.npmjs.com/package/regexp-tree) | Regex parsing to AST      |
+| [![Biome](https://img.shields.io/badge/biome-%2300D1FF.svg?style=for-the-badge&logo=biome&logoColor=white)](https://biomejs.dev)                                          | Code formatting & linting |
+| [![bunup](https://img.shields.io/badge/bunup-%23000000.svg?style=for-the-badge&logo=bunup&logoColor=white)](https://bunup.dev)                                            | Bundling                  |
+| [![bbump](https://img.shields.io/badge/bbump-%23000000.svg?style=for-the-badge&logo=bbumppkg&logoColor=white)](https://www.npmjs.com/package/bbump)                       | Automated versioning      |
+| [![Commander](https://img.shields.io/badge/commander-%23000000.svg?style=for-the-badge&logo=commander&logoColor=white)](https://www.npmjs.com/package/commander)          | CLI framework             |
 
-Quick reference:
-
-- **Add a changeset**: `bun run changeset`
-- **Update versions**: `bun run version`
-- **Publish**: `bun run release`
-
-### Generating Examples
-
-The `EXAMPLES.md` file is automatically generated from the regex files in the `diagrams/` directory. Each `.regex` file should include YAML frontmatter with a `name` and optional `description`:
-
-```yaml
 ---
-name: URL
-description: A simplified URL pattern
----
-/^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
-```
-
-To regenerate the examples documentation:
-
-```bash
-bun run generate-examples
-```
-
-This script will:
-
-1. Read all `.regex` files from the `diagrams/` directory
-2. Parse the frontmatter and regex pattern
-3. Generate Mermaid diagrams for each pattern
-4. Update the `EXAMPLES.md` file with a table of contents and all examples
-
-### Generating Theme Previews
-
-The `THEMES.md` file is automatically generated to showcase all available themes using the URL pattern from `diagrams/example-1.regex`.
-
-To regenerate the theme documentation:
-
-```bash
-bun run generate-themes
-```
-
-This script will:
-
-1. Read the regex pattern from `diagrams/example-1.regex`
-2. Generate diagrams for each theme (default, neutral, dark, forest, none)
-3. Include the command to recreate each theme (using `/foo|bar/` as the example)
-4. Update the `THEMES.md` file with previews of all themes
-
-## License
-
-[MIT](LICENSE) © David Taylor
-
-## Acknowledgments
-
-Built with:
-
-- [regexp-tree](https://github.com/DmitrySoshnikov/regexp-tree) - Regex parsing
-- [Mermaid](https://mermaid.js.org/) - Diagram generation
-- [Bun](https://bun.sh) - Fast JavaScript runtime
 
 ## Support
 
@@ -331,3 +225,13 @@ Built with:
 - [Perl Problems (xkcd)](https://xkcd.com/1171/)
 - [Regex Golf (xkcd)](https://xkcd.com/1313/)
 - [Backslashes (xkcd)](https://xkcd.com/1638/)
+
+---
+
+## Features
+
+- ✨ **Visual Regex Understanding** - Convert complex regex patterns into intuitive flowcharts
+- 🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling
+- 📦 **CLI & Library** - Use as a command-line tool or integrate into your projects
+- 🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more
+- ⚡ **Fast & Modern** - Built with Bun and TypeScript for optimal performance
