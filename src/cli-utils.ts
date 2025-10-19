@@ -1,6 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { Command } from 'commander';
-import { regexToMermaid } from './index';
+import { regexToMermaid } from './lib';
 import type { Direction, Flavor, Options, Theme } from './types';
 import { DEFAULT_OPTIONS } from './types';
 
