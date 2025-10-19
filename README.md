@@ -1,6 +1,6 @@
 # regex-to-mermaid
 
-Visualize regular expressions as Mermaid flowchart diagrams.
+A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams.
 
 For example, visualise this:
 
