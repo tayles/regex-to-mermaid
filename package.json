@@ -58,6 +58,7 @@
     "postinstall": "bun simple-git-hooks",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
+    "preview-changelog": "bunx changelogithub --dry",
     "release": "bumpp --commit --push --tag",
     "test": "bun test",
     "test:coverage": "bun test --coverage",
