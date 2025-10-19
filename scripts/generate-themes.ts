@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { processRegex } from '../src/cli';
-import { THEMES } from '../src/theme';
+import { regexToMermaid } from '../src';
 import type { Theme } from '../src/theme';
+import { THEMES } from '../src/theme';
 
 /**
  * Generate theme previews for THEMES.md
@@ -53,15 +53,14 @@ async function generateThemes() {
 
     // Generate the diagram
     try {
-      const diagram = processRegex(pattern, {
+      const diagram = regexToMermaid(pattern, {
         direction: 'LR',
         theme: theme as Theme,
-        output: undefined,
       });
 
       content += '**Preview:**\n\n';
       content += '```mermaid\n';
-      content += diagram + '\n';
+      content += `${diagram}\n`;
       content += '```\n\n';
     } catch (error) {
       console.error(`Error generating theme ${theme}:`, error);

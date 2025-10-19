@@ -1,7 +1,11 @@
-import regexpTree from 'regexp-tree';
 import pcreToRegexp from 'pcre-to-regexp';
-import type { DiagramData, DiagramNode, Edge, Group, NodeType, Flavor } from './types';
+import regexpTree from 'regexp-tree';
 import type { AstRegExp } from 'regexp-tree/ast';
+import type { DiagramData, DiagramNode, Edge, Flavor, Group } from './types';
+
+// Type for AST nodes from regexp-tree
+// biome-ignore lint/suspicious/noExplicitAny: regexp-tree doesn't export detailed node types
+type AstNode = any;
 
 export function parseJavaScriptRegex(regex: string): RegExp {
   // Try to parse as a regex literal first
@@ -34,7 +38,7 @@ export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
     } catch (regexpError) {
       try {
         return pcreToRegexp(regex);
-      } catch (pcreError) {
+      } catch {
         // If both fail, throw the original RegExp error
         throw regexpError;
       }
@@ -42,7 +46,7 @@ export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
   }
 }
 
-export function buildRegexAst(pattern: string | RegExp) {
+export function buildRegexAst(pattern: string | RegExp): AstRegExp {
   const ast = regexpTree.parse(pattern, {
     captureLocations: true,
   });
@@ -82,7 +86,7 @@ export function generateDiagramData(ast: AstRegExp): DiagramData {
 }
 
 function processNode(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -115,7 +119,7 @@ function processNode(
 }
 
 function processAlternative(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -125,13 +129,13 @@ function processAlternative(
 
   // Combine consecutive Char nodes into a single literal node
   const expressions = node.expressions || [];
-  const combined: any[] = [];
+  const combined: AstNode[] = [];
 
   let i = 0;
   while (i < expressions.length) {
     if (expressions[i].type === 'Char') {
       // Collect consecutive Char nodes
-      const chars: any[] = [];
+      const chars: AstNode[] = [];
       while (i < expressions.length && expressions[i].type === 'Char') {
         chars.push(expressions[i]);
         i++;
@@ -156,7 +160,7 @@ function processAlternative(
 }
 
 function processCombinedChars(
-  chars: any[],
+  chars: AstNode[],
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -176,7 +180,7 @@ function processCombinedChars(
 }
 
 function processChar(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -195,7 +199,7 @@ function processChar(
 }
 
 function processCharacterClass(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -214,7 +218,7 @@ function processCharacterClass(
   return nodeId;
 }
 
-function buildCharacterClassLabel(node: any): string {
+function buildCharacterClassLabel(node: AstNode): string {
   if (!node.expressions || node.expressions.length === 0) {
     return '[]';
   }
@@ -257,7 +261,7 @@ function getFriendlyRangeName(from: string, to: string): string | null {
 }
 
 function processRepetition(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -287,7 +291,7 @@ function processRepetition(
   return innerNodeId;
 }
 
-function getQuantifierText(quantifier: any): string {
+function getQuantifierText(quantifier: AstNode): string {
   if (!quantifier) return '';
 
   switch (quantifier.kind) {
@@ -311,7 +315,7 @@ function getQuantifierText(quantifier: any): string {
 }
 
 function processGroup(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -320,7 +324,7 @@ function processGroup(
   const groupNumber = node.number || 0;
 
   let groupName: string;
-  let groupType: any = 'standard';
+  let groupType: Group['type'] = 'standard';
 
   if (node.kind === 'Lookahead') {
     groupType = node.negative ? 'negative-lookahead' : 'positive-lookahead';
@@ -364,7 +368,9 @@ function processGroup(
     if (childGroup) {
       children.push(childGroup.id);
       // Track all nodes that belong to child groups
-      childGroup.children.forEach(childId => childGroupIds.add(childId));
+      childGroup.children.forEach(childId => {
+        childGroupIds.add(childId);
+      });
     }
   }
 
@@ -388,7 +394,7 @@ function processGroup(
 }
 
 function processDisjunction(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -423,11 +429,11 @@ function processDisjunction(
   return mergeNodeId;
 }
 
-function flattenDisjunction(node: any): any[] {
-  const branches: any[] = [];
+function flattenDisjunction(node: AstNode): AstNode[] {
+  const branches: AstNode[] = [];
 
   // Recursively collect all branches from nested disjunctions
-  function collectBranches(n: any): void {
+  function collectBranches(n: AstNode): void {
     // Handle null or undefined nodes (empty alternatives)
     if (!n) {
       return;
@@ -446,7 +452,7 @@ function flattenDisjunction(node: any): any[] {
 }
 
 function processAssertion(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -482,7 +488,7 @@ function processAssertion(
 }
 
 function processBackreference(
-  node: any,
+  node: AstNode,
   previousNodeId: string,
   nodes: DiagramNode[],
   edges: Edge[],
@@ -514,7 +520,7 @@ export function escapeSingleChar(text: string): string {
   return text;
 }
 
-export function buildFriendlyLabel(text: string, type?: string): string {
+export function buildFriendlyLabel(text: string, _type?: string): string {
   // Handle character class escapes
   const escapeMap: Record<string, string> = {
     '\\d': 'Any digit',

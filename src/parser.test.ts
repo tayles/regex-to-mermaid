@@ -1,9 +1,9 @@
-import { test, expect, describe } from 'bun:test';
+import { describe, expect, test } from 'bun:test';
 import {
+  buildFriendlyId,
+  buildFriendlyLabel,
   buildRegexAst,
   generateDiagramData,
-  buildFriendlyLabel,
-  buildFriendlyId,
   parseJavaScriptRegex,
   parseRegexByFlavor,
 } from './parser';
@@ -499,6 +499,7 @@ describe('Character class label formatting', () => {
   });
 
   test('empty character class handled correctly', () => {
+    // biome-ignore lint/correctness/noEmptyCharacterClassInRegex: edge case testing
     const ast = buildRegexAst(/[]/);
     const data = generateDiagramData(ast);
     expect(data.nodes.length).toBe(1);
@@ -506,6 +507,7 @@ describe('Character class label formatting', () => {
   });
 
   test('negated empty character class handled correctly', () => {
+    // biome-ignore lint/correctness/noEmptyCharacterClassInRegex: edge case testing
     const ast = buildRegexAst(/[^]/);
     const data = generateDiagramData(ast);
     expect(data.nodes.length).toBe(1);

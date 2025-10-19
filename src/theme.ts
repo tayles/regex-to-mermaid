@@ -1,4 +1,4 @@
-import type { DiagramData, DiagramNode, GroupType, NodeType } from './types';
+import type { DiagramData, GroupType, NodeType } from './types';
 
 export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;
 export type Theme = (typeof THEMES)[number];
@@ -103,15 +103,19 @@ export function buildStyles(theme: Theme, data: DiagramData): string {
 
   // Determine used node and group types
   const usedNodeTypes = new Set<NodeType>();
-  data.nodes.forEach(node => usedNodeTypes.add(node.type));
+  data.nodes.forEach(node => {
+    usedNodeTypes.add(node.type);
+  });
 
   // map of group types to group ids
   const groupMap = new Map<GroupType, string[]>();
   data.groups.forEach(group => {
-    if (!groupMap.has(group.type)) {
-      groupMap.set(group.type, []);
+    let arr = groupMap.get(group.type);
+    if (!arr) {
+      arr = [];
+      groupMap.set(group.type, arr);
     }
-    groupMap.get(group.type)!.push(group.id);
+    arr.push(group.id);
   });
 
   const styles = THEME_STYLES[theme];

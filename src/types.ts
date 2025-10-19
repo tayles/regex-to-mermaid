@@ -62,8 +62,8 @@ export interface Options {
   theme?: Theme;
 }
 
-export const DEFAULT_OPTIONS = {
+export const DEFAULT_OPTIONS: Readonly<Required<Options>> = {
   direction: 'LR',
   flavor: 'auto',
   theme: 'default',
-} as const satisfies Options;
+};

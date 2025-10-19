@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { processRegex } from '../src/cli';
+import { regexToMermaid } from '../src';
 
 interface RegexFile {
   filename: string;
@@ -108,19 +108,18 @@ async function generateExamples() {
 
     content += '**Pattern:**\n\n';
     content += '```regex\n';
-    content += example.pattern + '\n';
+    content += `${example.pattern}\n`;
     content += '```\n\n';
 
     // Generate the mermaid diagram
     try {
-      const diagram = processRegex(example.pattern, {
+      const diagram = regexToMermaid(example.pattern, {
         direction: 'LR',
         theme: 'default',
-        output: undefined,
       });
       content += '**Diagram:**\n\n';
       content += '```mermaid\n';
-      content += diagram + '\n';
+      content += `${diagram}\n`;
       content += '```\n\n';
 
       // Write the mermaid diagram to a separate file

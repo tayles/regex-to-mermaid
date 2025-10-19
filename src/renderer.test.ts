@@ -1,5 +1,5 @@
-import { test, expect, describe } from 'bun:test';
-import { buildMermaidDiagram, buildNodes, buildSubgraphs, buildEdges } from './renderer';
+import { describe, expect, test } from 'bun:test';
+import { buildEdges, buildMermaidDiagram, buildNodes, buildSubgraphs } from './renderer';
 import type { DiagramData, DiagramNode, Edge, Group } from './types';
 
 describe('buildNodes', () => {
@@ -9,49 +9,49 @@ describe('buildNodes', () => {
   });
 
   test('builds single node correctly', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: 'a' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1("a"):::Character');
+    expect(result).toContain('node1("a"):::literal');
   });
 
   test('builds multiple nodes correctly', () => {
     const nodes: DiagramNode[] = [
-      { id: 'node1', type: 'Character', label: 'a' },
-      { id: 'node2', type: 'Character', label: 'b' },
+      { id: 'node1', type: 'literal', label: 'a' },
+      { id: 'node2', type: 'literal', label: 'b' },
     ];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1("a"):::Character');
-    expect(result).toContain('node2("b"):::Character');
+    expect(result).toContain('node1("a"):::literal');
+    expect(result).toContain('node2("b"):::literal');
   });
 
   test('handles different node types', () => {
     const nodes: DiagramNode[] = [
-      { id: 'char1', type: 'Character', label: 'a' },
-      { id: 'class1', type: 'CharacterClass', label: '[a-z]' },
-      { id: 'rep1', type: 'Repetition', label: '*' },
-      { id: 'group1', type: 'Group', label: '(...)' },
+      { id: 'char1', type: 'literal', label: 'a' },
+      { id: 'class1', type: 'char-class', label: '[a-z]' },
+      { id: 'rep1', type: 'modifier', label: '*' },
+      { id: 'group1', type: 'literal', label: '(...)' },
     ];
     const result = buildNodes(nodes);
-    expect(result).toContain('char1("a"):::Character');
-    expect(result).toContain('class1("[a-z]"):::CharacterClass');
-    expect(result).toContain('rep1("*"):::Repetition');
-    expect(result).toContain('group1("(...)"):::Group');
+    expect(result).toContain('char1("a"):::literal');
+    expect(result).toContain('class1("[a-z]"):::char-class');
+    expect(result).toContain('rep1("*"):::modifier');
+    expect(result).toContain('group1("(...)"):::literal');
   });
 
   test('escapes special characters in labels', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: '"quote"' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: '"quote"' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1(""quote""):::Character');
+    expect(result).toContain('node1(""quote""):::literal');
   });
 
   test('handles multiline labels', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'line1<br>line2' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: 'line1<br>line2' }];
     const result = buildNodes(nodes);
-    expect(result).toContain('node1("line1<br>line2"):::Character');
+    expect(result).toContain('node1("line1<br>line2"):::literal');
   });
 
   test('does not include indentation', () => {
-    const nodes: DiagramNode[] = [{ id: 'node1', type: 'Character', label: 'a' }];
+    const nodes: DiagramNode[] = [{ id: 'node1', type: 'literal', label: 'a' }];
     const result = buildNodes(nodes);
     expect(result.startsWith('    ')).toBe(false);
   });
@@ -309,15 +309,15 @@ describe('buildMermaidDiagram', () => {
   test('includes all nodes in diagram', () => {
     const data: DiagramData = {
       nodes: [
-        { id: 'node1', type: 'Character', label: 'a' },
-        { id: 'node2', type: 'Character', label: 'b' },
+        { id: 'node1', type: 'literal', label: 'a' },
+        { id: 'node2', type: 'literal', label: 'b' },
       ],
       edges: [],
       groups: [],
     };
     const result = buildMermaidDiagram(data);
-    expect(result).toContain('node1("a"):::Character');
-    expect(result).toContain('node2("b"):::Character');
+    expect(result).toContain('node1("a"):::literal');
+    expect(result).toContain('node2("b"):::literal');
   });
 
   test('includes all edges in diagram', () => {
@@ -356,8 +356,8 @@ describe('buildMermaidDiagram', () => {
   test('builds complete diagram with all elements', () => {
     const data: DiagramData = {
       nodes: [
-        { id: 'node1', type: 'Character', label: 'h' },
-        { id: 'node2', type: 'Character', label: 't' },
+        { id: 'node1', type: 'literal', label: 'h' },
+        { id: 'node2', type: 'literal', label: 't' },
       ],
       edges: [
         { from: 'start', to: 'node1' },
@@ -376,8 +376,8 @@ describe('buildMermaidDiagram', () => {
     };
     const result = buildMermaidDiagram(data);
     expect(result).toContain('graph LR');
-    expect(result).toContain('node1("h"):::Character');
-    expect(result).toContain('node2("t"):::Character');
+    expect(result).toContain('node1("h"):::literal');
+    expect(result).toContain('node2("t"):::literal');
     expect(result).toContain('start --- node1;');
     expect(result).toContain('subgraph group1');
     expect(result).toContain('protocol');

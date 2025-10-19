@@ -1,8 +1,8 @@
+import packageJson from '../package.json';
 import { buildRegexAst, generateDiagramData, parseRegexByFlavor } from './parser';
 import { buildMermaidDiagram } from './renderer';
 import type { Direction, Flavor, Options, Theme } from './types';
 import { DEFAULT_OPTIONS, DIRECTIONS, FLAVORS, THEMES } from './types';
-import packageJson from '../package.json';
 
 /**
  * Convert a regular expression to a Mermaid flowchart diagram
@@ -74,5 +74,5 @@ export function regexToMermaid(pattern: string | RegExp, options: Options = {}):
 }
 
 // Re-export types and consts for convenience
-export type { Direction, Flavor, Theme, Options } from './types';
-export { DIRECTIONS, FLAVORS, THEMES, DEFAULT_OPTIONS } from './types';
+export type { Direction, Flavor, Options, Theme } from './types';
+export { DEFAULT_OPTIONS, DIRECTIONS, FLAVORS, THEMES } from './types';
