@@ -16,17 +16,20 @@
   },
   "formatter": {
     "enabled": true,
-    "useEditorconfig": true
+    "indentStyle": "space",
+    "lineWidth": 100
   },
   "javascript": {
     "formatter": {
+      "arrowParentheses": "asNeeded",
       "quoteStyle": "single",
-      "semicolons": "asNeeded"
+      "semicolons": "always",
+      "trailingCommas": "all"
     }
   },
   "vcs": {
+    "clientKind": "git",
     "enabled": true,
-    "useIgnoreFile": true,
-    "clientKind": "git"
+    "useIgnoreFile": true
   }
 }
