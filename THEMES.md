@@ -17,7 +17,7 @@ regex-to-mermaid 'foo|bar' --theme default
 **Preview:**
 
 ```mermaid
-%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 
 graph LR
   %% Nodes
@@ -95,7 +95,7 @@ regex-to-mermaid 'foo|bar' --theme neutral
 **Preview:**
 
 ```mermaid
-%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 
 graph LR
   %% Nodes
@@ -173,7 +173,7 @@ regex-to-mermaid 'foo|bar' --theme dark
 **Preview:**
 
 ```mermaid
-%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 
 graph LR
   %% Nodes
@@ -251,7 +251,7 @@ regex-to-mermaid 'foo|bar' --theme forest
 **Preview:**
 
 ```mermaid
-%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 
 graph LR
   %% Nodes
@@ -329,7 +329,7 @@ regex-to-mermaid 'foo|bar' --theme none
 **Preview:**
 
 ```mermaid
-%% Regex: /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/
+%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 
 graph LR
   %% Nodes
