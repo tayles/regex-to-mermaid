@@ -35,29 +35,37 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
-    }
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
-    "regex-to-mermaid": "./src/cli.ts"
+    "regex-to-mermaid": "./dist/cli.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "bun run src/cli.ts",
-    "test": "bun test",
-    "format": "bunx prettier --write .",
-    "typecheck": "bunx tsc --noEmit",
     "build": "bunup",
+    "dev": "bun run src/cli.ts",
     "generate-examples": "bun scripts/generate-examples.ts",
     "generate-themes": "bun scripts/generate-themes.ts",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "postinstall": "bun simple-git-hooks",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "release": "bumpp --commit --push --tag",
+    "test": "bun test",
+    "test:coverage": "bun test --coverage",
+    "test:watch": "bun test --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun run lint && bun run type-check"
   },
   "dependencies": {
     "commander": "^14.0.1",
@@ -65,12 +73,20 @@
     "regexp-tree": "^0.1.27"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.7",
+    "@biomejs/biome": "^2.2.6",
     "@types/bun": "latest",
-    "bunup": "^0.15.3"
+    "bumpp": "^10.3.1",
+    "bunup": "^0.15.4",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   },
   "engines": {
     "bun": ">=1.0.0"

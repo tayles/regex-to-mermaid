@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "MermaidChart.vscode-mermaid-chart"
-  ]
+  "recommendations": ["biomejs.biome", "MermaidChart.vscode-mermaid-chart"]
 }
