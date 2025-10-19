@@ -1,7 +1,8 @@
 import { Command } from 'commander';
-import { regexToMermaid } from './regex-to-mermaid';
+import { regexToMermaid } from './index';
 import type { Direction, Flavor, Options, Theme } from './types';
 import { DEFAULT_OPTIONS } from './types';
+import { writeFileSync } from 'fs';
 
 interface CLIOptions extends Options {
   output?: string;
@@ -58,7 +59,7 @@ function processRegex(regex: string, options: CLIOptions): string {
 function writeOutput(content: string, outputPath?: string): void {
   if (outputPath) {
     // Write to file
-    Bun.write(outputPath, content);
+    writeFileSync(outputPath, content, 'utf-8');
   } else {
     // Write to stdout
     console.log(content);
