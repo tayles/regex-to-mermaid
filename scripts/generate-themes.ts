@@ -10,7 +10,7 @@ import { THEMES } from '../src/theme';
  */
 async function generateThemes() {
   const themesFile = join(import.meta.dir, '..', 'THEMES.md');
-  const exampleFile = join(import.meta.dir, '..', 'diagrams', 'example-1.regex');
+  const exampleFile = join(import.meta.dir, '..', 'diagrams', 'url.regex');
 
   // Read the example regex file
   const exampleContent = await readFile(exampleFile, 'utf-8');
