@@ -70,6 +70,14 @@ regex-to-mermaid 'foo|bar' \
 | `-t`  | `--theme`     | Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`                     | `default` |
 | `-o`  | `--output`    | Output file (if not specified, outputs to stdout)                                    | `stdout`  |
 
+### Image Generation
+
+Pipe to [@mermaid-js/mermaid-cli](https://www.npmjs.com/package/@mermaid-js/mermaid-cli) to output an SVG or PNG image:
+
+```shell
+regex-to-mermaid 'foo|bar' | npx @mermaid-js/mermaid-cli --input - --output diagram.png
+```
+
 ## Library Usage
 
 ```typescript
