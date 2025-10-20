@@ -1,6 +1,6 @@
 {
   "name": "regex-to-mermaid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams",
   "keywords": [
     "regex",
