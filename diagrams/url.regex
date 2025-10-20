@@ -1,6 +1,7 @@
 ---
 name: URL
 description: A simplified URL
+flavor: regexp
 ---
 
 ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$

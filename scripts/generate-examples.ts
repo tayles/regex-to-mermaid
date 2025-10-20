@@ -1,12 +1,14 @@
 #!/usr/bin/env bun
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { regexToMermaid } from '../src';
+import { type Flavor, regexToMermaid } from '../src';
+import { buildRegexAst, parseRegexByFlavor } from '../src/parser';
 
 interface RegexFile {
   filename: string;
   name: string;
   description?: string;
+  flavor?: string;
   pattern: string;
 }
 
@@ -16,12 +18,14 @@ interface RegexFile {
 function parseRegexFile(content: string): {
   name: string;
   description?: string;
+  flavor?: string;
   pattern: string;
 } {
   const lines = content.trim().split('\n');
 
   let name = '';
   let description: string | undefined;
+  let flavor: string | undefined;
   let pattern = '';
   let inFrontmatter = false;
   let frontmatterEnded = false;
@@ -42,6 +46,8 @@ function parseRegexFile(content: string): {
         name = line.substring(5).trim();
       } else if (line.startsWith('description:')) {
         description = line.substring(12).trim();
+      } else if (line.startsWith('flavor:')) {
+        flavor = line.substring(7).trim();
       }
     } else if (frontmatterEnded && line.trim()) {
       pattern = line.trim();
@@ -49,7 +55,7 @@ function parseRegexFile(content: string): {
     }
   }
 
-  return { name, description, pattern };
+  return { name, description, flavor, pattern };
 }
 
 /**
@@ -84,6 +90,7 @@ async function generateExamples() {
         filename,
         name: parsed.name,
         description: parsed.description,
+        flavor: parsed.flavor,
         pattern: parsed.pattern,
       });
     }
@@ -126,6 +133,13 @@ async function generateExamples() {
       const mermaidFilename = example.filename.replace('.regex', '.mermaid');
       const mermaidPath = join(diagramsDir, mermaidFilename);
       await writeFile(mermaidPath, diagram, 'utf-8');
+
+      // Write AST JSON file
+      const regex = parseRegexByFlavor(example.pattern, (example.flavor as Flavor) ?? 'auto');
+      const ast = buildRegexAst(regex);
+      const astFilename = example.filename.replace('.regex', '.json');
+      const astPath = join(diagramsDir, astFilename);
+      await writeFile(astPath, JSON.stringify(ast, null, 2), 'utf-8');
     } catch (error) {
       console.error(`Error processing ${example.filename}:`, error);
       content += '*Error generating diagram*\n\n';

@@ -1,0 +1,8 @@
+---
+name: DateTime (RFC3339)
+description: Validates a RFC3339 DateTime format
+source: https://regex101.com/library/qH0sU7
+flavor: regexp
+---
+
+/^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/gm

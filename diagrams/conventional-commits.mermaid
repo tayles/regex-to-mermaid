@@ -1,0 +1,347 @@
+%% Regex: \A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?P<scope>[\w-]+)\))?(?P<breaking>!)?:\s(?P<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?P<BLANK_LINE>\n^$\n)(?P<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?P<BLANK_LINE2>\n^$\n)(?:(?P<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?P<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
+
+graph LR
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  literal_1("A"):::literal;
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  literal_2("feat"):::literal;
+  literal_3("fix"):::literal;
+  literal_4("ci"):::literal;
+  literal_5("chore"):::literal;
+  literal_6("docs"):::literal;
+  literal_7("test"):::literal;
+  literal_8("style"):::literal;
+  literal_9("refactor"):::literal;
+  literal_10("build"):::literal;
+  literal_11("perf"):::literal;
+  literal_12("revert"):::literal;
+  literal_13("("):::literal;
+  char_class_1("\w -<br><i><small>One or more</small></i>"):::char-class;
+  literal_14(")"):::literal;
+  literal_15("!"):::literal;
+  literal_16(":\s"):::literal;
+  assertion_2("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  char_class_2("\w # < > Space . / \t \ -<br><i><small>3 or more</small></i>"):::char-class;
+  disjunction_begin_3:::disjunction@{ shape: f-circ };
+  disjunction_end_3:::disjunction@{ shape: f-circ };
+  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  literal_17("Any character"):::literal;
+  assertion_4("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_18("Newline"):::literal;
+  assertion_5("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_6("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_19("Newline"):::literal;
+  assertion_7("^<br><i><small>Begins with</small></i>"):::assertion;
+  literal_20("Any character<br><i><small>3 or more</small></i>"):::literal;
+  disjunction_begin_4:::disjunction@{ shape: f-circ };
+  disjunction_end_4:::disjunction@{ shape: f-circ };
+  assertion_8("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  literal_21("Any character"):::literal;
+  assertion_9("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_22("Newline<br><i><small>Optional</small></i>"):::literal;
+  literal_23("Newline"):::literal;
+  assertion_10("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_11("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_24("Newline"):::literal;
+  assertion_12("^<br><i><small>Begins with</small></i>"):::assertion;
+  literal_25("BREAKING\sCHANGE:\s"):::literal;
+  char_class_3("\s \w<br><i><small>One or more</small></i>"):::char-class;
+  disjunction_begin_5:::disjunction@{ shape: f-circ };
+  disjunction_end_5:::disjunction@{ shape: f-circ };
+  assertion_13("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  literal_26("Any character"):::literal;
+  assertion_14("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_27("Newline"):::literal;
+  assertion_15("^<br><i><small>Begins with</small></i>"):::assertion;
+  literal_28("Any word character<br><i><small>One or more</small></i>"):::literal;
+  literal_29(":\s"):::literal;
+  char_class_4("\w # -<br><i><small>One or more</small></i>"):::char-class;
+  disjunction_begin_6:::disjunction@{ shape: f-circ };
+  disjunction_end_6:::disjunction@{ shape: f-circ };
+  assertion_16("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  literal_30("Any character"):::literal;
+  literal_31("Newline<br><i><small>Optional</small></i>"):::literal;
+  literal_32("Z"):::literal;
+
+  %% Subgraphs
+  subgraph standard_1 ["<small>#1</small> Group 1"]
+    disjunction_begin_2
+    disjunction_end_2
+    literal_2
+    literal_3
+    literal_4
+    literal_5
+    literal_6
+    literal_7
+    literal_8
+    literal_9
+    literal_10
+    literal_11
+    literal_12
+  end
+
+  subgraph standard_2 ["<small>#2</small> Group 2"]
+    char_class_1
+  end
+
+  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+    standard_2
+    literal_13
+    literal_14
+  end
+
+  subgraph standard_3 ["<small>#3</small> Group 3 <small><i>Optional</i></small>"]
+    literal_15
+  end
+
+  subgraph non_capturing_4 ["Non-capturing"]
+    disjunction_begin_3
+    disjunction_end_3
+    assertion_3
+    literal_17
+  end
+
+  subgraph standard_4 ["<small>#4</small> Group 4"]
+    non_capturing_4
+    assertion_2
+    char_class_2
+  end
+
+  subgraph non_capturing_2 ["Non-capturing"]
+    standard_1
+    standard_2
+    non_capturing_3
+    standard_3
+    non_capturing_4
+    standard_4
+    assertion_1
+    literal_16
+    assertion_4
+  end
+
+  subgraph standard_5 ["<small>#5</small> Group 5"]
+    literal_18
+    assertion_5
+    assertion_6
+    literal_19
+  end
+
+  subgraph non_capturing_8 ["Non-capturing"]
+    disjunction_begin_4
+    disjunction_end_4
+    assertion_8
+    literal_21
+  end
+
+  subgraph non_capturing_7 ["Non-capturing <small><i>1 to 3</i></small>"]
+    non_capturing_8
+    assertion_7
+    literal_20
+    assertion_9
+    literal_22
+  end
+
+  subgraph standard_6 ["<small>#6</small> Group 6"]
+    non_capturing_8
+    non_capturing_7
+  end
+
+  subgraph non_capturing_6 ["Non-capturing <small><i>Optional</i></small>"]
+    standard_5
+    non_capturing_8
+    non_capturing_7
+    standard_6
+  end
+
+  subgraph standard_7 ["<small>#7</small> Group 7"]
+    literal_23
+    assertion_10
+    assertion_11
+    literal_24
+  end
+
+  subgraph non_capturing_10 ["Non-capturing"]
+    disjunction_begin_5
+    disjunction_end_5
+    assertion_13
+    literal_26
+  end
+
+  subgraph standard_8 ["<small>#8</small> Group 8"]
+    non_capturing_10
+    assertion_12
+    literal_25
+    char_class_3
+    assertion_14
+  end
+
+  subgraph non_capturing_9 ["Non-capturing <small><i>Optional</i></small>"]
+    non_capturing_10
+    standard_8
+    literal_27
+  end
+
+  subgraph non_capturing_12 ["Non-capturing"]
+    disjunction_begin_6
+    disjunction_end_6
+    assertion_16
+    literal_30
+  end
+
+  subgraph standard_9 ["<small>#9</small> Group 9"]
+    non_capturing_12
+    assertion_15
+    literal_28
+    literal_29
+    char_class_4
+  end
+
+  subgraph non_capturing_11 ["Non-capturing"]
+    non_capturing_12
+    standard_9
+  end
+
+  subgraph non_capturing_5 ["Non-capturing <small><i>Optional</i></small>"]
+    standard_5
+    non_capturing_8
+    non_capturing_7
+    standard_6
+    non_capturing_6
+    standard_7
+    non_capturing_10
+    standard_8
+    non_capturing_9
+    non_capturing_12
+    standard_9
+    non_capturing_11
+  end
+
+  subgraph non_capturing_1 ["Non-capturing"]
+    standard_1
+    standard_2
+    non_capturing_3
+    standard_3
+    non_capturing_4
+    standard_4
+    non_capturing_2
+    standard_5
+    non_capturing_8
+    non_capturing_7
+    standard_6
+    non_capturing_6
+    standard_7
+    non_capturing_10
+    standard_8
+    non_capturing_9
+    non_capturing_12
+    standard_9
+    non_capturing_11
+    non_capturing_5
+    disjunction_begin_1
+    disjunction_end_1
+    literal_31
+  end
+
+  %% Edges
+  start --- literal_1;
+  literal_1 --- disjunction_begin_1;
+  disjunction_begin_1 --- assertion_1;
+  assertion_1 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_2;
+  literal_2 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_4;
+  literal_4 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_5;
+  literal_5 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_6;
+  literal_6 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_7;
+  literal_7 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_8;
+  literal_8 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_9;
+  literal_9 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_10;
+  literal_10 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_11;
+  literal_11 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_12;
+  literal_12 --- disjunction_end_2;
+  disjunction_end_2 --- literal_13;
+  literal_13 --- char_class_1;
+  char_class_1 --- literal_14;
+  literal_14 --- literal_15;
+  literal_15 --- literal_16;
+  literal_16 --- assertion_2;
+  assertion_2 --- char_class_2;
+  char_class_2 --- disjunction_begin_3;
+  disjunction_begin_3 --- assertion_3;
+  assertion_3 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_17;
+  literal_17 --- disjunction_end_3;
+  disjunction_end_3 --- assertion_4;
+  assertion_4 --- literal_18;
+  literal_18 --- assertion_5;
+  assertion_5 --- assertion_6;
+  assertion_6 --- literal_19;
+  literal_19 --- assertion_7;
+  assertion_7 --- literal_20;
+  literal_20 --- disjunction_begin_4;
+  disjunction_begin_4 --- assertion_8;
+  assertion_8 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_21;
+  literal_21 --- disjunction_end_4;
+  disjunction_end_4 --- assertion_9;
+  assertion_9 --- literal_22;
+  literal_22 --- literal_23;
+  literal_23 --- assertion_10;
+  assertion_10 --- assertion_11;
+  assertion_11 --- literal_24;
+  literal_24 --- assertion_12;
+  assertion_12 --- literal_25;
+  literal_25 --- char_class_3;
+  char_class_3 --- disjunction_begin_5;
+  disjunction_begin_5 --- assertion_13;
+  assertion_13 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_26;
+  literal_26 --- disjunction_end_5;
+  disjunction_end_5 --- assertion_14;
+  assertion_14 --- literal_27;
+  literal_27 --- assertion_15;
+  assertion_15 --- literal_28;
+  literal_28 --- literal_29;
+  literal_29 --- char_class_4;
+  char_class_4 --- disjunction_begin_6;
+  disjunction_begin_6 --- assertion_16;
+  assertion_16 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_30;
+  literal_30 --- disjunction_end_6;
+  disjunction_end_6 --- literal_31;
+  literal_31 --- disjunction_end_1;
+  disjunction_end_1 --- literal_32;
+  literal_32 --- fin;
+
+  %% Styles
+  %% Node Styling
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+  classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
+
+  %% Apply Group Classes
+  class standard_1,standard_2,standard_3,standard_4,standard_5,standard_6,standard_7,standard_8,standard_9 standard;
+  class non_capturing_3,non_capturing_4,non_capturing_2,non_capturing_8,non_capturing_7,non_capturing_6,non_capturing_10,non_capturing_9,non_capturing_12,non_capturing_11,non_capturing_5,non_capturing_1 non-capturing;
+
+%% Generated with regex-to-mermaid@1.0.0

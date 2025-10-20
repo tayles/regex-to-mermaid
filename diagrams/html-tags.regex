@@ -1,6 +1,7 @@
 ---
 name: HTML Tags
 description: Naive html tags
+flavor: regexp
 ---
 
 <\/?[\w\s]*>|<.+[\W]>
