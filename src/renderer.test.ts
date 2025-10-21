@@ -1,5 +1,13 @@
 import { describe, expect, test } from 'bun:test';
-import { buildEdges, buildMermaidDiagram, buildNodes, buildSubgraphs } from './renderer';
+import {
+  addFrontMatter,
+  buildAccessibility,
+  buildEdges,
+  buildMermaidDiagram,
+  buildNodes,
+  buildSubgraphs,
+  escapeString,
+} from './renderer';
 import type { DiagramData, DiagramNode, Edge, Group } from './types';
 
 describe('buildNodes', () => {
@@ -430,6 +438,52 @@ describe('buildMermaidDiagram', () => {
       ],
     };
     const result = buildMermaidDiagram(data);
+    expect(result).toContain('graph LR');
+    expect(result).toContain('%% Nodes');
+    expect(result).toContain('%% Subgraphs');
+    expect(result).toContain('%% Edges');
+    expect(result).toContain('%% Styles');
+  });
+
+  test('includes accessibility description when provided', () => {
+    const data: DiagramData = {
+      nodes: [],
+      edges: [],
+      groups: [],
+    };
+    const description = 'Email validation pattern';
+    const result = buildMermaidDiagram(data, 'LR', 'default', description);
+    expect(result).toContain('accDescr: "Email validation pattern"');
+  });
+
+  test('does not include accessibility description when not provided', () => {
+    const data: DiagramData = {
+      nodes: [],
+      edges: [],
+      groups: [],
+    };
+    const result = buildMermaidDiagram(data);
+    expect(result).not.toContain('accDescr:');
+  });
+
+  test('escapes special characters in accessibility description', () => {
+    const data: DiagramData = {
+      nodes: [{ id: 'n1', type: 'literal', label: 'a' }],
+      edges: [{ from: 'start', to: 'n1' }],
+      groups: [
+        {
+          id: 'group_1',
+          type: 'standard',
+          label: 'Test',
+          number: 1,
+          children: ['n1'],
+        },
+      ],
+    };
+    const description = 'Pattern for "test" values';
+    const result = buildMermaidDiagram(data, 'LR', 'default', description);
+    expect(result).toContain('accDescr: "Pattern for \\"test\\" values"');
+
     // Check sections appear in correct order
     const graphIndex = result.indexOf('graph LR');
     const nodesIndex = result.indexOf('%% Nodes');
@@ -593,5 +647,182 @@ describe('Edge cases and error handling', () => {
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
     expect(result).toContain('node2 --- node3;');
+  });
+});
+
+describe('escapeString', () => {
+  test('escapes double quotes', () => {
+    const result = escapeString('Hello "world"');
+    expect(result).toBe('Hello \\"world\\"');
+  });
+
+  test('escapes backslashes', () => {
+    const result = escapeString('C:\\Users\\path');
+    expect(result).toBe('C:\\\\Users\\\\path');
+  });
+
+  test('escapes newlines', () => {
+    const result = escapeString('line1\nline2');
+    expect(result).toBe('line1\\nline2');
+  });
+
+  test('escapes carriage returns', () => {
+    const result = escapeString('line1\rline2');
+    expect(result).toBe('line1\\rline2');
+  });
+
+  test('escapes multiple special characters', () => {
+    const result = escapeString('test "quote"\nand\\slash');
+    expect(result).toBe('test \\"quote\\"\\nand\\\\slash');
+  });
+
+  test('handles empty string', () => {
+    const result = escapeString('');
+    expect(result).toBe('');
+  });
+
+  test('handles string with no special characters', () => {
+    const result = escapeString('normal text');
+    expect(result).toBe('normal text');
+  });
+
+  test('handles regex pattern strings', () => {
+    const result = escapeString('/^[a-z]+$/i');
+    expect(result).toBe('/^[a-z]+$/i');
+  });
+
+  test('escapes complex patterns with all special characters', () => {
+    const result = escapeString('test\n"quote"\r\\path');
+    expect(result).toBe('test\\n\\"quote\\"\\r\\\\path');
+  });
+});
+
+describe('buildAccessibility', () => {
+  test('returns empty string when no description provided', () => {
+    const result = buildAccessibility();
+    expect(result).toBe('');
+  });
+
+  test('returns empty string for undefined description', () => {
+    const result = buildAccessibility(undefined);
+    expect(result).toBe('');
+  });
+
+  test('builds accessibility description with simple text', () => {
+    const result = buildAccessibility('Email validation regex');
+    expect(result).toBe('accDescr: "Email validation regex"\n');
+  });
+
+  test('escapes double quotes in description', () => {
+    const result = buildAccessibility('Pattern for "test" values');
+    expect(result).toBe('accDescr: "Pattern for \\"test\\" values"\n');
+  });
+
+  test('escapes newlines in description', () => {
+    const result = buildAccessibility('Line 1\nLine 2');
+    expect(result).toBe('accDescr: "Line 1\\nLine 2"\n');
+  });
+
+  test('escapes backslashes in description', () => {
+    const result = buildAccessibility('Path: C:\\Users');
+    expect(result).toBe('accDescr: "Path: C:\\\\Users"\n');
+  });
+
+  test('handles empty string description', () => {
+    const result = buildAccessibility('');
+    expect(result).toBe('');
+  });
+
+  test('handles complex description with multiple special characters', () => {
+    const result = buildAccessibility('Regex "pattern"\nwith\\escape');
+    expect(result).toBe('accDescr: "Regex \\"pattern\\"\\nwith\\\\escape"\n');
+  });
+});
+
+describe('addFrontMatter', () => {
+  test('adds front matter with string pattern and default theme', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, '^test$', 'default');
+    expect(result).toContain('---');
+    expect(result).toContain('title: "Regex: ^test$"');
+    expect(result).toContain('config:');
+    expect(result).toContain('theme: "default"');
+    expect(result).toContain('graph LR');
+  });
+
+  test('adds front matter with RegExp pattern', () => {
+    const diagram = 'graph LR\n  node1';
+    const pattern = /^[a-z]+$/i;
+    const result = addFrontMatter(diagram, pattern, 'neutral');
+    expect(result).toContain('title: "Regex: /^[a-z]+$/i"');
+    expect(result).toContain('theme: "neutral"');
+  });
+
+  test('omits config section when theme is none', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, 'test', 'none');
+    expect(result).toContain('title: "Regex: test"');
+    expect(result).not.toContain('config:');
+    expect(result).not.toContain('theme:');
+  });
+
+  test('escapes special characters in pattern', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, 'test "quote"', 'default');
+    expect(result).toContain('title: "Regex: test \\"quote\\""');
+  });
+
+  test('handles all theme options', () => {
+    const diagram = 'graph LR\n  node1';
+
+    const resultDark = addFrontMatter(diagram, 'test', 'dark');
+    expect(resultDark).toContain('theme: "dark"');
+
+    const resultForest = addFrontMatter(diagram, 'test', 'forest');
+    expect(resultForest).toContain('theme: "forest"');
+
+    const resultNeutral = addFrontMatter(diagram, 'test', 'neutral');
+    expect(resultNeutral).toContain('theme: "neutral"');
+  });
+
+  test('preserves diagram content', () => {
+    const diagram = 'graph LR\n  node1("test"):::literal;\n  node1 --- fin;';
+    const result = addFrontMatter(diagram, 'test', 'default');
+    expect(result).toContain('node1("test"):::literal;');
+    expect(result).toContain('node1 --- fin;');
+  });
+
+  test('front matter is at the beginning', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, 'test', 'default');
+    expect(result.startsWith('---\ntitle:')).toBe(true);
+  });
+
+  test('front matter is properly closed', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, 'test', 'default');
+    const lines = result.split('\n');
+    expect(lines[0]).toBe('---');
+    expect(lines.indexOf('---', 1)).toBeGreaterThan(0);
+  });
+
+  test('handles complex regex patterns', () => {
+    const diagram = 'graph LR\n  node1';
+    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const result = addFrontMatter(diagram, pattern, 'default');
+    expect(result).toContain('title: "Regex:');
+    expect(result).toContain('[a-zA-Z0-9._%+-]+@');
+  });
+
+  test('handles patterns with backslashes', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, '\\d+\\.\\d+', 'default');
+    expect(result).toContain('\\\\d+\\\\.\\\\d+');
+  });
+
+  test('handles patterns with newlines', () => {
+    const diagram = 'graph LR\n  node1';
+    const result = addFrontMatter(diagram, 'line1\nline2', 'default');
+    expect(result).toContain('line1\\nline2');
   });
 });

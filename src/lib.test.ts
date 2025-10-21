@@ -16,24 +16,42 @@ describe('regexToMermaid', () => {
       const result = regexToMermaid('abc');
       expect(result).toContain('graph LR');
       expect(result).toContain('abc');
-      expect(result).toContain('%% Regex: abc');
+      expect(result).toContain('title: "Regex: abc"');
     });
 
     test('converts RegExp object to Mermaid diagram', () => {
       const result = regexToMermaid(/abc/);
       expect(result).toContain('graph LR');
       expect(result).toContain('abc');
-      expect(result).toContain('%% Regex: /abc/');
+      expect(result).toContain('title: "Regex: /abc/"');
     });
 
     test('includes package name and version in output', () => {
       const result = regexToMermaid('test');
-      expect(result).toContain('%% Generated with regex-to-mermaid@');
+      expect(result).toContain('Generated with regex-to-mermaid@');
     });
 
     test('returns string output', () => {
       const result = regexToMermaid('test');
       expect(typeof result).toBe('string');
+    });
+
+    test('includes YAML front matter', () => {
+      const result = regexToMermaid('test');
+      expect(result).toContain('---');
+      expect(result).toContain('title:');
+      expect(result).toContain('config:');
+    });
+
+    test('includes theme in config when not none', () => {
+      const result = regexToMermaid('test', { theme: 'default' });
+      expect(result).toContain('theme: "default"');
+    });
+
+    test('excludes theme config when theme is none', () => {
+      const result = regexToMermaid('test', { theme: 'none' });
+      expect(result).not.toContain('config:');
+      expect(result).not.toContain('theme:');
     });
   });
 
@@ -266,35 +284,46 @@ describe('regexToMermaid', () => {
   });
 
   describe('Output structure', () => {
-    test('starts with regex comment', () => {
+    test('starts with YAML front matter delimiter', () => {
       const result = regexToMermaid('test');
-      expect(result.split('\n')[0]).toBe('%% Regex: test');
+      expect(result.split('\n')[0]).toBe('---');
     });
 
-    test('contains graph declaration', () => {
+    test('contains title with regex pattern', () => {
       const result = regexToMermaid('test');
-      expect(result).toMatch(/graph (LR|TD)/);
+      expect(result).toContain('title: "Regex: test"');
     });
 
-    test('ends with generation comment', () => {
+    test('contains YAML front matter closing delimiter', () => {
+      const result = regexToMermaid('test');
+      expect(result).toContain('---');
+      const lines = result.split('\n');
+      const closingIndex = lines.indexOf('---', 1);
+      expect(closingIndex).toBeGreaterThan(0);
+    });
+
+    test('contains graph declaration after front matter', () => {
       const result = regexToMermaid('test');
       const lines = result.split('\n');
-      expect(lines[lines.length - 1]).toMatch(/^%% Generated with regex-to-mermaid@/);
+      const closingIndex = lines.indexOf('---', 1);
+      const graphLine = lines.slice(closingIndex + 1).find(line => line.includes('graph'));
+      expect(graphLine).toMatch(/graph (LR|TD)/);
     });
 
-    test('contains node definitions', () => {
+    test('contains config section with theme', () => {
       const result = regexToMermaid('test');
-      expect(result).toContain('%% Nodes');
+      expect(result).toContain('config:');
+      expect(result).toContain('theme:');
     });
 
-    test('contains edge definitions', () => {
-      const result = regexToMermaid('test');
-      expect(result).toContain('%% Edges');
-    });
-
-    test('preserves RegExp pattern format in comment', () => {
+    test('preserves RegExp pattern format in title', () => {
       const result = regexToMermaid(/test/gi);
-      expect(result).toContain('%% Regex: /test/gi');
+      expect(result).toContain('title: "Regex: /test/gi"');
+    });
+
+    test('escapes special characters in title', () => {
+      const result = regexToMermaid('test "quote"');
+      expect(result).toContain('title: "Regex: test \\"quote\\""');
     });
   });
 
@@ -416,7 +445,9 @@ describe('Real-world examples', () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const result = regexToMermaid(emailRegex);
     expect(result).toContain('graph LR');
-    expect(result).toContain('%% Regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/');
+    expect(result).toContain(
+      'title: "Regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$/"',
+    );
   });
 
   test('converts phone number regex', () => {

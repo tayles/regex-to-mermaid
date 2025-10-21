@@ -1,6 +1,6 @@
 import packageJson from '../package.json';
 import { buildRegexAst, generateDiagramData, parseRegexByFlavor } from './parser';
-import { buildMermaidDiagram } from './renderer';
+import { addFrontMatter, buildMermaidDiagram } from './renderer';
 import type { Direction, Flavor, Options, Theme } from './types';
 import { DEFAULT_OPTIONS, DIRECTIONS, FLAVORS, THEMES } from './types';
 
@@ -64,11 +64,12 @@ export function regexToMermaid(pattern: string | RegExp, options: Options = {}):
   const ast = buildRegexAst(regexPattern);
   const data = generateDiagramData(ast);
 
+  const generatorText = `Generated with ${packageJson.name}@${packageJson.version}`;
+
   // Build the Mermaid diagram
-  let diagram = buildMermaidDiagram(data, direction, theme);
+  const diagram = buildMermaidDiagram(data, direction, theme, generatorText);
 
-  // Add regex pattern as comment and suffix with package info
-  diagram = `%% Regex: ${pattern}\n\n${diagram}\n\n%% Generated with ${packageJson.name}@${packageJson.version}`;
+  const wrappedDiagram = addFrontMatter(diagram, pattern, theme);
 
-  return diagram;
+  return wrappedDiagram;
 }
