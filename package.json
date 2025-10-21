@@ -22,7 +22,7 @@
     "parser",
     "ast"
   ],
-  "homepage": "https://github.com/tayles/regex-to-mermaid#readme",
+  "homepage": "https://github.com/tayles/regex-to-mermaid",
   "bugs": {
     "url": "https://github.com/tayles/regex-to-mermaid/issues"
   },
@@ -53,9 +53,10 @@
   "scripts": {
     "build": "bunup",
     "dev": "bun run src/cli.ts",
+    "generate-all": "bun run generate-examples && bun run generate-themes && bun run generate-thumbnail",
     "generate-examples": "bun scripts/generate-examples.ts",
     "generate-themes": "bun scripts/generate-themes.ts",
-    "generate-thumbnail": "bun dev '^(?<protocol>https?://)?(?<domain>[a-zA-Z0-9.-]+.[a-zA-Z]{2,})(?<path>/.*)?$' | bunx @mermaid-js/mermaid-cli --input - --output docs/regex-to-mermaid.png -w 2048 && bunx @343dev/optimizt docs/regex-to-mermaid.png",
+    "generate-thumbnail": "bun dev '^(?<protocol>https?://)?(?<domain>[a-zA-Z0-9.-]+.[a-zA-Z]{2,})(?<path>/.*)?$' | bunx @mermaid-js/mermaid-cli --input - --output docs/regex-to-mermaid-example.png -w 2048 && bunx @343dev/optimizt docs/regex-to-mermaid-example.png",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "prepare": "bun simple-git-hooks",
