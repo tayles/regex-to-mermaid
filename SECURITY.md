@@ -14,10 +14,7 @@ We take the security of regex-to-mermaid seriously. If you believe you have foun
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them by:
-
-1. Opening a [GitHub Security Advisory](https://github.com/tayles/regex-to-mermaid/security/advisories/new)
-2. Or by emailing the maintainers directly (if email is available in the GitHub profile)
+Instead, please report them by opening a [GitHub Security Advisory](https://github.com/tayles/regex-to-mermaid/security/advisories/new).
 
 Please include the following information:
 
