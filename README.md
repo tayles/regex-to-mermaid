@@ -165,3 +165,7 @@ bun run lint
 - [Perl Problems](https://xkcd.com/1171/)
 - [Regex Golf](https://xkcd.com/1313/)
 - [Backslashes](https://xkcd.com/1638/)
+
+## Maintainers
+
+- [David Taylor](https://github.com/tayles)
