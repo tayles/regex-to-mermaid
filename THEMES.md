@@ -17,9 +17,10 @@ regex-to-mermaid 'foo|bar' --theme default
 **Preview:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
-
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -76,8 +77,6 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -95,9 +94,15 @@ regex-to-mermaid 'foo|bar' --theme neutral
 **Preview:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
+---
+config:
+  theme: neutral
+---
 
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -154,8 +159,6 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -173,9 +176,15 @@ regex-to-mermaid 'foo|bar' --theme dark
 **Preview:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
+---
+config:
+  theme: dark
+---
 
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -232,8 +241,6 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -251,9 +258,15 @@ regex-to-mermaid 'foo|bar' --theme forest
 **Preview:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
+---
+config:
+  theme: forest
+---
 
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -310,8 +323,6 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -329,9 +340,10 @@ regex-to-mermaid 'foo|bar' --theme none
 **Preview:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
-
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -376,8 +388,6 @@ graph LR
   literal_5 --- literal_6;
   literal_6 --- assertion_2;
   assertion_2 --- fin;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---

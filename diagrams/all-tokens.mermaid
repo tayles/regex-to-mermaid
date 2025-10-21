@@ -1,6 +1,7 @@
-%% Regex: ^(?<protocol>https?):\/\/(?:www\.)?([a-z0-9\-]+)\.(?:com|org|net)(?:\/[^\s]*)?(?=query)\1\d{3,5}\w+\s*\S+[^abc](?!neg)(?<!back)$|alt\b\B.
-
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?):\\/\\/(?:www\\.)?([a-z0-9\\-]+)\\.(?:com|org|net)(?:\\/[^\\s]*)?(?=query)\\1\\d{3,5}\\w+\\s*\\S+[^abc](?!neg)(?<!back)$|alt\\b\\B."
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -134,5 +135,3 @@ graph LR
   class positive_lookahead_1 positive-lookahead;
   class negative_lookahead_1 negative-lookahead;
   class negative_lookbehind_1 negative-lookbehind;
-
-%% Generated with regex-to-mermaid@1.0.0

@@ -39,9 +39,10 @@ An example of all possible token types
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?):\/\/(?:www\.)?([a-z0-9\-]+)\.(?:com|org|net)(?:\/[^\s]*)?(?=query)\1\d{3,5}\w+\s*\S+[^abc](?!neg)(?<!back)$|alt\b\B.
-
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?):\\/\\/(?:www\\.)?([a-z0-9\\-]+)\\.(?:com|org|net)(?:\\/[^\\s]*)?(?=query)\\1\\d{3,5}\\w+\\s*\\S+[^abc](?!neg)(?<!back)$|alt\\b\\B."
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -175,15 +176,13 @@ graph LR
   class positive_lookahead_1 positive-lookahead;
   class negative_lookahead_1 negative-lookahead;
   class negative_lookbehind_1 negative-lookbehind;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
 
 ## Comprehensive RegExp Features
 
-Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? \* + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
+Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
 
 **Pattern:**
 
@@ -194,9 +193,10 @@ Demonstrates MDN JavaScript RegExp syntax cheatsheet features including characte
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(?<named>[A-Z]\w{2,5}):\s+(a|b|cd)(?:https?:\/\/)?(?<domain>[a-z0-9.-]+)(?=\.com)(?!\.org)(?<=example)(?<!test)[a-z]{1,3}\.com(?:\/\S+)?(?:\?[a-zA-Z0-9&=]+)?(?<digit>\d+)\k<digit>\1\b\B\d+\D+\w+\W+\s+\S+[^xyz]+\t\r\n|alt$
-
 graph LR
+  accTitle: "Regex: ^(?<named>[A-Z]\\w{2,5}):\\s+(a|b|cd)(?:https?:\\/\\/)?(?<domain>[a-z0-9.-]+)(?=\\.com)(?!\\.org)(?<=example)(?<!test)[a-z]{1,3}\\.com(?:\\/\\S+)?(?:\\?[a-zA-Z0-9&=]+)?(?<digit>\\d+)\\k<digit>\\1\\b\\B\\d+\\D+\\w+\\W+\\s+\\S+[^xyz]+\\t\\r\\n|alt$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -369,8 +369,6 @@ graph LR
   class negative_lookahead_1 negative-lookahead;
   class positive_lookbehind_1 positive-lookbehind;
   class negative_lookbehind_1 negative-lookbehind;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -388,9 +386,10 @@ Validates a RFC3339 DateTime format
 **Diagram:**
 
 ```mermaid
-%% Regex: \A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?P<scope>[\w-]+)\))?(?P<breaking>!)?:\s(?P<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?P<BLANK_LINE>\n^$\n)(?P<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?P<BLANK_LINE2>\n^$\n)(?:(?P<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?P<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
-
 graph LR
+  accTitle: "Regex: \\A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?P<scope>[\\w-]+)\\))?(?P<breaking>!)?:\\s(?P<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?P<BLANK_LINE>\\n^$\\n)(?P<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?P<BLANK_LINE2>\\n^$\\n)(?:(?P<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?P<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -733,8 +732,6 @@ graph LR
   %% Apply Group Classes
   class standard_1,standard_2,standard_3,standard_4,standard_5,standard_6,standard_7,standard_8,standard_9 standard;
   class non_capturing_3,non_capturing_4,non_capturing_2,non_capturing_8,non_capturing_7,non_capturing_6,non_capturing_10,non_capturing_9,non_capturing_12,non_capturing_11,non_capturing_5,non_capturing_1 non-capturing;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -752,9 +749,10 @@ Validates CRON pattern (Quartz) and supports groups
 **Diagram:**
 
 ```mermaid
-%% Regex: ^\s*($|#|\w+\s*=|(?<SECOND>(?:\?|\*|(?:(?<START_SEC>[0-5]?\d)(?:(?<DELIMITER_SEC>\-|\/|\,)(?<END_SEC>[0-6]?\d))*)))\s+(?<MINUTE>(?:\?|\*|(?:(?<START_MIN>[0-5]?\d)(?:(?<DELIMITER_MIN>\-|\/|\,)(?<END_MIN>[0-6]?\d))*)))\s+(?<HOUR>(?:\?|\*|(?:(?<START_HR>[0-2]?\d)(?:(?<DELIMITER_HR>\-|\/|\,)(?<END_HR>[0-2]?\d))*)))\s+(?<DAYOFMONTH>\?|\*|(?:(?<START_DOM>L|W|LW|[1-3]?\dW?)(?:(?<DELIMITER_DOM>\-|\/|\,)(?<END_DOM>[1-3]?\d?W?))*))\s+(?<MONTH>\*|(?:(?<START_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(?:(?<DELIMITER_MON>\-|\/|\,)(?<END_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC))*))\s+(?<DAYOFWEEK>\?|\*|(?:(?<START_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT)(?:(?:(?:(?<DELIMITER_DOW>\/|\,|\#)(?<END_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT))*)L?)*))(?:|\s)+(?<YEAR>(?:\*|(?:(?<START_YR>\b(?:[1-2](?:9|0)\d\d)\b)(?:(?<DELIMITER_YR>\-|\/|\,)(?<END_YR>\b(?:[1-9]|[1-9][0-9]|1[0-8][0-9]|19[0-2])\b|\b(?:[1-2](?:9|0)\d\d)\b))*))))$
-
 graph LR
+  accTitle: "Regex: ^\\s*($|#|\\w+\\s*=|(?<SECOND>(?:\\?|\\*|(?:(?<START_SEC>[0-5]?\\d)(?:(?<DELIMITER_SEC>\\-|\\/|\\,)(?<END_SEC>[0-6]?\\d))*)))\\s+(?<MINUTE>(?:\\?|\\*|(?:(?<START_MIN>[0-5]?\\d)(?:(?<DELIMITER_MIN>\\-|\\/|\\,)(?<END_MIN>[0-6]?\\d))*)))\\s+(?<HOUR>(?:\\?|\\*|(?:(?<START_HR>[0-2]?\\d)(?:(?<DELIMITER_HR>\\-|\\/|\\,)(?<END_HR>[0-2]?\\d))*)))\\s+(?<DAYOFMONTH>\\?|\\*|(?:(?<START_DOM>L|W|LW|[1-3]?\\dW?)(?:(?<DELIMITER_DOM>\\-|\\/|\\,)(?<END_DOM>[1-3]?\\d?W?))*))\\s+(?<MONTH>\\*|(?:(?<START_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(?:(?<DELIMITER_MON>\\-|\\/|\\,)(?<END_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC))*))\\s+(?<DAYOFWEEK>\\?|\\*|(?:(?<START_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT)(?:(?:(?:(?<DELIMITER_DOW>\\/|\\,|\\#)(?<END_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT))*)L?)*))(?:|\\s)+(?<YEAR>(?:\\*|(?:(?<START_YR>\\b(?:[1-2](?:9|0)\\d\\d)\\b)(?:(?<DELIMITER_YR>\\-|\\/|\\,)(?<END_YR>\\b(?:[1-9]|[1-9][0-9]|1[0-8][0-9]|19[0-2])\\b|\\b(?:[1-2](?:9|0)\\d\\d)\\b))*))))$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -1771,8 +1769,6 @@ graph LR
   class named_capture_2,named_capture_3,named_capture_4,named_capture_1,named_capture_6,named_capture_7,named_capture_8,named_capture_5,named_capture_10,named_capture_11,named_capture_12,named_capture_9,named_capture_14,named_capture_15,named_capture_16,named_capture_13,named_capture_18,named_capture_19,named_capture_20,named_capture_17,named_capture_22,named_capture_23,named_capture_24,named_capture_21,named_capture_26,named_capture_27,named_capture_28,named_capture_25 named-capture;
   class non_capturing_3,non_capturing_2,non_capturing_1,non_capturing_6,non_capturing_5,non_capturing_4,non_capturing_9,non_capturing_8,non_capturing_7,non_capturing_11,non_capturing_10,non_capturing_13,non_capturing_12,non_capturing_17,non_capturing_16,non_capturing_15,non_capturing_14,non_capturing_18,non_capturing_22,non_capturing_21,non_capturing_24,non_capturing_26,non_capturing_25,non_capturing_23,non_capturing_20,non_capturing_19 non-capturing;
   class standard_1 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -1790,9 +1786,10 @@ A date in YYYY-MM-DD format
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
-
 graph LR
+  accTitle: "Regex: ^(19|20)\\d\\d([- /.])(0[1-9]|1[012])\\2(0[1-9]|[12][0-9]|3[01])$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -1895,8 +1892,6 @@ graph LR
 
   %% Apply Group Classes
   class standard_1,standard_2,standard_3,standard_4 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -1914,9 +1909,10 @@ Validates a RFC3339 DateTime format
 **Diagram:**
 
 ```mermaid
-%% Regex: /^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/gm
-
 graph LR
+  accTitle: "Regex: /^((?:(\\d{4}-\\d{2}-\\d{2})T(\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?))(Z|[\\+-]\\d{2}:\\d{2})?)$/gm"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2031,8 +2027,6 @@ graph LR
   %% Apply Group Classes
   class standard_2,standard_3,standard_4,standard_1 standard;
   class non_capturing_2,non_capturing_1 non-capturing;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2050,9 +2044,10 @@ Standard email address
 **Diagram:**
 
 ```mermaid
-%% Regex: ^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$
-
 graph LR
+  accTitle: "Regex: ^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2094,8 +2089,6 @@ graph LR
 
   %% Apply Group Classes
   class standard_1 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2113,9 +2106,10 @@ Email address compliant with RFC2822
 **Diagram:**
 
 ```mermaid
-%% Regex: ^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$
-
 graph LR
+  accTitle: "Regex: ^([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x22([^\\x0d\\x22\\x5c\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x22)(\\x2e([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x22([^\\x0d\\x22\\x5c\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x22))*\\x40([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x5b([^\\x0d\\x5b-\\x5d\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x5d)(\\x2e([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x5b([^\\x0d\\x5b-\\x5d\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x5d))*$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2315,8 +2309,6 @@ graph LR
 
   %% Apply Group Classes
   class standard_2,standard_1,standard_5,standard_4,standard_3,standard_7,standard_6,standard_10,standard_9,standard_8 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2334,9 +2326,10 @@ Naive html tags
 **Diagram:**
 
 ```mermaid
-%% Regex: <\/?[\w\s]*>|<.+[\W]>
-
 graph LR
+  accTitle: "Regex: <\\/?[\\w\\s]*>|<.+[\\W]>"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2370,8 +2363,6 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2389,9 +2380,10 @@ Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special characte
 **Diagram:**
 
 ```mermaid
-%% Regex: (?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}
-
 graph LR
+  accTitle: "Regex: (?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\\\[\\]{}\\-_+=~`|:;\"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2468,8 +2460,6 @@ graph LR
   %% Apply Group Classes
   class standard_1,standard_2,standard_3 standard;
   class positive_lookahead_1,positive_lookahead_2,positive_lookahead_3,positive_lookahead_4,positive_lookahead_5 positive-lookahead;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2487,9 +2477,10 @@ US and International phone numbers
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$
-
 graph LR
+  accTitle: "Regex: ^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2539,8 +2530,6 @@ graph LR
 
   %% Apply Group Classes
   class standard_1 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2558,9 +2547,10 @@ Semantic versioning v2.0.0
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
-
 graph LR
+  accTitle: "Regex: ^(?<major>0|[1-9]\\d*)\\.(?<minor>0|[1-9]\\d*)\\.(?<patch>0|[1-9]\\d*)(?:-(?<prerelease>(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2753,8 +2743,6 @@ graph LR
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3,named_capture_4,named_capture_5 named-capture;
   class non_capturing_2,non_capturing_4,non_capturing_3,non_capturing_1,non_capturing_6,non_capturing_5 non-capturing;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2770,9 +2758,10 @@ graph LR
 **Diagram:**
 
 ```mermaid
-%% Regex: /(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim
-
 graph LR
+  accTitle: "Regex: /(\\W|^)stock\\s{0,3}tip(s){0,1}(\\W|$)/gim"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -2836,8 +2825,6 @@ graph LR
 
   %% Apply Group Classes
   class standard_1,standard_2,standard_3 standard;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -2855,9 +2842,10 @@ Absolute IRIs (internationalized)
 **Diagram:**
 
 ```mermaid
-%% Regex: /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i
-
 graph LR
+  accTitle: "Regex: /^(?:(?:(?:https?|ftp):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\S*)?$/i"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -3231,8 +3219,6 @@ graph LR
   %% Apply Group Classes
   class non_capturing_3,non_capturing_2,non_capturing_1,non_capturing_5,non_capturing_4,non_capturing_7,non_capturing_8,non_capturing_9,non_capturing_10,non_capturing_11,non_capturing_12,non_capturing_13,non_capturing_15,non_capturing_14,non_capturing_17,non_capturing_16,non_capturing_19,non_capturing_18,non_capturing_20,non_capturing_6,non_capturing_21,non_capturing_22 non-capturing;
   class negative_lookahead_1,negative_lookahead_2,negative_lookahead_3 negative-lookahead;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -3250,9 +3236,10 @@ A simplified URL
 **Diagram:**
 
 ```mermaid
-%% Regex: ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
-
 graph LR
+  accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -3309,8 +3296,6 @@ graph LR
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
@@ -3328,9 +3313,10 @@ Universal Unique Identifier
 **Diagram:**
 
 ```mermaid
-%% Regex: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}
-
 graph LR
+  accTitle: "Regex: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+  accDescr: "Generated with regex-to-mermaid@1.0.3"
+
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
@@ -3360,8 +3346,6 @@ graph LR
   %% Node Styling
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
-
-%% Generated with regex-to-mermaid@1.0.0
 ```
 
 ---
