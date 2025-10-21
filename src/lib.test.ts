@@ -16,14 +16,14 @@ describe('regexToMermaid', () => {
       const result = regexToMermaid('abc');
       expect(result).toContain('graph LR');
       expect(result).toContain('abc');
-      expect(result).toContain('title: "Regex: abc"');
+      expect(result).toContain('accTitle: "Regex: abc"');
     });
 
     test('converts RegExp object to Mermaid diagram', () => {
       const result = regexToMermaid(/abc/);
       expect(result).toContain('graph LR');
       expect(result).toContain('abc');
-      expect(result).toContain('title: "Regex: /abc/"');
+      expect(result).toContain('accTitle: "Regex: /abc/"');
     });
 
     test('includes package name and version in output', () => {
@@ -36,16 +36,17 @@ describe('regexToMermaid', () => {
       expect(typeof result).toBe('string');
     });
 
-    test('includes YAML front matter', () => {
+    test('does not include YAML front matter delimiter at start for default theme', () => {
       const result = regexToMermaid('test');
-      expect(result).toContain('---');
-      expect(result).toContain('title:');
-      expect(result).toContain('config:');
+      expect(result.startsWith('---')).toBe(false);
+      expect(result.startsWith('graph')).toBe(true);
     });
 
-    test('includes theme in config when not none', () => {
-      const result = regexToMermaid('test', { theme: 'default' });
-      expect(result).toContain('theme: "default"');
+    test('includes YAML front matter for non-default themes', () => {
+      const result = regexToMermaid('test', { theme: 'dark' });
+      expect(result).toContain('---');
+      expect(result).toContain('config:');
+      expect(result).toContain('theme: dark');
     });
 
     test('excludes theme config when theme is none', () => {
@@ -284,46 +285,42 @@ describe('regexToMermaid', () => {
   });
 
   describe('Output structure', () => {
-    test('starts with YAML front matter delimiter', () => {
+    test('starts with graph declaration for default theme', () => {
       const result = regexToMermaid('test');
+      expect(result.split('\n')[0]).toBe('graph LR');
+    });
+
+    test('contains accessibility title with regex pattern', () => {
+      const result = regexToMermaid('test');
+      expect(result).toContain('accTitle: "Regex: test"');
+    });
+
+    test('contains accessibility description with generator info', () => {
+      const result = regexToMermaid('test');
+      expect(result).toContain('accDescr: "Generated with regex-to-mermaid@');
+    });
+
+    test('starts with YAML front matter for non-default themes', () => {
+      const result = regexToMermaid('test', { theme: 'dark' });
       expect(result.split('\n')[0]).toBe('---');
-    });
-
-    test('contains title with regex pattern', () => {
-      const result = regexToMermaid('test');
-      expect(result).toContain('title: "Regex: test"');
-    });
-
-    test('contains YAML front matter closing delimiter', () => {
-      const result = regexToMermaid('test');
-      expect(result).toContain('---');
       const lines = result.split('\n');
       const closingIndex = lines.indexOf('---', 1);
       expect(closingIndex).toBeGreaterThan(0);
     });
 
-    test('contains graph declaration after front matter', () => {
+    test('contains graph declaration', () => {
       const result = regexToMermaid('test');
-      const lines = result.split('\n');
-      const closingIndex = lines.indexOf('---', 1);
-      const graphLine = lines.slice(closingIndex + 1).find(line => line.includes('graph'));
-      expect(graphLine).toMatch(/graph (LR|TD)/);
+      expect(result).toMatch(/graph (LR|TD)/);
     });
 
-    test('contains config section with theme', () => {
-      const result = regexToMermaid('test');
-      expect(result).toContain('config:');
-      expect(result).toContain('theme:');
-    });
-
-    test('preserves RegExp pattern format in title', () => {
+    test('preserves RegExp pattern format in accessibility title', () => {
       const result = regexToMermaid(/test/gi);
-      expect(result).toContain('title: "Regex: /test/gi"');
+      expect(result).toContain('accTitle: "Regex: /test/gi"');
     });
 
-    test('escapes special characters in title', () => {
+    test('escapes special characters in accessibility title', () => {
       const result = regexToMermaid('test "quote"');
-      expect(result).toContain('title: "Regex: test \\"quote\\""');
+      expect(result).toContain('accTitle: "Regex: test \\"quote\\""');
     });
   });
 
@@ -446,7 +443,7 @@ describe('Real-world examples', () => {
     const result = regexToMermaid(emailRegex);
     expect(result).toContain('graph LR');
     expect(result).toContain(
-      'title: "Regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$/"',
+      'accTitle: "Regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$/"',
     );
   });
 

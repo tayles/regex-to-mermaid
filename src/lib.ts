@@ -67,9 +67,9 @@ export function regexToMermaid(pattern: string | RegExp, options: Options = {}):
   const generatorText = `Generated with ${packageJson.name}@${packageJson.version}`;
 
   // Build the Mermaid diagram
-  const diagram = buildMermaidDiagram(data, direction, theme, generatorText);
+  const diagram = buildMermaidDiagram(data, direction, theme, pattern.toString(), generatorText);
 
-  const wrappedDiagram = addFrontMatter(diagram, pattern, theme);
+  const wrappedDiagram = addFrontMatter(diagram, theme);
 
   return wrappedDiagram;
 }

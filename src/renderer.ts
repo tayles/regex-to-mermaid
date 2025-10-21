@@ -5,17 +5,18 @@ export function buildMermaidDiagram(
   data: DiagramData,
   direction: Direction = 'LR',
   theme: Theme = 'default',
-  description?: string,
+  accessibleTitle?: string,
+  accessibleDescription?: string,
 ): string {
   const nodeStr = buildNodes(data.nodes);
   const subgraphStr = buildSubgraphs(data.groups);
   const edgeStr = buildEdges(data.edges);
   const styleStr = buildStyles(theme, data);
 
-  const accessibleDescription = buildAccessibility(description);
+  const accessibilityStr = buildAccessibility(accessibleTitle, accessibleDescription);
 
   const diagram = [
-    accessibleDescription,
+    accessibilityStr,
     `%% Nodes
 start@{ shape: f-circ };
 fin@{ shape: f-circ };`,
@@ -38,11 +39,18 @@ fin@{ shape: f-circ };`,
 }
 
 /**
- * Add accessible description, if provided
+ * Add accessible title + description, if provided
  * @see https://docs.mermaidchart.com/mermaid-oss/config/accessibility.html
  */
-export function buildAccessibility(description?: string): string {
-  return description ? `accDescr: "${escapeString(description)}"\n` : '';
+export function buildAccessibility(title?: string, description?: string): string {
+  const str = [
+    title && `accTitle: "Regex: ${escapeString(title)}"`,
+    description && `accDescr: "${escapeString(description)}"`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  return str ? `${str}\n` : '';
 }
 
 export function buildNodes(nodes: DiagramNode[]): string {
@@ -84,19 +92,17 @@ export function buildEdges(edges: Edge[]): string {
  * Add YAML front matter to the Mermaid diagram
  * @see https://mermaid.js.org/config/configuration.html#frontmatter-config
  */
-export function addFrontMatter(diagram: string, pattern: string | RegExp, theme: Theme): string {
-  const escapedPattern = escapeString(pattern.toString());
-
-  const configText = theme === 'none' ? '' : `config:\n  theme: "${theme}"`;
-
-  const wrappedDiagram = `
----
-title: "Regex: ${escapedPattern}"
-${configText}
+export function addFrontMatter(diagram: string, theme: Theme): string {
+  const frontmatter = ['none', 'default'].includes(theme)
+    ? ''
+    : `---
+config:
+  theme: ${theme}
 ---
 
-${diagram}
-`.trim();
+`;
+
+  const wrappedDiagram = `${frontmatter}${diagram}`;
 
   return wrappedDiagram;
 }
