@@ -1,6 +1,6 @@
 {
   "name": "regex-to-mermaid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams",
   "keywords": [
     "regex",
@@ -54,6 +54,7 @@
     "build": "bunup",
     "dev": "bun run src/cli.ts",
     "generate-all": "bun run generate-examples && bun run generate-themes && bun run generate-thumbnail",
+    "postgenerate-all": "bun run lint:fix",
     "generate-examples": "bun scripts/generate-examples.ts",
     "generate-themes": "bun scripts/generate-themes.ts",
     "generate-thumbnail": "bun dev '^(?<protocol>https?://)?(?<domain>[a-zA-Z0-9.-]+.[a-zA-Z]{2,})(?<path>/.*)?$' | bunx @mermaid-js/mermaid-cli --input - --output docs/regex-to-mermaid-example.png -w 2048 && bunx @343dev/optimizt docs/regex-to-mermaid-example.png",
