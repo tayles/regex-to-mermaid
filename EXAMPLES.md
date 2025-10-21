@@ -3,7 +3,7 @@
 Here are some common regular expressions, showing how they are visualized as mermaid diagrams:
 
 > [!TIP]
-> If you are viewing this page somewhere that does not support Mermaid diagrams (e.g. on [npmjs.com](https://www.npmjs.com/package/regex-to-mermaid)), you can view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
+> If you are viewing this page somewhere that does not support Mermaid diagrams (e.g. on [npmjs.com](https://npmjs.com/package/regex-to-mermaid)), you can view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
 
 <!-- CONTENT:START -->
 
@@ -183,7 +183,7 @@ graph LR
 
 ## Comprehensive RegExp Features
 
-Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
+Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? \* + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
 
 **Pattern:**
 
