@@ -156,7 +156,7 @@ bun run lint
 | [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)            | Typesafe JavaScript       |
 | [![Bun](https://img.shields.io/badge/bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)                                                 | Fast JavaScript runtime   |
 | [![Mermaid](https://img.shields.io/badge/mermaid-%23FF3670.svg?style=for-the-badge&logo=mermaid&logoColor=white)](https://mermaid.js.org)                             | Diagram generation        |
-| [![Biome](https://img.shields.io/badge/biome-%2360A5FA.svg?style=for-the-badge&logo=biome&logoColor=white)](https://biomejs.dev)                                      | Code formatting & linting |
+| [![Biome](https://img.shields.io/badge/Biome-25272f?style=for-the-badge&logo=biome)](https://biomejs.dev)                                                             | Code formatting & linting |
 | [![regexp-tree](https://img.shields.io/badge/regexp--tree-%23000000.svg?style=for-the-badge&logo=regexp-tree&logoColor=white)](https://npmjs.com/package/regexp-tree) | Regex parsing to AST      |
 
 ## xkcd References
