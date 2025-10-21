@@ -25,9 +25,25 @@ as this:
 - 🔗 **Easy Sharing** - Share visual regex diagrams in documentation, presentations, or code reviews
 - 📦 **CLI & Library** - Use as a command-line tool or integrate into your projects
 - 🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more
-- 🥗 **Multiple Flavors** - Supports JavaScript (RegExp) and PCRE regex flavors
+- 🥗 **Multiple Flavors** - Supports JavaScript (RegExp) and PCRE regex flavors _(coming soon)_
 - 🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling
 - ⚡ **Fast & Modern** - Built with Bun and TypeScript as an ESM library for optimal performance
+
+## Supported Flavors
+
+| Flavor                                       | Usage          | Support            |
+| -------------------------------------------- | -------------- | ------------------ |
+| RegExp                                       | JavaScript     | ✅ Fully supported |
+| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support |
+| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support |
+| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support |
+| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support |
+| Python                                       | Python         | 🚧 Limited support |
+| RE2                                          | Go             | 🚧 Limited support |
+| Rust                                         | Rust           | 🚧 Limited support |
+| Java                                         | Java           | 🚧 Limited support |
+| .NET                                         | .NET / C#      | 🚧 Limited support |
+| Ruby                                         | Ruby           | 🚧 Limited support |
 
 ## Installation
 
