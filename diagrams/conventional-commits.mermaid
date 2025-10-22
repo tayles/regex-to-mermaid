@@ -8,7 +8,7 @@ graph LR
   literal_1("A"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_2("feat"):::literal;
@@ -23,55 +23,55 @@ graph LR
   literal_11("perf"):::literal;
   literal_12("revert"):::literal;
   literal_13("("):::literal;
-  char_class_1("\w -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("\w -<br><i>One or more</i>"):::char-class;
   literal_14(")"):::literal;
   literal_15("!"):::literal;
   literal_16(":\s"):::literal;
-  assertion_2("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  char_class_2("\w # < > Space . / \t \ -<br><i><small>3 or more</small></i>"):::char-class;
+  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
+  char_class_2("\w # < > Space . / \t \ -<br><i>3 or more</i>"):::char-class;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
   literal_17("Any character"):::literal;
-  assertion_4("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_4("$<br><i>Ends with</i>"):::assertion;
   literal_18("Newline"):::literal;
-  assertion_5("^<br><i><small>Begins with</small></i>"):::assertion;
-  assertion_6("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_5("^<br><i>Begins with</i>"):::assertion;
+  assertion_6("$<br><i>Ends with</i>"):::assertion;
   literal_19("Newline"):::literal;
-  assertion_7("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_20("Any character<br><i><small>3 or more</small></i>"):::literal;
+  assertion_7("^<br><i>Begins with</i>"):::assertion;
+  literal_20("Any character<br><i>3 or more</i>"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  assertion_8("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
   literal_21("Any character"):::literal;
-  assertion_9("$<br><i><small>Ends with</small></i>"):::assertion;
-  literal_22("Newline<br><i><small>Optional</small></i>"):::literal;
+  assertion_9("$<br><i>Ends with</i>"):::assertion;
+  literal_22("Newline<br><i>Optional</i>"):::literal;
   literal_23("Newline"):::literal;
-  assertion_10("^<br><i><small>Begins with</small></i>"):::assertion;
-  assertion_11("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_10("^<br><i>Begins with</i>"):::assertion;
+  assertion_11("$<br><i>Ends with</i>"):::assertion;
   literal_24("Newline"):::literal;
-  assertion_12("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_12("^<br><i>Begins with</i>"):::assertion;
   literal_25("BREAKING\sCHANGE:\s"):::literal;
-  char_class_3("\s \w<br><i><small>One or more</small></i>"):::char-class;
+  char_class_3("\s \w<br><i>One or more</i>"):::char-class;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  assertion_13("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_13("\b<br><i>Word boundary</i>"):::assertion;
   literal_26("Any character"):::literal;
-  assertion_14("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_14("$<br><i>Ends with</i>"):::assertion;
   literal_27("Newline"):::literal;
-  assertion_15("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_28("Any word character<br><i><small>One or more</small></i>"):::literal;
+  assertion_15("^<br><i>Begins with</i>"):::assertion;
+  literal_28("Any word character<br><i>One or more</i>"):::literal;
   literal_29(":\s"):::literal;
-  char_class_4("\w # -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_4("\w # -<br><i>One or more</i>"):::char-class;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  assertion_16("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_16("\b<br><i>Word boundary</i>"):::assertion;
   literal_30("Any character"):::literal;
-  literal_31("Newline<br><i><small>Optional</small></i>"):::literal;
+  literal_31("Newline<br><i>Optional</i>"):::literal;
   literal_32("Z"):::literal;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_2
     disjunction_end_2
     literal_2
@@ -87,17 +87,17 @@ graph LR
     literal_12
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     char_class_1
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     standard_2
     literal_13
     literal_14
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3 <small><i>Optional</i></small>"]
+  subgraph standard_3 ["#3 Group 3 <i>Optional</i>"]
     literal_15
   end
 
@@ -108,7 +108,7 @@ graph LR
     literal_17
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4"]
+  subgraph standard_4 ["#4 Group 4"]
     non_capturing_4
     assertion_2
     char_class_2
@@ -126,7 +126,7 @@ graph LR
     assertion_4
   end
 
-  subgraph standard_5 ["<small>#5</small> Group 5"]
+  subgraph standard_5 ["#5 Group 5"]
     literal_18
     assertion_5
     assertion_6
@@ -140,7 +140,7 @@ graph LR
     literal_21
   end
 
-  subgraph non_capturing_7 ["Non-capturing <small><i>1 to 3</i></small>"]
+  subgraph non_capturing_7 ["Non-capturing <i>1 to 3</i>"]
     non_capturing_8
     assertion_7
     literal_20
@@ -148,19 +148,19 @@ graph LR
     literal_22
   end
 
-  subgraph standard_6 ["<small>#6</small> Group 6"]
+  subgraph standard_6 ["#6 Group 6"]
     non_capturing_8
     non_capturing_7
   end
 
-  subgraph non_capturing_6 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_6 ["Non-capturing <i>Optional</i>"]
     standard_5
     non_capturing_8
     non_capturing_7
     standard_6
   end
 
-  subgraph standard_7 ["<small>#7</small> Group 7"]
+  subgraph standard_7 ["#7 Group 7"]
     literal_23
     assertion_10
     assertion_11
@@ -174,7 +174,7 @@ graph LR
     literal_26
   end
 
-  subgraph standard_8 ["<small>#8</small> Group 8"]
+  subgraph standard_8 ["#8 Group 8"]
     non_capturing_10
     assertion_12
     literal_25
@@ -182,7 +182,7 @@ graph LR
     assertion_14
   end
 
-  subgraph non_capturing_9 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_9 ["Non-capturing <i>Optional</i>"]
     non_capturing_10
     standard_8
     literal_27
@@ -195,7 +195,7 @@ graph LR
     literal_30
   end
 
-  subgraph standard_9 ["<small>#9</small> Group 9"]
+  subgraph standard_9 ["#9 Group 9"]
     non_capturing_12
     assertion_15
     literal_28
@@ -208,7 +208,7 @@ graph LR
     standard_9
   end
 
-  subgraph non_capturing_5 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     standard_5
     non_capturing_8
     non_capturing_7

@@ -44,31 +44,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end
@@ -133,31 +133,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end
@@ -222,31 +222,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end
@@ -311,31 +311,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end
@@ -395,31 +395,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end

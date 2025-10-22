@@ -55,12 +55,12 @@ graph LR
   fin@{ shape: f-circ };
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
   literal_4("www."):::literal;
-  char_class_1("Any lowercase<br>Any digit<br>-<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any digit<br>-<br><i>One or more</i>"):::char-class;
   literal_5("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
@@ -68,33 +68,33 @@ graph LR
   literal_7("org"):::literal;
   literal_8("net"):::literal;
   literal_9("/"):::literal;
-  negated_char_class_1("\s<br><i><small>Zero or more</small></i>"):::negated-char-class;
+  negated_char_class_1("\s<br><i>Zero or more</i>"):::negated-char-class;
   literal_10("query"):::literal;
-  back_reference_1("\1<br><i><small>Back-reference</small></i>"):::back-reference;
-  literal_11("Any digit<br><i><small>3 to 5</small></i>"):::literal;
-  literal_12("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_13("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
-  literal_14("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  back_reference_1("\1<br><i>Back-reference</i>"):::back-reference;
+  literal_11("Any digit<br><i>3 to 5</i>"):::literal;
+  literal_12("Any word character<br><i>One or more</i>"):::literal;
+  literal_13("Any whitespace<br><i>Zero or more</i>"):::literal;
+  literal_14("Not whitespace<br><i>One or more</i>"):::literal;
   negated_char_class_2("a b c"):::negated-char-class;
   literal_15("neg"):::literal;
   literal_16("back"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
   literal_17("alt"):::literal;
-  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_4("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_4("\B<br><i>Non-word boundary</i>"):::assertion;
   literal_18("Any character"):::literal;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol"]
+  subgraph named_capture_1 ["#1 protocol"]
     literal_1
     literal_2
   end
 
-  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
     literal_4
   end
 
-  subgraph standard_1 ["<small>#2</small> Group 2"]
+  subgraph standard_1 ["#2 Group 2"]
     char_class_1
   end
 
@@ -106,7 +106,7 @@ graph LR
     literal_8
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     literal_9
     negated_char_class_1
   end
@@ -216,53 +216,53 @@ graph LR
   fin@{ shape: f-circ };
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   char_class_1("Any uppercase"):::char-class;
-  literal_1("Any word character<br><i><small>2 to 5</small></i>"):::literal;
+  literal_1("Any word character<br><i>2 to 5</i>"):::literal;
   literal_2(":"):::literal;
-  literal_3("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_3("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_4("a"):::literal;
   literal_5("b"):::literal;
   literal_6("cd"):::literal;
   literal_7("http"):::literal;
-  literal_8("s<br><i><small>Optional</small></i>"):::literal;
+  literal_8("s<br><i>Optional</i>"):::literal;
   literal_9("://"):::literal;
-  char_class_2("Any lowercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_10(".com"):::literal;
   literal_11(".org"):::literal;
   literal_12("example"):::literal;
   literal_13("test"):::literal;
-  char_class_3("Any lowercase<br><i><small>1 to 3</small></i>"):::char-class;
+  char_class_3("Any lowercase<br><i>1 to 3</i>"):::char-class;
   literal_14(".com"):::literal;
   literal_15("/"):::literal;
-  literal_16("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_16("Not whitespace<br><i>One or more</i>"):::literal;
   literal_17("?"):::literal;
-  char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i><small>One or more</small></i>"):::char-class;
-  literal_18("Any digit<br><i><small>One or more</small></i>"):::literal;
-  back_reference_1("\digit<br><i><small>Back-reference</small></i>"):::back-reference;
-  back_reference_2("\1<br><i><small>Back-reference</small></i>"):::back-reference;
-  assertion_2("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_3("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
-  literal_19("Any digit<br><i><small>One or more</small></i>"):::literal;
-  literal_20("Not a digit<br><i><small>One or more</small></i>"):::literal;
-  literal_21("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_22("Not a word character<br><i><small>One or more</small></i>"):::literal;
-  literal_23("Any whitespace<br><i><small>One or more</small></i>"):::literal;
-  literal_24("Not whitespace<br><i><small>One or more</small></i>"):::literal;
-  negated_char_class_1("x y z<br><i><small>One or more</small></i>"):::negated-char-class;
+  char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
+  literal_18("Any digit<br><i>One or more</i>"):::literal;
+  back_reference_1("\digit<br><i>Back-reference</i>"):::back-reference;
+  back_reference_2("\1<br><i>Back-reference</i>"):::back-reference;
+  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_3("\B<br><i>Non-word boundary</i>"):::assertion;
+  literal_19("Any digit<br><i>One or more</i>"):::literal;
+  literal_20("Not a digit<br><i>One or more</i>"):::literal;
+  literal_21("Any word character<br><i>One or more</i>"):::literal;
+  literal_22("Not a word character<br><i>One or more</i>"):::literal;
+  literal_23("Any whitespace<br><i>One or more</i>"):::literal;
+  literal_24("Not whitespace<br><i>One or more</i>"):::literal;
+  negated_char_class_1("x y z<br><i>One or more</i>"):::negated-char-class;
   literal_25("\t\r\n"):::literal;
   literal_26("alt"):::literal;
-  assertion_4("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_4("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> named"]
+  subgraph named_capture_1 ["#1 named"]
     char_class_1
     literal_1
   end
 
-  subgraph standard_1 ["<small>#2</small> Group 2"]
+  subgraph standard_1 ["#2 Group 2"]
     disjunction_begin_2
     disjunction_end_2
     literal_4
@@ -270,13 +270,13 @@ graph LR
     literal_6
   end
 
-  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
     literal_7
     literal_8
     literal_9
   end
 
-  subgraph named_capture_2 ["<small>#3</small> domain"]
+  subgraph named_capture_2 ["#3 domain"]
     char_class_2
   end
 
@@ -296,17 +296,17 @@ graph LR
     literal_13
   end
 
-  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
     literal_15
     literal_16
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     literal_17
     char_class_4
   end
 
-  subgraph named_capture_3 ["<small>#4</small> digit"]
+  subgraph named_capture_3 ["#4 digit"]
     literal_18
   end
 
@@ -417,7 +417,7 @@ graph LR
   literal_1("A"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_2("feat"):::literal;
@@ -432,55 +432,55 @@ graph LR
   literal_11("perf"):::literal;
   literal_12("revert"):::literal;
   literal_13("("):::literal;
-  char_class_1("\w -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("\w -<br><i>One or more</i>"):::char-class;
   literal_14(")"):::literal;
   literal_15("!"):::literal;
   literal_16(":\s"):::literal;
-  assertion_2("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  char_class_2("\w # < > Space . / \t \ -<br><i><small>3 or more</small></i>"):::char-class;
+  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
+  char_class_2("\w # < > Space . / \t \ -<br><i>3 or more</i>"):::char-class;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
   literal_17("Any character"):::literal;
-  assertion_4("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_4("$<br><i>Ends with</i>"):::assertion;
   literal_18("Newline"):::literal;
-  assertion_5("^<br><i><small>Begins with</small></i>"):::assertion;
-  assertion_6("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_5("^<br><i>Begins with</i>"):::assertion;
+  assertion_6("$<br><i>Ends with</i>"):::assertion;
   literal_19("Newline"):::literal;
-  assertion_7("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_20("Any character<br><i><small>3 or more</small></i>"):::literal;
+  assertion_7("^<br><i>Begins with</i>"):::assertion;
+  literal_20("Any character<br><i>3 or more</i>"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  assertion_8("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
   literal_21("Any character"):::literal;
-  assertion_9("$<br><i><small>Ends with</small></i>"):::assertion;
-  literal_22("Newline<br><i><small>Optional</small></i>"):::literal;
+  assertion_9("$<br><i>Ends with</i>"):::assertion;
+  literal_22("Newline<br><i>Optional</i>"):::literal;
   literal_23("Newline"):::literal;
-  assertion_10("^<br><i><small>Begins with</small></i>"):::assertion;
-  assertion_11("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_10("^<br><i>Begins with</i>"):::assertion;
+  assertion_11("$<br><i>Ends with</i>"):::assertion;
   literal_24("Newline"):::literal;
-  assertion_12("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_12("^<br><i>Begins with</i>"):::assertion;
   literal_25("BREAKING\sCHANGE:\s"):::literal;
-  char_class_3("\s \w<br><i><small>One or more</small></i>"):::char-class;
+  char_class_3("\s \w<br><i>One or more</i>"):::char-class;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  assertion_13("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_13("\b<br><i>Word boundary</i>"):::assertion;
   literal_26("Any character"):::literal;
-  assertion_14("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_14("$<br><i>Ends with</i>"):::assertion;
   literal_27("Newline"):::literal;
-  assertion_15("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_28("Any word character<br><i><small>One or more</small></i>"):::literal;
+  assertion_15("^<br><i>Begins with</i>"):::assertion;
+  literal_28("Any word character<br><i>One or more</i>"):::literal;
   literal_29(":\s"):::literal;
-  char_class_4("\w # -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_4("\w # -<br><i>One or more</i>"):::char-class;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  assertion_16("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_16("\b<br><i>Word boundary</i>"):::assertion;
   literal_30("Any character"):::literal;
-  literal_31("Newline<br><i><small>Optional</small></i>"):::literal;
+  literal_31("Newline<br><i>Optional</i>"):::literal;
   literal_32("Z"):::literal;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_2
     disjunction_end_2
     literal_2
@@ -496,17 +496,17 @@ graph LR
     literal_12
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     char_class_1
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     standard_2
     literal_13
     literal_14
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3 <small><i>Optional</i></small>"]
+  subgraph standard_3 ["#3 Group 3 <i>Optional</i>"]
     literal_15
   end
 
@@ -517,7 +517,7 @@ graph LR
     literal_17
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4"]
+  subgraph standard_4 ["#4 Group 4"]
     non_capturing_4
     assertion_2
     char_class_2
@@ -535,7 +535,7 @@ graph LR
     assertion_4
   end
 
-  subgraph standard_5 ["<small>#5</small> Group 5"]
+  subgraph standard_5 ["#5 Group 5"]
     literal_18
     assertion_5
     assertion_6
@@ -549,7 +549,7 @@ graph LR
     literal_21
   end
 
-  subgraph non_capturing_7 ["Non-capturing <small><i>1 to 3</i></small>"]
+  subgraph non_capturing_7 ["Non-capturing <i>1 to 3</i>"]
     non_capturing_8
     assertion_7
     literal_20
@@ -557,19 +557,19 @@ graph LR
     literal_22
   end
 
-  subgraph standard_6 ["<small>#6</small> Group 6"]
+  subgraph standard_6 ["#6 Group 6"]
     non_capturing_8
     non_capturing_7
   end
 
-  subgraph non_capturing_6 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_6 ["Non-capturing <i>Optional</i>"]
     standard_5
     non_capturing_8
     non_capturing_7
     standard_6
   end
 
-  subgraph standard_7 ["<small>#7</small> Group 7"]
+  subgraph standard_7 ["#7 Group 7"]
     literal_23
     assertion_10
     assertion_11
@@ -583,7 +583,7 @@ graph LR
     literal_26
   end
 
-  subgraph standard_8 ["<small>#8</small> Group 8"]
+  subgraph standard_8 ["#8 Group 8"]
     non_capturing_10
     assertion_12
     literal_25
@@ -591,7 +591,7 @@ graph LR
     assertion_14
   end
 
-  subgraph non_capturing_9 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_9 ["Non-capturing <i>Optional</i>"]
     non_capturing_10
     standard_8
     literal_27
@@ -604,7 +604,7 @@ graph LR
     literal_30
   end
 
-  subgraph standard_9 ["<small>#9</small> Group 9"]
+  subgraph standard_9 ["#9 Group 9"]
     non_capturing_12
     assertion_15
     literal_28
@@ -617,7 +617,7 @@ graph LR
     standard_9
   end
 
-  subgraph non_capturing_5 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     standard_5
     non_capturing_8
     non_capturing_7
@@ -784,57 +784,57 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_1("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  literal_1("Any whitespace<br><i>Zero or more</i>"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
   literal_2("#"):::literal;
-  literal_3("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_4("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
+  literal_3("Any word character<br><i>One or more</i>"):::literal;
+  literal_4("Any whitespace<br><i>Zero or more</i>"):::literal;
   literal_5("="):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_6("?"):::literal;
   literal_7("*"):::literal;
-  char_class_1("0-5<br><i><small>Optional</small></i>"):::char-class;
+  char_class_1("0-5<br><i>Optional</i>"):::char-class;
   literal_8("Any digit"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_9("-"):::literal;
   literal_10("/"):::literal;
   literal_11(","):::literal;
-  char_class_2("0-6<br><i><small>Optional</small></i>"):::char-class;
+  char_class_2("0-6<br><i>Optional</i>"):::char-class;
   literal_12("Any digit"):::literal;
-  literal_13("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_13("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   literal_14("?"):::literal;
   literal_15("*"):::literal;
-  char_class_3("0-5<br><i><small>Optional</small></i>"):::char-class;
+  char_class_3("0-5<br><i>Optional</i>"):::char-class;
   literal_16("Any digit"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
   literal_17("-"):::literal;
   literal_18("/"):::literal;
   literal_19(","):::literal;
-  char_class_4("0-6<br><i><small>Optional</small></i>"):::char-class;
+  char_class_4("0-6<br><i>Optional</i>"):::char-class;
   literal_20("Any digit"):::literal;
-  literal_21("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_21("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
   literal_22("?"):::literal;
   literal_23("*"):::literal;
-  char_class_5("0-2<br><i><small>Optional</small></i>"):::char-class;
+  char_class_5("0-2<br><i>Optional</i>"):::char-class;
   literal_24("Any digit"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
   literal_25("-"):::literal;
   literal_26("/"):::literal;
   literal_27(","):::literal;
-  char_class_6("0-2<br><i><small>Optional</small></i>"):::char-class;
+  char_class_6("0-2<br><i>Optional</i>"):::char-class;
   literal_28("Any digit"):::literal;
-  literal_29("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_29("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
   literal_30("?"):::literal;
@@ -844,18 +844,18 @@ graph LR
   literal_32("L"):::literal;
   literal_33("W"):::literal;
   literal_34("LW"):::literal;
-  char_class_7("1-3<br><i><small>Optional</small></i>"):::char-class;
+  char_class_7("1-3<br><i>Optional</i>"):::char-class;
   literal_35("Any digit"):::literal;
-  literal_36("W<br><i><small>Optional</small></i>"):::literal;
+  literal_36("W<br><i>Optional</i>"):::literal;
   disjunction_begin_10:::disjunction@{ shape: f-circ };
   disjunction_end_10:::disjunction@{ shape: f-circ };
   literal_37("-"):::literal;
   literal_38("/"):::literal;
   literal_39(","):::literal;
-  char_class_8("1-3<br><i><small>Optional</small></i>"):::char-class;
-  literal_40("Any digit<br><i><small>Optional</small></i>"):::literal;
-  literal_41("W<br><i><small>Optional</small></i>"):::literal;
-  literal_42("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  char_class_8("1-3<br><i>Optional</i>"):::char-class;
+  literal_40("Any digit<br><i>Optional</i>"):::literal;
+  literal_41("W<br><i>Optional</i>"):::literal;
+  literal_42("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_11:::disjunction@{ shape: f-circ };
   disjunction_end_11:::disjunction@{ shape: f-circ };
   literal_43("*"):::literal;
@@ -898,7 +898,7 @@ graph LR
   literal_70("OCT"):::literal;
   literal_71("NOV"):::literal;
   literal_72("DEC"):::literal;
-  literal_73("Any whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_73("Any whitespace<br><i>One or more</i>"):::literal;
   disjunction_begin_15:::disjunction@{ shape: f-circ };
   disjunction_end_15:::disjunction@{ shape: f-circ };
   literal_74("?"):::literal;
@@ -928,21 +928,21 @@ graph LR
   literal_90("THU"):::literal;
   literal_91("FRI"):::literal;
   literal_92("SAT"):::literal;
-  literal_93("L<br><i><small>Optional</small></i>"):::literal;
+  literal_93("L<br><i>Optional</i>"):::literal;
   disjunction_begin_19:::disjunction@{ shape: f-circ };
   disjunction_end_19:::disjunction@{ shape: f-circ };
   literal_94("Any whitespace"):::literal;
   disjunction_begin_20:::disjunction@{ shape: f-circ };
   disjunction_end_20:::disjunction@{ shape: f-circ };
   literal_95("*"):::literal;
-  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
   char_class_15("1-2"):::char-class;
   disjunction_begin_21:::disjunction@{ shape: f-circ };
   disjunction_end_21:::disjunction@{ shape: f-circ };
   literal_96("9"):::literal;
   literal_97("0"):::literal;
   literal_98("\d\d"):::literal;
-  assertion_4("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_4("\b<br><i>Word boundary</i>"):::assertion;
   disjunction_begin_22:::disjunction@{ shape: f-circ };
   disjunction_end_22:::disjunction@{ shape: f-circ };
   literal_99("-"):::literal;
@@ -950,7 +950,7 @@ graph LR
   literal_101(","):::literal;
   disjunction_begin_23:::disjunction@{ shape: f-circ };
   disjunction_end_23:::disjunction@{ shape: f-circ };
-  assertion_5("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_5("\b<br><i>Word boundary</i>"):::assertion;
   disjunction_begin_24:::disjunction@{ shape: f-circ };
   disjunction_end_24:::disjunction@{ shape: f-circ };
   char_class_16("1-9"):::char-class;
@@ -961,24 +961,24 @@ graph LR
   char_class_20("Any digit"):::char-class;
   literal_103("19"):::literal;
   char_class_21("0-2"):::char-class;
-  assertion_6("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_7("\b<br><i><small>Word boundary</small></i>"):::assertion;
+  assertion_6("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_7("\b<br><i>Word boundary</i>"):::assertion;
   char_class_22("1-2"):::char-class;
   disjunction_begin_25:::disjunction@{ shape: f-circ };
   disjunction_end_25:::disjunction@{ shape: f-circ };
   literal_104("9"):::literal;
   literal_105("0"):::literal;
   literal_106("\d\d"):::literal;
-  assertion_8("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_9("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_9("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_2 ["<small>#3</small> START_SEC"]
+  subgraph named_capture_2 ["#3 START_SEC"]
     char_class_1
     literal_8
   end
 
-  subgraph named_capture_3 ["<small>#4</small> DELIMITER_SEC"]
+  subgraph named_capture_3 ["#4 DELIMITER_SEC"]
     disjunction_begin_3
     disjunction_end_3
     literal_9
@@ -986,12 +986,12 @@ graph LR
     literal_11
   end
 
-  subgraph named_capture_4 ["<small>#5</small> END_SEC"]
+  subgraph named_capture_4 ["#5 END_SEC"]
     char_class_2
     literal_12
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
     named_capture_3
     named_capture_4
   end
@@ -1015,7 +1015,7 @@ graph LR
     literal_7
   end
 
-  subgraph named_capture_1 ["<small>#2</small> SECOND"]
+  subgraph named_capture_1 ["#2 SECOND"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -1024,12 +1024,12 @@ graph LR
     non_capturing_1
   end
 
-  subgraph named_capture_6 ["<small>#7</small> START_MIN"]
+  subgraph named_capture_6 ["#7 START_MIN"]
     char_class_3
     literal_16
   end
 
-  subgraph named_capture_7 ["<small>#8</small> DELIMITER_MIN"]
+  subgraph named_capture_7 ["#8 DELIMITER_MIN"]
     disjunction_begin_5
     disjunction_end_5
     literal_17
@@ -1037,12 +1037,12 @@ graph LR
     literal_19
   end
 
-  subgraph named_capture_8 ["<small>#9</small> END_MIN"]
+  subgraph named_capture_8 ["#9 END_MIN"]
     char_class_4
     literal_20
   end
 
-  subgraph non_capturing_6 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
     named_capture_7
     named_capture_8
   end
@@ -1066,7 +1066,7 @@ graph LR
     literal_15
   end
 
-  subgraph named_capture_5 ["<small>#6</small> MINUTE"]
+  subgraph named_capture_5 ["#6 MINUTE"]
     named_capture_6
     named_capture_7
     named_capture_8
@@ -1075,12 +1075,12 @@ graph LR
     non_capturing_4
   end
 
-  subgraph named_capture_10 ["<small>#11</small> START_HR"]
+  subgraph named_capture_10 ["#11 START_HR"]
     char_class_5
     literal_24
   end
 
-  subgraph named_capture_11 ["<small>#12</small> DELIMITER_HR"]
+  subgraph named_capture_11 ["#12 DELIMITER_HR"]
     disjunction_begin_7
     disjunction_end_7
     literal_25
@@ -1088,12 +1088,12 @@ graph LR
     literal_27
   end
 
-  subgraph named_capture_12 ["<small>#13</small> END_HR"]
+  subgraph named_capture_12 ["#13 END_HR"]
     char_class_6
     literal_28
   end
 
-  subgraph non_capturing_9 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_9 ["Non-capturing <i>Zero or more</i>"]
     named_capture_11
     named_capture_12
   end
@@ -1117,7 +1117,7 @@ graph LR
     literal_23
   end
 
-  subgraph named_capture_9 ["<small>#10</small> HOUR"]
+  subgraph named_capture_9 ["#10 HOUR"]
     named_capture_10
     named_capture_11
     named_capture_12
@@ -1126,7 +1126,7 @@ graph LR
     non_capturing_7
   end
 
-  subgraph named_capture_14 ["<small>#15</small> START_DOM"]
+  subgraph named_capture_14 ["#15 START_DOM"]
     disjunction_begin_9
     disjunction_end_9
     literal_32
@@ -1137,7 +1137,7 @@ graph LR
     literal_36
   end
 
-  subgraph named_capture_15 ["<small>#16</small> DELIMITER_DOM"]
+  subgraph named_capture_15 ["#16 DELIMITER_DOM"]
     disjunction_begin_10
     disjunction_end_10
     literal_37
@@ -1145,13 +1145,13 @@ graph LR
     literal_39
   end
 
-  subgraph named_capture_16 ["<small>#17</small> END_DOM"]
+  subgraph named_capture_16 ["#17 END_DOM"]
     char_class_8
     literal_40
     literal_41
   end
 
-  subgraph non_capturing_11 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_11 ["Non-capturing <i>Zero or more</i>"]
     named_capture_15
     named_capture_16
   end
@@ -1163,7 +1163,7 @@ graph LR
     non_capturing_11
   end
 
-  subgraph named_capture_13 ["<small>#14</small> DAYOFMONTH"]
+  subgraph named_capture_13 ["#14 DAYOFMONTH"]
     named_capture_14
     named_capture_15
     named_capture_16
@@ -1175,7 +1175,7 @@ graph LR
     literal_31
   end
 
-  subgraph named_capture_18 ["<small>#19</small> START_MON"]
+  subgraph named_capture_18 ["#19 START_MON"]
     disjunction_begin_12
     disjunction_end_12
     char_class_9
@@ -1195,7 +1195,7 @@ graph LR
     literal_56
   end
 
-  subgraph named_capture_19 ["<small>#20</small> DELIMITER_MON"]
+  subgraph named_capture_19 ["#20 DELIMITER_MON"]
     disjunction_begin_13
     disjunction_end_13
     literal_57
@@ -1203,7 +1203,7 @@ graph LR
     literal_59
   end
 
-  subgraph named_capture_20 ["<small>#21</small> END_MON"]
+  subgraph named_capture_20 ["#21 END_MON"]
     disjunction_begin_14
     disjunction_end_14
     char_class_11
@@ -1223,7 +1223,7 @@ graph LR
     literal_72
   end
 
-  subgraph non_capturing_13 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_13 ["Non-capturing <i>Zero or more</i>"]
     named_capture_19
     named_capture_20
   end
@@ -1235,7 +1235,7 @@ graph LR
     non_capturing_13
   end
 
-  subgraph named_capture_17 ["<small>#18</small> MONTH"]
+  subgraph named_capture_17 ["#18 MONTH"]
     named_capture_18
     named_capture_19
     named_capture_20
@@ -1246,7 +1246,7 @@ graph LR
     literal_43
   end
 
-  subgraph named_capture_22 ["<small>#23</small> START_DOW"]
+  subgraph named_capture_22 ["#23 START_DOW"]
     disjunction_begin_16
     disjunction_end_16
     char_class_13
@@ -1259,7 +1259,7 @@ graph LR
     literal_82
   end
 
-  subgraph named_capture_23 ["<small>#24</small> DELIMITER_DOW"]
+  subgraph named_capture_23 ["#24 DELIMITER_DOW"]
     disjunction_begin_17
     disjunction_end_17
     literal_83
@@ -1267,7 +1267,7 @@ graph LR
     literal_85
   end
 
-  subgraph named_capture_24 ["<small>#25</small> END_DOW"]
+  subgraph named_capture_24 ["#25 END_DOW"]
     disjunction_begin_18
     disjunction_end_18
     char_class_14
@@ -1280,7 +1280,7 @@ graph LR
     literal_92
   end
 
-  subgraph non_capturing_17 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_17 ["Non-capturing <i>Zero or more</i>"]
     named_capture_23
     named_capture_24
   end
@@ -1291,7 +1291,7 @@ graph LR
     non_capturing_17
   end
 
-  subgraph non_capturing_15 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_15 ["Non-capturing <i>Zero or more</i>"]
     named_capture_23
     named_capture_24
     non_capturing_17
@@ -1308,7 +1308,7 @@ graph LR
     non_capturing_15
   end
 
-  subgraph named_capture_21 ["<small>#22</small> DAYOFWEEK"]
+  subgraph named_capture_21 ["#22 DAYOFWEEK"]
     named_capture_22
     named_capture_23
     named_capture_24
@@ -1322,7 +1322,7 @@ graph LR
     literal_75
   end
 
-  subgraph non_capturing_18 ["Non-capturing <small><i>One or more</i></small>"]
+  subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     disjunction_begin_19
     disjunction_end_19
     literal_94
@@ -1341,14 +1341,14 @@ graph LR
     literal_98
   end
 
-  subgraph named_capture_26 ["<small>#27</small> START_YR"]
+  subgraph named_capture_26 ["#27 START_YR"]
     non_capturing_22
     non_capturing_21
     assertion_3
     assertion_4
   end
 
-  subgraph named_capture_27 ["<small>#28</small> DELIMITER_YR"]
+  subgraph named_capture_27 ["#28 DELIMITER_YR"]
     disjunction_begin_22
     disjunction_end_22
     literal_99
@@ -1382,7 +1382,7 @@ graph LR
     literal_106
   end
 
-  subgraph named_capture_28 ["<small>#29</small> END_YR"]
+  subgraph named_capture_28 ["#29 END_YR"]
     non_capturing_24
     non_capturing_26
     non_capturing_25
@@ -1394,7 +1394,7 @@ graph LR
     assertion_8
   end
 
-  subgraph non_capturing_23 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_23 ["Non-capturing <i>Zero or more</i>"]
     named_capture_27
     non_capturing_24
     non_capturing_26
@@ -1430,7 +1430,7 @@ graph LR
     literal_95
   end
 
-  subgraph named_capture_25 ["<small>#26</small> YEAR"]
+  subgraph named_capture_25 ["#26 YEAR"]
     non_capturing_22
     non_capturing_21
     named_capture_26
@@ -1444,7 +1444,7 @@ graph LR
     non_capturing_19
   end
 
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -1828,7 +1828,7 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("19"):::literal;
@@ -1841,7 +1841,7 @@ graph LR
   char_class_2("1-9"):::char-class;
   literal_5("1"):::literal;
   char_class_3("0 1 2"):::char-class;
-  back_reference_1("\2<br><i><small>Back-reference</small></i>"):::back-reference;
+  back_reference_1("\2<br><i>Back-reference</i>"):::back-reference;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_6("0"):::literal;
@@ -1850,21 +1850,21 @@ graph LR
   char_class_6("Any digit"):::char-class;
   literal_7("3"):::literal;
   char_class_7("0 1"):::char-class;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     literal_2
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     char_class_1
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     disjunction_begin_2
     disjunction_end_2
     literal_4
@@ -1873,7 +1873,7 @@ graph LR
     char_class_3
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4"]
+  subgraph standard_4 ["#4 Group 4"]
     disjunction_begin_3
     disjunction_end_3
     literal_6
@@ -1958,31 +1958,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_1("Any digit<br><i><small>Exactly 4</small></i>"):::literal;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  literal_1("Any digit<br><i>Exactly 4</i>"):::literal;
   literal_2("-"):::literal;
-  literal_3("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_3("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_4("-"):::literal;
-  literal_5("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_5("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_6("T"):::literal;
-  literal_7("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_7("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_8(":"):::literal;
-  literal_9("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_9("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_10(":"):::literal;
-  literal_11("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_11("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_12("Any character"):::literal;
-  literal_13("Any digit<br><i><small>One or more</small></i>"):::literal;
+  literal_13("Any digit<br><i>One or more</i>"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_14("Z"):::literal;
   char_class_1("+ -"):::char-class;
-  literal_15("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_15("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_16(":"):::literal;
-  literal_17("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_17("Any digit<br><i>Exactly 2</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     literal_1
     literal_2
     literal_3
@@ -1990,12 +1990,12 @@ graph LR
     literal_5
   end
 
-  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
     literal_12
     literal_13
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     non_capturing_2
     literal_7
     literal_8
@@ -2011,7 +2011,7 @@ graph LR
     literal_6
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4 <small><i>Optional</i></small>"]
+  subgraph standard_4 ["#4 Group 4 <i>Optional</i>"]
     disjunction_begin_1
     disjunction_end_1
     literal_14
@@ -2021,7 +2021,7 @@ graph LR
     literal_17
   end
 
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     standard_2
     non_capturing_2
     standard_3
@@ -2100,16 +2100,16 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i><small>One or more</small></i>"):::char-class;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i>One or more</i>"):::char-class;
   literal_1("@"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_2("Any character"):::literal;
-  char_class_3("Any lowercase<br>Any uppercase<br><i><small>2 to 6</small></i>"):::char-class;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  char_class_3("Any lowercase<br>Any uppercase<br><i>2 to 6</i>"):::char-class;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1 <small><i>Zero or more</i></small>"]
+  subgraph standard_1 ["#1 Group 1 <i>Zero or more</i>"]
     char_class_1
     literal_1
     char_class_2
@@ -2169,10 +2169,10 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  negated_char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i><small>One or more</small></i>"):::negated-char-class;
+  negated_char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_1("\x22"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
@@ -2183,7 +2183,7 @@ graph LR
   literal_4("\x2e"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  negated_char_class_3("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i><small>One or more</small></i>"):::negated-char-class;
+  negated_char_class_3("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_5("\x22"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
@@ -2194,7 +2194,7 @@ graph LR
   literal_8("\x40"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  negated_char_class_5("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i><small>One or more</small></i>"):::negated-char-class;
+  negated_char_class_5("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_9("\x5b"):::literal;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
@@ -2205,7 +2205,7 @@ graph LR
   literal_12("\x2e"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  negated_char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i><small>One or more</small></i>"):::negated-char-class;
+  negated_char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_13("\x5b"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
@@ -2213,10 +2213,10 @@ graph LR
   literal_14("\x5c"):::literal;
   char_class_4("\x00-\x7f"):::char-class;
   literal_15("\x5d"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["<small>#2</small> Group 2 <small><i>Zero or more</i></small>"]
+  subgraph standard_2 ["#2 Group 2 <i>Zero or more</i>"]
     disjunction_begin_2
     disjunction_end_2
     negated_char_class_2
@@ -2224,7 +2224,7 @@ graph LR
     char_class_1
   end
 
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     standard_2
     disjunction_begin_1
     disjunction_end_1
@@ -2233,7 +2233,7 @@ graph LR
     literal_3
   end
 
-  subgraph standard_5 ["<small>#5</small> Group 5 <small><i>Zero or more</i></small>"]
+  subgraph standard_5 ["#5 Group 5 <i>Zero or more</i>"]
     disjunction_begin_4
     disjunction_end_4
     negated_char_class_4
@@ -2241,7 +2241,7 @@ graph LR
     char_class_2
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4"]
+  subgraph standard_4 ["#4 Group 4"]
     standard_5
     disjunction_begin_3
     disjunction_end_3
@@ -2250,13 +2250,13 @@ graph LR
     literal_7
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3 <small><i>Zero or more</i></small>"]
+  subgraph standard_3 ["#3 Group 3 <i>Zero or more</i>"]
     standard_5
     standard_4
     literal_4
   end
 
-  subgraph standard_7 ["<small>#7</small> Group 7 <small><i>Zero or more</i></small>"]
+  subgraph standard_7 ["#7 Group 7 <i>Zero or more</i>"]
     disjunction_begin_6
     disjunction_end_6
     negated_char_class_6
@@ -2264,7 +2264,7 @@ graph LR
     char_class_3
   end
 
-  subgraph standard_6 ["<small>#6</small> Group 6"]
+  subgraph standard_6 ["#6 Group 6"]
     standard_7
     disjunction_begin_5
     disjunction_end_5
@@ -2273,7 +2273,7 @@ graph LR
     literal_11
   end
 
-  subgraph standard_10 ["<small>#10</small> Group 10 <small><i>Zero or more</i></small>"]
+  subgraph standard_10 ["#10 Group 10 <i>Zero or more</i>"]
     disjunction_begin_8
     disjunction_end_8
     negated_char_class_8
@@ -2281,7 +2281,7 @@ graph LR
     char_class_4
   end
 
-  subgraph standard_9 ["<small>#9</small> Group 9"]
+  subgraph standard_9 ["#9 Group 9"]
     standard_10
     disjunction_begin_7
     disjunction_end_7
@@ -2290,7 +2290,7 @@ graph LR
     literal_15
   end
 
-  subgraph standard_8 ["<small>#8</small> Group 8 <small><i>Zero or more</i></small>"]
+  subgraph standard_8 ["#8 Group 8 <i>Zero or more</i>"]
     standard_10
     standard_9
     literal_12
@@ -2399,11 +2399,11 @@ graph LR
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("<"):::literal;
-  literal_2("/<br><i><small>Optional</small></i>"):::literal;
-  char_class_1("\w \s<br><i><small>Zero or more</small></i>"):::char-class;
+  literal_2("/<br><i>Optional</i>"):::literal;
+  char_class_1("\w \s<br><i>Zero or more</i>"):::char-class;
   literal_3(">"):::literal;
   literal_4("<"):::literal;
-  literal_5("Any character<br><i><small>One or more</small></i>"):::literal;
+  literal_5("Any character<br><i>One or more</i>"):::literal;
   char_class_2("\W"):::char-class;
   literal_6(">"):::literal;
 
@@ -2457,19 +2457,19 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  literal_1("Any character<br><i><small>Zero or more</small></i>"):::literal;
+  literal_1("Any character<br><i>Zero or more</i>"):::literal;
   char_class_1("Any digit"):::char-class;
-  literal_2("Any character<br><i><small>Zero or more</small></i>"):::literal;
+  literal_2("Any character<br><i>Zero or more</i>"):::literal;
   char_class_2("! @ # $ % ^ & * ( ) \ [ ] { } - _ + = ~ ` | : ; #quot; ' < > , . / ?"):::char-class;
-  literal_3("Any character<br><i><small>Zero or more</small></i>"):::literal;
+  literal_3("Any character<br><i>Zero or more</i>"):::literal;
   char_class_3("Any lowercase"):::char-class;
-  literal_4("Any character<br><i><small>Zero or more</small></i>"):::literal;
+  literal_4("Any character<br><i>Zero or more</i>"):::literal;
   char_class_4("Any uppercase"):::char-class;
-  literal_5("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  literal_6("Any character<br><i><small>8 or more</small></i>"):::literal;
+  literal_5("Any character<br><i>Zero or more</i>"):::literal;
+  literal_6("Any character<br><i>8 or more</i>"):::literal;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     literal_1
     char_class_1
   end
@@ -2488,7 +2488,7 @@ graph LR
     char_class_3
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     literal_4
     char_class_4
   end
@@ -2497,7 +2497,7 @@ graph LR
     standard_2
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     literal_5
   end
 
@@ -2561,21 +2561,21 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("+"):::literal;
-  literal_2("Any digit<br><i><small>1 to 2</small></i>"):::literal;
+  literal_2("Any digit<br><i>1 to 2</i>"):::literal;
   literal_3("Any whitespace"):::literal;
-  literal_4("(<br><i><small>Optional</small></i>"):::literal;
-  literal_5("Any digit<br><i><small>Exactly 3</small></i>"):::literal;
-  literal_6(")<br><i><small>Optional</small></i>"):::literal;
+  literal_4("(<br><i>Optional</i>"):::literal;
+  literal_5("Any digit<br><i>Exactly 3</i>"):::literal;
+  literal_6(")<br><i>Optional</i>"):::literal;
   char_class_1("\s . -"):::char-class;
-  literal_7("Any digit<br><i><small>Exactly 3</small></i>"):::literal;
+  literal_7("Any digit<br><i>Exactly 3</i>"):::literal;
   char_class_2("\s . -"):::char-class;
-  literal_8("Any digit<br><i><small>Exactly 4</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_8("Any digit<br><i>Exactly 4</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1 <small><i>Optional</i></small>"]
+  subgraph standard_1 ["#1 Group 1 <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
@@ -2638,50 +2638,50 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("0"):::literal;
   char_class_1("1-9"):::char-class;
-  literal_2("Any digit<br><i><small>Zero or more</small></i>"):::literal;
+  literal_2("Any digit<br><i>Zero or more</i>"):::literal;
   literal_3("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_4("0"):::literal;
   char_class_2("1-9"):::char-class;
-  literal_5("Any digit<br><i><small>Zero or more</small></i>"):::literal;
+  literal_5("Any digit<br><i>Zero or more</i>"):::literal;
   literal_6("Any character"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_7("0"):::literal;
   char_class_3("1-9"):::char-class;
-  literal_8("Any digit<br><i><small>Zero or more</small></i>"):::literal;
+  literal_8("Any digit<br><i>Zero or more</i>"):::literal;
   literal_9("-"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   literal_10("0"):::literal;
   char_class_4("1-9"):::char-class;
-  literal_11("Any digit<br><i><small>Zero or more</small></i>"):::literal;
-  literal_12("Any digit<br><i><small>Zero or more</small></i>"):::literal;
+  literal_11("Any digit<br><i>Zero or more</i>"):::literal;
+  literal_12("Any digit<br><i>Zero or more</i>"):::literal;
   char_class_5("Any lowercase<br>Any uppercase<br>-"):::char-class;
-  char_class_6("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i><small>Zero or more</small></i>"):::char-class;
+  char_class_6("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
   literal_13("Any character"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
   literal_14("0"):::literal;
   char_class_7("1-9"):::char-class;
-  literal_15("Any digit<br><i><small>Zero or more</small></i>"):::literal;
-  literal_16("Any digit<br><i><small>Zero or more</small></i>"):::literal;
+  literal_15("Any digit<br><i>Zero or more</i>"):::literal;
+  literal_16("Any digit<br><i>Zero or more</i>"):::literal;
   char_class_8("Any lowercase<br>Any uppercase<br>-"):::char-class;
-  char_class_9("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i><small>Zero or more</small></i>"):::char-class;
+  char_class_9("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
   literal_17("+"):::literal;
-  char_class_10("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i><small>One or more</small></i>"):::char-class;
+  char_class_10("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
   literal_18("Any character"):::literal;
-  char_class_11("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i><small>One or more</small></i>"):::char-class;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  char_class_11("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> major"]
+  subgraph named_capture_1 ["#1 major"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
@@ -2689,7 +2689,7 @@ graph LR
     literal_2
   end
 
-  subgraph named_capture_2 ["<small>#2</small> minor"]
+  subgraph named_capture_2 ["#2 minor"]
     disjunction_begin_2
     disjunction_end_2
     literal_4
@@ -2697,7 +2697,7 @@ graph LR
     literal_5
   end
 
-  subgraph named_capture_3 ["<small>#3</small> patch"]
+  subgraph named_capture_3 ["#3 patch"]
     disjunction_begin_3
     disjunction_end_3
     literal_7
@@ -2727,18 +2727,18 @@ graph LR
     char_class_9
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
     non_capturing_4
     literal_13
   end
 
-  subgraph named_capture_4 ["<small>#4</small> prerelease"]
+  subgraph named_capture_4 ["#4 prerelease"]
     non_capturing_2
     non_capturing_4
     non_capturing_3
   end
 
-  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
     non_capturing_2
     non_capturing_4
     non_capturing_3
@@ -2746,17 +2746,17 @@ graph LR
     literal_9
   end
 
-  subgraph non_capturing_6 ["Non-capturing <small><i>Zero or more</i></small>"]
+  subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
     literal_18
     char_class_11
   end
 
-  subgraph named_capture_5 ["<small>#5</small> buildmetadata"]
+  subgraph named_capture_5 ["#5 buildmetadata"]
     non_capturing_6
     char_class_10
   end
 
-  subgraph non_capturing_5 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     non_capturing_6
     named_capture_5
     literal_17
@@ -2861,29 +2861,29 @@ graph LR
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("Not a word character"):::literal;
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_2("stock"):::literal;
-  literal_3("Any whitespace<br><i><small>0 to 3</small></i>"):::literal;
+  literal_3("Any whitespace<br><i>0 to 3</i>"):::literal;
   literal_4("tip"):::literal;
   literal_5("s"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_6("Not a word character"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     assertion_1
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2 <small><i>0 to 1</i></small>"]
+  subgraph standard_2 ["#2 Group 2 <i>0 to 1</i>"]
     literal_5
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     disjunction_begin_2
     disjunction_end_2
     literal_6
@@ -2949,17 +2949,17 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("ftp"):::literal;
   literal_4(":"):::literal;
   literal_5("//"):::literal;
-  literal_6("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  literal_6("Not whitespace<br><i>One or more</i>"):::literal;
   literal_7(":"):::literal;
-  literal_8("Not whitespace<br><i><small>Zero or more</small></i>"):::literal;
+  literal_8("Not whitespace<br><i>Zero or more</i>"):::literal;
   literal_9("@"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
@@ -2968,13 +2968,13 @@ graph LR
   literal_10("10"):::literal;
   literal_11("127"):::literal;
   literal_12("Any character"):::literal;
-  literal_13("Any digit<br><i><small>1 to 3</small></i>"):::literal;
+  literal_13("Any digit<br><i>1 to 3</i>"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   literal_14("169.254"):::literal;
   literal_15("192.168"):::literal;
   literal_16("Any character"):::literal;
-  literal_17("Any digit<br><i><small>1 to 3</small></i>"):::literal;
+  literal_17("Any digit<br><i>1 to 3</i>"):::literal;
   literal_18("172."):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
@@ -2984,11 +2984,11 @@ graph LR
   literal_21("3"):::literal;
   char_class_2("0-1"):::char-class;
   literal_22("Any character"):::literal;
-  literal_23("Any digit<br><i><small>1 to 3</small></i>"):::literal;
+  literal_23("Any digit<br><i>1 to 3</i>"):::literal;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
   char_class_3("1-9"):::char-class;
-  literal_24("Any digit<br><i><small>Optional</small></i>"):::literal;
+  literal_24("Any digit<br><i>Optional</i>"):::literal;
   literal_25("1\d\d"):::literal;
   literal_26("2"):::literal;
   char_class_4("0 1"):::char-class;
@@ -2998,8 +2998,8 @@ graph LR
   literal_29("Any character"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  literal_30("1<br><i><small>Optional</small></i>"):::literal;
-  literal_31("Any digit<br><i><small>1 to 2</small></i>"):::literal;
+  literal_30("1<br><i>Optional</i>"):::literal;
+  literal_31("Any digit<br><i>1 to 2</i>"):::literal;
   literal_32("2"):::literal;
   char_class_6("0-4"):::char-class;
   literal_33("Any digit"):::literal;
@@ -3009,7 +3009,7 @@ graph LR
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
   char_class_8("1-9"):::char-class;
-  literal_36("Any digit<br><i><small>Optional</small></i>"):::literal;
+  literal_36("Any digit<br><i>Optional</i>"):::literal;
   literal_37("1\d\d"):::literal;
   literal_38("2"):::literal;
   char_class_9("0-4"):::char-class;
@@ -3017,16 +3017,16 @@ graph LR
   literal_40("25"):::literal;
   char_class_10("0-4"):::char-class;
   char_class_11("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
-  char_class_12("Any lowercase<br>Any digit<br>\u00a1-\uffff<br>_ -<br><i><small>0 to 62</small></i>"):::char-class;
+  char_class_12("Any lowercase<br>Any digit<br>\u00a1-\uffff<br>_ -<br><i>0 to 62</i>"):::char-class;
   char_class_13("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
   literal_41("Any character"):::literal;
-  char_class_14("Any lowercase<br>\u00a1-\uffff<br><i><small>2 or more</small></i>"):::char-class;
-  literal_42("Any character<br><i><small>Optional</small></i>"):::literal;
+  char_class_14("Any lowercase<br>\u00a1-\uffff<br><i>2 or more</i>"):::char-class;
+  literal_42("Any character<br><i>Optional</i>"):::literal;
   literal_43(":"):::literal;
-  literal_44("Any digit<br><i><small>2 to 5</small></i>"):::literal;
+  literal_44("Any digit<br><i>2 to 5</i>"):::literal;
   char_class_15("/ ? #"):::char-class;
-  literal_45("Not whitespace<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_45("Not whitespace<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
   subgraph non_capturing_3 ["Non-capturing"]
@@ -3037,7 +3037,7 @@ graph LR
     literal_3
   end
 
-  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
     non_capturing_3
     literal_4
   end
@@ -3048,12 +3048,12 @@ graph LR
     literal_5
   end
 
-  subgraph non_capturing_5 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     literal_7
     literal_8
   end
 
-  subgraph non_capturing_4 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_4 ["Non-capturing <i>Optional</i>"]
     non_capturing_5
     literal_6
     literal_9
@@ -3066,7 +3066,7 @@ graph LR
     literal_11
   end
 
-  subgraph non_capturing_8 ["Non-capturing <small><i>Exactly 3</i></small>"]
+  subgraph non_capturing_8 ["Non-capturing <i>Exactly 3</i>"]
     literal_12
     literal_13
   end
@@ -3083,7 +3083,7 @@ graph LR
     literal_15
   end
 
-  subgraph non_capturing_10 ["Non-capturing <small><i>Exactly 2</i></small>"]
+  subgraph non_capturing_10 ["Non-capturing <i>Exactly 2</i>"]
     literal_16
     literal_17
   end
@@ -3103,7 +3103,7 @@ graph LR
     char_class_2
   end
 
-  subgraph non_capturing_12 ["Non-capturing <small><i>Exactly 2</i></small>"]
+  subgraph non_capturing_12 ["Non-capturing <i>Exactly 2</i>"]
     literal_22
     literal_23
   end
@@ -3139,7 +3139,7 @@ graph LR
     char_class_7
   end
 
-  subgraph non_capturing_14 ["Non-capturing <small><i>Exactly 2</i></small>"]
+  subgraph non_capturing_14 ["Non-capturing <i>Exactly 2</i>"]
     non_capturing_15
     literal_29
   end
@@ -3162,12 +3162,12 @@ graph LR
     literal_35
   end
 
-  subgraph non_capturing_19 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_19 ["Non-capturing <i>Optional</i>"]
     char_class_11
     char_class_12
   end
 
-  subgraph non_capturing_18 ["Non-capturing <small><i>One or more</i></small>"]
+  subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     non_capturing_19
     char_class_13
     literal_41
@@ -3200,12 +3200,12 @@ graph LR
     disjunction_end_2
   end
 
-  subgraph non_capturing_21 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_21 ["Non-capturing <i>Optional</i>"]
     literal_43
     literal_44
   end
 
-  subgraph non_capturing_22 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_22 ["Non-capturing <i>Optional</i>"]
     char_class_15
     literal_45
   end
@@ -3350,31 +3350,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br><i><small>2 or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
   literal_5("/"):::literal;
-  literal_6("Any character<br><i><small>Zero or more</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol <small><i>Optional</i></small>"]
+  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["<small>#2</small> domain"]
+  subgraph named_capture_2 ["#2 domain"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["<small>#3</small> path <small><i>Optional</i></small>"]
+  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
     literal_6
   end
@@ -3434,15 +3434,15 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  char_class_1("Any digit<br>a-f<br>A-F<br><i><small>Exactly 8</small></i>"):::char-class;
+  char_class_1("Any digit<br>a-f<br>A-F<br><i>Exactly 8</i>"):::char-class;
   literal_1("-"):::literal;
-  char_class_2("Any digit<br>a-f<br>A-F<br><i><small>Exactly 4</small></i>"):::char-class;
+  char_class_2("Any digit<br>a-f<br>A-F<br><i>Exactly 4</i>"):::char-class;
   literal_2("-"):::literal;
-  char_class_3("Any digit<br>a-f<br>A-F<br><i><small>Exactly 4</small></i>"):::char-class;
+  char_class_3("Any digit<br>a-f<br>A-F<br><i>Exactly 4</i>"):::char-class;
   literal_3("-"):::literal;
-  char_class_4("Any digit<br>a-f<br>A-F<br><i><small>Exactly 4</small></i>"):::char-class;
+  char_class_4("Any digit<br>a-f<br>A-F<br><i>Exactly 4</i>"):::char-class;
   literal_4("-"):::literal;
-  char_class_5("Any digit<br>a-f<br>A-F<br><i><small>Exactly 12</small></i>"):::char-class;
+  char_class_5("Any digit<br>a-f<br>A-F<br><i>Exactly 12</i>"):::char-class;
 
   %% Edges
   start --- char_class_1;

@@ -7,12 +7,12 @@ graph LR
   fin@{ shape: f-circ };
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
-  literal_2("s<br><i><small>Optional</small></i>"):::literal;
+  literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("://"):::literal;
   literal_4("www."):::literal;
-  char_class_1("Any lowercase<br>Any digit<br>-<br><i><small>One or more</small></i>"):::char-class;
+  char_class_1("Any lowercase<br>Any digit<br>-<br><i>One or more</i>"):::char-class;
   literal_5("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
@@ -20,33 +20,33 @@ graph LR
   literal_7("org"):::literal;
   literal_8("net"):::literal;
   literal_9("/"):::literal;
-  negated_char_class_1("\s<br><i><small>Zero or more</small></i>"):::negated-char-class;
+  negated_char_class_1("\s<br><i>Zero or more</i>"):::negated-char-class;
   literal_10("query"):::literal;
-  back_reference_1("\1<br><i><small>Back-reference</small></i>"):::back-reference;
-  literal_11("Any digit<br><i><small>3 to 5</small></i>"):::literal;
-  literal_12("Any word character<br><i><small>One or more</small></i>"):::literal;
-  literal_13("Any whitespace<br><i><small>Zero or more</small></i>"):::literal;
-  literal_14("Not whitespace<br><i><small>One or more</small></i>"):::literal;
+  back_reference_1("\1<br><i>Back-reference</i>"):::back-reference;
+  literal_11("Any digit<br><i>3 to 5</i>"):::literal;
+  literal_12("Any word character<br><i>One or more</i>"):::literal;
+  literal_13("Any whitespace<br><i>Zero or more</i>"):::literal;
+  literal_14("Not whitespace<br><i>One or more</i>"):::literal;
   negated_char_class_2("a b c"):::negated-char-class;
   literal_15("neg"):::literal;
   literal_16("back"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
   literal_17("alt"):::literal;
-  assertion_3("\b<br><i><small>Word boundary</small></i>"):::assertion;
-  assertion_4("\B<br><i><small>Non-word boundary</small></i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_4("\B<br><i>Non-word boundary</i>"):::assertion;
   literal_18("Any character"):::literal;
 
   %% Subgraphs
-  subgraph named_capture_1 ["<small>#1</small> protocol"]
+  subgraph named_capture_1 ["#1 protocol"]
     literal_1
     literal_2
   end
 
-  subgraph non_capturing_1 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
     literal_4
   end
 
-  subgraph standard_1 ["<small>#2</small> Group 2"]
+  subgraph standard_1 ["#2 Group 2"]
     char_class_1
   end
 
@@ -58,7 +58,7 @@ graph LR
     literal_8
   end
 
-  subgraph non_capturing_3 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     literal_9
     negated_char_class_1
   end

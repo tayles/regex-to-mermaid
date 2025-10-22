@@ -5,7 +5,7 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("19"):::literal;
@@ -18,7 +18,7 @@ graph LR
   char_class_2("1-9"):::char-class;
   literal_5("1"):::literal;
   char_class_3("0 1 2"):::char-class;
-  back_reference_1("\2<br><i><small>Back-reference</small></i>"):::back-reference;
+  back_reference_1("\2<br><i>Back-reference</i>"):::back-reference;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_6("0"):::literal;
@@ -27,21 +27,21 @@ graph LR
   char_class_6("Any digit"):::char-class;
   literal_7("3"):::literal;
   char_class_7("0 1"):::char-class;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     literal_2
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     char_class_1
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     disjunction_begin_2
     disjunction_end_2
     literal_4
@@ -50,7 +50,7 @@ graph LR
     char_class_3
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4"]
+  subgraph standard_4 ["#4 Group 4"]
     disjunction_begin_3
     disjunction_end_3
     literal_6

@@ -8,29 +8,29 @@ graph LR
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("Not a word character"):::literal;
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_2("stock"):::literal;
-  literal_3("Any whitespace<br><i><small>0 to 3</small></i>"):::literal;
+  literal_3("Any whitespace<br><i>0 to 3</i>"):::literal;
   literal_4("tip"):::literal;
   literal_5("s"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_6("Not a word character"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     assertion_1
   end
 
-  subgraph standard_2 ["<small>#2</small> Group 2 <small><i>0 to 1</i></small>"]
+  subgraph standard_2 ["#2 Group 2 <i>0 to 1</i>"]
     literal_5
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     disjunction_begin_2
     disjunction_end_2
     literal_6

@@ -5,16 +5,16 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
-  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i><small>One or more</small></i>"):::char-class;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. _ % -<br><i>One or more</i>"):::char-class;
   literal_1("@"):::literal;
-  char_class_2("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i><small>One or more</small></i>"):::char-class;
+  char_class_2("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_2("Any character"):::literal;
-  char_class_3("Any lowercase<br>Any uppercase<br><i><small>2 to 6</small></i>"):::char-class;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  char_class_3("Any lowercase<br>Any uppercase<br><i>2 to 6</i>"):::char-class;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1 <small><i>Zero or more</i></small>"]
+  subgraph standard_1 ["#1 Group 1 <i>Zero or more</i>"]
     char_class_1
     literal_1
     char_class_2

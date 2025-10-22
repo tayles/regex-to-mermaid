@@ -5,31 +5,31 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
-  literal_1("Any digit<br><i><small>Exactly 4</small></i>"):::literal;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  literal_1("Any digit<br><i>Exactly 4</i>"):::literal;
   literal_2("-"):::literal;
-  literal_3("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_3("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_4("-"):::literal;
-  literal_5("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_5("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_6("T"):::literal;
-  literal_7("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_7("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_8(":"):::literal;
-  literal_9("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_9("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_10(":"):::literal;
-  literal_11("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_11("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_12("Any character"):::literal;
-  literal_13("Any digit<br><i><small>One or more</small></i>"):::literal;
+  literal_13("Any digit<br><i>One or more</i>"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_14("Z"):::literal;
   char_class_1("+ -"):::char-class;
-  literal_15("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
+  literal_15("Any digit<br><i>Exactly 2</i>"):::literal;
   literal_16(":"):::literal;
-  literal_17("Any digit<br><i><small>Exactly 2</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_17("Any digit<br><i>Exactly 2</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["<small>#2</small> Group 2"]
+  subgraph standard_2 ["#2 Group 2"]
     literal_1
     literal_2
     literal_3
@@ -37,12 +37,12 @@ graph LR
     literal_5
   end
 
-  subgraph non_capturing_2 ["Non-capturing <small><i>Optional</i></small>"]
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
     literal_12
     literal_13
   end
 
-  subgraph standard_3 ["<small>#3</small> Group 3"]
+  subgraph standard_3 ["#3 Group 3"]
     non_capturing_2
     literal_7
     literal_8
@@ -58,7 +58,7 @@ graph LR
     literal_6
   end
 
-  subgraph standard_4 ["<small>#4</small> Group 4 <small><i>Optional</i></small>"]
+  subgraph standard_4 ["#4 Group 4 <i>Optional</i>"]
     disjunction_begin_1
     disjunction_end_1
     literal_14
@@ -68,7 +68,7 @@ graph LR
     literal_17
   end
 
-  subgraph standard_1 ["<small>#1</small> Group 1"]
+  subgraph standard_1 ["#1 Group 1"]
     standard_2
     non_capturing_2
     standard_3

@@ -5,21 +5,21 @@ graph LR
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  assertion_1("^<br><i><small>Begins with</small></i>"):::assertion;
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("+"):::literal;
-  literal_2("Any digit<br><i><small>1 to 2</small></i>"):::literal;
+  literal_2("Any digit<br><i>1 to 2</i>"):::literal;
   literal_3("Any whitespace"):::literal;
-  literal_4("(<br><i><small>Optional</small></i>"):::literal;
-  literal_5("Any digit<br><i><small>Exactly 3</small></i>"):::literal;
-  literal_6(")<br><i><small>Optional</small></i>"):::literal;
+  literal_4("(<br><i>Optional</i>"):::literal;
+  literal_5("Any digit<br><i>Exactly 3</i>"):::literal;
+  literal_6(")<br><i>Optional</i>"):::literal;
   char_class_1("\s . -"):::char-class;
-  literal_7("Any digit<br><i><small>Exactly 3</small></i>"):::literal;
+  literal_7("Any digit<br><i>Exactly 3</i>"):::literal;
   char_class_2("\s . -"):::char-class;
-  literal_8("Any digit<br><i><small>Exactly 4</small></i>"):::literal;
-  assertion_2("$<br><i><small>Ends with</small></i>"):::assertion;
+  literal_8("Any digit<br><i>Exactly 4</i>"):::literal;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["<small>#1</small> Group 1 <small><i>Optional</i></small>"]
+  subgraph standard_1 ["#1 Group 1 <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
