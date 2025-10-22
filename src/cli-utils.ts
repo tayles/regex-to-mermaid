@@ -1,5 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { Command } from 'commander';
+import packageJson from '../package.json';
 import { regexToMermaid } from './lib';
 import type { Direction, Flavor, Options, Theme } from './types';
 import { DEFAULT_OPTIONS } from './types';
@@ -14,7 +15,7 @@ function createCLI(): Command {
   program
     .name('regex-to-mermaid')
     .description('Convert regular expressions to Mermaid flowchart diagrams')
-    .version('1.0.0')
+    .version(packageJson.version)
     .argument('<regex>', 'Regular expression pattern to visualize')
     .option('-o, --output <file>', 'Output file (default: stdout)')
     .option(
