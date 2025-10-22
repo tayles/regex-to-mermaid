@@ -25,25 +25,9 @@ as this:
 - 🔗 **Easy Sharing** - Share visual regex diagrams in documentation, presentations, or code reviews
 - 📦 **CLI & Library** - Use as a command-line tool or integrate into your projects
 - 🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more
-- 🥗 **Multiple Flavors** - Supports JavaScript (RegExp) and PCRE regex flavors _(coming soon)_
+- 🥗 **Multiple Flavors** - Supports JavaScript (RegExp) and PCRE regex flavors _(see [supported flavors](#supported-flavors))_
 - 🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling
 - ⚡ **Fast & Modern** - Built with Bun and TypeScript as an ESM library for optimal performance
-
-## Supported Flavors
-
-| Flavor                                       | Usage          | Support            |
-| -------------------------------------------- | -------------- | ------------------ |
-| RegExp                                       | JavaScript     | ✅ Fully supported |
-| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support |
-| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support |
-| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support |
-| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support |
-| Python                                       | Python         | 🚧 Limited support |
-| RE2                                          | Go             | 🚧 Limited support |
-| Rust                                         | Rust           | 🚧 Limited support |
-| Java                                         | Java           | 🚧 Limited support |
-| .NET                                         | .NET / C#      | 🚧 Limited support |
-| Ruby                                         | Ruby           | 🚧 Limited support |
 
 ## Installation
 
@@ -95,7 +79,10 @@ regex-to-mermaid 'foo|bar' \
 Pipe to [@mermaid-js/mermaid-cli](https://npmjs.com/package/@mermaid-js/mermaid-cli) to output an SVG or PNG image:
 
 ```shell
-regex-to-mermaid 'foo|bar' | npx @mermaid-js/mermaid-cli --input - --output diagram.png
+regex-to-mermaid 'foo|bar' | \
+  npx @mermaid-js/mermaid-cli \
+    --input - \
+    --output diagram.png
 ```
 
 ## Library Usage
@@ -124,6 +111,22 @@ function regexToMermaid(
 ## Themes
 
 See available [THEMES.md](./THEMES.md).
+
+## Supported Flavors
+
+| Flavor                                       | Usage          | Support                                                                                   |
+| -------------------------------------------- | -------------- | ----------------------------------------------------------------------------------------- |
+| RegExp                                       | JavaScript     | ✅ Fully supported                                                                        |
+| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support, using [pcre-to-regexp](https://npmjs.com/package/pcre-to-regexp) shim |
+| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support, using [pcre-to-regexp](https://npmjs.com/package/pcre-to-regexp) shim |
+| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support                                                                        |
+| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support                                                                        |
+| Python                                       | Python         | 🚧 Limited support                                                                        |
+| RE2                                          | Go             | 🚧 Limited support                                                                        |
+| Rust                                         | Rust           | 🚧 Limited support                                                                        |
+| Java                                         | Java           | 🚧 Limited support                                                                        |
+| .NET                                         | .NET / C#      | 🚧 Limited support                                                                        |
+| Ruby                                         | Ruby           | 🚧 Limited support                                                                        |
 
 ## Local Development
 
