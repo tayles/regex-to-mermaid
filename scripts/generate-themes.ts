@@ -34,7 +34,7 @@ interface ThemeWithMarkdown {
 async function generateThemes() {
   const themesFilePath = join(import.meta.dir, '..', 'THEMES.md');
 
-  const regexFilePath = join(import.meta.dir, '..', DIAGRAMS_DIR, 'url.regex');
+  const regexFilePath = join(DIAGRAMS_DIR, 'url.regex');
 
   // Read the example regex file
   const regexFileContent = await readFile(regexFilePath, 'utf-8');

@@ -31,7 +31,7 @@ regex-to-mermaid 'foo|bar' --theme default
 
 <details>
 <summary>Click to view as image</summary>
-<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for theme default" />
+<img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for theme default" />
 </details>
 
 ```mermaid
@@ -113,7 +113,7 @@ regex-to-mermaid 'foo|bar' --theme neutral
 
 <details>
 <summary>Click to view as image</summary>
-<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.neutral-theme.png" alt="Mermaid diagram for theme neutral" />
+<img src="diagrams/url.mermaid-diagram.neutral-theme.png" alt="Mermaid diagram for theme neutral" />
 </details>
 
 ```mermaid
@@ -200,7 +200,7 @@ regex-to-mermaid 'foo|bar' --theme dark
 
 <details>
 <summary>Click to view as image</summary>
-<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.dark-theme.png" alt="Mermaid diagram for theme dark" />
+<img src="diagrams/url.mermaid-diagram.dark-theme.png" alt="Mermaid diagram for theme dark" />
 </details>
 
 ```mermaid
@@ -287,7 +287,7 @@ regex-to-mermaid 'foo|bar' --theme forest
 
 <details>
 <summary>Click to view as image</summary>
-<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.forest-theme.png" alt="Mermaid diagram for theme forest" />
+<img src="diagrams/url.mermaid-diagram.forest-theme.png" alt="Mermaid diagram for theme forest" />
 </details>
 
 ```mermaid
@@ -374,7 +374,7 @@ regex-to-mermaid 'foo|bar' --theme none
 
 <details>
 <summary>Click to view as image</summary>
-<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.none-theme.png" alt="Mermaid diagram for theme none" />
+<img src="diagrams/url.mermaid-diagram.none-theme.png" alt="Mermaid diagram for theme none" />
 </details>
 
 ```mermaid
