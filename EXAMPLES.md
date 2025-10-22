@@ -39,8 +39,10 @@ An example of all possible token types
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/all-tokens.mermaid-diagram.png" alt="Mermaid diagram for All Possible Tokens" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/all-tokens.mermaid-diagram.png" alt="Mermaid diagram for All Possible Tokens" />
+  </p>
 </details>
 
 ```mermaid
@@ -187,7 +189,7 @@ graph LR
 
 ## Comprehensive RegExp Features
 
-Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? \* + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
+Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
 
 ### Pattern
 
@@ -198,8 +200,10 @@ Demonstrates MDN JavaScript RegExp syntax cheatsheet features including characte
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/comprehensive.mermaid-diagram.png" alt="Mermaid diagram for Comprehensive RegExp Features" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/comprehensive.mermaid-diagram.png" alt="Mermaid diagram for Comprehensive RegExp Features" />
+  </p>
 </details>
 
 ```mermaid
@@ -396,8 +400,10 @@ Validates a RFC3339 DateTime format
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/conventional-commits.mermaid-diagram.png" alt="Mermaid diagram for Conventional Commits" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/conventional-commits.mermaid-diagram.png" alt="Mermaid diagram for Conventional Commits" />
+  </p>
 </details>
 
 ```mermaid
@@ -764,8 +770,10 @@ Validates CRON pattern (Quartz) and supports groups
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/cron-schedule.mermaid-diagram.png" alt="Mermaid diagram for Cron Schedule" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/cron-schedule.mermaid-diagram.png" alt="Mermaid diagram for Cron Schedule" />
+  </p>
 </details>
 
 ```mermaid
@@ -1806,8 +1814,10 @@ A date in YYYY-MM-DD format
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/date-iso8601.mermaid-diagram.png" alt="Mermaid diagram for Date (ISO 8601)" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/date-iso8601.mermaid-diagram.png" alt="Mermaid diagram for Date (ISO 8601)" />
+  </p>
 </details>
 
 ```mermaid
@@ -1934,8 +1944,10 @@ Validates a RFC3339 DateTime format
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/datetime-rfc3339.mermaid-diagram.png" alt="Mermaid diagram for DateTime (RFC3339)" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/datetime-rfc3339.mermaid-diagram.png" alt="Mermaid diagram for DateTime (RFC3339)" />
+  </p>
 </details>
 
 ```mermaid
@@ -2074,8 +2086,10 @@ Standard email address
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/email-address.mermaid-diagram.png" alt="Mermaid diagram for Email Address" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/email-address.mermaid-diagram.png" alt="Mermaid diagram for Email Address" />
+  </p>
 </details>
 
 ```mermaid
@@ -2141,8 +2155,10 @@ Email address compliant with RFC2822
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/email-rfc2822.mermaid-diagram.png" alt="Mermaid diagram for Email (RFC2822)" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/email-rfc2822.mermaid-diagram.png" alt="Mermaid diagram for Email (RFC2822)" />
+  </p>
 </details>
 
 ```mermaid
@@ -2366,8 +2382,10 @@ Naive html tags
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/html-tags.mermaid-diagram.png" alt="Mermaid diagram for HTML Tags" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/html-tags.mermaid-diagram.png" alt="Mermaid diagram for HTML Tags" />
+  </p>
 </details>
 
 ```mermaid
@@ -2425,8 +2443,10 @@ Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special characte
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/password-requirements.mermaid-diagram.png" alt="Mermaid diagram for Complex Password Requirements" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/password-requirements.mermaid-diagram.png" alt="Mermaid diagram for Complex Password Requirements" />
+  </p>
 </details>
 
 ```mermaid
@@ -2527,8 +2547,10 @@ US and International phone numbers
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/phone-number.mermaid-diagram.png" alt="Mermaid diagram for Phone Number" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/phone-number.mermaid-diagram.png" alt="Mermaid diagram for Phone Number" />
+  </p>
 </details>
 
 ```mermaid
@@ -2602,8 +2624,10 @@ Semantic versioning v2.0.0
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/semver.mermaid-diagram.png" alt="Mermaid diagram for Semver" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/semver.mermaid-diagram.png" alt="Mermaid diagram for Semver" />
+  </p>
 </details>
 
 ```mermaid
@@ -2820,8 +2844,10 @@ undefined
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/stocks.mermaid-diagram.png" alt="Mermaid diagram for Stocks" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/stocks.mermaid-diagram.png" alt="Mermaid diagram for Stocks" />
+  </p>
 </details>
 
 ```mermaid
@@ -2909,8 +2935,10 @@ Absolute IRIs (internationalized)
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url-rfc3987.mermaid-diagram.png" alt="Mermaid diagram for URL (RFC3987)" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url-rfc3987.mermaid-diagram.png" alt="Mermaid diagram for URL (RFC3987)" />
+  </p>
 </details>
 
 ```mermaid
@@ -3308,8 +3336,10 @@ A simplified URL
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for URL" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for URL" />
+  </p>
 </details>
 
 ```mermaid
@@ -3390,8 +3420,10 @@ Universal Unique Identifier
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/uuid.mermaid-diagram.png" alt="Mermaid diagram for UUID" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/uuid.mermaid-diagram.png" alt="Mermaid diagram for UUID" />
+  </p>
 </details>
 
 ```mermaid

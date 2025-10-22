@@ -30,8 +30,10 @@ regex-to-mermaid 'foo|bar' --theme default
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for theme default" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for theme default" />
+  </p>
 </details>
 
 ```mermaid
@@ -112,8 +114,10 @@ regex-to-mermaid 'foo|bar' --theme neutral
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.neutral-theme.png" alt="Mermaid diagram for theme neutral" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.neutral-theme.png" alt="Mermaid diagram for theme neutral" />
+  </p>
 </details>
 
 ```mermaid
@@ -199,8 +203,10 @@ regex-to-mermaid 'foo|bar' --theme dark
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.dark-theme.png" alt="Mermaid diagram for theme dark" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.dark-theme.png" alt="Mermaid diagram for theme dark" />
+  </p>
 </details>
 
 ```mermaid
@@ -286,8 +292,10 @@ regex-to-mermaid 'foo|bar' --theme forest
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.forest-theme.png" alt="Mermaid diagram for theme forest" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.forest-theme.png" alt="Mermaid diagram for theme forest" />
+  </p>
 </details>
 
 ```mermaid
@@ -373,8 +381,10 @@ regex-to-mermaid 'foo|bar' --theme none
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="diagrams/url.mermaid-diagram.none-theme.png" alt="Mermaid diagram for theme none" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/url.mermaid-diagram.none-theme.png" alt="Mermaid diagram for theme none" />
+  </p>
 </details>
 
 ```mermaid

@@ -96,8 +96,10 @@ ${command}
 ### Preview
 
 <details>
-<summary>Click to view as image</summary>
-<img src="${imageFilePath}" alt="Mermaid diagram for theme ${theme}" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="${imageFilePath}" alt="Mermaid diagram for theme ${theme}" />
+  </p>
 </details>
 
 \`\`\`mermaid

@@ -98,8 +98,10 @@ ${regexDescriptor.pattern}
 ### Diagram
 
 <details>
-<summary>Click to view as image</summary>
-<img src="${imageFilePath}" alt="Mermaid diagram for ${regexDescriptor.name}" />
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="${imageFilePath}" alt="Mermaid diagram for ${regexDescriptor.name}" />
+  </p>
 </details>
 
 \`\`\`mermaid
