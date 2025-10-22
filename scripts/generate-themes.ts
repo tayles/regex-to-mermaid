@@ -1,118 +1,126 @@
 #!/usr/bin/env bun
-import { readFile, writeFile } from 'node:fs/promises';
+
+import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { regexToMermaid } from '../src';
 import type { Theme } from '../src/theme';
 import { THEMES } from '../src/theme';
+import {
+  DIAGRAMS_DIR,
+  generateToc,
+  parseRegexFile,
+  themeToMermaidTheme,
+  titleCase,
+  writeInjectedContent,
+  writeMermaidImageFile,
+} from './regex-utils';
+
+const themeDescriptions: Record<Theme, string> = {
+  default: 'Closely matches the default Mermaid theme with additional node and subgraph colors',
+  neutral: 'A muted, professional color scheme',
+  dark: 'A dark mode friendly color scheme',
+  forest: 'A nature-inspired green and brown color scheme',
+  none: 'No styling applied - uses default Mermaid colors',
+};
+
+interface ThemeWithMarkdown {
+  theme: Theme;
+  markdown: string;
+}
 
 /**
  * Generate theme previews for THEMES.md
  */
 async function generateThemes() {
-  const themesFile = join(import.meta.dir, '..', 'THEMES.md');
-  const exampleFile = join(import.meta.dir, '..', 'diagrams', 'url.regex');
+  const themesFilePath = join(import.meta.dir, '..', 'THEMES.md');
+
+  const regexFilePath = join(import.meta.dir, '..', DIAGRAMS_DIR, 'url.regex');
 
   // Read the example regex file
-  const exampleContent = await readFile(exampleFile, 'utf-8');
-  const lines = exampleContent.trim().split('\n');
+  const regexFileContent = await readFile(regexFilePath, 'utf-8');
+  const regexDescriptor = parseRegexFile(regexFileContent);
 
-  // Extract the pattern (last non-empty line)
-  let pattern = '';
-  for (let i = lines.length - 1; i >= 0; i--) {
-    const line = lines[i]?.trim();
-    if (line && !line.startsWith('---')) {
-      pattern = line;
-      break;
-    }
-  }
-
-  if (!pattern) {
-    throw new Error('Could not find pattern in example-1.regex');
-  }
+  const pattern = regexDescriptor.pattern;
 
   console.log(`Using pattern: ${pattern}`);
 
   // Generate content for each theme
-  let content = '';
+  const themeMarkdowns: ThemeWithMarkdown[] = [];
 
   for (const theme of THEMES) {
-    const themeName = theme.charAt(0).toUpperCase() + theme.slice(1);
-    content += `## ${themeName}\n\n`;
+    const diagram = regexToMermaid(regexDescriptor.pattern, {
+      flavor: regexDescriptor.flavor === 'regexp' ? 'regexp' : 'auto',
+      direction: 'LR',
+      theme,
+    });
 
-    if (theme === 'none') {
-      content += 'No styling applied - uses default Mermaid colors.\n\n';
-    } else {
-      content += `The ${theme} theme provides a ${getThemeDescription(theme)} color scheme.\n\n`;
+    const imageFilePath =
+      theme === 'default'
+        ? regexFilePath.replace('.regex', `.mermaid-diagram.png`) // no suffix for simplicity
+        : regexFilePath.replace('.regex', `.mermaid-diagram.${theme}-theme.png`);
+
+    // default is already generated for examples
+    if (theme !== 'default') {
+      await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
     }
 
-    // Add command to recreate
-    content += '**Command:**\n\n';
-    content += '```bash\n';
-    content += `regex-to-mermaid 'foo|bar' --theme ${theme}\n`;
-    content += '```\n\n';
+    const themeMarkdown = generateThemeMarkdown(theme, diagram, imageFilePath);
 
-    // Generate the diagram
-    try {
-      const diagram = regexToMermaid(pattern, {
-        direction: 'LR',
-        theme: theme as Theme,
-      });
-
-      content += '**Preview:**\n\n';
-      content += '```mermaid\n';
-      content += `${diagram}\n`;
-      content += '```\n\n';
-    } catch (error) {
-      console.error(`Error generating theme ${theme}:`, error);
-      content += '*Error generating diagram*\n\n';
-    }
-
-    content += '---\n\n';
+    themeMarkdowns.push({ theme, markdown: themeMarkdown });
   }
 
-  // Read the current THEMES.md
-  const themesContent = await readFile(themesFile, 'utf-8');
-
-  // Replace content between markers
-  const startMarker = '<!-- CONTENT:START -->';
-  const endMarker = '<!-- CONTENT:END -->';
-
-  const startIndex = themesContent.indexOf(startMarker);
-  const endIndex = themesContent.indexOf(endMarker);
-
-  if (startIndex === -1 || endIndex === -1) {
-    throw new Error('Could not find content markers in THEMES.md');
-  }
-
-  const newContent =
-    themesContent.substring(0, startIndex + startMarker.length) +
-    '\n\n' +
-    content +
-    themesContent.substring(endIndex);
-
-  // Write the updated file
-  await writeFile(themesFile, newContent, 'utf-8');
+  // Write THEMES.md
+  await writeThemesMarkdown(themesFilePath, themeMarkdowns);
 
   console.log(`✅ Generated previews for ${THEMES.length} themes`);
-  console.log(`📄 Updated ${themesFile}`);
 }
 
-/**
- * Get a description for each theme
- */
-function getThemeDescription(theme: string): string {
-  switch (theme) {
-    case 'default':
-      return 'colorful and vibrant';
-    case 'neutral':
-      return 'muted and professional';
-    case 'dark':
-      return 'dark mode friendly';
-    case 'forest':
-      return 'nature-inspired green and brown';
-    default:
-      return 'custom';
-  }
+function generateThemeMarkdown(theme: Theme, diagram: string, imageFilePath: string): string {
+  const themeName = titleCase(theme);
+
+  const description = themeDescriptions[theme];
+
+  const command = `regex-to-mermaid 'foo|bar' --theme ${theme}`;
+
+  const content = `
+## ${themeName}
+
+${description}
+
+### Command
+
+\`\`\`shell
+${command}
+\`\`\`
+
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="${imageFilePath}" alt="Mermaid diagram for theme ${theme}" />
+</details>
+
+\`\`\`mermaid
+${diagram}
+\`\`\`
+  `.trim();
+
+  return content;
+}
+
+async function writeThemesMarkdown(filePath: string, sections: ThemeWithMarkdown[]) {
+  // Generate TOC
+  const toc = generateToc(sections.map(e => titleCase(e.theme)));
+
+  const content = `
+## Table of Contents
+
+${toc}
+
+${sections.map(section => section.markdown).join('\n\n---\n\n')}
+  `.trim();
+
+  await writeInjectedContent(filePath, content);
 }
 
 // Run the script
