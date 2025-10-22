@@ -27,7 +27,7 @@ as this:
 - 🔍 **Comprehensive Support** - Handles capture groups, lookaheads, lookbehinds, and more
 - 🥗 **Multiple Flavors** - Supports JavaScript (RegExp) and PCRE regex flavors _(see [supported flavors](#supported-flavors))_
 - 🎨 **Multiple Themes** - Choose from default, neutral, dark, forest, or no styling
-- ⚡ **Fast & Modern** - Built with Bun and TypeScript as an ESM library for optimal performance
+- ⚡ **Fast & Modern** - Built with TypeScript as an ESM library for optimal performance
 
 ## Installation
 
