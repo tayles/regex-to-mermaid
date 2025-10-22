@@ -83,7 +83,7 @@ describe('buildSubgraphs', () => {
     ];
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
-    expect(result).toContain('<small>#1</small> protocol');
+    expect(result).toContain('#1 protocol');
     expect(result).toContain('node1');
     expect(result).toContain('node2');
     expect(result).toContain('end');
@@ -101,7 +101,7 @@ describe('buildSubgraphs', () => {
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('<small><i>Optional</i></small>');
+    expect(result).toContain('<i>Optional</i>');
   });
 
   test('builds non-optional group without optional text', () => {
@@ -130,7 +130,7 @@ describe('buildSubgraphs', () => {
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('<small><i>One or more</i></small>');
+    expect(result).toContain('<i>One or more</i>');
   });
 
   test('builds multiple groups correctly', () => {
@@ -153,8 +153,8 @@ describe('buildSubgraphs', () => {
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
     expect(result).toContain('subgraph group2');
-    expect(result).toContain('<small>#1</small> protocol');
-    expect(result).toContain('<small>#2</small> path');
+    expect(result).toContain('#1 protocol');
+    expect(result).toContain('#2 path');
   });
 
   test('handles different group types', () => {
@@ -530,7 +530,7 @@ describe('Edge cases and error handling', () => {
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('<small>#999</small>');
+    expect(result).toContain('#999');
   });
 
   test('buildEdges handles same node connected to itself', () => {

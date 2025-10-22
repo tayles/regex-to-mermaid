@@ -284,7 +284,7 @@ function processRepetition(
     // Update the last node's label to include the quantifier
     const lastNode = nodes[nodes.length - 1];
     if (lastNode && lastNode.id === innerNodeId && quantifierText) {
-      lastNode.label += `<br><i><small>${quantifierText}</small></i>`;
+      lastNode.label += `<br><i>${quantifierText}</i>`;
     }
   }
 
@@ -462,16 +462,16 @@ function processAssertion(
 
   switch (node.kind) {
     case '^':
-      label = '^<br><i><small>Begins with</small></i>';
+      label = '^<br><i>Begins with</i>';
       break;
     case '$':
-      label = '$<br><i><small>Ends with</small></i>';
+      label = '$<br><i>Ends with</i>';
       break;
     case '\\b':
-      label = '\\b<br><i><small>Word boundary</small></i>';
+      label = '\\b<br><i>Word boundary</i>';
       break;
     case '\\B':
-      label = '\\B<br><i><small>Non-word boundary</small></i>';
+      label = '\\B<br><i>Non-word boundary</i>';
       break;
     default:
       label = node.kind;
@@ -494,7 +494,7 @@ function processBackreference(
   edges: Edge[],
 ): string {
   const nodeId = getNextNodeId('back-reference');
-  const label = `\\${node.reference}<br><i><small>Back-reference</small></i>`;
+  const label = `\\${node.reference}<br><i>Back-reference</i>`;
 
   nodes.push({
     id: nodeId,

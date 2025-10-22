@@ -68,9 +68,9 @@ export function buildSubgraphs(groups: Group[]): string {
   return groups
     .map(group => {
       const label = [
-        group.number > 0 && `<small>#${group.number}</small>`,
+        group.number > 0 && `#${group.number}`,
         group.label,
-        group.quantifier && `<small><i>${group.quantifier}</i></small>`,
+        group.quantifier && `<i>${group.quantifier}</i>`,
       ]
         .filter(Boolean)
         .join(' ');
