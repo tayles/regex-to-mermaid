@@ -3,7 +3,7 @@
 Here are some common regular expressions, showing how they are visualized as mermaid diagrams:
 
 > [!TIP]
-> If you are viewing this page somewhere that does not support Mermaid diagrams (e.g. on [npmjs.com](https://npmjs.com/package/regex-to-mermaid)), you can view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
+> If you are viewing this page somewhere that does not render embedded Mermaid diagrams, you can click the "view as image" links below, or view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
 
 <!-- CONTENT:START -->
 
@@ -30,13 +30,18 @@ Here are some common regular expressions, showing how they are visualized as mer
 
 An example of all possible token types
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(?<protocol>https?):\/\/(?:www\.)?([a-z0-9\-]+)\.(?:com|org|net)(?:\/[^\s]*)?(?=query)\1\d{3,5}\w+\s*\S+[^abc](?!neg)(?<!back)$|alt\b\B.
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/all-tokens.mermaid-diagram.png" alt="Mermaid diagram for All Possible Tokens" />
+</details>
 
 ```mermaid
 graph LR
@@ -182,15 +187,20 @@ graph LR
 
 ## Comprehensive RegExp Features
 
-Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
+Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? \* + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(?<named>[A-Z]\w{2,5}):\s+(a|b|cd)(?:https?:\/\/)?(?<domain>[a-z0-9.-]+)(?=\.com)(?!\.org)(?<=example)(?<!test)[a-z]{1,3}\.com(?:\/\S+)?(?:\?[a-zA-Z0-9&=]+)?(?<digit>\d+)\k<digit>\1\b\B\d+\D+\w+\W+\s+\S+[^xyz]+\t\r\n|alt$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/comprehensive.mermaid-diagram.png" alt="Mermaid diagram for Comprehensive RegExp Features" />
+</details>
 
 ```mermaid
 graph LR
@@ -377,13 +387,18 @@ graph LR
 
 Validates a RFC3339 DateTime format
 
-**Pattern:**
+### Pattern
 
 ```regex
 \A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?P<scope>[\w-]+)\))?(?P<breaking>!)?:\s(?P<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?P<BLANK_LINE>\n^$\n)(?P<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?P<BLANK_LINE2>\n^$\n)(?:(?P<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?P<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/conventional-commits.mermaid-diagram.png" alt="Mermaid diagram for Conventional Commits" />
+</details>
 
 ```mermaid
 graph LR
@@ -740,13 +755,18 @@ graph LR
 
 Validates CRON pattern (Quartz) and supports groups
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^\s*($|#|\w+\s*=|(?<SECOND>(?:\?|\*|(?:(?<START_SEC>[0-5]?\d)(?:(?<DELIMITER_SEC>\-|\/|\,)(?<END_SEC>[0-6]?\d))*)))\s+(?<MINUTE>(?:\?|\*|(?:(?<START_MIN>[0-5]?\d)(?:(?<DELIMITER_MIN>\-|\/|\,)(?<END_MIN>[0-6]?\d))*)))\s+(?<HOUR>(?:\?|\*|(?:(?<START_HR>[0-2]?\d)(?:(?<DELIMITER_HR>\-|\/|\,)(?<END_HR>[0-2]?\d))*)))\s+(?<DAYOFMONTH>\?|\*|(?:(?<START_DOM>L|W|LW|[1-3]?\dW?)(?:(?<DELIMITER_DOM>\-|\/|\,)(?<END_DOM>[1-3]?\d?W?))*))\s+(?<MONTH>\*|(?:(?<START_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(?:(?<DELIMITER_MON>\-|\/|\,)(?<END_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC))*))\s+(?<DAYOFWEEK>\?|\*|(?:(?<START_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT)(?:(?:(?:(?<DELIMITER_DOW>\/|\,|\#)(?<END_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT))*)L?)*))(?:|\s)+(?<YEAR>(?:\*|(?:(?<START_YR>\b(?:[1-2](?:9|0)\d\d)\b)(?:(?<DELIMITER_YR>\-|\/|\,)(?<END_YR>\b(?:[1-9]|[1-9][0-9]|1[0-8][0-9]|19[0-2])\b|\b(?:[1-2](?:9|0)\d\d)\b))*))))$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/cron-schedule.mermaid-diagram.png" alt="Mermaid diagram for Cron Schedule" />
+</details>
 
 ```mermaid
 graph LR
@@ -1777,13 +1797,18 @@ graph LR
 
 A date in YYYY-MM-DD format
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/date-iso8601.mermaid-diagram.png" alt="Mermaid diagram for Date (ISO 8601)" />
+</details>
 
 ```mermaid
 graph LR
@@ -1900,13 +1925,18 @@ graph LR
 
 Validates a RFC3339 DateTime format
 
-**Pattern:**
+### Pattern
 
 ```regex
 /^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/gm
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/datetime-rfc3339.mermaid-diagram.png" alt="Mermaid diagram for DateTime (RFC3339)" />
+</details>
 
 ```mermaid
 graph LR
@@ -2035,13 +2065,18 @@ graph LR
 
 Standard email address
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/email-address.mermaid-diagram.png" alt="Mermaid diagram for Email Address" />
+</details>
 
 ```mermaid
 graph LR
@@ -2097,13 +2132,18 @@ graph LR
 
 Email address compliant with RFC2822
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/email-rfc2822.mermaid-diagram.png" alt="Mermaid diagram for Email (RFC2822)" />
+</details>
 
 ```mermaid
 graph LR
@@ -2317,13 +2357,18 @@ graph LR
 
 Naive html tags
 
-**Pattern:**
+### Pattern
 
 ```regex
 <\/?[\w\s]*>|<.+[\W]>
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/html-tags.mermaid-diagram.png" alt="Mermaid diagram for HTML Tags" />
+</details>
 
 ```mermaid
 graph LR
@@ -2371,13 +2416,18 @@ graph LR
 
 Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long
 
-**Pattern:**
+### Pattern
 
 ```regex
 (?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/password-requirements.mermaid-diagram.png" alt="Mermaid diagram for Complex Password Requirements" />
+</details>
 
 ```mermaid
 graph LR
@@ -2468,13 +2518,18 @@ graph LR
 
 US and International phone numbers
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/phone-number.mermaid-diagram.png" alt="Mermaid diagram for Phone Number" />
+</details>
 
 ```mermaid
 graph LR
@@ -2538,13 +2593,18 @@ graph LR
 
 Semantic versioning v2.0.0
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/semver.mermaid-diagram.png" alt="Mermaid diagram for Semver" />
+</details>
 
 ```mermaid
 graph LR
@@ -2749,13 +2809,20 @@ graph LR
 
 ## Stocks
 
-**Pattern:**
+undefined
+
+### Pattern
 
 ```regex
 /(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/stocks.mermaid-diagram.png" alt="Mermaid diagram for Stocks" />
+</details>
 
 ```mermaid
 graph LR
@@ -2833,13 +2900,18 @@ graph LR
 
 Absolute IRIs (internationalized)
 
-**Pattern:**
+### Pattern
 
 ```regex
 /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/url-rfc3987.mermaid-diagram.png" alt="Mermaid diagram for URL (RFC3987)" />
+</details>
 
 ```mermaid
 graph LR
@@ -3227,13 +3299,18 @@ graph LR
 
 A simplified URL
 
-**Pattern:**
+### Pattern
 
 ```regex
 ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for URL" />
+</details>
 
 ```mermaid
 graph LR
@@ -3304,13 +3381,18 @@ graph LR
 
 Universal Unique Identifier
 
-**Pattern:**
+### Pattern
 
 ```regex
 [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}
 ```
 
-**Diagram:**
+### Diagram
+
+<details>
+<summary>Click to view as image</summary>
+<img src="diagrams/uuid.mermaid-diagram.png" alt="Mermaid diagram for UUID" />
+</details>
 
 ```mermaid
 graph LR
@@ -3347,7 +3429,5 @@ graph LR
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
 ```
-
----
 
 <!-- CONTENT:END -->

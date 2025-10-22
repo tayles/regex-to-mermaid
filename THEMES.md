@@ -1,20 +1,38 @@
 # Themes
 
-These are the available themes:
+These are the available themes. You can specify a theme using the `--theme` option in the CLI or the `theme` option in the library API.
+
+See [mermaid theme configuration](https://mermaid.js.org/config/theming.html) for customising further.
+
+> [!TIP]
+> If you are viewing this page somewhere that does not render embedded Mermaid diagrams, you can click the "view as image" links below, or view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
 
 <!-- CONTENT:START -->
 
+## Table of Contents
+
+- [Default](#default)
+- [Neutral](#neutral)
+- [Dark](#dark)
+- [Forest](#forest)
+- [None](#none)
+
 ## Default
 
-The default theme provides a colorful and vibrant color scheme.
+Closely matches the default Mermaid theme with additional node and subgraph colors
 
-**Command:**
+### Command
 
-```bash
+```shell
 regex-to-mermaid 'foo|bar' --theme default
 ```
 
-**Preview:**
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.png" alt="Mermaid diagram for theme default" />
+</details>
 
 ```mermaid
 graph LR
@@ -83,15 +101,20 @@ graph LR
 
 ## Neutral
 
-The neutral theme provides a muted and professional color scheme.
+A muted, professional color scheme
 
-**Command:**
+### Command
 
-```bash
+```shell
 regex-to-mermaid 'foo|bar' --theme neutral
 ```
 
-**Preview:**
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.neutral-theme.png" alt="Mermaid diagram for theme neutral" />
+</details>
 
 ```mermaid
 ---
@@ -165,15 +188,20 @@ graph LR
 
 ## Dark
 
-The dark theme provides a dark mode friendly color scheme.
+A dark mode friendly color scheme
 
-**Command:**
+### Command
 
-```bash
+```shell
 regex-to-mermaid 'foo|bar' --theme dark
 ```
 
-**Preview:**
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.dark-theme.png" alt="Mermaid diagram for theme dark" />
+</details>
 
 ```mermaid
 ---
@@ -247,15 +275,20 @@ graph LR
 
 ## Forest
 
-The forest theme provides a nature-inspired green and brown color scheme.
+A nature-inspired green and brown color scheme
 
-**Command:**
+### Command
 
-```bash
+```shell
 regex-to-mermaid 'foo|bar' --theme forest
 ```
 
-**Preview:**
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.forest-theme.png" alt="Mermaid diagram for theme forest" />
+</details>
 
 ```mermaid
 ---
@@ -329,15 +362,20 @@ graph LR
 
 ## None
 
-No styling applied - uses default Mermaid colors.
+No styling applied - uses default Mermaid colors
 
-**Command:**
+### Command
 
-```bash
+```shell
 regex-to-mermaid 'foo|bar' --theme none
 ```
 
-**Preview:**
+### Preview
+
+<details>
+<summary>Click to view as image</summary>
+<img src="/Users/dt/dev/regex-to-mermaid/diagrams/url.mermaid-diagram.none-theme.png" alt="Mermaid diagram for theme none" />
+</details>
 
 ```mermaid
 graph LR
@@ -389,7 +427,5 @@ graph LR
   literal_6 --- assertion_2;
   assertion_2 --- fin;
 ```
-
----
 
 <!-- CONTENT:END -->
