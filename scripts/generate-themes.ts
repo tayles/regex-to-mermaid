@@ -7,6 +7,7 @@ import type { Theme } from '../src/theme';
 import { THEMES } from '../src/theme';
 import {
   DIAGRAMS_DIR,
+  generateMermaidLiveLink,
   generateToc,
   parseRegexFile,
   themeToMermaidTheme,
@@ -64,7 +65,9 @@ async function generateThemes() {
       await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
     }
 
-    const themeMarkdown = generateThemeMarkdown(theme, diagram, imageFilePath);
+    const mermaidLiveUrl = await generateMermaidLiveLink(diagram);
+
+    const themeMarkdown = generateThemeMarkdown(theme, diagram, imageFilePath, mermaidLiveUrl);
 
     themeMarkdowns.push({ theme, markdown: themeMarkdown });
   }
@@ -75,7 +78,12 @@ async function generateThemes() {
   console.log(`✅ Generated previews for ${THEMES.length} themes`);
 }
 
-function generateThemeMarkdown(theme: Theme, diagram: string, imageFilePath: string): string {
+function generateThemeMarkdown(
+  theme: Theme,
+  diagram: string,
+  imageFilePath: string,
+  mermaidLiveUrl: string,
+): string {
   const themeName = titleCase(theme);
 
   const description = themeDescriptions[theme];
@@ -94,6 +102,8 @@ ${command}
 \`\`\`
 
 ### Preview
+
+[View in Mermaid Live Editor](${mermaidLiveUrl})
 
 <details>
   <summary>Click to view as image</summary>

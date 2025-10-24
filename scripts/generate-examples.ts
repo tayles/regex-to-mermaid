@@ -6,6 +6,7 @@ import { type Flavor, regexToMermaid } from '../src';
 import { buildRegexAst, parseRegexByFlavor } from '../src/parser';
 import {
   DIAGRAMS_DIR,
+  generateMermaidLiveLink,
   generateToc,
   getAllRegexFilePaths,
   parseRegexFile,
@@ -55,7 +56,14 @@ async function generateExamples() {
     const imageFilePath = regexFilePath.replace('.regex', '.mermaid-diagram.png');
     await writeMermaidImageFile(imageFilePath, diagram, 'default');
 
-    const exampleMarkdown = generateExampleMarkdown(regexDescriptor, diagram, imageFilePath);
+    const mermaidLiveUrl = await generateMermaidLiveLink(diagram);
+
+    const exampleMarkdown = generateExampleMarkdown(
+      regexDescriptor,
+      diagram,
+      imageFilePath,
+      mermaidLiveUrl,
+    );
 
     examples.push({
       descriptor: regexDescriptor,
@@ -83,6 +91,7 @@ function generateExampleMarkdown(
   regexDescriptor: RegexFile,
   diagram: string,
   imageFilePath: string,
+  mermaidLiveUrl: string,
 ): string {
   const content = `
 ## ${regexDescriptor.name}
@@ -96,6 +105,8 @@ ${regexDescriptor.pattern}
 \`\`\`
 
 ### Diagram
+
+[View in Mermaid Live Editor](${mermaidLiveUrl})
 
 <details>
   <summary>Click to view as image</summary>

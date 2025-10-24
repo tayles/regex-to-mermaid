@@ -155,3 +155,13 @@ export function themeToMermaidTheme(theme: Theme): string {
 
   return theme;
 }
+
+/**
+ * Construct a mermaid.live URL for a diagram
+ * @see https://mermaid.live
+ */
+export async function generateMermaidLiveLink(diagram: string): Promise<string> {
+  const input = new Response(diagram);
+
+  return await $`cat < ${input} | jq -Rscj '{code: .}' | gzip -n -c -9 | base64 -w0 | tr '/+' '_-' | awk '{printf "https://mermaid.live/edit#pako:%s", $0}'`.text();
+}
