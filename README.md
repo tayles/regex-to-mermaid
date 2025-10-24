@@ -85,6 +85,26 @@ regex-to-mermaid 'foo|bar' | \
     --output diagram.png
 ```
 
+### Generate a mermaid.live Link
+
+```shell
+regex-to-mermaid 'foo|bar' | jq -Rscj '{code: .}' | gzip -n -c -9 | base64 -w0 | tr '/+' '_-' | awk '{printf "https://mermaid.live/edit#pako:%s\n", $0}'
+```
+
+- `jq -Rscj '{code: .}'` creates a minimal JSON state object with the Mermaid code
+  - `-R` tells jq to treat the input as a raw string
+  - `-s` reads the entire input stream into a single string
+  - `-c` ensures the output JSON is on a single line
+  - `-j` joins the output without a newline
+- `gzip -n -c -9` compresses the JSON with maximum compression
+  - `-n` omits the original filename and timestamp for consistent output
+  - `-c` writes to standard output
+  - `-9` uses the highest compression level
+- `base64 -w0` encodes the compressed data in base64
+  - `-w0` disables line wrapping
+- `tr '/+' '_-'` makes the base64 URL-safe
+- `awk '{printf "https://mermaid.live/edit#pako:%s\n", $0}'` constructs the final URL
+
 ## Library Usage
 
 ```typescript
