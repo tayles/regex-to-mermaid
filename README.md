@@ -150,6 +150,23 @@ See available [THEMES.md](./THEMES.md).
 | .NET                                         | .NET / C#      | 🚧 Limited support                                                                        |
 | Ruby                                         | Ruby           | 🚧 Limited support                                                                        |
 
+## Where can I use this?
+
+[GitHub supports Mermaid diagrams](https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/) in readme files, pull requests comments, and code reviews, making this a handy tool to visualise and collaborate on complex regex patterns in your codebase.
+
+The [Mermaid docs lists many other integrations](https://mermaid.js.org/ecosystem/integrations-community.html), meaning you can share your visualisations where you need. If something isn't natively supported, you can always [generate a PNG or SVG image](#image-generation).
+
+## Why?
+
+Regular expressions are powerful but often hard to read and understand, especially as they grow in complexity. Visualising regex patterns can make them more accessible, helping developers to quickly grasp their structure and logic. This can be particularly useful for:
+
+- 🎓 **Education** - Helping newcomers understand regex concepts visually
+- 📚 **Documentation** - Enhancing technical documentation with clear visual representations
+- 🤝 **Collaboration** - Facilitating discussions about regex patterns in code reviews or team meetings
+- 🐛 **Debugging** - Making it easier to spot errors or inefficiencies in regex patterns
+
+---
+
 ## Local Development
 
 This project uses [Bun](https://bun.sh).
