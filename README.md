@@ -93,7 +93,7 @@ Generate a link to view and edit the diagram in the [Mermaid Live Editor](https:
 regex-to-mermaid 'foo|bar' | jq -Rscj '{code: .}' | gzip -n -c -9 | base64 -w0 | tr '/+' '_-' | awk '{printf "https://mermaid.live/edit#pako:%s\n", $0}'
 ```
 
-- `jq -Rscj '{code: .}'` creates a minimal JSON state object with the Mermaid code
+- `jq -Rscj '{code: .}'` uses [jq](https://jqlang.org) to create a minimal JSON state object with the Mermaid code
   - `-R` tells jq to treat the input as a raw string
   - `-s` reads the entire input stream into a single string
   - `-c` ensures the output JSON is on a single line
