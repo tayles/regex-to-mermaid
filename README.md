@@ -2,7 +2,7 @@
 
 [![regex-to-mermaid logo](https://raw.githubusercontent.com/tayles/regex-to-mermaid/main/docs/regex-to-mermaid-logo.png)](https://npmjs.com/package/regex-to-mermaid)
 
-A TypeScript library and CLI tool to visualize regular expressions as Mermaid flowchart diagrams.
+A TypeScript library and CLI tool to visualize regular expressions as [Mermaid](https://mermaid.js.org) flowchart diagrams.
 
 For example, visualise this:
 
@@ -86,6 +86,8 @@ regex-to-mermaid 'foo|bar' | \
 ```
 
 ### Generate a mermaid.live Link
+
+Generate a link to view and edit the diagram in the [Mermaid Live Editor](https://mermaid.live):
 
 ```shell
 regex-to-mermaid 'foo|bar' | jq -Rscj '{code: .}' | gzip -n -c -9 | base64 -w0 | tr '/+' '_-' | awk '{printf "https://mermaid.live/edit#pako:%s\n", $0}'
