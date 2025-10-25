@@ -2,6 +2,8 @@
 
 These are the available themes. You can specify a theme using the `--theme` option in the CLI or the `theme` option in the library API.
 
+Theme colors are defined in [`theme.ts`](./src/theme.ts).
+
 See [mermaid theme configuration](https://mermaid.js.org/config/theming.html) for customising further.
 
 > [!TIP]
