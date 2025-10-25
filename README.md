@@ -87,7 +87,7 @@ regex-to-mermaid 'foo|bar' | \
 
 ### Generate a mermaid.live Link
 
-Generate a link to view and edit the diagram in the [Mermaid Live Editor](https://mermaid.live):
+Generate a shareable link to view and edit the diagram in the [Mermaid Live Editor](https://mermaid.live):
 
 ```shell
 regex-to-mermaid 'foo|bar' | jq -Rscj '{code: .}' | gzip -n -c -9 | base64 -w0 | tr '/+' '_-' | awk '{printf "https://mermaid.live/edit#pako:%s\n", $0}'
