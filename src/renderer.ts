@@ -1,5 +1,5 @@
 import { buildStyles, type Theme } from './theme';
-import type { DiagramData, DiagramNode, Direction, Edge, Group } from './types';
+import type { DiagramData, DiagramEdge, DiagramGroup, DiagramNode, Direction } from './types';
 
 export function buildMermaidDiagram(
   data: DiagramData,
@@ -64,7 +64,7 @@ export function buildNodes(nodes: DiagramNode[]): string {
     .join('\n');
 }
 
-export function buildSubgraphs(groups: Group[]): string {
+export function buildSubgraphs(groups: DiagramGroup[]): string {
   return groups
     .map(group => {
       const label = [
@@ -82,7 +82,7 @@ end`;
     .join('\n\n');
 }
 
-export function buildEdges(edges: Edge[]): string {
+export function buildEdges(edges: DiagramEdge[]): string {
   return edges
     .map(edge => `${edge.from} --- ${edge.to}${edge.label ? `|${edge.label}|` : ''};`)
     .join('\n');

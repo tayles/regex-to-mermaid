@@ -1,20 +1,12 @@
-import regexpTree from 'regexp-tree';
-
 import { parseRegExpLiteral } from '@eslint-community/regexpp';
 
 const pattern = process.argv[2] || 'foo|bar';
 
-const regexpTreeAst = regexpTree.parse(pattern, {
-  captureLocations: true,
-});
+const ast = parseRegExpLiteral(pattern, {});
 
-console.log('regex-tree', JSON.stringify(regexpTreeAst, null, 2));
-
-const regexppAst = parseRegExpLiteral(pattern, {});
 console.log(
-  'regexpp',
   JSON.stringify(
-    regexppAst,
+    ast,
     (key, value) => {
       // Omit parent references to avoid circular structure
       if (key === 'parent') {

@@ -20,7 +20,7 @@ export const NODE_TYPES = [
 ] as const;
 export type NodeType = (typeof NODE_TYPES)[number];
 
-export interface Group {
+export interface DiagramGroup {
   id: string;
   type: GroupType;
   number: number;
@@ -35,7 +35,7 @@ export interface DiagramNode {
   label: string;
 }
 
-export interface Edge {
+export interface DiagramEdge {
   from: string;
   to: string;
   label?: string;
@@ -43,8 +43,8 @@ export interface Edge {
 
 export interface DiagramData {
   nodes: DiagramNode[];
-  edges: Edge[];
-  groups: Group[];
+  edges: DiagramEdge[];
+  groups: DiagramGroup[];
 }
 
 export const DIRECTIONS = ['LR', 'TD'] as const;

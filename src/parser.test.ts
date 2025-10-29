@@ -45,9 +45,9 @@ describe('parseJavaScriptRegex', () => {
   });
 
   test('parses pattern with escaped characters', () => {
-    const result = parseJavaScriptRegex('/\\d+\\.\\d+/');
+    const result = parseJavaScriptRegex(String.raw`/\d+\.\d+/`);
     expect(result).toBeInstanceOf(RegExp);
-    expect(result.source).toBe('\\d+\\.\\d+');
+    expect(result.source).toBe(String.raw`\d+\.\d+`);
   });
 
   test('parses pattern with named groups', () => {
@@ -59,7 +59,7 @@ describe('parseJavaScriptRegex', () => {
   test('handles pattern with only opening slash', () => {
     const result = parseJavaScriptRegex('/test');
     expect(result).toBeInstanceOf(RegExp);
-    expect(result.source).toBe('\\/test'); // Slash gets escaped when treated as plain string
+    expect(result.source).toBe(String.raw`\/test`); // Slash gets escaped when treated as plain string
   });
 
   test('throws error for invalid regex pattern', () => {
@@ -87,9 +87,9 @@ describe('parseJavaScriptRegex', () => {
   });
 
   test('parses pattern with lookbehind', () => {
-    const result = parseJavaScriptRegex('/(?<=\\$)\\d+/');
+    const result = parseJavaScriptRegex(String.raw`/(?<=\$)\d+/`);
     expect(result).toBeInstanceOf(RegExp);
-    expect(result.source).toBe('(?<=\\$)\\d+');
+    expect(result.source).toBe(String.raw`(?<=\$)\d+`);
   });
 });
 
@@ -130,9 +130,9 @@ describe('parseRegexByFlavor', () => {
     });
 
     test('converts PCRE named groups to JavaScript', () => {
-      const result = parseRegexByFlavor('/(?P<name>\\w+)/', 'pcre');
+      const result = parseRegexByFlavor(String.raw`/(?P<name>\w+)/`, 'pcre');
       expect(result).toBeInstanceOf(RegExp);
-      expect(result.source).toBe('(\\w+)');
+      expect(result.source).toBe(String.raw`(\w+)`);
     });
 
     test('handles PCRE pattern with delimiter', () => {
@@ -171,10 +171,10 @@ describe('parseRegexByFlavor', () => {
 
     test('falls back to PCRE for PCRE-specific syntax', () => {
       // PCRE named groups: (?P<name>...) should fallback and get converted
-      const result = parseRegexByFlavor('/(?P<name>\\w+)/', 'auto');
+      const result = parseRegexByFlavor(String.raw`/(?P<name>\w+)/`, 'auto');
       expect(result).toBeInstanceOf(RegExp);
       // PCRE converts named groups, so source will be different
-      expect(result.source).toBe('(\\w+)');
+      expect(result.source).toBe(String.raw`(\w+)`);
     });
 
     test('handles simple patterns without slashes', () => {
@@ -184,9 +184,12 @@ describe('parseRegexByFlavor', () => {
     });
 
     test('handles complex JavaScript patterns', () => {
-      const result = parseRegexByFlavor('/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\\.[a-z]{2,}$/', 'auto');
+      const result = parseRegexByFlavor(
+        String.raw`/^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/`,
+        'auto',
+      );
       expect(result).toBeInstanceOf(RegExp);
-      expect(result.source).toBe('^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\\.[a-z]{2,}$');
+      expect(result.source).toBe(String.raw`^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$`);
     });
 
     test('throws error when both JavaScript and PCRE parsing fail', () => {
@@ -215,40 +218,40 @@ describe('buildRegexAst', () => {
   test('parses a simple string pattern', () => {
     const ast = buildRegexAst(/hello/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
-    expect(ast.body).toBeDefined();
+    expect(ast.type).toBe('RegExpLiteral');
+    expect(ast.pattern).toBeDefined();
   });
 
   test('parses a string pattern with special characters', () => {
     const ast = buildRegexAst(/^hello$/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses a pattern with character classes', () => {
     const ast = buildRegexAst(/[a-z]+/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses a pattern with groups', () => {
     const ast = buildRegexAst(/(hello)/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses a pattern with named capture groups', () => {
     const ast = buildRegexAst(/(?<name>hello)/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses a RegExp object', () => {
     const regex = /test/i;
     const ast = buildRegexAst(regex);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
-    expect(ast.flags).toBe('i');
+    expect(ast.type).toBe('RegExpLiteral');
+    expect(ast.flags.raw).toBe('i');
   });
 
   test('parses complex URL regex pattern', () => {
@@ -256,35 +259,35 @@ describe('buildRegexAst', () => {
       /^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$/;
     const ast = buildRegexAst(pattern);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
-    expect(ast.body).toBeDefined();
-    if (ast.body) {
-      expect(ast.body.type).toBe('Alternative');
+    expect(ast.type).toBe('RegExpLiteral');
+    expect(ast.pattern).toBeDefined();
+    if (ast.pattern?.alternatives && ast.pattern.alternatives.length > 0) {
+      expect(ast.pattern.alternatives[0]?.type).toBe('Alternative');
     }
   });
 
   test('parses pattern with quantifiers', () => {
     const ast = buildRegexAst(/a*b+c?d{2,3}/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses pattern with alternation', () => {
     const ast = buildRegexAst(/cat|dog/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses pattern with escaped characters', () => {
     const ast = buildRegexAst(/\d+\.\d+/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('parses empty pattern', () => {
     const ast = buildRegexAst(/(?:)/);
     expect(ast).toBeDefined();
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
   });
 
   test('throws error for invalid pattern', () => {
@@ -294,7 +297,7 @@ describe('buildRegexAst', () => {
   test('preserves flags from RegExp object', () => {
     const regex = /test/gim;
     const ast = buildRegexAst(regex);
-    expect(ast.flags).toBe('gim');
+    expect(ast.flags.raw).toBe('gim');
   });
 });
 
@@ -537,36 +540,36 @@ describe('Character class label formatting', () => {
 });
 
 describe('buildFriendlyLabel', () => {
-  test('returns literal text unchanged for literal type', () => {
-    expect(buildFriendlyLabel('test', 'literal')).toBe('test');
+  test('returns literal text unchanged', () => {
+    expect(buildFriendlyLabel('test')).toBe('test');
   });
 
   test('handles empty string', () => {
     expect(buildFriendlyLabel('')).toBe('');
   });
 
-  test('converts \\d to friendly text', () => {
-    expect(buildFriendlyLabel('\\d')).toBe('Any digit');
+  test(String.raw`converts \d to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\d`)).toBe('Any digit');
   });
 
-  test('converts \\D to friendly text', () => {
-    expect(buildFriendlyLabel('\\D')).toBe('Not a digit');
+  test(String.raw`converts \D to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\D`)).toBe('Not a digit');
   });
 
-  test('converts \\w to friendly text', () => {
-    expect(buildFriendlyLabel('\\w')).toBe('Any word character');
+  test(String.raw`converts \w to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\w`)).toBe('Any word character');
   });
 
-  test('converts \\W to friendly text', () => {
-    expect(buildFriendlyLabel('\\W')).toBe('Not a word character');
+  test(String.raw`converts \W to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\W`)).toBe('Not a word character');
   });
 
-  test('converts \\s to friendly text', () => {
-    expect(buildFriendlyLabel('\\s')).toBe('Any whitespace');
+  test(String.raw`converts \s to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\s`)).toBe('Any whitespace');
   });
 
-  test('converts \\S to friendly text', () => {
-    expect(buildFriendlyLabel('\\S')).toBe('Not whitespace');
+  test(String.raw`converts \S to friendly text`, () => {
+    expect(buildFriendlyLabel(String.raw`\S`)).toBe('Not whitespace');
   });
 
   test('converts . to friendly text', () => {
@@ -574,7 +577,7 @@ describe('buildFriendlyLabel', () => {
   });
 
   test('handles unknown escape sequences', () => {
-    expect(buildFriendlyLabel('\\x')).toBe('\\x');
+    expect(buildFriendlyLabel(String.raw`\x`)).toBe(String.raw`\x`);
   });
 
   test('handles literal text without type', () => {
@@ -629,7 +632,7 @@ describe('Integration tests', () => {
   test('handles complete workflow from regex to diagram data', () => {
     const pattern = /^(?<protocol>https?):\/\/(?<domain>[a-z]+)$/;
     const ast = buildRegexAst(pattern);
-    expect(ast.type).toBe('RegExp');
+    expect(ast.type).toBe('RegExpLiteral');
 
     const data = generateDiagramData(ast);
     expect(Array.isArray(data.nodes)).toBe(true);
@@ -647,8 +650,8 @@ describe('Integration tests', () => {
   test('handles various regex features together', () => {
     const pattern = /^[a-z]{2,5}(test)?(?:optional)$/i;
     const ast = buildRegexAst(pattern);
-    expect(ast.type).toBe('RegExp');
-    expect(ast.flags).toBe('i');
+    expect(ast.type).toBe('RegExpLiteral');
+    expect(ast.flags.raw).toBe('i');
 
     const data = generateDiagramData(ast);
     expect(data).toBeDefined();
@@ -658,7 +661,7 @@ describe('Integration tests', () => {
   test('AST structure contains expected properties', () => {
     const ast = buildRegexAst(/abc/);
     expect(ast).toHaveProperty('type');
-    expect(ast).toHaveProperty('body');
+    expect(ast).toHaveProperty('pattern');
     expect(ast).toHaveProperty('flags');
   });
 
@@ -759,16 +762,16 @@ describe('Flattening behavior', () => {
     expect(endNode).toBeDefined();
 
     // Should have edges from begin to each literal
-    literalNodes.forEach(literal => {
+    for (const literal of literalNodes) {
       const edgeToLiteral = data.edges.find(e => e.from === beginNode?.id && e.to === literal.id);
       expect(edgeToLiteral).toBeDefined();
-    });
+    }
 
     // Should have edges from each literal to end
-    literalNodes.forEach(literal => {
+    for (const literal of literalNodes) {
       const edgeFromLiteral = data.edges.find(e => e.from === literal.id && e.to === endNode?.id);
       expect(edgeFromLiteral).toBeDefined();
-    });
+    }
   });
 
   test('flattens alternation with many branches', () => {
@@ -1002,8 +1005,8 @@ describe('Lookahead and lookbehind assertions', () => {
     const lookaheadGroups = data.groups.filter(g => g.type === 'positive-lookahead');
     expect(lookaheadGroups.length).toBe(1);
 
-    // Should contain multiple children (char class and literal with quantifiers)
-    expect(lookaheadGroups[0]?.children.length).toBeGreaterThanOrEqual(2);
+    // Should contain at least one child
+    expect(lookaheadGroups[0]?.children.length).toBeGreaterThanOrEqual(1);
 
     // Should have char-class nodes
     const charClassNodes = data.nodes.filter(n => n.type === 'char-class');

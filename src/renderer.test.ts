@@ -8,7 +8,7 @@ import {
   buildSubgraphs,
   escapeString,
 } from './renderer';
-import type { DiagramData, DiagramNode, Edge, Group } from './types';
+import type { DiagramData, DiagramEdge, DiagramGroup, DiagramNode } from './types';
 
 describe('buildNodes', () => {
   test('builds empty string for empty nodes array', () => {
@@ -72,7 +72,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds single group correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'named-capture',
@@ -90,7 +90,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds optional group correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -105,7 +105,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds non-optional group without optional text', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -119,7 +119,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds group with quantifier text', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -134,7 +134,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds multiple groups correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'named-capture',
@@ -158,7 +158,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('handles different group types', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'g1',
         type: 'standard',
@@ -188,7 +188,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('handles groups with multiple nodes', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -205,7 +205,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('handles empty children array in group', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -227,26 +227,26 @@ describe('buildEdges', () => {
   });
 
   test('builds single edge correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
   });
 
   test('builds edge with label correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'optional' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: 'optional' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|optional|;');
   });
 
   test('builds edge without label correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
     expect(result).not.toContain('||');
   });
 
   test('builds multiple edges correctly', () => {
-    const edges: Edge[] = [
+    const edges: DiagramEdge[] = [
       { from: 'node1', to: 'node2' },
       { from: 'node2', to: 'node3', label: 'test' },
       { from: 'node3', to: 'node4' },
@@ -258,19 +258,19 @@ describe('buildEdges', () => {
   });
 
   test('handles special characters in node IDs', () => {
-    const edges: Edge[] = [{ from: 'node_1', to: 'node-2' }];
+    const edges: DiagramEdge[] = [{ from: 'node_1', to: 'node-2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node_1 --- node-2;');
   });
 
   test('handles special characters in labels', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'a-z' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: 'a-z' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|a-z|;');
   });
 
   test('does not include indentation', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result.startsWith('    ')).toBe(false);
   });
@@ -520,7 +520,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildSubgraphs handles groups with very high numbers', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group999',
         type: 'standard',
@@ -534,7 +534,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles same node connected to itself', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node1' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node1' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node1;');
   });
@@ -572,7 +572,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildSubgraphs handles all group types', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'g1',
         type: 'standard',
@@ -602,7 +602,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles long chains of edges', () => {
-    const edges: Edge[] = Array.from({ length: 50 }, (_, i) => ({
+    const edges: DiagramEdge[] = Array.from({ length: 50 }, (_, i) => ({
       from: `node${i}`,
       to: `node${i + 1}`,
     }));
@@ -646,7 +646,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles edges with empty labels', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: '' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: '' }];
     const result = buildEdges(edges);
     // Empty label is treated as no label because empty string is falsy
     expect(result).toContain('node1 --- node2;');
@@ -654,7 +654,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges treats undefined label same as no label', () => {
-    const edges: Edge[] = [
+    const edges: DiagramEdge[] = [
       { from: 'node1', to: 'node2' },
       { from: 'node2', to: 'node3', label: undefined },
     ];

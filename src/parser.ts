@@ -1,11 +1,20 @@
+import type { AST } from '@eslint-community/regexpp';
+import { parseRegExpLiteral } from '@eslint-community/regexpp';
+import type {
+  Alternative,
+  Assertion,
+  Backreference,
+  CapturingGroup,
+  Character,
+  CharacterClass,
+  Element,
+  Group,
+  LookaroundAssertion,
+  Node,
+  Quantifier,
+} from '@eslint-community/regexpp/ast';
 import pcreToRegexp from 'pcre-to-regexp';
-import regexpTree from 'regexp-tree';
-import type { AstRegExp } from 'regexp-tree/ast';
-import type { DiagramData, DiagramNode, Edge, Flavor, Group } from './types';
-
-// Type for AST nodes from regexp-tree
-// biome-ignore lint/suspicious/noExplicitAny: regexp-tree doesn't export detailed node types
-type AstNode = any;
+import type { DiagramData, DiagramEdge, DiagramGroup, DiagramNode, Flavor } from './types';
 
 export function parseJavaScriptRegex(regex: string): RegExp {
   // Try to parse as a regex literal first
@@ -46,14 +55,28 @@ export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
   }
 }
 
-export function buildRegexAst(pattern: string | RegExp): AstRegExp {
-  const ast = regexpTree.parse(pattern, {
-    captureLocations: true,
-  });
+/**
+ * Wrap a regex pattern with slashes if it's not already a regex literal
+ */
+export function wrapRegexIfNeeded(pattern: string): string {
+  if (pattern.startsWith('/')) {
+    return pattern;
+  } else {
+    return `/${pattern}/`;
+  }
+}
+
+export function buildRegexAst(pattern: string | RegExp): AST.RegExpLiteral {
+  // Convert RegExp to string literal format
+  const literalString =
+    typeof pattern === 'string' ? wrapRegexIfNeeded(pattern) : pattern.toString();
+
+  const ast = parseRegExpLiteral(literalString);
   return ast;
 }
 
 const nodeCounters: Map<string, number> = new Map();
+let capturingGroupNumber = 0;
 
 function getNextNodeId(nodeType: string): string {
   const count = nodeCounters.get(nodeType) || 1;
@@ -61,21 +84,43 @@ function getNextNodeId(nodeType: string): string {
   return buildFriendlyId(`${nodeType}_${count}`);
 }
 
-export function generateDiagramData(ast: AstRegExp): DiagramData {
+function getNextGroupNumber(): number {
+  capturingGroupNumber++;
+  return capturingGroupNumber;
+}
+
+export function generateDiagramData(ast: AST.RegExpLiteral): DiagramData {
   nodeCounters.clear();
+  capturingGroupNumber = 0;
 
   const nodes: DiagramNode[] = [];
-  const edges: Edge[] = [];
-  const groups: Group[] = [];
+  const edges: DiagramEdge[] = [];
+  const groups: DiagramGroup[] = [];
 
-  if (!ast.body) {
+  if (!ast.pattern?.alternatives || ast.pattern.alternatives.length === 0) {
     return { nodes, edges, groups };
   }
 
-  // Process the regex body
+  // Process the regex pattern
   const startNodeId = 'start';
   const endNodeId = 'fin';
-  const lastNodeId = processNode(ast.body, startNodeId, nodes, edges, groups);
+
+  // If there's only one alternative, process it directly
+  // Otherwise, treat multiple alternatives as a disjunction
+  let lastNodeId: string;
+  const firstAlternative = ast.pattern.alternatives[0];
+  if (ast.pattern.alternatives.length === 1 && firstAlternative) {
+    lastNodeId = processNode(firstAlternative, startNodeId, nodes, edges, groups);
+  } else {
+    // Multiple alternatives at root level - create disjunction
+    lastNodeId = processDisjunctionAlternatives(
+      ast.pattern.alternatives,
+      startNodeId,
+      nodes,
+      edges,
+      groups,
+    );
+  }
 
   // Connect the last node to the end
   if (lastNodeId) {
@@ -86,31 +131,26 @@ export function generateDiagramData(ast: AstRegExp): DiagramData {
 }
 
 function processNode(
-  node: AstNode,
+  node: Node,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
-  groups: Group[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
   switch (node.type) {
     case 'Alternative':
       return processAlternative(node, previousNodeId, nodes, edges, groups);
-    case 'Char':
+    case 'Character':
       return processChar(node, previousNodeId, nodes, edges);
     case 'CharacterClass':
       return processCharacterClass(node, previousNodeId, nodes, edges);
-    case 'Repetition':
+    case 'Quantifier':
       return processRepetition(node, previousNodeId, nodes, edges, groups);
+    case 'CapturingGroup':
     case 'Group':
       return processGroup(node, previousNodeId, nodes, edges, groups);
-    case 'Disjunction':
-      return processDisjunction(node, previousNodeId, nodes, edges, groups);
     case 'Assertion':
-      // Lookahead and lookbehind assertions should be treated as groups
-      if (node.kind === 'Lookahead' || node.kind === 'Lookbehind') {
-        return processGroup(node, previousNodeId, nodes, edges, groups);
-      }
-      return processAssertion(node, previousNodeId, nodes, edges);
+      return processAssertion(node, previousNodeId, nodes, edges, groups);
     case 'Backreference':
       return processBackreference(node, previousNodeId, nodes, edges);
     default:
@@ -119,31 +159,39 @@ function processNode(
 }
 
 function processAlternative(
-  node: AstNode,
+  node: Alternative,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
-  groups: Group[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
   let currentNodeId = previousNodeId;
 
-  // Combine consecutive Char nodes into a single literal node
-  const expressions = node.expressions || [];
-  const combined: AstNode[] = [];
+  // Combine consecutive Character nodes into a single literal node
+  const elements = node.elements || [];
+  const combined: (Element | { type: 'CombinedChars'; chars: Character[] })[] = [];
 
   let i = 0;
-  while (i < expressions.length) {
-    if (expressions[i].type === 'Char') {
-      // Collect consecutive Char nodes
-      const chars: AstNode[] = [];
-      while (i < expressions.length && expressions[i].type === 'Char') {
-        chars.push(expressions[i]);
-        i++;
+  while (i < elements.length) {
+    const element = elements[i];
+    if (element?.type === 'Character') {
+      // Collect consecutive Character nodes
+      const chars: Character[] = [];
+      while (i < elements.length) {
+        const currentElement = elements[i];
+        if (currentElement?.type === 'Character') {
+          chars.push(currentElement);
+          i++;
+        } else {
+          break;
+        }
       }
       // Create a combined node
       combined.push({ type: 'CombinedChars', chars });
+    } else if (element) {
+      combined.push(element);
+      i++;
     } else {
-      combined.push(expressions[i]);
       i++;
     }
   }
@@ -160,14 +208,15 @@ function processAlternative(
 }
 
 function processCombinedChars(
-  chars: AstNode[],
+  chars: Character[],
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
+  edges: DiagramEdge[],
 ): string {
-  const text = chars.map(c => c.value).join('');
+  // Convert code points to characters
+  const text = chars.map(c => String.fromCodePoint(c.value)).join('');
   const nodeId = getNextNodeId('literal');
-  const label = buildFriendlyLabel(text, 'literal');
+  const label = buildFriendlyLabel(text);
 
   nodes.push({
     id: nodeId,
@@ -180,13 +229,15 @@ function processCombinedChars(
 }
 
 function processChar(
-  node: AstNode,
+  node: Character,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
+  edges: DiagramEdge[],
 ): string {
   const nodeId = getNextNodeId('literal');
-  const label = buildFriendlyLabel(node.value, 'literal');
+  // Convert code point to character
+  const char = String.fromCodePoint(node.value);
+  const label = buildFriendlyLabel(char);
 
   nodes.push({
     id: nodeId,
@@ -199,12 +250,12 @@ function processChar(
 }
 
 function processCharacterClass(
-  node: AstNode,
+  node: CharacterClass,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
+  edges: DiagramEdge[],
 ): string {
-  const nodeType = node.negative ? 'negated-char-class' : 'char-class';
+  const nodeType = node.negate ? 'negated-char-class' : 'char-class';
   const nodeId = getNextNodeId(nodeType);
   const label = buildCharacterClassLabel(node);
 
@@ -218,25 +269,26 @@ function processCharacterClass(
   return nodeId;
 }
 
-function buildCharacterClassLabel(node: AstNode): string {
-  if (!node.expressions || node.expressions.length === 0) {
+function buildCharacterClassLabel(node: CharacterClass): string {
+  if (!node.elements || node.elements.length === 0) {
     return '[]';
   }
 
   const singleChars: string[] = [];
   const ranges: string[] = [];
 
-  for (const expr of node.expressions) {
-    if (expr.type === 'Char') {
-      singleChars.push(escapeSingleChar(expr.value));
-    } else if (expr.type === 'ClassRange') {
-      const from = expr.from.value;
-      const to = expr.to.value;
+  for (const elem of node.elements) {
+    if (elem.type === 'Character') {
+      const char = String.fromCodePoint(elem.value);
+      singleChars.push(escapeSingleChar(char));
+    } else if (elem.type === 'CharacterClassRange') {
+      const from = String.fromCodePoint(elem.min.value);
+      const to = String.fromCodePoint(elem.max.value);
       const rangeName = getFriendlyRangeName(from, to);
       ranges.push(rangeName ?? `${from}-${to}`);
-    } else if (expr.type === 'CharacterClass') {
-      // Nested character class (shouldn't normally happen)
-      ranges.push(buildCharacterClassLabel(expr));
+    } else if (elem.type === 'CharacterClass') {
+      // Nested character class
+      ranges.push(buildCharacterClassLabel(elem));
     }
   }
 
@@ -261,29 +313,29 @@ function getFriendlyRangeName(from: string, to: string): string | null {
 }
 
 function processRepetition(
-  node: AstNode,
+  node: Quantifier,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
-  groups: Group[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
-  const quantifier = node.quantifier;
   const groupsLengthBefore = groups.length;
-  const innerNodeId = processNode(node.expression, previousNodeId, nodes, edges, groups);
+  // In regexpp, Quantifier wraps the element
+  const innerNodeId = processNode(node.element, previousNodeId, nodes, edges, groups);
 
-  const quantifierText = getQuantifierText(quantifier);
+  const quantifierText = getQuantifierText(node);
 
   // Check if a group was created during processing
   if (groups.length > groupsLengthBefore) {
     // A group was added, update its quantifier
-    const lastGroup = groups[groups.length - 1];
+    const lastGroup = groups.at(-1);
     if (lastGroup && quantifierText) {
       lastGroup.quantifier = quantifierText;
     }
   } else {
     // Update the last node's label to include the quantifier
-    const lastNode = nodes[nodes.length - 1];
-    if (lastNode && lastNode.id === innerNodeId && quantifierText) {
+    const lastNode = nodes.at(-1);
+    if (lastNode?.id === innerNodeId && quantifierText) {
       lastNode.label += `<br><i>${quantifierText}</i>`;
     }
   }
@@ -291,55 +343,55 @@ function processRepetition(
   return innerNodeId;
 }
 
-function getQuantifierText(quantifier: AstNode): string {
+function getQuantifierText(quantifier: Quantifier): string {
   if (!quantifier) return '';
 
-  switch (quantifier.kind) {
-    case '*':
-      return 'Zero or more';
-    case '+':
-      return 'One or more';
-    case '?':
-      return 'Optional';
-    case 'Range':
-      if (quantifier.from === quantifier.to) {
-        return `Exactly ${quantifier.from}`;
-      } else if (quantifier.to === undefined || quantifier.to === null) {
-        return `${quantifier.from} or more`;
-      } else {
-        return `${quantifier.from} to ${quantifier.to}`;
-      }
-    default:
-      return '';
+  // In regexpp, quantifiers have min/max properties
+  // max can be Infinity or null for unbounded
+  const min = quantifier.min;
+  const max = quantifier.max;
+
+  if (min === 0 && (max === null || max === Number.POSITIVE_INFINITY)) {
+    return 'Zero or more';
+  } else if (min === 1 && (max === null || max === Number.POSITIVE_INFINITY)) {
+    return 'One or more';
+  } else if (min === 0 && max === 1) {
+    return 'Optional';
+  } else if (min === max) {
+    return `Exactly ${min}`;
+  } else if (max === null || max === Number.POSITIVE_INFINITY) {
+    return `${min} or more`;
+  } else {
+    return `${min} to ${max}`;
   }
 }
 
 function processGroup(
-  node: AstNode,
+  node: CapturingGroup | Group,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
-  groups: Group[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
-  const groupNumber = node.number || 0;
-
   let groupName: string;
-  let groupType: Group['type'] = 'standard';
+  let groupType: DiagramGroup['type'] = 'standard';
+  let groupNumber = 0;
 
-  if (node.kind === 'Lookahead') {
-    groupType = node.negative ? 'negative-lookahead' : 'positive-lookahead';
-    groupName = node.negative ? 'Negative Lookahead' : 'Positive Lookahead';
-  } else if (node.kind === 'Lookbehind') {
-    groupType = node.negative ? 'negative-lookbehind' : 'positive-lookbehind';
-    groupName = node.negative ? 'Negative Lookbehind' : 'Positive Lookbehind';
-  } else if (node.name) {
-    groupType = 'named-capture';
-    groupName = node.name;
-  } else if (!node.capturing) {
+  // In regexpp, CapturingGroup is for capturing groups
+  if (node.type === 'CapturingGroup') {
+    groupNumber = getNextGroupNumber();
+    if (node.name) {
+      groupType = 'named-capture';
+      groupName = node.name;
+    } else {
+      groupName = `Group ${groupNumber}`;
+    }
+  } else if (node.type === 'Group') {
     groupType = 'non-capturing';
     groupName = 'Non-capturing';
   } else {
-    groupName = `Group ${groupNumber}`;
+    // Must be Assertion type (for lookahead/lookbehind)
+    groupName = 'Assertion';
   }
 
   const groupId = getNextNodeId(groupType);
@@ -348,14 +400,24 @@ function processGroup(
   const startNodeIndex = nodes.length;
   const startGroupIndex = groups.length;
 
-  // Process the group's content
-  // Lookahead/lookbehind use 'assertion' field, groups use 'expression' field
-  const content = node.assertion || node.expression;
   let innerEndNode = previousNodeId;
 
-  // Only process content if it exists (handles empty groups/assertions)
-  if (content) {
-    innerEndNode = processNode(content, previousNodeId, nodes, edges, groups);
+  // In regexpp, groups and assertions have 'alternatives' array
+  if (node.alternatives && node.alternatives.length > 0) {
+    const firstAlternative = node.alternatives[0];
+    if (node.alternatives.length === 1 && firstAlternative) {
+      // Single alternative, process directly
+      innerEndNode = processNode(firstAlternative, previousNodeId, nodes, edges, groups);
+    } else {
+      // Multiple alternatives, treat as disjunction
+      innerEndNode = processDisjunctionAlternatives(
+        node.alternatives,
+        previousNodeId,
+        nodes,
+        edges,
+        groups,
+      );
+    }
   }
 
   // Collect direct children (nodes and groups created at this level)
@@ -368,9 +430,9 @@ function processGroup(
     if (childGroup) {
       children.push(childGroup.id);
       // Track all nodes that belong to child groups
-      childGroup.children.forEach(childId => {
-        childGroupIds.add(childId);
-      });
+      for (const childNodeId of childGroup.children) {
+        childGroupIds.add(childNodeId);
+      }
     }
   }
 
@@ -393,88 +455,68 @@ function processGroup(
   return innerEndNode;
 }
 
-function processDisjunction(
-  node: AstNode,
+// Process multiple alternatives as a disjunction (|)
+function processDisjunctionAlternatives(
+  alternatives: Alternative[],
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
-  groups: Group[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
-  // Flatten nested disjunctions to create a single level of branching
-  const branches = flattenDisjunction(node);
-
   const disjunctionNodeId = getNextNodeId('disjunction-begin');
   const mergeNodeId = getNextNodeId('disjunction-end');
 
-  nodes.push({
-    id: disjunctionNodeId,
-    type: 'disjunction',
-    label: '',
-  });
-
-  nodes.push({
-    id: mergeNodeId,
-    type: 'disjunction',
-    label: '',
-  });
+  nodes.push(
+    {
+      id: disjunctionNodeId,
+      type: 'disjunction',
+      label: '',
+    },
+    {
+      id: mergeNodeId,
+      type: 'disjunction',
+      label: '',
+    },
+  );
 
   edges.push({ from: previousNodeId, to: disjunctionNodeId });
 
-  // Process each branch
-  for (const branch of branches) {
-    const branchEndNode = processNode(branch, disjunctionNodeId, nodes, edges, groups);
+  // Process each alternative as a branch
+  for (const alternative of alternatives) {
+    const branchEndNode = processNode(alternative, disjunctionNodeId, nodes, edges, groups);
     edges.push({ from: branchEndNode, to: mergeNodeId });
   }
 
   return mergeNodeId;
 }
 
-function flattenDisjunction(node: AstNode): AstNode[] {
-  const branches: AstNode[] = [];
-
-  // Recursively collect all branches from nested disjunctions
-  function collectBranches(n: AstNode): void {
-    // Handle null or undefined nodes (empty alternatives)
-    if (!n) {
-      return;
-    }
-
-    if (n.type === 'Disjunction') {
-      collectBranches(n.left);
-      collectBranches(n.right);
-    } else {
-      branches.push(n);
-    }
-  }
-
-  collectBranches(node);
-  return branches;
-}
-
 function processAssertion(
-  node: AstNode,
+  node: Assertion,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
 ): string {
+  // In regexpp, lookahead and lookbehind assertions have 'alternatives' property
+  // and should be treated as groups
+  if (node.kind === 'lookahead' || node.kind === 'lookbehind') {
+    return processAssertionAsGroup(node, previousNodeId, nodes, edges, groups);
+  }
+
+  // Simple assertions (^, $, \b, \B)
   const nodeId = getNextNodeId('assertion');
   let label = '';
 
   switch (node.kind) {
-    case '^':
+    case 'start':
       label = '^<br><i>Begins with</i>';
       break;
-    case '$':
+    case 'end':
       label = '$<br><i>Ends with</i>';
       break;
-    case '\\b':
-      label = '\\b<br><i>Word boundary</i>';
+    case 'word':
+      label = String.raw`\b<br><i>Word boundary</i>`;
       break;
-    case '\\B':
-      label = '\\B<br><i>Non-word boundary</i>';
-      break;
-    default:
-      label = node.kind;
   }
 
   nodes.push({
@@ -487,14 +529,89 @@ function processAssertion(
   return nodeId;
 }
 
-function processBackreference(
-  node: AstNode,
+function processAssertionAsGroup(
+  node: LookaroundAssertion,
   previousNodeId: string,
   nodes: DiagramNode[],
-  edges: Edge[],
+  edges: DiagramEdge[],
+  groups: DiagramGroup[],
+): string {
+  let groupName: string;
+  let groupType: DiagramGroup['type'];
+
+  if (node.kind === 'lookahead') {
+    groupType = node.negate ? 'negative-lookahead' : 'positive-lookahead';
+    groupName = node.negate ? 'Negative Lookahead' : 'Positive Lookahead';
+  } else {
+    // lookbehind
+    groupType = node.negate ? 'negative-lookbehind' : 'positive-lookbehind';
+    groupName = node.negate ? 'Negative Lookbehind' : 'Positive Lookbehind';
+  }
+
+  const groupId = getNextNodeId(groupType);
+
+  // Track the indices before processing to identify direct children
+  const startNodeIndex = nodes.length;
+  const startGroupIndex = groups.length;
+
+  let innerEndNode = previousNodeId;
+
+  // Process alternatives
+  if (node.alternatives.length > 0) {
+    const firstAlternative = node.alternatives[0];
+    if (node.alternatives.length === 1 && firstAlternative) {
+      innerEndNode = processNode(firstAlternative, previousNodeId, nodes, edges, groups);
+    } else {
+      innerEndNode = processDisjunctionAlternatives(
+        node.alternatives,
+        previousNodeId,
+        nodes,
+        edges,
+        groups,
+      );
+    }
+  }
+
+  // Collect direct children
+  const children: string[] = [];
+  const childGroupIds = new Set<string>();
+
+  for (let i = startGroupIndex; i < groups.length; i++) {
+    const childGroup = groups[i];
+    if (childGroup) {
+      children.push(childGroup.id);
+      for (const childId of childGroup.children) {
+        childGroupIds.add(childId);
+      }
+    }
+  }
+
+  for (let i = startNodeIndex; i < nodes.length; i++) {
+    const nodeItem = nodes[i];
+    if (nodeItem && !childGroupIds.has(nodeItem.id)) {
+      children.push(nodeItem.id);
+    }
+  }
+
+  groups.push({
+    id: groupId,
+    type: groupType,
+    number: 0,
+    label: groupName,
+    children,
+  });
+
+  return innerEndNode;
+}
+
+function processBackreference(
+  node: Backreference,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: DiagramEdge[],
 ): string {
   const nodeId = getNextNodeId('back-reference');
-  const label = `\\${node.reference}<br><i>Back-reference</i>`;
+  const label = `\\${node.raw}<br><i>Back-reference</i>`;
 
   nodes.push({
     id: nodeId,
@@ -520,7 +637,7 @@ export function escapeSingleChar(text: string): string {
   return text;
 }
 
-export function buildFriendlyLabel(text: string, _type?: string): string {
+export function buildFriendlyLabel(text: string): string {
   // Handle character class escapes
   const escapeMap: Record<string, string> = {
     '\\d': 'Any digit',
@@ -546,5 +663,5 @@ export function buildFriendlyLabel(text: string, _type?: string): string {
 
 export function buildFriendlyId(id: string): string {
   // Replace any characters that might cause issues in Mermaid
-  return id.replace(/[^a-zA-Z0-9_]/g, '_');
+  return id.replaceAll(/\W/g, '_');
 }
