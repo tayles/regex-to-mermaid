@@ -1,55 +1,55 @@
 graph LR
   accTitle: "Regex: /(\\W|^)stock\\s{0,3}tip(s){0,1}(\\W|$)/gim"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  literal_1("Not a word character"):::literal;
+  char_class_1("Not a word character"):::char-class;
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_2("stock"):::literal;
-  literal_3("Any whitespace<br><i>0 to 3</i>"):::literal;
-  literal_4("tip"):::literal;
-  literal_5("s"):::literal;
+  literal_1("stock"):::literal;
+  char_class_2("Any whitespace<br><i>0 to 3</i>"):::char-class;
+  literal_2("tip"):::literal;
+  literal_3("s"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_6("Not a word character"):::literal;
+  char_class_3("Not a word character"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
   subgraph standard_1 ["#1 Group 1"]
     disjunction_begin_1
     disjunction_end_1
-    literal_1
+    char_class_1
     assertion_1
   end
 
-  subgraph standard_2 ["#2 Group 2 <i>0 to 1</i>"]
-    literal_5
+  subgraph standard_2 ["#2 Group 2 <i>Optional</i>"]
+    literal_3
   end
 
   subgraph standard_3 ["#3 Group 3"]
     disjunction_begin_2
     disjunction_end_2
-    literal_6
+    char_class_3
     assertion_2
   end
 
   %% Edges
   start --- disjunction_begin_1;
-  disjunction_begin_1 --- literal_1;
-  literal_1 --- disjunction_end_1;
+  disjunction_begin_1 --- char_class_1;
+  char_class_1 --- disjunction_end_1;
   disjunction_begin_1 --- assertion_1;
   assertion_1 --- disjunction_end_1;
-  disjunction_end_1 --- literal_2;
+  disjunction_end_1 --- literal_1;
+  literal_1 --- char_class_2;
+  char_class_2 --- literal_2;
   literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
+  literal_3 --- disjunction_begin_2;
+  disjunction_begin_2 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
   disjunction_begin_2 --- assertion_2;
   assertion_2 --- disjunction_end_2;
   disjunction_end_2 --- fin;
@@ -57,8 +57,9 @@ graph LR
   %% Styles
   %% Node Styling
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
 
   %% Group Styling
   classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;

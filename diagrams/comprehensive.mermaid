@@ -1,6 +1,6 @@
 graph LR
   accTitle: "Regex: ^(?<named>[A-Z]\\w{2,5}):\\s+(a|b|cd)(?:https?:\\/\\/)?(?<domain>[a-z0-9.-]+)(?=\\.com)(?!\\.org)(?<=example)(?<!test)[a-z]{1,3}\\.com(?:\\/\\S+)?(?:\\?[a-zA-Z0-9&=]+)?(?<digit>\\d+)\\k<digit>\\1\\b\\B\\d+\\D+\\w+\\W+\\s+\\S+[^xyz]+\\t\\r\\n|alt$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9,142 +9,142 @@ graph LR
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   char_class_1("Any uppercase"):::char-class;
-  literal_1("Any word character<br><i>2 to 5</i>"):::literal;
-  literal_2(":"):::literal;
-  literal_3("Any whitespace<br><i>One or more</i>"):::literal;
+  char_class_2("Any word character<br><i>2 to 5</i>"):::char-class;
+  literal_1(":"):::literal;
+  char_class_3("Any whitespace<br><i>One or more</i>"):::char-class;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_4("a"):::literal;
-  literal_5("b"):::literal;
-  literal_6("cd"):::literal;
-  literal_7("http"):::literal;
-  literal_8("s<br><i>Optional</i>"):::literal;
-  literal_9("://"):::literal;
-  char_class_2("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
-  literal_10(".com"):::literal;
-  literal_11(".org"):::literal;
-  literal_12("example"):::literal;
-  literal_13("test"):::literal;
-  char_class_3("Any lowercase<br><i>1 to 3</i>"):::char-class;
-  literal_14(".com"):::literal;
-  literal_15("/"):::literal;
-  literal_16("Not whitespace<br><i>One or more</i>"):::literal;
-  literal_17("?"):::literal;
-  char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
-  literal_18("Any digit<br><i>One or more</i>"):::literal;
-  back_reference_1("\digit<br><i>Back-reference</i>"):::back-reference;
-  back_reference_2("\1<br><i>Back-reference</i>"):::back-reference;
+  literal_2("a"):::literal;
+  literal_3("b"):::literal;
+  literal_4("cd"):::literal;
+  literal_5("http"):::literal;
+  literal_6("s<br><i>Optional</i>"):::literal;
+  literal_7(":\/\/"):::literal;
+  char_class_4("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
+  literal_8("\.com"):::literal;
+  literal_9("\.org"):::literal;
+  literal_10("example"):::literal;
+  literal_11("test"):::literal;
+  char_class_5("Any lowercase<br><i>1 to 3</i>"):::char-class;
+  literal_12("\.com"):::literal;
+  literal_13("\/"):::literal;
+  char_class_6("Not whitespace<br><i>One or more</i>"):::char-class;
+  literal_14("\?"):::literal;
+  char_class_7("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
+  char_class_8("Any digit<br><i>One or more</i>"):::char-class;
+  back_reference_1("\\k<digit><br><i>Back-reference</i>"):::back-reference;
+  back_reference_2("\\1<br><i>Back-reference</i>"):::back-reference;
   assertion_2("\b<br><i>Word boundary</i>"):::assertion;
-  assertion_3("\B<br><i>Non-word boundary</i>"):::assertion;
-  literal_19("Any digit<br><i>One or more</i>"):::literal;
-  literal_20("Not a digit<br><i>One or more</i>"):::literal;
-  literal_21("Any word character<br><i>One or more</i>"):::literal;
-  literal_22("Not a word character<br><i>One or more</i>"):::literal;
-  literal_23("Any whitespace<br><i>One or more</i>"):::literal;
-  literal_24("Not whitespace<br><i>One or more</i>"):::literal;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  char_class_9("Any digit<br><i>One or more</i>"):::char-class;
+  char_class_10("Not a digit<br><i>One or more</i>"):::char-class;
+  char_class_11("Any word character<br><i>One or more</i>"):::char-class;
+  char_class_12("Not a word character<br><i>One or more</i>"):::char-class;
+  char_class_13("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_class_14("Not whitespace<br><i>One or more</i>"):::char-class;
   negated_char_class_1("x y z<br><i>One or more</i>"):::negated-char-class;
-  literal_25("\t\r\n"):::literal;
-  literal_26("alt"):::literal;
+  literal_15("\t\r\n"):::literal;
+  literal_16("alt"):::literal;
   assertion_4("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
   subgraph named_capture_1 ["#1 named"]
     char_class_1
-    literal_1
+    char_class_2
   end
 
   subgraph standard_1 ["#2 Group 2"]
     disjunction_begin_2
     disjunction_end_2
+    literal_2
+    literal_3
     literal_4
-    literal_5
-    literal_6
   end
 
   subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
+    literal_5
+    literal_6
     literal_7
-    literal_8
-    literal_9
   end
 
   subgraph named_capture_2 ["#3 domain"]
-    char_class_2
-  end
-
-  subgraph positive_lookahead_1 ["Positive Lookahead"]
-    literal_10
-  end
-
-  subgraph negative_lookahead_1 ["Negative Lookahead"]
-    literal_11
-  end
-
-  subgraph positive_lookbehind_1 ["Positive Lookbehind"]
-    literal_12
-  end
-
-  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
-    literal_13
-  end
-
-  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
-    literal_15
-    literal_16
-  end
-
-  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
-    literal_17
     char_class_4
   end
 
+  subgraph positive_lookahead_1 ["Positive Lookahead"]
+    literal_8
+  end
+
+  subgraph negative_lookahead_1 ["Negative Lookahead"]
+    literal_9
+  end
+
+  subgraph positive_lookbehind_1 ["Positive Lookbehind"]
+    literal_10
+  end
+
+  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
+    literal_11
+  end
+
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
+    literal_13
+    char_class_6
+  end
+
+  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
+    literal_14
+    char_class_7
+  end
+
   subgraph named_capture_3 ["#4 digit"]
-    literal_18
+    char_class_8
   end
 
   %% Edges
   start --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_1;
   assertion_1 --- char_class_1;
-  char_class_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- disjunction_begin_2;
+  char_class_1 --- char_class_2;
+  char_class_2 --- literal_1;
+  literal_1 --- char_class_3;
+  char_class_3 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_2;
+  literal_2 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
   disjunction_begin_2 --- literal_4;
   literal_4 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_5;
-  literal_5 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
-  disjunction_end_2 --- literal_7;
-  literal_7 --- literal_8;
+  disjunction_end_2 --- literal_5;
+  literal_5 --- literal_6;
+  literal_6 --- literal_7;
+  literal_7 --- char_class_4;
+  char_class_4 --- literal_8;
   literal_8 --- literal_9;
-  literal_9 --- char_class_2;
-  char_class_2 --- literal_10;
+  literal_9 --- literal_10;
   literal_10 --- literal_11;
-  literal_11 --- literal_12;
+  literal_11 --- char_class_5;
+  char_class_5 --- literal_12;
   literal_12 --- literal_13;
-  literal_13 --- char_class_3;
-  char_class_3 --- literal_14;
-  literal_14 --- literal_15;
-  literal_15 --- literal_16;
-  literal_16 --- literal_17;
-  literal_17 --- char_class_4;
-  char_class_4 --- literal_18;
-  literal_18 --- back_reference_1;
+  literal_13 --- char_class_6;
+  char_class_6 --- literal_14;
+  literal_14 --- char_class_7;
+  char_class_7 --- char_class_8;
+  char_class_8 --- back_reference_1;
   back_reference_1 --- back_reference_2;
   back_reference_2 --- assertion_2;
   assertion_2 --- assertion_3;
-  assertion_3 --- literal_19;
-  literal_19 --- literal_20;
-  literal_20 --- literal_21;
-  literal_21 --- literal_22;
-  literal_22 --- literal_23;
-  literal_23 --- literal_24;
-  literal_24 --- negated_char_class_1;
-  negated_char_class_1 --- literal_25;
-  literal_25 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_26;
-  literal_26 --- assertion_4;
+  assertion_3 --- char_class_9;
+  char_class_9 --- char_class_10;
+  char_class_10 --- char_class_11;
+  char_class_11 --- char_class_12;
+  char_class_12 --- char_class_13;
+  char_class_13 --- char_class_14;
+  char_class_14 --- negated_char_class_1;
+  negated_char_class_1 --- literal_15;
+  literal_15 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_16;
+  literal_16 --- assertion_4;
   assertion_4 --- disjunction_end_1;
   disjunction_end_1 --- fin;
 

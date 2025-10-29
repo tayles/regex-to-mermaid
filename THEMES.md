@@ -31,7 +31,7 @@ regex-to-mermaid 'foo|bar' --theme default
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UW2_aMBT-K1ZopbJhLgmFkiIoJawv0yZ1e2rTIjcxibUQR45Rx1D_-2zHhTgpbfOAsI-_i0_Ol50V0BBbrhUxlMXg-62fAoCC4DfhCXaBb93iCP91wePZdJwxymlAk0nMeZZPXV88HfXTnIpySNeIpJN7BP_N4F0Xjtrw4asst_XWw85uvTQlEeLxRAHbX5rTE9_Soh7OAyZFb3CKGeI4BM-Ex4BJD5BTuMZMaIRXvXa33ZcwCTw9BT_EHXL5P-eI8asdyGOUCfsrGBAWgJdLWVuR9EgF5TlmnNB02TvzrcfxE5uMyeQaRyTNlYNxh0x8q-m67v6oAiaEC5-JgsmmFGf0rnHCFidyTfwzkwQoObC-hXAEwu106geCGLFlkAgnSneWbkFCnzELUI6lgtzYZJm5EZKIcLloA_hqI8WAMrCmDB-cSHKoyA0zfS0kyygQe-_asj9lS1iwP23gXFB2jjdrUPWnBe4wo3WNMsPh3UvXJxq3SMP33rweu1-bJxWbYvT0AqRojcNlgDK-YXjZA_e-1eiB1_CA2gA8SHRplsylbS4ducRpWHg4omkrTRsUidwrlAfHZO3XDtif0XGUjgNknj-817m5HBgCopmLMCplGEAIy7ms5lTV9y0zw2jUbDOGRs0xA6dq5SbV4mag-2ZCqmi7lgoDfW6Ot1EbmLNd6YVdnVtVF1-30mDybVI0U38c1Q5JI2VJuvHw6kAhwEniNq4H3nB20co5o3-w2xg58_7Qa4mZpcxtdNVzaRBohxr-bTS_Hs338MVg1HMu3oMfov5qoD8beoM9w8ViOJ87NQZ9rRtGN9mb91JDCvWQampvtJh5zkd309SzLEu2WmAuWYteFlYr8W5VoteqRsRwc2m9_AfWit-ucgcAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UW2_aMBT-K1ZopbJh2iRcSoqgacL6Mm1St6c2LXITF6yFOHKMug7x32c75uKkhfKAsI-_yzk6Hysrpgm2PGvGUD4H3--iDAAUx78JT7EHIusOz_BfDzydjYc5o5zGNB3NOc-LsReJz7n6ao5FOaELRLLRA4L_fHh_AQdt-PhVltv66nHltNZNSYT4fKSA7S_N8UlkadEQFzGTorc4wwxxnIBXwueASQ-QU7jATGgk13bbbl9ImASenoIfoodC_i44Yvx6BYo5yoX9FxgTFoP1lay9kOyDCioKzDih2dQ-i6yn4TMbDcnoBs9IVigHw3Myiqym53nbpwqYEi58pgomh1K-0bfGC0e8KDTxz1wSoHTH-h7CFQhPDfi8_iieIzaNU-FGafvZG0jpK2YxKrBUkRfLPDcvEjIjXB7aAG6sZBhQBhaU4Z0bSQ4VuWGoo4VkGcXi7qAt51O2hAXn0wa6gvLYNNyqSa1yjxk9KrTbA-n-REMnWXJoC_QK_lo-qwiVa6gPIEMLnExjlPMlw1MbPERWwwabIIHaMjxK9N5emUfHPLryiLOk9PCBpqM0HVCmc6uwv0Ama6f2wPmMjqt0XCCzfbSvbk3D7EXMc5LM9iINIIT7Ma3GVtW3UzOzadQcM5VGzTXzp2r7c6olz0B3zLBU0U4tIAa6a256Fe3W9rwyEae6wKou_vL2NpS_peVI9T-muiHZTFFL1hC_7CgEOE29xk0v7PuXrYIz-gd7jYEbdPphSywvZV7jQn2uDALdg4Z_GwQ3g2ALn_QGtnt5CL6L5MZAx--HvS3D5aQfBG6NQbd1y-gyf7cvta1Qb6umDgcTP3SP9aap_TxP37RAIFnLWZZWKzlvVTLYqmbFcHNlrf8DZ_jK44cHAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -43,7 +43,7 @@ regex-to-mermaid 'foo|bar' --theme default
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -51,12 +51,12 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_class_3("Any character<br><i>Zero or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -74,7 +74,7 @@ graph LR
 
   subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
-    literal_6
+    char_class_3
   end
 
   %% Edges
@@ -86,8 +86,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_class_3;
+  char_class_3 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -117,7 +117,7 @@ regex-to-mermaid 'foo|bar' --theme neutral
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U70_bMBD9V6wAEt3q_kgLglC1dAPxZdoktk8QqIzjJtZSO3JcMYb43-dz3CZOgRFLVe27d-_lcs_PAZUJC6IAYxwLKsWSp1EsENIZW7EICbbWiuSxsPFYpIoUGfp2DSmE0l9c5yYrDq5Zyv5E6P5wNimU1JLKfJppXZSzKDZP3_50ZiacyBXhYnpL8N85vhng0x6--wzhnju6ew67Lx0oRHQ2tcDep85sPw4c6QUrqQLSKyaYIpol6JHrDCnQgLXEK6YMR3I-7A16Y4AB8OAAfTevWsL_UhOlz59RmZHCyF9iyhVFL2cQW3LxRoSUJVOaS7EYHsbB_eRBTSd8-oWlXJRWwaTPp3HQiaJom2qBOddGZ25h0JQqx516GaHJKF3hHwUUIHld9TXEyCCifn83gWZELWhulFjeuXhCuXxkipKSAQMcrIvCP0h4yjVseghvZAiGpEIrqVitBIpjW9wTM3ZEECbUnL0rK_yQLCMh_LCAI1Oy_3azjtv6HMENU3KXo1mh_vaget_hLkXy3pd3Y_dz_WBtU42e2yBBVixZUFLotWKLIbqNg70h2pgH7QzAHaAbs-RvQ387gi0TSaXhDc7QcoaocuSWoTk4ftXxTkL4EZ6R5Rkh8PN_3-vI3x57BKaZl0na8DAy11LTl22f2vi2Zb4ZvVjo29CLjXzD2VizSTt289Bj3yFtdLjjCg995I-3Fzv2Z7vVi7A9tzZubrfGYOqnvGqmuxztCReplQRqLtiyLmHAeR7tXQ5gdUut5G8W7Z0OYJ15EKdpAziBVQPs4wNqOzvMxQDWFnMygFUrv1JyXbyq1o4edqO3EfAV1rbY_ARWXWxeFPmTK_kV6lQ9qeS0bNptWajbHnWP_yx4-QeLC7bkYQcAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U70_bMBD9V6wAEt3q0iYgQahaOkB8mTaJ7RMEKuO4ibXUjhxXjCH-9_kct6kTfuWkqvbde_dyupfngMqUBXGAMU4ElWLBszgRCOmcLVmMBFtpRYpE2HwiMkXKHH2_hhJC6W-uC1OVBNcsY39jdL8_HZdKakllMcm1LqtpnJjnwP70piadyiXhYnJL8L8ZvhnikwG--wrpgbu6ew77Lz0gIjqfWODgS2-6mwSu6QWrqIKmV0wwRTRL0SPXOVKgAWuJl0yZHunZaDAaDAEGwL099MO8agX_K02UPntGVU5KI3-BKVcUvZxCbsHFGxlSVUxpLsV8tJ8E9-MHNRnzyTeWcVFZBeMDPkmCXhzHm1ILLLg2OgsLg6HUNe7WqwhNReWIf5ZAQIqG9TVEZBCxHfBBt4jmRM1pYdTY3jPxhAr5yBQlFYMucLEqS_8i5RnXcBggvJYiGJIKLaVijRogx5bcE3ToGkGaUHP3rqzwU7KMhPDTAo4M5UfTiNoiXZcbpuSHjZo9APW7Dnop0ve2wK3gr9WDtVC9hu6ABFmydE5JqVeKzUfoNgl2RmhtJNRZhjtAb-2Vfwz9YwRHJtJawxs9Q9szRLU7Nx22F8hnPewUhJ_pE9k-EQJvf_heR50e_ruYeV6m2ZalkflKbdu0bVub30zN96aXC31XernI95_Nbc-p4zwPfeibpY0OOwbx0Ef-prfRUWfPWxMJ2wts8-aTt7Wh-qmoR-q-mPaGi8xSA-sFWzQUBlwU8c7lEKJfaSX_sHjnZAhx6kGc6jXgGKIB2McHNLZzmIshxAZzPIRolF8puSpfVWt3ELsdXAs4h9iQzY4hGrJZWRZPjvIceOqZ1HJafu23vNRv77zX_zR4-Q_ZPpXndgcAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -134,7 +134,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -142,12 +142,12 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_class_3("Any character<br><i>Zero or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -165,7 +165,7 @@ graph LR
 
   subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
-    literal_6
+    char_class_3
   end
 
   %% Edges
@@ -177,8 +177,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_class_3;
+  char_class_3 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -208,7 +208,7 @@ regex-to-mermaid 'foo|bar' --theme dark
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXU_bMBT9K1YKEt2adnVC2ELVklLgZdokticIVCZxE4vUjhxXjCH--2zHtHECjESqal-fj9zckycnYSl2Qsd13ZgmjK5IFsYUAJHjNQ5Bivh9THUxphlHZQ6-X6o6SpLfRBTySOxc4gz_CcHtwWxSciZYwoppLkRZzcJYXiP905_JcsrWiNDpNXL_Ru7VF_fb0L35rMpDs3XzBAfPfUWERD7VwOGn_mwvdozoAlcJV6IXmGKOBE7BAxE54MqDK5i7xlxqpCfj4Zehr2AKuL8PfsjnrNT_SiAuTp5AlaNS2l-5CeEJeD5WtRWhb1RQVWEuCKPL8UHs3E7u-HRCpnOcEVppB5MRmcZOPwzD7VENLIiQPgsNU02pz5hd6wSUJypD_LNUBKjYsb6G8CQiHI26B5Ic8WVSSCdaN6KPoGAPmCeowkpBbWzK0t5ISUaEWgyB-2KDYsA4WDOOd04UuavJLTO-EVJllMi9d23BD9mSFuCHDRxKytHbzQra_ozAFeasq9Fk2L175XrP4M5o-t6bN2P3a3OnY1OPnlkAitY4XSaoFBuOl2NwHTu9MXgJD-gMwI1CN2bJXkJ76aklpmnt4Q1NqDUhqBO5VWgOjs3qdw7Aj-h4WscDKs__fa5DexlYArKZZ2nWyDCQn6VmLts51fVty-wwWjVox9CqeXbgdK3ZpE7cLLRvJ6SNhp1UWOhDe7ytWmDPdqsXsD23ui6_bo3BFI9F3UzzcdQ7hGbaknKzwKsdhQQXRdiDCy-Ci0ElOLvHYS8I5vMgGsiZZTzsnevr2CIwDg3cW6h7Cz8_j45g8B58F_UXA2fq3jJEc_9oftphMI91wdmmfPW59JC6Zki31H7UoP46P_X8aEcWlWXxaChPFU_dvdpcK9CDVtgG7VBY-sfO8z8JN04viAcAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U7U7bMBR9FSsFiW5NoU4pW6haUgr8mTaJ7RcEKuO4iUVqR44rxhDvPtsxbZzwlUhV7evz4at78uRhnhAv9HzfjxnmbEnTMGYAyIysSAgSJO5jZooxSwUqMvDjUtcRxn-ozNWR2LskKfkbgtu96bgQXHLM80kmZVFOw1g9--anO1XlhK8QZZNr5P-L_KsD_3vfv_mqy327dfMEe89dTYRkNjHA_pfudCf2rOiclFho0QvCiECSJOCBygwI7cGX3F8RoTSSk0F_0D_QMA3c3QU_1T1L_b-USMiTJ1BmqFD2lz6mAoPnY11bUvZGBZUlEZJythjsxd7t-E5MxnQyIyllpXEw3qeT2OuGYbg5aoA5lcpnbmC6KdUZu-ucgOpEaYl_FZoA5VvW1xCBQoSmwfvtQzhDYoFz5cZoR-wR5PyBCIxKolX0xroo3I2EplTqRR_4L1YYAVyAFRdk60aT-4bcMTS0QrqMsNp71xb8lC1lAX7awKGi_KgbQdOkVbkign8otJ0D7X7HQs9Y8t4U2BH8vb4zEarG0C4AQyuSLDAq5FqQxQBcx15nAF6CBFrDcKPRtblyl9BdBnpJWFJ5eEMTGk0IqnRuFOoD5LIOWwfgZ3QCoxMAne0P73XY0nDvovp5lqS1SAP1larHtBlbU990zc2mU4NuKp1a4ObP1Op9aiXPQQ_dsDTRsBUQB33oTnoTHbTmvNER2BxgU1efvNqEyse8aqn9YpodylJDrVnnZLmlUOA8DztwHkRw3iul4Pck7IxGs9ko6qnh5SLsnJvn2CGwd7DwYK7fDfz8PDqCo_fg20i-GDjT74Yhmg2PZqctBnutC8HXxav3MtPq22ndUA-jGvW32WkwjLZkUVHkj5byVPNU3avMNZLda6Su10yHo3_sPf8H5ypGWJ0HAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -225,7 +225,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -233,12 +233,12 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_class_3("Any character<br><i>Zero or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -256,7 +256,7 @@ graph LR
 
   subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
-    literal_6
+    char_class_3
   end
 
   %% Edges
@@ -268,8 +268,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_class_3;
+  char_class_3 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -299,7 +299,7 @@ regex-to-mermaid 'foo|bar' --theme forest
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXU_bMBT9K1YAiW5NS9MmQKha0rTjZdokticIVCZxU2upHTmugCH--2zHTeIUGH2oat97PnJ7T16smCbI8i3btiMSU7LCqR8RAPgabZAPVpShgkdElSOSMpivwfdr2QHj-DfmmWiKrGuUoicf3B9PxzmjnMY0m6w5z4upH4lPX311pqKc0A3EZHIL7b-BfXNin_fsu6-y3NNXdy9O97UjiSBfTxSw96UzPYwsLTpHRcyk6BUiiEGOEvCI-Row6cHm1N4gJjSSy0HvpDeSMAk8OgI_xJMW8nfBIeOXL6BYw1w-ox1jFoPXC1lbYfJOBRYFYhxTshwcR9b9-IFNxngyQykmhXIw7uNJZHV8369aFTDDXPjMFEwOpezRt0aHIzoKTfwzlwQwq1nfQgwFwu_39xviNWTLOBNOlG5AnkFGHxGLYYGkgrzY5rl5keAUc3noAXtngyBAGdiIPaidSHJbkRtmRlpIlmEs7j605XzKlrDgfNqAKyj77w_La_vTAjeI0X2NJkP930vXhxq3IMlH_7xeu1_bBxWbcvX0ARC4QckyhjnfMrQcgNvIOhiAXXjA3gLcSXRjl8yjYx6H8ohIUnp4R9NRmg4oE1kpNBfHZB3tNTif0RkqnSGQef7vc7nm0TMExDAXSdrIMBCvpWYu2zlV9WpkZhiNmmPG0KgNzcCpWnNIe3Ez0CMzIW20s5cKA-2a623UPHO3W7Nw2nur6uLt1lhM_pyVw9QvR3WDSaosSTdztKopBDjL_INgMXfPBt2CM_oH-QfnYRh6pc0Koj1pQOguBoFbAU7D2XDkmIA6zjsRd-4FpxXG82YzL6idXzG6zd90q1bP1qu3M3C28MLzimwUBt_ck5osyPPsWVOGkqecSWmnFdNuK0Ld9qob-hfW6z9Ey8xRYAcAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UW2-bMBT-KxZtpWYLaYGQtjRKSkjWl2mTuj21tJELDlgjBhlHXVb1v882DsTQWx-i2ud8Fx-dj2cjymNkeIZpmiGJcrLCiRcSAFiK1sgDq5yikoVElkOSUFik4PuN6IBR9BuzjDeFxg1K0F8PPBxPxwXNWR7l2SRlrCinXsj_TuRPb8rLcb6GmEzuoPnPN29PzYuBef9VlAfq6v7Z7r_0BBFk6UQCB19608PQUKJzVEZUiF4jgihkKAZPmKWACg8my801olwjvrIG1uBUwATw6Aj84C8txf8lg5RdPYMyhYV4oxlhGoGXS1FbYfJGBZYlogznZGkdh8bD-JFOxngyQwkmpXQwPsGT0Oh5nle3SmCGGfeZSZgYStWjbrUOm3eUivhnIQhg1rC-hnA4wpMDPuk2RSmkyyjjbqS2T7Ygy58QjWCJhIq42BSFfhHjBDNxGABzZ4UgkFOw5rvQuBHkpiTXDA2VkCjDiN-9a8v-lC1uwf60AZdTfjQNp21Sqdwimn8o1OyBcH-ooAsSv7cFagV_bR5lhKo1VAdA4BrFywgWbEPR0gJ3oXFggV2QQGcZ7gV6b6_0o60fHXFEJK48vKFpS00bVOmsFfYXSGcddhrsz-g4UscBItsfvsvtaOhv4fNcxMlepAH_Su3HtB1bWa-npmdTq9l6KrWao-dP1vbn1Emehh7qYWmj7U5ANLSrb3ob7XT2vDURu73Ass4_eXsbyrZZNVL1xZQ3mCSSWrDO0aqh4OAs8w78xdw9t_olo_kf5B1cBEEwqszWEOVaAQJ3YfluDTgLZs7Q1gFN7HYi7nzkn9WY0Wg2G_mN82uab4pX3codNNUO7gycL0bBRU02DPxv7mlD5hdFtlWUgeCpZlLZaeW138pSv73zmv6l8fIfgadJ6nUHAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -316,7 +316,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -324,12 +324,12 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_class_3("Any character<br><i>Zero or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -347,7 +347,7 @@ graph LR
 
   subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
-    literal_6
+    char_class_3
   end
 
   %% Edges
@@ -359,8 +359,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_class_3;
+  char_class_3 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -390,7 +390,7 @@ regex-to-mermaid 'foo|bar' --theme none
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXW_aMBT9K1dZK5VuDsUBpKUotNOqvUyr1O2pDUWu4yaWgh05Ru2G-O-zTQoxGR08IO7Huefk5h5WAZUZC-IgV6Qq4PtdKgAIpb-4LlkMaXDHcvYaw-PZdFIpqSWVZVJoXdXTODWfvvvqTU05kwvCRfJA0J9rdH-BPodo9tGWwyY1W-FP654dRHSROGB43puepEFD-pXVVFnSb0wwRTTL4IXrApTVgLREC6YMR3Y1CC_CoYVZ4Okp_DDPUNvftSZKX62gLkhl5D8jyhWF9aWtPXNxoELqminNpZgPztLgcfKkkglPvrCci9opmPR5kga9OI63rQ5Ycm10lg5ml7LpabJeBzYddTP4trIDSLmb-i9EZBBxv99toAVRc1oaJY73WvyGUr4wRUnNLINNLKvKT2Q859oGIaA3GYKBVLCQiu2U2OHIDffEDBsiWybU5N6VhY-SZSTgowWMzMj-4WWN9_U1BPdMyS5He8Lu3VvVJw3uRmTvvfnm7H4un5xtNqfXBCDIgmVzSiq9VGw-gIc0-DCAN_NA5wBmFt26JT_EfhjZkIlso-EAJ3acGDaO3DK0D8efOuw04GN4IscTgfXzf59r5Idjj8As8ybLWx4GhFDbl_s-dfXtynwzejXs29CrRb7hXK29pI7dPPTQd8g-Gndc4aFH_nl7tbF_23u7wPt36-rm3-0yWP8FvRfVdc8FAAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXW_aMBT9K1dZK5VuDsWBh6UotNOqvUyb1O6pDUWu4yaWgh05Rt2G-O-zTQpxshZ4QNyPc8_x1T2sAyozFsRBrkhVwPfbVAAQSn9xXbIY0uCW5ex3DI9ns2mlpJZUlkmhdVXP4tR8hu5rMDPlTC4JF8kDQX-v0f0F-hyi-UdbDpvUfI0_bQZ2ENFF4oDh-WB2kgYN6VdWU2VJvzHBFNEsgxeuC1BWA9ISLZkyHNnVKByFFxZmgaen8MO8oba_a02UvlpDXZDKyH9GlCsKm0tbe-bijQqpa6Y0l2IxOkuDx-mTSqY8-cJyLmqnYDrkSRoM4jjetTpgybXRWTqYXcq2p8l6Hdh01M3gn5UdQMr91P8hIoOI3YKH_SZaELWgpVHjuK_FHyjlC1OU1Myy2MSqqvxExnOubRACepUiGEgFS6nYXo0djtxwT9C4IbJlQk3uXVn4KFlGAj5awMSMPLSNqCuyYblnSh4k2t-BVX_SQG9E9t4VNCd4t3pyFtqeYROAIEuWLSip9EqxxQge0uDDCF6NBL1jmFt06678EPthZEMmsq2GNzix48SwdeeOoX1A_tRxrwEfwxM5ngistw--a9Lj8N9i9nmT5S1LA0KobdOubV19tzXfm14N-670apHvP1dr76nnPA899s3SReOeQTz0xL_0Ljrq3XlnI7h7wK5u_vIug80_CIAM--QFAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -402,7 +402,7 @@ regex-to-mermaid 'foo|bar' --theme none
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -410,12 +410,12 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_class_3("Any character<br><i>Zero or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -433,7 +433,7 @@ graph LR
 
   subgraph named_capture_3 ["#3 path <i>Optional</i>"]
     literal_5
-    literal_6
+    char_class_3
   end
 
   %% Edges
@@ -445,8 +445,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_class_3;
+  char_class_3 --- assertion_2;
   assertion_2 --- fin;
 ```
 

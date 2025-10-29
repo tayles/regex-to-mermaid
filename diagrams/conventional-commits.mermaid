@@ -1,11 +1,11 @@
 graph LR
   accTitle: "Regex: \\A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?P<scope>[\\w-]+)\\))?(?P<breaking>!)?:\\s(?P<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?P<BLANK_LINE>\\n^$\\n)(?P<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?P<BLANK_LINE2>\\n^$\\n)(?:(?P<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?P<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  literal_1("A"):::literal;
+  literal_1("\A"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
@@ -22,13 +22,14 @@ graph LR
   literal_10("build"):::literal;
   literal_11("perf"):::literal;
   literal_12("revert"):::literal;
-  literal_13("("):::literal;
-  char_class_1("\w -<br><i>One or more</i>"):::char-class;
-  literal_14(")"):::literal;
+  literal_13("\("):::literal;
+  char_class_1("\w<br>-<br><i>One or more</i>"):::char-class;
+  literal_14("\)"):::literal;
   literal_15("!"):::literal;
-  literal_16(":\s"):::literal;
+  literal_16(":"):::literal;
+  char_class_2("Any whitespace"):::char-class;
   assertion_2("\b<br><i>Word boundary</i>"):::assertion;
-  char_class_2("\w # < > Space . / \t \ -<br><i>3 or more</i>"):::char-class;
+  char_class_3("\w<br># < > Space . / \t \\ -<br><i>3 or more</i>"):::char-class;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   assertion_3("\b<br><i>Word boundary</i>"):::assertion;
@@ -39,20 +40,23 @@ graph LR
   assertion_6("$<br><i>Ends with</i>"):::assertion;
   literal_19("Newline"):::literal;
   assertion_7("^<br><i>Begins with</i>"):::assertion;
-  literal_20("Any character<br><i>3 or more</i>"):::literal;
+  char_class_4("Any character<br><i>3 or more</i>"):::char-class;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   assertion_8("\b<br><i>Word boundary</i>"):::assertion;
-  literal_21("Any character"):::literal;
+  literal_20("Any character"):::literal;
   assertion_9("$<br><i>Ends with</i>"):::assertion;
-  literal_22("Newline<br><i>Optional</i>"):::literal;
-  literal_23("Newline"):::literal;
+  literal_21("Newline<br><i>Optional</i>"):::literal;
+  literal_22("Newline"):::literal;
   assertion_10("^<br><i>Begins with</i>"):::assertion;
   assertion_11("$<br><i>Ends with</i>"):::assertion;
-  literal_24("Newline"):::literal;
+  literal_23("Newline"):::literal;
   assertion_12("^<br><i>Begins with</i>"):::assertion;
-  literal_25("BREAKING\sCHANGE:\s"):::literal;
-  char_class_3("\s \w<br><i>One or more</i>"):::char-class;
+  literal_24("BREAKING"):::literal;
+  char_class_5("Any whitespace"):::char-class;
+  literal_25("CHANGE:"):::literal;
+  char_class_6("Any whitespace"):::char-class;
+  char_class_7("\s<br>\w<br><i>One or more</i>"):::char-class;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
   assertion_13("\b<br><i>Word boundary</i>"):::assertion;
@@ -60,15 +64,16 @@ graph LR
   assertion_14("$<br><i>Ends with</i>"):::assertion;
   literal_27("Newline"):::literal;
   assertion_15("^<br><i>Begins with</i>"):::assertion;
-  literal_28("Any word character<br><i>One or more</i>"):::literal;
-  literal_29(":\s"):::literal;
-  char_class_4("\w # -<br><i>One or more</i>"):::char-class;
+  char_class_8("Any word character<br><i>One or more</i>"):::char-class;
+  literal_28(":"):::literal;
+  char_class_9("Any whitespace"):::char-class;
+  char_class_10("\w<br># -<br><i>One or more</i>"):::char-class;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
   assertion_16("\b<br><i>Word boundary</i>"):::assertion;
-  literal_30("Any character"):::literal;
-  literal_31("Newline<br><i>Optional</i>"):::literal;
-  literal_32("Z"):::literal;
+  literal_29("Any character"):::literal;
+  literal_30("Newline<br><i>Optional</i>"):::literal;
+  literal_31("\Z"):::literal;
 
   %% Subgraphs
   subgraph standard_1 ["#1 Group 1"]
@@ -111,7 +116,7 @@ graph LR
   subgraph standard_4 ["#4 Group 4"]
     non_capturing_4
     assertion_2
-    char_class_2
+    char_class_3
   end
 
   subgraph non_capturing_2 ["Non-capturing"]
@@ -123,6 +128,7 @@ graph LR
     standard_4
     assertion_1
     literal_16
+    char_class_2
     assertion_4
   end
 
@@ -137,15 +143,15 @@ graph LR
     disjunction_begin_4
     disjunction_end_4
     assertion_8
-    literal_21
+    literal_20
   end
 
   subgraph non_capturing_7 ["Non-capturing <i>1 to 3</i>"]
     non_capturing_8
     assertion_7
-    literal_20
+    char_class_4
     assertion_9
-    literal_22
+    literal_21
   end
 
   subgraph standard_6 ["#6 Group 6"]
@@ -161,10 +167,10 @@ graph LR
   end
 
   subgraph standard_7 ["#7 Group 7"]
-    literal_23
+    literal_22
     assertion_10
     assertion_11
-    literal_24
+    literal_23
   end
 
   subgraph non_capturing_10 ["Non-capturing"]
@@ -177,8 +183,11 @@ graph LR
   subgraph standard_8 ["#8 Group 8"]
     non_capturing_10
     assertion_12
+    literal_24
+    char_class_5
     literal_25
-    char_class_3
+    char_class_6
+    char_class_7
     assertion_14
   end
 
@@ -192,15 +201,16 @@ graph LR
     disjunction_begin_6
     disjunction_end_6
     assertion_16
-    literal_30
+    literal_29
   end
 
   subgraph standard_9 ["#9 Group 9"]
     non_capturing_12
     assertion_15
+    char_class_8
     literal_28
-    literal_29
-    char_class_4
+    char_class_9
+    char_class_10
   end
 
   subgraph non_capturing_11 ["Non-capturing"]
@@ -246,7 +256,7 @@ graph LR
     non_capturing_5
     disjunction_begin_1
     disjunction_end_1
-    literal_31
+    literal_30
   end
 
   %% Edges
@@ -281,9 +291,10 @@ graph LR
   char_class_1 --- literal_14;
   literal_14 --- literal_15;
   literal_15 --- literal_16;
-  literal_16 --- assertion_2;
-  assertion_2 --- char_class_2;
-  char_class_2 --- disjunction_begin_3;
+  literal_16 --- char_class_2;
+  char_class_2 --- assertion_2;
+  assertion_2 --- char_class_3;
+  char_class_3 --- disjunction_begin_3;
   disjunction_begin_3 --- assertion_3;
   assertion_3 --- disjunction_end_3;
   disjunction_begin_3 --- literal_17;
@@ -294,22 +305,25 @@ graph LR
   assertion_5 --- assertion_6;
   assertion_6 --- literal_19;
   literal_19 --- assertion_7;
-  assertion_7 --- literal_20;
-  literal_20 --- disjunction_begin_4;
+  assertion_7 --- char_class_4;
+  char_class_4 --- disjunction_begin_4;
   disjunction_begin_4 --- assertion_8;
   assertion_8 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_21;
-  literal_21 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_20;
+  literal_20 --- disjunction_end_4;
   disjunction_end_4 --- assertion_9;
-  assertion_9 --- literal_22;
-  literal_22 --- literal_23;
-  literal_23 --- assertion_10;
+  assertion_9 --- literal_21;
+  literal_21 --- literal_22;
+  literal_22 --- assertion_10;
   assertion_10 --- assertion_11;
-  assertion_11 --- literal_24;
-  literal_24 --- assertion_12;
-  assertion_12 --- literal_25;
-  literal_25 --- char_class_3;
-  char_class_3 --- disjunction_begin_5;
+  assertion_11 --- literal_23;
+  literal_23 --- assertion_12;
+  assertion_12 --- literal_24;
+  literal_24 --- char_class_5;
+  char_class_5 --- literal_25;
+  literal_25 --- char_class_6;
+  char_class_6 --- char_class_7;
+  char_class_7 --- disjunction_begin_5;
   disjunction_begin_5 --- assertion_13;
   assertion_13 --- disjunction_end_5;
   disjunction_begin_5 --- literal_26;
@@ -317,18 +331,20 @@ graph LR
   disjunction_end_5 --- assertion_14;
   assertion_14 --- literal_27;
   literal_27 --- assertion_15;
-  assertion_15 --- literal_28;
-  literal_28 --- literal_29;
-  literal_29 --- char_class_4;
-  char_class_4 --- disjunction_begin_6;
+  assertion_15 --- char_class_8;
+  char_class_8 --- literal_28;
+  literal_28 --- char_class_9;
+  char_class_9 --- char_class_10;
+  char_class_10 --- disjunction_begin_6;
   disjunction_begin_6 --- assertion_16;
   assertion_16 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_30;
-  literal_30 --- disjunction_end_6;
-  disjunction_end_6 --- literal_31;
-  literal_31 --- disjunction_end_1;
-  disjunction_end_1 --- literal_32;
-  literal_32 --- fin;
+  disjunction_begin_6 --- literal_29;
+  literal_29 --- disjunction_end_6;
+  disjunction_end_6 --- literal_30;
+  literal_30 --- disjunction_end_1;
+  disjunction_begin_1 --- disjunction_end_1;
+  disjunction_end_1 --- literal_31;
+  literal_31 --- fin;
 
   %% Styles
   %% Node Styling

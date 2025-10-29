@@ -1,1225 +1,459 @@
 {
-  "type": "RegExp",
-  "body": {
-    "type": "Alternative",
-    "expressions": [
+  "type": "RegExpLiteral",
+  "start": 0,
+  "end": 77,
+  "raw": "/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/",
+  "pattern": {
+    "type": "Pattern",
+    "start": 1,
+    "end": 76,
+    "raw": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
+    "alternatives": [
       {
-        "type": "Repetition",
-        "expression": {
-          "type": "CharacterClass",
-          "expressions": [
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "0",
-                "kind": "simple",
-                "symbol": "0",
-                "codePoint": 48,
-                "loc": {
-                  "source": "0",
-                  "start": {
-                    "line": 1,
-                    "column": 2,
-                    "offset": 2
+        "type": "Alternative",
+        "start": 1,
+        "end": 76,
+        "raw": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
+        "elements": [
+          {
+            "type": "Quantifier",
+            "start": 1,
+            "end": 15,
+            "raw": "[0-9a-fA-F]{8}",
+            "min": 8,
+            "max": 8,
+            "greedy": true,
+            "element": {
+              "type": "CharacterClass",
+              "start": 1,
+              "end": 12,
+              "raw": "[0-9a-fA-F]",
+              "unicodeSets": false,
+              "negate": false,
+              "elements": [
+                {
+                  "type": "CharacterClassRange",
+                  "start": 2,
+                  "end": 5,
+                  "raw": "0-9",
+                  "min": {
+                    "type": "Character",
+                    "start": 2,
+                    "end": 3,
+                    "raw": "0",
+                    "value": 48
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 3,
-                    "offset": 3
+                  "max": {
+                    "type": "Character",
+                    "start": 4,
+                    "end": 5,
+                    "raw": "9",
+                    "value": 57
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "9",
-                "kind": "simple",
-                "symbol": "9",
-                "codePoint": 57,
-                "loc": {
-                  "source": "9",
-                  "start": {
-                    "line": 1,
-                    "column": 4,
-                    "offset": 4
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 5,
-                    "offset": 5
-                  }
-                }
-              },
-              "loc": {
-                "source": "0-9",
-                "start": {
-                  "line": 1,
-                  "column": 2,
-                  "offset": 2
                 },
-                "end": {
-                  "line": 1,
-                  "column": 5,
-                  "offset": 5
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "a",
-                "kind": "simple",
-                "symbol": "a",
-                "codePoint": 97,
-                "loc": {
-                  "source": "a",
-                  "start": {
-                    "line": 1,
-                    "column": 5,
-                    "offset": 5
+                {
+                  "type": "CharacterClassRange",
+                  "start": 5,
+                  "end": 8,
+                  "raw": "a-f",
+                  "min": {
+                    "type": "Character",
+                    "start": 5,
+                    "end": 6,
+                    "raw": "a",
+                    "value": 97
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 6,
-                    "offset": 6
+                  "max": {
+                    "type": "Character",
+                    "start": 7,
+                    "end": 8,
+                    "raw": "f",
+                    "value": 102
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "f",
-                "kind": "simple",
-                "symbol": "f",
-                "codePoint": 102,
-                "loc": {
-                  "source": "f",
-                  "start": {
-                    "line": 1,
-                    "column": 7,
-                    "offset": 7
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 8,
-                    "offset": 8
-                  }
-                }
-              },
-              "loc": {
-                "source": "a-f",
-                "start": {
-                  "line": 1,
-                  "column": 5,
-                  "offset": 5
                 },
-                "end": {
-                  "line": 1,
-                  "column": 8,
-                  "offset": 8
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "A",
-                "kind": "simple",
-                "symbol": "A",
-                "codePoint": 65,
-                "loc": {
-                  "source": "A",
-                  "start": {
-                    "line": 1,
-                    "column": 8,
-                    "offset": 8
+                {
+                  "type": "CharacterClassRange",
+                  "start": 8,
+                  "end": 11,
+                  "raw": "A-F",
+                  "min": {
+                    "type": "Character",
+                    "start": 8,
+                    "end": 9,
+                    "raw": "A",
+                    "value": 65
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 9,
-                    "offset": 9
+                  "max": {
+                    "type": "Character",
+                    "start": 10,
+                    "end": 11,
+                    "raw": "F",
+                    "value": 70
                   }
                 }
-              },
-              "to": {
-                "type": "Char",
-                "value": "F",
-                "kind": "simple",
-                "symbol": "F",
-                "codePoint": 70,
-                "loc": {
-                  "source": "F",
-                  "start": {
-                    "line": 1,
-                    "column": 10,
-                    "offset": 10
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 11,
-                    "offset": 11
-                  }
-                }
-              },
-              "loc": {
-                "source": "A-F",
-                "start": {
-                  "line": 1,
-                  "column": 8,
-                  "offset": 8
-                },
-                "end": {
-                  "line": 1,
-                  "column": 11,
-                  "offset": 11
-                }
-              }
+              ]
             }
-          ],
-          "loc": {
-            "source": "[0-9a-fA-F]",
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 1
-            },
-            "end": {
-              "line": 1,
-              "column": 12,
-              "offset": 12
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 8,
-          "to": 8,
-          "greedy": true,
-          "loc": {
-            "source": "{8}",
-            "start": {
-              "line": 1,
-              "column": 12,
-              "offset": 12
-            },
-            "end": {
-              "line": 1,
-              "column": 15,
-              "offset": 15
-            }
-          }
-        },
-        "loc": {
-          "source": "[0-9a-fA-F]{8}",
-          "start": {
-            "line": 1,
-            "column": 1,
-            "offset": 1
           },
-          "end": {
-            "line": 1,
-            "column": 15,
-            "offset": 15
-          }
-        }
-      },
-      {
-        "type": "Char",
-        "value": "-",
-        "kind": "simple",
-        "symbol": "-",
-        "codePoint": 45,
-        "loc": {
-          "source": "-",
-          "start": {
-            "line": 1,
-            "column": 15,
-            "offset": 15
+          {
+            "type": "Character",
+            "start": 15,
+            "end": 16,
+            "raw": "-",
+            "value": 45
           },
-          "end": {
-            "line": 1,
-            "column": 16,
-            "offset": 16
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "CharacterClass",
-          "expressions": [
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "0",
-                "kind": "simple",
-                "symbol": "0",
-                "codePoint": 48,
-                "loc": {
-                  "source": "0",
-                  "start": {
-                    "line": 1,
-                    "column": 17,
-                    "offset": 17
+          {
+            "type": "Quantifier",
+            "start": 16,
+            "end": 30,
+            "raw": "[0-9a-fA-F]{4}",
+            "min": 4,
+            "max": 4,
+            "greedy": true,
+            "element": {
+              "type": "CharacterClass",
+              "start": 16,
+              "end": 27,
+              "raw": "[0-9a-fA-F]",
+              "unicodeSets": false,
+              "negate": false,
+              "elements": [
+                {
+                  "type": "CharacterClassRange",
+                  "start": 17,
+                  "end": 20,
+                  "raw": "0-9",
+                  "min": {
+                    "type": "Character",
+                    "start": 17,
+                    "end": 18,
+                    "raw": "0",
+                    "value": 48
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 18,
-                    "offset": 18
+                  "max": {
+                    "type": "Character",
+                    "start": 19,
+                    "end": 20,
+                    "raw": "9",
+                    "value": 57
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "9",
-                "kind": "simple",
-                "symbol": "9",
-                "codePoint": 57,
-                "loc": {
-                  "source": "9",
-                  "start": {
-                    "line": 1,
-                    "column": 19,
-                    "offset": 19
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 20,
-                    "offset": 20
-                  }
-                }
-              },
-              "loc": {
-                "source": "0-9",
-                "start": {
-                  "line": 1,
-                  "column": 17,
-                  "offset": 17
                 },
-                "end": {
-                  "line": 1,
-                  "column": 20,
-                  "offset": 20
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "a",
-                "kind": "simple",
-                "symbol": "a",
-                "codePoint": 97,
-                "loc": {
-                  "source": "a",
-                  "start": {
-                    "line": 1,
-                    "column": 20,
-                    "offset": 20
+                {
+                  "type": "CharacterClassRange",
+                  "start": 20,
+                  "end": 23,
+                  "raw": "a-f",
+                  "min": {
+                    "type": "Character",
+                    "start": 20,
+                    "end": 21,
+                    "raw": "a",
+                    "value": 97
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 21,
-                    "offset": 21
+                  "max": {
+                    "type": "Character",
+                    "start": 22,
+                    "end": 23,
+                    "raw": "f",
+                    "value": 102
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "f",
-                "kind": "simple",
-                "symbol": "f",
-                "codePoint": 102,
-                "loc": {
-                  "source": "f",
-                  "start": {
-                    "line": 1,
-                    "column": 22,
-                    "offset": 22
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 23,
-                    "offset": 23
-                  }
-                }
-              },
-              "loc": {
-                "source": "a-f",
-                "start": {
-                  "line": 1,
-                  "column": 20,
-                  "offset": 20
                 },
-                "end": {
-                  "line": 1,
-                  "column": 23,
-                  "offset": 23
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "A",
-                "kind": "simple",
-                "symbol": "A",
-                "codePoint": 65,
-                "loc": {
-                  "source": "A",
-                  "start": {
-                    "line": 1,
-                    "column": 23,
-                    "offset": 23
+                {
+                  "type": "CharacterClassRange",
+                  "start": 23,
+                  "end": 26,
+                  "raw": "A-F",
+                  "min": {
+                    "type": "Character",
+                    "start": 23,
+                    "end": 24,
+                    "raw": "A",
+                    "value": 65
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 24,
-                    "offset": 24
+                  "max": {
+                    "type": "Character",
+                    "start": 25,
+                    "end": 26,
+                    "raw": "F",
+                    "value": 70
                   }
                 }
-              },
-              "to": {
-                "type": "Char",
-                "value": "F",
-                "kind": "simple",
-                "symbol": "F",
-                "codePoint": 70,
-                "loc": {
-                  "source": "F",
-                  "start": {
-                    "line": 1,
-                    "column": 25,
-                    "offset": 25
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 26,
-                    "offset": 26
-                  }
-                }
-              },
-              "loc": {
-                "source": "A-F",
-                "start": {
-                  "line": 1,
-                  "column": 23,
-                  "offset": 23
-                },
-                "end": {
-                  "line": 1,
-                  "column": 26,
-                  "offset": 26
-                }
-              }
+              ]
             }
-          ],
-          "loc": {
-            "source": "[0-9a-fA-F]",
-            "start": {
-              "line": 1,
-              "column": 16,
-              "offset": 16
-            },
-            "end": {
-              "line": 1,
-              "column": 27,
-              "offset": 27
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 4,
-          "to": 4,
-          "greedy": true,
-          "loc": {
-            "source": "{4}",
-            "start": {
-              "line": 1,
-              "column": 27,
-              "offset": 27
-            },
-            "end": {
-              "line": 1,
-              "column": 30,
-              "offset": 30
-            }
-          }
-        },
-        "loc": {
-          "source": "[0-9a-fA-F]{4}",
-          "start": {
-            "line": 1,
-            "column": 16,
-            "offset": 16
           },
-          "end": {
-            "line": 1,
-            "column": 30,
-            "offset": 30
-          }
-        }
-      },
-      {
-        "type": "Char",
-        "value": "-",
-        "kind": "simple",
-        "symbol": "-",
-        "codePoint": 45,
-        "loc": {
-          "source": "-",
-          "start": {
-            "line": 1,
-            "column": 30,
-            "offset": 30
+          {
+            "type": "Character",
+            "start": 30,
+            "end": 31,
+            "raw": "-",
+            "value": 45
           },
-          "end": {
-            "line": 1,
-            "column": 31,
-            "offset": 31
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "CharacterClass",
-          "expressions": [
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "0",
-                "kind": "simple",
-                "symbol": "0",
-                "codePoint": 48,
-                "loc": {
-                  "source": "0",
-                  "start": {
-                    "line": 1,
-                    "column": 32,
-                    "offset": 32
+          {
+            "type": "Quantifier",
+            "start": 31,
+            "end": 45,
+            "raw": "[0-9a-fA-F]{4}",
+            "min": 4,
+            "max": 4,
+            "greedy": true,
+            "element": {
+              "type": "CharacterClass",
+              "start": 31,
+              "end": 42,
+              "raw": "[0-9a-fA-F]",
+              "unicodeSets": false,
+              "negate": false,
+              "elements": [
+                {
+                  "type": "CharacterClassRange",
+                  "start": 32,
+                  "end": 35,
+                  "raw": "0-9",
+                  "min": {
+                    "type": "Character",
+                    "start": 32,
+                    "end": 33,
+                    "raw": "0",
+                    "value": 48
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 33,
-                    "offset": 33
+                  "max": {
+                    "type": "Character",
+                    "start": 34,
+                    "end": 35,
+                    "raw": "9",
+                    "value": 57
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "9",
-                "kind": "simple",
-                "symbol": "9",
-                "codePoint": 57,
-                "loc": {
-                  "source": "9",
-                  "start": {
-                    "line": 1,
-                    "column": 34,
-                    "offset": 34
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 35,
-                    "offset": 35
-                  }
-                }
-              },
-              "loc": {
-                "source": "0-9",
-                "start": {
-                  "line": 1,
-                  "column": 32,
-                  "offset": 32
                 },
-                "end": {
-                  "line": 1,
-                  "column": 35,
-                  "offset": 35
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "a",
-                "kind": "simple",
-                "symbol": "a",
-                "codePoint": 97,
-                "loc": {
-                  "source": "a",
-                  "start": {
-                    "line": 1,
-                    "column": 35,
-                    "offset": 35
+                {
+                  "type": "CharacterClassRange",
+                  "start": 35,
+                  "end": 38,
+                  "raw": "a-f",
+                  "min": {
+                    "type": "Character",
+                    "start": 35,
+                    "end": 36,
+                    "raw": "a",
+                    "value": 97
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 36,
-                    "offset": 36
+                  "max": {
+                    "type": "Character",
+                    "start": 37,
+                    "end": 38,
+                    "raw": "f",
+                    "value": 102
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "f",
-                "kind": "simple",
-                "symbol": "f",
-                "codePoint": 102,
-                "loc": {
-                  "source": "f",
-                  "start": {
-                    "line": 1,
-                    "column": 37,
-                    "offset": 37
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 38,
-                    "offset": 38
-                  }
-                }
-              },
-              "loc": {
-                "source": "a-f",
-                "start": {
-                  "line": 1,
-                  "column": 35,
-                  "offset": 35
                 },
-                "end": {
-                  "line": 1,
-                  "column": 38,
-                  "offset": 38
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "A",
-                "kind": "simple",
-                "symbol": "A",
-                "codePoint": 65,
-                "loc": {
-                  "source": "A",
-                  "start": {
-                    "line": 1,
-                    "column": 38,
-                    "offset": 38
+                {
+                  "type": "CharacterClassRange",
+                  "start": 38,
+                  "end": 41,
+                  "raw": "A-F",
+                  "min": {
+                    "type": "Character",
+                    "start": 38,
+                    "end": 39,
+                    "raw": "A",
+                    "value": 65
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 39,
-                    "offset": 39
+                  "max": {
+                    "type": "Character",
+                    "start": 40,
+                    "end": 41,
+                    "raw": "F",
+                    "value": 70
                   }
                 }
-              },
-              "to": {
-                "type": "Char",
-                "value": "F",
-                "kind": "simple",
-                "symbol": "F",
-                "codePoint": 70,
-                "loc": {
-                  "source": "F",
-                  "start": {
-                    "line": 1,
-                    "column": 40,
-                    "offset": 40
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 41,
-                    "offset": 41
-                  }
-                }
-              },
-              "loc": {
-                "source": "A-F",
-                "start": {
-                  "line": 1,
-                  "column": 38,
-                  "offset": 38
-                },
-                "end": {
-                  "line": 1,
-                  "column": 41,
-                  "offset": 41
-                }
-              }
+              ]
             }
-          ],
-          "loc": {
-            "source": "[0-9a-fA-F]",
-            "start": {
-              "line": 1,
-              "column": 31,
-              "offset": 31
-            },
-            "end": {
-              "line": 1,
-              "column": 42,
-              "offset": 42
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 4,
-          "to": 4,
-          "greedy": true,
-          "loc": {
-            "source": "{4}",
-            "start": {
-              "line": 1,
-              "column": 42,
-              "offset": 42
-            },
-            "end": {
-              "line": 1,
-              "column": 45,
-              "offset": 45
-            }
-          }
-        },
-        "loc": {
-          "source": "[0-9a-fA-F]{4}",
-          "start": {
-            "line": 1,
-            "column": 31,
-            "offset": 31
           },
-          "end": {
-            "line": 1,
-            "column": 45,
-            "offset": 45
-          }
-        }
-      },
-      {
-        "type": "Char",
-        "value": "-",
-        "kind": "simple",
-        "symbol": "-",
-        "codePoint": 45,
-        "loc": {
-          "source": "-",
-          "start": {
-            "line": 1,
-            "column": 45,
-            "offset": 45
+          {
+            "type": "Character",
+            "start": 45,
+            "end": 46,
+            "raw": "-",
+            "value": 45
           },
-          "end": {
-            "line": 1,
-            "column": 46,
-            "offset": 46
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "CharacterClass",
-          "expressions": [
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "0",
-                "kind": "simple",
-                "symbol": "0",
-                "codePoint": 48,
-                "loc": {
-                  "source": "0",
-                  "start": {
-                    "line": 1,
-                    "column": 47,
-                    "offset": 47
+          {
+            "type": "Quantifier",
+            "start": 46,
+            "end": 60,
+            "raw": "[0-9a-fA-F]{4}",
+            "min": 4,
+            "max": 4,
+            "greedy": true,
+            "element": {
+              "type": "CharacterClass",
+              "start": 46,
+              "end": 57,
+              "raw": "[0-9a-fA-F]",
+              "unicodeSets": false,
+              "negate": false,
+              "elements": [
+                {
+                  "type": "CharacterClassRange",
+                  "start": 47,
+                  "end": 50,
+                  "raw": "0-9",
+                  "min": {
+                    "type": "Character",
+                    "start": 47,
+                    "end": 48,
+                    "raw": "0",
+                    "value": 48
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 48,
-                    "offset": 48
+                  "max": {
+                    "type": "Character",
+                    "start": 49,
+                    "end": 50,
+                    "raw": "9",
+                    "value": 57
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "9",
-                "kind": "simple",
-                "symbol": "9",
-                "codePoint": 57,
-                "loc": {
-                  "source": "9",
-                  "start": {
-                    "line": 1,
-                    "column": 49,
-                    "offset": 49
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 50,
-                    "offset": 50
-                  }
-                }
-              },
-              "loc": {
-                "source": "0-9",
-                "start": {
-                  "line": 1,
-                  "column": 47,
-                  "offset": 47
                 },
-                "end": {
-                  "line": 1,
-                  "column": 50,
-                  "offset": 50
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "a",
-                "kind": "simple",
-                "symbol": "a",
-                "codePoint": 97,
-                "loc": {
-                  "source": "a",
-                  "start": {
-                    "line": 1,
-                    "column": 50,
-                    "offset": 50
+                {
+                  "type": "CharacterClassRange",
+                  "start": 50,
+                  "end": 53,
+                  "raw": "a-f",
+                  "min": {
+                    "type": "Character",
+                    "start": 50,
+                    "end": 51,
+                    "raw": "a",
+                    "value": 97
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 51,
-                    "offset": 51
+                  "max": {
+                    "type": "Character",
+                    "start": 52,
+                    "end": 53,
+                    "raw": "f",
+                    "value": 102
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "f",
-                "kind": "simple",
-                "symbol": "f",
-                "codePoint": 102,
-                "loc": {
-                  "source": "f",
-                  "start": {
-                    "line": 1,
-                    "column": 52,
-                    "offset": 52
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 53,
-                    "offset": 53
-                  }
-                }
-              },
-              "loc": {
-                "source": "a-f",
-                "start": {
-                  "line": 1,
-                  "column": 50,
-                  "offset": 50
                 },
-                "end": {
-                  "line": 1,
-                  "column": 53,
-                  "offset": 53
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "A",
-                "kind": "simple",
-                "symbol": "A",
-                "codePoint": 65,
-                "loc": {
-                  "source": "A",
-                  "start": {
-                    "line": 1,
-                    "column": 53,
-                    "offset": 53
+                {
+                  "type": "CharacterClassRange",
+                  "start": 53,
+                  "end": 56,
+                  "raw": "A-F",
+                  "min": {
+                    "type": "Character",
+                    "start": 53,
+                    "end": 54,
+                    "raw": "A",
+                    "value": 65
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 54,
-                    "offset": 54
+                  "max": {
+                    "type": "Character",
+                    "start": 55,
+                    "end": 56,
+                    "raw": "F",
+                    "value": 70
                   }
                 }
-              },
-              "to": {
-                "type": "Char",
-                "value": "F",
-                "kind": "simple",
-                "symbol": "F",
-                "codePoint": 70,
-                "loc": {
-                  "source": "F",
-                  "start": {
-                    "line": 1,
-                    "column": 55,
-                    "offset": 55
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 56,
-                    "offset": 56
-                  }
-                }
-              },
-              "loc": {
-                "source": "A-F",
-                "start": {
-                  "line": 1,
-                  "column": 53,
-                  "offset": 53
-                },
-                "end": {
-                  "line": 1,
-                  "column": 56,
-                  "offset": 56
-                }
-              }
+              ]
             }
-          ],
-          "loc": {
-            "source": "[0-9a-fA-F]",
-            "start": {
-              "line": 1,
-              "column": 46,
-              "offset": 46
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 57
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 4,
-          "to": 4,
-          "greedy": true,
-          "loc": {
-            "source": "{4}",
-            "start": {
-              "line": 1,
-              "column": 57,
-              "offset": 57
-            },
-            "end": {
-              "line": 1,
-              "column": 60,
-              "offset": 60
-            }
-          }
-        },
-        "loc": {
-          "source": "[0-9a-fA-F]{4}",
-          "start": {
-            "line": 1,
-            "column": 46,
-            "offset": 46
           },
-          "end": {
-            "line": 1,
-            "column": 60,
-            "offset": 60
-          }
-        }
-      },
-      {
-        "type": "Char",
-        "value": "-",
-        "kind": "simple",
-        "symbol": "-",
-        "codePoint": 45,
-        "loc": {
-          "source": "-",
-          "start": {
-            "line": 1,
-            "column": 60,
-            "offset": 60
+          {
+            "type": "Character",
+            "start": 60,
+            "end": 61,
+            "raw": "-",
+            "value": 45
           },
-          "end": {
-            "line": 1,
-            "column": 61,
-            "offset": 61
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "CharacterClass",
-          "expressions": [
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "0",
-                "kind": "simple",
-                "symbol": "0",
-                "codePoint": 48,
-                "loc": {
-                  "source": "0",
-                  "start": {
-                    "line": 1,
-                    "column": 62,
-                    "offset": 62
+          {
+            "type": "Quantifier",
+            "start": 61,
+            "end": 76,
+            "raw": "[0-9a-fA-F]{12}",
+            "min": 12,
+            "max": 12,
+            "greedy": true,
+            "element": {
+              "type": "CharacterClass",
+              "start": 61,
+              "end": 72,
+              "raw": "[0-9a-fA-F]",
+              "unicodeSets": false,
+              "negate": false,
+              "elements": [
+                {
+                  "type": "CharacterClassRange",
+                  "start": 62,
+                  "end": 65,
+                  "raw": "0-9",
+                  "min": {
+                    "type": "Character",
+                    "start": 62,
+                    "end": 63,
+                    "raw": "0",
+                    "value": 48
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 63,
-                    "offset": 63
+                  "max": {
+                    "type": "Character",
+                    "start": 64,
+                    "end": 65,
+                    "raw": "9",
+                    "value": 57
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "9",
-                "kind": "simple",
-                "symbol": "9",
-                "codePoint": 57,
-                "loc": {
-                  "source": "9",
-                  "start": {
-                    "line": 1,
-                    "column": 64,
-                    "offset": 64
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 65,
-                    "offset": 65
-                  }
-                }
-              },
-              "loc": {
-                "source": "0-9",
-                "start": {
-                  "line": 1,
-                  "column": 62,
-                  "offset": 62
                 },
-                "end": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 65
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "a",
-                "kind": "simple",
-                "symbol": "a",
-                "codePoint": 97,
-                "loc": {
-                  "source": "a",
-                  "start": {
-                    "line": 1,
-                    "column": 65,
-                    "offset": 65
+                {
+                  "type": "CharacterClassRange",
+                  "start": 65,
+                  "end": 68,
+                  "raw": "a-f",
+                  "min": {
+                    "type": "Character",
+                    "start": 65,
+                    "end": 66,
+                    "raw": "a",
+                    "value": 97
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 66,
-                    "offset": 66
+                  "max": {
+                    "type": "Character",
+                    "start": 67,
+                    "end": 68,
+                    "raw": "f",
+                    "value": 102
                   }
-                }
-              },
-              "to": {
-                "type": "Char",
-                "value": "f",
-                "kind": "simple",
-                "symbol": "f",
-                "codePoint": 102,
-                "loc": {
-                  "source": "f",
-                  "start": {
-                    "line": 1,
-                    "column": 67,
-                    "offset": 67
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 68,
-                    "offset": 68
-                  }
-                }
-              },
-              "loc": {
-                "source": "a-f",
-                "start": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 65
                 },
-                "end": {
-                  "line": 1,
-                  "column": 68,
-                  "offset": 68
-                }
-              }
-            },
-            {
-              "type": "ClassRange",
-              "from": {
-                "type": "Char",
-                "value": "A",
-                "kind": "simple",
-                "symbol": "A",
-                "codePoint": 65,
-                "loc": {
-                  "source": "A",
-                  "start": {
-                    "line": 1,
-                    "column": 68,
-                    "offset": 68
+                {
+                  "type": "CharacterClassRange",
+                  "start": 68,
+                  "end": 71,
+                  "raw": "A-F",
+                  "min": {
+                    "type": "Character",
+                    "start": 68,
+                    "end": 69,
+                    "raw": "A",
+                    "value": 65
                   },
-                  "end": {
-                    "line": 1,
-                    "column": 69,
-                    "offset": 69
+                  "max": {
+                    "type": "Character",
+                    "start": 70,
+                    "end": 71,
+                    "raw": "F",
+                    "value": 70
                   }
                 }
-              },
-              "to": {
-                "type": "Char",
-                "value": "F",
-                "kind": "simple",
-                "symbol": "F",
-                "codePoint": 70,
-                "loc": {
-                  "source": "F",
-                  "start": {
-                    "line": 1,
-                    "column": 70,
-                    "offset": 70
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 71,
-                    "offset": 71
-                  }
-                }
-              },
-              "loc": {
-                "source": "A-F",
-                "start": {
-                  "line": 1,
-                  "column": 68,
-                  "offset": 68
-                },
-                "end": {
-                  "line": 1,
-                  "column": 71,
-                  "offset": 71
-                }
-              }
-            }
-          ],
-          "loc": {
-            "source": "[0-9a-fA-F]",
-            "start": {
-              "line": 1,
-              "column": 61,
-              "offset": 61
-            },
-            "end": {
-              "line": 1,
-              "column": 72,
-              "offset": 72
+              ]
             }
           }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 12,
-          "to": 12,
-          "greedy": true,
-          "loc": {
-            "source": "{12}",
-            "start": {
-              "line": 1,
-              "column": 72,
-              "offset": 72
-            },
-            "end": {
-              "line": 1,
-              "column": 76,
-              "offset": 76
-            }
-          }
-        },
-        "loc": {
-          "source": "[0-9a-fA-F]{12}",
-          "start": {
-            "line": 1,
-            "column": 61,
-            "offset": 61
-          },
-          "end": {
-            "line": 1,
-            "column": 76,
-            "offset": 76
-          }
-        }
+        ]
       }
-    ],
-    "loc": {
-      "source": "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
-      "start": {
-        "line": 1,
-        "column": 1,
-        "offset": 1
-      },
-      "end": {
-        "line": 1,
-        "column": 76,
-        "offset": 76
-      }
-    }
+    ]
   },
-  "flags": "",
-  "loc": {
-    "source": "/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/",
-    "start": {
-      "line": 1,
-      "column": 0,
-      "offset": 0
-    },
-    "end": {
-      "line": 1,
-      "column": 77,
-      "offset": 77
-    }
+  "flags": {
+    "type": "Flags",
+    "start": 77,
+    "end": 77,
+    "raw": "",
+    "global": false,
+    "ignoreCase": false,
+    "multiline": false,
+    "unicode": false,
+    "sticky": false,
+    "dotAll": false,
+    "hasIndices": false,
+    "unicodeSets": false
   }
 }

@@ -1,43 +1,43 @@
 graph LR
   accTitle: "Regex: ^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_1("+"):::literal;
-  literal_2("Any digit<br><i>1 to 2</i>"):::literal;
-  literal_3("Any whitespace"):::literal;
-  literal_4("(<br><i>Optional</i>"):::literal;
-  literal_5("Any digit<br><i>Exactly 3</i>"):::literal;
-  literal_6(")<br><i>Optional</i>"):::literal;
-  char_class_1("\s . -"):::char-class;
-  literal_7("Any digit<br><i>Exactly 3</i>"):::literal;
-  char_class_2("\s . -"):::char-class;
-  literal_8("Any digit<br><i>Exactly 4</i>"):::literal;
+  literal_1("\+"):::literal;
+  char_class_1("Any digit<br><i>1 to 2</i>"):::char-class;
+  char_class_2("Any whitespace"):::char-class;
+  literal_2("\(<br><i>Optional</i>"):::literal;
+  char_class_3("Any digit<br><i>Exactly 3</i>"):::char-class;
+  literal_3("\)<br><i>Optional</i>"):::literal;
+  char_class_4("\s<br>. -"):::char-class;
+  char_class_5("Any digit<br><i>Exactly 3</i>"):::char-class;
+  char_class_6("\s<br>. -"):::char-class;
+  char_class_7("Any digit<br><i>Exactly 4</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
   subgraph standard_1 ["#1 Group 1 <i>Optional</i>"]
     literal_1
-    literal_2
-    literal_3
+    char_class_1
+    char_class_2
   end
 
   %% Edges
   start --- assertion_1;
   assertion_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- char_class_1;
-  char_class_1 --- literal_7;
-  literal_7 --- char_class_2;
-  char_class_2 --- literal_8;
-  literal_8 --- assertion_2;
+  literal_1 --- char_class_1;
+  char_class_1 --- char_class_2;
+  char_class_2 --- literal_2;
+  literal_2 --- char_class_3;
+  char_class_3 --- literal_3;
+  literal_3 --- char_class_4;
+  char_class_4 --- char_class_5;
+  char_class_5 --- char_class_6;
+  char_class_6 --- char_class_7;
+  char_class_7 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles

@@ -1,968 +1,369 @@
 {
-  "type": "RegExp",
-  "body": {
-    "type": "Alternative",
-    "expressions": [
+  "type": "RegExpLiteral",
+  "start": 0,
+  "end": 82,
+  "raw": "/^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$/",
+  "pattern": {
+    "type": "Pattern",
+    "start": 1,
+    "end": 81,
+    "raw": "^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$",
+    "alternatives": [
       {
-        "type": "Assertion",
-        "kind": "^",
-        "loc": {
-          "source": "^",
-          "start": {
-            "line": 1,
-            "column": 1,
-            "offset": 1
+        "type": "Alternative",
+        "start": 1,
+        "end": 81,
+        "raw": "^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$",
+        "elements": [
+          {
+            "type": "Assertion",
+            "start": 1,
+            "end": 2,
+            "raw": "^",
+            "kind": "start"
           },
-          "end": {
-            "line": 1,
-            "column": 2,
-            "offset": 2
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Group",
-          "capturing": true,
-          "name": "protocol",
-          "nameRaw": "protocol",
-          "number": 1,
-          "expression": {
-            "type": "Alternative",
-            "expressions": [
-              {
-                "type": "Char",
-                "value": "h",
-                "kind": "simple",
-                "symbol": "h",
-                "codePoint": 104,
-                "loc": {
-                  "source": "h",
-                  "start": {
-                    "line": 1,
-                    "column": 14,
-                    "offset": 14
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 15,
-                    "offset": 15
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": "t",
-                "kind": "simple",
-                "symbol": "t",
-                "codePoint": 116,
-                "loc": {
-                  "source": "t",
-                  "start": {
-                    "line": 1,
-                    "column": 15,
-                    "offset": 15
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 16,
-                    "offset": 16
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": "t",
-                "kind": "simple",
-                "symbol": "t",
-                "codePoint": 116,
-                "loc": {
-                  "source": "t",
-                  "start": {
-                    "line": 1,
-                    "column": 16,
-                    "offset": 16
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 17,
-                    "offset": 17
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": "p",
-                "kind": "simple",
-                "symbol": "p",
-                "codePoint": 112,
-                "loc": {
-                  "source": "p",
-                  "start": {
-                    "line": 1,
-                    "column": 17,
-                    "offset": 17
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 18,
-                    "offset": 18
-                  }
-                }
-              },
-              {
-                "type": "Repetition",
-                "expression": {
-                  "type": "Char",
-                  "value": "s",
-                  "kind": "simple",
-                  "symbol": "s",
-                  "codePoint": 115,
-                  "loc": {
-                    "source": "s",
-                    "start": {
-                      "line": 1,
-                      "column": 18,
-                      "offset": 18
+          {
+            "type": "Quantifier",
+            "start": 2,
+            "end": 27,
+            "raw": "(?<protocol>https?:\\/\\/)?",
+            "min": 0,
+            "max": 1,
+            "greedy": true,
+            "element": {
+              "type": "CapturingGroup",
+              "start": 2,
+              "end": 26,
+              "raw": "(?<protocol>https?:\\/\\/)",
+              "name": "protocol",
+              "alternatives": [
+                {
+                  "type": "Alternative",
+                  "start": 14,
+                  "end": 25,
+                  "raw": "https?:\\/\\/",
+                  "elements": [
+                    {
+                      "type": "Character",
+                      "start": 14,
+                      "end": 15,
+                      "raw": "h",
+                      "value": 104
                     },
-                    "end": {
-                      "line": 1,
-                      "column": 19,
-                      "offset": 19
+                    {
+                      "type": "Character",
+                      "start": 15,
+                      "end": 16,
+                      "raw": "t",
+                      "value": 116
+                    },
+                    {
+                      "type": "Character",
+                      "start": 16,
+                      "end": 17,
+                      "raw": "t",
+                      "value": 116
+                    },
+                    {
+                      "type": "Character",
+                      "start": 17,
+                      "end": 18,
+                      "raw": "p",
+                      "value": 112
+                    },
+                    {
+                      "type": "Quantifier",
+                      "start": 18,
+                      "end": 20,
+                      "raw": "s?",
+                      "min": 0,
+                      "max": 1,
+                      "greedy": true,
+                      "element": {
+                        "type": "Character",
+                        "start": 18,
+                        "end": 19,
+                        "raw": "s",
+                        "value": 115
+                      }
+                    },
+                    {
+                      "type": "Character",
+                      "start": 20,
+                      "end": 21,
+                      "raw": ":",
+                      "value": 58
+                    },
+                    {
+                      "type": "Character",
+                      "start": 21,
+                      "end": 23,
+                      "raw": "\\/",
+                      "value": 47
+                    },
+                    {
+                      "type": "Character",
+                      "start": 23,
+                      "end": 25,
+                      "raw": "\\/",
+                      "value": 47
+                    }
+                  ]
+                }
+              ],
+              "references": []
+            }
+          },
+          {
+            "type": "CapturingGroup",
+            "start": 27,
+            "end": 66,
+            "raw": "(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})",
+            "name": "domain",
+            "alternatives": [
+              {
+                "type": "Alternative",
+                "start": 37,
+                "end": 65,
+                "raw": "[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+                "elements": [
+                  {
+                    "type": "Quantifier",
+                    "start": 37,
+                    "end": 51,
+                    "raw": "[a-zA-Z0-9.-]+",
+                    "min": 1,
+                    "max": null,
+                    "greedy": true,
+                    "element": {
+                      "type": "CharacterClass",
+                      "start": 37,
+                      "end": 50,
+                      "raw": "[a-zA-Z0-9.-]",
+                      "unicodeSets": false,
+                      "negate": false,
+                      "elements": [
+                        {
+                          "type": "CharacterClassRange",
+                          "start": 38,
+                          "end": 41,
+                          "raw": "a-z",
+                          "min": {
+                            "type": "Character",
+                            "start": 38,
+                            "end": 39,
+                            "raw": "a",
+                            "value": 97
+                          },
+                          "max": {
+                            "type": "Character",
+                            "start": 40,
+                            "end": 41,
+                            "raw": "z",
+                            "value": 122
+                          }
+                        },
+                        {
+                          "type": "CharacterClassRange",
+                          "start": 41,
+                          "end": 44,
+                          "raw": "A-Z",
+                          "min": {
+                            "type": "Character",
+                            "start": 41,
+                            "end": 42,
+                            "raw": "A",
+                            "value": 65
+                          },
+                          "max": {
+                            "type": "Character",
+                            "start": 43,
+                            "end": 44,
+                            "raw": "Z",
+                            "value": 90
+                          }
+                        },
+                        {
+                          "type": "CharacterClassRange",
+                          "start": 44,
+                          "end": 47,
+                          "raw": "0-9",
+                          "min": {
+                            "type": "Character",
+                            "start": 44,
+                            "end": 45,
+                            "raw": "0",
+                            "value": 48
+                          },
+                          "max": {
+                            "type": "Character",
+                            "start": 46,
+                            "end": 47,
+                            "raw": "9",
+                            "value": 57
+                          }
+                        },
+                        {
+                          "type": "Character",
+                          "start": 47,
+                          "end": 48,
+                          "raw": ".",
+                          "value": 46
+                        },
+                        {
+                          "type": "Character",
+                          "start": 48,
+                          "end": 49,
+                          "raw": "-",
+                          "value": 45
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Character",
+                    "start": 51,
+                    "end": 53,
+                    "raw": "\\.",
+                    "value": 46
+                  },
+                  {
+                    "type": "Quantifier",
+                    "start": 53,
+                    "end": 65,
+                    "raw": "[a-zA-Z]{2,}",
+                    "min": 2,
+                    "max": null,
+                    "greedy": true,
+                    "element": {
+                      "type": "CharacterClass",
+                      "start": 53,
+                      "end": 61,
+                      "raw": "[a-zA-Z]",
+                      "unicodeSets": false,
+                      "negate": false,
+                      "elements": [
+                        {
+                          "type": "CharacterClassRange",
+                          "start": 54,
+                          "end": 57,
+                          "raw": "a-z",
+                          "min": {
+                            "type": "Character",
+                            "start": 54,
+                            "end": 55,
+                            "raw": "a",
+                            "value": 97
+                          },
+                          "max": {
+                            "type": "Character",
+                            "start": 56,
+                            "end": 57,
+                            "raw": "z",
+                            "value": 122
+                          }
+                        },
+                        {
+                          "type": "CharacterClassRange",
+                          "start": 57,
+                          "end": 60,
+                          "raw": "A-Z",
+                          "min": {
+                            "type": "Character",
+                            "start": 57,
+                            "end": 58,
+                            "raw": "A",
+                            "value": 65
+                          },
+                          "max": {
+                            "type": "Character",
+                            "start": 59,
+                            "end": 60,
+                            "raw": "Z",
+                            "value": 90
+                          }
+                        }
+                      ]
                     }
                   }
-                },
-                "quantifier": {
-                  "type": "Quantifier",
-                  "kind": "?",
-                  "greedy": true,
-                  "loc": {
-                    "source": "?",
-                    "start": {
-                      "line": 1,
-                      "column": 19,
-                      "offset": 19
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 20,
-                      "offset": 20
-                    }
-                  }
-                },
-                "loc": {
-                  "source": "s?",
-                  "start": {
-                    "line": 1,
-                    "column": 18,
-                    "offset": 18
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 20,
-                    "offset": 20
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": ":",
-                "kind": "simple",
-                "symbol": ":",
-                "codePoint": 58,
-                "loc": {
-                  "source": ":",
-                  "start": {
-                    "line": 1,
-                    "column": 20,
-                    "offset": 20
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 21,
-                    "offset": 21
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": "/",
-                "kind": "simple",
-                "symbol": "/",
-                "codePoint": 47,
-                "loc": {
-                  "source": "\\/",
-                  "start": {
-                    "line": 1,
-                    "column": 21,
-                    "offset": 21
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 23,
-                    "offset": 23
-                  }
-                },
-                "escaped": true
-              },
-              {
-                "type": "Char",
-                "value": "/",
-                "kind": "simple",
-                "symbol": "/",
-                "codePoint": 47,
-                "loc": {
-                  "source": "\\/",
-                  "start": {
-                    "line": 1,
-                    "column": 23,
-                    "offset": 23
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 25,
-                    "offset": 25
-                  }
-                },
-                "escaped": true
+                ]
               }
             ],
-            "loc": {
-              "source": "https?:\\/\\/",
-              "start": {
-                "line": 1,
-                "column": 14,
-                "offset": 14
-              },
-              "end": {
-                "line": 1,
-                "column": 25,
-                "offset": 25
-              }
+            "references": []
+          },
+          {
+            "type": "Quantifier",
+            "start": 66,
+            "end": 80,
+            "raw": "(?<path>\\/.*)?",
+            "min": 0,
+            "max": 1,
+            "greedy": true,
+            "element": {
+              "type": "CapturingGroup",
+              "start": 66,
+              "end": 79,
+              "raw": "(?<path>\\/.*)",
+              "name": "path",
+              "alternatives": [
+                {
+                  "type": "Alternative",
+                  "start": 74,
+                  "end": 78,
+                  "raw": "\\/.*",
+                  "elements": [
+                    {
+                      "type": "Character",
+                      "start": 74,
+                      "end": 76,
+                      "raw": "\\/",
+                      "value": 47
+                    },
+                    {
+                      "type": "Quantifier",
+                      "start": 76,
+                      "end": 78,
+                      "raw": ".*",
+                      "min": 0,
+                      "max": null,
+                      "greedy": true,
+                      "element": {
+                        "type": "CharacterSet",
+                        "start": 76,
+                        "end": 77,
+                        "raw": ".",
+                        "kind": "any"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "references": []
             }
           },
-          "loc": {
-            "source": "(?<protocol>https?:\\/\\/)",
-            "start": {
-              "line": 1,
-              "column": 2,
-              "offset": 2
-            },
-            "end": {
-              "line": 1,
-              "column": 26,
-              "offset": 26
-            }
+          {
+            "type": "Assertion",
+            "start": 80,
+            "end": 81,
+            "raw": "$",
+            "kind": "end"
           }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "?",
-          "greedy": true,
-          "loc": {
-            "source": "?",
-            "start": {
-              "line": 1,
-              "column": 26,
-              "offset": 26
-            },
-            "end": {
-              "line": 1,
-              "column": 27,
-              "offset": 27
-            }
-          }
-        },
-        "loc": {
-          "source": "(?<protocol>https?:\\/\\/)?",
-          "start": {
-            "line": 1,
-            "column": 2,
-            "offset": 2
-          },
-          "end": {
-            "line": 1,
-            "column": 27,
-            "offset": 27
-          }
-        }
-      },
-      {
-        "type": "Group",
-        "capturing": true,
-        "name": "domain",
-        "nameRaw": "domain",
-        "number": 2,
-        "expression": {
-          "type": "Alternative",
-          "expressions": [
-            {
-              "type": "Repetition",
-              "expression": {
-                "type": "CharacterClass",
-                "expressions": [
-                  {
-                    "type": "ClassRange",
-                    "from": {
-                      "type": "Char",
-                      "value": "a",
-                      "kind": "simple",
-                      "symbol": "a",
-                      "codePoint": 97,
-                      "loc": {
-                        "source": "a",
-                        "start": {
-                          "line": 1,
-                          "column": 38,
-                          "offset": 38
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 39,
-                          "offset": 39
-                        }
-                      }
-                    },
-                    "to": {
-                      "type": "Char",
-                      "value": "z",
-                      "kind": "simple",
-                      "symbol": "z",
-                      "codePoint": 122,
-                      "loc": {
-                        "source": "z",
-                        "start": {
-                          "line": 1,
-                          "column": 40,
-                          "offset": 40
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 41,
-                          "offset": 41
-                        }
-                      }
-                    },
-                    "loc": {
-                      "source": "a-z",
-                      "start": {
-                        "line": 1,
-                        "column": 38,
-                        "offset": 38
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 41,
-                        "offset": 41
-                      }
-                    }
-                  },
-                  {
-                    "type": "ClassRange",
-                    "from": {
-                      "type": "Char",
-                      "value": "A",
-                      "kind": "simple",
-                      "symbol": "A",
-                      "codePoint": 65,
-                      "loc": {
-                        "source": "A",
-                        "start": {
-                          "line": 1,
-                          "column": 41,
-                          "offset": 41
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 42,
-                          "offset": 42
-                        }
-                      }
-                    },
-                    "to": {
-                      "type": "Char",
-                      "value": "Z",
-                      "kind": "simple",
-                      "symbol": "Z",
-                      "codePoint": 90,
-                      "loc": {
-                        "source": "Z",
-                        "start": {
-                          "line": 1,
-                          "column": 43,
-                          "offset": 43
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 44,
-                          "offset": 44
-                        }
-                      }
-                    },
-                    "loc": {
-                      "source": "A-Z",
-                      "start": {
-                        "line": 1,
-                        "column": 41,
-                        "offset": 41
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 44,
-                        "offset": 44
-                      }
-                    }
-                  },
-                  {
-                    "type": "ClassRange",
-                    "from": {
-                      "type": "Char",
-                      "value": "0",
-                      "kind": "simple",
-                      "symbol": "0",
-                      "codePoint": 48,
-                      "loc": {
-                        "source": "0",
-                        "start": {
-                          "line": 1,
-                          "column": 44,
-                          "offset": 44
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 45,
-                          "offset": 45
-                        }
-                      }
-                    },
-                    "to": {
-                      "type": "Char",
-                      "value": "9",
-                      "kind": "simple",
-                      "symbol": "9",
-                      "codePoint": 57,
-                      "loc": {
-                        "source": "9",
-                        "start": {
-                          "line": 1,
-                          "column": 46,
-                          "offset": 46
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 47,
-                          "offset": 47
-                        }
-                      }
-                    },
-                    "loc": {
-                      "source": "0-9",
-                      "start": {
-                        "line": 1,
-                        "column": 44,
-                        "offset": 44
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 47,
-                        "offset": 47
-                      }
-                    }
-                  },
-                  {
-                    "type": "Char",
-                    "value": ".",
-                    "kind": "simple",
-                    "symbol": ".",
-                    "codePoint": 46,
-                    "loc": {
-                      "source": ".",
-                      "start": {
-                        "line": 1,
-                        "column": 47,
-                        "offset": 47
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 48,
-                        "offset": 48
-                      }
-                    }
-                  },
-                  {
-                    "type": "Char",
-                    "value": "-",
-                    "kind": "simple",
-                    "symbol": "-",
-                    "codePoint": 45,
-                    "loc": {
-                      "source": "-",
-                      "start": {
-                        "line": 1,
-                        "column": 48,
-                        "offset": 48
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 49,
-                        "offset": 49
-                      }
-                    }
-                  }
-                ],
-                "loc": {
-                  "source": "[a-zA-Z0-9.-]",
-                  "start": {
-                    "line": 1,
-                    "column": 37,
-                    "offset": 37
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 50,
-                    "offset": 50
-                  }
-                }
-              },
-              "quantifier": {
-                "type": "Quantifier",
-                "kind": "+",
-                "greedy": true,
-                "loc": {
-                  "source": "+",
-                  "start": {
-                    "line": 1,
-                    "column": 50,
-                    "offset": 50
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 51,
-                    "offset": 51
-                  }
-                }
-              },
-              "loc": {
-                "source": "[a-zA-Z0-9.-]+",
-                "start": {
-                  "line": 1,
-                  "column": 37,
-                  "offset": 37
-                },
-                "end": {
-                  "line": 1,
-                  "column": 51,
-                  "offset": 51
-                }
-              }
-            },
-            {
-              "type": "Char",
-              "value": ".",
-              "kind": "simple",
-              "symbol": ".",
-              "codePoint": 46,
-              "loc": {
-                "source": "\\.",
-                "start": {
-                  "line": 1,
-                  "column": 51,
-                  "offset": 51
-                },
-                "end": {
-                  "line": 1,
-                  "column": 53,
-                  "offset": 53
-                }
-              },
-              "escaped": true
-            },
-            {
-              "type": "Repetition",
-              "expression": {
-                "type": "CharacterClass",
-                "expressions": [
-                  {
-                    "type": "ClassRange",
-                    "from": {
-                      "type": "Char",
-                      "value": "a",
-                      "kind": "simple",
-                      "symbol": "a",
-                      "codePoint": 97,
-                      "loc": {
-                        "source": "a",
-                        "start": {
-                          "line": 1,
-                          "column": 54,
-                          "offset": 54
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 55,
-                          "offset": 55
-                        }
-                      }
-                    },
-                    "to": {
-                      "type": "Char",
-                      "value": "z",
-                      "kind": "simple",
-                      "symbol": "z",
-                      "codePoint": 122,
-                      "loc": {
-                        "source": "z",
-                        "start": {
-                          "line": 1,
-                          "column": 56,
-                          "offset": 56
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 57,
-                          "offset": 57
-                        }
-                      }
-                    },
-                    "loc": {
-                      "source": "a-z",
-                      "start": {
-                        "line": 1,
-                        "column": 54,
-                        "offset": 54
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 57,
-                        "offset": 57
-                      }
-                    }
-                  },
-                  {
-                    "type": "ClassRange",
-                    "from": {
-                      "type": "Char",
-                      "value": "A",
-                      "kind": "simple",
-                      "symbol": "A",
-                      "codePoint": 65,
-                      "loc": {
-                        "source": "A",
-                        "start": {
-                          "line": 1,
-                          "column": 57,
-                          "offset": 57
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 58,
-                          "offset": 58
-                        }
-                      }
-                    },
-                    "to": {
-                      "type": "Char",
-                      "value": "Z",
-                      "kind": "simple",
-                      "symbol": "Z",
-                      "codePoint": 90,
-                      "loc": {
-                        "source": "Z",
-                        "start": {
-                          "line": 1,
-                          "column": 59,
-                          "offset": 59
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 60,
-                          "offset": 60
-                        }
-                      }
-                    },
-                    "loc": {
-                      "source": "A-Z",
-                      "start": {
-                        "line": 1,
-                        "column": 57,
-                        "offset": 57
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 60,
-                        "offset": 60
-                      }
-                    }
-                  }
-                ],
-                "loc": {
-                  "source": "[a-zA-Z]",
-                  "start": {
-                    "line": 1,
-                    "column": 53,
-                    "offset": 53
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 61,
-                    "offset": 61
-                  }
-                }
-              },
-              "quantifier": {
-                "type": "Quantifier",
-                "kind": "Range",
-                "from": 2,
-                "greedy": true,
-                "loc": {
-                  "source": "{2,}",
-                  "start": {
-                    "line": 1,
-                    "column": 61,
-                    "offset": 61
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 65,
-                    "offset": 65
-                  }
-                }
-              },
-              "loc": {
-                "source": "[a-zA-Z]{2,}",
-                "start": {
-                  "line": 1,
-                  "column": 53,
-                  "offset": 53
-                },
-                "end": {
-                  "line": 1,
-                  "column": 65,
-                  "offset": 65
-                }
-              }
-            }
-          ],
-          "loc": {
-            "source": "[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
-            "start": {
-              "line": 1,
-              "column": 37,
-              "offset": 37
-            },
-            "end": {
-              "line": 1,
-              "column": 65,
-              "offset": 65
-            }
-          }
-        },
-        "loc": {
-          "source": "(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})",
-          "start": {
-            "line": 1,
-            "column": 27,
-            "offset": 27
-          },
-          "end": {
-            "line": 1,
-            "column": 66,
-            "offset": 66
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Group",
-          "capturing": true,
-          "name": "path",
-          "nameRaw": "path",
-          "number": 3,
-          "expression": {
-            "type": "Alternative",
-            "expressions": [
-              {
-                "type": "Char",
-                "value": "/",
-                "kind": "simple",
-                "symbol": "/",
-                "codePoint": 47,
-                "loc": {
-                  "source": "\\/",
-                  "start": {
-                    "line": 1,
-                    "column": 74,
-                    "offset": 74
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 76,
-                    "offset": 76
-                  }
-                },
-                "escaped": true
-              },
-              {
-                "type": "Repetition",
-                "expression": {
-                  "type": "Char",
-                  "value": ".",
-                  "kind": "meta",
-                  "symbol": ".",
-                  "codePoint": null,
-                  "loc": {
-                    "source": ".",
-                    "start": {
-                      "line": 1,
-                      "column": 76,
-                      "offset": 76
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 77,
-                      "offset": 77
-                    }
-                  }
-                },
-                "quantifier": {
-                  "type": "Quantifier",
-                  "kind": "*",
-                  "greedy": true,
-                  "loc": {
-                    "source": "*",
-                    "start": {
-                      "line": 1,
-                      "column": 77,
-                      "offset": 77
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 78,
-                      "offset": 78
-                    }
-                  }
-                },
-                "loc": {
-                  "source": ".*",
-                  "start": {
-                    "line": 1,
-                    "column": 76,
-                    "offset": 76
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 78,
-                    "offset": 78
-                  }
-                }
-              }
-            ],
-            "loc": {
-              "source": "\\/.*",
-              "start": {
-                "line": 1,
-                "column": 74,
-                "offset": 74
-              },
-              "end": {
-                "line": 1,
-                "column": 78,
-                "offset": 78
-              }
-            }
-          },
-          "loc": {
-            "source": "(?<path>\\/.*)",
-            "start": {
-              "line": 1,
-              "column": 66,
-              "offset": 66
-            },
-            "end": {
-              "line": 1,
-              "column": 79,
-              "offset": 79
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "?",
-          "greedy": true,
-          "loc": {
-            "source": "?",
-            "start": {
-              "line": 1,
-              "column": 79,
-              "offset": 79
-            },
-            "end": {
-              "line": 1,
-              "column": 80,
-              "offset": 80
-            }
-          }
-        },
-        "loc": {
-          "source": "(?<path>\\/.*)?",
-          "start": {
-            "line": 1,
-            "column": 66,
-            "offset": 66
-          },
-          "end": {
-            "line": 1,
-            "column": 80,
-            "offset": 80
-          }
-        }
-      },
-      {
-        "type": "Assertion",
-        "kind": "$",
-        "loc": {
-          "source": "$",
-          "start": {
-            "line": 1,
-            "column": 80,
-            "offset": 80
-          },
-          "end": {
-            "line": 1,
-            "column": 81,
-            "offset": 81
-          }
-        }
+        ]
       }
-    ],
-    "loc": {
-      "source": "^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$",
-      "start": {
-        "line": 1,
-        "column": 1,
-        "offset": 1
-      },
-      "end": {
-        "line": 1,
-        "column": 81,
-        "offset": 81
-      }
-    }
+    ]
   },
-  "flags": "",
-  "loc": {
-    "source": "/^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$/",
-    "start": {
-      "line": 1,
-      "column": 0,
-      "offset": 0
-    },
-    "end": {
-      "line": 1,
-      "column": 82,
-      "offset": 82
-    }
+  "flags": {
+    "type": "Flags",
+    "start": 82,
+    "end": 82,
+    "raw": "",
+    "global": false,
+    "ignoreCase": false,
+    "multiline": false,
+    "unicode": false,
+    "sticky": false,
+    "dotAll": false,
+    "hasIndices": false,
+    "unicodeSets": false
   }
 }
