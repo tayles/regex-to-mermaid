@@ -7,7 +7,13 @@ import type {
   CapturingGroup,
   Character,
   CharacterClass,
+  CharacterSet,
+  ClassIntersection,
+  ClassSetOperand,
+  ClassStringDisjunction,
+  ClassSubtraction,
   Element,
+  ExpressionCharacterClass,
   Group,
   LookaroundAssertion,
   Node,
@@ -73,6 +79,23 @@ export function buildRegexAst(pattern: string | RegExp): AST.RegExpLiteral {
 
   const ast = parseRegExpLiteral(literalString);
   return ast;
+}
+
+/**
+ * Print AST as JSON string, omitting parent references
+ */
+export function printAst(ast: AST.RegExpLiteral): string {
+  return JSON.stringify(
+    ast,
+    (key, value) => {
+      // Omit parent references to avoid circular structure
+      if (['parent', 'resolved'].includes(key)) {
+        return undefined;
+      }
+      return value;
+    },
+    2,
+  );
 }
 
 const nodeCounters: Map<string, number> = new Map();
@@ -144,6 +167,10 @@ function processNode(
       return processChar(node, previousNodeId, nodes, edges);
     case 'CharacterClass':
       return processCharacterClass(node, previousNodeId, nodes, edges);
+    case 'CharacterSet':
+      return processCharacterSet(node, previousNodeId, nodes, edges);
+    case 'ExpressionCharacterClass':
+      return processExpressionCharacterClass(node, previousNodeId, nodes, edges);
     case 'Quantifier':
       return processRepetition(node, previousNodeId, nodes, edges, groups);
     case 'CapturingGroup':
@@ -214,7 +241,7 @@ function processCombinedChars(
   edges: DiagramEdge[],
 ): string {
   // Convert code points to characters
-  const text = chars.map(c => String.fromCodePoint(c.value)).join('');
+  const text = chars.map(c => c.raw).join('');
   const nodeId = getNextNodeId('literal');
   const label = buildFriendlyLabel(text);
 
@@ -235,8 +262,7 @@ function processChar(
   edges: DiagramEdge[],
 ): string {
   const nodeId = getNextNodeId('literal');
-  // Convert code point to character
-  const char = String.fromCodePoint(node.value);
+  const char = node.raw;
   const label = buildFriendlyLabel(char);
 
   nodes.push({
@@ -279,16 +305,22 @@ function buildCharacterClassLabel(node: CharacterClass): string {
 
   for (const elem of node.elements) {
     if (elem.type === 'Character') {
-      const char = String.fromCodePoint(elem.value);
+      const char = elem.raw;
       singleChars.push(escapeSingleChar(char));
     } else if (elem.type === 'CharacterClassRange') {
-      const from = String.fromCodePoint(elem.min.value);
-      const to = String.fromCodePoint(elem.max.value);
+      const from = elem.min.raw;
+      const to = elem.max.raw;
       const rangeName = getFriendlyRangeName(from, to);
       ranges.push(rangeName ?? `${from}-${to}`);
     } else if (elem.type === 'CharacterClass') {
       // Nested character class
       ranges.push(buildCharacterClassLabel(elem));
+    } else if (elem.type === 'CharacterSet') {
+      // Character set escape (\d, \w, \s, etc.)
+      ranges.push(getClassOperandLabel(elem));
+    } else {
+      // Other element types (ExpressionCharacterClass, ClassStringDisjunction, etc.)
+      ranges.push(getClassOperandLabel(elem));
     }
   }
 
@@ -310,6 +342,141 @@ function getFriendlyRangeName(from: string, to: string): string | null {
   if (from === 'A' && to === 'Z') return 'Any uppercase';
   if (from === '0' && to === '9') return 'Any digit';
   return null;
+}
+
+function processCharacterSet(
+  node: CharacterSet,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: DiagramEdge[],
+): string {
+  const nodeId = getNextNodeId('char-class');
+  let label = '';
+
+  if (node.kind === 'any') {
+    // Dot (.)
+    label = 'Any character';
+  } else if (node.kind === 'digit' || node.kind === 'space' || node.kind === 'word') {
+    // Character class escapes: \d, \D, \s, \S, \w, \W
+    const kindMap: Record<string, string> = {
+      digit: node.negate ? 'Not a digit' : 'Any digit',
+      space: node.negate ? 'Not whitespace' : 'Any whitespace',
+      word: node.negate ? 'Not a word character' : 'Any word character',
+    };
+    label = kindMap[node.kind] || node.raw;
+  } else if (node.kind === 'property') {
+    // Unicode property escapes: \p{...}, \P{...}
+    const prop = node.value ? `${node.key}=${node.value}` : node.key;
+    label = node.negate ? `Not ${prop}` : prop;
+    if (node.strings) {
+      label += '<br><i>(strings)</i>';
+    }
+  } else {
+    label = node.raw || 'Character set';
+  }
+
+  nodes.push({
+    id: nodeId,
+    type: 'char-class',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function processExpressionCharacterClass(
+  node: ExpressionCharacterClass,
+  previousNodeId: string,
+  nodes: DiagramNode[],
+  edges: DiagramEdge[],
+): string {
+  const nodeId = getNextNodeId('char-class');
+
+  // Build label from the expression (intersection or subtraction)
+  const label = buildExpressionCharacterClassLabel(node);
+
+  nodes.push({
+    id: nodeId,
+    type: node.negate ? 'negated-char-class' : 'char-class',
+    label,
+  });
+
+  edges.push({ from: previousNodeId, to: nodeId });
+  return nodeId;
+}
+
+function buildExpressionCharacterClassLabel(node: ExpressionCharacterClass): string {
+  if (!node.expression) {
+    return node.raw || '[]';
+  }
+
+  const expr = node.expression;
+
+  if (expr.type === 'ClassIntersection') {
+    return buildClassIntersectionLabel(expr);
+  } else if (expr.type === 'ClassSubtraction') {
+    return buildClassSubtractionLabel(expr);
+  }
+
+  return node.raw || '[]';
+}
+
+function buildClassIntersectionLabel(node: ClassIntersection): string {
+  const left = getClassOperandLabel(node.left);
+  const right = getClassOperandLabel(node.right);
+  return `${left}<br>AND<br>${right}`;
+}
+
+function buildClassSubtractionLabel(node: ClassSubtraction): string {
+  const left = getClassOperandLabel(node.left);
+  const right = getClassOperandLabel(node.right);
+  return `${left}<br>EXCEPT<br>${right}`;
+}
+
+function getClassOperandLabel(
+  node: ClassIntersection | ClassSetOperand | ClassSubtraction,
+): string {
+  if (!node) return '';
+
+  switch (node.type) {
+    case 'Character':
+      return node.raw;
+    case 'CharacterClass':
+      return buildCharacterClassLabel(node);
+    case 'CharacterSet':
+      if (node.kind === 'digit') return node.negate ? String.raw`\D` : String.raw`\d`;
+      if (node.kind === 'space') return node.negate ? String.raw`\S` : String.raw`\s`;
+      if (node.kind === 'word') return node.negate ? String.raw`\W` : String.raw`\w`;
+      if (node.kind === 'property') {
+        const prop = node.value ? `${node.key}=${node.value}` : node.key;
+        return node.negate ? String.raw`\P{${prop}}` : String.raw`\p{${prop}}`;
+      }
+      return node.raw || '';
+    case 'ClassIntersection':
+      return buildClassIntersectionLabel(node);
+    case 'ClassSubtraction':
+      return buildClassSubtractionLabel(node);
+    case 'ExpressionCharacterClass':
+      return buildExpressionCharacterClassLabel(node);
+    case 'ClassStringDisjunction':
+      return buildClassStringDisjunctionLabel(node);
+  }
+}
+
+function buildClassStringDisjunctionLabel(node: ClassStringDisjunction): string {
+  if (!node.alternatives || node.alternatives.length === 0) {
+    return String.raw`\q{}`;
+  }
+
+  const alternatives = node.alternatives.map(alt => {
+    if (alt.elements && alt.elements.length > 0) {
+      return alt.elements.map(e => e.raw).join('');
+    }
+    return '';
+  });
+
+  return String.raw`\q{${alternatives.join('|')}}`;
 }
 
 function processRepetition(
@@ -651,6 +818,7 @@ export function buildFriendlyLabel(text: string): string {
     '\\n': 'Newline',
     '\\f': 'Form feed',
     '\\v': 'Vertical tab',
+    '\\.': 'Any character',
     '.': 'Any character',
   };
 

@@ -537,6 +537,111 @@ describe('Character class label formatting', () => {
     expect(label).toContain('Any lowercase');
     expect(label).toContain('!-/');
   });
+
+  describe('CharacterSet nodes', () => {
+    test('handles dot (.) character set', () => {
+      const ast = buildRegexAst(/./);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Any character');
+    });
+
+    test(String.raw`handles \d character set`, () => {
+      const ast = buildRegexAst(/\d/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Any digit');
+    });
+
+    test(String.raw`handles \D character set`, () => {
+      const ast = buildRegexAst(/\D/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Not a digit');
+    });
+
+    test(String.raw`handles \w character set`, () => {
+      const ast = buildRegexAst(/\w/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Any word character');
+    });
+
+    test(String.raw`handles \W character set`, () => {
+      const ast = buildRegexAst(/\W/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Not a word character');
+    });
+
+    test(String.raw`handles \s character set`, () => {
+      const ast = buildRegexAst(/\s/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Any whitespace');
+    });
+
+    test(String.raw`handles \S character set`, () => {
+      const ast = buildRegexAst(/\S/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Not whitespace');
+    });
+
+    test('handles Unicode property escape', () => {
+      const ast = buildRegexAst(/\p{Letter}/u);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Letter');
+    });
+
+    test('handles negated Unicode property escape', () => {
+      const ast = buildRegexAst(/\P{Letter}/u);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Not Letter');
+    });
+
+    test('handles Unicode property with value', () => {
+      const ast = buildRegexAst(/\p{Script=Greek}/u);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toBe('Script=Greek');
+    });
+
+    test('handles character sets in character class', () => {
+      const ast = buildRegexAst(/[\d\w]/);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      const label = data.nodes[0]?.label || '';
+      expect(label).toContain(String.raw`\d`);
+      expect(label).toContain(String.raw`\w`);
+    });
+  });
+
+  describe('Unicode sets mode (v flag)', () => {
+    test('handles character class subtraction', () => {
+      const ast = buildRegexAst(/[\w--[0-9]]/v);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      // Should have a node for the expression character class
+      expect(data.nodes[0]?.type).toMatch(/char-class/);
+    });
+
+    test('handles character class intersection', () => {
+      const ast = buildRegexAst(/[\w&&[a-z]]/v);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toMatch(/char-class/);
+    });
+
+    test('handles string disjunction', () => {
+      const ast = buildRegexAst(/[\q{abc|def}]/v);
+      const data = generateDiagramData(ast);
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toContain('abc');
+    });
+  });
 });
 
 describe('buildFriendlyLabel', () => {

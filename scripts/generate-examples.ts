@@ -3,7 +3,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { type Flavor, regexToMermaid } from '../src';
-import { buildRegexAst, parseRegexByFlavor } from '../src/parser';
+import { buildRegexAst, parseRegexByFlavor, printAst } from '../src/parser';
 import {
   DIAGRAMS_DIR,
   generateMermaidLiveLink,
@@ -79,7 +79,7 @@ async function generateExamples() {
 
 async function writeAstFile(filePath: string, pattern: RegExp) {
   const ast = buildRegexAst(pattern);
-  const str = JSON.stringify(ast, null, 2);
+  const str = printAst(ast);
   await writeFile(filePath, `${str}\n`, 'utf-8');
 }
 
