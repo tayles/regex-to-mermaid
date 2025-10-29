@@ -407,10 +407,6 @@ function processExpressionCharacterClass(
 }
 
 function buildExpressionCharacterClassLabel(node: ExpressionCharacterClass): string {
-  if (!node.expression) {
-    return node.raw || '[]';
-  }
-
   const expr = node.expression;
 
   if (expr.type === 'ClassIntersection') {
@@ -437,8 +433,6 @@ function buildClassSubtractionLabel(node: ClassSubtraction): string {
 function getClassOperandLabel(
   node: ClassIntersection | ClassSetOperand | ClassSubtraction,
 ): string {
-  if (!node) return '';
-
   switch (node.type) {
     case 'Character':
       return node.raw;
