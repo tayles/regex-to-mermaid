@@ -3,8 +3,8 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { regexToMermaid } from '../src';
-import type { Theme } from '../src/theme';
-import { THEMES } from '../src/theme';
+import type { Theme, ThemeWithStyles } from '../src/theme';
+import { THEME_GROUP_STYLES, THEME_NODE_STYLES, THEMES } from '../src/theme';
 import {
   DIAGRAMS_DIR,
   generateMermaidLiveLink,
@@ -78,6 +78,43 @@ async function generateThemes() {
   console.log(`✅ Generated previews for ${THEMES.length} themes`);
 }
 
+function generateThemeStylesMarkdownTable(theme: ThemeWithStyles): string {
+  const nodeStyles = THEME_NODE_STYLES[theme];
+  const groupStyles = THEME_GROUP_STYLES[theme];
+
+  const parseStyle = (style: string): Record<string, string> => {
+    const entries = style.split(',').map(part =>
+      part
+        .trim()
+        .split(':')
+        .map(s => s.trim()),
+    );
+    return Object.fromEntries(entries);
+  };
+
+  const printHex = (hex?: string): string => {
+    return hex ? `\`${hex}\`` : '-';
+  };
+
+  const toRows = (styles: Record<string, string>): string => {
+    return Object.entries(styles)
+      .map(([type, style]) => {
+        const styles = parseStyle(style);
+        return `| ${type} | ${printHex(styles.fill)} | ${printHex(styles.stroke)} | ${printHex(
+          styles.color,
+        )} |`;
+      })
+      .join('\n');
+  };
+
+  return `
+| Node/Group Type        | Fill       | Border     | Text       |
+| ---------------------- | ---------- | ---------- | ---------- |
+${toRows(nodeStyles)}
+${toRows(groupStyles)}
+`;
+}
+
 function generateThemeMarkdown(
   theme: Theme,
   diagram: string,
@@ -89,6 +126,9 @@ function generateThemeMarkdown(
   const description = themeDescriptions[theme];
 
   const command = `regex-to-mermaid 'foo|bar' --theme ${theme}`;
+
+  const stylesTable =
+    theme !== 'none' ? `### Styles\n\n${generateThemeStylesMarkdownTable(theme)}` : '';
 
   const content = `
 ## ${themeName}
@@ -115,6 +155,8 @@ ${command}
 \`\`\`mermaid
 ${diagram}
 \`\`\`
+
+${stylesTable}
   `.trim();
 
   return content;

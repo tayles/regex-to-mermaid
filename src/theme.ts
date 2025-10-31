@@ -3,7 +3,7 @@ import type { DiagramData, GroupType, NodeType } from './types';
 export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;
 export type Theme = (typeof THEMES)[number];
 
-type ThemeWithStyles = Exclude<Theme, 'none'>;
+export type ThemeWithStyles = Exclude<Theme, 'none'>;
 
 export const THEME_NODE_STYLES: Record<ThemeWithStyles, Record<NodeType, string>> = {
   default: {
