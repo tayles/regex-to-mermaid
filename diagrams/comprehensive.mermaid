@@ -9,9 +9,9 @@ graph LR
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   char_class_1("Any uppercase"):::char-class;
-  char_class_2("Any word character<br><i>2 to 5</i>"):::char-class;
+  char_set_1("Any word character<br><i>2 to 5</i>"):::char-set;
   literal_1(":"):::literal;
-  char_class_3("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_set_2("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_2("a"):::literal;
@@ -20,40 +20,40 @@ graph LR
   literal_5("http"):::literal;
   literal_6("s<br><i>Optional</i>"):::literal;
   literal_7(":\/\/"):::literal;
-  char_class_4("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
+  char_class_2("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_8("\.com"):::literal;
   literal_9("\.org"):::literal;
   literal_10("example"):::literal;
   literal_11("test"):::literal;
-  char_class_5("Any lowercase<br><i>1 to 3</i>"):::char-class;
+  char_class_3("Any lowercase<br><i>1 to 3</i>"):::char-class;
   literal_12("\.com"):::literal;
   literal_13("\/"):::literal;
-  char_class_6("Not whitespace<br><i>One or more</i>"):::char-class;
+  char_set_3("Not whitespace<br><i>One or more</i>"):::negated-char-set;
   literal_14("\?"):::literal;
-  char_class_7("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
-  char_class_8("Any digit<br><i>One or more</i>"):::char-class;
+  char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
+  char_set_4("Any digit<br><i>One or more</i>"):::char-set;
   back_reference_1("\\k<digit><br><i>Back-reference</i>"):::back-reference;
   back_reference_2("\\1<br><i>Back-reference</i>"):::back-reference;
-  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_2("\B<br><i>Not a word boundary</i>"):::assertion;
   assertion_3("\b<br><i>Word boundary</i>"):::assertion;
-  char_class_9("Any digit<br><i>One or more</i>"):::char-class;
-  char_class_10("Not a digit<br><i>One or more</i>"):::char-class;
-  char_class_11("Any word character<br><i>One or more</i>"):::char-class;
-  char_class_12("Not a word character<br><i>One or more</i>"):::char-class;
-  char_class_13("Any whitespace<br><i>One or more</i>"):::char-class;
-  char_class_14("Not whitespace<br><i>One or more</i>"):::char-class;
-  negated_char_class_1("x y z<br><i>One or more</i>"):::negated-char-class;
+  char_set_5("Any digit<br><i>One or more</i>"):::char-set;
+  char_set_6("Not a digit<br><i>One or more</i>"):::negated-char-set;
+  char_set_7("Any word character<br><i>One or more</i>"):::char-set;
+  char_set_8("Not a word character<br><i>One or more</i>"):::negated-char-set;
+  char_set_9("Any whitespace<br><i>One or more</i>"):::char-set;
+  char_set_10("Not whitespace<br><i>One or more</i>"):::negated-char-set;
+  char_class_5("x y z<br><i>One or more</i>"):::negated-char-class;
   literal_15("\t\r\n"):::literal;
   literal_16("alt"):::literal;
   assertion_4("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["#1 named"]
+  subgraph named_capture_1 ["named #1"]
     char_class_1
-    char_class_2
+    char_set_1
   end
 
-  subgraph standard_1 ["#2 Group 2"]
+  subgraph standard_1 ["Group #2"]
     disjunction_begin_2
     disjunction_end_2
     literal_2
@@ -67,8 +67,8 @@ graph LR
     literal_7
   end
 
-  subgraph named_capture_2 ["#3 domain"]
-    char_class_4
+  subgraph named_capture_2 ["domain #3"]
+    char_class_2
   end
 
   subgraph positive_lookahead_1 ["Positive Lookahead"]
@@ -89,26 +89,26 @@ graph LR
 
   subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
     literal_13
-    char_class_6
+    char_set_3
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
     literal_14
-    char_class_7
+    char_class_4
   end
 
-  subgraph named_capture_3 ["#4 digit"]
-    char_class_8
+  subgraph named_capture_3 ["digit #4"]
+    char_set_4
   end
 
   %% Edges
   start --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_1;
   assertion_1 --- char_class_1;
-  char_class_1 --- char_class_2;
-  char_class_2 --- literal_1;
-  literal_1 --- char_class_3;
-  char_class_3 --- disjunction_begin_2;
+  char_class_1 --- char_set_1;
+  char_set_1 --- literal_1;
+  literal_1 --- char_set_2;
+  char_set_2 --- disjunction_begin_2;
   disjunction_begin_2 --- literal_2;
   literal_2 --- disjunction_end_2;
   disjunction_begin_2 --- literal_3;
@@ -118,30 +118,30 @@ graph LR
   disjunction_end_2 --- literal_5;
   literal_5 --- literal_6;
   literal_6 --- literal_7;
-  literal_7 --- char_class_4;
-  char_class_4 --- literal_8;
+  literal_7 --- char_class_2;
+  char_class_2 --- literal_8;
   literal_8 --- literal_9;
   literal_9 --- literal_10;
   literal_10 --- literal_11;
-  literal_11 --- char_class_5;
-  char_class_5 --- literal_12;
+  literal_11 --- char_class_3;
+  char_class_3 --- literal_12;
   literal_12 --- literal_13;
-  literal_13 --- char_class_6;
-  char_class_6 --- literal_14;
-  literal_14 --- char_class_7;
-  char_class_7 --- char_class_8;
-  char_class_8 --- back_reference_1;
+  literal_13 --- char_set_3;
+  char_set_3 --- literal_14;
+  literal_14 --- char_class_4;
+  char_class_4 --- char_set_4;
+  char_set_4 --- back_reference_1;
   back_reference_1 --- back_reference_2;
   back_reference_2 --- assertion_2;
   assertion_2 --- assertion_3;
-  assertion_3 --- char_class_9;
-  char_class_9 --- char_class_10;
-  char_class_10 --- char_class_11;
-  char_class_11 --- char_class_12;
-  char_class_12 --- char_class_13;
-  char_class_13 --- char_class_14;
-  char_class_14 --- negated_char_class_1;
-  negated_char_class_1 --- literal_15;
+  assertion_3 --- char_set_5;
+  char_set_5 --- char_set_6;
+  char_set_6 --- char_set_7;
+  char_set_7 --- char_set_8;
+  char_set_8 --- char_set_9;
+  char_set_9 --- char_set_10;
+  char_set_10 --- char_class_5;
+  char_class_5 --- literal_15;
   literal_15 --- disjunction_end_1;
   disjunction_begin_1 --- literal_16;
   literal_16 --- assertion_4;
@@ -153,18 +153,20 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef negated-char-set fill:#EF9A9A,stroke:#E53935,color:#000000,stroke-dasharray: 5 5;
   classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
+  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000,stroke-dasharray: 5 5;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
   classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
   classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3,color:#000000;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000,stroke-dasharray: 5 5;
   classDef positive-lookbehind fill:#EAD1DC,stroke:#C27BA0,color:#000000;
-  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000;
+  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000,stroke-dasharray: 5 5;
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;

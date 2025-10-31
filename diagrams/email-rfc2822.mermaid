@@ -8,125 +8,125 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  negated_char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_1("\x22"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  negated_char_class_2("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
+  char_class_2("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
   literal_2("\x5c"):::literal;
-  char_class_1("\x00-\x7f"):::char-class;
+  char_class_3("\x00-\x7f"):::char-class;
   literal_3("\x22"):::literal;
   literal_4("\x2e"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  negated_char_class_3("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_4("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_5("\x22"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  negated_char_class_4("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
+  char_class_5("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
   literal_6("\x5c"):::literal;
-  char_class_2("\x00-\x7f"):::char-class;
+  char_class_6("\x00-\x7f"):::char-class;
   literal_7("\x22"):::literal;
   literal_8("\x40"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  negated_char_class_5("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_9("\x5b"):::literal;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  negated_char_class_6("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
+  char_class_8("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
   literal_10("\x5c"):::literal;
-  char_class_3("\x00-\x7f"):::char-class;
+  char_class_9("\x00-\x7f"):::char-class;
   literal_11("\x5d"):::literal;
   literal_12("\x2e"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  negated_char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_10("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_13("\x5b"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
-  negated_char_class_8("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
+  char_class_11("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
   literal_14("\x5c"):::literal;
-  char_class_4("\x00-\x7f"):::char-class;
+  char_class_12("\x00-\x7f"):::char-class;
   literal_15("\x5d"):::literal;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["#2 Group 2 <i>Zero or more</i>"]
+  subgraph standard_2 ["Group #2 <i>Zero or more</i>"]
     disjunction_begin_2
     disjunction_end_2
-    negated_char_class_2
+    char_class_2
     literal_2
-    char_class_1
+    char_class_3
   end
 
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     standard_2
     disjunction_begin_1
     disjunction_end_1
-    negated_char_class_1
+    char_class_1
     literal_1
     literal_3
   end
 
-  subgraph standard_5 ["#5 Group 5 <i>Zero or more</i>"]
+  subgraph standard_5 ["Group #5 <i>Zero or more</i>"]
     disjunction_begin_4
     disjunction_end_4
-    negated_char_class_4
+    char_class_5
     literal_6
-    char_class_2
+    char_class_6
   end
 
-  subgraph standard_4 ["#4 Group 4"]
+  subgraph standard_4 ["Group #4"]
     standard_5
     disjunction_begin_3
     disjunction_end_3
-    negated_char_class_3
+    char_class_4
     literal_5
     literal_7
   end
 
-  subgraph standard_3 ["#3 Group 3 <i>Zero or more</i>"]
+  subgraph standard_3 ["Group #3 <i>Zero or more</i>"]
     standard_5
     standard_4
     literal_4
   end
 
-  subgraph standard_7 ["#7 Group 7 <i>Zero or more</i>"]
+  subgraph standard_7 ["Group #7 <i>Zero or more</i>"]
     disjunction_begin_6
     disjunction_end_6
-    negated_char_class_6
+    char_class_8
     literal_10
-    char_class_3
+    char_class_9
   end
 
-  subgraph standard_6 ["#6 Group 6"]
+  subgraph standard_6 ["Group #6"]
     standard_7
     disjunction_begin_5
     disjunction_end_5
-    negated_char_class_5
+    char_class_7
     literal_9
     literal_11
   end
 
-  subgraph standard_10 ["#10 Group 10 <i>Zero or more</i>"]
+  subgraph standard_10 ["Group #10 <i>Zero or more</i>"]
     disjunction_begin_8
     disjunction_end_8
-    negated_char_class_8
+    char_class_11
     literal_14
-    char_class_4
+    char_class_12
   end
 
-  subgraph standard_9 ["#9 Group 9"]
+  subgraph standard_9 ["Group #9"]
     standard_10
     disjunction_begin_7
     disjunction_end_7
-    negated_char_class_7
+    char_class_10
     literal_13
     literal_15
   end
 
-  subgraph standard_8 ["#8 Group 8 <i>Zero or more</i>"]
+  subgraph standard_8 ["Group #8 <i>Zero or more</i>"]
     standard_10
     standard_9
     literal_12
@@ -135,54 +135,54 @@ graph LR
   %% Edges
   start --- assertion_1;
   assertion_1 --- disjunction_begin_1;
-  disjunction_begin_1 --- negated_char_class_1;
-  negated_char_class_1 --- disjunction_end_1;
+  disjunction_begin_1 --- char_class_1;
+  char_class_1 --- disjunction_end_1;
   disjunction_begin_1 --- literal_1;
   literal_1 --- disjunction_begin_2;
-  disjunction_begin_2 --- negated_char_class_2;
-  negated_char_class_2 --- disjunction_end_2;
+  disjunction_begin_2 --- char_class_2;
+  char_class_2 --- disjunction_end_2;
   disjunction_begin_2 --- literal_2;
-  literal_2 --- char_class_1;
-  char_class_1 --- disjunction_end_2;
+  literal_2 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
   disjunction_end_2 --- literal_3;
   literal_3 --- disjunction_end_1;
   disjunction_end_1 --- literal_4;
   literal_4 --- disjunction_begin_3;
-  disjunction_begin_3 --- negated_char_class_3;
-  negated_char_class_3 --- disjunction_end_3;
+  disjunction_begin_3 --- char_class_4;
+  char_class_4 --- disjunction_end_3;
   disjunction_begin_3 --- literal_5;
   literal_5 --- disjunction_begin_4;
-  disjunction_begin_4 --- negated_char_class_4;
-  negated_char_class_4 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_5;
+  char_class_5 --- disjunction_end_4;
   disjunction_begin_4 --- literal_6;
-  literal_6 --- char_class_2;
-  char_class_2 --- disjunction_end_4;
+  literal_6 --- char_class_6;
+  char_class_6 --- disjunction_end_4;
   disjunction_end_4 --- literal_7;
   literal_7 --- disjunction_end_3;
   disjunction_end_3 --- literal_8;
   literal_8 --- disjunction_begin_5;
-  disjunction_begin_5 --- negated_char_class_5;
-  negated_char_class_5 --- disjunction_end_5;
+  disjunction_begin_5 --- char_class_7;
+  char_class_7 --- disjunction_end_5;
   disjunction_begin_5 --- literal_9;
   literal_9 --- disjunction_begin_6;
-  disjunction_begin_6 --- negated_char_class_6;
-  negated_char_class_6 --- disjunction_end_6;
+  disjunction_begin_6 --- char_class_8;
+  char_class_8 --- disjunction_end_6;
   disjunction_begin_6 --- literal_10;
-  literal_10 --- char_class_3;
-  char_class_3 --- disjunction_end_6;
+  literal_10 --- char_class_9;
+  char_class_9 --- disjunction_end_6;
   disjunction_end_6 --- literal_11;
   literal_11 --- disjunction_end_5;
   disjunction_end_5 --- literal_12;
   literal_12 --- disjunction_begin_7;
-  disjunction_begin_7 --- negated_char_class_7;
-  negated_char_class_7 --- disjunction_end_7;
+  disjunction_begin_7 --- char_class_10;
+  char_class_10 --- disjunction_end_7;
   disjunction_begin_7 --- literal_13;
   literal_13 --- disjunction_begin_8;
-  disjunction_begin_8 --- negated_char_class_8;
-  negated_char_class_8 --- disjunction_end_8;
+  disjunction_begin_8 --- char_class_11;
+  char_class_11 --- disjunction_end_8;
   disjunction_begin_8 --- literal_14;
-  literal_14 --- char_class_4;
-  char_class_4 --- disjunction_end_8;
+  literal_14 --- char_class_12;
+  char_class_12 --- disjunction_end_8;
   disjunction_end_8 --- literal_15;
   literal_15 --- disjunction_end_7;
   disjunction_end_7 --- assertion_2;
@@ -192,7 +192,7 @@ graph LR
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
+  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000,stroke-dasharray: 5 5;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 

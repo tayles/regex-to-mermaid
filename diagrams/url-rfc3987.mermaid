@@ -13,9 +13,9 @@ graph LR
   literal_3("ftp"):::literal;
   literal_4(":"):::literal;
   literal_5("\/\/"):::literal;
-  char_class_1("Not whitespace<br><i>One or more</i>"):::char-class;
+  char_set_1("Not whitespace<br><i>One or more</i>"):::negated-char-set;
   literal_6(":"):::literal;
-  char_class_2("Not whitespace<br><i>Zero or more</i>"):::char-class;
+  char_set_2("Not whitespace<br><i>Zero or more</i>"):::negated-char-set;
   literal_7("@"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
@@ -24,69 +24,69 @@ graph LR
   literal_8("10"):::literal;
   literal_9("127"):::literal;
   literal_10("Any character"):::literal;
-  char_class_3("Any digit<br><i>1 to 3</i>"):::char-class;
+  char_set_3("Any digit<br><i>1 to 3</i>"):::char-set;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   literal_11("169\.254"):::literal;
   literal_12("192\.168"):::literal;
   literal_13("Any character"):::literal;
-  char_class_4("Any digit<br><i>1 to 3</i>"):::char-class;
+  char_set_4("Any digit<br><i>1 to 3</i>"):::char-set;
   literal_14("172\."):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
   literal_15("1"):::literal;
-  char_class_5("6-9"):::char-class;
+  char_class_1("6-9"):::char-class;
   literal_16("2"):::literal;
-  char_class_6("Any digit"):::char-class;
+  char_set_5("Any digit"):::char-set;
   literal_17("3"):::literal;
-  char_class_7("0-1"):::char-class;
+  char_class_2("0-1"):::char-class;
   literal_18("Any character"):::literal;
-  char_class_8("Any digit<br><i>1 to 3</i>"):::char-class;
+  char_set_6("Any digit<br><i>1 to 3</i>"):::char-set;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  char_class_9("1-9"):::char-class;
-  char_class_10("Any digit<br><i>Optional</i>"):::char-class;
+  char_class_3("1-9"):::char-class;
+  char_set_7("Any digit<br><i>Optional</i>"):::char-set;
   literal_19("1"):::literal;
-  char_class_11("Any digit"):::char-class;
-  char_class_12("Any digit"):::char-class;
+  char_set_8("Any digit"):::char-set;
+  char_set_9("Any digit"):::char-set;
   literal_20("2"):::literal;
-  char_class_13("0 1"):::char-class;
-  char_class_14("Any digit"):::char-class;
+  char_class_4("0 1"):::char-class;
+  char_set_10("Any digit"):::char-set;
   literal_21("22"):::literal;
-  char_class_15("0-3"):::char-class;
+  char_class_5("0-3"):::char-class;
   literal_22("Any character"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
   literal_23("1<br><i>Optional</i>"):::literal;
-  char_class_16("Any digit<br><i>1 to 2</i>"):::char-class;
+  char_set_11("Any digit<br><i>1 to 2</i>"):::char-set;
   literal_24("2"):::literal;
-  char_class_17("0-4"):::char-class;
-  char_class_18("Any digit"):::char-class;
+  char_class_6("0-4"):::char-class;
+  char_set_12("Any digit"):::char-set;
   literal_25("25"):::literal;
-  char_class_19("0-5"):::char-class;
+  char_class_7("0-5"):::char-class;
   literal_26("Any character"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
-  char_class_20("1-9"):::char-class;
-  char_class_21("Any digit<br><i>Optional</i>"):::char-class;
+  char_class_8("1-9"):::char-class;
+  char_set_13("Any digit<br><i>Optional</i>"):::char-set;
   literal_27("1"):::literal;
-  char_class_22("Any digit"):::char-class;
-  char_class_23("Any digit"):::char-class;
+  char_set_14("Any digit"):::char-set;
+  char_set_15("Any digit"):::char-set;
   literal_28("2"):::literal;
-  char_class_24("0-4"):::char-class;
-  char_class_25("Any digit"):::char-class;
+  char_class_9("0-4"):::char-class;
+  char_set_16("Any digit"):::char-set;
   literal_29("25"):::literal;
-  char_class_26("0-4"):::char-class;
-  char_class_27("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
-  char_class_28("Any lowercase<br>Any digit<br>\u00a1-\uffff<br>_ -<br><i>0 to 62</i>"):::char-class;
-  char_class_29("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
+  char_class_10("0-4"):::char-class;
+  char_class_11("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
+  char_class_12("Any lowercase<br>Any digit<br>\u00a1-\uffff<br>_ -<br><i>0 to 62</i>"):::char-class;
+  char_class_13("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
   literal_30("Any character"):::literal;
-  char_class_30("Any lowercase<br>\u00a1-\uffff<br><i>2 or more</i>"):::char-class;
+  char_class_14("Any lowercase<br>\u00a1-\uffff<br><i>2 or more</i>"):::char-class;
   literal_31("Any character<br><i>Optional</i>"):::literal;
   literal_32(":"):::literal;
-  char_class_31("Any digit<br><i>2 to 5</i>"):::char-class;
-  char_class_32("/ ? #"):::char-class;
-  char_class_33("Not whitespace<br><i>Zero or more</i>"):::char-class;
+  char_set_17("Any digit<br><i>2 to 5</i>"):::char-set;
+  char_class_15("/ ? #"):::char-class;
+  char_set_18("Not whitespace<br><i>Zero or more</i>"):::negated-char-set;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -111,12 +111,12 @@ graph LR
 
   subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     literal_6
-    char_class_2
+    char_set_2
   end
 
   subgraph non_capturing_4 ["Non-capturing <i>Optional</i>"]
     non_capturing_5
-    char_class_1
+    char_set_1
     literal_7
   end
 
@@ -129,7 +129,7 @@ graph LR
 
   subgraph non_capturing_8 ["Non-capturing <i>Exactly 3</i>"]
     literal_10
-    char_class_3
+    char_set_3
   end
 
   subgraph negative_lookahead_1 ["Negative Lookahead"]
@@ -146,7 +146,7 @@ graph LR
 
   subgraph non_capturing_10 ["Non-capturing <i>Exactly 2</i>"]
     literal_13
-    char_class_4
+    char_set_4
   end
 
   subgraph negative_lookahead_2 ["Negative Lookahead"]
@@ -158,16 +158,16 @@ graph LR
     disjunction_begin_5
     disjunction_end_5
     literal_15
-    char_class_5
+    char_class_1
     literal_16
-    char_class_6
+    char_set_5
     literal_17
-    char_class_7
+    char_class_2
   end
 
   subgraph non_capturing_12 ["Non-capturing <i>Exactly 2</i>"]
     literal_18
-    char_class_8
+    char_set_6
   end
 
   subgraph negative_lookahead_3 ["Negative Lookahead"]
@@ -179,28 +179,28 @@ graph LR
   subgraph non_capturing_13 ["Non-capturing"]
     disjunction_begin_6
     disjunction_end_6
-    char_class_9
-    char_class_10
+    char_class_3
+    char_set_7
     literal_19
-    char_class_11
-    char_class_12
+    char_set_8
+    char_set_9
     literal_20
-    char_class_13
-    char_class_14
+    char_class_4
+    char_set_10
     literal_21
-    char_class_15
+    char_class_5
   end
 
   subgraph non_capturing_15 ["Non-capturing"]
     disjunction_begin_7
     disjunction_end_7
     literal_23
-    char_class_16
+    char_set_11
     literal_24
-    char_class_17
-    char_class_18
+    char_class_6
+    char_set_12
     literal_25
-    char_class_19
+    char_class_7
   end
 
   subgraph non_capturing_14 ["Non-capturing <i>Exactly 2</i>"]
@@ -211,16 +211,16 @@ graph LR
   subgraph non_capturing_17 ["Non-capturing"]
     disjunction_begin_8
     disjunction_end_8
-    char_class_20
-    char_class_21
+    char_class_8
+    char_set_13
     literal_27
-    char_class_22
-    char_class_23
+    char_set_14
+    char_set_15
     literal_28
-    char_class_24
-    char_class_25
+    char_class_9
+    char_set_16
     literal_29
-    char_class_26
+    char_class_10
   end
 
   subgraph non_capturing_16 ["Non-capturing"]
@@ -229,18 +229,18 @@ graph LR
   end
 
   subgraph non_capturing_19 ["Non-capturing <i>Optional</i>"]
-    char_class_27
-    char_class_28
+    char_class_11
+    char_class_12
   end
 
   subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     non_capturing_19
-    char_class_29
+    char_class_13
     literal_30
   end
 
   subgraph non_capturing_20 ["Non-capturing"]
-    char_class_30
+    char_class_14
     literal_31
   end
 
@@ -268,12 +268,12 @@ graph LR
 
   subgraph non_capturing_21 ["Non-capturing <i>Optional</i>"]
     literal_32
-    char_class_31
+    char_set_17
   end
 
   subgraph non_capturing_22 ["Non-capturing <i>Optional</i>"]
-    char_class_32
-    char_class_33
+    char_class_15
+    char_set_18
   end
 
   %% Edges
@@ -286,10 +286,10 @@ graph LR
   literal_3 --- disjunction_end_1;
   disjunction_end_1 --- literal_4;
   literal_4 --- literal_5;
-  literal_5 --- char_class_1;
-  char_class_1 --- literal_6;
-  literal_6 --- char_class_2;
-  char_class_2 --- literal_7;
+  literal_5 --- char_set_1;
+  char_set_1 --- literal_6;
+  literal_6 --- char_set_2;
+  char_set_2 --- literal_7;
   literal_7 --- disjunction_begin_2;
   disjunction_begin_2 --- disjunction_begin_3;
   disjunction_begin_3 --- literal_8;
@@ -297,83 +297,83 @@ graph LR
   disjunction_begin_3 --- literal_9;
   literal_9 --- disjunction_end_3;
   disjunction_end_3 --- literal_10;
-  literal_10 --- char_class_3;
-  char_class_3 --- disjunction_begin_4;
+  literal_10 --- char_set_3;
+  char_set_3 --- disjunction_begin_4;
   disjunction_begin_4 --- literal_11;
   literal_11 --- disjunction_end_4;
   disjunction_begin_4 --- literal_12;
   literal_12 --- disjunction_end_4;
   disjunction_end_4 --- literal_13;
-  literal_13 --- char_class_4;
-  char_class_4 --- literal_14;
+  literal_13 --- char_set_4;
+  char_set_4 --- literal_14;
   literal_14 --- disjunction_begin_5;
   disjunction_begin_5 --- literal_15;
-  literal_15 --- char_class_5;
-  char_class_5 --- disjunction_end_5;
+  literal_15 --- char_class_1;
+  char_class_1 --- disjunction_end_5;
   disjunction_begin_5 --- literal_16;
-  literal_16 --- char_class_6;
-  char_class_6 --- disjunction_end_5;
+  literal_16 --- char_set_5;
+  char_set_5 --- disjunction_end_5;
   disjunction_begin_5 --- literal_17;
-  literal_17 --- char_class_7;
-  char_class_7 --- disjunction_end_5;
+  literal_17 --- char_class_2;
+  char_class_2 --- disjunction_end_5;
   disjunction_end_5 --- literal_18;
-  literal_18 --- char_class_8;
-  char_class_8 --- disjunction_begin_6;
-  disjunction_begin_6 --- char_class_9;
-  char_class_9 --- char_class_10;
-  char_class_10 --- disjunction_end_6;
+  literal_18 --- char_set_6;
+  char_set_6 --- disjunction_begin_6;
+  disjunction_begin_6 --- char_class_3;
+  char_class_3 --- char_set_7;
+  char_set_7 --- disjunction_end_6;
   disjunction_begin_6 --- literal_19;
-  literal_19 --- char_class_11;
-  char_class_11 --- char_class_12;
-  char_class_12 --- disjunction_end_6;
+  literal_19 --- char_set_8;
+  char_set_8 --- char_set_9;
+  char_set_9 --- disjunction_end_6;
   disjunction_begin_6 --- literal_20;
-  literal_20 --- char_class_13;
-  char_class_13 --- char_class_14;
-  char_class_14 --- disjunction_end_6;
+  literal_20 --- char_class_4;
+  char_class_4 --- char_set_10;
+  char_set_10 --- disjunction_end_6;
   disjunction_begin_6 --- literal_21;
-  literal_21 --- char_class_15;
-  char_class_15 --- disjunction_end_6;
+  literal_21 --- char_class_5;
+  char_class_5 --- disjunction_end_6;
   disjunction_end_6 --- literal_22;
   literal_22 --- disjunction_begin_7;
   disjunction_begin_7 --- literal_23;
-  literal_23 --- char_class_16;
-  char_class_16 --- disjunction_end_7;
+  literal_23 --- char_set_11;
+  char_set_11 --- disjunction_end_7;
   disjunction_begin_7 --- literal_24;
-  literal_24 --- char_class_17;
-  char_class_17 --- char_class_18;
-  char_class_18 --- disjunction_end_7;
+  literal_24 --- char_class_6;
+  char_class_6 --- char_set_12;
+  char_set_12 --- disjunction_end_7;
   disjunction_begin_7 --- literal_25;
-  literal_25 --- char_class_19;
-  char_class_19 --- disjunction_end_7;
+  literal_25 --- char_class_7;
+  char_class_7 --- disjunction_end_7;
   disjunction_end_7 --- literal_26;
   literal_26 --- disjunction_begin_8;
-  disjunction_begin_8 --- char_class_20;
-  char_class_20 --- char_class_21;
-  char_class_21 --- disjunction_end_8;
+  disjunction_begin_8 --- char_class_8;
+  char_class_8 --- char_set_13;
+  char_set_13 --- disjunction_end_8;
   disjunction_begin_8 --- literal_27;
-  literal_27 --- char_class_22;
-  char_class_22 --- char_class_23;
-  char_class_23 --- disjunction_end_8;
+  literal_27 --- char_set_14;
+  char_set_14 --- char_set_15;
+  char_set_15 --- disjunction_end_8;
   disjunction_begin_8 --- literal_28;
-  literal_28 --- char_class_24;
-  char_class_24 --- char_class_25;
-  char_class_25 --- disjunction_end_8;
+  literal_28 --- char_class_9;
+  char_class_9 --- char_set_16;
+  char_set_16 --- disjunction_end_8;
   disjunction_begin_8 --- literal_29;
-  literal_29 --- char_class_26;
-  char_class_26 --- disjunction_end_8;
+  literal_29 --- char_class_10;
+  char_class_10 --- disjunction_end_8;
   disjunction_end_8 --- disjunction_end_2;
-  disjunction_begin_2 --- char_class_27;
-  char_class_27 --- char_class_28;
-  char_class_28 --- char_class_29;
-  char_class_29 --- literal_30;
-  literal_30 --- char_class_30;
-  char_class_30 --- literal_31;
+  disjunction_begin_2 --- char_class_11;
+  char_class_11 --- char_class_12;
+  char_class_12 --- char_class_13;
+  char_class_13 --- literal_30;
+  literal_30 --- char_class_14;
+  char_class_14 --- literal_31;
   literal_31 --- disjunction_end_2;
   disjunction_end_2 --- literal_32;
-  literal_32 --- char_class_31;
-  char_class_31 --- char_class_32;
-  char_class_32 --- char_class_33;
-  char_class_33 --- assertion_2;
+  literal_32 --- char_set_17;
+  char_set_17 --- char_class_15;
+  char_class_15 --- char_set_18;
+  char_set_18 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -381,11 +381,13 @@ graph LR
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef negated-char-set fill:#EF9A9A,stroke:#E53935,color:#000000,stroke-dasharray: 5 5;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000,stroke-dasharray: 5 5;
 
   %% Apply Group Classes
   class non_capturing_3,non_capturing_2,non_capturing_1,non_capturing_5,non_capturing_4,non_capturing_7,non_capturing_8,non_capturing_9,non_capturing_10,non_capturing_11,non_capturing_12,non_capturing_13,non_capturing_15,non_capturing_14,non_capturing_17,non_capturing_16,non_capturing_19,non_capturing_18,non_capturing_20,non_capturing_6,non_capturing_21,non_capturing_22 non-capturing;

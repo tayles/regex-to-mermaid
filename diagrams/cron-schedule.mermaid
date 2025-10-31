@@ -6,56 +6,56 @@ graph LR
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  char_class_1("Any whitespace<br><i>Zero or more</i>"):::char-class;
+  char_set_1("Any whitespace<br><i>Zero or more</i>"):::char-set;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_2("$<br><i>Ends with</i>"):::assertion;
   literal_1("#"):::literal;
-  char_class_2("Any word character<br><i>One or more</i>"):::char-class;
-  char_class_3("Any whitespace<br><i>Zero or more</i>"):::char-class;
+  char_set_2("Any word character<br><i>One or more</i>"):::char-set;
+  char_set_3("Any whitespace<br><i>Zero or more</i>"):::char-set;
   literal_2("="):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   literal_3("\?"):::literal;
   literal_4("\*"):::literal;
-  char_class_4("0-5<br><i>Optional</i>"):::char-class;
-  char_class_5("Any digit"):::char-class;
+  char_class_1("0-5<br><i>Optional</i>"):::char-class;
+  char_set_4("Any digit"):::char-set;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
   literal_5("\-"):::literal;
   literal_6("\/"):::literal;
   literal_7("\,"):::literal;
-  char_class_6("0-6<br><i>Optional</i>"):::char-class;
-  char_class_7("Any digit"):::char-class;
-  char_class_8("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_class_2("0-6<br><i>Optional</i>"):::char-class;
+  char_set_5("Any digit"):::char-set;
+  char_set_6("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
   literal_8("\?"):::literal;
   literal_9("\*"):::literal;
-  char_class_9("0-5<br><i>Optional</i>"):::char-class;
-  char_class_10("Any digit"):::char-class;
+  char_class_3("0-5<br><i>Optional</i>"):::char-class;
+  char_set_7("Any digit"):::char-set;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
   literal_10("\-"):::literal;
   literal_11("\/"):::literal;
   literal_12("\,"):::literal;
-  char_class_11("0-6<br><i>Optional</i>"):::char-class;
-  char_class_12("Any digit"):::char-class;
-  char_class_13("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_class_4("0-6<br><i>Optional</i>"):::char-class;
+  char_set_8("Any digit"):::char-set;
+  char_set_9("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
   literal_13("\?"):::literal;
   literal_14("\*"):::literal;
-  char_class_14("0-2<br><i>Optional</i>"):::char-class;
-  char_class_15("Any digit"):::char-class;
+  char_class_5("0-2<br><i>Optional</i>"):::char-class;
+  char_set_10("Any digit"):::char-set;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
   literal_15("\-"):::literal;
   literal_16("\/"):::literal;
   literal_17("\,"):::literal;
-  char_class_16("0-2<br><i>Optional</i>"):::char-class;
-  char_class_17("Any digit"):::char-class;
-  char_class_18("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_class_6("0-2<br><i>Optional</i>"):::char-class;
+  char_set_11("Any digit"):::char-set;
+  char_set_12("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
   literal_18("\?"):::literal;
@@ -65,26 +65,26 @@ graph LR
   literal_20("L"):::literal;
   literal_21("W"):::literal;
   literal_22("LW"):::literal;
-  char_class_19("1-3<br><i>Optional</i>"):::char-class;
-  char_class_20("Any digit"):::char-class;
+  char_class_7("1-3<br><i>Optional</i>"):::char-class;
+  char_set_13("Any digit"):::char-set;
   literal_23("W<br><i>Optional</i>"):::literal;
   disjunction_begin_10:::disjunction@{ shape: f-circ };
   disjunction_end_10:::disjunction@{ shape: f-circ };
   literal_24("\-"):::literal;
   literal_25("\/"):::literal;
   literal_26("\,"):::literal;
-  char_class_21("1-3<br><i>Optional</i>"):::char-class;
-  char_class_22("Any digit<br><i>Optional</i>"):::char-class;
+  char_class_8("1-3<br><i>Optional</i>"):::char-class;
+  char_set_14("Any digit<br><i>Optional</i>"):::char-set;
   literal_27("W<br><i>Optional</i>"):::literal;
-  char_class_23("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_set_15("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_11:::disjunction@{ shape: f-circ };
   disjunction_end_11:::disjunction@{ shape: f-circ };
   literal_28("\*"):::literal;
   disjunction_begin_12:::disjunction@{ shape: f-circ };
   disjunction_end_12:::disjunction@{ shape: f-circ };
-  char_class_24("1-9"):::char-class;
+  char_class_9("1-9"):::char-class;
   literal_29("1"):::literal;
-  char_class_25("0 1 2"):::char-class;
+  char_class_10("0 1 2"):::char-class;
   literal_30("JAN"):::literal;
   literal_31("FEB"):::literal;
   literal_32("MAR"):::literal;
@@ -104,9 +104,9 @@ graph LR
   literal_44("\,"):::literal;
   disjunction_begin_14:::disjunction@{ shape: f-circ };
   disjunction_end_14:::disjunction@{ shape: f-circ };
-  char_class_26("1-9"):::char-class;
+  char_class_11("1-9"):::char-class;
   literal_45("1"):::literal;
-  char_class_27("0 1 2"):::char-class;
+  char_class_12("0 1 2"):::char-class;
   literal_46("JAN"):::literal;
   literal_47("FEB"):::literal;
   literal_48("MAR"):::literal;
@@ -119,14 +119,14 @@ graph LR
   literal_55("OCT"):::literal;
   literal_56("NOV"):::literal;
   literal_57("DEC"):::literal;
-  char_class_28("Any whitespace<br><i>One or more</i>"):::char-class;
+  char_set_16("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_15:::disjunction@{ shape: f-circ };
   disjunction_end_15:::disjunction@{ shape: f-circ };
   literal_58("\?"):::literal;
   literal_59("\*"):::literal;
   disjunction_begin_16:::disjunction@{ shape: f-circ };
   disjunction_end_16:::disjunction@{ shape: f-circ };
-  char_class_29("1-7"):::char-class;
+  char_class_13("1-7"):::char-class;
   literal_60("SUN"):::literal;
   literal_61("MON"):::literal;
   literal_62("TUE"):::literal;
@@ -141,7 +141,7 @@ graph LR
   literal_69("\#"):::literal;
   disjunction_begin_18:::disjunction@{ shape: f-circ };
   disjunction_end_18:::disjunction@{ shape: f-circ };
-  char_class_30("1-7"):::char-class;
+  char_class_14("1-7"):::char-class;
   literal_70("SUN"):::literal;
   literal_71("MON"):::literal;
   literal_72("TUE"):::literal;
@@ -152,19 +152,19 @@ graph LR
   literal_77("L<br><i>Optional</i>"):::literal;
   disjunction_begin_19:::disjunction@{ shape: f-circ };
   disjunction_end_19:::disjunction@{ shape: f-circ };
-  char_class_31("Any whitespace"):::char-class;
+  char_set_17("Any whitespace"):::char-set;
   disjunction_begin_20:::disjunction@{ shape: f-circ };
   disjunction_end_20:::disjunction@{ shape: f-circ };
   literal_78("\*"):::literal;
-  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
-  char_class_32("1-2"):::char-class;
+  assertion_3("\B<br><i>Not a word boundary</i>"):::assertion;
+  char_class_15("1-2"):::char-class;
   disjunction_begin_21:::disjunction@{ shape: f-circ };
   disjunction_end_21:::disjunction@{ shape: f-circ };
   literal_79("9"):::literal;
   literal_80("0"):::literal;
-  char_class_33("Any digit"):::char-class;
-  char_class_34("Any digit"):::char-class;
-  assertion_4("\b<br><i>Word boundary</i>"):::assertion;
+  char_set_18("Any digit"):::char-set;
+  char_set_19("Any digit"):::char-set;
+  assertion_4("\B<br><i>Not a word boundary</i>"):::assertion;
   disjunction_begin_22:::disjunction@{ shape: f-circ };
   disjunction_end_22:::disjunction@{ shape: f-circ };
   literal_81("\-"):::literal;
@@ -172,36 +172,36 @@ graph LR
   literal_83("\,"):::literal;
   disjunction_begin_23:::disjunction@{ shape: f-circ };
   disjunction_end_23:::disjunction@{ shape: f-circ };
-  assertion_5("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_5("\B<br><i>Not a word boundary</i>"):::assertion;
   disjunction_begin_24:::disjunction@{ shape: f-circ };
   disjunction_end_24:::disjunction@{ shape: f-circ };
-  char_class_35("1-9"):::char-class;
-  char_class_36("1-9"):::char-class;
-  char_class_37("Any digit"):::char-class;
+  char_class_16("1-9"):::char-class;
+  char_class_17("1-9"):::char-class;
+  char_class_18("Any digit"):::char-class;
   literal_84("1"):::literal;
-  char_class_38("0-8"):::char-class;
-  char_class_39("Any digit"):::char-class;
+  char_class_19("0-8"):::char-class;
+  char_class_20("Any digit"):::char-class;
   literal_85("19"):::literal;
-  char_class_40("0-2"):::char-class;
-  assertion_6("\b<br><i>Word boundary</i>"):::assertion;
-  assertion_7("\b<br><i>Word boundary</i>"):::assertion;
-  char_class_41("1-2"):::char-class;
+  char_class_21("0-2"):::char-class;
+  assertion_6("\B<br><i>Not a word boundary</i>"):::assertion;
+  assertion_7("\B<br><i>Not a word boundary</i>"):::assertion;
+  char_class_22("1-2"):::char-class;
   disjunction_begin_25:::disjunction@{ shape: f-circ };
   disjunction_end_25:::disjunction@{ shape: f-circ };
   literal_86("9"):::literal;
   literal_87("0"):::literal;
-  char_class_42("Any digit"):::char-class;
-  char_class_43("Any digit"):::char-class;
-  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
+  char_set_20("Any digit"):::char-set;
+  char_set_21("Any digit"):::char-set;
+  assertion_8("\B<br><i>Not a word boundary</i>"):::assertion;
   assertion_9("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_2 ["#3 START_SEC"]
-    char_class_4
-    char_class_5
+  subgraph named_capture_2 ["START_SEC #3"]
+    char_class_1
+    char_set_4
   end
 
-  subgraph named_capture_3 ["#4 DELIMITER_SEC"]
+  subgraph named_capture_3 ["DELIMITER_SEC #4"]
     disjunction_begin_3
     disjunction_end_3
     literal_5
@@ -209,9 +209,9 @@ graph LR
     literal_7
   end
 
-  subgraph named_capture_4 ["#5 END_SEC"]
-    char_class_6
-    char_class_7
+  subgraph named_capture_4 ["END_SEC #5"]
+    char_class_2
+    char_set_5
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
@@ -238,7 +238,7 @@ graph LR
     literal_4
   end
 
-  subgraph named_capture_1 ["#2 SECOND"]
+  subgraph named_capture_1 ["SECOND #2"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -247,12 +247,12 @@ graph LR
     non_capturing_1
   end
 
-  subgraph named_capture_6 ["#7 START_MIN"]
-    char_class_9
-    char_class_10
+  subgraph named_capture_6 ["START_MIN #7"]
+    char_class_3
+    char_set_7
   end
 
-  subgraph named_capture_7 ["#8 DELIMITER_MIN"]
+  subgraph named_capture_7 ["DELIMITER_MIN #8"]
     disjunction_begin_5
     disjunction_end_5
     literal_10
@@ -260,9 +260,9 @@ graph LR
     literal_12
   end
 
-  subgraph named_capture_8 ["#9 END_MIN"]
-    char_class_11
-    char_class_12
+  subgraph named_capture_8 ["END_MIN #9"]
+    char_class_4
+    char_set_8
   end
 
   subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
@@ -289,7 +289,7 @@ graph LR
     literal_9
   end
 
-  subgraph named_capture_5 ["#6 MINUTE"]
+  subgraph named_capture_5 ["MINUTE #6"]
     named_capture_6
     named_capture_7
     named_capture_8
@@ -298,12 +298,12 @@ graph LR
     non_capturing_4
   end
 
-  subgraph named_capture_10 ["#11 START_HR"]
-    char_class_14
-    char_class_15
+  subgraph named_capture_10 ["START_HR #11"]
+    char_class_5
+    char_set_10
   end
 
-  subgraph named_capture_11 ["#12 DELIMITER_HR"]
+  subgraph named_capture_11 ["DELIMITER_HR #12"]
     disjunction_begin_7
     disjunction_end_7
     literal_15
@@ -311,9 +311,9 @@ graph LR
     literal_17
   end
 
-  subgraph named_capture_12 ["#13 END_HR"]
-    char_class_16
-    char_class_17
+  subgraph named_capture_12 ["END_HR #13"]
+    char_class_6
+    char_set_11
   end
 
   subgraph non_capturing_9 ["Non-capturing <i>Zero or more</i>"]
@@ -340,7 +340,7 @@ graph LR
     literal_14
   end
 
-  subgraph named_capture_9 ["#10 HOUR"]
+  subgraph named_capture_9 ["HOUR #10"]
     named_capture_10
     named_capture_11
     named_capture_12
@@ -349,18 +349,18 @@ graph LR
     non_capturing_7
   end
 
-  subgraph named_capture_14 ["#15 START_DOM"]
+  subgraph named_capture_14 ["START_DOM #15"]
     disjunction_begin_9
     disjunction_end_9
     literal_20
     literal_21
     literal_22
-    char_class_19
-    char_class_20
+    char_class_7
+    char_set_13
     literal_23
   end
 
-  subgraph named_capture_15 ["#16 DELIMITER_DOM"]
+  subgraph named_capture_15 ["DELIMITER_DOM #16"]
     disjunction_begin_10
     disjunction_end_10
     literal_24
@@ -368,9 +368,9 @@ graph LR
     literal_26
   end
 
-  subgraph named_capture_16 ["#17 END_DOM"]
-    char_class_21
-    char_class_22
+  subgraph named_capture_16 ["END_DOM #17"]
+    char_class_8
+    char_set_14
     literal_27
   end
 
@@ -386,7 +386,7 @@ graph LR
     non_capturing_11
   end
 
-  subgraph named_capture_13 ["#14 DAYOFMONTH"]
+  subgraph named_capture_13 ["DAYOFMONTH #14"]
     named_capture_14
     named_capture_15
     named_capture_16
@@ -398,12 +398,12 @@ graph LR
     literal_19
   end
 
-  subgraph named_capture_18 ["#19 START_MON"]
+  subgraph named_capture_18 ["START_MON #19"]
     disjunction_begin_12
     disjunction_end_12
-    char_class_24
+    char_class_9
     literal_29
-    char_class_25
+    char_class_10
     literal_30
     literal_31
     literal_32
@@ -418,7 +418,7 @@ graph LR
     literal_41
   end
 
-  subgraph named_capture_19 ["#20 DELIMITER_MON"]
+  subgraph named_capture_19 ["DELIMITER_MON #20"]
     disjunction_begin_13
     disjunction_end_13
     literal_42
@@ -426,12 +426,12 @@ graph LR
     literal_44
   end
 
-  subgraph named_capture_20 ["#21 END_MON"]
+  subgraph named_capture_20 ["END_MON #21"]
     disjunction_begin_14
     disjunction_end_14
-    char_class_26
+    char_class_11
     literal_45
-    char_class_27
+    char_class_12
     literal_46
     literal_47
     literal_48
@@ -458,7 +458,7 @@ graph LR
     non_capturing_13
   end
 
-  subgraph named_capture_17 ["#18 MONTH"]
+  subgraph named_capture_17 ["MONTH #18"]
     named_capture_18
     named_capture_19
     named_capture_20
@@ -469,10 +469,10 @@ graph LR
     literal_28
   end
 
-  subgraph named_capture_22 ["#23 START_DOW"]
+  subgraph named_capture_22 ["START_DOW #23"]
     disjunction_begin_16
     disjunction_end_16
-    char_class_29
+    char_class_13
     literal_60
     literal_61
     literal_62
@@ -482,7 +482,7 @@ graph LR
     literal_66
   end
 
-  subgraph named_capture_23 ["#24 DELIMITER_DOW"]
+  subgraph named_capture_23 ["DELIMITER_DOW #24"]
     disjunction_begin_17
     disjunction_end_17
     literal_67
@@ -490,10 +490,10 @@ graph LR
     literal_69
   end
 
-  subgraph named_capture_24 ["#25 END_DOW"]
+  subgraph named_capture_24 ["END_DOW #25"]
     disjunction_begin_18
     disjunction_end_18
-    char_class_30
+    char_class_14
     literal_70
     literal_71
     literal_72
@@ -531,7 +531,7 @@ graph LR
     non_capturing_15
   end
 
-  subgraph named_capture_21 ["#22 DAYOFWEEK"]
+  subgraph named_capture_21 ["DAYOFWEEK #22"]
     named_capture_22
     named_capture_23
     named_capture_24
@@ -548,7 +548,7 @@ graph LR
   subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     disjunction_begin_19
     disjunction_end_19
-    char_class_31
+    char_set_17
   end
 
   subgraph non_capturing_22 ["Non-capturing"]
@@ -560,19 +560,19 @@ graph LR
 
   subgraph non_capturing_21 ["Non-capturing"]
     non_capturing_22
-    char_class_32
-    char_class_33
-    char_class_34
+    char_class_15
+    char_set_18
+    char_set_19
   end
 
-  subgraph named_capture_26 ["#27 START_YR"]
+  subgraph named_capture_26 ["START_YR #27"]
     non_capturing_22
     non_capturing_21
     assertion_3
     assertion_4
   end
 
-  subgraph named_capture_27 ["#28 DELIMITER_YR"]
+  subgraph named_capture_27 ["DELIMITER_YR #28"]
     disjunction_begin_22
     disjunction_end_22
     literal_81
@@ -583,14 +583,14 @@ graph LR
   subgraph non_capturing_24 ["Non-capturing"]
     disjunction_begin_24
     disjunction_end_24
-    char_class_35
-    char_class_36
-    char_class_37
+    char_class_16
+    char_class_17
+    char_class_18
     literal_84
-    char_class_38
-    char_class_39
+    char_class_19
+    char_class_20
     literal_85
-    char_class_40
+    char_class_21
   end
 
   subgraph non_capturing_26 ["Non-capturing"]
@@ -602,12 +602,12 @@ graph LR
 
   subgraph non_capturing_25 ["Non-capturing"]
     non_capturing_26
-    char_class_41
-    char_class_42
-    char_class_43
+    char_class_22
+    char_set_20
+    char_set_21
   end
 
-  subgraph named_capture_28 ["#29 END_YR"]
+  subgraph named_capture_28 ["END_YR #29"]
     non_capturing_24
     non_capturing_26
     non_capturing_25
@@ -655,7 +655,7 @@ graph LR
     literal_78
   end
 
-  subgraph named_capture_25 ["#26 YEAR"]
+  subgraph named_capture_25 ["YEAR #26"]
     non_capturing_22
     non_capturing_21
     named_capture_26
@@ -669,7 +669,7 @@ graph LR
     non_capturing_19
   end
 
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -728,83 +728,83 @@ graph LR
     disjunction_end_1
     assertion_2
     literal_1
-    char_class_2
-    char_class_3
+    char_set_2
+    char_set_3
     literal_2
-    char_class_8
-    char_class_13
-    char_class_18
-    char_class_23
-    char_class_28
+    char_set_6
+    char_set_9
+    char_set_12
+    char_set_15
+    char_set_16
   end
 
   %% Edges
   start --- assertion_1;
-  assertion_1 --- char_class_1;
-  char_class_1 --- disjunction_begin_1;
+  assertion_1 --- char_set_1;
+  char_set_1 --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_2;
   assertion_2 --- disjunction_end_1;
   disjunction_begin_1 --- literal_1;
   literal_1 --- disjunction_end_1;
-  disjunction_begin_1 --- char_class_2;
-  char_class_2 --- char_class_3;
-  char_class_3 --- literal_2;
+  disjunction_begin_1 --- char_set_2;
+  char_set_2 --- char_set_3;
+  char_set_3 --- literal_2;
   literal_2 --- disjunction_end_1;
   disjunction_begin_1 --- disjunction_begin_2;
   disjunction_begin_2 --- literal_3;
   literal_3 --- disjunction_end_2;
   disjunction_begin_2 --- literal_4;
   literal_4 --- disjunction_end_2;
-  disjunction_begin_2 --- char_class_4;
-  char_class_4 --- char_class_5;
-  char_class_5 --- disjunction_begin_3;
+  disjunction_begin_2 --- char_class_1;
+  char_class_1 --- char_set_4;
+  char_set_4 --- disjunction_begin_3;
   disjunction_begin_3 --- literal_5;
   literal_5 --- disjunction_end_3;
   disjunction_begin_3 --- literal_6;
   literal_6 --- disjunction_end_3;
   disjunction_begin_3 --- literal_7;
   literal_7 --- disjunction_end_3;
-  disjunction_end_3 --- char_class_6;
-  char_class_6 --- char_class_7;
-  char_class_7 --- disjunction_end_2;
-  disjunction_end_2 --- char_class_8;
-  char_class_8 --- disjunction_begin_4;
+  disjunction_end_3 --- char_class_2;
+  char_class_2 --- char_set_5;
+  char_set_5 --- disjunction_end_2;
+  disjunction_end_2 --- char_set_6;
+  char_set_6 --- disjunction_begin_4;
   disjunction_begin_4 --- literal_8;
   literal_8 --- disjunction_end_4;
   disjunction_begin_4 --- literal_9;
   literal_9 --- disjunction_end_4;
-  disjunction_begin_4 --- char_class_9;
-  char_class_9 --- char_class_10;
-  char_class_10 --- disjunction_begin_5;
+  disjunction_begin_4 --- char_class_3;
+  char_class_3 --- char_set_7;
+  char_set_7 --- disjunction_begin_5;
   disjunction_begin_5 --- literal_10;
   literal_10 --- disjunction_end_5;
   disjunction_begin_5 --- literal_11;
   literal_11 --- disjunction_end_5;
   disjunction_begin_5 --- literal_12;
   literal_12 --- disjunction_end_5;
-  disjunction_end_5 --- char_class_11;
-  char_class_11 --- char_class_12;
-  char_class_12 --- disjunction_end_4;
-  disjunction_end_4 --- char_class_13;
-  char_class_13 --- disjunction_begin_6;
+  disjunction_end_5 --- char_class_4;
+  char_class_4 --- char_set_8;
+  char_set_8 --- disjunction_end_4;
+  disjunction_end_4 --- char_set_9;
+  char_set_9 --- disjunction_begin_6;
   disjunction_begin_6 --- literal_13;
   literal_13 --- disjunction_end_6;
   disjunction_begin_6 --- literal_14;
   literal_14 --- disjunction_end_6;
-  disjunction_begin_6 --- char_class_14;
-  char_class_14 --- char_class_15;
-  char_class_15 --- disjunction_begin_7;
+  disjunction_begin_6 --- char_class_5;
+  char_class_5 --- char_set_10;
+  char_set_10 --- disjunction_begin_7;
   disjunction_begin_7 --- literal_15;
   literal_15 --- disjunction_end_7;
   disjunction_begin_7 --- literal_16;
   literal_16 --- disjunction_end_7;
   disjunction_begin_7 --- literal_17;
   literal_17 --- disjunction_end_7;
-  disjunction_end_7 --- char_class_16;
-  char_class_16 --- char_class_17;
-  char_class_17 --- disjunction_end_6;
-  disjunction_end_6 --- char_class_18;
-  char_class_18 --- disjunction_begin_8;
+  disjunction_end_7 --- char_class_6;
+  char_class_6 --- char_set_11;
+  char_set_11 --- disjunction_end_6;
+  disjunction_end_6 --- char_set_12;
+  char_set_12 --- disjunction_begin_8;
   disjunction_begin_8 --- literal_18;
   literal_18 --- disjunction_end_8;
   disjunction_begin_8 --- literal_19;
@@ -816,9 +816,9 @@ graph LR
   literal_21 --- disjunction_end_9;
   disjunction_begin_9 --- literal_22;
   literal_22 --- disjunction_end_9;
-  disjunction_begin_9 --- char_class_19;
-  char_class_19 --- char_class_20;
-  char_class_20 --- literal_23;
+  disjunction_begin_9 --- char_class_7;
+  char_class_7 --- char_set_13;
+  char_set_13 --- literal_23;
   literal_23 --- disjunction_end_9;
   disjunction_end_9 --- disjunction_begin_10;
   disjunction_begin_10 --- literal_24;
@@ -827,20 +827,20 @@ graph LR
   literal_25 --- disjunction_end_10;
   disjunction_begin_10 --- literal_26;
   literal_26 --- disjunction_end_10;
-  disjunction_end_10 --- char_class_21;
-  char_class_21 --- char_class_22;
-  char_class_22 --- literal_27;
+  disjunction_end_10 --- char_class_8;
+  char_class_8 --- char_set_14;
+  char_set_14 --- literal_27;
   literal_27 --- disjunction_end_8;
-  disjunction_end_8 --- char_class_23;
-  char_class_23 --- disjunction_begin_11;
+  disjunction_end_8 --- char_set_15;
+  char_set_15 --- disjunction_begin_11;
   disjunction_begin_11 --- literal_28;
   literal_28 --- disjunction_end_11;
   disjunction_begin_11 --- disjunction_begin_12;
-  disjunction_begin_12 --- char_class_24;
-  char_class_24 --- disjunction_end_12;
+  disjunction_begin_12 --- char_class_9;
+  char_class_9 --- disjunction_end_12;
   disjunction_begin_12 --- literal_29;
-  literal_29 --- char_class_25;
-  char_class_25 --- disjunction_end_12;
+  literal_29 --- char_class_10;
+  char_class_10 --- disjunction_end_12;
   disjunction_begin_12 --- literal_30;
   literal_30 --- disjunction_end_12;
   disjunction_begin_12 --- literal_31;
@@ -873,11 +873,11 @@ graph LR
   disjunction_begin_13 --- literal_44;
   literal_44 --- disjunction_end_13;
   disjunction_end_13 --- disjunction_begin_14;
-  disjunction_begin_14 --- char_class_26;
-  char_class_26 --- disjunction_end_14;
+  disjunction_begin_14 --- char_class_11;
+  char_class_11 --- disjunction_end_14;
   disjunction_begin_14 --- literal_45;
-  literal_45 --- char_class_27;
-  char_class_27 --- disjunction_end_14;
+  literal_45 --- char_class_12;
+  char_class_12 --- disjunction_end_14;
   disjunction_begin_14 --- literal_46;
   literal_46 --- disjunction_end_14;
   disjunction_begin_14 --- literal_47;
@@ -903,15 +903,15 @@ graph LR
   disjunction_begin_14 --- literal_57;
   literal_57 --- disjunction_end_14;
   disjunction_end_14 --- disjunction_end_11;
-  disjunction_end_11 --- char_class_28;
-  char_class_28 --- disjunction_begin_15;
+  disjunction_end_11 --- char_set_16;
+  char_set_16 --- disjunction_begin_15;
   disjunction_begin_15 --- literal_58;
   literal_58 --- disjunction_end_15;
   disjunction_begin_15 --- literal_59;
   literal_59 --- disjunction_end_15;
   disjunction_begin_15 --- disjunction_begin_16;
-  disjunction_begin_16 --- char_class_29;
-  char_class_29 --- disjunction_end_16;
+  disjunction_begin_16 --- char_class_13;
+  char_class_13 --- disjunction_end_16;
   disjunction_begin_16 --- literal_60;
   literal_60 --- disjunction_end_16;
   disjunction_begin_16 --- literal_61;
@@ -934,8 +934,8 @@ graph LR
   disjunction_begin_17 --- literal_69;
   literal_69 --- disjunction_end_17;
   disjunction_end_17 --- disjunction_begin_18;
-  disjunction_begin_18 --- char_class_30;
-  char_class_30 --- disjunction_end_18;
+  disjunction_begin_18 --- char_class_14;
+  char_class_14 --- disjunction_end_18;
   disjunction_begin_18 --- literal_70;
   literal_70 --- disjunction_end_18;
   disjunction_begin_18 --- literal_71;
@@ -954,21 +954,21 @@ graph LR
   literal_77 --- disjunction_end_15;
   disjunction_end_15 --- disjunction_begin_19;
   disjunction_begin_19 --- disjunction_end_19;
-  disjunction_begin_19 --- char_class_31;
-  char_class_31 --- disjunction_end_19;
+  disjunction_begin_19 --- char_set_17;
+  char_set_17 --- disjunction_end_19;
   disjunction_end_19 --- disjunction_begin_20;
   disjunction_begin_20 --- literal_78;
   literal_78 --- disjunction_end_20;
   disjunction_begin_20 --- assertion_3;
-  assertion_3 --- char_class_32;
-  char_class_32 --- disjunction_begin_21;
+  assertion_3 --- char_class_15;
+  char_class_15 --- disjunction_begin_21;
   disjunction_begin_21 --- literal_79;
   literal_79 --- disjunction_end_21;
   disjunction_begin_21 --- literal_80;
   literal_80 --- disjunction_end_21;
-  disjunction_end_21 --- char_class_33;
-  char_class_33 --- char_class_34;
-  char_class_34 --- assertion_4;
+  disjunction_end_21 --- char_set_18;
+  char_set_18 --- char_set_19;
+  char_set_19 --- assertion_4;
   assertion_4 --- disjunction_begin_22;
   disjunction_begin_22 --- literal_81;
   literal_81 --- disjunction_end_22;
@@ -979,30 +979,30 @@ graph LR
   disjunction_end_22 --- disjunction_begin_23;
   disjunction_begin_23 --- assertion_5;
   assertion_5 --- disjunction_begin_24;
-  disjunction_begin_24 --- char_class_35;
-  char_class_35 --- disjunction_end_24;
-  disjunction_begin_24 --- char_class_36;
-  char_class_36 --- char_class_37;
-  char_class_37 --- disjunction_end_24;
+  disjunction_begin_24 --- char_class_16;
+  char_class_16 --- disjunction_end_24;
+  disjunction_begin_24 --- char_class_17;
+  char_class_17 --- char_class_18;
+  char_class_18 --- disjunction_end_24;
   disjunction_begin_24 --- literal_84;
-  literal_84 --- char_class_38;
-  char_class_38 --- char_class_39;
-  char_class_39 --- disjunction_end_24;
+  literal_84 --- char_class_19;
+  char_class_19 --- char_class_20;
+  char_class_20 --- disjunction_end_24;
   disjunction_begin_24 --- literal_85;
-  literal_85 --- char_class_40;
-  char_class_40 --- disjunction_end_24;
+  literal_85 --- char_class_21;
+  char_class_21 --- disjunction_end_24;
   disjunction_end_24 --- assertion_6;
   assertion_6 --- disjunction_end_23;
   disjunction_begin_23 --- assertion_7;
-  assertion_7 --- char_class_41;
-  char_class_41 --- disjunction_begin_25;
+  assertion_7 --- char_class_22;
+  char_class_22 --- disjunction_begin_25;
   disjunction_begin_25 --- literal_86;
   literal_86 --- disjunction_end_25;
   disjunction_begin_25 --- literal_87;
   literal_87 --- disjunction_end_25;
-  disjunction_end_25 --- char_class_42;
-  char_class_42 --- char_class_43;
-  char_class_43 --- assertion_8;
+  disjunction_end_25 --- char_set_20;
+  char_set_20 --- char_set_21;
+  char_set_21 --- assertion_8;
   assertion_8 --- disjunction_end_23;
   disjunction_end_23 --- disjunction_end_20;
   disjunction_end_20 --- disjunction_end_1;
@@ -1012,9 +1012,10 @@ graph LR
   %% Styles
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
-  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;

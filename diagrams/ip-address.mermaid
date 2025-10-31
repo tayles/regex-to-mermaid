@@ -1,0 +1,1607 @@
+graph LR
+  accTitle: "Regex: ((^\\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\\s*$)|(^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*$))"
+  accDescr: "Generated with regex-to-mermaid@1.1.0"
+
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  char_set_1("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  char_class_1("Any digit"):::char-class;
+  char_class_2("1-9"):::char-class;
+  char_class_3("Any digit"):::char-class;
+  literal_1("1"):::literal;
+  char_class_4("Any digit<br><i>Exactly 2</i>"):::char-class;
+  literal_2("2"):::literal;
+  char_class_5("0-4"):::char-class;
+  char_class_6("Any digit"):::char-class;
+  literal_3("25"):::literal;
+  char_class_7("0-5"):::char-class;
+  literal_4("Any character"):::literal;
+  disjunction_begin_3:::disjunction@{ shape: f-circ };
+  disjunction_end_3:::disjunction@{ shape: f-circ };
+  char_class_8("Any digit"):::char-class;
+  char_class_9("1-9"):::char-class;
+  char_class_10("Any digit"):::char-class;
+  literal_5("1"):::literal;
+  char_class_11("Any digit<br><i>Exactly 2</i>"):::char-class;
+  literal_6("2"):::literal;
+  char_class_12("0-4"):::char-class;
+  char_class_13("Any digit"):::char-class;
+  literal_7("25"):::literal;
+  char_class_14("0-5"):::char-class;
+  char_set_2("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
+  assertion_3("^<br><i>Begins with</i>"):::assertion;
+  char_set_3("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  disjunction_begin_4:::disjunction@{ shape: f-circ };
+  disjunction_end_4:::disjunction@{ shape: f-circ };
+  char_class_15("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_8(":"):::literal;
+  disjunction_begin_5:::disjunction@{ shape: f-circ };
+  disjunction_end_5:::disjunction@{ shape: f-circ };
+  char_class_16("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_9(":"):::literal;
+  char_class_17("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_10(":"):::literal;
+  disjunction_begin_6:::disjunction@{ shape: f-circ };
+  disjunction_end_6:::disjunction@{ shape: f-circ };
+  literal_11(":"):::literal;
+  char_class_18("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  disjunction_begin_7:::disjunction@{ shape: f-circ };
+  disjunction_end_7:::disjunction@{ shape: f-circ };
+  literal_12("25"):::literal;
+  char_class_19("0-5"):::char-class;
+  literal_13("2"):::literal;
+  char_class_20("0-4"):::char-class;
+  char_set_4("Any digit"):::char-set;
+  literal_14("1"):::literal;
+  char_set_5("Any digit"):::char-set;
+  char_set_6("Any digit"):::char-set;
+  char_class_21("1-9<br><i>Optional</i>"):::char-class;
+  char_set_7("Any digit"):::char-set;
+  literal_15("Any character"):::literal;
+  disjunction_begin_8:::disjunction@{ shape: f-circ };
+  disjunction_end_8:::disjunction@{ shape: f-circ };
+  literal_16("25"):::literal;
+  char_class_22("0-5"):::char-class;
+  literal_17("2"):::literal;
+  char_class_23("0-4"):::char-class;
+  char_set_8("Any digit"):::char-set;
+  literal_18("1"):::literal;
+  char_set_9("Any digit"):::char-set;
+  char_set_10("Any digit"):::char-set;
+  char_class_24("1-9<br><i>Optional</i>"):::char-class;
+  char_set_11("Any digit"):::char-set;
+  literal_19(":"):::literal;
+  char_class_25("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_20(":"):::literal;
+  disjunction_begin_9:::disjunction@{ shape: f-circ };
+  disjunction_end_9:::disjunction@{ shape: f-circ };
+  literal_21(":"):::literal;
+  char_class_26("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_22(":"):::literal;
+  disjunction_begin_10:::disjunction@{ shape: f-circ };
+  disjunction_end_10:::disjunction@{ shape: f-circ };
+  literal_23("25"):::literal;
+  char_class_27("0-5"):::char-class;
+  literal_24("2"):::literal;
+  char_class_28("0-4"):::char-class;
+  char_set_12("Any digit"):::char-set;
+  literal_25("1"):::literal;
+  char_set_13("Any digit"):::char-set;
+  char_set_14("Any digit"):::char-set;
+  char_class_29("1-9<br><i>Optional</i>"):::char-class;
+  char_set_15("Any digit"):::char-set;
+  literal_26("Any character"):::literal;
+  disjunction_begin_11:::disjunction@{ shape: f-circ };
+  disjunction_end_11:::disjunction@{ shape: f-circ };
+  literal_27("25"):::literal;
+  char_class_30("0-5"):::char-class;
+  literal_28("2"):::literal;
+  char_class_31("0-4"):::char-class;
+  char_set_16("Any digit"):::char-set;
+  literal_29("1"):::literal;
+  char_set_17("Any digit"):::char-set;
+  char_set_18("Any digit"):::char-set;
+  char_class_32("1-9<br><i>Optional</i>"):::char-class;
+  char_set_19("Any digit"):::char-set;
+  literal_30(":"):::literal;
+  char_class_33("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_31(":"):::literal;
+  disjunction_begin_12:::disjunction@{ shape: f-circ };
+  disjunction_end_12:::disjunction@{ shape: f-circ };
+  literal_32(":"):::literal;
+  char_class_34("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_33(":"):::literal;
+  char_class_35("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_34(":"):::literal;
+  disjunction_begin_13:::disjunction@{ shape: f-circ };
+  disjunction_end_13:::disjunction@{ shape: f-circ };
+  literal_35("25"):::literal;
+  char_class_36("0-5"):::char-class;
+  literal_36("2"):::literal;
+  char_class_37("0-4"):::char-class;
+  char_set_20("Any digit"):::char-set;
+  literal_37("1"):::literal;
+  char_set_21("Any digit"):::char-set;
+  char_set_22("Any digit"):::char-set;
+  char_class_38("1-9<br><i>Optional</i>"):::char-class;
+  char_set_23("Any digit"):::char-set;
+  literal_38("Any character"):::literal;
+  disjunction_begin_14:::disjunction@{ shape: f-circ };
+  disjunction_end_14:::disjunction@{ shape: f-circ };
+  literal_39("25"):::literal;
+  char_class_39("0-5"):::char-class;
+  literal_40("2"):::literal;
+  char_class_40("0-4"):::char-class;
+  char_set_24("Any digit"):::char-set;
+  literal_41("1"):::literal;
+  char_set_25("Any digit"):::char-set;
+  char_set_26("Any digit"):::char-set;
+  char_class_41("1-9<br><i>Optional</i>"):::char-class;
+  char_set_27("Any digit"):::char-set;
+  literal_42(":"):::literal;
+  char_class_42("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_43(":"):::literal;
+  disjunction_begin_15:::disjunction@{ shape: f-circ };
+  disjunction_end_15:::disjunction@{ shape: f-circ };
+  literal_44(":"):::literal;
+  char_class_43("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_45(":"):::literal;
+  char_class_44("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_46(":"):::literal;
+  disjunction_begin_16:::disjunction@{ shape: f-circ };
+  disjunction_end_16:::disjunction@{ shape: f-circ };
+  literal_47("25"):::literal;
+  char_class_45("0-5"):::char-class;
+  literal_48("2"):::literal;
+  char_class_46("0-4"):::char-class;
+  char_set_28("Any digit"):::char-set;
+  literal_49("1"):::literal;
+  char_set_29("Any digit"):::char-set;
+  char_set_30("Any digit"):::char-set;
+  char_class_47("1-9<br><i>Optional</i>"):::char-class;
+  char_set_31("Any digit"):::char-set;
+  literal_50("Any character"):::literal;
+  disjunction_begin_17:::disjunction@{ shape: f-circ };
+  disjunction_end_17:::disjunction@{ shape: f-circ };
+  literal_51("25"):::literal;
+  char_class_48("0-5"):::char-class;
+  literal_52("2"):::literal;
+  char_class_49("0-4"):::char-class;
+  char_set_32("Any digit"):::char-set;
+  literal_53("1"):::literal;
+  char_set_33("Any digit"):::char-set;
+  char_set_34("Any digit"):::char-set;
+  char_class_50("1-9<br><i>Optional</i>"):::char-class;
+  char_set_35("Any digit"):::char-set;
+  literal_54(":"):::literal;
+  char_class_51("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_55(":"):::literal;
+  disjunction_begin_18:::disjunction@{ shape: f-circ };
+  disjunction_end_18:::disjunction@{ shape: f-circ };
+  literal_56(":"):::literal;
+  char_class_52("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_57(":"):::literal;
+  char_class_53("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_58(":"):::literal;
+  disjunction_begin_19:::disjunction@{ shape: f-circ };
+  disjunction_end_19:::disjunction@{ shape: f-circ };
+  literal_59("25"):::literal;
+  char_class_54("0-5"):::char-class;
+  literal_60("2"):::literal;
+  char_class_55("0-4"):::char-class;
+  char_set_36("Any digit"):::char-set;
+  literal_61("1"):::literal;
+  char_set_37("Any digit"):::char-set;
+  char_set_38("Any digit"):::char-set;
+  char_class_56("1-9<br><i>Optional</i>"):::char-class;
+  char_set_39("Any digit"):::char-set;
+  literal_62("Any character"):::literal;
+  disjunction_begin_20:::disjunction@{ shape: f-circ };
+  disjunction_end_20:::disjunction@{ shape: f-circ };
+  literal_63("25"):::literal;
+  char_class_57("0-5"):::char-class;
+  literal_64("2"):::literal;
+  char_class_58("0-4"):::char-class;
+  char_set_40("Any digit"):::char-set;
+  literal_65("1"):::literal;
+  char_set_41("Any digit"):::char-set;
+  char_set_42("Any digit"):::char-set;
+  char_class_59("1-9<br><i>Optional</i>"):::char-class;
+  char_set_43("Any digit"):::char-set;
+  literal_66(":"):::literal;
+  char_class_60("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_67(":"):::literal;
+  disjunction_begin_21:::disjunction@{ shape: f-circ };
+  disjunction_end_21:::disjunction@{ shape: f-circ };
+  literal_68(":"):::literal;
+  char_class_61("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_69(":"):::literal;
+  char_class_62("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_70(":"):::literal;
+  disjunction_begin_22:::disjunction@{ shape: f-circ };
+  disjunction_end_22:::disjunction@{ shape: f-circ };
+  literal_71("25"):::literal;
+  char_class_63("0-5"):::char-class;
+  literal_72("2"):::literal;
+  char_class_64("0-4"):::char-class;
+  char_set_44("Any digit"):::char-set;
+  literal_73("1"):::literal;
+  char_set_45("Any digit"):::char-set;
+  char_set_46("Any digit"):::char-set;
+  char_class_65("1-9<br><i>Optional</i>"):::char-class;
+  char_set_47("Any digit"):::char-set;
+  literal_74("Any character"):::literal;
+  disjunction_begin_23:::disjunction@{ shape: f-circ };
+  disjunction_end_23:::disjunction@{ shape: f-circ };
+  literal_75("25"):::literal;
+  char_class_66("0-5"):::char-class;
+  literal_76("2"):::literal;
+  char_class_67("0-4"):::char-class;
+  char_set_48("Any digit"):::char-set;
+  literal_77("1"):::literal;
+  char_set_49("Any digit"):::char-set;
+  char_set_50("Any digit"):::char-set;
+  char_class_68("1-9<br><i>Optional</i>"):::char-class;
+  char_set_51("Any digit"):::char-set;
+  literal_78(":"):::literal;
+  literal_79(":"):::literal;
+  disjunction_begin_24:::disjunction@{ shape: f-circ };
+  disjunction_end_24:::disjunction@{ shape: f-circ };
+  literal_80(":"):::literal;
+  char_class_69("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_81(":"):::literal;
+  char_class_70("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_82(":"):::literal;
+  disjunction_begin_25:::disjunction@{ shape: f-circ };
+  disjunction_end_25:::disjunction@{ shape: f-circ };
+  literal_83("25"):::literal;
+  char_class_71("0-5"):::char-class;
+  literal_84("2"):::literal;
+  char_class_72("0-4"):::char-class;
+  char_set_52("Any digit"):::char-set;
+  literal_85("1"):::literal;
+  char_set_53("Any digit"):::char-set;
+  char_set_54("Any digit"):::char-set;
+  char_class_73("1-9<br><i>Optional</i>"):::char-class;
+  char_set_55("Any digit"):::char-set;
+  literal_86("Any character"):::literal;
+  disjunction_begin_26:::disjunction@{ shape: f-circ };
+  disjunction_end_26:::disjunction@{ shape: f-circ };
+  literal_87("25"):::literal;
+  char_class_74("0-5"):::char-class;
+  literal_88("2"):::literal;
+  char_class_75("0-4"):::char-class;
+  char_set_56("Any digit"):::char-set;
+  literal_89("1"):::literal;
+  char_set_57("Any digit"):::char-set;
+  char_set_58("Any digit"):::char-set;
+  char_class_76("1-9<br><i>Optional</i>"):::char-class;
+  char_set_59("Any digit"):::char-set;
+  literal_90(":"):::literal;
+  literal_91("%"):::literal;
+  char_set_60("Any character<br><i>One or more</i>"):::char-set;
+  char_set_61("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  assertion_4("$<br><i>Ends with</i>"):::assertion;
+
+  %% Subgraphs
+  subgraph standard_5 ["Group #5"]
+    disjunction_begin_2
+    disjunction_end_2
+    char_class_1
+    char_class_2
+    char_class_3
+    literal_1
+    char_class_4
+    literal_2
+    char_class_5
+    char_class_6
+    literal_3
+    char_class_7
+  end
+
+  subgraph standard_4 ["Group #4 <i>Exactly 3</i>"]
+    standard_5
+    literal_4
+  end
+
+  subgraph standard_6 ["Group #6"]
+    disjunction_begin_3
+    disjunction_end_3
+    char_class_8
+    char_class_9
+    char_class_10
+    literal_5
+    char_class_11
+    literal_6
+    char_class_12
+    char_class_13
+    literal_7
+    char_class_14
+  end
+
+  subgraph standard_3 ["Group #3"]
+    standard_5
+    standard_4
+    standard_6
+  end
+
+  subgraph standard_2 ["Group #2"]
+    standard_5
+    standard_4
+    standard_6
+    standard_3
+    assertion_1
+    char_set_1
+    char_set_2
+    assertion_2
+  end
+
+  subgraph standard_10 ["Group #10 <i>Exactly 7</i>"]
+    char_class_15
+    literal_8
+  end
+
+  subgraph standard_11 ["Group #11"]
+    disjunction_begin_5
+    disjunction_end_5
+    char_class_16
+    literal_9
+  end
+
+  subgraph standard_9 ["Group #9"]
+    standard_10
+    standard_11
+  end
+
+  subgraph standard_13 ["Group #13 <i>Exactly 6</i>"]
+    char_class_17
+    literal_10
+  end
+
+  subgraph standard_16 ["Group #16"]
+    disjunction_begin_7
+    disjunction_end_7
+    literal_12
+    char_class_19
+    literal_13
+    char_class_20
+    char_set_4
+    literal_14
+    char_set_5
+    char_set_6
+    char_class_21
+    char_set_7
+  end
+
+  subgraph standard_18 ["Group #18"]
+    disjunction_begin_8
+    disjunction_end_8
+    literal_16
+    char_class_22
+    literal_17
+    char_class_23
+    char_set_8
+    literal_18
+    char_set_9
+    char_set_10
+    char_class_24
+    char_set_11
+  end
+
+  subgraph standard_17 ["Group #17 <i>Exactly 3</i>"]
+    standard_18
+    literal_15
+  end
+
+  subgraph standard_15 ["Group #15"]
+    standard_16
+    standard_18
+    standard_17
+  end
+
+  subgraph standard_14 ["Group #14"]
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    disjunction_begin_6
+    disjunction_end_6
+    literal_11
+    char_class_18
+    literal_19
+  end
+
+  subgraph standard_12 ["Group #12"]
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+  end
+
+  subgraph standard_20 ["Group #20 <i>Exactly 5</i>"]
+    char_class_25
+    literal_20
+  end
+
+  subgraph standard_23 ["Group #23 <i>1 to 2</i>"]
+    literal_21
+    char_class_26
+  end
+
+  subgraph standard_22 ["Group #22"]
+    standard_23
+  end
+
+  subgraph standard_25 ["Group #25"]
+    disjunction_begin_10
+    disjunction_end_10
+    literal_23
+    char_class_27
+    literal_24
+    char_class_28
+    char_set_12
+    literal_25
+    char_set_13
+    char_set_14
+    char_class_29
+    char_set_15
+  end
+
+  subgraph standard_27 ["Group #27"]
+    disjunction_begin_11
+    disjunction_end_11
+    literal_27
+    char_class_30
+    literal_28
+    char_class_31
+    char_set_16
+    literal_29
+    char_set_17
+    char_set_18
+    char_class_32
+    char_set_19
+  end
+
+  subgraph standard_26 ["Group #26 <i>Exactly 3</i>"]
+    standard_27
+    literal_26
+  end
+
+  subgraph standard_24 ["Group #24"]
+    standard_25
+    standard_27
+    standard_26
+  end
+
+  subgraph standard_21 ["Group #21"]
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    disjunction_begin_9
+    disjunction_end_9
+    literal_22
+    literal_30
+  end
+
+  subgraph standard_19 ["Group #19"]
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+  end
+
+  subgraph standard_29 ["Group #29 <i>Exactly 4</i>"]
+    char_class_33
+    literal_31
+  end
+
+  subgraph standard_32 ["Group #32 <i>1 to 3</i>"]
+    literal_32
+    char_class_34
+  end
+
+  subgraph standard_31 ["Group #31"]
+    standard_32
+  end
+
+  subgraph standard_34 ["Group #34 <i>Optional</i>"]
+    literal_33
+    char_class_35
+  end
+
+  subgraph standard_36 ["Group #36"]
+    disjunction_begin_13
+    disjunction_end_13
+    literal_35
+    char_class_36
+    literal_36
+    char_class_37
+    char_set_20
+    literal_37
+    char_set_21
+    char_set_22
+    char_class_38
+    char_set_23
+  end
+
+  subgraph standard_38 ["Group #38"]
+    disjunction_begin_14
+    disjunction_end_14
+    literal_39
+    char_class_39
+    literal_40
+    char_class_40
+    char_set_24
+    literal_41
+    char_set_25
+    char_set_26
+    char_class_41
+    char_set_27
+  end
+
+  subgraph standard_37 ["Group #37 <i>Exactly 3</i>"]
+    standard_38
+    literal_38
+  end
+
+  subgraph standard_35 ["Group #35"]
+    standard_36
+    standard_38
+    standard_37
+  end
+
+  subgraph standard_33 ["Group #33"]
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    literal_34
+  end
+
+  subgraph standard_30 ["Group #30"]
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    disjunction_begin_12
+    disjunction_end_12
+    literal_42
+  end
+
+  subgraph standard_28 ["Group #28"]
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+  end
+
+  subgraph standard_40 ["Group #40 <i>Exactly 3</i>"]
+    char_class_42
+    literal_43
+  end
+
+  subgraph standard_43 ["Group #43 <i>1 to 4</i>"]
+    literal_44
+    char_class_43
+  end
+
+  subgraph standard_42 ["Group #42"]
+    standard_43
+  end
+
+  subgraph standard_45 ["Group #45 <i>0 to 2</i>"]
+    literal_45
+    char_class_44
+  end
+
+  subgraph standard_47 ["Group #47"]
+    disjunction_begin_16
+    disjunction_end_16
+    literal_47
+    char_class_45
+    literal_48
+    char_class_46
+    char_set_28
+    literal_49
+    char_set_29
+    char_set_30
+    char_class_47
+    char_set_31
+  end
+
+  subgraph standard_49 ["Group #49"]
+    disjunction_begin_17
+    disjunction_end_17
+    literal_51
+    char_class_48
+    literal_52
+    char_class_49
+    char_set_32
+    literal_53
+    char_set_33
+    char_set_34
+    char_class_50
+    char_set_35
+  end
+
+  subgraph standard_48 ["Group #48 <i>Exactly 3</i>"]
+    standard_49
+    literal_50
+  end
+
+  subgraph standard_46 ["Group #46"]
+    standard_47
+    standard_49
+    standard_48
+  end
+
+  subgraph standard_44 ["Group #44"]
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    literal_46
+  end
+
+  subgraph standard_41 ["Group #41"]
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    disjunction_begin_15
+    disjunction_end_15
+    literal_54
+  end
+
+  subgraph standard_39 ["Group #39"]
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+  end
+
+  subgraph standard_51 ["Group #51 <i>Exactly 2</i>"]
+    char_class_51
+    literal_55
+  end
+
+  subgraph standard_54 ["Group #54 <i>1 to 5</i>"]
+    literal_56
+    char_class_52
+  end
+
+  subgraph standard_53 ["Group #53"]
+    standard_54
+  end
+
+  subgraph standard_56 ["Group #56 <i>0 to 3</i>"]
+    literal_57
+    char_class_53
+  end
+
+  subgraph standard_58 ["Group #58"]
+    disjunction_begin_19
+    disjunction_end_19
+    literal_59
+    char_class_54
+    literal_60
+    char_class_55
+    char_set_36
+    literal_61
+    char_set_37
+    char_set_38
+    char_class_56
+    char_set_39
+  end
+
+  subgraph standard_60 ["Group #60"]
+    disjunction_begin_20
+    disjunction_end_20
+    literal_63
+    char_class_57
+    literal_64
+    char_class_58
+    char_set_40
+    literal_65
+    char_set_41
+    char_set_42
+    char_class_59
+    char_set_43
+  end
+
+  subgraph standard_59 ["Group #59 <i>Exactly 3</i>"]
+    standard_60
+    literal_62
+  end
+
+  subgraph standard_57 ["Group #57"]
+    standard_58
+    standard_60
+    standard_59
+  end
+
+  subgraph standard_55 ["Group #55"]
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    literal_58
+  end
+
+  subgraph standard_52 ["Group #52"]
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    disjunction_begin_18
+    disjunction_end_18
+    literal_66
+  end
+
+  subgraph standard_50 ["Group #50"]
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+  end
+
+  subgraph standard_62 ["Group #62 <i>Exactly 1</i>"]
+    char_class_60
+    literal_67
+  end
+
+  subgraph standard_65 ["Group #65 <i>1 to 6</i>"]
+    literal_68
+    char_class_61
+  end
+
+  subgraph standard_64 ["Group #64"]
+    standard_65
+  end
+
+  subgraph standard_67 ["Group #67 <i>0 to 4</i>"]
+    literal_69
+    char_class_62
+  end
+
+  subgraph standard_69 ["Group #69"]
+    disjunction_begin_22
+    disjunction_end_22
+    literal_71
+    char_class_63
+    literal_72
+    char_class_64
+    char_set_44
+    literal_73
+    char_set_45
+    char_set_46
+    char_class_65
+    char_set_47
+  end
+
+  subgraph standard_71 ["Group #71"]
+    disjunction_begin_23
+    disjunction_end_23
+    literal_75
+    char_class_66
+    literal_76
+    char_class_67
+    char_set_48
+    literal_77
+    char_set_49
+    char_set_50
+    char_class_68
+    char_set_51
+  end
+
+  subgraph standard_70 ["Group #70 <i>Exactly 3</i>"]
+    standard_71
+    literal_74
+  end
+
+  subgraph standard_68 ["Group #68"]
+    standard_69
+    standard_71
+    standard_70
+  end
+
+  subgraph standard_66 ["Group #66"]
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    literal_70
+  end
+
+  subgraph standard_63 ["Group #63"]
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    disjunction_begin_21
+    disjunction_end_21
+    literal_78
+  end
+
+  subgraph standard_61 ["Group #61"]
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+  end
+
+  subgraph standard_75 ["Group #75 <i>1 to 7</i>"]
+    literal_80
+    char_class_69
+  end
+
+  subgraph standard_74 ["Group #74"]
+    standard_75
+  end
+
+  subgraph standard_77 ["Group #77 <i>0 to 5</i>"]
+    literal_81
+    char_class_70
+  end
+
+  subgraph standard_79 ["Group #79"]
+    disjunction_begin_25
+    disjunction_end_25
+    literal_83
+    char_class_71
+    literal_84
+    char_class_72
+    char_set_52
+    literal_85
+    char_set_53
+    char_set_54
+    char_class_73
+    char_set_55
+  end
+
+  subgraph standard_81 ["Group #81"]
+    disjunction_begin_26
+    disjunction_end_26
+    literal_87
+    char_class_74
+    literal_88
+    char_class_75
+    char_set_56
+    literal_89
+    char_set_57
+    char_set_58
+    char_class_76
+    char_set_59
+  end
+
+  subgraph standard_80 ["Group #80 <i>Exactly 3</i>"]
+    standard_81
+    literal_86
+  end
+
+  subgraph standard_78 ["Group #78"]
+    standard_79
+    standard_81
+    standard_80
+  end
+
+  subgraph standard_76 ["Group #76"]
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    literal_82
+  end
+
+  subgraph standard_73 ["Group #73"]
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    disjunction_begin_24
+    disjunction_end_24
+    literal_90
+  end
+
+  subgraph standard_72 ["Group #72"]
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    literal_79
+  end
+
+  subgraph standard_8 ["Group #8"]
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    disjunction_begin_4
+    disjunction_end_4
+  end
+
+  subgraph standard_82 ["Group #82 <i>Optional</i>"]
+    literal_91
+    char_set_60
+  end
+
+  subgraph standard_7 ["Group #7"]
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    standard_8
+    standard_82
+    assertion_3
+    char_set_3
+    char_set_61
+    assertion_4
+  end
+
+  subgraph standard_1 ["Group #1"]
+    standard_5
+    standard_4
+    standard_6
+    standard_3
+    standard_2
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    standard_8
+    standard_82
+    standard_7
+    disjunction_begin_1
+    disjunction_end_1
+  end
+
+  %% Edges
+  start --- disjunction_begin_1;
+  disjunction_begin_1 --- assertion_1;
+  assertion_1 --- char_set_1;
+  char_set_1 --- disjunction_begin_2;
+  disjunction_begin_2 --- char_class_1;
+  char_class_1 --- disjunction_end_2;
+  disjunction_begin_2 --- char_class_2;
+  char_class_2 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_1;
+  literal_1 --- char_class_4;
+  char_class_4 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_2;
+  literal_2 --- char_class_5;
+  char_class_5 --- char_class_6;
+  char_class_6 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- char_class_7;
+  char_class_7 --- disjunction_end_2;
+  disjunction_end_2 --- literal_4;
+  literal_4 --- disjunction_begin_3;
+  disjunction_begin_3 --- char_class_8;
+  char_class_8 --- disjunction_end_3;
+  disjunction_begin_3 --- char_class_9;
+  char_class_9 --- char_class_10;
+  char_class_10 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_5;
+  literal_5 --- char_class_11;
+  char_class_11 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_6;
+  literal_6 --- char_class_12;
+  char_class_12 --- char_class_13;
+  char_class_13 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_7;
+  literal_7 --- char_class_14;
+  char_class_14 --- disjunction_end_3;
+  disjunction_end_3 --- char_set_2;
+  char_set_2 --- assertion_2;
+  assertion_2 --- disjunction_end_1;
+  disjunction_begin_1 --- assertion_3;
+  assertion_3 --- char_set_3;
+  char_set_3 --- disjunction_begin_4;
+  disjunction_begin_4 --- char_class_15;
+  char_class_15 --- literal_8;
+  literal_8 --- disjunction_begin_5;
+  disjunction_begin_5 --- char_class_16;
+  char_class_16 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_9;
+  literal_9 --- disjunction_end_5;
+  disjunction_end_5 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_17;
+  char_class_17 --- literal_10;
+  literal_10 --- disjunction_begin_6;
+  disjunction_begin_6 --- literal_11;
+  literal_11 --- char_class_18;
+  char_class_18 --- disjunction_end_6;
+  disjunction_begin_6 --- disjunction_begin_7;
+  disjunction_begin_7 --- literal_12;
+  literal_12 --- char_class_19;
+  char_class_19 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_13;
+  literal_13 --- char_class_20;
+  char_class_20 --- char_set_4;
+  char_set_4 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_14;
+  literal_14 --- char_set_5;
+  char_set_5 --- char_set_6;
+  char_set_6 --- disjunction_end_7;
+  disjunction_begin_7 --- char_class_21;
+  char_class_21 --- char_set_7;
+  char_set_7 --- disjunction_end_7;
+  disjunction_end_7 --- literal_15;
+  literal_15 --- disjunction_begin_8;
+  disjunction_begin_8 --- literal_16;
+  literal_16 --- char_class_22;
+  char_class_22 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_17;
+  literal_17 --- char_class_23;
+  char_class_23 --- char_set_8;
+  char_set_8 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_18;
+  literal_18 --- char_set_9;
+  char_set_9 --- char_set_10;
+  char_set_10 --- disjunction_end_8;
+  disjunction_begin_8 --- char_class_24;
+  char_class_24 --- char_set_11;
+  char_set_11 --- disjunction_end_8;
+  disjunction_end_8 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_19;
+  literal_19 --- disjunction_end_6;
+  disjunction_end_6 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_25;
+  char_class_25 --- literal_20;
+  literal_20 --- disjunction_begin_9;
+  disjunction_begin_9 --- literal_21;
+  literal_21 --- char_class_26;
+  char_class_26 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_22;
+  literal_22 --- disjunction_begin_10;
+  disjunction_begin_10 --- literal_23;
+  literal_23 --- char_class_27;
+  char_class_27 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_24;
+  literal_24 --- char_class_28;
+  char_class_28 --- char_set_12;
+  char_set_12 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_25;
+  literal_25 --- char_set_13;
+  char_set_13 --- char_set_14;
+  char_set_14 --- disjunction_end_10;
+  disjunction_begin_10 --- char_class_29;
+  char_class_29 --- char_set_15;
+  char_set_15 --- disjunction_end_10;
+  disjunction_end_10 --- literal_26;
+  literal_26 --- disjunction_begin_11;
+  disjunction_begin_11 --- literal_27;
+  literal_27 --- char_class_30;
+  char_class_30 --- disjunction_end_11;
+  disjunction_begin_11 --- literal_28;
+  literal_28 --- char_class_31;
+  char_class_31 --- char_set_16;
+  char_set_16 --- disjunction_end_11;
+  disjunction_begin_11 --- literal_29;
+  literal_29 --- char_set_17;
+  char_set_17 --- char_set_18;
+  char_set_18 --- disjunction_end_11;
+  disjunction_begin_11 --- char_class_32;
+  char_class_32 --- char_set_19;
+  char_set_19 --- disjunction_end_11;
+  disjunction_end_11 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_30;
+  literal_30 --- disjunction_end_9;
+  disjunction_end_9 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_33;
+  char_class_33 --- literal_31;
+  literal_31 --- disjunction_begin_12;
+  disjunction_begin_12 --- literal_32;
+  literal_32 --- char_class_34;
+  char_class_34 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_33;
+  literal_33 --- char_class_35;
+  char_class_35 --- literal_34;
+  literal_34 --- disjunction_begin_13;
+  disjunction_begin_13 --- literal_35;
+  literal_35 --- char_class_36;
+  char_class_36 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_36;
+  literal_36 --- char_class_37;
+  char_class_37 --- char_set_20;
+  char_set_20 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_37;
+  literal_37 --- char_set_21;
+  char_set_21 --- char_set_22;
+  char_set_22 --- disjunction_end_13;
+  disjunction_begin_13 --- char_class_38;
+  char_class_38 --- char_set_23;
+  char_set_23 --- disjunction_end_13;
+  disjunction_end_13 --- literal_38;
+  literal_38 --- disjunction_begin_14;
+  disjunction_begin_14 --- literal_39;
+  literal_39 --- char_class_39;
+  char_class_39 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_40;
+  literal_40 --- char_class_40;
+  char_class_40 --- char_set_24;
+  char_set_24 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_41;
+  literal_41 --- char_set_25;
+  char_set_25 --- char_set_26;
+  char_set_26 --- disjunction_end_14;
+  disjunction_begin_14 --- char_class_41;
+  char_class_41 --- char_set_27;
+  char_set_27 --- disjunction_end_14;
+  disjunction_end_14 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_42;
+  literal_42 --- disjunction_end_12;
+  disjunction_end_12 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_42;
+  char_class_42 --- literal_43;
+  literal_43 --- disjunction_begin_15;
+  disjunction_begin_15 --- literal_44;
+  literal_44 --- char_class_43;
+  char_class_43 --- disjunction_end_15;
+  disjunction_begin_15 --- literal_45;
+  literal_45 --- char_class_44;
+  char_class_44 --- literal_46;
+  literal_46 --- disjunction_begin_16;
+  disjunction_begin_16 --- literal_47;
+  literal_47 --- char_class_45;
+  char_class_45 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_48;
+  literal_48 --- char_class_46;
+  char_class_46 --- char_set_28;
+  char_set_28 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_49;
+  literal_49 --- char_set_29;
+  char_set_29 --- char_set_30;
+  char_set_30 --- disjunction_end_16;
+  disjunction_begin_16 --- char_class_47;
+  char_class_47 --- char_set_31;
+  char_set_31 --- disjunction_end_16;
+  disjunction_end_16 --- literal_50;
+  literal_50 --- disjunction_begin_17;
+  disjunction_begin_17 --- literal_51;
+  literal_51 --- char_class_48;
+  char_class_48 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_52;
+  literal_52 --- char_class_49;
+  char_class_49 --- char_set_32;
+  char_set_32 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_53;
+  literal_53 --- char_set_33;
+  char_set_33 --- char_set_34;
+  char_set_34 --- disjunction_end_17;
+  disjunction_begin_17 --- char_class_50;
+  char_class_50 --- char_set_35;
+  char_set_35 --- disjunction_end_17;
+  disjunction_end_17 --- disjunction_end_15;
+  disjunction_begin_15 --- literal_54;
+  literal_54 --- disjunction_end_15;
+  disjunction_end_15 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_51;
+  char_class_51 --- literal_55;
+  literal_55 --- disjunction_begin_18;
+  disjunction_begin_18 --- literal_56;
+  literal_56 --- char_class_52;
+  char_class_52 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_57;
+  literal_57 --- char_class_53;
+  char_class_53 --- literal_58;
+  literal_58 --- disjunction_begin_19;
+  disjunction_begin_19 --- literal_59;
+  literal_59 --- char_class_54;
+  char_class_54 --- disjunction_end_19;
+  disjunction_begin_19 --- literal_60;
+  literal_60 --- char_class_55;
+  char_class_55 --- char_set_36;
+  char_set_36 --- disjunction_end_19;
+  disjunction_begin_19 --- literal_61;
+  literal_61 --- char_set_37;
+  char_set_37 --- char_set_38;
+  char_set_38 --- disjunction_end_19;
+  disjunction_begin_19 --- char_class_56;
+  char_class_56 --- char_set_39;
+  char_set_39 --- disjunction_end_19;
+  disjunction_end_19 --- literal_62;
+  literal_62 --- disjunction_begin_20;
+  disjunction_begin_20 --- literal_63;
+  literal_63 --- char_class_57;
+  char_class_57 --- disjunction_end_20;
+  disjunction_begin_20 --- literal_64;
+  literal_64 --- char_class_58;
+  char_class_58 --- char_set_40;
+  char_set_40 --- disjunction_end_20;
+  disjunction_begin_20 --- literal_65;
+  literal_65 --- char_set_41;
+  char_set_41 --- char_set_42;
+  char_set_42 --- disjunction_end_20;
+  disjunction_begin_20 --- char_class_59;
+  char_class_59 --- char_set_43;
+  char_set_43 --- disjunction_end_20;
+  disjunction_end_20 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_66;
+  literal_66 --- disjunction_end_18;
+  disjunction_end_18 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_60;
+  char_class_60 --- literal_67;
+  literal_67 --- disjunction_begin_21;
+  disjunction_begin_21 --- literal_68;
+  literal_68 --- char_class_61;
+  char_class_61 --- disjunction_end_21;
+  disjunction_begin_21 --- literal_69;
+  literal_69 --- char_class_62;
+  char_class_62 --- literal_70;
+  literal_70 --- disjunction_begin_22;
+  disjunction_begin_22 --- literal_71;
+  literal_71 --- char_class_63;
+  char_class_63 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_72;
+  literal_72 --- char_class_64;
+  char_class_64 --- char_set_44;
+  char_set_44 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_73;
+  literal_73 --- char_set_45;
+  char_set_45 --- char_set_46;
+  char_set_46 --- disjunction_end_22;
+  disjunction_begin_22 --- char_class_65;
+  char_class_65 --- char_set_47;
+  char_set_47 --- disjunction_end_22;
+  disjunction_end_22 --- literal_74;
+  literal_74 --- disjunction_begin_23;
+  disjunction_begin_23 --- literal_75;
+  literal_75 --- char_class_66;
+  char_class_66 --- disjunction_end_23;
+  disjunction_begin_23 --- literal_76;
+  literal_76 --- char_class_67;
+  char_class_67 --- char_set_48;
+  char_set_48 --- disjunction_end_23;
+  disjunction_begin_23 --- literal_77;
+  literal_77 --- char_set_49;
+  char_set_49 --- char_set_50;
+  char_set_50 --- disjunction_end_23;
+  disjunction_begin_23 --- char_class_68;
+  char_class_68 --- char_set_51;
+  char_set_51 --- disjunction_end_23;
+  disjunction_end_23 --- disjunction_end_21;
+  disjunction_begin_21 --- literal_78;
+  literal_78 --- disjunction_end_21;
+  disjunction_end_21 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_79;
+  literal_79 --- disjunction_begin_24;
+  disjunction_begin_24 --- literal_80;
+  literal_80 --- char_class_69;
+  char_class_69 --- disjunction_end_24;
+  disjunction_begin_24 --- literal_81;
+  literal_81 --- char_class_70;
+  char_class_70 --- literal_82;
+  literal_82 --- disjunction_begin_25;
+  disjunction_begin_25 --- literal_83;
+  literal_83 --- char_class_71;
+  char_class_71 --- disjunction_end_25;
+  disjunction_begin_25 --- literal_84;
+  literal_84 --- char_class_72;
+  char_class_72 --- char_set_52;
+  char_set_52 --- disjunction_end_25;
+  disjunction_begin_25 --- literal_85;
+  literal_85 --- char_set_53;
+  char_set_53 --- char_set_54;
+  char_set_54 --- disjunction_end_25;
+  disjunction_begin_25 --- char_class_73;
+  char_class_73 --- char_set_55;
+  char_set_55 --- disjunction_end_25;
+  disjunction_end_25 --- literal_86;
+  literal_86 --- disjunction_begin_26;
+  disjunction_begin_26 --- literal_87;
+  literal_87 --- char_class_74;
+  char_class_74 --- disjunction_end_26;
+  disjunction_begin_26 --- literal_88;
+  literal_88 --- char_class_75;
+  char_class_75 --- char_set_56;
+  char_set_56 --- disjunction_end_26;
+  disjunction_begin_26 --- literal_89;
+  literal_89 --- char_set_57;
+  char_set_57 --- char_set_58;
+  char_set_58 --- disjunction_end_26;
+  disjunction_begin_26 --- char_class_76;
+  char_class_76 --- char_set_59;
+  char_set_59 --- disjunction_end_26;
+  disjunction_end_26 --- disjunction_end_24;
+  disjunction_begin_24 --- literal_90;
+  literal_90 --- disjunction_end_24;
+  disjunction_end_24 --- disjunction_end_4;
+  disjunction_end_4 --- literal_91;
+  literal_91 --- char_set_60;
+  char_set_60 --- char_set_61;
+  char_set_61 --- assertion_4;
+  assertion_4 --- disjunction_end_1;
+  disjunction_end_1 --- fin;
+
+  %% Styles
+  %% Node Styling
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+
+  %% Apply Group Classes
+  class standard_5,standard_4,standard_6,standard_3,standard_2,standard_10,standard_11,standard_9,standard_13,standard_16,standard_18,standard_17,standard_15,standard_14,standard_12,standard_20,standard_23,standard_22,standard_25,standard_27,standard_26,standard_24,standard_21,standard_19,standard_29,standard_32,standard_31,standard_34,standard_36,standard_38,standard_37,standard_35,standard_33,standard_30,standard_28,standard_40,standard_43,standard_42,standard_45,standard_47,standard_49,standard_48,standard_46,standard_44,standard_41,standard_39,standard_51,standard_54,standard_53,standard_56,standard_58,standard_60,standard_59,standard_57,standard_55,standard_52,standard_50,standard_62,standard_65,standard_64,standard_67,standard_69,standard_71,standard_70,standard_68,standard_66,standard_63,standard_61,standard_75,standard_74,standard_77,standard_79,standard_81,standard_80,standard_78,standard_76,standard_73,standard_72,standard_8,standard_82,standard_7,standard_1 standard;

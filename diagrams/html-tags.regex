@@ -1,6 +1,7 @@
 ---
 name: HTML Tags
-description: Naive html tags
+description: Naive html tags. Note: do not use regex for parsing HTML!
+source: https://digitalfortress.tech/tips/top-15-commonly-used-regex/
 flavor: regexp
 ---
 
