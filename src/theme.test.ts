@@ -24,6 +24,8 @@ describe('THEME_NODE_STYLES constant', () => {
       'literal',
       'char-class',
       'negated-char-class',
+      'char-set',
+      'negated-char-set',
       'disjunction',
       'assertion',
       'back-reference',

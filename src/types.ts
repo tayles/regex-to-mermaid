@@ -14,6 +14,8 @@ export const NODE_TYPES = [
   'literal',
   'char-class',
   'negated-char-class',
+  'char-set',
+  'negated-char-set',
   'disjunction',
   'assertion',
   'back-reference',

@@ -550,6 +550,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\d/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('char-set');
       expect(data.nodes[0]?.label).toBe('Any digit');
     });
 
@@ -557,6 +558,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\D/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('negated-char-set');
       expect(data.nodes[0]?.label).toBe('Not a digit');
     });
 
@@ -564,6 +566,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\w/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('char-set');
       expect(data.nodes[0]?.label).toBe('Any word character');
     });
 
@@ -571,6 +574,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\W/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('negated-char-set');
       expect(data.nodes[0]?.label).toBe('Not a word character');
     });
 
@@ -578,6 +582,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\s/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('char-set');
       expect(data.nodes[0]?.label).toBe('Any whitespace');
     });
 
@@ -585,6 +590,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\S/);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('negated-char-set');
       expect(data.nodes[0]?.label).toBe('Not whitespace');
     });
 
@@ -592,6 +598,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\p{Letter}/u);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('char-set');
       expect(data.nodes[0]?.label).toBe('Letter');
     });
 
@@ -599,6 +606,7 @@ describe('Character class label formatting', () => {
       const ast = buildRegexAst(/\P{Letter}/u);
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.type).toBe('negated-char-set');
       expect(data.nodes[0]?.label).toBe('Not Letter');
     });
 

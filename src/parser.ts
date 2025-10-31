@@ -173,7 +173,7 @@ function processNode(
     case 'Alternative':
       return processAlternative(node, previousNodeId, nodes, edges, groups);
     case 'Character':
-      return processChar(node, previousNodeId, nodes, edges);
+      return processCharacter(node, previousNodeId, nodes, edges);
     case 'CharacterClass':
       return processCharacterClass(node, previousNodeId, nodes, edges);
     case 'CharacterSet':
@@ -181,7 +181,7 @@ function processNode(
     case 'ExpressionCharacterClass':
       return processExpressionCharacterClass(node, previousNodeId, nodes, edges);
     case 'Quantifier':
-      return processRepetition(node, previousNodeId, nodes, edges, groups);
+      return processQuantifier(node, previousNodeId, nodes, edges, groups);
     case 'CapturingGroup':
     case 'Group':
       return processGroup(node, previousNodeId, nodes, edges, groups);
@@ -264,7 +264,7 @@ function processCombinedChars(
   return nodeId;
 }
 
-function processChar(
+function processCharacter(
   node: Character,
   previousNodeId: string,
   nodes: DiagramNode[],
@@ -290,8 +290,8 @@ function processCharacterClass(
   nodes: DiagramNode[],
   edges: DiagramEdge[],
 ): string {
+  const nodeId = getNextNodeId('char-class');
   const nodeType = node.negate ? 'negated-char-class' : 'char-class';
-  const nodeId = getNextNodeId(nodeType);
   const label = buildCharacterClassLabel(node);
 
   nodes.push({
@@ -359,7 +359,10 @@ function processCharacterSet(
   nodes: DiagramNode[],
   edges: DiagramEdge[],
 ): string {
-  const nodeId = getNextNodeId('char-class');
+  const nodeId = getNextNodeId('char-set');
+  // Determine if this is a negated character set
+  const isNegated = 'negate' in node && node.negate;
+  const nodeType = isNegated ? 'negated-char-set' : 'char-set';
   let label = '';
 
   if (node.kind === 'any') {
@@ -368,9 +371,9 @@ function processCharacterSet(
   } else if (node.kind === 'digit' || node.kind === 'space' || node.kind === 'word') {
     // Character class escapes: \d, \D, \s, \S, \w, \W
     const kindMap: Record<string, string> = {
-      digit: node.negate ? 'Not a digit' : 'Any digit',
-      space: node.negate ? 'Not whitespace' : 'Any whitespace',
-      word: node.negate ? 'Not a word character' : 'Any word character',
+      digit: isNegated ? 'Not a digit' : 'Any digit',
+      space: isNegated ? 'Not whitespace' : 'Any whitespace',
+      word: isNegated ? 'Not a word character' : 'Any word character',
     };
     label = kindMap[node.kind] || node.raw;
   } else if (node.kind === 'property') {
@@ -382,7 +385,7 @@ function processCharacterSet(
     } else {
       prop = node.value ? `${node.key}=${node.value}` : node.key;
     }
-    label = node.negate ? `Not ${prop}` : prop;
+    label = isNegated ? `Not ${prop}` : prop;
     if (node.strings) {
       label += '<br><i>(strings)</i>';
     }
@@ -392,7 +395,7 @@ function processCharacterSet(
 
   nodes.push({
     id: nodeId,
-    type: 'char-class',
+    type: nodeType,
     label,
   });
 
@@ -520,7 +523,7 @@ function buildModifierText(mods: Modifiers): string {
   return parts.join(' ');
 }
 
-function processRepetition(
+function processQuantifier(
   node: Quantifier,
   previousNodeId: string,
   nodes: DiagramNode[],
@@ -736,7 +739,9 @@ function processAssertion(
       label = '$<br><i>Ends with</i>';
       break;
     case 'word':
-      label = String.raw`\b<br><i>Word boundary</i>`;
+      label = node.negate
+        ? String.raw`\b<br><i>Word boundary</i>`
+        : String.raw`\B<br><i>Not a word boundary</i>`;
       break;
   }
 
