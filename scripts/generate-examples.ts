@@ -20,17 +20,25 @@ type RegexDescriptorWithMarkdown = {
   markdown: string;
 };
 
+type ExampleData = {
+  regexFilePath: string;
+  diagram: string;
+  imageFilePath: string;
+};
+
 /**
  * Generate AST, Mermaid diagram, and EXAMPLES.md for all regex files
  */
-async function generateExamples() {
+async function generateExamples(generateImages = true) {
   const examplesFilePath = join(import.meta.dir, '..', 'EXAMPLES.md');
 
   // Read all .regex files
   const regexFilePaths = await getAllRegexFilePaths(DIAGRAMS_DIR);
 
-  // Parse all regex files
+  // Parse all regex files and generate markdown
   const examples: RegexDescriptorWithMarkdown[] = [];
+  const imageData: ExampleData[] = [];
+
   for (const regexFilePath of regexFilePaths) {
     console.log(`Processing ${regexFilePath}...`);
     const regexFileContent = await readFile(regexFilePath, 'utf-8');
@@ -54,8 +62,6 @@ async function generateExamples() {
     await writeMermaidFile(mermaidFilePath, diagram);
 
     const imageFilePath = regexFilePath.replace('.regex', '.mermaid-diagram.png');
-    await writeMermaidImageFile(imageFilePath, diagram, 'default');
-
     const mermaidLiveUrl = await generateMermaidLiveLink(diagram);
 
     const exampleMarkdown = generateExampleMarkdown(
@@ -69,12 +75,30 @@ async function generateExamples() {
       descriptor: regexDescriptor,
       markdown: exampleMarkdown,
     });
+
+    imageData.push({
+      regexFilePath,
+      diagram,
+      imageFilePath,
+    });
   }
 
   // Write EXAMPLES.md
   await writeExamplesMarkdown(examplesFilePath, examples);
 
   console.log(`✅ Generated examples for ${examples.length} regex patterns`);
+
+  // Generate images in separate loop
+  if (generateImages) {
+    console.log('\nGenerating images...');
+    for (const { regexFilePath, diagram, imageFilePath } of imageData) {
+      console.log(`Generating image for ${regexFilePath}...`);
+      await writeMermaidImageFile(imageFilePath, diagram, 'default');
+    }
+    console.log(`✅ Generated ${imageData.length} images`);
+  } else {
+    console.log('\n⏭️  Skipping image generation (use --images to enable)');
+  }
 }
 
 async function writeAstFile(filePath: string, pattern: RegExp) {
@@ -93,12 +117,14 @@ function generateExampleMarkdown(
   imageFilePath: string,
   mermaidLiveUrl: string,
 ): string {
+  const source = regexDescriptor.source ? `\n\nSource: <${regexDescriptor.source}>` : '';
+
   const content = `
 ## ${regexDescriptor.name}
 
-${regexDescriptor.description}
+${regexDescriptor.description}${source}
 
-### Pattern
+### Pattern {#${regexDescriptor.name}}
 
 \`\`\`regex
 ${regexDescriptor.pattern}
@@ -140,7 +166,11 @@ ${examples.map(example => example.markdown).join('\n\n---\n\n')}
 
 // Run the script
 try {
-  await generateExamples();
+  // Parse command line arguments
+  const args = process.argv.slice(2);
+  const generateImages = !args.includes('--no-images');
+
+  await generateExamples(generateImages);
 } catch (error) {
   console.error('Error generating examples:', error);
   process.exit(1);

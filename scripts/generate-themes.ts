@@ -29,10 +29,16 @@ interface ThemeWithMarkdown {
   markdown: string;
 }
 
+interface ThemeImageData {
+  theme: Theme;
+  diagram: string;
+  imageFilePath: string;
+}
+
 /**
  * Generate theme previews for THEMES.md
  */
-async function generateThemes() {
+async function generateThemes(generateImages = true) {
   const themesFilePath = join(import.meta.dir, '..', 'THEMES.md');
 
   const regexFilePath = join(DIAGRAMS_DIR, 'url.regex');
@@ -47,6 +53,7 @@ async function generateThemes() {
 
   // Generate content for each theme
   const themeMarkdowns: ThemeWithMarkdown[] = [];
+  const imageData: ThemeImageData[] = [];
 
   for (const theme of THEMES) {
     const diagram = regexToMermaid(regexDescriptor.pattern, {
@@ -60,22 +67,34 @@ async function generateThemes() {
         ? regexFilePath.replace('.regex', `.mermaid-diagram.png`) // no suffix for simplicity
         : regexFilePath.replace('.regex', `.mermaid-diagram.${theme}-theme.png`);
 
-    // default is already generated for examples
-    if (theme !== 'default') {
-      await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
-    }
-
     const mermaidLiveUrl = await generateMermaidLiveLink(diagram);
 
     const themeMarkdown = generateThemeMarkdown(theme, diagram, imageFilePath, mermaidLiveUrl);
 
     themeMarkdowns.push({ theme, markdown: themeMarkdown });
+
+    // Skip default theme in image generation as it's already generated for examples
+    if (theme !== 'default') {
+      imageData.push({ theme, diagram, imageFilePath });
+    }
   }
 
   // Write THEMES.md
   await writeThemesMarkdown(themesFilePath, themeMarkdowns);
 
   console.log(`✅ Generated previews for ${THEMES.length} themes`);
+
+  // Generate images in separate loop
+  if (generateImages) {
+    console.log('\nGenerating images...');
+    for (const { theme, diagram, imageFilePath } of imageData) {
+      console.log(`Generating image for theme: ${theme}...`);
+      await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
+    }
+    console.log(`✅ Generated ${imageData.length} images (default theme skipped)`);
+  } else {
+    console.log('\n⏭️  Skipping image generation (use --images to enable)');
+  }
 }
 
 function generateThemeStylesMarkdownTable(theme: ThemeWithStyles): string {
@@ -179,7 +198,11 @@ ${sections.map(section => section.markdown).join('\n\n---\n\n')}
 
 // Run the script
 try {
-  await generateThemes();
+  // Parse command line arguments
+  const args = process.argv.slice(2);
+  const generateImages = !args.includes('--no-images');
+
+  await generateThemes(generateImages);
 } catch (error) {
   console.error('Error generating themes:', error);
   process.exit(1);
