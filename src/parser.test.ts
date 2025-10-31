@@ -388,7 +388,7 @@ describe('generateDiagramData', () => {
     const data = generateDiagramData(ast);
     expect(data.groups.length).toBe(1);
     expect(data.groups[0]?.type).toBe('named-capture');
-    expect(data.groups[0]?.label).toBe('#1 name');
+    expect(data.groups[0]?.label).toBe('name #1');
     expect(data.groups[0]?.id).toBe('named_capture_1');
     expect(data.groups[0]?.number).toBe(1);
   });
@@ -622,8 +622,8 @@ describe('Character class label formatting', () => {
       const data = generateDiagramData(ast);
       expect(data.nodes.length).toBe(1);
       const label = data.nodes[0]?.label || '';
-      expect(label).toContain(String.raw`\d`);
-      expect(label).toContain(String.raw`\w`);
+      expect(label).toContain('Any digit');
+      expect(label).toContain('Any word character');
     });
   });
 

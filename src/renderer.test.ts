@@ -77,13 +77,13 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: '#1 protocol',
+        label: 'protocol #1',
         children: ['node1', 'node2'],
       },
     ];
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
-    expect(result).toContain('#1 protocol');
+    expect(result).toContain('protocol #1');
     expect(result).toContain('node1');
     expect(result).toContain('node2');
     expect(result).toContain('end');
@@ -139,22 +139,22 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: '#1 protocol',
+        label: 'protocol #1',
         children: ['node1'],
       },
       {
         id: 'group2',
         type: 'named-capture',
         number: 2,
-        label: '#2 path',
+        label: 'path #2',
         children: ['node2'],
       },
     ];
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
     expect(result).toContain('subgraph group2');
-    expect(result).toContain('#1 protocol');
-    expect(result).toContain('#2 path');
+    expect(result).toContain('protocol #1');
+    expect(result).toContain('path #2');
   });
 
   test('handles different group types', () => {
@@ -525,12 +525,12 @@ describe('Edge cases and error handling', () => {
         id: 'group999',
         type: 'standard',
         number: 999,
-        label: '#999 test',
+        label: 'test #999',
         children: ['n1'],
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('#999 test');
+    expect(result).toContain('test #999');
   });
 
   test('buildEdges handles same node connected to itself', () => {

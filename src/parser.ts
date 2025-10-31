@@ -313,23 +313,29 @@ function buildCharacterClassLabel(node: CharacterClass): string {
   const ranges: string[] = [];
 
   for (const elem of node.elements) {
-    if (elem.type === 'Character') {
-      const char = elem.raw;
-      singleChars.push(escapeSingleChar(char));
-    } else if (elem.type === 'CharacterClassRange') {
-      const from = elem.min.raw;
-      const to = elem.max.raw;
-      const rangeName = getFriendlyRangeName(from, to);
-      ranges.push(rangeName ?? `${from}-${to}`);
-    } else if (elem.type === 'CharacterClass') {
-      // Nested character class
-      ranges.push(buildCharacterClassLabel(elem));
-    } else if (elem.type === 'CharacterSet') {
-      // Character set escape (\d, \w, \s, etc.)
-      ranges.push(getClassOperandLabel(elem));
-    } else {
-      // Other element types (ExpressionCharacterClass, ClassStringDisjunction, etc.)
-      ranges.push(getClassOperandLabel(elem));
+    switch (elem.type) {
+      case 'Character':
+        singleChars.push(escapeSingleChar(elem.raw));
+        break;
+      case 'CharacterClassRange': {
+        const from = elem.min.raw;
+        const to = elem.max.raw;
+        const rangeName = getFriendlyRangeName(from, to);
+        ranges.push(rangeName ?? `${from}-${to}`);
+        break;
+      }
+      case 'CharacterClass':
+        // Nested character class
+        ranges.push(buildCharacterClassLabel(elem));
+        break;
+      case 'CharacterSet':
+        // Character set escape (\d, \w, \s, etc.)
+        ranges.push(getClassOperandLabel(elem));
+        break;
+      default:
+        // Other element types (ExpressionCharacterClass, ClassStringDisjunction, etc.)
+        ranges.push(getClassOperandLabel(elem));
+        break;
     }
   }
 
@@ -363,35 +369,7 @@ function processCharacterSet(
   // Determine if this is a negated character set
   const isNegated = 'negate' in node && node.negate;
   const nodeType = isNegated ? 'negated-char-set' : 'char-set';
-  let label = '';
-
-  if (node.kind === 'any') {
-    // Dot (.)
-    label = 'Any character';
-  } else if (node.kind === 'digit' || node.kind === 'space' || node.kind === 'word') {
-    // Character class escapes: \d, \D, \s, \S, \w, \W
-    const kindMap: Record<string, string> = {
-      digit: isNegated ? 'Not a digit' : 'Any digit',
-      space: isNegated ? 'Not whitespace' : 'Any whitespace',
-      word: isNegated ? 'Not a word character' : 'Any word character',
-    };
-    label = kindMap[node.kind] || node.raw;
-  } else if (node.kind === 'property') {
-    // Unicode property escapes: \p{...}, \P{...}
-    // If key is General_Category, expand the abbreviation to long form
-    let prop: string;
-    if (node.key === 'General_Category' && node.value) {
-      prop = expandGeneralCategory(node.value) ?? node.value;
-    } else {
-      prop = node.value ? `${node.key}=${node.value}` : node.key;
-    }
-    label = isNegated ? `Not ${prop}` : prop;
-    if (node.strings) {
-      label += '<br><i>(strings)</i>';
-    }
-  } else {
-    label = node.raw || 'Character set';
-  }
+  const label = buildCharacterSetLabel(node);
 
   nodes.push({
     id: nodeId,
@@ -439,13 +417,13 @@ function buildExpressionCharacterClassLabel(node: ExpressionCharacterClass): str
 function buildClassIntersectionLabel(node: ClassIntersection): string {
   const left = getClassOperandLabel(node.left);
   const right = getClassOperandLabel(node.right);
-  return `${left}<br>AND<br>${right}`;
+  return `${left}<br><i>AND</i><br>${right}`;
 }
 
 function buildClassSubtractionLabel(node: ClassSubtraction): string {
   const left = getClassOperandLabel(node.left);
   const right = getClassOperandLabel(node.right);
-  return `${left}<br>EXCEPT<br>${right}`;
+  return `${left}<br><i>EXCEPT</i><br>${right}`;
 }
 
 function getClassOperandLabel(
@@ -457,20 +435,7 @@ function getClassOperandLabel(
     case 'CharacterClass':
       return buildCharacterClassLabel(node);
     case 'CharacterSet':
-      if (node.kind === 'digit') return node.negate ? String.raw`\D` : String.raw`\d`;
-      if (node.kind === 'space') return node.negate ? String.raw`\S` : String.raw`\s`;
-      if (node.kind === 'word') return node.negate ? String.raw`\W` : String.raw`\w`;
-      if (node.kind === 'property') {
-        // If key is General_Category, expand the abbreviation to long form
-        let prop: string;
-        if (node.key === 'General_Category' && node.value) {
-          prop = expandGeneralCategory(node.value) ?? node.value;
-        } else {
-          prop = node.value ? `${node.key}=${node.value}` : node.key;
-        }
-        return node.negate ? String.raw`\P{${prop}}` : String.raw`\p{${prop}}`;
-      }
-      return node.raw || '';
+      return buildCharacterSetLabel(node);
     case 'ClassIntersection':
       return buildClassIntersectionLabel(node);
     case 'ClassSubtraction':
@@ -479,6 +444,34 @@ function getClassOperandLabel(
       return buildExpressionCharacterClassLabel(node);
     case 'ClassStringDisjunction':
       return buildClassStringDisjunctionLabel(node);
+  }
+}
+
+function buildCharacterSetLabel(node: CharacterSet): string {
+  switch (node.kind) {
+    case 'any':
+      // Dot (.)
+      return 'Any character';
+    case 'digit':
+      // Character class escapes: \d, \D
+      return node.negate ? 'Not a digit' : 'Any digit';
+    case 'space':
+      // Character class escapes: \s, \S
+      return node.negate ? 'Not whitespace' : 'Any whitespace';
+    case 'word':
+      // Character class escapes: \w, \W
+      return node.negate ? 'Not a word character' : 'Any word character';
+    case 'property': {
+      // Unicode property escapes: \p{...}, \P{...}
+      // If key is General_Category, expand the abbreviation to long form
+      let prop: string;
+      if (node.key === 'General_Category' && node.value) {
+        prop = expandGeneralCategory(node.value) ?? node.value;
+      } else {
+        prop = node.value ? `${node.key}=${node.value}` : node.key;
+      }
+      return node.negate ? `Not ${prop}` : prop;
+    }
   }
 }
 
@@ -595,7 +588,7 @@ function processGroup(
     groupNumber = getNextGroupNumber();
     if (node.name) {
       groupType = 'named-capture';
-      groupName = `#${groupNumber} ${node.name}`;
+      groupName = `${node.name} #${groupNumber}`;
     } else {
       groupName = `Group #${groupNumber}`;
     }
