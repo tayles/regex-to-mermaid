@@ -36,13 +36,13 @@ describe('buildNodes', () => {
     const nodes: DiagramNode[] = [
       { id: 'char1', type: 'literal', label: 'a' },
       { id: 'class1', type: 'char-class', label: '[a-z]' },
-      { id: 'rep1', type: 'modifier', label: '*' },
+      { id: 'rep1', type: 'disjunction', label: '|' },
       { id: 'group1', type: 'literal', label: '(...)' },
     ];
     const result = buildNodes(nodes);
     expect(result).toContain('char1("a"):::literal');
     expect(result).toContain('class1("[a-z]"):::char-class');
-    expect(result).toContain('rep1("*"):::modifier');
+    expect(result).toContain('rep1("|"):::disjunction');
     expect(result).toContain('group1("(...)"):::literal');
   });
 
@@ -77,7 +77,7 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: 'protocol',
+        label: '#1 protocol',
         children: ['node1', 'node2'],
       },
     ];
@@ -139,14 +139,14 @@ describe('buildSubgraphs', () => {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: 'protocol',
+        label: '#1 protocol',
         children: ['node1'],
       },
       {
         id: 'group2',
         type: 'named-capture',
         number: 2,
-        label: 'path',
+        label: '#2 path',
         children: ['node2'],
       },
     ];
@@ -496,7 +496,7 @@ describe('buildMermaidDiagram', () => {
     };
     const title = 'Pattern for "test" values';
     const result = buildMermaidDiagram(data, 'LR', 'default', title);
-    expect(result).toContain('accTitle: "Regex: Pattern for \\"test\\" values"');
+    expect(result).toContain(String.raw`accTitle: "Regex: Pattern for \"test\" values"`);
 
     // Check sections appear in correct order
     const graphIndex = result.indexOf('graph LR');
@@ -525,12 +525,12 @@ describe('Edge cases and error handling', () => {
         id: 'group999',
         type: 'standard',
         number: 999,
-        label: 'test',
+        label: '#999 test',
         children: ['n1'],
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('#999');
+    expect(result).toContain('#999 test');
   });
 
   test('buildEdges handles same node connected to itself', () => {
@@ -557,18 +557,18 @@ describe('Edge cases and error handling', () => {
       { id: 'n2', type: 'char-class', label: '[a-z]' },
       { id: 'n3', type: 'negated-char-class', label: 'a-z' },
       { id: 'n4', type: 'disjunction', label: '|' },
-      { id: 'n5', type: 'modifier', label: '(...)' },
+      { id: 'n5', type: 'literal', label: '(...)' },
       { id: 'n6', type: 'assertion', label: '^' },
-      { id: 'n7', type: 'back-reference', label: '\\1' },
+      { id: 'n7', type: 'back-reference', label: String.raw`\1` },
     ];
     const result = buildNodes(nodes);
     expect(result).toContain('n1("a"):::literal');
     expect(result).toContain('n2("[a-z]"):::char-class');
     expect(result).toContain('n3("a-z"):::negated-char-class');
     expect(result).toContain('n4("|"):::disjunction');
-    expect(result).toContain('n5("(...)"):::modifier');
+    expect(result).toContain('n5("(...)"):::literal');
     expect(result).toContain('n6("^"):::assertion');
-    expect(result).toContain('n7("\\1"):::back-reference');
+    expect(result).toContain(String.raw`n7("\1"):::back-reference`);
   });
 
   test('buildSubgraphs handles all group types', () => {
@@ -667,27 +667,27 @@ describe('Edge cases and error handling', () => {
 describe('escapeString', () => {
   test('escapes double quotes', () => {
     const result = escapeString('Hello "world"');
-    expect(result).toBe('Hello \\"world\\"');
+    expect(result).toBe(String.raw`Hello \"world\"`);
   });
 
   test('escapes backslashes', () => {
-    const result = escapeString('C:\\Users\\path');
-    expect(result).toBe('C:\\\\Users\\\\path');
+    const result = escapeString(String.raw`C:\Users\path`);
+    expect(result).toBe(String.raw`C:\\Users\\path`);
   });
 
   test('escapes newlines', () => {
     const result = escapeString('line1\nline2');
-    expect(result).toBe('line1\\nline2');
+    expect(result).toBe(String.raw`line1\nline2`);
   });
 
   test('escapes carriage returns', () => {
     const result = escapeString('line1\rline2');
-    expect(result).toBe('line1\\rline2');
+    expect(result).toBe(String.raw`line1\rline2`);
   });
 
   test('escapes multiple special characters', () => {
     const result = escapeString('test "quote"\nand\\slash');
-    expect(result).toBe('test \\"quote\\"\\nand\\\\slash');
+    expect(result).toBe(String.raw`test \"quote\"\nand\\slash`);
   });
 
   test('handles empty string', () => {
@@ -707,7 +707,7 @@ describe('escapeString', () => {
 
   test('escapes complex patterns with all special characters', () => {
     const result = escapeString('test\n"quote"\r\\path');
-    expect(result).toBe('test\\n\\"quote\\"\\r\\\\path');
+    expect(result).toBe(String.raw`test\n\"quote\"\r\\path`);
   });
 });
 
@@ -744,7 +744,7 @@ describe('buildAccessibility', () => {
   });
 
   test('escapes backslashes in title', () => {
-    const result = buildAccessibility('Path: C:\\Users');
+    const result = buildAccessibility(String.raw`Path: C:\Users`);
     expect(result).toBe('accTitle: "Regex: Path: C:\\\\Users"\n');
   });
 
@@ -760,8 +760,8 @@ describe('buildAccessibility', () => {
 
   test('handles complex patterns with multiple special characters', () => {
     const result = buildAccessibility('Regex "pattern"\nwith\\escape', 'Description with "quotes"');
-    expect(result).toContain('accTitle: "Regex: Regex \\"pattern\\"\\nwith\\\\escape"');
-    expect(result).toContain('accDescr: "Description with \\"quotes\\""');
+    expect(result).toContain(String.raw`accTitle: "Regex: Regex \"pattern\"\nwith\\escape"`);
+    expect(result).toContain(String.raw`accDescr: "Description with \"quotes\""`);
   });
 });
 

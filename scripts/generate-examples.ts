@@ -139,7 +139,9 @@ ${examples.map(example => example.markdown).join('\n\n---\n\n')}
 }
 
 // Run the script
-generateExamples().catch(error => {
+try {
+  await generateExamples();
+} catch (error) {
   console.error('Error generating examples:', error);
   process.exit(1);
-});
+}

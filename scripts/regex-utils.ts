@@ -27,11 +27,11 @@ export function parseRegexFile(content: string): RegexFile {
 
   for (const line of lines) {
     if (line === '---') {
-      if (!inFrontmatter) {
-        inFrontmatter = true;
-      } else {
+      if (inFrontmatter) {
         inFrontmatter = false;
         frontmatterEnded = true;
+      } else {
+        inFrontmatter = true;
       }
       continue;
     }
@@ -139,8 +139,6 @@ export async function writeMermaidImageFile(
   }
 
   await $`cat < ${input} | mmdc -i - -o ${filePath} -t ${theme} -b ${background} -w 2048`;
-
-  return;
 }
 
 /**

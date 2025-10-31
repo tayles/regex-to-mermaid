@@ -136,7 +136,9 @@ ${sections.map(section => section.markdown).join('\n\n---\n\n')}
 }
 
 // Run the script
-generateThemes().catch(error => {
+try {
+  await generateThemes();
+} catch (error) {
   console.error('Error generating themes:', error);
   process.exit(1);
-});
+}

@@ -1,8 +1,7 @@
-import { parseRegExpLiteral } from '@eslint-community/regexpp';
-import { printAst } from '../src/parser';
+import { buildRegexAst, printAst } from '../src/parser';
 
 const pattern = process.argv[2] || 'foo|bar';
 
-const ast = parseRegExpLiteral(pattern, {});
+const ast = buildRegexAst(pattern);
 
 console.log(printAst(ast));

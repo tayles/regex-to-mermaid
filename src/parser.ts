@@ -16,11 +16,19 @@ import type {
   ExpressionCharacterClass,
   Group,
   LookaroundAssertion,
+  Modifiers,
   Node,
   Quantifier,
 } from '@eslint-community/regexpp/ast';
 import pcreToRegexp from 'pcre-to-regexp';
-import type { DiagramData, DiagramEdge, DiagramGroup, DiagramNode, Flavor } from './types';
+import type {
+  DiagramData,
+  DiagramEdge,
+  DiagramGroup,
+  DiagramNode,
+  Flavor,
+  GroupType,
+} from './types';
 
 export function parseJavaScriptRegex(regex: string): RegExp {
   // Try to parse as a regex literal first
@@ -366,7 +374,13 @@ function processCharacterSet(
     label = kindMap[node.kind] || node.raw;
   } else if (node.kind === 'property') {
     // Unicode property escapes: \p{...}, \P{...}
-    const prop = node.value ? `${node.key}=${node.value}` : node.key;
+    // If key is General_Category, just show the value
+    let prop: string;
+    if (node.key === 'General_Category' && node.value) {
+      prop = node.value;
+    } else {
+      prop = node.value ? `${node.key}=${node.value}` : node.key;
+    }
     label = node.negate ? `Not ${prop}` : prop;
     if (node.strings) {
       label += '<br><i>(strings)</i>';
@@ -443,7 +457,13 @@ function getClassOperandLabel(
       if (node.kind === 'space') return node.negate ? String.raw`\S` : String.raw`\s`;
       if (node.kind === 'word') return node.negate ? String.raw`\W` : String.raw`\w`;
       if (node.kind === 'property') {
-        const prop = node.value ? `${node.key}=${node.value}` : node.key;
+        // If key is General_Category, just show the value in the raw form
+        let prop: string;
+        if (node.key === 'General_Category' && node.value) {
+          prop = node.value;
+        } else {
+          prop = node.value ? `${node.key}=${node.value}` : node.key;
+        }
         return node.negate ? String.raw`\P{${prop}}` : String.raw`\p{${prop}}`;
       }
       return node.raw || '';
@@ -473,6 +493,32 @@ function buildClassStringDisjunctionLabel(node: ClassStringDisjunction): string 
   return String.raw`\q{${alternatives.join('|')}}`;
 }
 
+function buildModifierText(mods: Modifiers): string {
+  const parts: string[] = [];
+
+  if (mods.add) {
+    const addFlags: string[] = [];
+    if (mods.add.ignoreCase) addFlags.push('i');
+    if (mods.add.multiline) addFlags.push('m');
+    if (mods.add.dotAll) addFlags.push('s');
+    if (addFlags.length > 0) {
+      parts.push(`+${addFlags.join('')}`);
+    }
+  }
+
+  if (mods.remove) {
+    const removeFlags: string[] = [];
+    if (mods.remove.ignoreCase) removeFlags.push('i');
+    if (mods.remove.multiline) removeFlags.push('m');
+    if (mods.remove.dotAll) removeFlags.push('s');
+    if (removeFlags.length > 0) {
+      parts.push(`-${removeFlags.join('')}`);
+    }
+  }
+
+  return parts.join(' ');
+}
+
 function processRepetition(
   node: Quantifier,
   previousNodeId: string,
@@ -486,18 +532,20 @@ function processRepetition(
 
   const quantifierText = getQuantifierText(node);
 
+  const greedyText = node.greedy ? '' : ' (non-greedy)';
+
   // Check if a group was created during processing
   if (groups.length > groupsLengthBefore) {
     // A group was added, update its quantifier
     const lastGroup = groups.at(-1);
     if (lastGroup && quantifierText) {
-      lastGroup.quantifier = quantifierText;
+      lastGroup.quantifier = `${quantifierText}${greedyText}`;
     }
   } else {
     // Update the last node's label to include the quantifier
     const lastNode = nodes.at(-1);
     if (lastNode?.id === innerNodeId && quantifierText) {
-      lastNode.label += `<br><i>${quantifierText}</i>`;
+      lastNode.label += `<br><i>${quantifierText}${greedyText}</i>`;
     }
   }
 
@@ -535,7 +583,7 @@ function processGroup(
   groups: DiagramGroup[],
 ): string {
   let groupName: string;
-  let groupType: DiagramGroup['type'] = 'standard';
+  let groupType: GroupType = 'standard';
   let groupNumber = 0;
 
   // In regexpp, CapturingGroup is for capturing groups
@@ -543,13 +591,24 @@ function processGroup(
     groupNumber = getNextGroupNumber();
     if (node.name) {
       groupType = 'named-capture';
-      groupName = node.name;
+      groupName = `#${groupNumber} ${node.name}`;
     } else {
-      groupName = `Group ${groupNumber}`;
+      groupName = `Group #${groupNumber}`;
     }
   } else if (node.type === 'Group') {
-    groupType = 'non-capturing';
-    groupName = 'Non-capturing';
+    // Handle modifiers if present
+    if (node.modifiers) {
+      groupType = 'modifier';
+      groupName = 'Modifier';
+
+      const modifierText = buildModifierText(node.modifiers);
+      if (modifierText) {
+        groupName = `Modifiers: ${modifierText}`;
+      }
+    } else {
+      groupType = 'non-capturing';
+      groupName = 'Non-capturing';
+    }
   } else {
     // Must be Assertion type (for lookahead/lookbehind)
     groupName = 'Assertion';
@@ -698,7 +757,7 @@ function processAssertionAsGroup(
   groups: DiagramGroup[],
 ): string {
   let groupName: string;
-  let groupType: DiagramGroup['type'];
+  let groupType: GroupType;
 
   if (node.kind === 'lookahead') {
     groupType = node.negate ? 'negative-lookahead' : 'positive-lookahead';

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import { buildStyles, THEME_STYLES, THEMES } from './theme';
+import { buildStyles, THEME_GROUP_STYLES, THEME_NODE_STYLES, THEMES } from './theme';
 import type { DiagramData, GroupType, NodeType } from './types';
 
 describe('THEMES constant', () => {
@@ -13,10 +13,10 @@ describe('THEMES constant', () => {
   });
 });
 
-describe('THEME_STYLES constant', () => {
+describe('THEME_NODE_STYLES constant', () => {
   test('has styles for all themes except "none"', () => {
     const themesWithStyles = THEMES.filter(t => t !== 'none');
-    expect(Object.keys(THEME_STYLES)).toEqual(themesWithStyles);
+    expect(Object.keys(THEME_NODE_STYLES)).toEqual(themesWithStyles);
   });
 
   test('each theme has all node types defined', () => {
@@ -24,16 +24,17 @@ describe('THEME_STYLES constant', () => {
       'literal',
       'char-class',
       'negated-char-class',
-      'modifier',
       'disjunction',
       'assertion',
       'back-reference',
     ];
 
-    for (const theme of Object.keys(THEME_STYLES)) {
+    for (const theme of Object.keys(THEME_NODE_STYLES)) {
       for (const nodeType of nodeTypes) {
-        expect(THEME_STYLES[theme as keyof typeof THEME_STYLES][nodeType]).toBeDefined();
-        expect(typeof THEME_STYLES[theme as keyof typeof THEME_STYLES][nodeType]).toBe('string');
+        expect(THEME_NODE_STYLES[theme as keyof typeof THEME_NODE_STYLES][nodeType]).toBeDefined();
+        expect(typeof THEME_NODE_STYLES[theme as keyof typeof THEME_NODE_STYLES][nodeType]).toBe(
+          'string',
+        );
       }
     }
   });
@@ -49,34 +50,38 @@ describe('THEME_STYLES constant', () => {
       'negative-lookbehind',
     ];
 
-    for (const theme of Object.keys(THEME_STYLES)) {
+    for (const theme of Object.keys(THEME_GROUP_STYLES)) {
       for (const groupType of groupTypes) {
-        expect(THEME_STYLES[theme as keyof typeof THEME_STYLES][groupType]).toBeDefined();
-        expect(typeof THEME_STYLES[theme as keyof typeof THEME_STYLES][groupType]).toBe('string');
+        expect(
+          THEME_GROUP_STYLES[theme as keyof typeof THEME_GROUP_STYLES][groupType],
+        ).toBeDefined();
+        expect(typeof THEME_GROUP_STYLES[theme as keyof typeof THEME_GROUP_STYLES][groupType]).toBe(
+          'string',
+        );
       }
     }
   });
 
   test('default theme has expected color scheme', () => {
-    expect(THEME_STYLES.default.literal).toContain('fill:#F9CB9C');
-    expect(THEME_STYLES.default['char-class']).toContain('fill:#B4A7D6');
-    expect(THEME_STYLES.default['named-capture']).toContain('fill:#D9EAD3');
+    expect(THEME_NODE_STYLES.default.literal).toContain('fill:#F9CB9C');
+    expect(THEME_NODE_STYLES.default['char-class']).toContain('fill:#B4A7D6');
+    expect(THEME_GROUP_STYLES.default['named-capture']).toContain('fill:#D9EAD3');
   });
 
   test('dark theme has color property for text visibility', () => {
-    expect(THEME_STYLES.dark.literal).toContain('color:#FFFFFF');
-    expect(THEME_STYLES.dark['char-class']).toContain('color:#FFFFFF');
-    expect(THEME_STYLES.dark.modifier).toContain('color:#FFFFFF');
+    expect(THEME_NODE_STYLES.dark.literal).toContain('color:#FFFFFF');
+    expect(THEME_NODE_STYLES.dark['char-class']).toContain('color:#FFFFFF');
+    expect(THEME_GROUP_STYLES.dark.modifier).toContain('color:#FFFFFF');
   });
 
   test('neutral theme uses muted colors', () => {
-    expect(THEME_STYLES.neutral.literal).toContain('fill:#E8E8E8');
-    expect(THEME_STYLES.neutral.literal).toContain('stroke:#999999');
+    expect(THEME_NODE_STYLES.neutral.literal).toContain('fill:#E8E8E8');
+    expect(THEME_NODE_STYLES.neutral.literal).toContain('stroke:#999999');
   });
 
   test('forest theme uses nature-inspired colors', () => {
-    expect(THEME_STYLES.forest.literal).toContain('fill:#C5E1A5');
-    expect(THEME_STYLES.forest['char-class']).toContain('fill:#A5D6A7');
+    expect(THEME_NODE_STYLES.forest.literal).toContain('fill:#C5E1A5');
+    expect(THEME_NODE_STYLES.forest['char-class']).toContain('fill:#A5D6A7');
   });
 });
 
@@ -221,10 +226,9 @@ describe('buildStyles', () => {
         { id: 'n1', label: 'a', type: 'literal' },
         { id: 'n2', label: '[0-9]', type: 'char-class' },
         { id: 'n3', label: '[^a-z]', type: 'negated-char-class' },
-        { id: 'n4', label: '+', type: 'modifier' },
-        { id: 'n5', label: '|', type: 'disjunction' },
-        { id: 'n6', label: '^', type: 'assertion' },
-        { id: 'n7', label: '\\1', type: 'back-reference' },
+        { id: 'n4', label: '|', type: 'disjunction' },
+        { id: 'n5', label: '^', type: 'assertion' },
+        { id: 'n6', label: '\\1', type: 'back-reference' },
       ],
       edges: [],
       groups: [],
@@ -233,7 +237,6 @@ describe('buildStyles', () => {
     expect(result).toContain('classDef literal');
     expect(result).toContain('classDef char-class');
     expect(result).toContain('classDef negated-char-class');
-    expect(result).toContain('classDef modifier');
     expect(result).toContain('classDef disjunction');
     expect(result).toContain('classDef assertion');
     expect(result).toContain('classDef back-reference');

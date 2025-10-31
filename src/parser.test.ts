@@ -388,7 +388,7 @@ describe('generateDiagramData', () => {
     const data = generateDiagramData(ast);
     expect(data.groups.length).toBe(1);
     expect(data.groups[0]?.type).toBe('named-capture');
-    expect(data.groups[0]?.label).toBe('name');
+    expect(data.groups[0]?.label).toBe('#1 name');
     expect(data.groups[0]?.id).toBe('named_capture_1');
     expect(data.groups[0]?.number).toBe(1);
   });
@@ -830,6 +830,112 @@ describe('Integration tests', () => {
 
     expect(data.nodes.length).toBe(1);
     expect(data.nodes[0]?.label).toContain('2 or more');
+  });
+
+  describe('Greedy quantifiers', () => {
+    test('handles greedy quantifier (default)', () => {
+      const pattern = /a+/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toContain('One or more');
+      // Greedy is default, so no special notation needed
+    });
+
+    test('handles non-greedy (lazy) quantifier', () => {
+      const pattern = /a+?/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      expect(data.nodes.length).toBe(1);
+      // Should still show quantifier text
+      expect(data.nodes[0]?.label).toContain('One or more');
+    });
+
+    test('handles non-greedy star quantifier', () => {
+      const pattern = /a*?/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toContain('Zero or more');
+    });
+
+    test('handles non-greedy optional quantifier', () => {
+      const pattern = /a??/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toContain('Optional');
+    });
+
+    test('handles non-greedy range quantifier', () => {
+      const pattern = /a{2,5}?/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      expect(data.nodes.length).toBe(1);
+      expect(data.nodes[0]?.label).toContain('2 to 5');
+    });
+  });
+
+  describe('Modifiers', () => {
+    test('handles modifier flags in non-capturing group', () => {
+      const pattern = /(?i:test)/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      // Should have a non-capturing group with modifier
+      const group = data.groups.find(g => g.type === 'modifier');
+      expect(group).toBeDefined();
+      expect(group?.label).toContain('Modifiers:');
+      expect(group?.label).toContain('+i');
+    });
+
+    test('handles multiple add modifiers', () => {
+      const pattern = /(?ims:test)/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      const group = data.groups.find(g => g.type === 'modifier');
+      expect(group).toBeDefined();
+      expect(group?.label).toContain('+ims');
+    });
+
+    test('handles remove modifiers', () => {
+      const pattern = /(?-i:test)/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      const group = data.groups.find(g => g.type === 'modifier');
+      expect(group).toBeDefined();
+      expect(group?.label).toContain('-i');
+    });
+
+    test('handles add and remove modifiers', () => {
+      const pattern = /(?i-m:test)/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      const group = data.groups.find(g => g.type === 'modifier');
+      expect(group).toBeDefined();
+      expect(group?.label).toContain('+i');
+      expect(group?.label).toContain('-m');
+    });
+
+    test('handles modifiers with complex content', () => {
+      const pattern = /(?i:foo|bar)/;
+      const ast = buildRegexAst(pattern);
+      const data = generateDiagramData(ast);
+
+      const group = data.groups.find(g => g.type === 'modifier');
+      expect(group).toBeDefined();
+      expect(group?.label).toContain('+i');
+      // Should also have disjunction nodes for the alternatives
+      expect(data.nodes.some(n => n.type === 'disjunction')).toBe(true);
+    });
   });
 
   test('handles negated character classes', () => {

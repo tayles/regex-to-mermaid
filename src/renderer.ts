@@ -67,11 +67,7 @@ export function buildNodes(nodes: DiagramNode[]): string {
 export function buildSubgraphs(groups: DiagramGroup[]): string {
   return groups
     .map(group => {
-      const label = [
-        group.number > 0 && `#${group.number}`,
-        group.label,
-        group.quantifier && `<i>${group.quantifier}</i>`,
-      ]
+      const label = [group.label, group.quantifier && `<i>${group.quantifier}</i>`]
         .filter(Boolean)
         .join(' ');
 

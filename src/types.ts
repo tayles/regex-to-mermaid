@@ -6,6 +6,7 @@ export const GROUP_TYPES = [
   'negative-lookahead',
   'positive-lookbehind',
   'negative-lookbehind',
+  'modifier',
 ] as const;
 export type GroupType = (typeof GROUP_TYPES)[number];
 
@@ -13,7 +14,6 @@ export const NODE_TYPES = [
   'literal',
   'char-class',
   'negated-char-class',
-  'modifier',
   'disjunction',
   'assertion',
   'back-reference',
