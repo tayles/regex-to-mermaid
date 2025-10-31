@@ -29,6 +29,7 @@ import type {
   Flavor,
   GroupType,
 } from './types';
+import { expandGeneralCategory } from './unicode-properties';
 
 export function parseJavaScriptRegex(regex: string): RegExp {
   // Try to parse as a regex literal first
@@ -374,10 +375,10 @@ function processCharacterSet(
     label = kindMap[node.kind] || node.raw;
   } else if (node.kind === 'property') {
     // Unicode property escapes: \p{...}, \P{...}
-    // If key is General_Category, just show the value
+    // If key is General_Category, expand the abbreviation to long form
     let prop: string;
     if (node.key === 'General_Category' && node.value) {
-      prop = node.value;
+      prop = expandGeneralCategory(node.value) ?? node.value;
     } else {
       prop = node.value ? `${node.key}=${node.value}` : node.key;
     }
@@ -457,10 +458,10 @@ function getClassOperandLabel(
       if (node.kind === 'space') return node.negate ? String.raw`\S` : String.raw`\s`;
       if (node.kind === 'word') return node.negate ? String.raw`\W` : String.raw`\w`;
       if (node.kind === 'property') {
-        // If key is General_Category, just show the value in the raw form
+        // If key is General_Category, expand the abbreviation to long form
         let prop: string;
         if (node.key === 'General_Category' && node.value) {
-          prop = node.value;
+          prop = expandGeneralCategory(node.value) ?? node.value;
         } else {
           prop = node.value ? `${node.key}=${node.value}` : node.key;
         }
