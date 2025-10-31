@@ -7,6 +7,7 @@ export interface RegexFile {
   name: string;
   description?: string;
   flavor?: string;
+  source?: string;
   pattern: string;
 }
 
@@ -21,10 +22,12 @@ export function parseRegexFile(content: string): RegexFile {
   let name = '';
   let description: string | undefined;
   let flavor: string | undefined;
+  let source: string | undefined;
   let pattern = '';
   let inFrontmatter = false;
   let frontmatterEnded = false;
 
+  // TODO: use a YAML or frontmatter parser
   for (const line of lines) {
     if (line === '---') {
       if (inFrontmatter) {
@@ -43,6 +46,8 @@ export function parseRegexFile(content: string): RegexFile {
         description = line.substring(12).trim();
       } else if (line.startsWith('flavor:')) {
         flavor = line.substring(7).trim();
+      } else if (line.startsWith('source:')) {
+        source = line.substring(7).trim();
       }
     } else if (frontmatterEnded && line.trim()) {
       pattern = line.trim();
@@ -50,7 +55,7 @@ export function parseRegexFile(content: string): RegexFile {
     }
   }
 
-  return { name, description, flavor, pattern };
+  return { name, description, flavor, source, pattern };
 }
 
 /**
