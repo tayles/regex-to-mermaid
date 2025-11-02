@@ -10,7 +10,7 @@ Generated from [eslint-community/regexpp](https://github.com/eslint-community/re
 
 <!-- CONTENT:START -->
 
-> **Snapshot Date:** 2025-10-31T18:40:59.870Z
+> **Snapshot Date:** 2025-11-02T14:56:15.115Z
 
 ## Table of Contents
 
