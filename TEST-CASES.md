@@ -10,7 +10,7 @@ Generated from [eslint-community/regexpp](https://github.com/eslint-community/re
 
 <!-- CONTENT:START -->
 
-> **Snapshot Date:** 2025-11-02T14:56:15.115Z
+> **Snapshot Date:** 2025-11-02T15:18:25.838Z
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ regex-to-mermaid '/foo/'
 ```mermaid
 graph LR
   accTitle: "Regex: /foo/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -76,7 +76,7 @@ regex-to-mermaid '/foo|bar/'
 ```mermaid
 graph LR
   accTitle: "Regex: /foo|bar/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -109,7 +109,7 @@ regex-to-mermaid '/||||/'
 ```mermaid
 graph LR
   accTitle: "Regex: /||||/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -140,7 +140,7 @@ regex-to-mermaid '/^|$|\b|\B/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^|$|\\b|\\B/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -179,7 +179,7 @@ regex-to-mermaid '/(?=)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -210,7 +210,7 @@ regex-to-mermaid '/(?=foo)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=foo)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -246,7 +246,7 @@ regex-to-mermaid '/(?!)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?!)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -277,7 +277,7 @@ regex-to-mermaid '/(?!foo)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?!foo)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -313,7 +313,7 @@ regex-to-mermaid '/(?=a)*/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a)*/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -349,7 +349,7 @@ regex-to-mermaid '/(?=a)+/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a)+/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -385,7 +385,7 @@ regex-to-mermaid '/(?=a)?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a)?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -421,7 +421,7 @@ regex-to-mermaid '/(?=a){/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -459,7 +459,7 @@ regex-to-mermaid '/(?=a){}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -497,7 +497,7 @@ regex-to-mermaid '/(?=a){a}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){a}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -535,7 +535,7 @@ regex-to-mermaid '/(?=a){1}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){1}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -571,7 +571,7 @@ regex-to-mermaid '/(?=a){1,}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){1,}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -607,7 +607,7 @@ regex-to-mermaid '/(?=a){1,2}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?=a){1,2}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -643,7 +643,7 @@ regex-to-mermaid '/a*/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a*/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -668,7 +668,7 @@ regex-to-mermaid '/a+/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a+/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -693,7 +693,7 @@ regex-to-mermaid '/a?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -718,7 +718,7 @@ regex-to-mermaid '/a{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -743,7 +743,7 @@ regex-to-mermaid '/a{}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -768,7 +768,7 @@ regex-to-mermaid '/a{a}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{a}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -793,7 +793,7 @@ regex-to-mermaid '/a{1}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -818,7 +818,7 @@ regex-to-mermaid '/a{1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -843,7 +843,7 @@ regex-to-mermaid '/a{1,}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -868,7 +868,7 @@ regex-to-mermaid '/a{1,/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -893,7 +893,7 @@ regex-to-mermaid '/a{1,2}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,2}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -918,7 +918,7 @@ regex-to-mermaid '/a{1,2/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,2/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -943,7 +943,7 @@ regex-to-mermaid '/a{2,1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{2,1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -968,7 +968,7 @@ regex-to-mermaid '/a*?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a*?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -993,7 +993,7 @@ regex-to-mermaid '/a+?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a+?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1018,7 +1018,7 @@ regex-to-mermaid '/a??/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a??/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1043,7 +1043,7 @@ regex-to-mermaid '/a{?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1070,7 +1070,7 @@ regex-to-mermaid '/a{}?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{}?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1097,7 +1097,7 @@ regex-to-mermaid '/a{a}?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{a}?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1124,7 +1124,7 @@ regex-to-mermaid '/a{1}?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1}?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1149,7 +1149,7 @@ regex-to-mermaid '/a{1?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1176,7 +1176,7 @@ regex-to-mermaid '/a{1,}?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,}?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1201,7 +1201,7 @@ regex-to-mermaid '/a{1,?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1228,7 +1228,7 @@ regex-to-mermaid '/a{1,2}?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,2}?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1253,7 +1253,7 @@ regex-to-mermaid '/a{1,2?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{1,2?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1280,7 +1280,7 @@ regex-to-mermaid '/a{2,1?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /a{2,1?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1307,7 +1307,7 @@ regex-to-mermaid '/👍🚀❇️/'
 ```mermaid
 graph LR
   accTitle: "Regex: /👍🚀❇️/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1332,7 +1332,7 @@ regex-to-mermaid '/^/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1357,7 +1357,7 @@ regex-to-mermaid '/$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1382,7 +1382,7 @@ regex-to-mermaid '/./'
 ```mermaid
 graph LR
   accTitle: "Regex: /./"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1407,7 +1407,7 @@ regex-to-mermaid '/]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1432,7 +1432,7 @@ regex-to-mermaid '/{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1457,7 +1457,7 @@ regex-to-mermaid '/}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1482,7 +1482,7 @@ regex-to-mermaid '/|/'
 ```mermaid
 graph LR
   accTitle: "Regex: /|/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1510,7 +1510,7 @@ regex-to-mermaid '/${1,2/'
 ```mermaid
 graph LR
   accTitle: "Regex: /${1,2/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1538,7 +1538,7 @@ regex-to-mermaid '/\1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1563,7 +1563,7 @@ regex-to-mermaid '/(a)\1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)\\1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1602,7 +1602,7 @@ regex-to-mermaid '/\1(a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\1(a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1641,7 +1641,7 @@ regex-to-mermaid '/(?:a)\1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:a)\\1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1679,7 +1679,7 @@ regex-to-mermaid '/(a)\2/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)\\2/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1717,7 +1717,7 @@ regex-to-mermaid '/(?:a)\2/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:a)\\2/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1755,7 +1755,7 @@ regex-to-mermaid '/(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\10/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\\10/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1848,7 +1848,7 @@ regex-to-mermaid '/(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\11/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\\11/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -1940,7 +1940,7 @@ regex-to-mermaid '/(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\11/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)\\11/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2039,7 +2039,7 @@ regex-to-mermaid '/(?:a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2075,7 +2075,7 @@ regex-to-mermaid '/\d/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\d/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2100,7 +2100,7 @@ regex-to-mermaid '/\D/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\D/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2125,7 +2125,7 @@ regex-to-mermaid '/\s/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\s/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2150,7 +2150,7 @@ regex-to-mermaid '/\S/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\S/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2175,7 +2175,7 @@ regex-to-mermaid '/\w/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\w/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2200,7 +2200,7 @@ regex-to-mermaid '/\W/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\W/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2225,7 +2225,7 @@ regex-to-mermaid '/\f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2250,7 +2250,7 @@ regex-to-mermaid '/\n/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\n/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2275,7 +2275,7 @@ regex-to-mermaid '/\r/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\r/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2300,7 +2300,7 @@ regex-to-mermaid '/\t/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\t/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2325,7 +2325,7 @@ regex-to-mermaid '/\v/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\v/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2350,7 +2350,7 @@ regex-to-mermaid '/\cA/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\cA/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2375,7 +2375,7 @@ regex-to-mermaid '/\cz/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\cz/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2400,7 +2400,7 @@ regex-to-mermaid '/\c1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\c1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2425,7 +2425,7 @@ regex-to-mermaid '/\c/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\c/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2450,7 +2450,7 @@ regex-to-mermaid '/\0/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\0/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2475,7 +2475,7 @@ regex-to-mermaid '/\u/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2500,7 +2500,7 @@ regex-to-mermaid '/\u1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2525,7 +2525,7 @@ regex-to-mermaid '/\u12/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u12/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2550,7 +2550,7 @@ regex-to-mermaid '/\u123/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u123/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2575,7 +2575,7 @@ regex-to-mermaid '/\u1234/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u1234/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2600,7 +2600,7 @@ regex-to-mermaid '/\u12345/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u12345/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2625,7 +2625,7 @@ regex-to-mermaid '/\u{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2650,7 +2650,7 @@ regex-to-mermaid '/\u{z/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{z/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2675,7 +2675,7 @@ regex-to-mermaid '/\u{a}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{a}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2700,7 +2700,7 @@ regex-to-mermaid '/\u{20/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{20/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2725,7 +2725,7 @@ regex-to-mermaid '/\u{20}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{20}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2750,7 +2750,7 @@ regex-to-mermaid '/\u{10FFFF}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{10FFFF}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2775,7 +2775,7 @@ regex-to-mermaid '/\u{110000}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{110000}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2800,7 +2800,7 @@ regex-to-mermaid '/\u{00000001}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\u{00000001}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2825,7 +2825,7 @@ regex-to-mermaid '/\377/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\377/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2850,7 +2850,7 @@ regex-to-mermaid '/\400/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\400/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2875,7 +2875,7 @@ regex-to-mermaid '/\^/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\^/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2900,7 +2900,7 @@ regex-to-mermaid '/\$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2925,7 +2925,7 @@ regex-to-mermaid '/\./'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\./"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2950,7 +2950,7 @@ regex-to-mermaid '/\+/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\+/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2975,7 +2975,7 @@ regex-to-mermaid '/\?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3000,7 +3000,7 @@ regex-to-mermaid '/\(/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\(/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3025,7 +3025,7 @@ regex-to-mermaid '/\)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3050,7 +3050,7 @@ regex-to-mermaid '/\[/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\[/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3075,7 +3075,7 @@ regex-to-mermaid '/\]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3100,7 +3100,7 @@ regex-to-mermaid '/\{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3125,7 +3125,7 @@ regex-to-mermaid '/\}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3150,7 +3150,7 @@ regex-to-mermaid '/\|/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\|/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3175,7 +3175,7 @@ regex-to-mermaid '/\//'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\//"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3200,7 +3200,7 @@ regex-to-mermaid '/\a/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\a/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3225,7 +3225,7 @@ regex-to-mermaid '/[]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3250,7 +3250,7 @@ regex-to-mermaid '/[^-a-b-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^-a-b-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3275,7 +3275,7 @@ regex-to-mermaid '/[-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3300,7 +3300,7 @@ regex-to-mermaid '/[a]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3325,7 +3325,7 @@ regex-to-mermaid '/[--]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[--]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3350,7 +3350,7 @@ regex-to-mermaid '/[-a]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[-a]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3375,7 +3375,7 @@ regex-to-mermaid '/[-a-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[-a-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3400,7 +3400,7 @@ regex-to-mermaid '/[a-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3425,7 +3425,7 @@ regex-to-mermaid '/[a-b]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a-b]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3450,7 +3450,7 @@ regex-to-mermaid '/[-a-b-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[-a-b-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3475,7 +3475,7 @@ regex-to-mermaid '/[---]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[---]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3500,7 +3500,7 @@ regex-to-mermaid '/[a-b--/]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a-b--/]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3525,7 +3525,7 @@ regex-to-mermaid '/[\b-\n]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\b-\\n]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3550,7 +3550,7 @@ regex-to-mermaid '/[b\-a]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[b\\-a]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3575,7 +3575,7 @@ regex-to-mermaid '/[\d]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\d]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3600,7 +3600,7 @@ regex-to-mermaid '/[\D]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\D]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3625,7 +3625,7 @@ regex-to-mermaid '/[\s]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\s]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3650,7 +3650,7 @@ regex-to-mermaid '/[\S]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\S]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3675,7 +3675,7 @@ regex-to-mermaid '/[\w]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\w]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3700,7 +3700,7 @@ regex-to-mermaid '/[\W]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\W]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3725,7 +3725,7 @@ regex-to-mermaid '/[\f]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\f]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3750,7 +3750,7 @@ regex-to-mermaid '/[\n]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\n]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3775,7 +3775,7 @@ regex-to-mermaid '/[\r]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\r]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3800,7 +3800,7 @@ regex-to-mermaid '/[\t]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\t]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3825,7 +3825,7 @@ regex-to-mermaid '/[\v]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\v]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3850,7 +3850,7 @@ regex-to-mermaid '/[\cA]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\cA]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3875,7 +3875,7 @@ regex-to-mermaid '/[\cz]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\cz]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3900,7 +3900,7 @@ regex-to-mermaid '/[\c1]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\c1]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3925,7 +3925,7 @@ regex-to-mermaid '/[\c]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\c]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3950,7 +3950,7 @@ regex-to-mermaid '/[\0]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\0]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3975,7 +3975,7 @@ regex-to-mermaid '/[\x]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\x]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4000,7 +4000,7 @@ regex-to-mermaid '/[\xz]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\xz]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4025,7 +4025,7 @@ regex-to-mermaid '/[\x1]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\x1]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4050,7 +4050,7 @@ regex-to-mermaid '/[\x12]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\x12]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4075,7 +4075,7 @@ regex-to-mermaid '/[\x123]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\x123]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4100,7 +4100,7 @@ regex-to-mermaid '/[\u]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4125,7 +4125,7 @@ regex-to-mermaid '/[\u1]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u1]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4150,7 +4150,7 @@ regex-to-mermaid '/[\u12]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u12]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4175,7 +4175,7 @@ regex-to-mermaid '/[\u123]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u123]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4200,7 +4200,7 @@ regex-to-mermaid '/[\u1234]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u1234]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4225,7 +4225,7 @@ regex-to-mermaid '/[\u12345]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u12345]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4250,7 +4250,7 @@ regex-to-mermaid '/[\u{]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4275,7 +4275,7 @@ regex-to-mermaid '/[\u{z]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{z]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4300,7 +4300,7 @@ regex-to-mermaid '/[\u{a}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{a}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4325,7 +4325,7 @@ regex-to-mermaid '/[\u{20]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{20]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4350,7 +4350,7 @@ regex-to-mermaid '/[\u{20}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{20}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4375,7 +4375,7 @@ regex-to-mermaid '/[\u{10FFFF}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{10FFFF}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4400,7 +4400,7 @@ regex-to-mermaid '/[\u{110000}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{110000}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4425,7 +4425,7 @@ regex-to-mermaid '/[\u{00000001}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{00000001}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4450,7 +4450,7 @@ regex-to-mermaid '/[\77]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\77]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4475,7 +4475,7 @@ regex-to-mermaid '/[\377]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\377]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4500,7 +4500,7 @@ regex-to-mermaid '/[\400]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\400]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4525,7 +4525,7 @@ regex-to-mermaid '/[\^]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\^]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4550,7 +4550,7 @@ regex-to-mermaid '/[\$]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\$]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4575,7 +4575,7 @@ regex-to-mermaid '/[\.]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\.]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4600,7 +4600,7 @@ regex-to-mermaid '/[\+]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\+]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4625,7 +4625,7 @@ regex-to-mermaid '/[\?]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\?]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4650,7 +4650,7 @@ regex-to-mermaid '/[\(]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\(]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4675,7 +4675,7 @@ regex-to-mermaid '/[\)]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\)]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4700,7 +4700,7 @@ regex-to-mermaid '/[\[]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\[]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4725,7 +4725,7 @@ regex-to-mermaid '/[\]]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\]]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4750,7 +4750,7 @@ regex-to-mermaid '/[\{]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\{]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4775,7 +4775,7 @@ regex-to-mermaid '/[\}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4800,7 +4800,7 @@ regex-to-mermaid '/[\|]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\|]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4825,7 +4825,7 @@ regex-to-mermaid '/[\/]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\/]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4850,7 +4850,7 @@ regex-to-mermaid '/[\a]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\a]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4875,7 +4875,7 @@ regex-to-mermaid '/[\d-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\d-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4900,7 +4900,7 @@ regex-to-mermaid '/[\D-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\D-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4925,7 +4925,7 @@ regex-to-mermaid '/[\s-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\s-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4950,7 +4950,7 @@ regex-to-mermaid '/[\S-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\S-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -4975,7 +4975,7 @@ regex-to-mermaid '/[\w-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\w-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5000,7 +5000,7 @@ regex-to-mermaid '/[\W-\uFFFF]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\W-\\uFFFF]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5025,7 +5025,7 @@ regex-to-mermaid '/[\u0000-\d]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\d]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5050,7 +5050,7 @@ regex-to-mermaid '/[\u0000-\D]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\D]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5075,7 +5075,7 @@ regex-to-mermaid '/[\u0000-\s]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\s]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5100,7 +5100,7 @@ regex-to-mermaid '/[\u0000-\S]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\S]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5125,7 +5125,7 @@ regex-to-mermaid '/[\u0000-\w]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\w]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5150,7 +5150,7 @@ regex-to-mermaid '/[\u0000-\W]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\W]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5175,7 +5175,7 @@ regex-to-mermaid '/[\u0000-\u0001]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u0000-\\u0001]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5200,7 +5200,7 @@ regex-to-mermaid '/[\u{2-\u{1}]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\u{2-\\u{1}]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5225,7 +5225,7 @@ regex-to-mermaid '/[\a-\z]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\a-\\z]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5250,7 +5250,7 @@ regex-to-mermaid '/[0-9--/]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[0-9--/]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5275,7 +5275,7 @@ regex-to-mermaid '/[\c0-]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\c0-]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5300,7 +5300,7 @@ regex-to-mermaid '/[\c_]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\c_]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5325,7 +5325,7 @@ regex-to-mermaid '/^[0-9]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[0-9]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5355,7 +5355,7 @@ regex-to-mermaid '/^[0-9]+$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[0-9]+$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5385,7 +5385,7 @@ regex-to-mermaid '/^[a-zA-Z]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[a-zA-Z]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5415,7 +5415,7 @@ regex-to-mermaid '/^[a-zA-Z]+$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[a-zA-Z]+$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5445,7 +5445,7 @@ regex-to-mermaid '/^[0-9a-zA-Z]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[0-9a-zA-Z]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5475,7 +5475,7 @@ regex-to-mermaid '/^[a-zA-Z0-9!-/:-@\[-`{-~]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[a-zA-Z0-9!-/:-@\\[-`{-~]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5505,7 +5505,7 @@ regex-to-mermaid '/^([a-zA-Z0-9]{8,})$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^([a-zA-Z0-9]{8,})$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5546,7 +5546,7 @@ regex-to-mermaid '/^([a-zA-Z0-9]{6,8})$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^([a-zA-Z0-9]{6,8})$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5587,7 +5587,7 @@ regex-to-mermaid '/^([0-9]{0,8})$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^([0-9]{0,8})$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5628,7 +5628,7 @@ regex-to-mermaid '/^[0-9]{8}$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[0-9]{8}$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5658,7 +5658,7 @@ regex-to-mermaid '/^https?:\/\//'
 ```mermaid
 graph LR
   accTitle: "Regex: /^https?:\\/\\//"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5690,7 +5690,7 @@ regex-to-mermaid '/^\d{3}-\d{4}$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^\\d{3}-\\d{4}$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5725,7 +5725,7 @@ regex-to-mermaid '/^\d{1,3}(.\d{1,3}){3}$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^\\d{1,3}(.\\d{1,3}){3}$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5771,7 +5771,7 @@ regex-to-mermaid '/^([1-9][0-9]*|0)(\.[0-9]+)?$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^([1-9][0-9]*|0)(\\.[0-9]+)?$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5836,7 +5836,7 @@ regex-to-mermaid '/^-?([1-9][0-9]*|0)(\.[0-9]+)?$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^-?([1-9][0-9]*|0)(\\.[0-9]+)?$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5903,7 +5903,7 @@ regex-to-mermaid '/^[ぁ-んー]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[ぁ-んー]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5933,7 +5933,7 @@ regex-to-mermaid '/^[ァ-ンヴー]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[ァ-ンヴー]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5963,7 +5963,7 @@ regex-to-mermaid '/^[ｧ-ﾝﾞﾟ\-]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[ｧ-ﾝﾞﾟ\\-]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -5993,7 +5993,7 @@ regex-to-mermaid '/^[^\x20-\x7e]*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^[^\\x20-\\x7e]*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6023,7 +6023,7 @@ regex-to-mermaid '/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-
 ```mermaid
 graph LR
   accTitle: "Regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6074,7 +6074,7 @@ regex-to-mermaid '/^((4\d{3})|(5[1-5]\d{2})|(6011))([- ])?\d{4}([- ])?\d{4}([- ]
 ```mermaid
 graph LR
   accTitle: "Regex: /^((4\\d{3})|(5[1-5]\\d{2})|(6011))([- ])?\\d{4}([- ])?\\d{4}([- ])?\\d{4}|3[4,7]\\d{13}$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6188,7 +6188,7 @@ regex-to-mermaid '/^\s*|\s*$/'
 ```mermaid
 graph LR
   accTitle: "Regex: /^\\s*|\\s*$/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6226,7 +6226,7 @@ regex-to-mermaid '/[\d][\12-\14]{1,}[^\d]/'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\d][\\12-\\14]{1,}[^\\d]/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6256,7 +6256,7 @@ regex-to-mermaid '/([a ]\b)*\b/'
 ```mermaid
 graph LR
   accTitle: "Regex: /([a ]\\b)*\\b/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6304,7 +6304,7 @@ regex-to-mermaid '/[\&\-\!\#\%\,\:\;\<\=\>\@\`\~]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\&\\-\\!\\#\\%\\,\\:\\;\\<\\=\\>\\@\\`\\~]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6329,7 +6329,7 @@ regex-to-mermaid '/[\b]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\b]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6360,7 +6360,7 @@ regex-to-mermaid '/[A&&B]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&B]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6385,7 +6385,7 @@ regex-to-mermaid '/[A&&B&&C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&B&&C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6410,7 +6410,7 @@ regex-to-mermaid '/[^A&&B]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^A&&B]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6435,7 +6435,7 @@ regex-to-mermaid '/[A&&B]?/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&B]?/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6460,7 +6460,7 @@ regex-to-mermaid '/[\w&&[\(\)]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\w&&[\\(\\)]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6485,7 +6485,7 @@ regex-to-mermaid '/[[A&&B]&&C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A&&B]&&C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6510,7 +6510,7 @@ regex-to-mermaid '/[[A--B]&&C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A--B]&&C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6535,7 +6535,7 @@ regex-to-mermaid '/[[A&&B]--C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A&&B]--C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6560,7 +6560,7 @@ regex-to-mermaid '/[A&&[B&&C]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&[B&&C]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6585,7 +6585,7 @@ regex-to-mermaid '/[A&&[B--C]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&[B--C]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6610,7 +6610,7 @@ regex-to-mermaid '/[\q{abc|def|ghi}&&\q{def}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\q{abc|def|ghi}&&\\q{def}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6635,7 +6635,7 @@ regex-to-mermaid '/[^[\q{a|b|c}&&\q{b}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}&&\\q{b}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6660,7 +6660,7 @@ regex-to-mermaid '/[^[\q{abc|d|e|f}&&\q{d|e|f}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{abc|d|e|f}&&\\q{d|e|f}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6685,7 +6685,7 @@ regex-to-mermaid '/[^[\q{a|b|c}&&\q{def}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}&&\\q{def}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6710,7 +6710,7 @@ regex-to-mermaid '/[^[\q{a|b|c}&&\q{}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}&&\\q{}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6735,7 +6735,7 @@ regex-to-mermaid '/[^[\q{}&&\q{d|e|f}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{}&&\\q{d|e|f}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6760,7 +6760,7 @@ regex-to-mermaid '/[a&&b&&[c]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a&&b&&[c]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6785,7 +6785,7 @@ regex-to-mermaid '/[a&&b&&[^c]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a&&b&&[^c]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6810,7 +6810,7 @@ regex-to-mermaid '/[a--b--[c]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a--b--[c]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6835,7 +6835,7 @@ regex-to-mermaid '/[a--b--[^c]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a--b--[^c]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6860,7 +6860,7 @@ regex-to-mermaid '/[a&&b&&[c&&d&&e]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a&&b&&[c&&d&&e]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6885,7 +6885,7 @@ regex-to-mermaid '/[a&&b&&[c--d--[e&&f&&g]]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a&&b&&[c--d--[e&&f&&g]]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6916,7 +6916,7 @@ regex-to-mermaid '/[A&&B]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&B]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6941,7 +6941,7 @@ regex-to-mermaid '/[A--[0-9]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--[0-9]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6966,7 +6966,7 @@ regex-to-mermaid '/[\p{Decimal_Number}--[0-9]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Decimal_Number}--[0-9]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -6991,7 +6991,7 @@ regex-to-mermaid '/[\p{Script=Khmer}&&[\p{Letter}\p{Mark}\p{Number}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Script=Khmer}&&[\\p{Letter}\\p{Mark}\\p{Number}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7016,7 +7016,7 @@ regex-to-mermaid '/[\p{Emoji}--[#*0-9]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Emoji}--[#*0-9]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7041,7 +7041,7 @@ regex-to-mermaid '/[\p{Emoji}--\p{ASCII}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Emoji}--\\p{ASCII}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7066,7 +7066,7 @@ regex-to-mermaid '/[\p{Nonspacing_Mark}&&[\p{Script=Inherited}\p{Script=Common}]
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Nonspacing_Mark}&&[\\p{Script=Inherited}\\p{Script=Common}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7091,7 +7091,7 @@ regex-to-mermaid '/[[\p{Other}\p{Separator}\p{White_Space}\p{Default_Ignorable_C
 ```mermaid
 graph LR
   accTitle: "Regex: /[[\\p{Other}\\p{Separator}\\p{White_Space}\\p{Default_Ignorable_Code_Point}]--\\x20]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7116,7 +7116,7 @@ regex-to-mermaid '/[\p{Script_Extensions=Greek}&&[\p{Letter}\p{Mark}\p{Decimal_N
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Script_Extensions=Greek}&&[\\p{Letter}\\p{Mark}\\p{Decimal_Number}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7141,7 +7141,7 @@ regex-to-mermaid '/[[\p{Any}--\p{Other}]\p{Control}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[\\p{Any}--\\p{Other}]\\p{Control}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7166,7 +7166,7 @@ regex-to-mermaid '/[\p{Assigned}--\p{Separator}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Assigned}--\\p{Separator}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7191,7 +7191,7 @@ regex-to-mermaid '/[\p{Other}--\p{Format}--\p{Control}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Other}--\\p{Format}--\\p{Control}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7216,7 +7216,7 @@ regex-to-mermaid '/[\p{RGI_Emoji}--\q{🇧🇪}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{RGI_Emoji}--\\q{🇧🇪}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7241,7 +7241,7 @@ regex-to-mermaid '/[\p{RGI_Emoji_ZWJ_Sequence}--\q{🇧🇪}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{RGI_Emoji_ZWJ_Sequence}--\\q{🇧🇪}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7266,7 +7266,7 @@ regex-to-mermaid '/[a-c\q{W|xy|xyz}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a-c\\q{W|xy|xyz}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7297,7 +7297,7 @@ regex-to-mermaid '/[A--B]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--B]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7322,7 +7322,7 @@ regex-to-mermaid '/[A--B--C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--B--C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7347,7 +7347,7 @@ regex-to-mermaid '/[^A--B]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^A--B]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7372,7 +7372,7 @@ regex-to-mermaid '/[A--B]?/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--B]?/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7397,7 +7397,7 @@ regex-to-mermaid '/[\w--[0-9]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\w--[0-9]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7422,7 +7422,7 @@ regex-to-mermaid '/[[A--B]--C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A--B]--C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7447,7 +7447,7 @@ regex-to-mermaid '/[[A&&B]--C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A&&B]--C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7472,7 +7472,7 @@ regex-to-mermaid '/[[A--B]&&C]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[A--B]&&C]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7497,7 +7497,7 @@ regex-to-mermaid '/[A--[B--C]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--[B--C]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7522,7 +7522,7 @@ regex-to-mermaid '/[A--[B&&C]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--[B&&C]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7547,7 +7547,7 @@ regex-to-mermaid '/[\q{abc|def|ghi}--\q{def}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\q{abc|def|ghi}--\\q{def}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7572,7 +7572,7 @@ regex-to-mermaid '/[^[\q{a|b|c}--\q{b}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}--\\q{b}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7597,7 +7597,7 @@ regex-to-mermaid '/[^[\q{a|b|c}--\q{def}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}--\\q{def}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7622,7 +7622,7 @@ regex-to-mermaid '/[^[\q{a|b|c}--\q{}]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^[\\q{a|b|c}--\\q{}]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7647,7 +7647,7 @@ regex-to-mermaid '/[A--&]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A--&]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7672,7 +7672,7 @@ regex-to-mermaid '/[a--b--[c--d--e]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a--b--[c--d--e]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7697,7 +7697,7 @@ regex-to-mermaid '/[a--b--[c&&d&&[e--f--g]]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a--b--[c&&d&&[e--f--g]]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7728,7 +7728,7 @@ regex-to-mermaid '/[\p{Basic_Emoji}][^a]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Basic_Emoji}][^a]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7756,7 +7756,7 @@ regex-to-mermaid '/[A&&[&B]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&[&B]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7781,7 +7781,7 @@ regex-to-mermaid '/[A&&\&]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[A&&\\&]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7806,7 +7806,7 @@ regex-to-mermaid '/[a-bc-d]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[a-bc-d]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7831,7 +7831,7 @@ regex-to-mermaid '/[]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7856,7 +7856,7 @@ regex-to-mermaid '/[^]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7881,7 +7881,7 @@ regex-to-mermaid '/[^\q{a}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^\\q{a}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7906,7 +7906,7 @@ regex-to-mermaid '/[^\q{a|b}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[^\\q{a|b}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7931,7 +7931,7 @@ regex-to-mermaid '/[\q{0|1\uFE0F\u20E3|2|3\uFE0F\u20E3}]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\q{0|1\\uFE0F\\u20E3|2|3\\uFE0F\\u20E3}]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7956,7 +7956,7 @@ regex-to-mermaid '/[[a][b]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[a][b]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -7981,7 +7981,7 @@ regex-to-mermaid '/[[\q{ab}][^c]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[\\q{ab}][^c]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8006,7 +8006,7 @@ regex-to-mermaid '/[[\q{ab}][^]]/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /[[\\q{ab}][^]]/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8037,7 +8037,7 @@ regex-to-mermaid '/(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8094,7 +8094,7 @@ regex-to-mermaid '/(?:(?:(?<x>a)\k<x>|(?<x>b)\k<x>)|(?:))\k<x>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:(?:(?<x>a)\\k<x>|(?<x>b)\\k<x>)|(?:))\\k<x>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8178,7 +8178,7 @@ regex-to-mermaid '/(?:(?:(?<x>a\k<x>)|(?<x>b\k<x>))|(?:))\k<x>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:(?:(?<x>a\\k<x>)|(?<x>b\\k<x>))|(?:))\\k<x>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8268,7 +8268,7 @@ regex-to-mermaid '/./u'
 ```mermaid
 graph LR
   accTitle: "Regex: /./u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8293,7 +8293,7 @@ regex-to-mermaid '/./y'
 ```mermaid
 graph LR
   accTitle: "Regex: /./y"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8324,7 +8324,7 @@ regex-to-mermaid '/./s'
 ```mermaid
 graph LR
   accTitle: "Regex: /./s"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8355,7 +8355,7 @@ regex-to-mermaid '/./d'
 ```mermaid
 graph LR
   accTitle: "Regex: /./d"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8386,7 +8386,7 @@ regex-to-mermaid '/./v'
 ```mermaid
 graph LR
   accTitle: "Regex: /./v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8417,7 +8417,7 @@ regex-to-mermaid '/(?:)/g'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/g"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8448,7 +8448,7 @@ regex-to-mermaid '/(?:)/i'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/i"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8479,7 +8479,7 @@ regex-to-mermaid '/(?:)/m'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/m"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8510,7 +8510,7 @@ regex-to-mermaid '/(?:)/gi'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/gi"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8541,7 +8541,7 @@ regex-to-mermaid '/(?:)/mg'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/mg"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8572,7 +8572,7 @@ regex-to-mermaid '/(?:)/mig'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:)/mig"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8609,7 +8609,7 @@ regex-to-mermaid '/(?<=a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<=a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8645,7 +8645,7 @@ regex-to-mermaid '/(?<=a)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<=a)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8681,7 +8681,7 @@ regex-to-mermaid '/(?<!a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<!a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8717,7 +8717,7 @@ regex-to-mermaid '/(?<!a)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<!a)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8753,7 +8753,7 @@ regex-to-mermaid '/(?<=(?<a>\w){3})f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<=(?<a>\\w){3})f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8798,7 +8798,7 @@ regex-to-mermaid '/((?<=\w{3}))f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /((?<=\\w{3}))f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8843,7 +8843,7 @@ regex-to-mermaid '/(?<a>(?<=\w{3}))f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>(?<=\\w{3}))f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8888,7 +8888,7 @@ regex-to-mermaid '/(?<!(?<a>\d){3})f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<!(?<a>\\d){3})f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8933,7 +8933,7 @@ regex-to-mermaid '/(?<!(?<a>\D){3})f|f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<!(?<a>\\D){3})f|f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8986,7 +8986,7 @@ regex-to-mermaid '/(?<a>(?<!\D{3}))f|f/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>(?<!\\D{3}))f|f/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9039,7 +9039,7 @@ regex-to-mermaid '/(?<=(?<a>\w){3})f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<=(?<a>\\w){3})f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9084,7 +9084,7 @@ regex-to-mermaid '/((?<=\w{3}))f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /((?<=\\w{3}))f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9129,7 +9129,7 @@ regex-to-mermaid '/(?<a>(?<=\w{3}))f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>(?<=\\w{3}))f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9174,7 +9174,7 @@ regex-to-mermaid '/(?<!(?<a>\d){3})f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<!(?<a>\\d){3})f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9219,7 +9219,7 @@ regex-to-mermaid '/(?<a>(?<!\D{3}))f|f/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>(?<!\\D{3}))f|f/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9272,7 +9272,7 @@ regex-to-mermaid '/(?<=(?<fst>.)|(?<snd>.))/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<=(?<fst>.)|(?<snd>.))/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9335,7 +9335,7 @@ regex-to-mermaid '/(?i-m:p)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?i-m:p)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9371,7 +9371,7 @@ regex-to-mermaid '/(?ims:p)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?ims:p)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9407,7 +9407,7 @@ regex-to-mermaid '/(?-ims:p)?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?-ims:p)?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9443,7 +9443,7 @@ regex-to-mermaid '/(?:no-modifiers)?/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:no-modifiers)?/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9485,7 +9485,7 @@ regex-to-mermaid '/(?<foo>A)\k<foo>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<foo>A)\\k<foo>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9524,7 +9524,7 @@ regex-to-mermaid '/(?<foo>A)\k<foo>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<foo>A)\\k<foo>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9569,7 +9569,7 @@ regex-to-mermaid '/\k/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9594,7 +9594,7 @@ regex-to-mermaid '/\k<a>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k<a>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9625,7 +9625,7 @@ regex-to-mermaid '/(a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9661,7 +9661,7 @@ regex-to-mermaid '/(?:a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?:a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9697,7 +9697,7 @@ regex-to-mermaid '/(?<a>)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9728,7 +9728,7 @@ regex-to-mermaid '/\k/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9753,7 +9753,7 @@ regex-to-mermaid '/\k<a>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k<a>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9778,7 +9778,7 @@ regex-to-mermaid '/(?<a>a)\k<a>/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)\\k<a>/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9817,7 +9817,7 @@ regex-to-mermaid '/(?<a>a)\k<a>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)\\k<a>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9856,7 +9856,7 @@ regex-to-mermaid '/(?<a>a)\1/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)\\1/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9895,7 +9895,7 @@ regex-to-mermaid '/(?<a>a)\1/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)\\1/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9934,7 +9934,7 @@ regex-to-mermaid '/(?<a>a)\2/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)\\2/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -9972,7 +9972,7 @@ regex-to-mermaid '/(?<a>a)(?<b>a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)(?<b>a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10014,7 +10014,7 @@ regex-to-mermaid '/(?<a>a)(?<b>a)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a>a)(?<b>a)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10056,7 +10056,7 @@ regex-to-mermaid '/\k<a>(?<a>a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k<a>(?<a>a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10095,7 +10095,7 @@ regex-to-mermaid '/\k<a>(?<a>a)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\k<a>(?<a>a)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10134,7 +10134,7 @@ regex-to-mermaid '/\1(?<a>a)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\1(?<a>a)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10173,7 +10173,7 @@ regex-to-mermaid '/\1(?<a>a)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\1(?<a>a)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10212,7 +10212,7 @@ regex-to-mermaid '/(?<$abc>a)\k<$abc>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<$abc>a)\\k<$abc>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10251,7 +10251,7 @@ regex-to-mermaid '/(?<あ>a)\k<あ>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<あ>a)\\k<あ>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10290,7 +10290,7 @@ regex-to-mermaid '/(?<𠮷>a)\k<\u{20bb7}>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<𠮷>a)\\k<\\u{20bb7}>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10329,7 +10329,7 @@ regex-to-mermaid '/(?<\uD842\uDFB7>a)\k<\u{20bb7}>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\uD842\\uDFB7>a)\\k<\\u{20bb7}>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10368,7 +10368,7 @@ regex-to-mermaid '/(?<\u{20bb7}>a)\k<\uD842\uDFB7>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\u{20bb7}>a)\\k<\\uD842\\uDFB7>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10407,7 +10407,7 @@ regex-to-mermaid '/(?<abc>a)\k<\u0061\u0062\u0063>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<abc>a)\\k<\\u0061\\u0062\\u0063>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10446,7 +10446,7 @@ regex-to-mermaid '/(?<\u0061\u0062\u0063>a)\k<abc>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\u0061\\u0062\\u0063>a)\\k<abc>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10485,7 +10485,7 @@ regex-to-mermaid '/(?<\u0061\u0062\u0063>a)\k<\u{61}\u{62}\u{63}>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\u0061\\u0062\\u0063>a)\\k<\\u{61}\\u{62}\\u{63}>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10524,7 +10524,7 @@ regex-to-mermaid '/(?<a1>a)\k<a1>/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<a1>a)\\k<a1>/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10569,7 +10569,7 @@ regex-to-mermaid '/(?<\ud835\udc9c>.)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\ud835\\udc9c>.)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10605,7 +10605,7 @@ regex-to-mermaid '/(?<\ud835\udc9c>.)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\ud835\\udc9c>.)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10641,7 +10641,7 @@ regex-to-mermaid '/(?<\u{1d49c}>.)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\u{1d49c}>.)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10677,7 +10677,7 @@ regex-to-mermaid '/(?<\u{1d49c}>.)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<\\u{1d49c}>.)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10713,7 +10713,7 @@ regex-to-mermaid '/(?<𝒜>.)/'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<𝒜>.)/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10749,7 +10749,7 @@ regex-to-mermaid '/(?<𝒜>.)/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /(?<𝒜>.)/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10791,7 +10791,7 @@ regex-to-mermaid '/\p/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10816,7 +10816,7 @@ regex-to-mermaid '/\p{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10841,7 +10841,7 @@ regex-to-mermaid '/\p{ASCII/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{ASCII/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10866,7 +10866,7 @@ regex-to-mermaid '/\p{ASCII}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{ASCII}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10897,7 +10897,7 @@ regex-to-mermaid '/\p/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10922,7 +10922,7 @@ regex-to-mermaid '/\p{/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10947,7 +10947,7 @@ regex-to-mermaid '/\p{ASCII/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{ASCII/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10972,7 +10972,7 @@ regex-to-mermaid '/\p{ASCII}/'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{ASCII}/"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10997,7 +10997,7 @@ regex-to-mermaid '/\p{ASCII}/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{ASCII}/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11022,7 +11022,7 @@ regex-to-mermaid '/\p{Emoji}/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{Emoji}/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11047,7 +11047,7 @@ regex-to-mermaid '/\p{General_Category=Letter}/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{General_Category=Letter}/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11072,7 +11072,7 @@ regex-to-mermaid '/\p{Script=Hiragana}/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{Script=Hiragana}/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11097,7 +11097,7 @@ regex-to-mermaid '/[\p{Script=Hiragana}\-\p{Script=Katakana}]/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /[\\p{Script=Hiragana}\\-\\p{Script=Katakana}]/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11122,7 +11122,7 @@ regex-to-mermaid '/\P{Letter}/u'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\P{Letter}/u"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -11153,7 +11153,7 @@ regex-to-mermaid '/\p{Basic_Emoji}/v'
 ```mermaid
 graph LR
   accTitle: "Regex: /\\p{Basic_Emoji}/v"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };

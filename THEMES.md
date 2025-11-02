@@ -31,7 +31,7 @@ regex-to-mermaid 'foo|bar' --theme default
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U7W-iMBj_VxrcknknTsE3mNEhuH253CW7-7SxmQ46bQ4pKTXbbtn_fm3pkOLU8cHYPv299OH58WZEJEaGaywpzFbgx02YAgCj6A9mCXJBaNygJXpxwcPZdJxRwkhEksmKsSyfuiF_zuVPc8rLMVlDnE7uoPnPM287ptM277-Lcltt3b9ZrfemIIJsNZHA9rfm9CQ0lGiA8ogK0WuUIgoZisEzZitAhQeTEXONKNeIL7vtbrsjYAJ4egp-8jvk4n_OIGWXbyBfwYzbfzIjTCPwfiFqTzjdU4F5jijDJF10z0LjYfxIJ2M8maElTnPpYHyOJ6HRdF23PCqBCWbcZyJhoinFGbWrnbD4iVwR_8oEAUy2rJ8hbI5wZYPPdw9FK0gXUcLdSG0vfQUJeUY0gjkSKmJjk2X6RoyXmIlFG5gfVlIECAVrQtHWjSA3JblmqKeERBlGfO-gLetLtrgF68sG-pxyfzdyxMpelBaVxi2iZI8Mh9VmQDg_UcB5Gh-aADV-vzePMj7FCKoFSOEaxYsIZmxD0aIL7kLjI0Gg0QU7g3Av0JWZ0peWvrTFEqVx4WGPpiU0i1iChlUqVIdHZ-3tHLC-omPLu_FQg4Z99F79ioZ8Z5oC7-Y8XlbCDEzTrAa0HlhZL3ump1KrWXoetZqtJ0_Wql3ayZyG7ukxqaOtnWho6L4-41u0bE5tvmvdsOqjK-v8Q1eZTfaaFO1U30m5g9OlJBZ-AvS0peDgJHEbs0Ew9EatnFHyF7kNx_Z7w6DFJ5dQt9GRz4VGoPwr-JXjzxy_hM8HTtceHYJvE_9hoOcNg0HJMJoPfd8-ysB7pPDOlTcKvBLf9wczv7ODV225pmSTfdoXOeemmnNFHThzL7CP9UZRe1mWvCoBX7AW76K4au0L0aqlt1VPmebmwnj_DzbSd9q9BwAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U7W-iMBj_VxrcknknTsE3mNEhuH253CW7-7SxmQ46bQ4pKTXbbtn_fm3pkOLU8cHYPv299OH58WZEJEaGaywpzFbgx02YAgCj6A9mCXJBaNygJXpxwcPZdJxRwkhEksmKsSyfuiF_zuVPc8rLMVlDnE7uoPnPM287ptM277-Lcltt3b9ZrfemIIJsNZHA9rfm9CQ0lGiA8ogK0WuUIgoZisEzZitAhQeTEXONKNeIL612p90RMAE8PQU_-R1y8T9nkLLLN5CvYMbtP5kRphF4vxC1J5zuqcA8R5Rhki66Z6HxMH6kkzGezNASp7l0MD7Hk9Bouq5bHpXABDPuM5Ew0ZTijNrVTlj8RK6If2WCACZb1s8QNke4ssHnu4eiFaSLKOFupLaXvoKEPCMawRwJFbGxyTJ9I8ZLzMSiDcwPKykChII1oWjrRpCbklwz1FNCogwjvnfQlvUlW9yC9WUDfU65vxs5YmUvSotK4xZRskeGw2ozIJyfKOA8jQ9NgBq_35tHGZ9iBNUCpHCN4kUEM7ahaNEFd6HxkSDQ6IKdQbgX6MpM6UtLX9piidK48LBH0xKaRSxBwyoVqsOjs_Z2Dlhf0bHl3XioQcM-eq9-RUO-M02Bd3MeLythBqZpVgNaD6yslz3TU6nVLD2PWs3Wkydr1S7tZE5D9_SY1NHWTjQ0dF-f8S1aNqc237VuWPXRlXX-oavMJntNinaq76TcwelSEgs_AXraUnBwkriN2SAYeqNWzij5i9yGY_u9YdDik0uo2-jI50IjUP4V_MrxZ45fwucDp2uPDsG3if8w0POGwaBkGM2Hvm8fZeA9UnjnyhsFXonv-4OZ39nBq7ZcU7LJPu2LnHNTzbmiDpy5F9jHeqOovSxLXpWAL1iLd1FctfaFaNXS26qnTHNzYbz_B7Jd6Hu9BwAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -43,7 +43,7 @@ regex-to-mermaid 'foo|bar' --theme default
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -140,7 +140,7 @@ regex-to-mermaid 'foo|bar' --theme neutral
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UYU_bMBD9K1YKEt2akqaglVC1dBTxZdoktk8QqEziJtZSO3JcMVbx3-dz3CROW0ZOqmLfvbt313vZOBGPiRM4ruuGLOJsSZMgZAjJlKxIgBhZS4GzkGl_yBKB8xR9u4MQHEW_qMxUVOjckYT8CdDTyXScCy55xLNJKmVeTINQPaf6pztV7pivMGWTB-z-nbn3nnvRdx8_g7tvrh43fu-tC4mwTCca2P_UnR6Fjik6J0UkoOgtYURgSWL0QmWKBHBwJXdXRKga8dWgP-h7AAPg8TH6rlot4L2QWMirDSpSnCv6SzeiIkJvl-BbUnbAg4uCCEk5WwxOQudp_CwmYzr5ShLKCs1gfEonodMNgqAK1cCMSsUz0zAYShljbq0IX0UUJvGPHBLgrM66DzFUiEAP-HQ3KEqxWESZYqNrz9gryvgLEREuCFSBi3We2xcxTaiEQx-5WyqMIC7QigtSs4Hkrk5uETozhcCNI3X3Li3_Q7QUBf_DBM5VysPTKIisZlFRNDXuieAHyihYaweA-ZEB3rD4vQ0w6_dz_azlU66gOSCGVyReRDiXa0EWA_QQOlsFoc4A7SzCI6AbO2Ufffs4hCNhccnhQE0fapayRB2_qtBcHjvr2U6A_5E6Q92bEjXqDP_b13mjhv7PrApqmjdx0hAzUt-npkDbgtX-ama2Ki2fb-vR8g1t5Wlfc0o7mrPQZ7ZM2mh_RxoW-tze8Rqth9Pa79Y0_Pbqar_60DV2U75m5TjNd1LfUJboxMBnTpZ1CgXOsqBz44H1Cin4bxJ0LjywSwtiGG8BI7AaoB8bUKvaYOYeWIUZeWB7MKpzg7j2wCrElxFY3eut4Ot8b396X12zr1vK12BVstkIrE42y_Ps1aS8hjzlFMsGWtrutXTXa-vDqn_pvP0D2sqFCp4HAAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UYU_bMBD9K1YKEt3qElLQSqhaOkB8mTaJ7RMEKpO4ibXUjhxXjCH--3yOm8QpZeSkKvbdu3t3vZcXLxYJ9UIPYxzxWPAlS8OII6QyuqIh4nStJMkjbvwRTyUpMvTtBkJIHP9iKtdRkXdDU_onRA8Hs0khhRKxyKeZUkU5CyP9HJqf_ky7E7EijE_vCP47x7c-Ph3i-8_gHtqr-5dg8NqHRERlUwMcfurP9iLPFr2kZSyh6DXlVBJFE_TEVIYkcMBK4BWVukZyHgz9oQ8wAO7vo--61RLeS0WkOn9BZUYKTX-JYyZj9HoGviXjOzykLKlUTPDF0UHkPUwe5XTCpl9pynhpGEwO2TTy-mEY1qEGmDOleeYGBkOpYuytExHoiNIm_lFAApI3Wd9CjDQiNAM-3A6KMyIXca7ZmNpz_oxy8URlTEoKVeBiXRTuRcJSpuAwRHhDhVMkJFoJSRs2kByb5A6hY1sI3CTWd-_SCj5ES1MIPkzgRKfcPY2SqnoWNUVb45ZKsaOMhnV2AJjvWeAVT97bALt-P9ePRj7VCtoD4mRFk0VMCrWWdHGE7iJvoyDUO0Jbi3AP6NZOucfAPY7gSHlScdhRM4CalSxRL6grtJfHzXq8FRB8pM7I9KZFjXqj__Z10qph_jOngp7mVZK2xIz096kt0K5gjb-ematKxxe4enR8I1d5xtee0pbmHPSxK5MuOtiShoM-cXe8QZvhdPa7M42gu7rGrz90rd1Uz3k1TvudNDeMpyYx8LmkyyaFBud52LvywQalkuI3DXunPtiZA7GMN4AxWAMwjwtoVG0xlz5YjRn7YG9gdOcWceGD1YgvY7Cm12sp1sWb_Zl9xXZfN5QvwOpk8zFYk2xeFPmzTXkBeaopVg10tD3o6G7Q1YdT_8x7_Qcb5RsDngcAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -157,7 +157,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -254,7 +254,7 @@ regex-to-mermaid 'foo|bar' --theme dark
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXU_bMBT9K1YKEt2aQp22bKFqST_gZdokticIVCZxE4vUjhxXjCH--2zHpHFKgUSqat97zj2-ucfPTsRi7PiO67ohjRhdkcQPKQAixWvsgxjxh5DqYEgTjvIU_LhScRRFf4jIZEroXOEE__XB3dFklHMmWMSycSpEXkz8UD7H-qc9keGYrRGh4xvk_gvc6xP3e9e9_arCXbN1-ww7L21FhEQ61sDul_bkIHRM0TkuIq6KXmKKORI4Bo9EpIArDa5g7hpzWSM-73V73RMFU8DDQ_BTnrNQ_wuBuDh_BkWKcil_5UaER-DlTMVWhO6JoKLAXBBGl72j0Lkb3fPxiIynOCG00ApGx2QcOm3f96tUDcyIkDozDVNNKXPMrpUBZUZhiH_ligBlW9a3EJ5E-LrBx7tJUYr4MsqkGl07oE8gY4-YR6jAqora2OS5vRGThAi16AL3VQrFgHGwZhxv1ShyV5NbgvqmkAqjSO69Kwt-SpaUAD8tYCAp93ejwKLqRSXR1LjGnO0pI2GNGVDKDwxwQeP3JsCM3-_NvbZPOYJmASha43gZoVxsOF72wE3ovDoItHpgZxBuFbo2U_YS2ktPLTGNSw17akJVs7QlaMGqQn14bNb-TgL8TB1Pn02aGrS8D881qNXQ38yqILu5iJOamYG8n-oGbRpWx6ue2a60YtD2oxXzbOfpWL1LO56z0H3bJk003LGGhR7YM75F6-Y05rvRDdgcXR2XF11tNsVTVrbT3JN6h9BEEys9c7zaUkhwlvktOPcCOO8UgrMH7LeGw-l0GHTk5DLuty70c2YRGP0G7s3VW8EvLoJTOHwPvnX8q4CFeiuGYNo_nc4-ZJA9quG9oMIPZsPp7GQHb9pyydkmf7Mves5dM-cVdT-oSfs2nXn9YB91kOfZkykwU6zltyiP2rghOg33dpous9ScOS__ARik6f3hBwAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UXU_bMBT9K1YKEt2aUpy2bKFqST_gZdokticIVCZxE4vUjhxXjCH--2zHpHFKgUSqat97zj2-ucfPTsRi7PiO67ohjRhdkcQPKQAixWvsgxjxh5DqYEgTjvIU_LhScRRFf4jIZEroXOEE__XB3dFklHMmWMSycSpEXkz8UD7H-qc9keGYrRGh4xvk_gvc6577veveflXhrtm6fYadl7YiQiIda2D3S3tyEDqm6BwXEVdFLzHFHAkcg0ciUsCVBlcwd425rBGfw26v21MwBTw8BD_lOQv1vxCIi_NnUKQol_JXbkR4BF7OVGxF6J4IKgrMBWF0eXIUOnejez4ekfEUJ4QWWsHomIxDp-37fpWqgRkRUmemYaopZY7ZtTKgzCgM8a9cEaBsy_oWwpMIXzf4eDcpShFfRplUo2sH9Alk7BHzCBVYVVEbmzy3N2KSEKEWXeC-SqEYMA7WjOOtGkXuanJLUN8UUmEUyb13ZcFPyZIS4KcFDCTl_m4UWFS9qCSaGteYsz1lJKwxA0r5gQEuaPzeBJjx-7251_YpR9AsAEVrHC8jlIsNx8sTcBM6rw4CrROwMwi3Cl2bKXsJ7aWnlpjGpYY9NaGqWdoStGBVoT48Nmt_JwF-po6nzyZNDVreh-ca1Grob2ZVkN1cxEnNzEDeT3WDNg2r41XPbFdaMWj70Yp5tvN0rN6lHc9Z6L5tkyYa7ljDQg_sGd-idXMa893oBmyOro7Li642m-IpK9tp7km9Q2iiiZWeOV5tKSQ4y_wWnHsBnHcKwdkD9lvD4XQ6DDpychn3Wxf6ObMIjH4D9-bqreAXF8EpHL4H3zr-VcBCvRVDMO2fTmcfMsge1fBeUOEHs-F01tvBm7ZccrbJ3-yLnnPXzHlF3Q9q0r5NZ14_2Ecd5Hn2ZArMFGv5LcqjNm6ITsO9nabLLDVnzst_nCt2XOEHAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -271,7 +271,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -368,7 +368,7 @@ regex-to-mermaid 'foo|bar' --theme forest
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UYW_aMBD9K1ZopbIRCoHQkiJoCLRfpk3q9qlNi9zEJNGCHTlGHav632c7JolD6coHhH337r077vnVCEiIDMcwTdPHAcHrJHJ8DACL0QY5YE0oypmPZdjHEYVZDL7diQwYBL8SlvIk37hDEfrjgKez2SSjhJGApNOYsSyfOT7_nMuv9oyHQ7KBCZ4-QPOva973zHHXfPwqwl119fhqdd7aohBk8VQCu1_asxPfUKQLlAdUkN4ijChkKAQvCYsBFRpMRswNopwjvO53-92egAng6Sn4zjvNxe-cQcquX0Eew0z0aAYJDcDblYitE3wkAvMcUZYQvOqf-cbT5JlOJ8l0jqIE51LB5DyZ-kbbcZwyVQLThHGdqYSJoRQ56lbLsHhGrgr_yEQBmFZV30MMOMKRAz4_TApiSFdBytVIbhfvQEpeEA1gjgSLuNhmmX4RJlHCxKELzL0UjAChYMN3oVIjipuyuCZoqIhEGAb87kNZ1qdkcQnWpwXYvOTxaeSIlbMoJSqOe0TJERoOa-yAUH6igEscfrQBav1-bp-lfYoVVAeA4QaFqwBmbEvRqg8efGPvINDqg4NFeBTo2k7pR0s_DsQR4bDQcITTEpyFLUHLKhnqy6NXHR4kWJ_hGcjeuKlBa_Dfvuwah_zPNAY-zWUY1cwM-PtUN2jTsDJezkx3pRazdD9qsYHuPBmrT-nAcxp6qNukibYOrKGhbX3HK7QcTmO_G9Owmqsr4_yhq-0m26XFONU7KW8SHMnCQs8CrasSHJymTstdLuzLfidnlPxGTmvsed6oEFpClGIF8Oxl37VLwIU3HwwtHVC5ek9iL0buRYkZjebzkfsOhneuEOOe596MS8TQcu0bu-r1lpJt9m5_cl9Nta97yZfLkVcrxkvbvaqYm2XpTpX0RJ1iikUDDW93Gr7rNP2h8V8Zb_8ATom5v50HAAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UYW_aMBD9K1ZopbIRCoHQkiJoCLRfpk3q9qlNi9zEJNaCEzlGHav632c7JolD6coHhH337r077vnVCNIQGY5hmqZPgpSsceT4BAAWow1ywDqlKGc-kWGfRBRmMfh2JzJgEPzCLOFJvnGHIvTHAU9ns0lGU5YGaTKNGcvymePzz7n8as94OEw3EJPpAzT_uuZ9zxx3zcevItxVV4-vVuetLQpBFk8lsPulPTvxDUW6QHlABektIohChkLwglkMqNBgstTcIMo5wmur2-v2BEwAT0_Bd95pLn7nDFJ2_QryGGaiRzPANABvVyK2xuRIBOY5ogynZNU_842nyTOdTvB0jiJMcqlgco6nvtF2HKdMlcAEM64zkTAxlCJH3WoZFs_IVeEfmSgAk6rqe4gBRzhywOeHSUEM6SpIuBrJ7ZIdSNIXRAOYI8EiLrZZpl-EOMJMHLrA3EshCKQUbPguVGpEcVMW1wQNFZEIw4DffSjL-pQsLsH6tACblzw-jRyxchalRMVxj2h6hIbDGjsglJ8o4JKEH22AWr-f22dpn2IF1QEQuEHhKoAZ21K06oMH39g7CLT64GARHgW6tlP60dKPA3FEJCw0HOG0BGdhS9CySob68uhVhwcJ1md4BrI3bmrQGvy3L7vGIf8zjYFPcxlGNTMD_j7VDdo0rIyXM9NdqcUs3Y9abKA7T8bqUzrwnIYe6jZpoq0Da2hoW9_xCi2H09jvxjSs5urKOH_oarvJdkkxTvVOyhtMIllY6FmgdVWCg5PEabnLhX3Z7-SMpr-R0xp7njcqhJYQpVgBPHvZd-0ScOHNB0NLB1Su3pPYi5F7UWJGo_l85L6D4Z0rxLjnuTfjEjG0XPvGrnq9pek2e7c_ua-m2te95MvlyKsV46XtXlXMzbJkp0p6ok4xxaKBhrc7Dd91mv7Q-K-Mt3-Ppie2nQcAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -385,7 +385,7 @@ config:
 
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -482,7 +482,7 @@ regex-to-mermaid 'foo|bar' --theme none
 
 ### Preview
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UUW_aMBD-K6fQSmWbQ3HgYSkK7bRqL9MmdXtqQ5HruMRSsCPbqNsQ_322SSEOo4OHiPPdd9_ny31ZR1QWLEqjhSJ1CV_vcgFAKP3JTcVSyKM7tmC_Uni8mE5qJY2ksspKY2o9TXP7G_hHf2rThVwSLrIHgv7coPtL9DFGs_cuHTdHszX-sOm7RsSUmQfG7_rTszxqSD8zTZUj_cIEU8SwAl64KUE5DchItGTKchTXw3gYXzqYA56fwzd7B-3-a0OUuV6DLklt5T8jyhWFzZXLPXNxJEO0ZspwKebDizx6nDypbMKzT2zBhfYKJgOe5VE_TdNdqQdW3FidlYe5oWxrmtOgAtsK3TT-XrsGpNp3_RcisYjUD3hwWERLoua0smo89434DZV8YYoSzRyLO1jVdXhQ8AU3LogBvUoRDKSCpVRsr8Y1R755IGjUELk0ofbsTVn4JFlWAj5ZwNi2PD4NzcxuFjuJDcc9U_IIjYV1dsApP2uAt6J4awOa9fuxevL22a5gE4AgS1bMKanNSrH5EB7y6NVB0BvCwSLMHLq1U2GIwzBxIRPFVsMRTuw4t7aEHt4xtJcn7Do6KMCn8CT-btbU0Ev-e69xi8O_s4DBTvO2WLTMDAihtkG7hvX53cxCVwY5HPoxyCWh83yuPaUDzwXoUWiTLhofWCNAj8Md36P9cDr73ZkG7q6uz9sP3VW0-QvFnFe-2gUAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UUW_aMBD-K6fQSqWbAxh4WIpCO63ay7RJ7Z7aUOQ6LrEU7Mg26jbEf59tUojD6OAh4nz33ff5cl_WEZU5i5JooUhVwLe7TAAQSn9yU7IEsuiOLdivBJ4uppNKSSOpLNPCmEpPk8z-ev7Rndp0LpeEi_SRoD836KGPPsVo9sGl4_potsYfN13XiJgi9cD4sjs9y6Ka9AvTVDnSr0wwRQzL4ZWbApTTgIxES6YsR36N437cdzAHPD-H7_YO2v3XhihzvQZdkMrKf0GUKwqbK5d74eJIhmjNlOFSzAcXWfQ0eVbphKef2YIL7RVMejzNom6SJLtSDyy5sTpLD3ND2dbUp0EFthW6bvyjcg1Iue_6L8TQIhI_4N5hES2ImtPSqvHcN-I3lPKVKUo0cyzuYFVV4UHOF9y4IAb0JkUwkAqWUrG9Gtcc-eaBoFFN5NKE2rN3ZeGTZFkJ-GQBY9vy-DQ0M7tZ7CTWHA9MySM0FtbaAaf8rAbeivy9DajX73717O2zXcE6AEGWLJ9TUpmVYvMBPGbRm4OgM4CDRZg5dGOnwhCH4dCFTORbDUc4sePc2hI6eMfQXJ6w6-igAJ_CM_R3s6aGzvC_9xo3OPw7CxjsNG_zRcPMgBBqGrRtWJ_fzSx0ZZDDoR-D3DB0ns81p3TguQA9Cm3SRuMDawTocbjje7QfTmu_W9PA7dX1efuhu4o2fwFFbknO2gUAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -494,7 +494,7 @@ regex-to-mermaid 'foo|bar' --theme none
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.1.0"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
