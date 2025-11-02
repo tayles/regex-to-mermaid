@@ -135,19 +135,19 @@ See available [THEMES.md](./THEMES.md).
 
 ## Supported Flavors
 
-| Flavor                                       | Usage          | Support                                        |
-| -------------------------------------------- | -------------- | ---------------------------------------------- |
-| RegExp _(ECMAScript)_                        | JavaScript     | ✅ Fully supported, up to and including ES2025 |
-| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support                             |
-| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support                             |
-| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support                             |
-| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support                             |
-| Python                                       | Python         | 🚧 Limited support                             |
-| RE2                                          | Go             | 🚧 Limited support                             |
-| Rust                                         | Rust           | 🚧 Limited support                             |
-| Java                                         | Java           | 🚧 Limited support                             |
-| .NET                                         | .NET / C#      | 🚧 Limited support                             |
-| Ruby                                         | Ruby           | 🚧 Limited support                             |
+| Flavor                                       | Usage          | Support                                  |
+| -------------------------------------------- | -------------- | ---------------------------------------- |
+| RegExp _(ECMAScript)_                        | JavaScript     | ✅ Supported, up to and including ES2025 |
+| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support                       |
+| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support                       |
+| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support                       |
+| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support                       |
+| Python                                       | Python         | 🚧 Limited support                       |
+| RE2                                          | Go             | 🚧 Limited support                       |
+| Rust                                         | Rust           | 🚧 Limited support                       |
+| Java                                         | Java           | 🚧 Limited support                       |
+| .NET                                         | .NET / C#      | 🚧 Limited support                       |
+| Ruby                                         | Ruby           | 🚧 Limited support                       |
 
 > [!WARNING]
 > Only the `RegExp` flavor is supported at this time. Other flavors are supported where there is overlap with the `RegExp` syntax
