@@ -1,6 +1,7 @@
 ---
 name: Comprehensive RegExp Features
 description: Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
+source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions
 flavor: regexp
 ---
 

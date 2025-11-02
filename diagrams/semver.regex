@@ -1,6 +1,7 @@
 ---
-name: Semver
+name: Semantic Versioning
 description: Semantic versioning v2.0.0
+source: https://semver.org
 flavor: regexp
 ---
 

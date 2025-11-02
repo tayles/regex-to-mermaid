@@ -1,0 +1,200 @@
+{
+  "type": "RegExpLiteral",
+  "start": 0,
+  "end": 51,
+  "raw": "/👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\\p{Emoji}){2}/v",
+  "pattern": {
+    "type": "Pattern",
+    "start": 1,
+    "end": 49,
+    "raw": "👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\\p{Emoji}){2}",
+    "alternatives": [
+      {
+        "type": "Alternative",
+        "start": 1,
+        "end": 49,
+        "raw": "👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\\p{Emoji}){2}",
+        "elements": [
+          {
+            "type": "Character",
+            "start": 1,
+            "end": 3,
+            "raw": "👍",
+            "value": 128077
+          },
+          {
+            "type": "Character",
+            "start": 3,
+            "end": 5,
+            "raw": "🚀",
+            "value": 128640
+          },
+          {
+            "type": "Character",
+            "start": 5,
+            "end": 6,
+            "raw": "❇",
+            "value": 10055
+          },
+          {
+            "type": "Character",
+            "start": 6,
+            "end": 7,
+            "raw": "️",
+            "value": 65039
+          },
+          {
+            "type": "Character",
+            "start": 7,
+            "end": 9,
+            "raw": "🇺",
+            "value": 127482
+          },
+          {
+            "type": "Character",
+            "start": 9,
+            "end": 11,
+            "raw": "🇸",
+            "value": 127480
+          },
+          {
+            "type": "Character",
+            "start": 11,
+            "end": 13,
+            "raw": "🌎",
+            "value": 127758
+          },
+          {
+            "type": "Character",
+            "start": 13,
+            "end": 15,
+            "raw": "🇨",
+            "value": 127464
+          },
+          {
+            "type": "Character",
+            "start": 15,
+            "end": 17,
+            "raw": "🇦",
+            "value": 127462
+          },
+          {
+            "type": "Character",
+            "start": 17,
+            "end": 19,
+            "raw": "🇬",
+            "value": 127468
+          },
+          {
+            "type": "Character",
+            "start": 19,
+            "end": 21,
+            "raw": "🇧",
+            "value": 127463
+          },
+          {
+            "type": "Character",
+            "start": 21,
+            "end": 23,
+            "raw": "🏴",
+            "value": 127988
+          },
+          {
+            "type": "Character",
+            "start": 23,
+            "end": 25,
+            "raw": "󠁧",
+            "value": 917607
+          },
+          {
+            "type": "Character",
+            "start": 25,
+            "end": 27,
+            "raw": "󠁢",
+            "value": 917602
+          },
+          {
+            "type": "Character",
+            "start": 27,
+            "end": 29,
+            "raw": "󠁥",
+            "value": 917605
+          },
+          {
+            "type": "Character",
+            "start": 29,
+            "end": 31,
+            "raw": "󠁮",
+            "value": 917614
+          },
+          {
+            "type": "Character",
+            "start": 31,
+            "end": 33,
+            "raw": "󠁧",
+            "value": 917607
+          },
+          {
+            "type": "Character",
+            "start": 33,
+            "end": 35,
+            "raw": "󠁿",
+            "value": 917631
+          },
+          {
+            "type": "Quantifier",
+            "start": 35,
+            "end": 49,
+            "raw": "(\\p{Emoji}){2}",
+            "min": 2,
+            "max": 2,
+            "greedy": true,
+            "element": {
+              "type": "CapturingGroup",
+              "start": 35,
+              "end": 46,
+              "raw": "(\\p{Emoji})",
+              "name": null,
+              "alternatives": [
+                {
+                  "type": "Alternative",
+                  "start": 36,
+                  "end": 45,
+                  "raw": "\\p{Emoji}",
+                  "elements": [
+                    {
+                      "type": "CharacterSet",
+                      "start": 36,
+                      "end": 45,
+                      "raw": "\\p{Emoji}",
+                      "kind": "property",
+                      "strings": false,
+                      "key": "Emoji",
+                      "value": null,
+                      "negate": false
+                    }
+                  ]
+                }
+              ],
+              "references": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "flags": {
+    "type": "Flags",
+    "start": 50,
+    "end": 51,
+    "raw": "v",
+    "global": false,
+    "ignoreCase": false,
+    "multiline": false,
+    "unicode": false,
+    "sticky": false,
+    "dotAll": false,
+    "hasIndices": false,
+    "unicodeSets": true
+  }
+}

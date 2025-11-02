@@ -8,7 +8,7 @@ import {
   buildSubgraphs,
   escapeString,
 } from './renderer';
-import type { DiagramData, DiagramNode, Edge, Group } from './types';
+import type { DiagramData, DiagramEdge, DiagramGroup, DiagramNode } from './types';
 
 describe('buildNodes', () => {
   test('builds empty string for empty nodes array', () => {
@@ -36,13 +36,13 @@ describe('buildNodes', () => {
     const nodes: DiagramNode[] = [
       { id: 'char1', type: 'literal', label: 'a' },
       { id: 'class1', type: 'char-class', label: '[a-z]' },
-      { id: 'rep1', type: 'modifier', label: '*' },
+      { id: 'rep1', type: 'disjunction', label: '|' },
       { id: 'group1', type: 'literal', label: '(...)' },
     ];
     const result = buildNodes(nodes);
     expect(result).toContain('char1("a"):::literal');
     expect(result).toContain('class1("[a-z]"):::char-class');
-    expect(result).toContain('rep1("*"):::modifier');
+    expect(result).toContain('rep1("|"):::disjunction');
     expect(result).toContain('group1("(...)"):::literal');
   });
 
@@ -72,25 +72,25 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds single group correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: 'protocol',
+        label: 'protocol #1',
         children: ['node1', 'node2'],
       },
     ];
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
-    expect(result).toContain('#1 protocol');
+    expect(result).toContain('protocol #1');
     expect(result).toContain('node1');
     expect(result).toContain('node2');
     expect(result).toContain('end');
   });
 
   test('builds optional group correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -105,7 +105,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds non-optional group without optional text', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -119,7 +119,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds group with quantifier text', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -134,31 +134,31 @@ describe('buildSubgraphs', () => {
   });
 
   test('builds multiple groups correctly', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'named-capture',
         number: 1,
-        label: 'protocol',
+        label: 'protocol #1',
         children: ['node1'],
       },
       {
         id: 'group2',
         type: 'named-capture',
         number: 2,
-        label: 'path',
+        label: 'path #2',
         children: ['node2'],
       },
     ];
     const result = buildSubgraphs(groups);
     expect(result).toContain('subgraph group1');
     expect(result).toContain('subgraph group2');
-    expect(result).toContain('#1 protocol');
-    expect(result).toContain('#2 path');
+    expect(result).toContain('protocol #1');
+    expect(result).toContain('path #2');
   });
 
   test('handles different group types', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'g1',
         type: 'standard',
@@ -188,7 +188,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('handles groups with multiple nodes', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -205,7 +205,7 @@ describe('buildSubgraphs', () => {
   });
 
   test('handles empty children array in group', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group1',
         type: 'standard',
@@ -227,26 +227,26 @@ describe('buildEdges', () => {
   });
 
   test('builds single edge correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
   });
 
   test('builds edge with label correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'optional' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: 'optional' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|optional|;');
   });
 
   test('builds edge without label correctly', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2;');
     expect(result).not.toContain('||');
   });
 
   test('builds multiple edges correctly', () => {
-    const edges: Edge[] = [
+    const edges: DiagramEdge[] = [
       { from: 'node1', to: 'node2' },
       { from: 'node2', to: 'node3', label: 'test' },
       { from: 'node3', to: 'node4' },
@@ -258,19 +258,19 @@ describe('buildEdges', () => {
   });
 
   test('handles special characters in node IDs', () => {
-    const edges: Edge[] = [{ from: 'node_1', to: 'node-2' }];
+    const edges: DiagramEdge[] = [{ from: 'node_1', to: 'node-2' }];
     const result = buildEdges(edges);
     expect(result).toContain('node_1 --- node-2;');
   });
 
   test('handles special characters in labels', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: 'a-z' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: 'a-z' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node2|a-z|;');
   });
 
   test('does not include indentation', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2' }];
     const result = buildEdges(edges);
     expect(result.startsWith('    ')).toBe(false);
   });
@@ -496,7 +496,7 @@ describe('buildMermaidDiagram', () => {
     };
     const title = 'Pattern for "test" values';
     const result = buildMermaidDiagram(data, 'LR', 'default', title);
-    expect(result).toContain('accTitle: "Regex: Pattern for \\"test\\" values"');
+    expect(result).toContain(String.raw`accTitle: "Regex: Pattern for \"test\" values"`);
 
     // Check sections appear in correct order
     const graphIndex = result.indexOf('graph LR');
@@ -520,21 +520,21 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildSubgraphs handles groups with very high numbers', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'group999',
         type: 'standard',
         number: 999,
-        label: 'test',
+        label: 'test #999',
         children: ['n1'],
       },
     ];
     const result = buildSubgraphs(groups);
-    expect(result).toContain('#999');
+    expect(result).toContain('test #999');
   });
 
   test('buildEdges handles same node connected to itself', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node1' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node1' }];
     const result = buildEdges(edges);
     expect(result).toContain('node1 --- node1;');
   });
@@ -557,22 +557,22 @@ describe('Edge cases and error handling', () => {
       { id: 'n2', type: 'char-class', label: '[a-z]' },
       { id: 'n3', type: 'negated-char-class', label: 'a-z' },
       { id: 'n4', type: 'disjunction', label: '|' },
-      { id: 'n5', type: 'modifier', label: '(...)' },
+      { id: 'n5', type: 'literal', label: '(...)' },
       { id: 'n6', type: 'assertion', label: '^' },
-      { id: 'n7', type: 'back-reference', label: '\\1' },
+      { id: 'n7', type: 'back-reference', label: String.raw`\1` },
     ];
     const result = buildNodes(nodes);
     expect(result).toContain('n1("a"):::literal');
     expect(result).toContain('n2("[a-z]"):::char-class');
     expect(result).toContain('n3("a-z"):::negated-char-class');
     expect(result).toContain('n4("|"):::disjunction');
-    expect(result).toContain('n5("(...)"):::modifier');
+    expect(result).toContain('n5("(...)"):::literal');
     expect(result).toContain('n6("^"):::assertion');
-    expect(result).toContain('n7("\\1"):::back-reference');
+    expect(result).toContain(String.raw`n7("\1"):::back-reference`);
   });
 
   test('buildSubgraphs handles all group types', () => {
-    const groups: Group[] = [
+    const groups: DiagramGroup[] = [
       {
         id: 'g1',
         type: 'standard',
@@ -602,7 +602,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles long chains of edges', () => {
-    const edges: Edge[] = Array.from({ length: 50 }, (_, i) => ({
+    const edges: DiagramEdge[] = Array.from({ length: 50 }, (_, i) => ({
       from: `node${i}`,
       to: `node${i + 1}`,
     }));
@@ -646,7 +646,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges handles edges with empty labels', () => {
-    const edges: Edge[] = [{ from: 'node1', to: 'node2', label: '' }];
+    const edges: DiagramEdge[] = [{ from: 'node1', to: 'node2', label: '' }];
     const result = buildEdges(edges);
     // Empty label is treated as no label because empty string is falsy
     expect(result).toContain('node1 --- node2;');
@@ -654,7 +654,7 @@ describe('Edge cases and error handling', () => {
   });
 
   test('buildEdges treats undefined label same as no label', () => {
-    const edges: Edge[] = [
+    const edges: DiagramEdge[] = [
       { from: 'node1', to: 'node2' },
       { from: 'node2', to: 'node3', label: undefined },
     ];
@@ -667,27 +667,27 @@ describe('Edge cases and error handling', () => {
 describe('escapeString', () => {
   test('escapes double quotes', () => {
     const result = escapeString('Hello "world"');
-    expect(result).toBe('Hello \\"world\\"');
+    expect(result).toBe(String.raw`Hello \"world\"`);
   });
 
   test('escapes backslashes', () => {
-    const result = escapeString('C:\\Users\\path');
-    expect(result).toBe('C:\\\\Users\\\\path');
+    const result = escapeString(String.raw`C:\Users\path`);
+    expect(result).toBe(String.raw`C:\\Users\\path`);
   });
 
   test('escapes newlines', () => {
     const result = escapeString('line1\nline2');
-    expect(result).toBe('line1\\nline2');
+    expect(result).toBe(String.raw`line1\nline2`);
   });
 
   test('escapes carriage returns', () => {
     const result = escapeString('line1\rline2');
-    expect(result).toBe('line1\\rline2');
+    expect(result).toBe(String.raw`line1\rline2`);
   });
 
   test('escapes multiple special characters', () => {
     const result = escapeString('test "quote"\nand\\slash');
-    expect(result).toBe('test \\"quote\\"\\nand\\\\slash');
+    expect(result).toBe(String.raw`test \"quote\"\nand\\slash`);
   });
 
   test('handles empty string', () => {
@@ -707,7 +707,7 @@ describe('escapeString', () => {
 
   test('escapes complex patterns with all special characters', () => {
     const result = escapeString('test\n"quote"\r\\path');
-    expect(result).toBe('test\\n\\"quote\\"\\r\\\\path');
+    expect(result).toBe(String.raw`test\n\"quote\"\r\\path`);
   });
 });
 
@@ -744,7 +744,7 @@ describe('buildAccessibility', () => {
   });
 
   test('escapes backslashes in title', () => {
-    const result = buildAccessibility('Path: C:\\Users');
+    const result = buildAccessibility(String.raw`Path: C:\Users`);
     expect(result).toBe('accTitle: "Regex: Path: C:\\\\Users"\n');
   });
 
@@ -760,8 +760,8 @@ describe('buildAccessibility', () => {
 
   test('handles complex patterns with multiple special characters', () => {
     const result = buildAccessibility('Regex "pattern"\nwith\\escape', 'Description with "quotes"');
-    expect(result).toContain('accTitle: "Regex: Regex \\"pattern\\"\\nwith\\\\escape"');
-    expect(result).toContain('accDescr: "Description with \\"quotes\\""');
+    expect(result).toContain(String.raw`accTitle: "Regex: Regex \"pattern\"\nwith\\escape"`);
+    expect(result).toContain(String.raw`accDescr: "Description with \"quotes\""`);
   });
 });
 

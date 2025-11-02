@@ -1,6 +1,6 @@
 graph LR
   accTitle: "Regex: ^(?<major>0|[1-9]\\d*)\\.(?<minor>0|[1-9]\\d*)\\.(?<patch>0|[1-9]\\d*)(?:-(?<prerelease>(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -10,75 +10,75 @@ graph LR
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("0"):::literal;
   char_class_1("1-9"):::char-class;
-  literal_2("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_3("Any character"):::literal;
+  char_set_1("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_2("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_4("0"):::literal;
+  literal_3("0"):::literal;
   char_class_2("1-9"):::char-class;
-  literal_5("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_6("Any character"):::literal;
+  char_set_2("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_4("Any character"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  literal_7("0"):::literal;
+  literal_5("0"):::literal;
   char_class_3("1-9"):::char-class;
-  literal_8("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_9("-"):::literal;
+  char_set_3("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_6("-"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  literal_10("0"):::literal;
+  literal_7("0"):::literal;
   char_class_4("1-9"):::char-class;
-  literal_11("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_12("Any digit<br><i>Zero or more</i>"):::literal;
+  char_set_4("Any digit<br><i>Zero or more</i>"):::char-set;
+  char_set_5("Any digit<br><i>Zero or more</i>"):::char-set;
   char_class_5("Any lowercase<br>Any uppercase<br>-"):::char-class;
   char_class_6("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
-  literal_13("Any character"):::literal;
+  literal_8("Any character"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  literal_14("0"):::literal;
+  literal_9("0"):::literal;
   char_class_7("1-9"):::char-class;
-  literal_15("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_16("Any digit<br><i>Zero or more</i>"):::literal;
+  char_set_6("Any digit<br><i>Zero or more</i>"):::char-set;
+  char_set_7("Any digit<br><i>Zero or more</i>"):::char-set;
   char_class_8("Any lowercase<br>Any uppercase<br>-"):::char-class;
   char_class_9("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
-  literal_17("+"):::literal;
+  literal_10("\+"):::literal;
   char_class_10("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
-  literal_18("Any character"):::literal;
+  literal_11("Any character"):::literal;
   char_class_11("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["#1 major"]
+  subgraph named_capture_1 ["major #1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     char_class_1
-    literal_2
+    char_set_1
   end
 
-  subgraph named_capture_2 ["#2 minor"]
+  subgraph named_capture_2 ["minor #2"]
     disjunction_begin_2
     disjunction_end_2
-    literal_4
+    literal_3
     char_class_2
-    literal_5
+    char_set_2
   end
 
-  subgraph named_capture_3 ["#3 patch"]
+  subgraph named_capture_3 ["patch #3"]
     disjunction_begin_3
     disjunction_end_3
-    literal_7
+    literal_5
     char_class_3
-    literal_8
+    char_set_3
   end
 
   subgraph non_capturing_2 ["Non-capturing"]
     disjunction_begin_4
     disjunction_end_4
-    literal_10
+    literal_7
     char_class_4
-    literal_11
-    literal_12
+    char_set_4
+    char_set_5
     char_class_5
     char_class_6
   end
@@ -86,20 +86,20 @@ graph LR
   subgraph non_capturing_4 ["Non-capturing"]
     disjunction_begin_5
     disjunction_end_5
-    literal_14
+    literal_9
     char_class_7
-    literal_15
-    literal_16
+    char_set_6
+    char_set_7
     char_class_8
     char_class_9
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
     non_capturing_4
-    literal_13
+    literal_8
   end
 
-  subgraph named_capture_4 ["#4 prerelease"]
+  subgraph named_capture_4 ["prerelease #4"]
     non_capturing_2
     non_capturing_4
     non_capturing_3
@@ -110,15 +110,15 @@ graph LR
     non_capturing_4
     non_capturing_3
     named_capture_4
-    literal_9
+    literal_6
   end
 
   subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
-    literal_18
+    literal_11
     char_class_11
   end
 
-  subgraph named_capture_5 ["#5 buildmetadata"]
+  subgraph named_capture_5 ["buildmetadata #5"]
     non_capturing_6
     char_class_10
   end
@@ -126,7 +126,7 @@ graph LR
   subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     non_capturing_6
     named_capture_5
-    literal_17
+    literal_10
   end
 
   %% Edges
@@ -135,48 +135,48 @@ graph LR
   disjunction_begin_1 --- literal_1;
   literal_1 --- disjunction_end_1;
   disjunction_begin_1 --- char_class_1;
-  char_class_1 --- literal_2;
-  literal_2 --- disjunction_end_1;
-  disjunction_end_1 --- literal_3;
-  literal_3 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_4;
-  literal_4 --- disjunction_end_2;
+  char_class_1 --- char_set_1;
+  char_set_1 --- disjunction_end_1;
+  disjunction_end_1 --- literal_2;
+  literal_2 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
   disjunction_begin_2 --- char_class_2;
-  char_class_2 --- literal_5;
-  literal_5 --- disjunction_end_2;
-  disjunction_end_2 --- literal_6;
-  literal_6 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_7;
-  literal_7 --- disjunction_end_3;
+  char_class_2 --- char_set_2;
+  char_set_2 --- disjunction_end_2;
+  disjunction_end_2 --- literal_4;
+  literal_4 --- disjunction_begin_3;
+  disjunction_begin_3 --- literal_5;
+  literal_5 --- disjunction_end_3;
   disjunction_begin_3 --- char_class_3;
-  char_class_3 --- literal_8;
-  literal_8 --- disjunction_end_3;
-  disjunction_end_3 --- literal_9;
-  literal_9 --- disjunction_begin_4;
-  disjunction_begin_4 --- literal_10;
-  literal_10 --- disjunction_end_4;
+  char_class_3 --- char_set_3;
+  char_set_3 --- disjunction_end_3;
+  disjunction_end_3 --- literal_6;
+  literal_6 --- disjunction_begin_4;
+  disjunction_begin_4 --- literal_7;
+  literal_7 --- disjunction_end_4;
   disjunction_begin_4 --- char_class_4;
-  char_class_4 --- literal_11;
-  literal_11 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_12;
-  literal_12 --- char_class_5;
+  char_class_4 --- char_set_4;
+  char_set_4 --- disjunction_end_4;
+  disjunction_begin_4 --- char_set_5;
+  char_set_5 --- char_class_5;
   char_class_5 --- char_class_6;
   char_class_6 --- disjunction_end_4;
-  disjunction_end_4 --- literal_13;
-  literal_13 --- disjunction_begin_5;
-  disjunction_begin_5 --- literal_14;
-  literal_14 --- disjunction_end_5;
+  disjunction_end_4 --- literal_8;
+  literal_8 --- disjunction_begin_5;
+  disjunction_begin_5 --- literal_9;
+  literal_9 --- disjunction_end_5;
   disjunction_begin_5 --- char_class_7;
-  char_class_7 --- literal_15;
-  literal_15 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_16;
-  literal_16 --- char_class_8;
+  char_class_7 --- char_set_6;
+  char_set_6 --- disjunction_end_5;
+  disjunction_begin_5 --- char_set_7;
+  char_set_7 --- char_class_8;
   char_class_8 --- char_class_9;
   char_class_9 --- disjunction_end_5;
-  disjunction_end_5 --- literal_17;
-  literal_17 --- char_class_10;
-  char_class_10 --- literal_18;
-  literal_18 --- char_class_11;
+  disjunction_end_5 --- literal_10;
+  literal_10 --- char_class_10;
+  char_class_10 --- literal_11;
+  literal_11 --- char_class_11;
   char_class_11 --- assertion_2;
   assertion_2 --- fin;
 
@@ -186,6 +186,7 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;

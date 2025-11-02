@@ -1,0 +1,30 @@
+graph LR
+  accTitle: "Regex: /👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\\p{Emoji}){2}/v"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
+
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  literal_1("👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿"):::literal;
+  char_set_1("Emoji"):::char-set;
+
+  %% Subgraphs
+  subgraph standard_1 ["Group #1 <i>Exactly 2</i>"]
+    char_set_1
+  end
+
+  %% Edges
+  start --- literal_1;
+  literal_1 --- char_set_1;
+  char_set_1 --- fin;
+
+  %% Styles
+  %% Node Styling
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
+
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+
+  %% Apply Group Classes
+  class standard_1 standard;

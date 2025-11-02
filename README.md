@@ -193,13 +193,13 @@ bun run lint
 
 ## Tech Stack
 
-| Project                                                                                                                                                               | Description               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)            | Typesafe JavaScript       |
-| [![Bun](https://img.shields.io/badge/bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)                                                 | Fast JavaScript runtime   |
-| [![Mermaid](https://img.shields.io/badge/mermaid-%23FF3670.svg?style=for-the-badge&logo=mermaid&logoColor=white)](https://mermaid.js.org)                             | Diagram generation        |
-| [![Biome](https://img.shields.io/badge/Biome-25272f?style=for-the-badge&logo=biome)](https://biomejs.dev)                                                             | Code formatting & linting |
-| [![regexp-tree](https://img.shields.io/badge/regexp--tree-%23000000.svg?style=for-the-badge&logo=regexp-tree&logoColor=white)](https://npmjs.com/package/regexp-tree) | Regex parsing to AST      |
+| Project                                                                                                                                                                                    | Description                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| [![TypeScript](https://img.shields.io/badge/typescript-007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)                                    | Typesafe JavaScript         |
+| [![Bun](https://img.shields.io/badge/bun-000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)                                                                         | Fast JavaScript runtime     |
+| [![Mermaid](https://img.shields.io/badge/mermaid-FF3670.svg?style=for-the-badge&logo=mermaid&logoColor=white)](https://mermaid.js.org)                                                     | Diagram generation          |
+| [![Biome](https://img.shields.io/badge/Biome-25272f?style=for-the-badge&logo=biome)](https://biomejs.dev)                                                                                  | Code formatting & linting   |
+| [![@eslint-community/regexpp](https://img.shields.io/badge/eslint--community-regexpp-4b32c3.svg?style=for-the-badge&logo=eslint)](https://www.npmjs.com/package/@eslint-community/regexpp) | Modern regex parsing to AST |
 
 ## xkcd References
 

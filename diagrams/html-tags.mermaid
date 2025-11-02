@@ -1,6 +1,6 @@
 graph LR
   accTitle: "Regex: <\\/?[\\w\\s]*>|<.+[\\W]>"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -8,13 +8,13 @@ graph LR
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("<"):::literal;
-  literal_2("/<br><i>Optional</i>"):::literal;
-  char_class_1("\w \s<br><i>Zero or more</i>"):::char-class;
+  literal_2("\/<br><i>Optional</i>"):::literal;
+  char_class_1("Any word character<br>Any whitespace<br><i>Zero or more</i>"):::char-class;
   literal_3(">"):::literal;
   literal_4("<"):::literal;
-  literal_5("Any character<br><i>One or more</i>"):::literal;
-  char_class_2("\W"):::char-class;
-  literal_6(">"):::literal;
+  char_set_1("Any character<br><i>One or more</i>"):::char-set;
+  char_class_2("Not a word character"):::char-class;
+  literal_5(">"):::literal;
 
   %% Edges
   start --- disjunction_begin_1;
@@ -24,10 +24,10 @@ graph LR
   char_class_1 --- literal_3;
   literal_3 --- disjunction_end_1;
   disjunction_begin_1 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- char_class_2;
-  char_class_2 --- literal_6;
-  literal_6 --- disjunction_end_1;
+  literal_4 --- char_set_1;
+  char_set_1 --- char_class_2;
+  char_class_2 --- literal_5;
+  literal_5 --- disjunction_end_1;
   disjunction_end_1 --- fin;
 
   %% Styles
@@ -35,3 +35,4 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;

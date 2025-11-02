@@ -3,8 +3,8 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { regexToMermaid } from '../src';
-import type { Theme } from '../src/theme';
-import { THEMES } from '../src/theme';
+import type { Theme, ThemeWithStyles } from '../src/theme';
+import { THEME_GROUP_STYLES, THEME_NODE_STYLES, THEMES } from '../src/theme';
 import {
   DIAGRAMS_DIR,
   generateMermaidLiveLink,
@@ -29,10 +29,16 @@ interface ThemeWithMarkdown {
   markdown: string;
 }
 
+interface ThemeImageData {
+  theme: Theme;
+  diagram: string;
+  imageFilePath: string;
+}
+
 /**
  * Generate theme previews for THEMES.md
  */
-async function generateThemes() {
+async function generateThemes(generateImages = true) {
   const themesFilePath = join(import.meta.dir, '..', 'THEMES.md');
 
   const regexFilePath = join(DIAGRAMS_DIR, 'url.regex');
@@ -47,6 +53,7 @@ async function generateThemes() {
 
   // Generate content for each theme
   const themeMarkdowns: ThemeWithMarkdown[] = [];
+  const imageData: ThemeImageData[] = [];
 
   for (const theme of THEMES) {
     const diagram = regexToMermaid(regexDescriptor.pattern, {
@@ -60,22 +67,71 @@ async function generateThemes() {
         ? regexFilePath.replace('.regex', `.mermaid-diagram.png`) // no suffix for simplicity
         : regexFilePath.replace('.regex', `.mermaid-diagram.${theme}-theme.png`);
 
-    // default is already generated for examples
-    if (theme !== 'default') {
-      await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
-    }
-
     const mermaidLiveUrl = await generateMermaidLiveLink(diagram);
 
     const themeMarkdown = generateThemeMarkdown(theme, diagram, imageFilePath, mermaidLiveUrl);
 
     themeMarkdowns.push({ theme, markdown: themeMarkdown });
+
+    // Skip default theme in image generation as it's already generated for examples
+    if (theme !== 'default') {
+      imageData.push({ theme, diagram, imageFilePath });
+    }
   }
 
   // Write THEMES.md
   await writeThemesMarkdown(themesFilePath, themeMarkdowns);
 
   console.log(`✅ Generated previews for ${THEMES.length} themes`);
+
+  // Generate images in separate loop
+  if (generateImages) {
+    console.log('\nGenerating images...');
+    for (const { theme, diagram, imageFilePath } of imageData) {
+      console.log(`Generating image for theme: ${theme}...`);
+      await writeMermaidImageFile(imageFilePath, diagram, themeToMermaidTheme(theme));
+    }
+    console.log(`✅ Generated ${imageData.length} images (default theme skipped)`);
+  } else {
+    console.log('\n⏭️  Skipping image generation (use --images to enable)');
+  }
+}
+
+function generateThemeStylesMarkdownTable(theme: ThemeWithStyles): string {
+  const nodeStyles = THEME_NODE_STYLES[theme];
+  const groupStyles = THEME_GROUP_STYLES[theme];
+
+  const parseStyle = (style: string): Record<string, string> => {
+    const entries = style.split(',').map(part =>
+      part
+        .trim()
+        .split(':')
+        .map(s => s.trim()),
+    );
+    return Object.fromEntries(entries);
+  };
+
+  const printHex = (hex?: string): string => {
+    return hex ? `\`${hex}\`` : '-';
+  };
+
+  const toRows = (styles: Record<string, string>): string => {
+    return Object.entries(styles)
+      .map(([type, style]) => {
+        const styles = parseStyle(style);
+        return `| ${type} | ${printHex(styles.fill)} | ${printHex(styles.stroke)} | ${printHex(
+          styles.color,
+        )} |`;
+      })
+      .join('\n');
+  };
+
+  return `
+| Node/Group Type        | Fill       | Border     | Text       |
+| ---------------------- | ---------- | ---------- | ---------- |
+${toRows(nodeStyles)}
+${toRows(groupStyles)}
+`;
 }
 
 function generateThemeMarkdown(
@@ -89,6 +145,9 @@ function generateThemeMarkdown(
   const description = themeDescriptions[theme];
 
   const command = `regex-to-mermaid 'foo|bar' --theme ${theme}`;
+
+  const stylesTable =
+    theme !== 'none' ? `### Styles\n\n${generateThemeStylesMarkdownTable(theme)}` : '';
 
   const content = `
 ## ${themeName}
@@ -115,6 +174,8 @@ ${command}
 \`\`\`mermaid
 ${diagram}
 \`\`\`
+
+${stylesTable}
   `.trim();
 
   return content;
@@ -136,7 +197,13 @@ ${sections.map(section => section.markdown).join('\n\n---\n\n')}
 }
 
 // Run the script
-generateThemes().catch(error => {
+try {
+  // Parse command line arguments
+  const args = process.argv.slice(2);
+  const generateImages = !args.includes('--no-images');
+
+  await generateThemes(generateImages);
+} catch (error) {
   console.error('Error generating themes:', error);
   process.exit(1);
-});
+}

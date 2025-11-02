@@ -1,663 +1,824 @@
 {
-  "type": "RegExp",
-  "body": {
-    "type": "Alternative",
-    "expressions": [
+  "type": "RegExpLiteral",
+  "start": 0,
+  "end": 157,
+  "raw": "/^(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)?((?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,})(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))?$/",
+  "pattern": {
+    "type": "Pattern",
+    "start": 1,
+    "end": 156,
+    "raw": "^(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)?((?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,})(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))?$",
+    "alternatives": [
       {
-        "type": "Assertion",
-        "kind": "^",
-        "loc": {
-          "source": "^",
-          "start": {
-            "line": 1,
-            "column": 1,
-            "offset": 1
+        "type": "Alternative",
+        "start": 1,
+        "end": 156,
+        "raw": "^(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)?((?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,})(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))?$",
+        "elements": [
+          {
+            "type": "Assertion",
+            "start": 1,
+            "end": 2,
+            "raw": "^",
+            "kind": "start"
           },
-          "end": {
-            "line": 1,
-            "column": 2,
-            "offset": 2
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Group",
-          "capturing": true,
-          "number": 1,
-          "expression": {
-            "type": "Alternative",
-            "expressions": [
-              {
-                "type": "Char",
-                "value": "+",
-                "kind": "simple",
-                "symbol": "+",
-                "codePoint": 43,
-                "loc": {
-                  "source": "\\+",
-                  "start": {
-                    "line": 1,
-                    "column": 3,
-                    "offset": 3
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 5,
-                    "offset": 5
-                  }
-                },
-                "escaped": true
-              },
-              {
-                "type": "Repetition",
-                "expression": {
-                  "type": "Char",
-                  "value": "\\d",
-                  "kind": "meta",
-                  "codePoint": null,
-                  "loc": {
-                    "source": "\\d",
-                    "start": {
-                      "line": 1,
-                      "column": 5,
-                      "offset": 5
+          {
+            "type": "Quantifier",
+            "start": 2,
+            "end": 60,
+            "raw": "(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)?",
+            "min": 0,
+            "max": 1,
+            "greedy": true,
+            "element": {
+              "type": "Group",
+              "start": 2,
+              "end": 59,
+              "raw": "(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)",
+              "modifiers": null,
+              "alternatives": [
+                {
+                  "type": "Alternative",
+                  "start": 5,
+                  "end": 58,
+                  "raw": "(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?",
+                  "elements": [
+                    {
+                      "type": "Quantifier",
+                      "start": 5,
+                      "end": 45,
+                      "raw": "(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?",
+                      "min": 0,
+                      "max": 1,
+                      "greedy": true,
+                      "element": {
+                        "type": "Group",
+                        "start": 5,
+                        "end": 44,
+                        "raw": "(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)",
+                        "modifiers": null,
+                        "alternatives": [
+                          {
+                            "type": "Alternative",
+                            "start": 8,
+                            "end": 43,
+                            "raw": "\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?",
+                            "elements": [
+                              {
+                                "type": "Quantifier",
+                                "start": 8,
+                                "end": 11,
+                                "raw": "\\(?",
+                                "min": 0,
+                                "max": 1,
+                                "greedy": true,
+                                "element": {
+                                  "type": "Character",
+                                  "start": 8,
+                                  "end": 10,
+                                  "raw": "\\(",
+                                  "value": 40
+                                }
+                              },
+                              {
+                                "type": "Group",
+                                "start": 11,
+                                "end": 20,
+                                "raw": "(?:00|\\+)",
+                                "modifiers": null,
+                                "alternatives": [
+                                  {
+                                    "type": "Alternative",
+                                    "start": 14,
+                                    "end": 16,
+                                    "raw": "00",
+                                    "elements": [
+                                      {
+                                        "type": "Character",
+                                        "start": 14,
+                                        "end": 15,
+                                        "raw": "0",
+                                        "value": 48
+                                      },
+                                      {
+                                        "type": "Character",
+                                        "start": 15,
+                                        "end": 16,
+                                        "raw": "0",
+                                        "value": 48
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "Alternative",
+                                    "start": 17,
+                                    "end": 19,
+                                    "raw": "\\+",
+                                    "elements": [
+                                      {
+                                        "type": "Character",
+                                        "start": 17,
+                                        "end": 19,
+                                        "raw": "\\+",
+                                        "value": 43
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "CapturingGroup",
+                                "start": 20,
+                                "end": 40,
+                                "raw": "([1-4]\\d\\d|[1-9]\\d?)",
+                                "name": null,
+                                "alternatives": [
+                                  {
+                                    "type": "Alternative",
+                                    "start": 21,
+                                    "end": 30,
+                                    "raw": "[1-4]\\d\\d",
+                                    "elements": [
+                                      {
+                                        "type": "CharacterClass",
+                                        "start": 21,
+                                        "end": 26,
+                                        "raw": "[1-4]",
+                                        "unicodeSets": false,
+                                        "negate": false,
+                                        "elements": [
+                                          {
+                                            "type": "CharacterClassRange",
+                                            "start": 22,
+                                            "end": 25,
+                                            "raw": "1-4",
+                                            "min": {
+                                              "type": "Character",
+                                              "start": 22,
+                                              "end": 23,
+                                              "raw": "1",
+                                              "value": 49
+                                            },
+                                            "max": {
+                                              "type": "Character",
+                                              "start": 24,
+                                              "end": 25,
+                                              "raw": "4",
+                                              "value": 52
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "CharacterSet",
+                                        "start": 26,
+                                        "end": 28,
+                                        "raw": "\\d",
+                                        "kind": "digit",
+                                        "negate": false
+                                      },
+                                      {
+                                        "type": "CharacterSet",
+                                        "start": 28,
+                                        "end": 30,
+                                        "raw": "\\d",
+                                        "kind": "digit",
+                                        "negate": false
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "Alternative",
+                                    "start": 31,
+                                    "end": 39,
+                                    "raw": "[1-9]\\d?",
+                                    "elements": [
+                                      {
+                                        "type": "CharacterClass",
+                                        "start": 31,
+                                        "end": 36,
+                                        "raw": "[1-9]",
+                                        "unicodeSets": false,
+                                        "negate": false,
+                                        "elements": [
+                                          {
+                                            "type": "CharacterClassRange",
+                                            "start": 32,
+                                            "end": 35,
+                                            "raw": "1-9",
+                                            "min": {
+                                              "type": "Character",
+                                              "start": 32,
+                                              "end": 33,
+                                              "raw": "1",
+                                              "value": 49
+                                            },
+                                            "max": {
+                                              "type": "Character",
+                                              "start": 34,
+                                              "end": 35,
+                                              "raw": "9",
+                                              "value": 57
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "Quantifier",
+                                        "start": 36,
+                                        "end": 39,
+                                        "raw": "\\d?",
+                                        "min": 0,
+                                        "max": 1,
+                                        "greedy": true,
+                                        "element": {
+                                          "type": "CharacterSet",
+                                          "start": 36,
+                                          "end": 38,
+                                          "raw": "\\d",
+                                          "kind": "digit",
+                                          "negate": false
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "references": []
+                              },
+                              {
+                                "type": "Quantifier",
+                                "start": 40,
+                                "end": 43,
+                                "raw": "\\)?",
+                                "min": 0,
+                                "max": 1,
+                                "greedy": true,
+                                "element": {
+                                  "type": "Character",
+                                  "start": 40,
+                                  "end": 42,
+                                  "raw": "\\)",
+                                  "value": 41
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
                     },
-                    "end": {
-                      "line": 1,
-                      "column": 7,
-                      "offset": 7
+                    {
+                      "type": "Quantifier",
+                      "start": 45,
+                      "end": 58,
+                      "raw": "[\\-\\.\\ \\\\\\/]?",
+                      "min": 0,
+                      "max": 1,
+                      "greedy": true,
+                      "element": {
+                        "type": "CharacterClass",
+                        "start": 45,
+                        "end": 57,
+                        "raw": "[\\-\\.\\ \\\\\\/]",
+                        "unicodeSets": false,
+                        "negate": false,
+                        "elements": [
+                          {
+                            "type": "Character",
+                            "start": 46,
+                            "end": 48,
+                            "raw": "\\-",
+                            "value": 45
+                          },
+                          {
+                            "type": "Character",
+                            "start": 48,
+                            "end": 50,
+                            "raw": "\\.",
+                            "value": 46
+                          },
+                          {
+                            "type": "Character",
+                            "start": 50,
+                            "end": 52,
+                            "raw": "\\ ",
+                            "value": 32
+                          },
+                          {
+                            "type": "Character",
+                            "start": 52,
+                            "end": 54,
+                            "raw": "\\\\",
+                            "value": 92
+                          },
+                          {
+                            "type": "Character",
+                            "start": 54,
+                            "end": 56,
+                            "raw": "\\/",
+                            "value": 47
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "type": "CapturingGroup",
+            "start": 60,
+            "end": 95,
+            "raw": "((?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,})",
+            "name": null,
+            "alternatives": [
+              {
+                "type": "Alternative",
+                "start": 61,
+                "end": 94,
+                "raw": "(?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,}",
+                "elements": [
+                  {
+                    "type": "Quantifier",
+                    "start": 61,
+                    "end": 94,
+                    "raw": "(?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,}",
+                    "min": 0,
+                    "max": null,
+                    "greedy": true,
+                    "element": {
+                      "type": "Group",
+                      "start": 61,
+                      "end": 90,
+                      "raw": "(?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?)",
+                      "modifiers": null,
+                      "alternatives": [
+                        {
+                          "type": "Alternative",
+                          "start": 64,
+                          "end": 89,
+                          "raw": "\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?",
+                          "elements": [
+                            {
+                              "type": "Quantifier",
+                              "start": 64,
+                              "end": 67,
+                              "raw": "\\(?",
+                              "min": 0,
+                              "max": 1,
+                              "greedy": true,
+                              "element": {
+                                "type": "Character",
+                                "start": 64,
+                                "end": 66,
+                                "raw": "\\(",
+                                "value": 40
+                              }
+                            },
+                            {
+                              "type": "Quantifier",
+                              "start": 67,
+                              "end": 73,
+                              "raw": "\\d{1,}",
+                              "min": 1,
+                              "max": null,
+                              "greedy": true,
+                              "element": {
+                                "type": "CharacterSet",
+                                "start": 67,
+                                "end": 69,
+                                "raw": "\\d",
+                                "kind": "digit",
+                                "negate": false
+                              }
+                            },
+                            {
+                              "type": "Quantifier",
+                              "start": 73,
+                              "end": 76,
+                              "raw": "\\)?",
+                              "min": 0,
+                              "max": 1,
+                              "greedy": true,
+                              "element": {
+                                "type": "Character",
+                                "start": 73,
+                                "end": 75,
+                                "raw": "\\)",
+                                "value": 41
+                              }
+                            },
+                            {
+                              "type": "Quantifier",
+                              "start": 76,
+                              "end": 89,
+                              "raw": "[\\-\\.\\ \\\\\\/]?",
+                              "min": 0,
+                              "max": 1,
+                              "greedy": true,
+                              "element": {
+                                "type": "CharacterClass",
+                                "start": 76,
+                                "end": 88,
+                                "raw": "[\\-\\.\\ \\\\\\/]",
+                                "unicodeSets": false,
+                                "negate": false,
+                                "elements": [
+                                  {
+                                    "type": "Character",
+                                    "start": 77,
+                                    "end": 79,
+                                    "raw": "\\-",
+                                    "value": 45
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 79,
+                                    "end": 81,
+                                    "raw": "\\.",
+                                    "value": 46
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 81,
+                                    "end": 83,
+                                    "raw": "\\ ",
+                                    "value": 32
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 83,
+                                    "end": 85,
+                                    "raw": "\\\\",
+                                    "value": 92
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 85,
+                                    "end": 87,
+                                    "raw": "\\/",
+                                    "value": 47
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   }
-                },
-                "quantifier": {
-                  "type": "Quantifier",
-                  "kind": "Range",
-                  "from": 1,
-                  "to": 2,
-                  "greedy": true,
-                  "loc": {
-                    "source": "{1,2}",
-                    "start": {
-                      "line": 1,
-                      "column": 7,
-                      "offset": 7
-                    },
-                    "end": {
-                      "line": 1,
-                      "column": 12,
-                      "offset": 12
-                    }
-                  }
-                },
-                "loc": {
-                  "source": "\\d{1,2}",
-                  "start": {
-                    "line": 1,
-                    "column": 5,
-                    "offset": 5
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 12,
-                    "offset": 12
-                  }
-                }
-              },
-              {
-                "type": "Char",
-                "value": "\\s",
-                "kind": "meta",
-                "codePoint": null,
-                "loc": {
-                  "source": "\\s",
-                  "start": {
-                    "line": 1,
-                    "column": 12,
-                    "offset": 12
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 14,
-                    "offset": 14
-                  }
-                }
+                ]
               }
             ],
-            "loc": {
-              "source": "\\+\\d{1,2}\\s",
-              "start": {
-                "line": 1,
-                "column": 3,
-                "offset": 3
-              },
-              "end": {
-                "line": 1,
-                "column": 14,
-                "offset": 14
-              }
-            }
-          },
-          "loc": {
-            "source": "(\\+\\d{1,2}\\s)",
-            "start": {
-              "line": 1,
-              "column": 2,
-              "offset": 2
-            },
-            "end": {
-              "line": 1,
-              "column": 15,
-              "offset": 15
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "?",
-          "greedy": true,
-          "loc": {
-            "source": "?",
-            "start": {
-              "line": 1,
-              "column": 15,
-              "offset": 15
-            },
-            "end": {
-              "line": 1,
-              "column": 16,
-              "offset": 16
-            }
-          }
-        },
-        "loc": {
-          "source": "(\\+\\d{1,2}\\s)?",
-          "start": {
-            "line": 1,
-            "column": 2,
-            "offset": 2
-          },
-          "end": {
-            "line": 1,
-            "column": 16,
-            "offset": 16
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Char",
-          "value": "(",
-          "kind": "simple",
-          "symbol": "(",
-          "codePoint": 40,
-          "loc": {
-            "source": "\\(",
-            "start": {
-              "line": 1,
-              "column": 16,
-              "offset": 16
-            },
-            "end": {
-              "line": 1,
-              "column": 18,
-              "offset": 18
-            }
-          },
-          "escaped": true
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "?",
-          "greedy": true,
-          "loc": {
-            "source": "?",
-            "start": {
-              "line": 1,
-              "column": 18,
-              "offset": 18
-            },
-            "end": {
-              "line": 1,
-              "column": 19,
-              "offset": 19
-            }
-          }
-        },
-        "loc": {
-          "source": "\\(?",
-          "start": {
-            "line": 1,
-            "column": 16,
-            "offset": 16
-          },
-          "end": {
-            "line": 1,
-            "column": 19,
-            "offset": 19
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Char",
-          "value": "\\d",
-          "kind": "meta",
-          "codePoint": null,
-          "loc": {
-            "source": "\\d",
-            "start": {
-              "line": 1,
-              "column": 19,
-              "offset": 19
-            },
-            "end": {
-              "line": 1,
-              "column": 21,
-              "offset": 21
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 3,
-          "to": 3,
-          "greedy": true,
-          "loc": {
-            "source": "{3}",
-            "start": {
-              "line": 1,
-              "column": 21,
-              "offset": 21
-            },
-            "end": {
-              "line": 1,
-              "column": 24,
-              "offset": 24
-            }
-          }
-        },
-        "loc": {
-          "source": "\\d{3}",
-          "start": {
-            "line": 1,
-            "column": 19,
-            "offset": 19
-          },
-          "end": {
-            "line": 1,
-            "column": 24,
-            "offset": 24
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Char",
-          "value": ")",
-          "kind": "simple",
-          "symbol": ")",
-          "codePoint": 41,
-          "loc": {
-            "source": "\\)",
-            "start": {
-              "line": 1,
-              "column": 24,
-              "offset": 24
-            },
-            "end": {
-              "line": 1,
-              "column": 26,
-              "offset": 26
-            }
-          },
-          "escaped": true
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "?",
-          "greedy": true,
-          "loc": {
-            "source": "?",
-            "start": {
-              "line": 1,
-              "column": 26,
-              "offset": 26
-            },
-            "end": {
-              "line": 1,
-              "column": 27,
-              "offset": 27
-            }
-          }
-        },
-        "loc": {
-          "source": "\\)?",
-          "start": {
-            "line": 1,
-            "column": 24,
-            "offset": 24
-          },
-          "end": {
-            "line": 1,
-            "column": 27,
-            "offset": 27
-          }
-        }
-      },
-      {
-        "type": "CharacterClass",
-        "expressions": [
-          {
-            "type": "Char",
-            "value": "\\s",
-            "kind": "meta",
-            "codePoint": null,
-            "loc": {
-              "source": "\\s",
-              "start": {
-                "line": 1,
-                "column": 28,
-                "offset": 28
-              },
-              "end": {
-                "line": 1,
-                "column": 30,
-                "offset": 30
-              }
-            }
+            "references": []
           },
           {
-            "type": "Char",
-            "value": ".",
-            "kind": "simple",
-            "symbol": ".",
-            "codePoint": 46,
-            "loc": {
-              "source": ".",
-              "start": {
-                "line": 1,
-                "column": 30,
-                "offset": 30
-              },
-              "end": {
-                "line": 1,
-                "column": 31,
-                "offset": 31
-              }
-            }
-          },
-          {
-            "type": "Char",
-            "value": "-",
-            "kind": "simple",
-            "symbol": "-",
-            "codePoint": 45,
-            "loc": {
-              "source": "-",
-              "start": {
-                "line": 1,
-                "column": 31,
-                "offset": 31
-              },
-              "end": {
-                "line": 1,
-                "column": 32,
-                "offset": 32
-              }
-            }
-          }
-        ],
-        "loc": {
-          "source": "[\\s.-]",
-          "start": {
-            "line": 1,
-            "column": 27,
-            "offset": 27
-          },
-          "end": {
-            "line": 1,
-            "column": 33,
-            "offset": 33
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Char",
-          "value": "\\d",
-          "kind": "meta",
-          "codePoint": null,
-          "loc": {
-            "source": "\\d",
-            "start": {
-              "line": 1,
-              "column": 33,
-              "offset": 33
-            },
-            "end": {
-              "line": 1,
-              "column": 35,
-              "offset": 35
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 3,
-          "to": 3,
-          "greedy": true,
-          "loc": {
-            "source": "{3}",
-            "start": {
-              "line": 1,
-              "column": 35,
-              "offset": 35
-            },
-            "end": {
-              "line": 1,
-              "column": 38,
-              "offset": 38
-            }
-          }
-        },
-        "loc": {
-          "source": "\\d{3}",
-          "start": {
-            "line": 1,
-            "column": 33,
-            "offset": 33
-          },
-          "end": {
-            "line": 1,
-            "column": 38,
-            "offset": 38
-          }
-        }
-      },
-      {
-        "type": "CharacterClass",
-        "expressions": [
-          {
-            "type": "Char",
-            "value": "\\s",
-            "kind": "meta",
-            "codePoint": null,
-            "loc": {
-              "source": "\\s",
-              "start": {
-                "line": 1,
-                "column": 39,
-                "offset": 39
-              },
-              "end": {
-                "line": 1,
-                "column": 41,
-                "offset": 41
-              }
+            "type": "Quantifier",
+            "start": 95,
+            "end": 155,
+            "raw": "(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))?",
+            "min": 0,
+            "max": 1,
+            "greedy": true,
+            "element": {
+              "type": "Group",
+              "start": 95,
+              "end": 154,
+              "raw": "(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))",
+              "modifiers": null,
+              "alternatives": [
+                {
+                  "type": "Alternative",
+                  "start": 98,
+                  "end": 153,
+                  "raw": "[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+)",
+                  "elements": [
+                    {
+                      "type": "Quantifier",
+                      "start": 98,
+                      "end": 111,
+                      "raw": "[\\-\\.\\ \\\\\\/]?",
+                      "min": 0,
+                      "max": 1,
+                      "greedy": true,
+                      "element": {
+                        "type": "CharacterClass",
+                        "start": 98,
+                        "end": 110,
+                        "raw": "[\\-\\.\\ \\\\\\/]",
+                        "unicodeSets": false,
+                        "negate": false,
+                        "elements": [
+                          {
+                            "type": "Character",
+                            "start": 99,
+                            "end": 101,
+                            "raw": "\\-",
+                            "value": 45
+                          },
+                          {
+                            "type": "Character",
+                            "start": 101,
+                            "end": 103,
+                            "raw": "\\.",
+                            "value": 46
+                          },
+                          {
+                            "type": "Character",
+                            "start": 103,
+                            "end": 105,
+                            "raw": "\\ ",
+                            "value": 32
+                          },
+                          {
+                            "type": "Character",
+                            "start": 105,
+                            "end": 107,
+                            "raw": "\\\\",
+                            "value": 92
+                          },
+                          {
+                            "type": "Character",
+                            "start": 107,
+                            "end": 109,
+                            "raw": "\\/",
+                            "value": 47
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "Group",
+                      "start": 111,
+                      "end": 135,
+                      "raw": "(?:#|ext\\.?|extension|x)",
+                      "modifiers": null,
+                      "alternatives": [
+                        {
+                          "type": "Alternative",
+                          "start": 114,
+                          "end": 115,
+                          "raw": "#",
+                          "elements": [
+                            {
+                              "type": "Character",
+                              "start": 114,
+                              "end": 115,
+                              "raw": "#",
+                              "value": 35
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Alternative",
+                          "start": 116,
+                          "end": 122,
+                          "raw": "ext\\.?",
+                          "elements": [
+                            {
+                              "type": "Character",
+                              "start": 116,
+                              "end": 117,
+                              "raw": "e",
+                              "value": 101
+                            },
+                            {
+                              "type": "Character",
+                              "start": 117,
+                              "end": 118,
+                              "raw": "x",
+                              "value": 120
+                            },
+                            {
+                              "type": "Character",
+                              "start": 118,
+                              "end": 119,
+                              "raw": "t",
+                              "value": 116
+                            },
+                            {
+                              "type": "Quantifier",
+                              "start": 119,
+                              "end": 122,
+                              "raw": "\\.?",
+                              "min": 0,
+                              "max": 1,
+                              "greedy": true,
+                              "element": {
+                                "type": "Character",
+                                "start": 119,
+                                "end": 121,
+                                "raw": "\\.",
+                                "value": 46
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Alternative",
+                          "start": 123,
+                          "end": 132,
+                          "raw": "extension",
+                          "elements": [
+                            {
+                              "type": "Character",
+                              "start": 123,
+                              "end": 124,
+                              "raw": "e",
+                              "value": 101
+                            },
+                            {
+                              "type": "Character",
+                              "start": 124,
+                              "end": 125,
+                              "raw": "x",
+                              "value": 120
+                            },
+                            {
+                              "type": "Character",
+                              "start": 125,
+                              "end": 126,
+                              "raw": "t",
+                              "value": 116
+                            },
+                            {
+                              "type": "Character",
+                              "start": 126,
+                              "end": 127,
+                              "raw": "e",
+                              "value": 101
+                            },
+                            {
+                              "type": "Character",
+                              "start": 127,
+                              "end": 128,
+                              "raw": "n",
+                              "value": 110
+                            },
+                            {
+                              "type": "Character",
+                              "start": 128,
+                              "end": 129,
+                              "raw": "s",
+                              "value": 115
+                            },
+                            {
+                              "type": "Character",
+                              "start": 129,
+                              "end": 130,
+                              "raw": "i",
+                              "value": 105
+                            },
+                            {
+                              "type": "Character",
+                              "start": 130,
+                              "end": 131,
+                              "raw": "o",
+                              "value": 111
+                            },
+                            {
+                              "type": "Character",
+                              "start": 131,
+                              "end": 132,
+                              "raw": "n",
+                              "value": 110
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Alternative",
+                          "start": 133,
+                          "end": 134,
+                          "raw": "x",
+                          "elements": [
+                            {
+                              "type": "Character",
+                              "start": 133,
+                              "end": 134,
+                              "raw": "x",
+                              "value": 120
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Quantifier",
+                      "start": 135,
+                      "end": 148,
+                      "raw": "[\\-\\.\\ \\\\\\/]?",
+                      "min": 0,
+                      "max": 1,
+                      "greedy": true,
+                      "element": {
+                        "type": "CharacterClass",
+                        "start": 135,
+                        "end": 147,
+                        "raw": "[\\-\\.\\ \\\\\\/]",
+                        "unicodeSets": false,
+                        "negate": false,
+                        "elements": [
+                          {
+                            "type": "Character",
+                            "start": 136,
+                            "end": 138,
+                            "raw": "\\-",
+                            "value": 45
+                          },
+                          {
+                            "type": "Character",
+                            "start": 138,
+                            "end": 140,
+                            "raw": "\\.",
+                            "value": 46
+                          },
+                          {
+                            "type": "Character",
+                            "start": 140,
+                            "end": 142,
+                            "raw": "\\ ",
+                            "value": 32
+                          },
+                          {
+                            "type": "Character",
+                            "start": 142,
+                            "end": 144,
+                            "raw": "\\\\",
+                            "value": 92
+                          },
+                          {
+                            "type": "Character",
+                            "start": 144,
+                            "end": 146,
+                            "raw": "\\/",
+                            "value": 47
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "CapturingGroup",
+                      "start": 148,
+                      "end": 153,
+                      "raw": "(\\d+)",
+                      "name": null,
+                      "alternatives": [
+                        {
+                          "type": "Alternative",
+                          "start": 149,
+                          "end": 152,
+                          "raw": "\\d+",
+                          "elements": [
+                            {
+                              "type": "Quantifier",
+                              "start": 149,
+                              "end": 152,
+                              "raw": "\\d+",
+                              "min": 1,
+                              "max": null,
+                              "greedy": true,
+                              "element": {
+                                "type": "CharacterSet",
+                                "start": 149,
+                                "end": 151,
+                                "raw": "\\d",
+                                "kind": "digit",
+                                "negate": false
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "references": []
+                    }
+                  ]
+                }
+              ]
             }
           },
           {
-            "type": "Char",
-            "value": ".",
-            "kind": "simple",
-            "symbol": ".",
-            "codePoint": 46,
-            "loc": {
-              "source": ".",
-              "start": {
-                "line": 1,
-                "column": 41,
-                "offset": 41
-              },
-              "end": {
-                "line": 1,
-                "column": 42,
-                "offset": 42
-              }
-            }
-          },
-          {
-            "type": "Char",
-            "value": "-",
-            "kind": "simple",
-            "symbol": "-",
-            "codePoint": 45,
-            "loc": {
-              "source": "-",
-              "start": {
-                "line": 1,
-                "column": 42,
-                "offset": 42
-              },
-              "end": {
-                "line": 1,
-                "column": 43,
-                "offset": 43
-              }
-            }
+            "type": "Assertion",
+            "start": 155,
+            "end": 156,
+            "raw": "$",
+            "kind": "end"
           }
-        ],
-        "loc": {
-          "source": "[\\s.-]",
-          "start": {
-            "line": 1,
-            "column": 38,
-            "offset": 38
-          },
-          "end": {
-            "line": 1,
-            "column": 44,
-            "offset": 44
-          }
-        }
-      },
-      {
-        "type": "Repetition",
-        "expression": {
-          "type": "Char",
-          "value": "\\d",
-          "kind": "meta",
-          "codePoint": null,
-          "loc": {
-            "source": "\\d",
-            "start": {
-              "line": 1,
-              "column": 44,
-              "offset": 44
-            },
-            "end": {
-              "line": 1,
-              "column": 46,
-              "offset": 46
-            }
-          }
-        },
-        "quantifier": {
-          "type": "Quantifier",
-          "kind": "Range",
-          "from": 4,
-          "to": 4,
-          "greedy": true,
-          "loc": {
-            "source": "{4}",
-            "start": {
-              "line": 1,
-              "column": 46,
-              "offset": 46
-            },
-            "end": {
-              "line": 1,
-              "column": 49,
-              "offset": 49
-            }
-          }
-        },
-        "loc": {
-          "source": "\\d{4}",
-          "start": {
-            "line": 1,
-            "column": 44,
-            "offset": 44
-          },
-          "end": {
-            "line": 1,
-            "column": 49,
-            "offset": 49
-          }
-        }
-      },
-      {
-        "type": "Assertion",
-        "kind": "$",
-        "loc": {
-          "source": "$",
-          "start": {
-            "line": 1,
-            "column": 49,
-            "offset": 49
-          },
-          "end": {
-            "line": 1,
-            "column": 50,
-            "offset": 50
-          }
-        }
+        ]
       }
-    ],
-    "loc": {
-      "source": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$",
-      "start": {
-        "line": 1,
-        "column": 1,
-        "offset": 1
-      },
-      "end": {
-        "line": 1,
-        "column": 50,
-        "offset": 50
-      }
-    }
+    ]
   },
-  "flags": "",
-  "loc": {
-    "source": "/^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$/",
-    "start": {
-      "line": 1,
-      "column": 0,
-      "offset": 0
-    },
-    "end": {
-      "line": 1,
-      "column": 51,
-      "offset": 51
-    }
+  "flags": {
+    "type": "Flags",
+    "start": 157,
+    "end": 157,
+    "raw": "",
+    "global": false,
+    "ignoreCase": false,
+    "multiline": false,
+    "unicode": false,
+    "sticky": false,
+    "dotAll": false,
+    "hasIndices": false,
+    "unicodeSets": false
   }
 }

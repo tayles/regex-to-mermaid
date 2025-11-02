@@ -1,9 +1,7 @@
-import regexpTree from 'regexp-tree';
+import { buildRegexAst, printAst } from '../src/parser';
 
 const pattern = process.argv[2] || 'foo|bar';
 
-const ast = regexpTree.parse(pattern, {
-  captureLocations: true,
-});
+const ast = buildRegexAst(pattern);
 
-console.log(JSON.stringify(ast, null, 2));
+console.log(printAst(ast));

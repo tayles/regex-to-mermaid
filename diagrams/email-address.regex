@@ -1,6 +1,6 @@
 ---
 name: Email Address
-description: Standard email address
+description: Common email address format
 flavor: regexp
 ---
 

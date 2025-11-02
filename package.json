@@ -53,16 +53,18 @@
   "scripts": {
     "build": "bunup",
     "dev": "bun run src/cli.ts",
-    "generate-all": "bun run generate-examples && bun run generate-themes",
+    "generate-all": "bun run generate-examples && bun run generate-themes && bun run generate-test-cases",
     "postgenerate-all": "bun run lint:fix && bun run optimize-images",
     "generate-examples": "bun scripts/generate-examples.ts",
     "generate-themes": "bun scripts/generate-themes.ts",
+    "generate-test-cases": "bun scripts/generate-test-cases.ts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "optimize-images": "bunx @343dev/optimizt diagrams/",
     "prepare": "bun simple-git-hooks",
     "preview-changelog": "bunx changelogithub --dry",
     "release": "bumpp --commit --push --tag",
+    "prerelease": "bun run build",
     "test": "bun test",
     "test:coverage": "bun test --coverage",
     "test:watch": "bun test --watch",
@@ -72,9 +74,9 @@
     "pre-commit": "bun run lint && bun run type-check"
   },
   "dependencies": {
+    "@eslint-community/regexpp": "^4.12.2",
     "commander": "^14.0.1",
-    "pcre-to-regexp": "^1.1.0",
-    "regexp-tree": "^0.1.27"
+    "pcre-to-regexp": "^1.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.6",

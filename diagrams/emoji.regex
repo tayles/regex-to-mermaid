@@ -1,0 +1,8 @@
+---
+name: Emoji Support
+description: Demonstrates support for extended character classes using the unicodeSets mode, enabled using the v flag
+source: https://v8.dev/features/regexp-v-flag
+flavor: regexp
+---
+
+/👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\p{Emoji}){2}/v

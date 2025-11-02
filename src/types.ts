@@ -6,6 +6,7 @@ export const GROUP_TYPES = [
   'negative-lookahead',
   'positive-lookbehind',
   'negative-lookbehind',
+  'modifier',
 ] as const;
 export type GroupType = (typeof GROUP_TYPES)[number];
 
@@ -13,14 +14,15 @@ export const NODE_TYPES = [
   'literal',
   'char-class',
   'negated-char-class',
-  'modifier',
+  'char-set',
+  'negated-char-set',
   'disjunction',
   'assertion',
   'back-reference',
 ] as const;
 export type NodeType = (typeof NODE_TYPES)[number];
 
-export interface Group {
+export interface DiagramGroup {
   id: string;
   type: GroupType;
   number: number;
@@ -35,7 +37,7 @@ export interface DiagramNode {
   label: string;
 }
 
-export interface Edge {
+export interface DiagramEdge {
   from: string;
   to: string;
   label?: string;
@@ -43,8 +45,8 @@ export interface Edge {
 
 export interface DiagramData {
   nodes: DiagramNode[];
-  edges: Edge[];
-  groups: Group[];
+  edges: DiagramEdge[];
+  groups: DiagramGroup[];
 }
 
 export const DIRECTIONS = ['LR', 'TD'] as const;

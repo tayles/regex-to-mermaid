@@ -1,6 +1,11 @@
 # Examples
 
-Here are some common regular expressions, showing how they are visualized as mermaid diagrams:
+Here are some common, famous (and infamous!) regular expressions, showing how they are visualized as mermaid diagrams:
+
+> [!IMPORTANT]  
+> In many cases, regular expressions are NOT the best tool for validating input. Consider using dedicated libraries or built-in functions where available for complex patterns (e.g., email addresses, URLs, dates).
+>
+> These examples are provided for educational purposes to illustrate regex capabilities and their visualizations.
 
 > [!TIP]
 > If you are viewing this page somewhere that does not render embedded Mermaid diagrams, you can click the "view as image" links below, or view the diagrams by copy/pasting the code blocks below into the [Mermaid Live Editor](https://mermaid.live).
@@ -9,191 +14,29 @@ Here are some common regular expressions, showing how they are visualized as mer
 
 ## Table of Contents
 
-- [All Possible Tokens](#all-possible-tokens)
 - [Comprehensive RegExp Features](#comprehensive-regexp-features)
 - [Conventional Commits](#conventional-commits)
 - [Cron Schedule](#cron-schedule)
-- [Date (ISO 8601)](#date-iso-8601)
 - [DateTime (RFC3339)](#datetime-rfc3339)
 - [Email Address](#email-address)
 - [Email (RFC2822)](#email-rfc2822)
+- [Emoji Support](#emoji-support)
 - [HTML Tags](#html-tags)
+- [IP Address](#ip-address)
 - [Complex Password Requirements](#complex-password-requirements)
 - [Phone Number](#phone-number)
-- [Semver](#semver)
-- [Stocks](#stocks)
+- [Semantic Versioning](#semantic-versioning)
 - [URL (RFC3987)](#url-rfc3987)
 - [URL](#url)
 - [UUID](#uuid)
-
-## All Possible Tokens
-
-An example of all possible token types
-
-### Pattern
-
-```regex
-^(?<protocol>https?):\/\/(?:www\.)?([a-z0-9\-]+)\.(?:com|org|net)(?:\/[^\s]*)?(?=query)\1\d{3,5}\w+\s*\S+[^abc](?!neg)(?<!back)$|alt\b\B.
-```
-
-### Diagram
-
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA6VXbVPjNhD-K7pwN0MODLGdNxtKLnHCfbmhnbvOdKYEMn4RiYtjpbLTlAL_vZIsv0h-wbT5ECLt7qNd7a724bnjIg92zM4a27sN-PZ9GQJgu-6vfhxAEyw73-Ea_m2C--PJ5Q6jGLkouNrE8S6adM0l-Zyzr-OJeTgc6M-z7uT41lb-6SkGXSp3J122TTRctH1BeP0SwrhLlszw9p7-ie4-E7PJT3_uIX5i-ir98p7108Er_XU4YWqf6fePk9t723HvjicfQrgmSJcfHNt97H58sYOYKjj0a3a27PBY5jByMY3lKwwhtmPogYMfbwCmoSkxUrYQb23f-6Ke9c761IwafvoEbsjVRPR3FNs4_vIMoo29I7fyoLg-dsHrBZU9-GGNxPOjP_ahG_soXDlw7Ycr1TTNwm4LOxh6La3sKIKY2ajHy879pYOvLv2rGT03YvFenvtXy06XgGWqzDDwY3IrATOjmU10-K6goRGNiAP_vKMAdpCjVlnoxMI8P69X6BMFUjlnZQ13Y-OVGxBfmWfT8AkE6ACxa0eQ-kA3PH_tx3ShpF6FECAMtgjD3DGKpDAk4egBR6Vi2yV7ZR_KGdT-UwbbWaWODYljpFfqL21EFEgj1SuMiQLpsnoFgyhUZIX0E22PlXT3pPP4_f4OMSpfMDdTai5a7REM1trlE2nnrjB8gBiGLuSnqWnxEqGSCfPzHGFfPCutlaw0CI4OYgQGzZWqatzwgLCX10RTXVXC6CnMhuxEO9uFjVdXiUGb4gbFZYw33ahIII3LBg5w2-VqwEqnobZUWp40A2WV_Amih37kTi9Cr-UDROuavuENwDorEIdD_0Zz5aB96Nn4qQ4-N-4z4xk3vkGhcmgDkPk3fuvF4HPjx95h4zSZHXwBQntLM2Pv4j0mlQ5ul50jFaRDddm5o9qF08SlRpfkLUkOyUFJWAmkH64TUBpXtgVKT7V0TL8al0w8eice91MDXzHa74CW2RefiDauaSXXMqiKV7YsYM-o6PpQXI7E5biNV_r7L8xIllVPZfWJOxT5sf8XXAUIPdobaPNL_YXvg2_pfrkGejVB0MMrIG_4fhPkoAWkAzd-WIWZCMqgQwGUtMDCWxeoE1AUpYoO1dEkpl8gNDLBYfLscLFJBZkm8hdBpotMRZD1RZLCZMVMlxiKYD0QeUZN9FodxRCwhiI1KGGxvmiFNBI5xP9AGotkoyUS2xVwDJGTMFlVX9VyE7EOehLrYFKZYFSyDhFHKihJqkm0QZTqEhsQpX1pztdFrNUOcxFvIM1uUTqU5rbUVZo8syvz2Nyj-eiWJrl0li6PcUnelye1iD6W5nBLT9ku0yX_pBXGc_wUJI8T_x-P7dCJRJua3vMcPhSBiHkQmEfX13NjODyNYoweIVmqlqZrp2R2I2we9djnQoDI4uEAs-F8NB1nAIZu9UfzJgAecXq-Yc0MKzNfDA1VHzeZ5xwvdaA_Hc3zCMaLkWXpTQhltsiRFlODfDIky6K2TUgiZ08j6lvkk0fUG5JPCYVnKmEgValizIqP8BR6biymc_0ddx0KLCABsa4X2nUOMiSgi1kTSEqbsoq51grxvV0xKVdQssGehTPXFsZ7M1eF1O7O65ASApBCWYuBNX-rIHn6prtd8MSTaFHspAWTopK5sZDRi4KeSHdPJY55KrM7IakFnAK9TX8WpJWMrZyaol9VhKycgjqLjG9V3PVF5_VfEm8ttKUTAAA=)
-
-<details>
-  <summary>Click to view as image</summary>
-  <p align="center">
-    <img src="diagrams/all-tokens.mermaid-diagram.png" alt="Mermaid diagram for All Possible Tokens" />
-  </p>
-</details>
-
-```mermaid
-graph LR
-  accTitle: "Regex: ^(?<protocol>https?):\\/\\/(?:www\\.)?([a-z0-9\\-]+)\\.(?:com|org|net)(?:\\/[^\\s]*)?(?=query)\\1\\d{3,5}\\w+\\s*\\S+[^abc](?!neg)(?<!back)$|alt\\b\\B."
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
-
-  %% Nodes
-  start@{ shape: f-circ };
-  fin@{ shape: f-circ };
-  disjunction_begin_1:::disjunction@{ shape: f-circ };
-  disjunction_end_1:::disjunction@{ shape: f-circ };
-  assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_1("http"):::literal;
-  literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
-  literal_4("www."):::literal;
-  char_class_1("Any lowercase<br>Any digit<br>-<br><i>One or more</i>"):::char-class;
-  literal_5("Any character"):::literal;
-  disjunction_begin_2:::disjunction@{ shape: f-circ };
-  disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_6("com"):::literal;
-  literal_7("org"):::literal;
-  literal_8("net"):::literal;
-  literal_9("/"):::literal;
-  negated_char_class_1("\s<br><i>Zero or more</i>"):::negated-char-class;
-  literal_10("query"):::literal;
-  back_reference_1("\1<br><i>Back-reference</i>"):::back-reference;
-  literal_11("Any digit<br><i>3 to 5</i>"):::literal;
-  literal_12("Any word character<br><i>One or more</i>"):::literal;
-  literal_13("Any whitespace<br><i>Zero or more</i>"):::literal;
-  literal_14("Not whitespace<br><i>One or more</i>"):::literal;
-  negated_char_class_2("a b c"):::negated-char-class;
-  literal_15("neg"):::literal;
-  literal_16("back"):::literal;
-  assertion_2("$<br><i>Ends with</i>"):::assertion;
-  literal_17("alt"):::literal;
-  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
-  assertion_4("\B<br><i>Non-word boundary</i>"):::assertion;
-  literal_18("Any character"):::literal;
-
-  %% Subgraphs
-  subgraph named_capture_1 ["#1 protocol"]
-    literal_1
-    literal_2
-  end
-
-  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
-    literal_4
-  end
-
-  subgraph standard_1 ["#2 Group 2"]
-    char_class_1
-  end
-
-  subgraph non_capturing_2 ["Non-capturing"]
-    disjunction_begin_2
-    disjunction_end_2
-    literal_6
-    literal_7
-    literal_8
-  end
-
-  subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
-    literal_9
-    negated_char_class_1
-  end
-
-  subgraph positive_lookahead_1 ["Positive Lookahead"]
-    literal_10
-  end
-
-  subgraph negative_lookahead_1 ["Negative Lookahead"]
-    literal_15
-  end
-
-  subgraph negative_lookbehind_1 ["Negative Lookbehind"]
-    literal_16
-  end
-
-  %% Edges
-  start --- disjunction_begin_1;
-  disjunction_begin_1 --- assertion_1;
-  assertion_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- char_class_1;
-  char_class_1 --- literal_5;
-  literal_5 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_7;
-  literal_7 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_8;
-  literal_8 --- disjunction_end_2;
-  disjunction_end_2 --- literal_9;
-  literal_9 --- negated_char_class_1;
-  negated_char_class_1 --- literal_10;
-  literal_10 --- back_reference_1;
-  back_reference_1 --- literal_11;
-  literal_11 --- literal_12;
-  literal_12 --- literal_13;
-  literal_13 --- literal_14;
-  literal_14 --- negated_char_class_2;
-  negated_char_class_2 --- literal_15;
-  literal_15 --- literal_16;
-  literal_16 --- assertion_2;
-  assertion_2 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_17;
-  literal_17 --- assertion_3;
-  assertion_3 --- assertion_4;
-  assertion_4 --- literal_18;
-  literal_18 --- disjunction_end_1;
-  disjunction_end_1 --- fin;
-
-  %% Styles
-  %% Node Styling
-  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
-  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
-  classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
-
-  %% Group Styling
-  classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
-  classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
-  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
-  classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3,color:#000000;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
-  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000;
-
-  %% Apply Group Classes
-  class named_capture_1 named-capture;
-  class non_capturing_1,non_capturing_2,non_capturing_3 non-capturing;
-  class standard_1 standard;
-  class positive_lookahead_1 positive-lookahead;
-  class negative_lookahead_1 negative-lookahead;
-  class negative_lookbehind_1 negative-lookbehind;
-```
-
----
 
 ## Comprehensive RegExp Features
 
 Demonstrates MDN JavaScript RegExp syntax cheatsheet features including character classes (\d \D \w \W \s \S .), assertions (^ $ \b \B), lookahead/lookbehind ((?=) (?!) (?<=) (?<!)), groups (capturing, named, non-capturing), backreferences (\1 \k<name>), quantifiers (? * + {n} {n,} {n,m}), character classes ([abc] [a-z] [^xyz]), and alternation (|)
 
-### Pattern
+Source: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions>
+
+### Pattern {#Comprehensive RegExp Features}
 
 ```regex
 ^(?<named>[A-Z]\w{2,5}):\s+(a|b|cd)(?:https?:\/\/)?(?<domain>[a-z0-9.-]+)(?=\.com)(?!\.org)(?<=example)(?<!test)[a-z]{1,3}\.com(?:\/\S+)?(?:\?[a-zA-Z0-9&=]+)?(?<digit>\d+)\k<digit>\1\b\B\d+\D+\w+\W+\s+\S+[^xyz]+\t\r\n|alt$
@@ -201,7 +44,7 @@ Demonstrates MDN JavaScript RegExp syntax cheatsheet features including characte
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA6VYW3ObOhD-K6rTdpKJSYzAF9xcaoPTl07OmfbMdObErgeDYnNCgAHS3Jr_fiQhZCQuIa4fCGh3v11pV9K3ee44oYs64846tqMN-PptHgBgO84_XuqjMZh3vqE1ehiDn_vnJ4F9i9yzq4ny72KOf_fPsNt_ORiT9-Rw3_69-u24B_vn402aRsk5HT-mj4NzbO2Gt7YXnF3ZylNPMY6UxSHWPSXyIye8xe_v6HsYr_H7ySl6sG8jH5H3dylK0gNiuHhWu9pLbrNf8PH9kDih3-dEEweJvXw8XRxmzr21l54RqXt4QP7cFIZU8liRxzTTIE-LPu_p88dhNsfM0dXPh8enBf1IySMmj-C37afv5x22fBZKnJgs3xcUoNhOkQvuvXQDYrKaShoqtyjGy-F-Vo96RzoxI4YfPoBLnI2EvCepHaefn0GysSOciGvF8WIHvHwismsvqJG4XvLfXeCkXhgsV2jtBUt1PB4XRlvYocBtaWUnCYqpjbo_7_w8WcVnJ97ZlPhN6HxPjr2zeecAg3FVauhs7Hjp-HiQWk6CR3AXRSh27ARl-kRDoRrUwPdSvIw-174PY5ei2A4WMMcQpCHob30yIwEAYoBxvVjL8Td4IIlsBzHsvwIEwhjchjGqdlBeebjTyrezyuPVcbx2_XT6WLyqFw-w2HHr5UMsJ5u5XmOENZJ8iSISsO03J8AgCTg-LisUagKyLPjhfVYTxAMZoHuWfBwBpSkxddXTw8Dk5KgPTyUVRg6hBhUSHjueGrRIKZGDq3GmWtVM8axUUsra6xPSX58QqYHjBjkpgssw3aHkOQSpk_PGeep1GeXbvpTij-B0lxSPmCeO02YmK9u5WcboGsUocBA9ZfA9UECYYgWFK2xBVsJ4FRakWOrbcbaHawaxYhA_yNG3Cu8C144f6w7YrbFGjafM-DIMlPs2AHw9jV3Wk5-2PVZc9o72jed9exjIw_hDoN3vBw6h77zfArQmTGIp3Z4P4BE8NWEwO6Vmy8A-LZGUMpmgIXJyUmCWU9bYVhuZ3HsWyyxwm1gAIzzf71aUemakh30ASjWXjh2ldzHej-Bq3tlTs9F5Z0FURRKRjfCiJZ_4Ms2ccFBMqUjNuwwPgi9xeBcByBEr7vCygF7Soj9d_OyLn4PqaAKMlU3QC9ZZSGR38iFQulIXIu5Q_ByJn0aNV2FhIV0IDWTcvGplYTVMFCZe6v1CSz8Mb-wNstmi_s3Gwdd8vBS22quJjFRpBeQlG2-CVFtEuUIbL6gKMxOUQWGLOIugQqB1oFqbYoBvLwZVKjq1VdVpOzgalmpEb1Nq1NWent0DZdSRgIHPhZm7LjRCQFGUquamrumh-oX2RG5XqLx4gJTaEqrBwxPvREEGxUNSkGlic1EzC1jXQAhYukj8S1j0XGqF1Bd7hD9AGojtREskOirgDMW2Q5CNxIZDkBliayFnFZYaCzGrPak7EKVS0qWKgFJPIEo1qReQI9NKjYBor0s0X5T2JYYvSgcSvxelQ4m6y5HpJeou2o8kuk2lMn-uJNVVmrCSMku7F8p8WJJrMuUVIzYkQivu3p5EWEWpKtFRUSptfbEGoCZRR1GqS6yQSqsYXi31E_H6Eqer3IvN5-WW6Em8T1pvXSZ9LX3RUap77RUZYProZ0c9-_8XHcF3ES1EMlcLXReBsLnvj_cuLixjMOgmaRzeIPypmlCDXSf0w3i816O_TwIEj5gBTAfWcDLiAIZm6kOrCWBLoHMEfTK0tiGMZkPT1JoQ2JrmMzDMqWFy89nAULVRk7nYJuYouol_W5TeAP-aUMr9AEOaTQz840imSWxLSCxTGXmuShW9-BmlyIO0jNnE0t6w1jlZ58m-gIVJvp7sQGA1GYh5MYMX2yAGOKjZtAkkJ5AK56R8OhacGW9IfM4aS0hvzp4QU0Yzefos1dpCmXA4nfRaByVAXZizvmm9VpmsEiZR5D-yejAJdrabs8qSOrmu1IB0ZZYoFM823GLzlr8WpFIz1ZX4dFemvUJ1FHAq-5pyFRQ9V7Ut5WzX-eANREVa67xwm4r8feq8_A-UOxlU0xkAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA6VYW1PbOhD-K2poOzDEEN-SOOXSxE760uGcac9MZw5JGcUWiQ_G9timECj__ejim-QLhubB2Nrdb1fSavUtTz07cFBv0ttEMNyCr9-WPgDQtv9xEw9NwLL3DW3QwwT83D8_8eEtcs4up9K_qyX-3T8pff35YELe48N9-Hv923YO9s8n2yQJ43M6fkwfB-fY2gluoeufXULpcSAZR9LqEOueEvmRHdzi93f0PYg2-P3kFD3A29BD5P1dguLkgBiunuS--pzZ7Jd8fD8kTuj3OdHEQWIvH09Xh8y5u3GTMyJ1Dg_In5vSkEwea_KYMQ3ytOjznj5_HLI5MkeXPx92jyv6kZBHRB7-b-gl75e9dPksFNsRWb4vyEcRTJAD7t1kCyKymlISSLcowsvhfFaOBkcDYkYMP3wAF3g3YvIeJzBKPj-BeAtDvBHXku1GNnj-RGTXrt8gcdz4vzvfTtzAv1qjjetfyZPJpDTawQ75TkcrGMcoojby_rL382QdnZ24ZzPiN6bzPTl2z5a9AwyWq1JDewujK9vDg9Ry6u_AXRiiyIYxYvpEQ6IahUGMklz9PogcOgrtBEWpZwUkAdALpxQEW1EIz8WK0KMIEyZPh3gPSuZhi6VxCG2Uov_lIxBE4DaIUIOL6uorb1r9blbZhEjAsDqhTKxi8bpZrGGx7TTLdSwnB7pZY4g14myNQhIw9IoFqrMY0S0gB_e4YSNYbmRb4QX3LDeIFzJAzy75OALSi7tTZFHmf4xxWQlpjtFgOrgcNevIA6yUFqoWLZJxpIS1zlWtmyuel0xyWn1xSrLSYU6ySpWOW7KfaFwEScfs99GG1Dap_qBp1Nt567S1pi3O60Flzz-C01fseT6zzFOO0-lIr6F9cxWhaxQh30a0eJSvj6zkYS0p1yqg1tx4HaCSAsqvRyqqLwOZpRBk-yArkOvgzndgtGuqwwUEy4x1CvGji3G-svqbVjY3H6YpB18GqM23HGjUdje8IqBxHlB3pPbIjLffKcXNN_jzo1k6eGTTHsAOPHYGqSk6Os2ahHIgv6XukC3G_KiqUSQgOZ7v01jmvtPGH1Kq9P1uTUkro0vpB6Ak9cqGYXIX4fMKLpc9OgT25GVvRVR5-lEaoatMvvEdzLzkqJiNkbPgMMAvUXAXgj0lB6y5-KsCerOz4fzq5j9V_lOrj8XHWGx-rr9hAV0EvpQPgco9vOJxdf5zyH-OGrxy66oQr4zRgz21bmGVepgwiN3E_YWuvCC4gVsE0yX9Ox0HX7PxStjjhsBIjtYgXqTjLYhGhxjXaOv6dUEyQQVTHnQIswzKxdkEKndJBeX1qSCrQv6rXRypb3CkVTJE65Jo1BW9F8CexucZvdQ5DFwU5s6m1D8BSZLqeqKmXonql7oascuh8nL1qHQzhQatJkIJp9J8SfgayVsqQlPSMBOlqe_gPCl8v1DBopWpE5LKtxZ_gKTxXUhHJDrK4eh8t8LJhnyfwslGfEci7qxS6UU46zHfT3Ayg-8j-D0fCA0ELxVSopJvaqVr4O0VoSfgparQDPAZpwqNAG-rCdRejEyrEHseXRPIOJWK5LqWcddpKrVUWji9isiSBbkqUmA-Yl0gubx0KHBYXjoSiCkvHQt0k5caAnUUKspAZIXiTugVpsfvpC5QuNqT114hC14n0DxhhTWR43X0RUep7rVbJnzJzmPFPf1HGR3Btw-dMJmrha7LQNjc8yZ7i4VlDIf9OImCG4Q_ZVNRlb4deEE02RvQ3ycOIo84BZgNrdF0nAMYqqmNrDaAgi9nCNp0ZBUhjOcj01RfRMAbnNobi-nYmub2ujmcmYM2-3RPshUwzJlh5ubzoSGr4zZzsXtIceYLY2oUYcx11VB1HicVSg6MsW0EdxOgA51H55vZLEbNxL8CezDEv84xlhd7PjXwL0cyTRpXtyjT7GIMvy69KD1JiU8WumXMp5b6ivzI2ok8QRdKaeovJ6jPcS8GYi7myqIIYoiDms_aQDKaK-XEOZ-OpcyNVyRrxm0rSB32tEu-cJEyipxvtSVbhQNTGc2mg86hclALc66bVusZeSlrpmHo7dLcMYlHVq1YbgqNaV9oqPoi7-USrZhEuRXNXktSoTnsCx1CXyTyXCaVcGr7tGrGlD3X9WHVzGjykbdENZvd5CW3qdnVT73n_wGNFs3y3BoAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -213,7 +56,7 @@ Demonstrates MDN JavaScript RegExp syntax cheatsheet features including characte
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<named>[A-Z]\\w{2,5}):\\s+(a|b|cd)(?:https?:\\/\\/)?(?<domain>[a-z0-9.-]+)(?=\\.com)(?!\\.org)(?<=example)(?<!test)[a-z]{1,3}\\.com(?:\\/\\S+)?(?:\\?[a-zA-Z0-9&=]+)?(?<digit>\\d+)\\k<digit>\\1\\b\\B\\d+\\D+\\w+\\W+\\s+\\S+[^xyz]+\\t\\r\\n|alt$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -222,142 +65,142 @@ graph LR
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   char_class_1("Any uppercase"):::char-class;
-  literal_1("Any word character<br><i>2 to 5</i>"):::literal;
-  literal_2(":"):::literal;
-  literal_3("Any whitespace<br><i>One or more</i>"):::literal;
+  char_set_1("Any word character<br><i>2 to 5</i>"):::char-set;
+  literal_1(":"):::literal;
+  char_set_2("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_4("a"):::literal;
-  literal_5("b"):::literal;
-  literal_6("cd"):::literal;
-  literal_7("http"):::literal;
-  literal_8("s<br><i>Optional</i>"):::literal;
-  literal_9("://"):::literal;
+  literal_2("a"):::literal;
+  literal_3("b"):::literal;
+  literal_4("cd"):::literal;
+  literal_5("http"):::literal;
+  literal_6("s<br><i>Optional</i>"):::literal;
+  literal_7(":\/\/"):::literal;
   char_class_2("Any lowercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
-  literal_10(".com"):::literal;
-  literal_11(".org"):::literal;
-  literal_12("example"):::literal;
-  literal_13("test"):::literal;
+  literal_8("\.com"):::literal;
+  literal_9("\.org"):::literal;
+  literal_10("example"):::literal;
+  literal_11("test"):::literal;
   char_class_3("Any lowercase<br><i>1 to 3</i>"):::char-class;
-  literal_14(".com"):::literal;
-  literal_15("/"):::literal;
-  literal_16("Not whitespace<br><i>One or more</i>"):::literal;
-  literal_17("?"):::literal;
+  literal_12("\.com"):::literal;
+  literal_13("\/"):::literal;
+  char_set_3("Not whitespace<br><i>One or more</i>"):::negated-char-set;
+  literal_14("\?"):::literal;
   char_class_4("Any lowercase<br>Any uppercase<br>Any digit<br>& =<br><i>One or more</i>"):::char-class;
-  literal_18("Any digit<br><i>One or more</i>"):::literal;
-  back_reference_1("\digit<br><i>Back-reference</i>"):::back-reference;
-  back_reference_2("\1<br><i>Back-reference</i>"):::back-reference;
-  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
-  assertion_3("\B<br><i>Non-word boundary</i>"):::assertion;
-  literal_19("Any digit<br><i>One or more</i>"):::literal;
-  literal_20("Not a digit<br><i>One or more</i>"):::literal;
-  literal_21("Any word character<br><i>One or more</i>"):::literal;
-  literal_22("Not a word character<br><i>One or more</i>"):::literal;
-  literal_23("Any whitespace<br><i>One or more</i>"):::literal;
-  literal_24("Not whitespace<br><i>One or more</i>"):::literal;
-  negated_char_class_1("x y z<br><i>One or more</i>"):::negated-char-class;
-  literal_25("\t\r\n"):::literal;
-  literal_26("alt"):::literal;
+  char_set_4("Any digit<br><i>One or more</i>"):::char-set;
+  back_reference_1("\\k<digit><br><i>Back-reference</i>"):::back-reference;
+  back_reference_2("\\1<br><i>Back-reference</i>"):::back-reference;
+  assertion_2("\B<br><i>Not a word boundary</i>"):::assertion;
+  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  char_set_5("Any digit<br><i>One or more</i>"):::char-set;
+  char_set_6("Not a digit<br><i>One or more</i>"):::negated-char-set;
+  char_set_7("Any word character<br><i>One or more</i>"):::char-set;
+  char_set_8("Not a word character<br><i>One or more</i>"):::negated-char-set;
+  char_set_9("Any whitespace<br><i>One or more</i>"):::char-set;
+  char_set_10("Not whitespace<br><i>One or more</i>"):::negated-char-set;
+  char_class_5("x y z<br><i>One or more</i>"):::negated-char-class;
+  literal_15("\t\r\n"):::literal;
+  literal_16("alt"):::literal;
   assertion_4("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["#1 named"]
+  subgraph named_capture_1 ["named #1"]
     char_class_1
-    literal_1
+    char_set_1
   end
 
-  subgraph standard_1 ["#2 Group 2"]
+  subgraph standard_1 ["Group #2"]
     disjunction_begin_2
     disjunction_end_2
+    literal_2
+    literal_3
     literal_4
-    literal_5
-    literal_6
   end
 
   subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
+    literal_5
+    literal_6
     literal_7
-    literal_8
-    literal_9
   end
 
-  subgraph named_capture_2 ["#3 domain"]
+  subgraph named_capture_2 ["domain #3"]
     char_class_2
   end
 
   subgraph positive_lookahead_1 ["Positive Lookahead"]
-    literal_10
+    literal_8
   end
 
   subgraph negative_lookahead_1 ["Negative Lookahead"]
-    literal_11
+    literal_9
   end
 
   subgraph positive_lookbehind_1 ["Positive Lookbehind"]
-    literal_12
+    literal_10
   end
 
   subgraph negative_lookbehind_1 ["Negative Lookbehind"]
-    literal_13
+    literal_11
   end
 
   subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
-    literal_15
-    literal_16
+    literal_13
+    char_set_3
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
-    literal_17
+    literal_14
     char_class_4
   end
 
-  subgraph named_capture_3 ["#4 digit"]
-    literal_18
+  subgraph named_capture_3 ["digit #4"]
+    char_set_4
   end
 
   %% Edges
   start --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_1;
   assertion_1 --- char_class_1;
-  char_class_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- disjunction_begin_2;
+  char_class_1 --- char_set_1;
+  char_set_1 --- literal_1;
+  literal_1 --- char_set_2;
+  char_set_2 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_2;
+  literal_2 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
   disjunction_begin_2 --- literal_4;
   literal_4 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_5;
-  literal_5 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
-  disjunction_end_2 --- literal_7;
-  literal_7 --- literal_8;
+  disjunction_end_2 --- literal_5;
+  literal_5 --- literal_6;
+  literal_6 --- literal_7;
+  literal_7 --- char_class_2;
+  char_class_2 --- literal_8;
   literal_8 --- literal_9;
-  literal_9 --- char_class_2;
-  char_class_2 --- literal_10;
+  literal_9 --- literal_10;
   literal_10 --- literal_11;
-  literal_11 --- literal_12;
+  literal_11 --- char_class_3;
+  char_class_3 --- literal_12;
   literal_12 --- literal_13;
-  literal_13 --- char_class_3;
-  char_class_3 --- literal_14;
-  literal_14 --- literal_15;
-  literal_15 --- literal_16;
-  literal_16 --- literal_17;
-  literal_17 --- char_class_4;
-  char_class_4 --- literal_18;
-  literal_18 --- back_reference_1;
+  literal_13 --- char_set_3;
+  char_set_3 --- literal_14;
+  literal_14 --- char_class_4;
+  char_class_4 --- char_set_4;
+  char_set_4 --- back_reference_1;
   back_reference_1 --- back_reference_2;
   back_reference_2 --- assertion_2;
   assertion_2 --- assertion_3;
-  assertion_3 --- literal_19;
-  literal_19 --- literal_20;
-  literal_20 --- literal_21;
-  literal_21 --- literal_22;
-  literal_22 --- literal_23;
-  literal_23 --- literal_24;
-  literal_24 --- negated_char_class_1;
-  negated_char_class_1 --- literal_25;
-  literal_25 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_26;
-  literal_26 --- assertion_4;
+  assertion_3 --- char_set_5;
+  char_set_5 --- char_set_6;
+  char_set_6 --- char_set_7;
+  char_set_7 --- char_set_8;
+  char_set_8 --- char_set_9;
+  char_set_9 --- char_set_10;
+  char_set_10 --- char_class_5;
+  char_class_5 --- literal_15;
+  literal_15 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_16;
+  literal_16 --- assertion_4;
   assertion_4 --- disjunction_end_1;
   disjunction_end_1 --- fin;
 
@@ -366,18 +209,20 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef negated-char-set fill:#EF9A9A,stroke:#E53935,color:#000000,stroke-dasharray: 5 5;
   classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
+  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000,stroke-dasharray: 5 5;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
   classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
   classDef positive-lookahead fill:#D9D2E9,stroke:#8E7CC3,color:#000000;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000,stroke-dasharray: 5 5;
   classDef positive-lookbehind fill:#EAD1DC,stroke:#C27BA0,color:#000000;
-  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000;
+  classDef negative-lookbehind fill:#FCE5CD,stroke:#E69138,color:#000000,stroke-dasharray: 5 5;
 
   %% Apply Group Classes
   class named_capture_1,named_capture_2,named_capture_3 named-capture;
@@ -395,7 +240,9 @@ graph LR
 
 Validates a RFC3339 DateTime format
 
-### Pattern
+Source: <https://regex101.com/library/vcxVpP>
+
+### Pattern {#Conventional Commits}
 
 ```regex
 \A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?P<scope>[\w-]+)\))?(?P<breaking>!)?:\s(?P<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?P<BLANK_LINE>\n^$\n)(?P<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?P<BLANK_LINE2>\n^$\n)(?:(?P<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?P<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
@@ -403,7 +250,7 @@ Validates a RFC3339 DateTime format
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-VaDW-bOBj-KyzZpEZLumDzmVXp0jTtTZt6p-2kk7asFSGkZcsgAnpd1fS_n20I4NdAgEinky7aB7ZfP36__GLnyVPH9pdOZ9S5DazNnfTx09yTJMu2_3SjtTOS5p1Pzq3zizyQz-TodET-XB-d_nESPW6c8cqxou3K_bW13a195wfOdunb4TZywmgbRo9rZxs4K8uO_GC7uHfXy-3GCVak728niHoEiYIeUbTQ9gncV9p-GHx73aMPvd4pHVoEjvXD9W7HL3rxhJBNuF98d-xoTDsW8bzuyVg6fkMfo3nyGXx7wv3nZKHFlv573Ou97MV2UJyzj5OrDzcf31_NGJR3_ZL912Mr-8vHMbX3uAAlljvtPcl9_JyomoEhiDbKm3Jj31nerTO-Pvs0m3x4f3XJzJr-Nrm6nMUmMotCZta313DlXgx6mqCufD9ygvE1k36dm__QHQiTyec01nzLYL7MO0nAz53QDmjALx3PCazIWUoPbnQnBTT-g8gf_HSCn5a7fCcfD48VOo1OfPVKuiL5E9LnMLKC6N2TFN5ZG5I6q4HtBrb0_JaOrVyvZGTtEu2t9Y18NO9M5p3eaDRKutjw0g2_33t25PrezcK5db0bmUjkektg8_Mcb1lzlhWGJDXpHKrONYnY-MQdn9F1Q-aOkzfuOFYyFS1RE7VSs96snc8QUZLuQdFtOwlMJdxf5QIKEbDd8nGVjtOtXS6iERG678sldCJBi0K5hEEkWMUoFzGJyK6clEvJQyLGik2FDA0uLUUVIoitRgtVhRD17pE4TrZ3cGOvSYawNCI7URokqfS750h-IP0kDs1SicoPmDwPT2PTq1iexuZFxTgNzIjWEUEky3PEFFwk6v3lB0tp4d97Syt4LMv1nHkoMa8rnUhj6fPGsh3pWHpD3hYR-ZtajffaLO4f3Gr_4IbbHDc3P3UvzeqJ98j8QbLSCar8TGP5Mllm5i2rq0m6BN0WV87D2vWcKnC1WbHKJmqttDLraaU30yotakPo1_Isqn5TKK1SSGmYQkb7FEJykxQy2wQLoSxYuxq0oVLWutiN6URcL8qs4LZKPlaGmxuk1NQLtUw_upmyg1l2LAsrC31cSEJS9R4alHoxZ9VWOas2Pd0cUPeQ1iRp5VaFD-k1g6y2DLKR2PBALYeFpjByhXvELH3D5lJDSV-Sg4NSQ2uVGlrT1NDapwYe7k-NVFZuWZgw3dhf4HhyGfl8v2AX2fhCkjTozYTqT24B0td5pytLl4F_v5HkeecblSs8vosD7Hwed6cJwDcx31T4pso3Nb6p802Db5p8Ux6CtgzaTDGicOwY0RGIOQIljkCpI_JH12IIj3jCtjbRfUBvspjiXPneIO2ShEAm0NnaQFfgNVnZoztbs4sT3XHpgtk5uY4limBJRXbg4uxIunPHS6CJvsc0pkRXSUxTUg2AqnAZJAQP1TEZlZuc7Zji4IEsAEK4QuvMVmgFzGENCuxLDJV5T028p4qJYEBEFXaATSmbdfxoNEkdpTh1BG-AAoBqbUe9cDvKUuRLmNsbwAC4OChGaAgFQD1C--qNxkKjJaHRqvUANtUxXGtRh9RmKuRmanusZWHo6om1upCISCgUsuBhWNKRUscP8rBJLqrFuSjsClii0T4HsB3RNRIHGCXhLjAavl9VobKJrqvlGLN-ghQrmdkGVKyVnzJqEhetOC5CQZRBucLDPXFhXuiaSVzMMpORsBA4uyDoBFOIU710lcvdUqxTZkodfPXfLwtQSANCepMkAzlc3zGCVK3Xh_xfOBCAM8r_JzqwVy0rD3JxeQAvDMyHnFyOZsvbHFMjDQaD7KDDf8PHxgoWLqNkmHyuXMA7ZQkeKuNOON0Qf-cWsNi9rBYS5i-SByApPIlyAJLK0y0HIGk8K3MAks6zNwcgGTzLcwCSyZNBByDJQ8AYHYIFNo58CBYCFFRNLNbLI2HAU7HR_N1e4Kn4-QogovhRFdBQ_KgGSChQGxAkoKBuSCCZSqoHLmOOwIoYcj6Ffq1Gy27wgAOqicV6gV4KpIj4lQxABYHZKuSAwLgGqR4e3QSUDpitQy6Hr8hDwNiUREgpI2bAagakVAq9Wo2WXZQBxVITi_UCvUzIwPArgRcTeGthQKfAd-RQIFKghPAa5XcpUgAxAucjgRLh56uA-IA7EQskR0mc1TIyA2qEBR6iMDrVeNktFPASNbFYL9RMEXgLfi0d8BNwviowE_x8A_AP_KgJaAUYCUXgFEoioZVxB1BfTfjav9B71XjZvRPQADWxWC-PJAOSoBBJLv6JD4-EAGvARleulyML6A9OwtzPmFgPvfVQZ1M_nzurHQKZul6Puhfm9Myc9sMo8H84o-5MM2Vs9G1_7Qej7pB93nLTc1ruIC7OTU1LIS7kKcKoCiKNUgJwpp3rEyMFMPFU0c-rADJqaYegTPTzTAVjpk-nWEBIPBN_WVDkmt2tJjXsAk2nDQzzuJt5DDK9mKELnIJo5-Zsdlam2mSzWT8mCk4pahzO2NTsytrPbqvZI84elexRzR617FHPHo1-7tuU3WNmFrwI98GdF7QRaBugrYO21odXU9BhQgG4giyDDhUK8GF523n-B1WiZoMkKgAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-Va_W-bOBj-V1i6SY2WdMHmM6vSJWm6mzb1Ttv9tHWtCCEtuwwioNdVTf_3sw0B_BoTSKTTSRdNG7ZfP36__GLz7KnjhguvM-zcRs76Tvn0-SpQFMd1__STlTdUrjqfvVvvF3kgv_Hx2ZD8uT4---M0eVx7o6XnJJul_2vj-hv3Loy8zSJ0403ixckmTh5X3ibylo6bhNFmfu-vFpu1Fy1J399elHQJEgU9pmixGxK4b7T90P_-uksfut0zOjSPPOcvP7gdveimE2I24X7-w3OTEe2Yp_OOTkfKyRv6mFxlv_73J9x7zhaab-jfJ93uy25qB8WZfBpffrz59OFyxqCC65fsny5bOVw8jqi9JxUoqdxZ90nt4edM1QIMQbRh2ZQb984Jbr3R9eTzbPzxw-V7Ztb0t_Hl-1lqIrMoZmZ9fw1X7qagZxnqMgwTLxpdM-nXpfkPR31hMvmdpZpvGMzXq04W8HMvdiMa8Pde4EVO4i2UBz-5UyIa_34S9n960U_HX7xDJ4OTAZ1GJ756pVyS_Inpc5w4UfLuSYnvnDVJnWXf9SNXeX5Lx5Z-IBlZ-UR7Z3WjHhPMq_FVpzscDrNOJrDw4x_3gZv4YXAz92794EYlEqVeCXB5nhcsGs5y4pgkJ51DFbomMRud-qMJXTdmDjl9449SJXNRiZpoLzWbzdp6DREl6S4U3baVwFTC_yUX0IiA68vHdTpON7dcxCAidOfLJUwiQcuCXMIiEqxmyEVsIrItKHIpdUDEWLmpkaHBpcWoRgSx1WipqhHCLGuPRQmyxaMbd0VyhCXSOHhUHsJowfqJAV5EM6ufpdfvgaeEkfKTOLlILyrZZwj8khpbslujFI3Yi5pxGq6hROXYSwqF78hovHZcr6QREQAbBTGFJpktl2GiOKmt8_A-WDjRo2zLlHyEpD46Uk6VkfKFaqGcKG_IiyhhLyNl6zy803Xi1sR7bU3csoLgfR2TR8rM3JJ7RIxasRxNjJfZYrNgUV-u8iXovrv0HlZ-4NWB6-2qYTHR2Esru5lWZjut8gxH0K87cmmb9GImaXtlktYyk6xDMwkN2mSSvU_MkFrEbFvX1lTKWRVTq-oRQs2CzQr7XjnIyn17g3BDvVA7vXJ8umHzI6C8HOMm5TgHpRt1e5SUY2pNMEv1WdSB2ltdsRu-0MS9pO-1l_S257qDyzIy2mwmda-6jMyGyafvWQJ16Ru3Nn5Cvlk7DhNGy0zTak4C_YPSy9grvYy26WUcnF727vTKT_eDPYsuTu9bX6FEdqn7cj9nHwTSi13WoDc8agG5SynfyEUxCu_XypF61flOpSqvQOIAu-Ok3bnBfBPzTY1v6nzT4Jsm37T4ps031QFoq6DNFCMKp24R3YBKbkC5G8pH_2qAgPjBddbJfUS_BmCKchkG_bxLEcKYQRcrA02Bz1Rth-a4pDmWLlfcKJrYoQl21GQGrs6MrLt0hgaamDsM00qGafn6QFG4CBICh5oYjOQGFzulOnAgA4AQrtG6sBRaAbPXKFnFrnVwwq4k0Uu-1MWksCCeDjvA5lTtJl612qSRVp1Ggm9AIUCDJpqYlRtTVZJQwdw-AQbAxU0QCAQFQF1C6o7AGKXAGPVaAIuamG3sUY_0diqUZho7bDVLtppCEiLBl9uiXj79gzm4iRfUQZs81KvzUNgRsFCjXeZbJfMtSagrTIZvWA2kIFRDB-OaUBGFyix7x_C62c2TqdqowhNA5Ua5rKI2UTSqo2gIpoPChuwdUbRLUbRlBoupDKMCzj7IAuOGELVGMVJVuZOqdSwMa4Kv__sFBQoZQMhsk3Igo5s7RpBqdB5U_wvHCnDS-f9EB_bqsmKhVhcL8LLB_EmDXK1mi9sSX6b0-_3igMR_BGVjFQvLaDEmXyof8GYqwUMy_orTDfF3VAGL3esaIWH-InoAksYTWQcg6TzldQCSwTNjByCZPIN2AJLFM20HINk8IXcAkjoArN0hWGDjqIdgIUADNsRivTwSBlwhGy1_HRCYQn6-Bog_flQHpB8_agDKr1ibXQUB4QcqB4IMH9QcCfydpLZgGQEHVsSQOqv0ej1a8Y0AkGgNsVgv0EuDHBu_kgW4NDBbhyQaGDcgV8aj24ATA7NNSIbxMUaA8pJESJMRW2A1C1JSlV6tRyuu34CcaojFeoFeNuSu-JVUwFHxo-ClhuAbdCBQUFBCeMmCFTCglOB8JJBJ_HwNUEZ8jDFgivi5OmCG-LkaYITgHscCByTJIF1G50BbscDEVMa9Hq-4OQNOpiEW64WaaQJnw69lAm4GztcFVob3tQ64Fx7dAowKP9cAfAqMkyYwKJI4GTJeBFpjCJRGpW_r8Yq7MSA3GmKxXv7cOADURyVS_el4tzTr5ddVAXPCRpd-UKJL6H9cikv_IY710JsbDQ2Nyrm33CKQqavV8OjCnk7saS9OovAvb3g0M2wVWz03XIXR8GjAfm-56SUttxAX57Zh5BAX6hRhVAeRxzQDmBjn5tjKAWw81czzOoCCZNsiaGPzvFDBmpnTKd6JQBI5m29fjK3zcT5fnxqT6UCYn3k2_YJS5drtzS53zAWaTls4JuC-TqQg04sZusA5iHFuz2YTmWrj9Xr1mCk4pahpOqSuKq7tveLGXjzi4lErHvXi0SgezeLR6pW-L20fC7Pgx4AeuPeDNgJtC7RN0DZ68HoOOmwoAFdQVdChQwE-LG87z_8Aph3xga4sAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -415,12 +262,12 @@ Validates a RFC3339 DateTime format
 ```mermaid
 graph LR
   accTitle: "Regex: \\A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?P<scope>[\\w-]+)\\))?(?P<breaking>!)?:\\s(?P<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?P<BLANK_LINE>\\n^$\\n)(?P<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?P<BLANK_LINE2>\\n^$\\n)(?:(?P<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?P<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  literal_1("A"):::literal;
+  literal_1("\A"):::literal;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
@@ -437,16 +284,17 @@ graph LR
   literal_10("build"):::literal;
   literal_11("perf"):::literal;
   literal_12("revert"):::literal;
-  literal_13("("):::literal;
-  char_class_1("\w -<br><i>One or more</i>"):::char-class;
-  literal_14(")"):::literal;
+  literal_13("\("):::literal;
+  char_class_1("Any word character<br>-<br><i>One or more</i>"):::char-class;
+  literal_14("\)"):::literal;
   literal_15("!"):::literal;
-  literal_16(":\s"):::literal;
-  assertion_2("\b<br><i>Word boundary</i>"):::assertion;
-  char_class_2("\w # < > Space . / \t \ -<br><i>3 or more</i>"):::char-class;
+  literal_16(":"):::literal;
+  char_set_1("Any whitespace"):::char-set;
+  assertion_2("\B<br><i>Not a word boundary</i>"):::assertion;
+  char_class_2("Any word character<br># < > Space . / \t \\ -<br><i>3 or more</i>"):::char-class;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_3("\B<br><i>Not a word boundary</i>"):::assertion;
   literal_17("Any character"):::literal;
   assertion_4("$<br><i>Ends with</i>"):::assertion;
   literal_18("Newline"):::literal;
@@ -454,39 +302,43 @@ graph LR
   assertion_6("$<br><i>Ends with</i>"):::assertion;
   literal_19("Newline"):::literal;
   assertion_7("^<br><i>Begins with</i>"):::assertion;
-  literal_20("Any character<br><i>3 or more</i>"):::literal;
+  char_set_2("Any character<br><i>3 or more</i>"):::char-set;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
-  literal_21("Any character"):::literal;
+  assertion_8("\B<br><i>Not a word boundary</i>"):::assertion;
+  literal_20("Any character"):::literal;
   assertion_9("$<br><i>Ends with</i>"):::assertion;
-  literal_22("Newline<br><i>Optional</i>"):::literal;
-  literal_23("Newline"):::literal;
+  literal_21("Newline<br><i>Optional</i>"):::literal;
+  literal_22("Newline"):::literal;
   assertion_10("^<br><i>Begins with</i>"):::assertion;
   assertion_11("$<br><i>Ends with</i>"):::assertion;
-  literal_24("Newline"):::literal;
+  literal_23("Newline"):::literal;
   assertion_12("^<br><i>Begins with</i>"):::assertion;
-  literal_25("BREAKING\sCHANGE:\s"):::literal;
-  char_class_3("\s \w<br><i>One or more</i>"):::char-class;
+  literal_24("BREAKING"):::literal;
+  char_set_3("Any whitespace"):::char-set;
+  literal_25("CHANGE:"):::literal;
+  char_set_4("Any whitespace"):::char-set;
+  char_class_3("Any whitespace<br>Any word character<br><i>One or more</i>"):::char-class;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  assertion_13("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_13("\B<br><i>Not a word boundary</i>"):::assertion;
   literal_26("Any character"):::literal;
   assertion_14("$<br><i>Ends with</i>"):::assertion;
   literal_27("Newline"):::literal;
   assertion_15("^<br><i>Begins with</i>"):::assertion;
-  literal_28("Any word character<br><i>One or more</i>"):::literal;
-  literal_29(":\s"):::literal;
-  char_class_4("\w # -<br><i>One or more</i>"):::char-class;
+  char_set_5("Any word character<br><i>One or more</i>"):::char-set;
+  literal_28(":"):::literal;
+  char_set_6("Any whitespace"):::char-set;
+  char_class_4("Any word character<br># -<br><i>One or more</i>"):::char-class;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  assertion_16("\b<br><i>Word boundary</i>"):::assertion;
-  literal_30("Any character"):::literal;
-  literal_31("Newline<br><i>Optional</i>"):::literal;
-  literal_32("Z"):::literal;
+  assertion_16("\B<br><i>Not a word boundary</i>"):::assertion;
+  literal_29("Any character"):::literal;
+  literal_30("Newline<br><i>Optional</i>"):::literal;
+  literal_31("\Z"):::literal;
 
   %% Subgraphs
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     disjunction_begin_2
     disjunction_end_2
     literal_2
@@ -502,7 +354,7 @@ graph LR
     literal_12
   end
 
-  subgraph standard_2 ["#2 Group 2"]
+  subgraph standard_2 ["Group #2"]
     char_class_1
   end
 
@@ -512,7 +364,7 @@ graph LR
     literal_14
   end
 
-  subgraph standard_3 ["#3 Group 3 <i>Optional</i>"]
+  subgraph standard_3 ["Group #3 <i>Optional</i>"]
     literal_15
   end
 
@@ -523,7 +375,7 @@ graph LR
     literal_17
   end
 
-  subgraph standard_4 ["#4 Group 4"]
+  subgraph standard_4 ["Group #4"]
     non_capturing_4
     assertion_2
     char_class_2
@@ -538,10 +390,11 @@ graph LR
     standard_4
     assertion_1
     literal_16
+    char_set_1
     assertion_4
   end
 
-  subgraph standard_5 ["#5 Group 5"]
+  subgraph standard_5 ["Group #5"]
     literal_18
     assertion_5
     assertion_6
@@ -552,18 +405,18 @@ graph LR
     disjunction_begin_4
     disjunction_end_4
     assertion_8
-    literal_21
+    literal_20
   end
 
   subgraph non_capturing_7 ["Non-capturing <i>1 to 3</i>"]
     non_capturing_8
     assertion_7
-    literal_20
+    char_set_2
     assertion_9
-    literal_22
+    literal_21
   end
 
-  subgraph standard_6 ["#6 Group 6"]
+  subgraph standard_6 ["Group #6"]
     non_capturing_8
     non_capturing_7
   end
@@ -575,11 +428,11 @@ graph LR
     standard_6
   end
 
-  subgraph standard_7 ["#7 Group 7"]
-    literal_23
+  subgraph standard_7 ["Group #7"]
+    literal_22
     assertion_10
     assertion_11
-    literal_24
+    literal_23
   end
 
   subgraph non_capturing_10 ["Non-capturing"]
@@ -589,10 +442,13 @@ graph LR
     literal_26
   end
 
-  subgraph standard_8 ["#8 Group 8"]
+  subgraph standard_8 ["Group #8"]
     non_capturing_10
     assertion_12
+    literal_24
+    char_set_3
     literal_25
+    char_set_4
     char_class_3
     assertion_14
   end
@@ -607,14 +463,15 @@ graph LR
     disjunction_begin_6
     disjunction_end_6
     assertion_16
-    literal_30
+    literal_29
   end
 
-  subgraph standard_9 ["#9 Group 9"]
+  subgraph standard_9 ["Group #9"]
     non_capturing_12
     assertion_15
+    char_set_5
     literal_28
-    literal_29
+    char_set_6
     char_class_4
   end
 
@@ -661,7 +518,7 @@ graph LR
     non_capturing_5
     disjunction_begin_1
     disjunction_end_1
-    literal_31
+    literal_30
   end
 
   %% Edges
@@ -696,7 +553,8 @@ graph LR
   char_class_1 --- literal_14;
   literal_14 --- literal_15;
   literal_15 --- literal_16;
-  literal_16 --- assertion_2;
+  literal_16 --- char_set_1;
+  char_set_1 --- assertion_2;
   assertion_2 --- char_class_2;
   char_class_2 --- disjunction_begin_3;
   disjunction_begin_3 --- assertion_3;
@@ -709,21 +567,24 @@ graph LR
   assertion_5 --- assertion_6;
   assertion_6 --- literal_19;
   literal_19 --- assertion_7;
-  assertion_7 --- literal_20;
-  literal_20 --- disjunction_begin_4;
+  assertion_7 --- char_set_2;
+  char_set_2 --- disjunction_begin_4;
   disjunction_begin_4 --- assertion_8;
   assertion_8 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_21;
-  literal_21 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_20;
+  literal_20 --- disjunction_end_4;
   disjunction_end_4 --- assertion_9;
-  assertion_9 --- literal_22;
-  literal_22 --- literal_23;
-  literal_23 --- assertion_10;
+  assertion_9 --- literal_21;
+  literal_21 --- literal_22;
+  literal_22 --- assertion_10;
   assertion_10 --- assertion_11;
-  assertion_11 --- literal_24;
-  literal_24 --- assertion_12;
-  assertion_12 --- literal_25;
-  literal_25 --- char_class_3;
+  assertion_11 --- literal_23;
+  literal_23 --- assertion_12;
+  assertion_12 --- literal_24;
+  literal_24 --- char_set_3;
+  char_set_3 --- literal_25;
+  literal_25 --- char_set_4;
+  char_set_4 --- char_class_3;
   char_class_3 --- disjunction_begin_5;
   disjunction_begin_5 --- assertion_13;
   assertion_13 --- disjunction_end_5;
@@ -732,18 +593,20 @@ graph LR
   disjunction_end_5 --- assertion_14;
   assertion_14 --- literal_27;
   literal_27 --- assertion_15;
-  assertion_15 --- literal_28;
-  literal_28 --- literal_29;
-  literal_29 --- char_class_4;
+  assertion_15 --- char_set_5;
+  char_set_5 --- literal_28;
+  literal_28 --- char_set_6;
+  char_set_6 --- char_class_4;
   char_class_4 --- disjunction_begin_6;
   disjunction_begin_6 --- assertion_16;
   assertion_16 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_30;
-  literal_30 --- disjunction_end_6;
-  disjunction_end_6 --- literal_31;
-  literal_31 --- disjunction_end_1;
-  disjunction_end_1 --- literal_32;
-  literal_32 --- fin;
+  disjunction_begin_6 --- literal_29;
+  literal_29 --- disjunction_end_6;
+  disjunction_end_6 --- literal_30;
+  literal_30 --- disjunction_end_1;
+  disjunction_begin_1 --- disjunction_end_1;
+  disjunction_end_1 --- literal_31;
+  literal_31 --- fin;
 
   %% Styles
   %% Node Styling
@@ -751,6 +614,7 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
   classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
@@ -767,7 +631,9 @@ graph LR
 
 Validates CRON pattern (Quartz) and supports groups
 
-### Pattern
+Source: <https://regex101.com/library/vnh5SB>
+
+### Pattern {#Cron Schedule}
 
 ```regex
 ^\s*($|#|\w+\s*=|(?<SECOND>(?:\?|\*|(?:(?<START_SEC>[0-5]?\d)(?:(?<DELIMITER_SEC>\-|\/|\,)(?<END_SEC>[0-6]?\d))*)))\s+(?<MINUTE>(?:\?|\*|(?:(?<START_MIN>[0-5]?\d)(?:(?<DELIMITER_MIN>\-|\/|\,)(?<END_MIN>[0-6]?\d))*)))\s+(?<HOUR>(?:\?|\*|(?:(?<START_HR>[0-2]?\d)(?:(?<DELIMITER_HR>\-|\/|\,)(?<END_HR>[0-2]?\d))*)))\s+(?<DAYOFMONTH>\?|\*|(?:(?<START_DOM>L|W|LW|[1-3]?\dW?)(?:(?<DELIMITER_DOM>\-|\/|\,)(?<END_DOM>[1-3]?\d?W?))*))\s+(?<MONTH>\*|(?:(?<START_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(?:(?<DELIMITER_MON>\-|\/|\,)(?<END_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC))*))\s+(?<DAYOFWEEK>\?|\*|(?:(?<START_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT)(?:(?:(?:(?<DELIMITER_DOW>\/|\,|\#)(?<END_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT))*)L?)*))(?:|\s)+(?<YEAR>(?:\*|(?:(?<START_YR>\b(?:[1-2](?:9|0)\d\d)\b)(?:(?<DELIMITER_YR>\-|\/|\,)(?<END_YR>\b(?:[1-9]|[1-9][0-9]|1[0-8][0-9]|19[0-2])\b|\b(?:[1-2](?:9|0)\d\d)\b))*))))$
@@ -775,7 +641,7 @@ Validates CRON pattern (Quartz) and supports groups
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-VdCXPURhb-KyoTqjDBibqlbqkNsXfwjDnW2JSPuLyYUMYewLvGdo1NZalM_vuqpbn660NPEgFqQxFj9fG916_fa_WlL38snV6dDZdWl96PTq4_RFu7x5dRdHJ6un9-ezFcjY6Xdofvh_9djX47Lv7c3L_3w_jOWP_6-49Vwi_je-uP9gYbO9v9tXvrqzpxvSxwv8hY1Xn7vd39N0WJtVfxini9rvPOlqu8_mDr2Ytn-4PdMl_nrJR1fy5_PihKPRps96eV5bTy8v3l5eVS_I9FiRfPtg_2ByHhRYmgcJ3vFT6p7BH-dOdgNyT66a6uzH2Si2yvYKhqyu33jnY2X-xs7z9d84nu77xY2xofjrcOx6_YSjLBOVy3lNAFvVrozIXq60V9rcnc-jMdwOY727qeej1mr2LGX4-f97bHm4PH4xe93XHv5W7x79H4-cF28d_WuHfwZLw3eDne2dgfb-_8Ou4PNuxO2gl1UldpRptK4x4OBv8M2PZQy8tej_cK0EL6eP9gMD4c9Mf7Tw_Gm7vPxnu9_aoJq7a5D9cWmlD-vDM3NwW40HZrXatcYJf1b5a13keD3swZTX2PKj97W6QV6Px18a8ax2WLzyr3KrMtox8F_NPELExf_ixctuqFlXz6uyrduJIwJqlR-vryD8dLk8GoP7w5HenB6Mnwcjg6uR2eRb-f336IRnpsWrm9Wvk4HH08OT_7B_sp_inV1XTFu3ej7WJsu9G_39yejG7_8Ud08-HkuhjW3q2cno9Ooz8f6rx355eenJObm-Ho9vzq8g27d7z026O3o7VH52uPh-_PL29KDR79fL52vLS8uro6K1pWvDi_LfS8KKv1Lj9Hv38oEm6uT06HE4x_DUdX0dUo-ng1Gs5BJtVKiLPzm39_ujwtpb_VEt-wosRCqkfnxXrDyzNirXlLeaHyDxMtB5dntHbqSnfsNkyzk6kZrkZn0emHk9HJaZExEbJzOQxbYoqStjfmFEIUEL9QbM1b2ZpWa6qMLJRZ9-uaFdn37WxtvjenF0U_lN5VvNamdrzWMk8u5hbQRVfKogZwPrHj2fn781uKMZJWxkgaGUMVSq34jcHiIv_nQL62xYOgtXhpLdnUWoyHzTUrl_jcs9bBbYunrSyeNrI4S8P-x0StAybtHJDJph4oWtlDNLNHVuOCeY0LqloXTNu5II9pLsjZF3RB2crkspHJOQ-7IE9qXVCUJuWNTZo2dcGslT2yZvYQYRfkMuyCPKt1QdnSXjnRBdUXdMG8lcnzRiZP4rALJsztgra2qpW2qpm2OmC2AtrqgDkM5Gu33zoMeoj2oWLB19RDEkHzkER74KEXvWYKHLebA8fNrFzzJkhq3gRJ_Zsgb2fk1HgTkIw4q8rIdp9V4V8wmFnL5Qtr1HVpQg1X1m6KT6y20NWq7GoV7lcdlyw82dddH0cs4mEkHYbPe9uBXtUBuDl4HCih_f9FbzdQonwdvAyVUCXGUWAtphv0_CCgqWBlicB4J0oPPXgSKKEdYm_wMlBC235nYz9QQtt0e-fXQAlt0_5gg-R47ZZTrNl6StSMYaJmDBOeMczRnnaLFWK1xQhghEiScX0kcVIkSVYXSZLXRZJM6iJJpnWRJEVdJElZF0kyq4skmddFklR1kZTFdZGUsbpIyrgvkmYlvuRCm7VbWbJmS8usZqmdCfJbq92yjFhtMUiSMtiyYIhk2vH2Qo6Xla-SnVAJ7Xj7B4NACe14h4O-v0SuHW__6UGghHa8zd1ngRLa8fZ6-6ReaLcYZM1Wg3kSHqLz1D1Ez_KFe1fW0Z52Ky1itUWvSgleldd6VV7rVXmtV-W1XqVqvUrVepXyetWshO7lrbbroXaLTtZs1ansnXfSHnq7xRpvtlhTnrFzfqKhDXx8_HZi4kN9BvH26tPl2cnos-9cY9FlRemy7rmCo9Htljm82TJH6RBRAafSARIH8vPSJmf6b8ByaXPLOSzS8iyl2WGKqj1AqDtBiBl1xsvbzeCJ1ebmF1_E_O2m57z59FwGpueL5TJiOceWo-9AIeb1s35V7nzmdWJdm-1eseUkSYWPnapTOvf4Me9r2byv55WzTiNcuQvfYIRrN2XmDU9j4jQ8xLFYhMc4FkvSIJd3sbyin5ZPriTsfXpbXrWqriVMHqLLk4_DszenJ9e3n0bDNzx6Vczckmh2d-p46bUubjp0lTKbz-jHwtCVIA9wUgKnkXHxagbuOPm1M8qjXVO0Mh9ZDM-MolpaqiaiyYUvV4s54HIPbqFlhXp--b5q8vbV5cosKXJeGZiIA3u5ElOKWG6J9YjgzeRG2DyKMuxrKoOJ3Odc3O1c0MvSfMwovlS29w6PqnuJX7-tYH2KyrJUOYtmNxZdAQBxxyQFOSuR88i47xiIeeHuFgGyM3jO4VlRdMtL3VQ0uWjpanNq4vKY4vCyS9BnrsScIlZQ40w2k4seJSnKpF9TGUwUPu9K3d4FvczwWVC8qTT_HRlVN4K_fmvB_qSRKi51Ziya3hd2xQDEHqdBV6Mg49HifeNA4GfuroFA56gMDNCcNkJXUxyWRNVVZ1erEZgUgqpL5DPmTCXNM3JquE2nR3TR6FmKok_2lfXBxNznZtLtZtjbMA3gCcWtVOVVcaTv5X-T9kInkGKhmvoyEc0u7geiVLnNB3PwBMyXwNQhSa1wgzhPIM4T0mSDVWMwk5HxfUGgPdPusO9sgHzUDyYcCWnCwap5FsuiyccNroEHkFPQJGWkOTfrNBIJZyrpxV-9U0ihnzaVbc1tSZNbVq07C0eff7fyF6tkpcY-B8zd_ofuhe5Ia3g1wWUqmn0VEwoFz4pomr54qQRc0g5njJ8U4jmFATeF-EoxCkCkAHwB-xECRiABI5CAKZ4A_QRtvKlGfB5HxpdCISN79jQY6gf2EGAPQRpveDW_4yyafKYU0swzN2aOzgVjy9gugutorIL50H4J_SOhfyT4jwR7SbCXBP_JwH8y0C8jzbpYp-0dppwbA6QlJiPv8EyXxnTZ1uBFmvywaqVfjDnBAfYLaWOlevd5ps5qX-2DEYbUSl6tHHgymy0dhmLKM9ucphs3HsABcecJHDwDB8_AwXNw8Bw3bDmpudWrk6fGhCrYZM86DndscmhvDgGfk9bcvJq8cjGZUAU187xqp-nGRQFQBjojx8ZAZ-TQGQo6Q0FnKNpok3UZbbhzc5GTtpOZJG_hBqRYMZuRZIu_qtVufaxU6HtF2_Mm739x_tfqjdYkhdVkC5tHs4-RvyPtrdTUG_Ke3WQGs4kM4j0TpD7OnZ5p3QP0j0ie1TTD4YN25hOYErhuinjOP3BoQvcnBS0PnfmA1vboC72jSIeLvFpb8-khxtFujUTUuEpduLiDCaR9T15Ng_jiicdRaN-T-w6iYIasrHNOPOiMSTsDPG3kJp5VAXesChyTmsxOwpOa2OEAyj58tRqb2GVo7ZeN2u8ZQXAfmsV4ZhCTxhAuyIFimxddhMWkVSuvtgV4dfDlj5M0pAY2w2tAz4KXW-ElMEFiQoYJpD153mmRxrMvZRvsBJLucdNx1D2q4VD59VtqlaVNo9T_d_utVO8-IfdsVOPAqGgTvGqjvBgLNWvL38Kk6FhuM93cnui7V2eTSxwsejK6-nQdse_iFoe1bfLtT5gRU3wXZ14Iqr7FXj8eQnyL7TDcovvel3C4DHWWzf-eg5WF651z-XY8cfqEh9xwxgT7o3AAAVNPKI3LSI5HRiAsM6cDd-9Gg7P3C-RZ0crKyiIhFhJklfkzZcybuGWew0q-r1pAFkeKKguvNG4QbWYGk66iA1JifvNv5KXmt9BGnjC_s22hgWNu4rurbUiW5vecTsk0pMz8QK8F0uJi07qqb8jKzc-2PBZIfNxVBpYyvxlx6k1DYjFcNu-CBeHCiFhlKlqTW9f7TVkc2K2IfVemmkgJ8F95eib1cVyZaCmQUzn1ImIJILJqgbV469aivTKlSSC38thB-LitTLQMSKmcuhOxciCw6oKlgOyKiFWmokVTixjLHKNjoL8i9l-ZaiIxIMjy9I30kWCZaPDycMcOESsBpqsWWIs3RC1eLFNaCuxXHjtkPvIrE00Aa5VTdyKWBIarLlgZsGERscpUtKi0mLNMWTnwYxH7r0w1kRQwaHn6JvexZJmzkhjorZx6EbEYUGG1wHJcYPTxZ5myORBfOWUTsWCqlnTBSoFQqwXW4qVLi33LlCaAY8vMlcCsRdSlTPXNyWMv9ZYpOwPKLPc8loqWA8FWNzQFdFxUtCoZ-yi3yLvMuX4MFF1mLgMWLmIMlakmEgdyLl8PehcP5rw6TYA5y22lGjTXLUYv4xZaVllcWW4dahDntyCBVMtaacQ2q1Y3iQLIt7qhSSDq6oaWAalXN7QcCMC6oSkgC-uEJmIgFuuGxoCErBsaB8KybmgJkJt1Q0uBCK0bGmxsdIsFIYFgjYpWJfvGpsRLymZKz4BMzS2dipYD9Vo3NAVEbVS0KtlnmdRL72aNovaGjSdGajDnt5eBws2SyG0Ot24SGVC9dUPjQAvXDS0BCrluaCnQzXVDE0BN1w0NNiRlN7QMKO-6oeVAj9cNTQGVXie0LAbavW5oDCj6uqFxoPOjolXJ1DlolWxKToAm0DfSCS8XoImXAoefWzcqmgDGv1ZorgvuXqZAaxRNbJI_txY1mPMb8sAG2A0NDhWybmg5sAx2Q1PASNgJLY-BvbAbGgOmw25oHFgRqWhVss9LMy-Toik9AQZEt3QqWgp8id3QBLArUtGqZJ9lci8noxW_qU2n6NahBnP-UQXwLnZDy4CjsRsaHPvl3dAUcD92QlMx8ER2Q2PAKdkNjQP_JBWtSjaxEmCqpL6zqmSfxysvmaUpPQUSSrd05WG49J2Ux162SlO6AJZJ9zlpDdrCXXYkpbSiW9jMk742MC_5pNkGCaSR7jZQ0TKgmKSiVckmVg50lGCtFIkofZbwXjIwdxMUHPy745-KxmI8_I874jGkoqTiVck-6yReAkuwt0DmSR9i6mWZtPxZ2gSR7lY1wMxsMkmrTG4TSbaSu_B9BJJNWjKVzTZp3cuIbabJjnolyEZpyWQ2GyVVZpUMfiKRtdKNRva7DIksrRbY11m83i68hJVgtxSZJt2tIOMJJKak4lXJgCaRxRJsliN_JbUPqmTqe6xKJt5OK1NBT4VUmWX-u_NFLszbzxfVFcPJ_6uzTNGfGOg-193dH76bQxSVLy5W7zyW_ayXP7i5HV39Z7h6RyUbadZ_cHp1cTVavROXfx4aABNbTqpvqo3HamNWfSAVS_JQ9YWGTiE2-0rKGcQm2-AJD0HMSVWnbUh7WX-OkA-yjY3EQphYproB7zJNeR918mXGcALdV4NeP2lgnkvjw5wKZGNzwDfnILIAHTwOgUyv7c8stMk3NuosNGlf7_r64vOklRsasPKJyl5w5fYB3PSH5xSeGTxLeM7gOYdngXgxJqAEhioqLGDpaAlBLRk2k6GeDKVwS1FsKkdFOUrhqCnHxnLUlFtSUNNivDO89uFCV5ufZjyAm9nwzOBZwrOA5xSeFTzn8JyhPBSofQG-BMAES2cLFLVmqDZDvRkqylEKR005YnAUy1Est8xvtVaZI8dCRy58wzP99eHSn_8DCekCumt-AAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-VdC3PUOBL-K1PJUkVYsmvJetiBDTeZmfC4PKg8NsUBSw3JALkLSWoSao_a2f9-ljwvf5Lstg0sdUsVIZalr1ut7rYkyx9_rJxenY1WNlbej4fXHzo7B68uO53h6enR-e3FaKPzauVg9H70343Ob6-yPzf37v4wWZ2YX3__MS_4ZXL30cPDQW9_r79599GGKXxkK9zLbmyYe0fdg6M3WY3Nl9G6fP3I3Dtby-_1BztPd58eDQ7sfXNn3bb92f68n9V6ONjrzxqrWeO1e2tra1b8j1mN3ad7x0eDMuFZjVLh5n5Q-LRxQPiT_eODMtFPDkxjHpKc3Q4KhqZFuf3ui_3t3f29oyebIdH9_d3NncnJZOdk8pKtx1Ock0eOEqZiUAtzc6n5o6y90WRh_bkOYPP9PdMufT1hLyPGX0-edfcm24OtyW73YNJ9fpD9-2Ly7Hgv-7sz6R4_nhwOnk_2e0eTvf1fJ_1Bzx2k_bJBaiut0Cdr3JPB4J8ltj0x8vTryWEGmkmfHB0PJieD_uToyfFk--Dp5LB7lHdhwzX3yeZSF-zP1YW5KcCZtjuPjMoZtm1_s2b0fjHozp2xqO-L3M_eZmUZOn-d_ZtOItvjs9y97G3H6C9K_LOImZne_sxcNh-F9WT2e2rdOJcwIalhfX3th1cr02TUH92cjk0yejy6HI2Ht6Ozzu_ntx86Y5Ob1m-v1j-Oxh-H52f_4D9FP0WmmWl4505nL8ttN-b3m9vh-PYff3RuPgyvs7T2bv30fHza-fOBuffu_DJwZ3hzMxrfnl9dvmF3X6389vDtePPh-ebW6P355Y3V4OHP55uvVtY2NjbmVW3D0w_D8Zub0a1t17383Pn9w_nt6OZ6eDqagvxrNL7qXI07H6_GowWKabeetbMgZ-c3__50eWrlvzUy37CsylJpQOvldqPLM2KrRV95pvMPUzUHl2flPb3I-jUeXtiOruYVpkVFQ_CZIa7GZ7Z0eJrVmkrZvxxV2GKOE7cw6ExXo8svrq6uvXkje9NazZQxHcqSjKvOrIKwFe4FbHt6kY2HtX72gJuZ89rIHV6AGWzVojXF1Jpn5-_Pb0kuGDcySVzLJNL2eD1sEmUr_ByuoG2F-6U249ZmqrbNZIXN5hVVyFWr3d21u2hkd1HL7kmVK6YEV4wbuqKu7YqykUlkLZOwqMoXGatyRsYJ3igaemNC9cb0S3qjamR6Vc_0lZmRUVKjtIbltQ1rR76eQ-pGVtH1rFKZHFlldmSU9Kia2o1RPZLxL-mSSSPjJ_WMX5khWTBFuhqnjTROa2nMjRfvhPXlZrROSu6bMdo5KfUU403ZCrG-p8QVnjJXwlQ8CeKXW5lFzSbNUT07i6qw5LIqLLkihGXS1NiFqV55c8f-mmz_hTz5JYObNVz5sHqDmNCDlzVbGxCbLQ14agc89Y7uXHFbqXyFYBJB1GEdXooUm2rPunthL41NxtgebJXUMDljt3tQUsNG_vOyGsJivCipYRzs2XGZpsrWKMl-sZ10Hj8uqWFc4nDwvKSGsf1-76hkAWdsurf_a0kNY9P-oEdyvGYrMFZvCSZ4VT4TcVU-EyKUzzy9ara-ITZbjgNGiCchq-OJk-JJqKp4EroqnkRSFU8irYonGVXFk2RV8SR5VTzJuCqepKiKJymr4kmqqniSOhRPi-fTF12ds2ZrUVZvMSorp5-yxvSTNVvEEZsth0psQ06XBooyDnpY5n7KOOjuflkN46BHx4OSGnYmOeiX1DAOevTkuKSGcdDtg6clNYxvHXaPSKPQbNHI6q0ala5K1ioJJet5jdy3Vkm9arYaIzZb9i1B8C1d6Vu60rd0pW_pSt_Slb6lK31LB31rXsOM9U7T1VKzRSmx2SL7aif7kvIsb7aY4_UWczq4Dli8JMlnP1tTM-9d3XaG-buNt1efLs-G48-lr4amzmunGev-GYSn880WQbzeIkibME_D7pXYhUTZk5W8JcnSipoLc4um5vaYseFbnXqvdRJWNYFOeFVOTmL6BJo3WxYQmy0GQn7BgWg25-f15_yqZM6_XE8T64U83H30JKJ6JZHandakSiqP6FJtYknLX3_l7wz9yWcx3qrpeC8g9BdIlXYfskaqbDYf5_Xm44mqSJW6IlXyiJoqOSOnyqT9iKX0EwDTgxaHn97aA2T5YYvpRedy-HF09uZ0eH37aTx6wzsvs6nL7DhYZzV-tfLaVC9Gw1KJfUNtrrOxySUFkGODXDhM1lkVc3TPS2z3hn1LnRfPF1PFS1W81BTFhFFseoStsyp9HebQYRnAzXTMUc8v3-cd3ru6XJ8XdbxHIKbiwFq-QkERyx2xARG8ntwOdo-iDPuWymAhD7kW97sWLzoPeBrJyW1_85OWnVX-7fsK1qeorBYRv_t0r7OqfQEQQwCQAksXI96iJyURL_3DAiHOIrhmcM0puiWzoLdapb4-C-hzQnF41Sbota-QJFZS40zVk4sepSjKiG-pDBbKkHcJv3eJovckxcuU4kvW-PkJ586q-vZ9BeuT8lS0iPonB53VLIg8ESAhAvLQq8Rmxbi3-Lwk7rV_ZDTENeYBeNYzUk5ifBb4Vi3v9EZhtxnF69M2kT9LYqgsRXBCDbdZ5qSLRt9KKfrob6wPFiYhP1N-P0M_guc-IwWUHX3zoUHmVNFf0l8YBFIwiEUW6O_vZqrLkjBN_eZLi-bi8Hjm8Hjm3Ik3jfEGI8BjUmdkMe3kHVIlHZqNh3usBOTDM4JDJuKKpJ-aZZ5cM-88K0FToGhNmnWzVrlIektJj_78uUIKflFXtjO7JU1vWb7unH-Kk1lefGWVnNIo5IGJ3wFhEsLwmjQrYcnSxH4_m-SytCwWAmsi5oYrBnzq7g9AAMV4DTkhxpUXJIAYoiCGAIwhhccwdYjBgDF0QYB-guZZKaxvjJF5VGbkwJ4GJjwB9hB4n_RI4tF8jWM1Y2WaBWbHTLiDC4MnpFsF9YfxETA-AsZHwPhIGB8JKkiQJ3GTCPxHgv9I0E_SsmyrDR6WercGIpJk8h7PLHXQZTvJi_bwtZO-WYJNvrI2Tmlwp2fmrO6hQ0hiCSmi-PJ86SSLqbgspgLzTabcgAGHVeDwCtRV4PAK24PDK9wmJc1YeIwzKtPlsj1bFljKMQh4hdeQABTpCcfFYkZlNCubvLLAo5Yl7mCA8TQMhobB0DAYGgZDIx4MhqbNrHSbbMO924uctKHMFHkTt0SKE7O0HCu_Vq_9-jil-EKBpjV5B4zzr6s3WpMUVmw-YzbfV2eBxb8j7Z1SEQz5wH4ybiRJSD6StMvBEq9nOgcTwxkpsJ5mKa4BST7HS-YEvmMqgVcgmNtgJpaQ5ie87LUPaO2mX2fX0VkU054OSy82XhxkXqwrdMA-5KVLp4mwgDYLh7cgVpWytyA89HYKHjMJDFWC90kv6Lio5TaBZQL3LBM8sxztFkHsJR4gd32Je0yJuwThpD1brmr1PpBQcD8ogYdGQgtgSQ4a17Qc31DPTLR0OIHkrfP3YtZP05AGokwv7FfQnoHlMHciTWKBwgKNBaTXZrzVEo7rL2UbHASS7lHdJOtPcJg1v31Pnbq0owXp_3f_ndLgLiIP7GNjmtS0Ra7NQ4amJksA6m9hUnQsv5lubofmaNZZfsjj8fjq03VnlX0XZzycLZW__g00Ysrv4o0YgqZ_xXsAfEHxV2yV4fbd9768wyWqt27y90xVDm5wxhXaDcXJEywl8LwnTjbxfS3cxvMUzgIXG7hLwOIW2Z07ncHZ-yXSsM76-voyERgSg9n7CzT4wsHe9Rgr9PkNSONIzeXgWRuXos0tXSSqaIC0GCQ4nFy8GwNjV0ELXvxwvYEWnklK6BR4QXJc_GzbK5mGJIof3zZAWl6DOt8DFK0pgLErYIM4xNdV0FwWvxb1ak5DUsVvA1sg6eLnR0QkW4q25M5nA0VbSmDyIo6cLS0iKaD6CoyKCLF5FSyQFL8a8GpFQ0qLdF0NkJYP5jrUXkUbaCDwCthAhui7itkpAt4tr-5ELEh1rA0WBy4vIpYtRYsKh_WraNEEuL2I42dLi0gpkH8FxkaF-L2KNoiBmMurFxFLAIVXA6zlY6QO3Rc8jyNk9QpYQoc4vYraSyDj8mpPxFJA29UGSwPBFxHLlqJNlUMFBjbFSQ4jjqEtBSyOnGCB8UlCtF9FOyTA1-XVjIiVArNXAyzPSccQGVhxlhQBi5dXNhGLAeNXGyyYvvEGWMunMx0qMfCOGBnDitrEQBNG1MaWhmbmUZBHrChbAP-XfyZLRZPAFdYOTQGvGBUtL8ZRShwOMhglgVRjRW00kIkR48iWgiSJJGOhUQwuIYprIp4AAZjfUhVoviOPQdowtG7qEH75dahAXByZBGYwZ70RudRgrSTGETCItUNjwDbWDo0DM1k7NFhCxu3QBDCetUOTwI7WDk0Bk1o7NA2sa-3QEmBoa4eWAptbKzQRAfNbOzQGLHFUtLw4lJviILNcUToHRji_dCpaDOxx7dBgC0ZQ0fLikGVEkJ3OyaLutk1gdCowF0edgYHOkchdCrp2EhUw1bVD08Bq1w4tAQa8dmgpsOW1QpMRMOu1Q2PAwtcOjQNjXzu0GNj92qEJYAJshwZbmbIdmgKGwXZoGtgIqWh5MXUOmhfDDFkhzWEo18kglWGxLwlQEPq1o6KlQFfYCM13Hj5Icujk0djlJ_RrUYG5OFAPRIbt0BiQHrZD40CQ2A4tBjLFdmgCiBfboUkgaWyHBq83FBUtLw55qQ6SQBalayBv9EunoiVA9NgOLQVSSCpaXhyyTBIkknTiV7gckH4dKjAX32AAWWQ7NAbEku3QOJBQtkOLgbCyHZoAcst2aBKIMNuhKSDNpKLlxUUseEGpqc-svDjk8WmQgdOPX1F_6Ug_Um1S8fLi0Dv2KEjJWbRWAlSa_nesFWhLJ-ORd9PJB9Kl1Qz1gQWZNYt9SIER098HIloSAX8mFS0vhtFNkGwT7qdIsQn2FEisGbJV8ABDcY8iYUB76e8dFY0DRWY7tBjoNKloeXHIMnGQghNsLZE7M4QoggyZjrcrl9zS36samNolwnTqJC4JZiO5i68xgCfTkZi6RJnOeY_IJclsp5UEHk1HInN5NKkS82LwEYV8m340ss9pJN90euAekgl6ugzSaxatpoAW098HKpoGEk0qWl4MJ9UiZNyE-wx5NsGeCbJrUscnL6Y-_fJi4mk4Wwp6pkjhae-_O1_m6Lz9fJEfbJz-z6i2xHzbYCxgXKE_ereAyBpfXGysbqm-7ib3b27HV_8ZbaymcU_o_v3Tq4ur8cZqZP88KADMaEmn7dPtbtLvztvLntrqRWXtl3o6hdje7qdKzSG2WY_HvAxi6juz5mlvK-3Nmw9UyuKksgf2amYD0dX9hQLJQPd6sYMwtWx-et9nWnuUdvpJyWgK3U8H3X5cw7yXhS-KcpDe9oBvL0BUBjrYKgOZfW8wN_A27_WqDDztX_f6-uLztJc9A5j7VG4vOC18Hz5SgGsB1wyuFVxruE7gWiJehAUogaGKKVZwdHSEoJYMu8lQT4ZSuKModpWjohylcNSUY2c5asodKahplk8LXvtgaaiLX5Xch0PlcM3gWsG1hGsB1ylcJ3CtUR4KNL4AHzFggaOzA4paM1Sbod4MFeUohaOmHDE4iuUoljvmd3qbFjPH0kAufXw0-_XByp__Az5UxNUZgAAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -787,216 +653,218 @@ Validates CRON pattern (Quartz) and supports groups
 ```mermaid
 graph LR
   accTitle: "Regex: ^\\s*($|#|\\w+\\s*=|(?<SECOND>(?:\\?|\\*|(?:(?<START_SEC>[0-5]?\\d)(?:(?<DELIMITER_SEC>\\-|\\/|\\,)(?<END_SEC>[0-6]?\\d))*)))\\s+(?<MINUTE>(?:\\?|\\*|(?:(?<START_MIN>[0-5]?\\d)(?:(?<DELIMITER_MIN>\\-|\\/|\\,)(?<END_MIN>[0-6]?\\d))*)))\\s+(?<HOUR>(?:\\?|\\*|(?:(?<START_HR>[0-2]?\\d)(?:(?<DELIMITER_HR>\\-|\\/|\\,)(?<END_HR>[0-2]?\\d))*)))\\s+(?<DAYOFMONTH>\\?|\\*|(?:(?<START_DOM>L|W|LW|[1-3]?\\dW?)(?:(?<DELIMITER_DOM>\\-|\\/|\\,)(?<END_DOM>[1-3]?\\d?W?))*))\\s+(?<MONTH>\\*|(?:(?<START_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(?:(?<DELIMITER_MON>\\-|\\/|\\,)(?<END_MON>[1-9]|1[012]|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC))*))\\s+(?<DAYOFWEEK>\\?|\\*|(?:(?<START_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT)(?:(?:(?:(?<DELIMITER_DOW>\\/|\\,|\\#)(?<END_DOW>[1-7]|SUN|MON|TUE|WED|THU|FRI|SAT))*)L?)*))(?:|\\s)+(?<YEAR>(?:\\*|(?:(?<START_YR>\\b(?:[1-2](?:9|0)\\d\\d)\\b)(?:(?<DELIMITER_YR>\\-|\\/|\\,)(?<END_YR>\\b(?:[1-9]|[1-9][0-9]|1[0-8][0-9]|19[0-2])\\b|\\b(?:[1-2](?:9|0)\\d\\d)\\b))*))))$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_1("Any whitespace<br><i>Zero or more</i>"):::literal;
+  char_set_1("Any whitespace<br><i>Zero or more</i>"):::char-set;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   assertion_2("$<br><i>Ends with</i>"):::assertion;
-  literal_2("#"):::literal;
-  literal_3("Any word character<br><i>One or more</i>"):::literal;
-  literal_4("Any whitespace<br><i>Zero or more</i>"):::literal;
-  literal_5("="):::literal;
+  literal_1("#"):::literal;
+  char_set_2("Any word character<br><i>One or more</i>"):::char-set;
+  char_set_3("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  literal_2("="):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_6("?"):::literal;
-  literal_7("*"):::literal;
+  literal_3("\?"):::literal;
+  literal_4("\*"):::literal;
   char_class_1("0-5<br><i>Optional</i>"):::char-class;
-  literal_8("Any digit"):::literal;
+  char_set_4("Any digit"):::char-set;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  literal_9("-"):::literal;
-  literal_10("/"):::literal;
-  literal_11(","):::literal;
+  literal_5("\-"):::literal;
+  literal_6("\/"):::literal;
+  literal_7("\,"):::literal;
   char_class_2("0-6<br><i>Optional</i>"):::char-class;
-  literal_12("Any digit"):::literal;
-  literal_13("Any whitespace<br><i>One or more</i>"):::literal;
+  char_set_5("Any digit"):::char-set;
+  char_set_6("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  literal_14("?"):::literal;
-  literal_15("*"):::literal;
+  literal_8("\?"):::literal;
+  literal_9("\*"):::literal;
   char_class_3("0-5<br><i>Optional</i>"):::char-class;
-  literal_16("Any digit"):::literal;
+  char_set_7("Any digit"):::char-set;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  literal_17("-"):::literal;
-  literal_18("/"):::literal;
-  literal_19(","):::literal;
+  literal_10("\-"):::literal;
+  literal_11("\/"):::literal;
+  literal_12("\,"):::literal;
   char_class_4("0-6<br><i>Optional</i>"):::char-class;
-  literal_20("Any digit"):::literal;
-  literal_21("Any whitespace<br><i>One or more</i>"):::literal;
+  char_set_8("Any digit"):::char-set;
+  char_set_9("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  literal_22("?"):::literal;
-  literal_23("*"):::literal;
+  literal_13("\?"):::literal;
+  literal_14("\*"):::literal;
   char_class_5("0-2<br><i>Optional</i>"):::char-class;
-  literal_24("Any digit"):::literal;
+  char_set_10("Any digit"):::char-set;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  literal_25("-"):::literal;
-  literal_26("/"):::literal;
-  literal_27(","):::literal;
+  literal_15("\-"):::literal;
+  literal_16("\/"):::literal;
+  literal_17("\,"):::literal;
   char_class_6("0-2<br><i>Optional</i>"):::char-class;
-  literal_28("Any digit"):::literal;
-  literal_29("Any whitespace<br><i>One or more</i>"):::literal;
+  char_set_11("Any digit"):::char-set;
+  char_set_12("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
-  literal_30("?"):::literal;
-  literal_31("*"):::literal;
+  literal_18("\?"):::literal;
+  literal_19("\*"):::literal;
   disjunction_begin_9:::disjunction@{ shape: f-circ };
   disjunction_end_9:::disjunction@{ shape: f-circ };
-  literal_32("L"):::literal;
-  literal_33("W"):::literal;
-  literal_34("LW"):::literal;
+  literal_20("L"):::literal;
+  literal_21("W"):::literal;
+  literal_22("LW"):::literal;
   char_class_7("1-3<br><i>Optional</i>"):::char-class;
-  literal_35("Any digit"):::literal;
-  literal_36("W<br><i>Optional</i>"):::literal;
+  char_set_13("Any digit"):::char-set;
+  literal_23("W<br><i>Optional</i>"):::literal;
   disjunction_begin_10:::disjunction@{ shape: f-circ };
   disjunction_end_10:::disjunction@{ shape: f-circ };
-  literal_37("-"):::literal;
-  literal_38("/"):::literal;
-  literal_39(","):::literal;
+  literal_24("\-"):::literal;
+  literal_25("\/"):::literal;
+  literal_26("\,"):::literal;
   char_class_8("1-3<br><i>Optional</i>"):::char-class;
-  literal_40("Any digit<br><i>Optional</i>"):::literal;
-  literal_41("W<br><i>Optional</i>"):::literal;
-  literal_42("Any whitespace<br><i>One or more</i>"):::literal;
+  char_set_14("Any digit<br><i>Optional</i>"):::char-set;
+  literal_27("W<br><i>Optional</i>"):::literal;
+  char_set_15("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_11:::disjunction@{ shape: f-circ };
   disjunction_end_11:::disjunction@{ shape: f-circ };
-  literal_43("*"):::literal;
+  literal_28("\*"):::literal;
   disjunction_begin_12:::disjunction@{ shape: f-circ };
   disjunction_end_12:::disjunction@{ shape: f-circ };
   char_class_9("1-9"):::char-class;
-  literal_44("1"):::literal;
+  literal_29("1"):::literal;
   char_class_10("0 1 2"):::char-class;
-  literal_45("JAN"):::literal;
-  literal_46("FEB"):::literal;
-  literal_47("MAR"):::literal;
-  literal_48("APR"):::literal;
-  literal_49("MAY"):::literal;
-  literal_50("JUN"):::literal;
-  literal_51("JUL"):::literal;
-  literal_52("AUG"):::literal;
-  literal_53("SEP"):::literal;
-  literal_54("OCT"):::literal;
-  literal_55("NOV"):::literal;
-  literal_56("DEC"):::literal;
+  literal_30("JAN"):::literal;
+  literal_31("FEB"):::literal;
+  literal_32("MAR"):::literal;
+  literal_33("APR"):::literal;
+  literal_34("MAY"):::literal;
+  literal_35("JUN"):::literal;
+  literal_36("JUL"):::literal;
+  literal_37("AUG"):::literal;
+  literal_38("SEP"):::literal;
+  literal_39("OCT"):::literal;
+  literal_40("NOV"):::literal;
+  literal_41("DEC"):::literal;
   disjunction_begin_13:::disjunction@{ shape: f-circ };
   disjunction_end_13:::disjunction@{ shape: f-circ };
-  literal_57("-"):::literal;
-  literal_58("/"):::literal;
-  literal_59(","):::literal;
+  literal_42("\-"):::literal;
+  literal_43("\/"):::literal;
+  literal_44("\,"):::literal;
   disjunction_begin_14:::disjunction@{ shape: f-circ };
   disjunction_end_14:::disjunction@{ shape: f-circ };
   char_class_11("1-9"):::char-class;
-  literal_60("1"):::literal;
+  literal_45("1"):::literal;
   char_class_12("0 1 2"):::char-class;
-  literal_61("JAN"):::literal;
-  literal_62("FEB"):::literal;
-  literal_63("MAR"):::literal;
-  literal_64("APR"):::literal;
-  literal_65("MAY"):::literal;
-  literal_66("JUN"):::literal;
-  literal_67("JUL"):::literal;
-  literal_68("AUG"):::literal;
-  literal_69("SEP"):::literal;
-  literal_70("OCT"):::literal;
-  literal_71("NOV"):::literal;
-  literal_72("DEC"):::literal;
-  literal_73("Any whitespace<br><i>One or more</i>"):::literal;
+  literal_46("JAN"):::literal;
+  literal_47("FEB"):::literal;
+  literal_48("MAR"):::literal;
+  literal_49("APR"):::literal;
+  literal_50("MAY"):::literal;
+  literal_51("JUN"):::literal;
+  literal_52("JUL"):::literal;
+  literal_53("AUG"):::literal;
+  literal_54("SEP"):::literal;
+  literal_55("OCT"):::literal;
+  literal_56("NOV"):::literal;
+  literal_57("DEC"):::literal;
+  char_set_16("Any whitespace<br><i>One or more</i>"):::char-set;
   disjunction_begin_15:::disjunction@{ shape: f-circ };
   disjunction_end_15:::disjunction@{ shape: f-circ };
-  literal_74("?"):::literal;
-  literal_75("*"):::literal;
+  literal_58("\?"):::literal;
+  literal_59("\*"):::literal;
   disjunction_begin_16:::disjunction@{ shape: f-circ };
   disjunction_end_16:::disjunction@{ shape: f-circ };
   char_class_13("1-7"):::char-class;
-  literal_76("SUN"):::literal;
-  literal_77("MON"):::literal;
-  literal_78("TUE"):::literal;
-  literal_79("WED"):::literal;
-  literal_80("THU"):::literal;
-  literal_81("FRI"):::literal;
-  literal_82("SAT"):::literal;
+  literal_60("SUN"):::literal;
+  literal_61("MON"):::literal;
+  literal_62("TUE"):::literal;
+  literal_63("WED"):::literal;
+  literal_64("THU"):::literal;
+  literal_65("FRI"):::literal;
+  literal_66("SAT"):::literal;
   disjunction_begin_17:::disjunction@{ shape: f-circ };
   disjunction_end_17:::disjunction@{ shape: f-circ };
-  literal_83("/"):::literal;
-  literal_84(","):::literal;
-  literal_85("#"):::literal;
+  literal_67("\/"):::literal;
+  literal_68("\,"):::literal;
+  literal_69("\#"):::literal;
   disjunction_begin_18:::disjunction@{ shape: f-circ };
   disjunction_end_18:::disjunction@{ shape: f-circ };
   char_class_14("1-7"):::char-class;
-  literal_86("SUN"):::literal;
-  literal_87("MON"):::literal;
-  literal_88("TUE"):::literal;
-  literal_89("WED"):::literal;
-  literal_90("THU"):::literal;
-  literal_91("FRI"):::literal;
-  literal_92("SAT"):::literal;
-  literal_93("L<br><i>Optional</i>"):::literal;
+  literal_70("SUN"):::literal;
+  literal_71("MON"):::literal;
+  literal_72("TUE"):::literal;
+  literal_73("WED"):::literal;
+  literal_74("THU"):::literal;
+  literal_75("FRI"):::literal;
+  literal_76("SAT"):::literal;
+  literal_77("L<br><i>Optional</i>"):::literal;
   disjunction_begin_19:::disjunction@{ shape: f-circ };
   disjunction_end_19:::disjunction@{ shape: f-circ };
-  literal_94("Any whitespace"):::literal;
+  char_set_17("Any whitespace"):::char-set;
   disjunction_begin_20:::disjunction@{ shape: f-circ };
   disjunction_end_20:::disjunction@{ shape: f-circ };
-  literal_95("*"):::literal;
-  assertion_3("\b<br><i>Word boundary</i>"):::assertion;
+  literal_78("\*"):::literal;
+  assertion_3("\B<br><i>Not a word boundary</i>"):::assertion;
   char_class_15("1-2"):::char-class;
   disjunction_begin_21:::disjunction@{ shape: f-circ };
   disjunction_end_21:::disjunction@{ shape: f-circ };
-  literal_96("9"):::literal;
-  literal_97("0"):::literal;
-  literal_98("\d\d"):::literal;
-  assertion_4("\b<br><i>Word boundary</i>"):::assertion;
+  literal_79("9"):::literal;
+  literal_80("0"):::literal;
+  char_set_18("Any digit"):::char-set;
+  char_set_19("Any digit"):::char-set;
+  assertion_4("\B<br><i>Not a word boundary</i>"):::assertion;
   disjunction_begin_22:::disjunction@{ shape: f-circ };
   disjunction_end_22:::disjunction@{ shape: f-circ };
-  literal_99("-"):::literal;
-  literal_100("/"):::literal;
-  literal_101(","):::literal;
+  literal_81("\-"):::literal;
+  literal_82("\/"):::literal;
+  literal_83("\,"):::literal;
   disjunction_begin_23:::disjunction@{ shape: f-circ };
   disjunction_end_23:::disjunction@{ shape: f-circ };
-  assertion_5("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_5("\B<br><i>Not a word boundary</i>"):::assertion;
   disjunction_begin_24:::disjunction@{ shape: f-circ };
   disjunction_end_24:::disjunction@{ shape: f-circ };
   char_class_16("1-9"):::char-class;
   char_class_17("1-9"):::char-class;
   char_class_18("Any digit"):::char-class;
-  literal_102("1"):::literal;
+  literal_84("1"):::literal;
   char_class_19("0-8"):::char-class;
   char_class_20("Any digit"):::char-class;
-  literal_103("19"):::literal;
+  literal_85("19"):::literal;
   char_class_21("0-2"):::char-class;
-  assertion_6("\b<br><i>Word boundary</i>"):::assertion;
-  assertion_7("\b<br><i>Word boundary</i>"):::assertion;
+  assertion_6("\B<br><i>Not a word boundary</i>"):::assertion;
+  assertion_7("\B<br><i>Not a word boundary</i>"):::assertion;
   char_class_22("1-2"):::char-class;
   disjunction_begin_25:::disjunction@{ shape: f-circ };
   disjunction_end_25:::disjunction@{ shape: f-circ };
-  literal_104("9"):::literal;
-  literal_105("0"):::literal;
-  literal_106("\d\d"):::literal;
-  assertion_8("\b<br><i>Word boundary</i>"):::assertion;
+  literal_86("9"):::literal;
+  literal_87("0"):::literal;
+  char_set_20("Any digit"):::char-set;
+  char_set_21("Any digit"):::char-set;
+  assertion_8("\B<br><i>Not a word boundary</i>"):::assertion;
   assertion_9("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_2 ["#3 START_SEC"]
+  subgraph named_capture_2 ["START_SEC #3"]
     char_class_1
-    literal_8
+    char_set_4
   end
 
-  subgraph named_capture_3 ["#4 DELIMITER_SEC"]
+  subgraph named_capture_3 ["DELIMITER_SEC #4"]
     disjunction_begin_3
     disjunction_end_3
-    literal_9
-    literal_10
-    literal_11
+    literal_5
+    literal_6
+    literal_7
   end
 
-  subgraph named_capture_4 ["#5 END_SEC"]
+  subgraph named_capture_4 ["END_SEC #5"]
     char_class_2
-    literal_12
+    char_set_5
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
@@ -1019,11 +887,11 @@ graph LR
     non_capturing_2
     disjunction_begin_2
     disjunction_end_2
-    literal_6
-    literal_7
+    literal_3
+    literal_4
   end
 
-  subgraph named_capture_1 ["#2 SECOND"]
+  subgraph named_capture_1 ["SECOND #2"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -1032,22 +900,22 @@ graph LR
     non_capturing_1
   end
 
-  subgraph named_capture_6 ["#7 START_MIN"]
+  subgraph named_capture_6 ["START_MIN #7"]
     char_class_3
-    literal_16
+    char_set_7
   end
 
-  subgraph named_capture_7 ["#8 DELIMITER_MIN"]
+  subgraph named_capture_7 ["DELIMITER_MIN #8"]
     disjunction_begin_5
     disjunction_end_5
-    literal_17
-    literal_18
-    literal_19
+    literal_10
+    literal_11
+    literal_12
   end
 
-  subgraph named_capture_8 ["#9 END_MIN"]
+  subgraph named_capture_8 ["END_MIN #9"]
     char_class_4
-    literal_20
+    char_set_8
   end
 
   subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
@@ -1070,11 +938,11 @@ graph LR
     non_capturing_5
     disjunction_begin_4
     disjunction_end_4
-    literal_14
-    literal_15
+    literal_8
+    literal_9
   end
 
-  subgraph named_capture_5 ["#6 MINUTE"]
+  subgraph named_capture_5 ["MINUTE #6"]
     named_capture_6
     named_capture_7
     named_capture_8
@@ -1083,22 +951,22 @@ graph LR
     non_capturing_4
   end
 
-  subgraph named_capture_10 ["#11 START_HR"]
+  subgraph named_capture_10 ["START_HR #11"]
     char_class_5
-    literal_24
+    char_set_10
   end
 
-  subgraph named_capture_11 ["#12 DELIMITER_HR"]
+  subgraph named_capture_11 ["DELIMITER_HR #12"]
     disjunction_begin_7
     disjunction_end_7
-    literal_25
-    literal_26
-    literal_27
+    literal_15
+    literal_16
+    literal_17
   end
 
-  subgraph named_capture_12 ["#13 END_HR"]
+  subgraph named_capture_12 ["END_HR #13"]
     char_class_6
-    literal_28
+    char_set_11
   end
 
   subgraph non_capturing_9 ["Non-capturing <i>Zero or more</i>"]
@@ -1121,11 +989,11 @@ graph LR
     non_capturing_8
     disjunction_begin_6
     disjunction_end_6
-    literal_22
-    literal_23
+    literal_13
+    literal_14
   end
 
-  subgraph named_capture_9 ["#10 HOUR"]
+  subgraph named_capture_9 ["HOUR #10"]
     named_capture_10
     named_capture_11
     named_capture_12
@@ -1134,29 +1002,29 @@ graph LR
     non_capturing_7
   end
 
-  subgraph named_capture_14 ["#15 START_DOM"]
+  subgraph named_capture_14 ["START_DOM #15"]
     disjunction_begin_9
     disjunction_end_9
-    literal_32
-    literal_33
-    literal_34
+    literal_20
+    literal_21
+    literal_22
     char_class_7
-    literal_35
-    literal_36
+    char_set_13
+    literal_23
   end
 
-  subgraph named_capture_15 ["#16 DELIMITER_DOM"]
+  subgraph named_capture_15 ["DELIMITER_DOM #16"]
     disjunction_begin_10
     disjunction_end_10
-    literal_37
-    literal_38
-    literal_39
+    literal_24
+    literal_25
+    literal_26
   end
 
-  subgraph named_capture_16 ["#17 END_DOM"]
+  subgraph named_capture_16 ["END_DOM #17"]
     char_class_8
-    literal_40
-    literal_41
+    char_set_14
+    literal_27
   end
 
   subgraph non_capturing_11 ["Non-capturing <i>Zero or more</i>"]
@@ -1171,7 +1039,7 @@ graph LR
     non_capturing_11
   end
 
-  subgraph named_capture_13 ["#14 DAYOFMONTH"]
+  subgraph named_capture_13 ["DAYOFMONTH #14"]
     named_capture_14
     named_capture_15
     named_capture_16
@@ -1179,17 +1047,44 @@ graph LR
     non_capturing_10
     disjunction_begin_8
     disjunction_end_8
-    literal_30
-    literal_31
+    literal_18
+    literal_19
   end
 
-  subgraph named_capture_18 ["#19 START_MON"]
+  subgraph named_capture_18 ["START_MON #19"]
     disjunction_begin_12
     disjunction_end_12
     char_class_9
-    literal_44
+    literal_29
     char_class_10
+    literal_30
+    literal_31
+    literal_32
+    literal_33
+    literal_34
+    literal_35
+    literal_36
+    literal_37
+    literal_38
+    literal_39
+    literal_40
+    literal_41
+  end
+
+  subgraph named_capture_19 ["DELIMITER_MON #20"]
+    disjunction_begin_13
+    disjunction_end_13
+    literal_42
+    literal_43
+    literal_44
+  end
+
+  subgraph named_capture_20 ["END_MON #21"]
+    disjunction_begin_14
+    disjunction_end_14
+    char_class_11
     literal_45
+    char_class_12
     literal_46
     literal_47
     literal_48
@@ -1201,34 +1096,7 @@ graph LR
     literal_54
     literal_55
     literal_56
-  end
-
-  subgraph named_capture_19 ["#20 DELIMITER_MON"]
-    disjunction_begin_13
-    disjunction_end_13
     literal_57
-    literal_58
-    literal_59
-  end
-
-  subgraph named_capture_20 ["#21 END_MON"]
-    disjunction_begin_14
-    disjunction_end_14
-    char_class_11
-    literal_60
-    char_class_12
-    literal_61
-    literal_62
-    literal_63
-    literal_64
-    literal_65
-    literal_66
-    literal_67
-    literal_68
-    literal_69
-    literal_70
-    literal_71
-    literal_72
   end
 
   subgraph non_capturing_13 ["Non-capturing <i>Zero or more</i>"]
@@ -1243,7 +1111,7 @@ graph LR
     non_capturing_13
   end
 
-  subgraph named_capture_17 ["#18 MONTH"]
+  subgraph named_capture_17 ["MONTH #18"]
     named_capture_18
     named_capture_19
     named_capture_20
@@ -1251,41 +1119,41 @@ graph LR
     non_capturing_12
     disjunction_begin_11
     disjunction_end_11
-    literal_43
+    literal_28
   end
 
-  subgraph named_capture_22 ["#23 START_DOW"]
+  subgraph named_capture_22 ["START_DOW #23"]
     disjunction_begin_16
     disjunction_end_16
     char_class_13
-    literal_76
-    literal_77
-    literal_78
-    literal_79
-    literal_80
-    literal_81
-    literal_82
+    literal_60
+    literal_61
+    literal_62
+    literal_63
+    literal_64
+    literal_65
+    literal_66
   end
 
-  subgraph named_capture_23 ["#24 DELIMITER_DOW"]
+  subgraph named_capture_23 ["DELIMITER_DOW #24"]
     disjunction_begin_17
     disjunction_end_17
-    literal_83
-    literal_84
-    literal_85
+    literal_67
+    literal_68
+    literal_69
   end
 
-  subgraph named_capture_24 ["#25 END_DOW"]
+  subgraph named_capture_24 ["END_DOW #25"]
     disjunction_begin_18
     disjunction_end_18
     char_class_14
-    literal_86
-    literal_87
-    literal_88
-    literal_89
-    literal_90
-    literal_91
-    literal_92
+    literal_70
+    literal_71
+    literal_72
+    literal_73
+    literal_74
+    literal_75
+    literal_76
   end
 
   subgraph non_capturing_17 ["Non-capturing <i>Zero or more</i>"]
@@ -1304,7 +1172,7 @@ graph LR
     named_capture_24
     non_capturing_17
     non_capturing_16
-    literal_93
+    literal_77
   end
 
   subgraph non_capturing_14 ["Non-capturing"]
@@ -1316,7 +1184,7 @@ graph LR
     non_capturing_15
   end
 
-  subgraph named_capture_21 ["#22 DAYOFWEEK"]
+  subgraph named_capture_21 ["DAYOFWEEK #22"]
     named_capture_22
     named_capture_23
     named_capture_24
@@ -1326,42 +1194,43 @@ graph LR
     non_capturing_14
     disjunction_begin_15
     disjunction_end_15
-    literal_74
-    literal_75
+    literal_58
+    literal_59
   end
 
   subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     disjunction_begin_19
     disjunction_end_19
-    literal_94
+    char_set_17
   end
 
   subgraph non_capturing_22 ["Non-capturing"]
     disjunction_begin_21
     disjunction_end_21
-    literal_96
-    literal_97
+    literal_79
+    literal_80
   end
 
   subgraph non_capturing_21 ["Non-capturing"]
     non_capturing_22
     char_class_15
-    literal_98
+    char_set_18
+    char_set_19
   end
 
-  subgraph named_capture_26 ["#27 START_YR"]
+  subgraph named_capture_26 ["START_YR #27"]
     non_capturing_22
     non_capturing_21
     assertion_3
     assertion_4
   end
 
-  subgraph named_capture_27 ["#28 DELIMITER_YR"]
+  subgraph named_capture_27 ["DELIMITER_YR #28"]
     disjunction_begin_22
     disjunction_end_22
-    literal_99
-    literal_100
-    literal_101
+    literal_81
+    literal_82
+    literal_83
   end
 
   subgraph non_capturing_24 ["Non-capturing"]
@@ -1370,27 +1239,28 @@ graph LR
     char_class_16
     char_class_17
     char_class_18
-    literal_102
+    literal_84
     char_class_19
     char_class_20
-    literal_103
+    literal_85
     char_class_21
   end
 
   subgraph non_capturing_26 ["Non-capturing"]
     disjunction_begin_25
     disjunction_end_25
-    literal_104
-    literal_105
+    literal_86
+    literal_87
   end
 
   subgraph non_capturing_25 ["Non-capturing"]
     non_capturing_26
     char_class_22
-    literal_106
+    char_set_20
+    char_set_21
   end
 
-  subgraph named_capture_28 ["#29 END_YR"]
+  subgraph named_capture_28 ["END_YR #29"]
     non_capturing_24
     non_capturing_26
     non_capturing_25
@@ -1435,10 +1305,10 @@ graph LR
     non_capturing_20
     disjunction_begin_20
     disjunction_end_20
-    literal_95
+    literal_78
   end
 
-  subgraph named_capture_25 ["#26 YEAR"]
+  subgraph named_capture_25 ["YEAR #26"]
     non_capturing_22
     non_capturing_21
     named_capture_26
@@ -1452,7 +1322,7 @@ graph LR
     non_capturing_19
   end
 
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     named_capture_2
     named_capture_3
     named_capture_4
@@ -1510,253 +1380,255 @@ graph LR
     disjunction_begin_1
     disjunction_end_1
     assertion_2
+    literal_1
+    char_set_2
+    char_set_3
     literal_2
-    literal_3
-    literal_4
-    literal_5
-    literal_13
-    literal_21
-    literal_29
-    literal_42
-    literal_73
+    char_set_6
+    char_set_9
+    char_set_12
+    char_set_15
+    char_set_16
   end
 
   %% Edges
   start --- assertion_1;
-  assertion_1 --- literal_1;
-  literal_1 --- disjunction_begin_1;
+  assertion_1 --- char_set_1;
+  char_set_1 --- disjunction_begin_1;
   disjunction_begin_1 --- assertion_2;
   assertion_2 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_2;
+  disjunction_begin_1 --- literal_1;
+  literal_1 --- disjunction_end_1;
+  disjunction_begin_1 --- char_set_2;
+  char_set_2 --- char_set_3;
+  char_set_3 --- literal_2;
   literal_2 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- disjunction_end_1;
   disjunction_begin_1 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_7;
-  literal_7 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_4;
+  literal_4 --- disjunction_end_2;
   disjunction_begin_2 --- char_class_1;
-  char_class_1 --- literal_8;
-  literal_8 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_9;
-  literal_9 --- disjunction_end_3;
-  disjunction_begin_3 --- literal_10;
-  literal_10 --- disjunction_end_3;
-  disjunction_begin_3 --- literal_11;
-  literal_11 --- disjunction_end_3;
+  char_class_1 --- char_set_4;
+  char_set_4 --- disjunction_begin_3;
+  disjunction_begin_3 --- literal_5;
+  literal_5 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_6;
+  literal_6 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_7;
+  literal_7 --- disjunction_end_3;
   disjunction_end_3 --- char_class_2;
-  char_class_2 --- literal_12;
-  literal_12 --- disjunction_end_2;
-  disjunction_end_2 --- literal_13;
-  literal_13 --- disjunction_begin_4;
-  disjunction_begin_4 --- literal_14;
-  literal_14 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_15;
-  literal_15 --- disjunction_end_4;
+  char_class_2 --- char_set_5;
+  char_set_5 --- disjunction_end_2;
+  disjunction_end_2 --- char_set_6;
+  char_set_6 --- disjunction_begin_4;
+  disjunction_begin_4 --- literal_8;
+  literal_8 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_9;
+  literal_9 --- disjunction_end_4;
   disjunction_begin_4 --- char_class_3;
-  char_class_3 --- literal_16;
-  literal_16 --- disjunction_begin_5;
-  disjunction_begin_5 --- literal_17;
-  literal_17 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_18;
-  literal_18 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_19;
-  literal_19 --- disjunction_end_5;
+  char_class_3 --- char_set_7;
+  char_set_7 --- disjunction_begin_5;
+  disjunction_begin_5 --- literal_10;
+  literal_10 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_11;
+  literal_11 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_12;
+  literal_12 --- disjunction_end_5;
   disjunction_end_5 --- char_class_4;
-  char_class_4 --- literal_20;
-  literal_20 --- disjunction_end_4;
-  disjunction_end_4 --- literal_21;
-  literal_21 --- disjunction_begin_6;
-  disjunction_begin_6 --- literal_22;
-  literal_22 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_23;
-  literal_23 --- disjunction_end_6;
+  char_class_4 --- char_set_8;
+  char_set_8 --- disjunction_end_4;
+  disjunction_end_4 --- char_set_9;
+  char_set_9 --- disjunction_begin_6;
+  disjunction_begin_6 --- literal_13;
+  literal_13 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_14;
+  literal_14 --- disjunction_end_6;
   disjunction_begin_6 --- char_class_5;
-  char_class_5 --- literal_24;
-  literal_24 --- disjunction_begin_7;
-  disjunction_begin_7 --- literal_25;
-  literal_25 --- disjunction_end_7;
-  disjunction_begin_7 --- literal_26;
-  literal_26 --- disjunction_end_7;
-  disjunction_begin_7 --- literal_27;
-  literal_27 --- disjunction_end_7;
+  char_class_5 --- char_set_10;
+  char_set_10 --- disjunction_begin_7;
+  disjunction_begin_7 --- literal_15;
+  literal_15 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_16;
+  literal_16 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_17;
+  literal_17 --- disjunction_end_7;
   disjunction_end_7 --- char_class_6;
-  char_class_6 --- literal_28;
-  literal_28 --- disjunction_end_6;
-  disjunction_end_6 --- literal_29;
-  literal_29 --- disjunction_begin_8;
-  disjunction_begin_8 --- literal_30;
-  literal_30 --- disjunction_end_8;
-  disjunction_begin_8 --- literal_31;
-  literal_31 --- disjunction_end_8;
+  char_class_6 --- char_set_11;
+  char_set_11 --- disjunction_end_6;
+  disjunction_end_6 --- char_set_12;
+  char_set_12 --- disjunction_begin_8;
+  disjunction_begin_8 --- literal_18;
+  literal_18 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_19;
+  literal_19 --- disjunction_end_8;
   disjunction_begin_8 --- disjunction_begin_9;
-  disjunction_begin_9 --- literal_32;
-  literal_32 --- disjunction_end_9;
-  disjunction_begin_9 --- literal_33;
-  literal_33 --- disjunction_end_9;
-  disjunction_begin_9 --- literal_34;
-  literal_34 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_20;
+  literal_20 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_21;
+  literal_21 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_22;
+  literal_22 --- disjunction_end_9;
   disjunction_begin_9 --- char_class_7;
-  char_class_7 --- literal_35;
-  literal_35 --- literal_36;
-  literal_36 --- disjunction_end_9;
+  char_class_7 --- char_set_13;
+  char_set_13 --- literal_23;
+  literal_23 --- disjunction_end_9;
   disjunction_end_9 --- disjunction_begin_10;
-  disjunction_begin_10 --- literal_37;
-  literal_37 --- disjunction_end_10;
-  disjunction_begin_10 --- literal_38;
-  literal_38 --- disjunction_end_10;
-  disjunction_begin_10 --- literal_39;
-  literal_39 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_24;
+  literal_24 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_25;
+  literal_25 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_26;
+  literal_26 --- disjunction_end_10;
   disjunction_end_10 --- char_class_8;
-  char_class_8 --- literal_40;
-  literal_40 --- literal_41;
-  literal_41 --- disjunction_end_8;
-  disjunction_end_8 --- literal_42;
-  literal_42 --- disjunction_begin_11;
-  disjunction_begin_11 --- literal_43;
-  literal_43 --- disjunction_end_11;
+  char_class_8 --- char_set_14;
+  char_set_14 --- literal_27;
+  literal_27 --- disjunction_end_8;
+  disjunction_end_8 --- char_set_15;
+  char_set_15 --- disjunction_begin_11;
+  disjunction_begin_11 --- literal_28;
+  literal_28 --- disjunction_end_11;
   disjunction_begin_11 --- disjunction_begin_12;
   disjunction_begin_12 --- char_class_9;
   char_class_9 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_44;
-  literal_44 --- char_class_10;
+  disjunction_begin_12 --- literal_29;
+  literal_29 --- char_class_10;
   char_class_10 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_45;
-  literal_45 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_46;
-  literal_46 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_47;
-  literal_47 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_48;
-  literal_48 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_49;
-  literal_49 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_50;
-  literal_50 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_51;
-  literal_51 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_52;
-  literal_52 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_53;
-  literal_53 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_54;
-  literal_54 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_55;
-  literal_55 --- disjunction_end_12;
-  disjunction_begin_12 --- literal_56;
-  literal_56 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_30;
+  literal_30 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_31;
+  literal_31 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_32;
+  literal_32 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_33;
+  literal_33 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_34;
+  literal_34 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_35;
+  literal_35 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_36;
+  literal_36 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_37;
+  literal_37 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_38;
+  literal_38 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_39;
+  literal_39 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_40;
+  literal_40 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_41;
+  literal_41 --- disjunction_end_12;
   disjunction_end_12 --- disjunction_begin_13;
-  disjunction_begin_13 --- literal_57;
-  literal_57 --- disjunction_end_13;
-  disjunction_begin_13 --- literal_58;
-  literal_58 --- disjunction_end_13;
-  disjunction_begin_13 --- literal_59;
-  literal_59 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_42;
+  literal_42 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_43;
+  literal_43 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_44;
+  literal_44 --- disjunction_end_13;
   disjunction_end_13 --- disjunction_begin_14;
   disjunction_begin_14 --- char_class_11;
   char_class_11 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_60;
-  literal_60 --- char_class_12;
+  disjunction_begin_14 --- literal_45;
+  literal_45 --- char_class_12;
   char_class_12 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_61;
-  literal_61 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_62;
-  literal_62 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_63;
-  literal_63 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_64;
-  literal_64 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_65;
-  literal_65 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_66;
-  literal_66 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_67;
-  literal_67 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_68;
-  literal_68 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_69;
-  literal_69 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_70;
-  literal_70 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_71;
-  literal_71 --- disjunction_end_14;
-  disjunction_begin_14 --- literal_72;
-  literal_72 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_46;
+  literal_46 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_47;
+  literal_47 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_48;
+  literal_48 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_49;
+  literal_49 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_50;
+  literal_50 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_51;
+  literal_51 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_52;
+  literal_52 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_53;
+  literal_53 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_54;
+  literal_54 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_55;
+  literal_55 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_56;
+  literal_56 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_57;
+  literal_57 --- disjunction_end_14;
   disjunction_end_14 --- disjunction_end_11;
-  disjunction_end_11 --- literal_73;
-  literal_73 --- disjunction_begin_15;
-  disjunction_begin_15 --- literal_74;
-  literal_74 --- disjunction_end_15;
-  disjunction_begin_15 --- literal_75;
-  literal_75 --- disjunction_end_15;
+  disjunction_end_11 --- char_set_16;
+  char_set_16 --- disjunction_begin_15;
+  disjunction_begin_15 --- literal_58;
+  literal_58 --- disjunction_end_15;
+  disjunction_begin_15 --- literal_59;
+  literal_59 --- disjunction_end_15;
   disjunction_begin_15 --- disjunction_begin_16;
   disjunction_begin_16 --- char_class_13;
   char_class_13 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_76;
-  literal_76 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_77;
-  literal_77 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_78;
-  literal_78 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_79;
-  literal_79 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_80;
-  literal_80 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_81;
-  literal_81 --- disjunction_end_16;
-  disjunction_begin_16 --- literal_82;
-  literal_82 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_60;
+  literal_60 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_61;
+  literal_61 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_62;
+  literal_62 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_63;
+  literal_63 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_64;
+  literal_64 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_65;
+  literal_65 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_66;
+  literal_66 --- disjunction_end_16;
   disjunction_end_16 --- disjunction_begin_17;
-  disjunction_begin_17 --- literal_83;
-  literal_83 --- disjunction_end_17;
-  disjunction_begin_17 --- literal_84;
-  literal_84 --- disjunction_end_17;
-  disjunction_begin_17 --- literal_85;
-  literal_85 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_67;
+  literal_67 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_68;
+  literal_68 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_69;
+  literal_69 --- disjunction_end_17;
   disjunction_end_17 --- disjunction_begin_18;
   disjunction_begin_18 --- char_class_14;
   char_class_14 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_86;
-  literal_86 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_87;
-  literal_87 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_88;
-  literal_88 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_89;
-  literal_89 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_90;
-  literal_90 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_91;
-  literal_91 --- disjunction_end_18;
-  disjunction_begin_18 --- literal_92;
-  literal_92 --- disjunction_end_18;
-  disjunction_end_18 --- literal_93;
-  literal_93 --- disjunction_end_15;
+  disjunction_begin_18 --- literal_70;
+  literal_70 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_71;
+  literal_71 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_72;
+  literal_72 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_73;
+  literal_73 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_74;
+  literal_74 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_75;
+  literal_75 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_76;
+  literal_76 --- disjunction_end_18;
+  disjunction_end_18 --- literal_77;
+  literal_77 --- disjunction_end_15;
   disjunction_end_15 --- disjunction_begin_19;
-  disjunction_begin_19 --- literal_94;
-  literal_94 --- disjunction_end_19;
+  disjunction_begin_19 --- disjunction_end_19;
+  disjunction_begin_19 --- char_set_17;
+  char_set_17 --- disjunction_end_19;
   disjunction_end_19 --- disjunction_begin_20;
-  disjunction_begin_20 --- literal_95;
-  literal_95 --- disjunction_end_20;
+  disjunction_begin_20 --- literal_78;
+  literal_78 --- disjunction_end_20;
   disjunction_begin_20 --- assertion_3;
   assertion_3 --- char_class_15;
   char_class_15 --- disjunction_begin_21;
-  disjunction_begin_21 --- literal_96;
-  literal_96 --- disjunction_end_21;
-  disjunction_begin_21 --- literal_97;
-  literal_97 --- disjunction_end_21;
-  disjunction_end_21 --- literal_98;
-  literal_98 --- assertion_4;
+  disjunction_begin_21 --- literal_79;
+  literal_79 --- disjunction_end_21;
+  disjunction_begin_21 --- literal_80;
+  literal_80 --- disjunction_end_21;
+  disjunction_end_21 --- char_set_18;
+  char_set_18 --- char_set_19;
+  char_set_19 --- assertion_4;
   assertion_4 --- disjunction_begin_22;
-  disjunction_begin_22 --- literal_99;
-  literal_99 --- disjunction_end_22;
-  disjunction_begin_22 --- literal_100;
-  literal_100 --- disjunction_end_22;
-  disjunction_begin_22 --- literal_101;
-  literal_101 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_81;
+  literal_81 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_82;
+  literal_82 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_83;
+  literal_83 --- disjunction_end_22;
   disjunction_end_22 --- disjunction_begin_23;
   disjunction_begin_23 --- assertion_5;
   assertion_5 --- disjunction_begin_24;
@@ -1765,24 +1637,25 @@ graph LR
   disjunction_begin_24 --- char_class_17;
   char_class_17 --- char_class_18;
   char_class_18 --- disjunction_end_24;
-  disjunction_begin_24 --- literal_102;
-  literal_102 --- char_class_19;
+  disjunction_begin_24 --- literal_84;
+  literal_84 --- char_class_19;
   char_class_19 --- char_class_20;
   char_class_20 --- disjunction_end_24;
-  disjunction_begin_24 --- literal_103;
-  literal_103 --- char_class_21;
+  disjunction_begin_24 --- literal_85;
+  literal_85 --- char_class_21;
   char_class_21 --- disjunction_end_24;
   disjunction_end_24 --- assertion_6;
   assertion_6 --- disjunction_end_23;
   disjunction_begin_23 --- assertion_7;
   assertion_7 --- char_class_22;
   char_class_22 --- disjunction_begin_25;
-  disjunction_begin_25 --- literal_104;
-  literal_104 --- disjunction_end_25;
-  disjunction_begin_25 --- literal_105;
-  literal_105 --- disjunction_end_25;
-  disjunction_end_25 --- literal_106;
-  literal_106 --- assertion_8;
+  disjunction_begin_25 --- literal_86;
+  literal_86 --- disjunction_end_25;
+  disjunction_begin_25 --- literal_87;
+  literal_87 --- disjunction_end_25;
+  disjunction_end_25 --- char_set_20;
+  char_set_20 --- char_set_21;
+  char_set_21 --- assertion_8;
   assertion_8 --- disjunction_end_23;
   disjunction_end_23 --- disjunction_end_20;
   disjunction_end_20 --- disjunction_end_1;
@@ -1792,8 +1665,9 @@ graph LR
   %% Styles
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
@@ -1809,143 +1683,13 @@ graph LR
 
 ---
 
-## Date (ISO 8601)
-
-A date in YYYY-MM-DD format
-
-### Pattern
-
-```regex
-^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$
-```
-
-### Diagram
-
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA51WW0-jQBT-KxOqSZuUCjMIgsZYW-vLZh9039raUJi2rCxtBsyuUf_7zgzXYQCrPDT0XL7znTOXjzfF2_tYcZQtcQ878ONhEQHget6vIAmxAxbKA97ifw546uv2O9QGC_r4_Kc_V8HZaDnoa3NdtZfv-lzT4ZIHwNw2p5a5xt4Q9S4HJwslw5_i2CMM_x5HmLgJ9sHfINkBwsqpyV79g8kfN_Bv9JE2MlgaSzw9BT8p3Zi9x4lLkps3EO_cA2W6Ub2AeODjkvk2QdTiceMYkyTYRyu9v1Certbk-iq4vsXbIIo5g6uz4HqhDBzHKUJ5oh_Ev18ij6euWfhKpzEVa0vBah6O_COzwiChUwk5Sd1O-WQ2wQ-pH2rtfkT9fMF8OcbbuWTlhbRNXkYFjwfXw-AMjNJY5le5v2UA8FsDgF8agEGZaZ3c2QjoZmvknKOcs5hOFDYoDegANuKsXe95RfAGExx5mI-L7vJ881CnWjjL_bMW7C0zRN-aIfrSDM1PZ2h0zLASxsfYMqJKGKs3jl4p622QdK6LRSNRJzMrXZdGlPIssz1wki3HXeR3neTsGnl8WfMbL71Ksj_sTol8l9BTCuYLpaeDe7J_ObDySxbXeAvIDn7MU3NxjsW_kP2lYSkduTzk5WFWHhblq0f2EwjEIVAGgTo6gM0dQJGyITGoBZxLAegTiganaGQUjQ6KqJkiEhmYEgOZtMzSFEEsKcAS2qB7587fViQIqKpalZW6zHB_w75pUxUeX-wbUQ0kLL7VjkKCom4cicStAg4S9YX7qttSkpaW_mGbqAjVDFEM6tWgJAaNfR1X61yUjHotJEnGkbW4lcfWZaRRW1rmhdoEROjBFC_-eg-GdPE39tBdq3qaJIWoR5iSOHyjYnE2RfGo17Ik8TiyFrfWzjGsSwz30w_LioYkr2F6EWTfpdwSRFtOgzGY4k0JQZPD0OndmlNrfDGME7J_xk7PRhPDmg69fbgnTk_jz6UAUGGaQcxmU9s0C4iZPoEIdkFkI8vT7cmtPSnS70xbRxdd6aXu5j0YY2taEri4syYT1IUgfgvlPIwJfUoemkkfCSWbbyoSTQPO9aQYzgxWUFuGk6GOD4fwNcOeMMB0PdNey6-BYanM5SsaVpQsf71UPv4D9Li-8lMNAAA=)
-
-<details>
-  <summary>Click to view as image</summary>
-  <p align="center">
-    <img src="diagrams/date-iso8601.mermaid-diagram.png" alt="Mermaid diagram for Date (ISO 8601)" />
-  </p>
-</details>
-
-```mermaid
-graph LR
-  accTitle: "Regex: ^(19|20)\\d\\d([- /.])(0[1-9]|1[012])\\2(0[1-9]|[12][0-9]|3[01])$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
-
-  %% Nodes
-  start@{ shape: f-circ };
-  fin@{ shape: f-circ };
-  assertion_1("^<br><i>Begins with</i>"):::assertion;
-  disjunction_begin_1:::disjunction@{ shape: f-circ };
-  disjunction_end_1:::disjunction@{ shape: f-circ };
-  literal_1("19"):::literal;
-  literal_2("20"):::literal;
-  literal_3("\d\d"):::literal;
-  char_class_1("- Space / ."):::char-class;
-  disjunction_begin_2:::disjunction@{ shape: f-circ };
-  disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_4("0"):::literal;
-  char_class_2("1-9"):::char-class;
-  literal_5("1"):::literal;
-  char_class_3("0 1 2"):::char-class;
-  back_reference_1("\2<br><i>Back-reference</i>"):::back-reference;
-  disjunction_begin_3:::disjunction@{ shape: f-circ };
-  disjunction_end_3:::disjunction@{ shape: f-circ };
-  literal_6("0"):::literal;
-  char_class_4("1-9"):::char-class;
-  char_class_5("1 2"):::char-class;
-  char_class_6("Any digit"):::char-class;
-  literal_7("3"):::literal;
-  char_class_7("0 1"):::char-class;
-  assertion_2("$<br><i>Ends with</i>"):::assertion;
-
-  %% Subgraphs
-  subgraph standard_1 ["#1 Group 1"]
-    disjunction_begin_1
-    disjunction_end_1
-    literal_1
-    literal_2
-  end
-
-  subgraph standard_2 ["#2 Group 2"]
-    char_class_1
-  end
-
-  subgraph standard_3 ["#3 Group 3"]
-    disjunction_begin_2
-    disjunction_end_2
-    literal_4
-    char_class_2
-    literal_5
-    char_class_3
-  end
-
-  subgraph standard_4 ["#4 Group 4"]
-    disjunction_begin_3
-    disjunction_end_3
-    literal_6
-    char_class_4
-    char_class_5
-    char_class_6
-    literal_7
-    char_class_7
-  end
-
-  %% Edges
-  start --- assertion_1;
-  assertion_1 --- disjunction_begin_1;
-  disjunction_begin_1 --- literal_1;
-  literal_1 --- disjunction_end_1;
-  disjunction_begin_1 --- literal_2;
-  literal_2 --- disjunction_end_1;
-  disjunction_end_1 --- literal_3;
-  literal_3 --- char_class_1;
-  char_class_1 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_4;
-  literal_4 --- char_class_2;
-  char_class_2 --- disjunction_end_2;
-  disjunction_begin_2 --- literal_5;
-  literal_5 --- char_class_3;
-  char_class_3 --- disjunction_end_2;
-  disjunction_end_2 --- back_reference_1;
-  back_reference_1 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_6;
-  literal_6 --- char_class_4;
-  char_class_4 --- disjunction_end_3;
-  disjunction_begin_3 --- char_class_5;
-  char_class_5 --- char_class_6;
-  char_class_6 --- disjunction_end_3;
-  disjunction_begin_3 --- literal_7;
-  literal_7 --- char_class_7;
-  char_class_7 --- disjunction_end_3;
-  disjunction_end_3 --- assertion_2;
-  assertion_2 --- fin;
-
-  %% Styles
-  %% Node Styling
-  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
-  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
-  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
-  classDef back-reference fill:#F4CCCC,stroke:#E06666,color:#000000;
-
-  %% Group Styling
-  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
-
-  %% Apply Group Classes
-  class standard_1,standard_2,standard_3,standard_4 standard;
-```
-
----
-
 ## DateTime (RFC3339)
 
 Validates a RFC3339 DateTime format
 
-### Pattern
+Source: <https://regex101.com/library/qH0sU7>
+
+### Pattern {#DateTime (RFC3339)}
 
 ```regex
 /^((?:(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2}(?:\.\d+)?))(Z|[\+-]\d{2}:\d{2})?)$/gm
@@ -1953,7 +1697,7 @@ Validates a RFC3339 DateTime format
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA6VWbVOjMBD-KxmqM-1YtLwUCjp6LW39cuPNeH7SqoMQW-4odAKd0_H875cECmxo0at8ymazT55NNvvwJnmxjyVbmhN3tUDfr2cRQq7n3QRpiG00k67xHL_Y6OSh3b6w2zP6-W_6u5wN1HLQuWlvhnZtQEPZ8JjbR52LTqd9-_eOWUfyfW019R-czJczKecyxolHGJdLHGHipthHf4J0gQijJqexvMRk6Qb-N-W4d6yzMBZ4eIiuaGoJGyepS9JvbyhZuCua1bPsBcRD76fM9xxEOzxukmCSBnH0qLRn0sPZEzk_C85HeB5ECWdwdhKcz6SObdvFUh4YBinlGfKwYfSK_GAepHn45MX10vAV6WVwvhyEqjRU3u3WGpDVZmS9Gbm_P7JBQ292u839kQc01N7ttvZHVnrN0IryBWw1j_UWLqERmDSs3XajPyKMYoKWMcHbd_KD5Nc68niNPrG6fFToisrsjsquxuHI_2RUwZWV0G2dDUvz0QvpW-CVf4TyMmPzMp-HMF8oNcX44Nr2KLbyubN7O9gERX7TY887zc_1E2-gWbfJDdZ2It8l_qOK7mZSS0WXJF6vkDqT7tm6Cl1oqtDUoKlDs89MeokZl2LviObhuat0TYJonhG4iiO5mEKsvlYsCzfMUhM5CSwUbftGRZIaT1LLk9QKQIEJRDWhOYCmJVDoCbbymdyVWu4FtfKCGqiWCcLdjQ_OQ-fnoefnoe888C2PuO7gr1TIPi-E6rMTVvQF2xBs84MU-NG1lDwF5WvnJtyKsEgHVOiTmvjzingjWZargiwKNPcXecFeAHwqlFng06DGAp8ORRT4-lBBgc-AEgl8JtRH4BtAAQQ-C6ofzL0n6Bv0CkcjnJsq6Bf0aoJice-W6t0lTRBNFzSlhsZLvhGrWvk1BYK79QXpgV5DEBfoNQVp-SRTPivUrSoqDffTX9CKlKSvYVb4-R8sn2FdiyXIchvj5xKCBoeh3RoZY3M46CYpiX9ju2Vpjm6Ou14cxsRu9fh3CgDydPLwqeWMLKcInxiWog2awiuJbiCmY8swCoip4qia2gRR_hZsctCH5rhEGExMx9FqCPnJZC1p29FsWkrBa6o6zn_wioBMZiDOdKJOtQLEGFuTyWgXteFqRf8yMoIOQ82uM0u1bJ3dskGWQ71bab6bYclP7LRdUeoA-VPp_R8KUF2Z4A0AAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA6VWXU_bMBT9K1YKUisaaJM0XyBYm7Z7mZjEeIJCFRLTZgtJ5aQaiPHfZzuf121TtubJzvU5PvfGvifvkhf7WLKlBXFXS_TtZhYh5HrebZCG2EYz6QYv8KuNzh7b7Su7PaOP_659yNlAqQad23YxtDcGFMqGp3x-0rnqdNp3f-7Z7ER-2FhN40dni5eZlGsZ48QjTMtXHGHipthHv4N0iQiTJqex_ILJixv4X5TT3mmPwRjw-Bhd09QSNk5Sl6Rf3lGydFc0q2fZC4iHPs5Z7DmIdkTcJMEkDeJo3m_PpMeLJ3J5EVyO8CKIEq7g4iy4nEkd27bLpRzoLV0yT3DKccPoDfnBIkhz_OTV9dLwDWkVmq2X6XoODoOUJhlyrJzF81eQW2ngVvZwK3u41QO4Gfa2gVs7gJth7QbuwQHcgz3c-gHcBZYFKQKThn2MLft8jzCKCXqJCd6xkx8kP9eRx0_rEzuh8z5dUnu744zXcTjyP4kq8mJa73bk4oX0UvBTTG85kmuaeQQmbR5QXHPPh7P-g7u6-uyqHBWoyG-6-HnX-bF-4s006zz5hLWgyHeJP1fQPe1kJF6vUEuZSQ9sVb1lZPOyCwhhBYYVIayyOf2OmZhy84gm4rmrdE2CaJEpuI4juXyF2BlbsTTcMMvtAe6jC_sY2_cpk1RrSaolmyBD4NTglpoQHsDwQAjrn8m8v5F5qa36Pg1aq_ygGHVPObRaObSdxd5yhzcD_JLC3Y1aKfJbJxTHhABTCFt75Pdr8vuHVUz4HsIiDQihd2niL2oOjmRZrruy6NI8Xt0kwYt5tLxX0GshUhGcFiAV6KQQqQo-CpAq9EmI1ASXBEgNuiBEDgQPBMgB9DiI1AWHA0gdOhhEGoJn8eiW87vLm8BOBvSUDS5-5BuZ6kd_w4GgclMwHqDEhMYCkZZgK5_Uyd8KJ1cRTYbH6Z9ozUXStzA7-vmPLH_DOhYTwTIb4-eKgoLD0G6N9LExNLtJSuJf2G5ZqqMZ464XhzGxWz3-nAOCwvVyvDUdmuNhiR84-sjpNeHzWuXwqeWMLKeET3Srr5pN8FqhCorp2NL1kmLadxRV2ZsBnxU10IbGuGIwJ4bjqBsMeWWzrrattEVTKnVNFcf5B10RMNiMxJlOlKlakuhjazIZ7ZI2XK3oH0om0GGs2XHIUq2ab7dqsdVQ69aadzGs9Im9uivaJBB_Ln38BdQlfwknDgAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -1965,75 +1709,75 @@ Validates a RFC3339 DateTime format
 ```mermaid
 graph LR
   accTitle: "Regex: /^((?:(\\d{4}-\\d{2}-\\d{2})T(\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?))(Z|[\\+-]\\d{2}:\\d{2})?)$/gm"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_1("Any digit<br><i>Exactly 4</i>"):::literal;
+  char_set_1("Any digit<br><i>Exactly 4</i>"):::char-set;
+  literal_1("-"):::literal;
+  char_set_2("Any digit<br><i>Exactly 2</i>"):::char-set;
   literal_2("-"):::literal;
-  literal_3("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_4("-"):::literal;
-  literal_5("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_6("T"):::literal;
-  literal_7("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_8(":"):::literal;
-  literal_9("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_10(":"):::literal;
-  literal_11("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_12("Any character"):::literal;
-  literal_13("Any digit<br><i>One or more</i>"):::literal;
+  char_set_3("Any digit<br><i>Exactly 2</i>"):::char-set;
+  literal_3("T"):::literal;
+  char_set_4("Any digit<br><i>Exactly 2</i>"):::char-set;
+  literal_4(":"):::literal;
+  char_set_5("Any digit<br><i>Exactly 2</i>"):::char-set;
+  literal_5(":"):::literal;
+  char_set_6("Any digit<br><i>Exactly 2</i>"):::char-set;
+  literal_6("Any character"):::literal;
+  char_set_7("Any digit<br><i>One or more</i>"):::char-set;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  literal_14("Z"):::literal;
-  char_class_1("+ -"):::char-class;
-  literal_15("Any digit<br><i>Exactly 2</i>"):::literal;
-  literal_16(":"):::literal;
-  literal_17("Any digit<br><i>Exactly 2</i>"):::literal;
+  literal_7("Z"):::literal;
+  char_class_1("\+ -"):::char-class;
+  char_set_8("Any digit<br><i>Exactly 2</i>"):::char-set;
+  literal_8(":"):::literal;
+  char_set_9("Any digit<br><i>Exactly 2</i>"):::char-set;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["#2 Group 2"]
+  subgraph standard_2 ["Group #2"]
+    char_set_1
     literal_1
+    char_set_2
     literal_2
-    literal_3
-    literal_4
-    literal_5
+    char_set_3
   end
 
   subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
-    literal_12
-    literal_13
+    literal_6
+    char_set_7
   end
 
-  subgraph standard_3 ["#3 Group 3"]
+  subgraph standard_3 ["Group #3"]
     non_capturing_2
-    literal_7
-    literal_8
-    literal_9
-    literal_10
-    literal_11
+    char_set_4
+    literal_4
+    char_set_5
+    literal_5
+    char_set_6
   end
 
   subgraph non_capturing_1 ["Non-capturing"]
     standard_2
     non_capturing_2
     standard_3
-    literal_6
+    literal_3
   end
 
-  subgraph standard_4 ["#4 Group 4 <i>Optional</i>"]
+  subgraph standard_4 ["Group #4 <i>Optional</i>"]
     disjunction_begin_1
     disjunction_end_1
-    literal_14
+    literal_7
     char_class_1
-    literal_15
-    literal_16
-    literal_17
+    char_set_8
+    literal_8
+    char_set_9
   end
 
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     standard_2
     non_capturing_2
     standard_3
@@ -2043,33 +1787,34 @@ graph LR
 
   %% Edges
   start --- assertion_1;
-  assertion_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- literal_7;
-  literal_7 --- literal_8;
-  literal_8 --- literal_9;
-  literal_9 --- literal_10;
-  literal_10 --- literal_11;
-  literal_11 --- literal_12;
-  literal_12 --- literal_13;
-  literal_13 --- disjunction_begin_1;
-  disjunction_begin_1 --- literal_14;
-  literal_14 --- disjunction_end_1;
+  assertion_1 --- char_set_1;
+  char_set_1 --- literal_1;
+  literal_1 --- char_set_2;
+  char_set_2 --- literal_2;
+  literal_2 --- char_set_3;
+  char_set_3 --- literal_3;
+  literal_3 --- char_set_4;
+  char_set_4 --- literal_4;
+  literal_4 --- char_set_5;
+  char_set_5 --- literal_5;
+  literal_5 --- char_set_6;
+  char_set_6 --- literal_6;
+  literal_6 --- char_set_7;
+  char_set_7 --- disjunction_begin_1;
+  disjunction_begin_1 --- literal_7;
+  literal_7 --- disjunction_end_1;
   disjunction_begin_1 --- char_class_1;
-  char_class_1 --- literal_15;
-  literal_15 --- literal_16;
-  literal_16 --- literal_17;
-  literal_17 --- disjunction_end_1;
+  char_class_1 --- char_set_8;
+  char_set_8 --- literal_8;
+  literal_8 --- char_set_9;
+  char_set_9 --- disjunction_end_1;
   disjunction_end_1 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
@@ -2087,9 +1832,9 @@ graph LR
 
 ## Email Address
 
-Standard email address
+Common email address format
 
-### Pattern
+### Pattern {#Email Address}
 
 ```regex
 ^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$
@@ -2097,7 +1842,7 @@ Standard email address
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA51TXW_aMBT9K1YoUrthRhLER0AICNCXaZO6PbWhyE1MsBbiyDHqGOK_L3ackI-BpubJPr7n3GPfk5PmUg9rluYzFO3A1ycnBAC57k_CA2wBR3vCPv5tgdf7FwT_zOBzBw7bmyZcf54WgGTrJF9bQeuT0eqdHz7dOZqSW-DYZULuEYeYIY498E74DjChDjmFe8z2iHhTvd1pdwVNEJtN8C1xF4t1zBHj0xOIdyhKjG2hS5gLziNxtiXhlRMUx5hxQsONfu9or-M3NhmTyRz7JIylg_EXMnG0B8uy8lJJdHeIbdwgASVzFh5BQN8xc1GMhYoADlFUBjziEy42bbABTQBVu-8hBpSBPWX40k40gLKB7BcQnrxLIJtN0woFVe0YH7HzEStZI3GM3AS7acv8L1uJBQNwCnpXu18mJvrfKdIy9G7NS4Xlx-FNxjgNjNqI5IQeYt5GBy-O1tDBI6OHCOgg0X3GjJYfZC245fmnSD6hWoFRLjBqBaZAcOjlRpeeX0g1gBAWk1pNrjwvGqolVFbkBsuBqrKNWqBKbKOcgSrbrM294t6oTlGeJ39oYUz8GKTXVz-4REjoS2mhusDbi0RCDgKrMe8t-rNBK-aM_sJWY2ja3f6i5dKAMqvRkd-oJHAJVqbQnfUXvVxhsOzbtnlLQb2Coq-G9nxo5_Rlb6ibgxpdXSvN2L_ulcUxU12tDPuiutJtwzSuqc6iKDgqbVsIps-YXrKQ82w50s5_AXRCBu_hBQAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA51TXW_aMBT9K1YoUrthBk7FR0AIGmAv0yZ1e2pDkZuYYC3EkWPUMsR_n-2YQJKBpubJPr7n3GPfk73ls4BYjhVynKzBt0cvBgD7_i8qIuIAz3okIXl3wMvtM4Z_JvCpBfvNZR0uPo_PALn15Nc00GKPGp3D3acbzzJyU5L6XMl9JTHhWJAAvFGxBlypQ8HghvANpsEYNVvNlqIpYr0Ovkt3qVqnAnMx3oN0jRNpbAV9yn1wGKizFY0vnOA0JVxQFi_bt571MnzloyEdPZCQxql2MPxCR5515zhOXqqJ_hrzpR9JUDMn8Q5E7I1wH6dEqShgmyRFIKAhFWrTBEtQB9C0-xETwDjYME5O7VQDqBvofhEV8l0i3WycVRiobAd9xM5HrBwbqWPsS-yqLfu_bEkLCAgGOhe7nyam-t8Y0iwOrs3LhOXn9lXHOAuM2ajkxAHmwbINnmUAOdsmoNYGUvWJcFZ8joViFqefIfl8KgWoWIAqBbZCSBzkNmdBeJZpACE8z2k5t_r83FAln7oiN1iMU5mNKnEqsFExAWW2XZl6yT0qz1Cfy__zbEhiF2XXN7-3RmgcammlOiWrk4QkR5FTe-hMu5NeIxWc_SZOrW-7991pw2cR406tpb9BQeAUq6PC_aQ77eQKvVnXde1rCuYVDH3edx_6bk6fdfptu1ehm2tlIfvXvY5hPKrO58g9qc7bLrLRJdVJkkQ7o-0qwewZs0uepfy4HFiHv3LRvwHfBQAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2109,7 +1854,7 @@ Standard email address
 ```mermaid
 graph LR
   accTitle: "Regex: ^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6})*$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2123,7 +1868,7 @@ graph LR
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["#1 Group 1 <i>Zero or more</i>"]
+  subgraph standard_1 ["Group #1 <i>Zero or more</i>"]
     char_class_1
     literal_1
     char_class_2
@@ -2160,7 +1905,9 @@ graph LR
 
 Email address compliant with RFC2822
 
-### Pattern
+Source: <https://regex101.com/library/sI6yF5>
+
+### Pattern {#Email (RFC2822)}
 
 ```regex
 ^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$
@@ -2168,7 +1915,7 @@ Email address compliant with RFC2822
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA92ZbW_bNhDHv4rgtEDSxZ0kknpwgqCJ7PTNsAHdXi1OAluSHW2OHMgO2qLtd590pB5I6SRZCFBkeWFJFHn88c-jeMd8G_nbIBxNRutk8fSg_fZpHmvawvf_ivabcKLNR5_Cdfhlot0d39zN078vuj6Gq6nzi8kvDr-4_OLzSwgXsuAtCC8lvJTy9mzJX7IALvaKP65Wt798Fx0UPQfVHhm35uhFg--i_EbitFe3J-9Ew5NjwfW_GIy4o_rPGg1bKqNRWhwwHBb89Ll52dGcvHszH4m1NA13fpKtpY9hHCaLfRhon6P9g5ZkS2u8344fw-RxEQUfjPf6e5o1yxq-fav9ni7NXXa_2y-S_Ydv2u5h8ZSuytXYjxJf-3GWvVtFMfJmsduFyT7axvfG8Xx0d75MLs6ji6twHcU7IDj_NbqYj04mk0lRFRoG0e6f59iHpsus-r2R1qmUIh1W24Vx0LNVHK4zTe79h0Vy729SFODNlU0dICPP5zedXfEI85NqLR5hRtPZEY-mqYG7wK8Lvz78hhr4hgauITT5Iw61baI9bpOw1ERwjTOuMXAB7ibap5O4yRlTv4TaohjRzxyknzlUP5OzgcuWkuiBVgiTfnH6DFIYymtXB4lNl73idRGLBJctr0JFlbCPsmSQsmSosuQVeCY7xDPpIP3oUP3oS3mm1cszzQM80-72TIdXSbeUHsqyQcqyocqyV-CZrpi0ZR_9rEH6WUP1yx1KVqjmqP32Br2Xd5IDvNMQH1kW4O5pmId8Oe1B-tpD9bVfw55ODnFQZ5CAzlABnZd0UNrLQekhDspwBy0j0cxD34gZmsVBWxwqguA_n5eQm_JAWDxkEXEcLJI0RtJu5qMjU_uYbJ-fNFNL7f4dJlt56m-zto1xWf0FBF68uCmy4m-K-Ig_VmOhrCS1wfnrvAbwGoLXKNjKAWGsRjOrgbIaMqvySDpAGYAyAcoOFJY2w1IUlsp0Vk1Ys4OXAi8VvLQuLMNYSTMrQVmJzMrkR7sDlAAoEaCkVVgVvhyt3Cft6NOGPm3Rp33gZFrNAlmoQJbieXptNru8zwJgSwBbdUFsDJY1wzIUVpk-V2HvXNA6X9F6vqT1A9V1moEdFNhRCGlN3S53cAHZFcRuXd18xhqihmZaG6W1FVpl8Risg9UBVkewOv2WS85fjljpVf6apNvMLFhXzlq08XhcPT9Rz1PgfcMnGjs-gfpNn2j0BKTWA3zrW-0Xg5P3ZYTVxI4qMFYTPW1oZG23X2yg8nEDvKvp06mL2Xx8IvVE5GOInvpCqWSHymcViLoEO67A1CXoiUMjabv9YmeSzwUQVoodDWCsFM3uG1nb7Rc7vpzeq55g1lL7nn1BqdSTLaf9PfWFUsmOI58NIOoy7HgAU5ehGX4jabv9YleT83CE1cJScYzVQrPpRtZ2-2W4oCTTqi-QWiLdszcolftSPpZGT42hVLZkKrk4orGNpeOYxjaaUTeyttsvt2El8UVoHSz3xWgdNH1tpG23X4Y4SvaqegStZa49e4NSuS-mpLU9VYZSJW4w1ewX3q-ianq7_7rhgYf4hw-URPEaBpSNZRquShNp481mcnRlTe1L53S3T7b_hpMjl3jUnp762802mRzp8HcmGaiQChPX11PXsgoT14ZnErPNRP1IQViaXbrpX2HJ87K2bZaEtjmI6125XtF8ZrkGcdqa1wCu6KU9LYfizGzPIzULQmMeRzaJnAeLhUDXpud1CSSsXj49bb4K215mkM8ppyxz-9MyQi1vWXlLy1tS3trlrVWxoJf37mklXs5vz0Y__gPNxciV3x8AAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA92Z72-jNhjH_xUrvZPaW3MDjPmRVtW1JN2baZNue7WmrQg4KVtKKpJqV93d_z5jG_APTCCqdOr6IhhjP8_HXz_GfujXUbJJ8WgyWhXx0wP49fM8ByBOkj-z3RpPwHz0Ga_wlwm4O765m5O_L5Y1plfHYheHXQJ2CdklYRdMLzBmPSCrhazWZf3Rgj1EKb34S3a7XN7-9I07qD2nokfErAVW3eEbr7-ROP3l7ckH3vHkmHP9LwbDS671o0aDFspolB4DhoPSHz43rzuakw_v5iO-lqZ4mxTlWvoF57iIdzgF_2a7B1CUS2u824wfcfEYZ-kn56P10Sq7lR3fvwe_kaW5LcvbXVzsPn0F24f4iazK5TjJigR8PyufLbPc8CTebnGxyzb5vX08H92dL4qL8-ziCq-yfEsJzn_OLuajk8lkUjelHdNs-_dzntCui7L5vU3aCLUGh2I_nKc9eyUPcXGfrAkC5awUJRNfElfzSmaV39J5IRrzWzqTZFb4reMAGib0N6S_Cf3FgMYEoCHBtfg9x2BTgMdNgRstcrwq52hcco0pF8VcZzsyeeuKkcQjbc2rDbo5B-nmDNXNYUw0RBsprBTUgpA3TJ_BcUNVa3FwgjsoTpO_ZG0NFqFZrqqJy5vgPorCgxSFQxV130AkoiGR6B6kmztUN_Rakej1ikRvQCT6-yMxYE3IltFDUXSQomioov4biMSQT9aij27eQbp5Q3ULKiZJGS0w-73zrV7RGA6IRpvvIyg1h6PtDHkz-gfp6g_eo623sEnDIREZHKRcMFg5-zVD0u0VklUI9YtJZI7J5jBZWnzH52aWp11HSX6O_eN5QdNLdpblN-WhNk_jghx3wA05Gxeb5ydw5ABi9S9cbOQpvy17th6w9Af0BMWqxSMSq6kPOloDWNaQvoxap7QFSrsmagZhIrTbCW0NwJYJldt9eEjAQwNFdNsRXQ0RyUye1sDbQ-kKlK4uIjIRwnZCqAG4MqEC7O_BgwIe7BRRRW5GKHt093j0BY_-wGnz2kXRZyVQIsvSWoR7MD0B09NF8E2IqB0RaQC-jBgqxPa-xWmJq9MaKGTQThnoS1Rdo_oSsZ09qKFAGupSVpPTsr-3U_o6gqVQQuUe7UEMBMSg3zKofDbDVHzKspBNYZauhI8bYDweix8s1A8Y9HnLy9X0vYK2FzXRNkbNIn0rd9qrByPvmgY2x_RNQGVztHS-la3bXr2xyfm86gtquXxPX7RW8gTlPL-nnrRWsuPKHwMMakLT9wB1hK6WyreSddur9w854TawuaacW2VDWrrcytZtr9595XxZ9eVpuXJPX7RW8uTLeXRPPWmtZCeQk22DmsiUb6sj9LVUuZWs216948gJrYHNM-W0KlugpaOtbN32mg1byUZVb6GWifb0RmtlX8rLze6pKa2VLTlKMmvQ1Dfls9o73NJz0Va6bovNtqikjAa-wJQ1anz6JtOuXrfF5nChJHyaP0fP9nr6o7WyN6Skgj2VpbXK7u2oGSN9vszElHD3smbbP_8_B63J8hUdUTmYKV42Jkjn9XpydOVN_cvgdLsrNv_gyVEII9efniab9aaYHFn070wyIJByE9fX09DzahPXduRAp8uEnodzS7PLkPzVlqKo7Ctb4g_HabwlvYv4ZQIQQLJ9rniFF0ZXYVQbnXmhDYMuPA3ryr30p80Ag5kfRVCzwJVnh7w26auDXC3btRNF-2TjVi-fntYv3HZUGmQzzSibjPm0OT02RdQU3aYIm6LfFD3BgtWUw1PhJFsVz0bf_wOV0kUL7B4AAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2180,7 +1927,7 @@ Email address compliant with RFC2822
 ```mermaid
 graph LR
   accTitle: "Regex: ^([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x22([^\\x0d\\x22\\x5c\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x22)(\\x2e([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x22([^\\x0d\\x22\\x5c\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x22))*\\x40([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x5b([^\\x0d\\x5b-\\x5d\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x5d)(\\x2e([^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+|\\x5b([^\\x0d\\x5b-\\x5d\\x80-\\xff]|\\x5c[\\x00-\\x7f])*\\x5d))*$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2188,125 +1935,125 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
-  negated_char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_1("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_1("\x22"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  negated_char_class_2("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
+  char_class_2("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
   literal_2("\x5c"):::literal;
-  char_class_1("\x00-\x7f"):::char-class;
+  char_class_3("\x00-\x7f"):::char-class;
   literal_3("\x22"):::literal;
   literal_4("\x2e"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  negated_char_class_3("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_4("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_5("\x22"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  negated_char_class_4("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
+  char_class_5("\x80-\xff<br>\x0d \x22 \x5c"):::negated-char-class;
   literal_6("\x5c"):::literal;
-  char_class_2("\x00-\x7f"):::char-class;
+  char_class_6("\x00-\x7f"):::char-class;
   literal_7("\x22"):::literal;
   literal_8("\x40"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  negated_char_class_5("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_9("\x5b"):::literal;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
-  negated_char_class_6("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
+  char_class_8("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
   literal_10("\x5c"):::literal;
-  char_class_3("\x00-\x7f"):::char-class;
+  char_class_9("\x00-\x7f"):::char-class;
   literal_11("\x5d"):::literal;
   literal_12("\x2e"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  negated_char_class_7("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
+  char_class_10("\x00-\x20<br>\x3a-\x3c<br>\x5b-\x5d<br>\x7f-\xff<br>\x22 \x28 \x29 \x2c \x2e \x3e \x40<br><i>One or more</i>"):::negated-char-class;
   literal_13("\x5b"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
-  negated_char_class_8("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
+  char_class_11("\x5b-\x5d<br>\x80-\xff<br>\x0d"):::negated-char-class;
   literal_14("\x5c"):::literal;
-  char_class_4("\x00-\x7f"):::char-class;
+  char_class_12("\x00-\x7f"):::char-class;
   literal_15("\x5d"):::literal;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_2 ["#2 Group 2 <i>Zero or more</i>"]
+  subgraph standard_2 ["Group #2 <i>Zero or more</i>"]
     disjunction_begin_2
     disjunction_end_2
-    negated_char_class_2
+    char_class_2
     literal_2
-    char_class_1
+    char_class_3
   end
 
-  subgraph standard_1 ["#1 Group 1"]
+  subgraph standard_1 ["Group #1"]
     standard_2
     disjunction_begin_1
     disjunction_end_1
-    negated_char_class_1
+    char_class_1
     literal_1
     literal_3
   end
 
-  subgraph standard_5 ["#5 Group 5 <i>Zero or more</i>"]
+  subgraph standard_5 ["Group #5 <i>Zero or more</i>"]
     disjunction_begin_4
     disjunction_end_4
-    negated_char_class_4
+    char_class_5
     literal_6
-    char_class_2
+    char_class_6
   end
 
-  subgraph standard_4 ["#4 Group 4"]
+  subgraph standard_4 ["Group #4"]
     standard_5
     disjunction_begin_3
     disjunction_end_3
-    negated_char_class_3
+    char_class_4
     literal_5
     literal_7
   end
 
-  subgraph standard_3 ["#3 Group 3 <i>Zero or more</i>"]
+  subgraph standard_3 ["Group #3 <i>Zero or more</i>"]
     standard_5
     standard_4
     literal_4
   end
 
-  subgraph standard_7 ["#7 Group 7 <i>Zero or more</i>"]
+  subgraph standard_7 ["Group #7 <i>Zero or more</i>"]
     disjunction_begin_6
     disjunction_end_6
-    negated_char_class_6
+    char_class_8
     literal_10
-    char_class_3
+    char_class_9
   end
 
-  subgraph standard_6 ["#6 Group 6"]
+  subgraph standard_6 ["Group #6"]
     standard_7
     disjunction_begin_5
     disjunction_end_5
-    negated_char_class_5
+    char_class_7
     literal_9
     literal_11
   end
 
-  subgraph standard_10 ["#10 Group 10 <i>Zero or more</i>"]
+  subgraph standard_10 ["Group #10 <i>Zero or more</i>"]
     disjunction_begin_8
     disjunction_end_8
-    negated_char_class_8
+    char_class_11
     literal_14
-    char_class_4
+    char_class_12
   end
 
-  subgraph standard_9 ["#9 Group 9"]
+  subgraph standard_9 ["Group #9"]
     standard_10
     disjunction_begin_7
     disjunction_end_7
-    negated_char_class_7
+    char_class_10
     literal_13
     literal_15
   end
 
-  subgraph standard_8 ["#8 Group 8 <i>Zero or more</i>"]
+  subgraph standard_8 ["Group #8 <i>Zero or more</i>"]
     standard_10
     standard_9
     literal_12
@@ -2315,54 +2062,54 @@ graph LR
   %% Edges
   start --- assertion_1;
   assertion_1 --- disjunction_begin_1;
-  disjunction_begin_1 --- negated_char_class_1;
-  negated_char_class_1 --- disjunction_end_1;
+  disjunction_begin_1 --- char_class_1;
+  char_class_1 --- disjunction_end_1;
   disjunction_begin_1 --- literal_1;
   literal_1 --- disjunction_begin_2;
-  disjunction_begin_2 --- negated_char_class_2;
-  negated_char_class_2 --- disjunction_end_2;
+  disjunction_begin_2 --- char_class_2;
+  char_class_2 --- disjunction_end_2;
   disjunction_begin_2 --- literal_2;
-  literal_2 --- char_class_1;
-  char_class_1 --- disjunction_end_2;
+  literal_2 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
   disjunction_end_2 --- literal_3;
   literal_3 --- disjunction_end_1;
   disjunction_end_1 --- literal_4;
   literal_4 --- disjunction_begin_3;
-  disjunction_begin_3 --- negated_char_class_3;
-  negated_char_class_3 --- disjunction_end_3;
+  disjunction_begin_3 --- char_class_4;
+  char_class_4 --- disjunction_end_3;
   disjunction_begin_3 --- literal_5;
   literal_5 --- disjunction_begin_4;
-  disjunction_begin_4 --- negated_char_class_4;
-  negated_char_class_4 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_5;
+  char_class_5 --- disjunction_end_4;
   disjunction_begin_4 --- literal_6;
-  literal_6 --- char_class_2;
-  char_class_2 --- disjunction_end_4;
+  literal_6 --- char_class_6;
+  char_class_6 --- disjunction_end_4;
   disjunction_end_4 --- literal_7;
   literal_7 --- disjunction_end_3;
   disjunction_end_3 --- literal_8;
   literal_8 --- disjunction_begin_5;
-  disjunction_begin_5 --- negated_char_class_5;
-  negated_char_class_5 --- disjunction_end_5;
+  disjunction_begin_5 --- char_class_7;
+  char_class_7 --- disjunction_end_5;
   disjunction_begin_5 --- literal_9;
   literal_9 --- disjunction_begin_6;
-  disjunction_begin_6 --- negated_char_class_6;
-  negated_char_class_6 --- disjunction_end_6;
+  disjunction_begin_6 --- char_class_8;
+  char_class_8 --- disjunction_end_6;
   disjunction_begin_6 --- literal_10;
-  literal_10 --- char_class_3;
-  char_class_3 --- disjunction_end_6;
+  literal_10 --- char_class_9;
+  char_class_9 --- disjunction_end_6;
   disjunction_end_6 --- literal_11;
   literal_11 --- disjunction_end_5;
   disjunction_end_5 --- literal_12;
   literal_12 --- disjunction_begin_7;
-  disjunction_begin_7 --- negated_char_class_7;
-  negated_char_class_7 --- disjunction_end_7;
+  disjunction_begin_7 --- char_class_10;
+  char_class_10 --- disjunction_end_7;
   disjunction_begin_7 --- literal_13;
   literal_13 --- disjunction_begin_8;
-  disjunction_begin_8 --- negated_char_class_8;
-  negated_char_class_8 --- disjunction_end_8;
+  disjunction_begin_8 --- char_class_11;
+  char_class_11 --- disjunction_end_8;
   disjunction_begin_8 --- literal_14;
-  literal_14 --- char_class_4;
-  char_class_4 --- disjunction_end_8;
+  literal_14 --- char_class_12;
+  char_class_12 --- disjunction_end_8;
   disjunction_end_8 --- literal_15;
   literal_15 --- disjunction_end_7;
   disjunction_end_7 --- assertion_2;
@@ -2372,7 +2119,7 @@ graph LR
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000;
+  classDef negated-char-class fill:#EA9999,stroke:#CC0000,color:#000000,stroke-dasharray: 5 5;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
@@ -2385,11 +2132,71 @@ graph LR
 
 ---
 
+## Emoji Support
+
+Demonstrates support for extended character classes using the unicodeSets mode, enabled using the v flag
+
+Source: <https://v8.dev/features/regexp-v-flag>
+
+### Pattern {#Emoji Support}
+
+```regex
+/👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\p{Emoji}){2}/v
+```
+
+### Diagram
+
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61RQW_TMBj9K5arSZu0rE0mptWdpnVpwwXtMLgRVBnHbQ1uEjkebKoqwWkXYOKKNGVCgu0wceIwceG_8AeIxB_gs5O0HbAblp5i-8t73_uep5glEccEjxRNx-jBYRgjRBl7JLTkBIX4kI_4MUHNIn__tsg_vPpxfvrz5qzIT78Bbor8zTv4XgE-A64Bl0V-9vXXxetLwEfAJ8CX6vx9NYSVTvuT5JmYrU29WfNFiKuWPZ4xZVre5zFXVPMIvRR6jJRx4OjEmXA1oSLa8zZaGy1DM8SVFXQAE2Rmn2mq9N4UZWOagvmhw4RiaNYxtaGI76hIoaGdHLirIf4_U4Z4jRBS6doebEzVIOPaNrHTl_-YewfuO_NhHh49tU9RDlQdzGRxRFU0cNFjCEglRylquGhH7PaPKdPyBHk7TbEb4ieGttzPnHkczfX70WgpLOQ4ziKA23HY2kLojzlsFUJdcq5PZCldvYm9EfHIEiXNsh4f1vJAlZI0gra_3_bXM62S55w0-lttd3N7nSUyUaTRsqtzi14HVvHbQXe7153z7_lb-37rL37lqYztX6bqeGtXQeD5C1eB63ub3l2q3TSF-Ett3wiWGVjt5Xertx08-w2PblAidQMAAA==)
+
+<details>
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/emoji.mermaid-diagram.png" alt="Mermaid diagram for Emoji Support" />
+  </p>
+</details>
+
+```mermaid
+graph LR
+  accTitle: "Regex: /👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿(\\p{Emoji}){2}/v"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
+
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  literal_1("👍🚀❇️🇺🇸🌎🇨🇦🇬🇧🏴󠁧󠁢󠁥󠁮󠁧󠁿"):::literal;
+  char_set_1("Emoji"):::char-set;
+
+  %% Subgraphs
+  subgraph standard_1 ["Group #1 <i>Exactly 2</i>"]
+    char_set_1
+  end
+
+  %% Edges
+  start --- literal_1;
+  literal_1 --- char_set_1;
+  char_set_1 --- fin;
+
+  %% Styles
+  %% Node Styling
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
+
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+
+  %% Apply Group Classes
+  class standard_1 standard;
+```
+
+---
+
 ## HTML Tags
 
-Naive html tags
+Naive html tags. Note: do not use regex for parsing HTML!
 
-### Pattern
+Source: <https://digitalfortress.tech/tips/top-15-commonly-used-regex/>
+
+### Pattern {#HTML Tags}
 
 ```regex
 <\/?[\w\s]*>|<.+[\W]>
@@ -2397,7 +2204,7 @@ Naive html tags
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA42Ta0_DIBSG_wqpMfHWzbazutrUSzf9YjRRExOtWZCyDmWwAEaN-t8FrG5Yt4wPvZzDc3g5L7x7iJfYS7xKwMkInF0WDACI0DVRFCeg8C5xhV8TkBZ6tA_uzOvFPOT9RvaRtjZt5OY-K7ya7GGJhCFPMcMCKlyCF6JGQJhCvuL-GIsxJOVh0NpudQxmwNVVcK6FSPMtFRTq8B3IEZxoDUMfEYHA577JDQmbkymJfHxmSBHOBg-4ImwQJEkyE12Cw6xckqJE6c3RQbBWeGnhrWuoDjnpUKfb6YPIUpJdTEw9SNM2yZoEGkExQBRKaWvqLgPd5Bq9xYIDLsCYCzzFDeJbxFkz0ng2X1JnseIdnT5ib1YPRDr2o57hpoI5GwjtBm4Wqoz_U1mfhH5ZzZwE4Pv-f-7Oc93O__XHdcvJha5VNjdrQ8MXh47cpjdU2rO0lMaO64-T23HN-asxbLTeoWO35UtqtFE7V9-2qStX6o1-21JfVhshrLISzOo9PJwtpHFKk5WTk143jrekEvwJ698gD6NwC3HKRbKybce-U6LW-4N38-Nu_ov3424Q7S3CpweurnDcOdrtTQXs9XfzPPpTwfv8AogqI6MKBQAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA42TUW_aMBSF_4qVqtK2NhQSoCSNskICfZk6qZs0aU2FXMck3oKNbE-s6vrfZ3sZwQFa8gDJvf5Ojn1unh3EcuyETsHhqgSf7jIKAEToK5EVDkHm3OEC_w5BlKnr4uO9_lvrH_HwIf4Tdc5M5dtDnDk1mWKBuCZvMMUcSpyDNZEl4FrIlcxdYr6EJL_2Ot1OV2MaPD0Ft8qI0PdCQi6vn4Eo4Up5WLiIcARernRvQeiBTk7Ej18UScLo_BEXhM57YRhuVY_gMM2PpCoi1eaqee9d5kSZ815Bdclqe6qtzi165HFE4s8rrQir6ILEuwwqIZ-jCgphVMf0CawZz00dIrVOq5hqqSixggjXut8xZ4BxsGQcN9qac42eZclX2vFhx_39GzLmBJYba5YrvTeKD1hQVHt_-lhumQSwtcNXjQ_2Ga9nZ5oXW7MDXNfdNw-H5sSs3yRq52v1PDtc09uObSdHi_btHHZcmuk7ymPfjqzxYRJqBdZ26e2kYWkP7EM_0qWpmrXqC21y-SKfqn_B1B-4qRBaGAv67SlebAspvKrCk9ksDYbDcyE5-4nVYy_xfO8csYrx8KRrritLovb7Hw-SSZBs8Okw6Pmj1_Bm5GqFSX98mTYGRtPLJPHfVFDnXfPBbDxKxxt-kAwnSbfFOy9_AfXqP2J-BQAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2409,7 +2216,7 @@ Naive html tags
 ```mermaid
 graph LR
   accTitle: "Regex: <\\/?[\\w\\s]*>|<.+[\\W]>"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2417,13 +2224,13 @@ graph LR
   disjunction_begin_1:::disjunction@{ shape: f-circ };
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("<"):::literal;
-  literal_2("/<br><i>Optional</i>"):::literal;
-  char_class_1("\w \s<br><i>Zero or more</i>"):::char-class;
+  literal_2("\/<br><i>Optional</i>"):::literal;
+  char_class_1("Any word character<br>Any whitespace<br><i>Zero or more</i>"):::char-class;
   literal_3(">"):::literal;
   literal_4("<"):::literal;
-  literal_5("Any character<br><i>One or more</i>"):::literal;
-  char_class_2("\W"):::char-class;
-  literal_6(">"):::literal;
+  char_set_1("Any character<br><i>One or more</i>"):::char-set;
+  char_class_2("Not a word character"):::char-class;
+  literal_5(">"):::literal;
 
   %% Edges
   start --- disjunction_begin_1;
@@ -2433,10 +2240,10 @@ graph LR
   char_class_1 --- literal_3;
   literal_3 --- disjunction_end_1;
   disjunction_begin_1 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- char_class_2;
-  char_class_2 --- literal_6;
-  literal_6 --- disjunction_end_1;
+  literal_4 --- char_set_1;
+  char_set_1 --- char_class_2;
+  char_class_2 --- literal_5;
+  literal_5 --- disjunction_end_1;
   disjunction_end_1 --- fin;
 
   %% Styles
@@ -2444,15 +2251,1653 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
+```
+
+---
+
+## IP Address
+
+Handling both IPv4 and IPv6 addresses
+
+Source: <https://digitalfortress.tech/tips/top-15-commonly-used-regex/>
+
+### Pattern {#IP Address}
+
+```regex
+((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))
+```
+
+### Diagram
+
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-1dbXMbR3L-Kyj5VEVeRGfnfZZ22SdT1n1JXaou-RTL56JJSGJCkyqQrjuXpP-exS4I9Dw9g2kMIJ2cSB9EYHa3u6e3X6Z7B_u8fXRxezl_dPro1eL8zevZv_31xc1sdn5x8Z9X99fz09mLR3-dv5r_43R2dPS3F8O_uz8eHR390J30P777QQ3_Tx_V-Oetfv9OD5_salS74a_78Xh53ZfHb837XS88njj-4fgdMH968vz85OWPb9UT-_70-G14z0bfnR4PV-VO9u-PTtnZR0crnis5ltwu36nxz_R5FPrb8fPx0TijnS5ZTv-4LJR7P8yMiXU8_K-Xl_2zxbNF8ZaX5Q59-5Fk3iK0KQptC0K_7QZ1__MF10XBXVlw8wkIroqC-7Lg9iMLflqSMZRldB9VxuOjx1_-y_G3D8Hv-MWjVUx-Nr-7WCxj8p_nN_PF-f38cvb3q_vXs8UyRJ_c3578Ml_8cn51-Sf9Zfdlt7xseeHjx7O_DCH-bvn57v58cf-nt7O71-dvhuj-8uTianExe__V8tjLq5vCkcuru__-9ebi_ur25qef56-ubn5Sp6enZFRw3fzmUnjV-d3dfDFeo45ePPrb1z8vvvn66pvvlnzvxvl-_a9X37x4dDwQW586Xnjx-nzx0938frzu6c1vs7-_vrqf3705v5iviPzXfHE7u13MfrldzDdUltedDNcV5qqb5iq7ahT54nqYx1roy6tXV_dEsPEonqyHkwfbqZ1mqjSvBw0tzq9H7mo6YzWEtCyltdLn9_84v7i__m2mQZmc_lJgvZW-G84YvKQ2JS-e0nLy2m3lGUaebiuZh3kvDw-znS84RW4zpslmzK42E3exmV5mM6oTa9hVjUapvazGV61GaZnZKLkrhLrdKLvFcNZhSO8RhjZBcEnlDw-au7ncHgI3l5nG2GkOGjttkx_YnWOnQzMbMvjyz5DFV-Kr2f3tzFYtbulRpxIPd00zczvPzB9qZn1-ZpRXOBSvMYaI1Oib1Ci7ai2Nqk897jt1PrXQNLWw29S0IFj1giw3xsftoVZ3tVC7jB-2EGcfYsSaod2SPJaEXIXQ-kQvOXE1BTXlwNUt_fc3SxWfXxdv6ppHkM7KtawWYpOlxN0sxdctRWuJpYS6pRiJpUSpTmPFUnqppRSXNjlTsY2mopR0XvWIrA-W17Q4IvdNxtjvZIy6HpH1wRLfaNWiqauuraztdpu8oDDRkspkNNGKJ0aJJyotNFntKq5YXGZzX7Q7-GLf6otOOjHfErdVYxtE7WYvgoLEdBJ7iVV7MUpkL16q1r5mL0FsL1FuL0a32ksvnJjpqgHMmEMFMKPEAaytVyW8bC2Prk_eHmzyps7sYFlyFFum6bYOj_CytTxO4Ppe4Pqm3kkxQeL6upN6SKi4vlZS19d6B9ePja6vjXRisSlVtHVChJetZesF9iIpB21XtRcrKge1tB60qmYv4oJQ71AR2taKUEtLQluPllYfKoBZIw5gbQ0s4WVreWx98gfLk9bVmR0sL1kv1nRbj0vt1uSyglWidRLXr68SrRe5vrTAt7VVohZX-GaHCn_UWIvrG2mF77qmVNHWOFS7dQ6dEthLFNiLqz_as73EXoy0CnWmYi9GXIWaHarQ8W422Yu0CnX1aOnUoQKYc-IA1tafVLs1KJ2vT_5gedKFOrOD5SUnfqik2ppvarfumxOsEp0VuL6vrxKdE7m-tKHga6tEI24omB0aCqNtNrm-tKHgdUuq0G0NS71bw9ILGpZO0rD09YalEzUsrbQK9bWGpRVXoXaHKtS1NiyttAr19Wjpu0MFMB-kAUy3dUT1bh1RH-uTP1ie9PXHNP5geSmIH9Poxm1pu7X6gmCV6I3A9UN9leityPWlDYVQWyVacUPB7tBQmCJOi-tLGwqhaUeabmtY6t0alkHQsPSShmWoNyy9qGFppVVoqDUsrbgKdTtUob61YemkVWgoRMv18V4cc9qamHq3JmasP1vx_cH2e9WfRIeD5dEofhKt27pzerfuXJRskVUCb431hV3QEm910h5ArC3snLgH4HboAUxJpcVbpT2A2PQkWrf1GPVuPcYo6DEGSeEY6z3GICocnbRwjLUeoxMXjm6HwjG0Fo5OWjj23fbo3i_99_GWiXvWpHwQ9mZe2e-7oaEOstXZyrc6r37Y8h-__jz-bnH6ccvqy_JXLjeX54vLn9zshxeP_ry4_fXN7IvBIn9cnpV1H35gdI9pmO6lZCP8HDONrLd5sRNsegKn4NiITy8x7ISwHBlknjTDNWGJJuyMbMI3k35XqtloLmVoK-Q9Ie-3KNrkFc3nE9lIz29GlwrJ1aZUeobnZ2TuMdzAwM-oqcMQdZiicjc3B777CnlNyOtG8uT7ar7kd1dkxuO2GPiu8QJdEVh1ROLhC7G_kNhfsqc_vQ2xxkNRHmqLEbq8EWbMB9yur4jQEwl6fl8e7JWIXJsTNaThC9GbL-otQPzpakyo86pt3hvyikOGGZfq4RTu8LoDI4MoqSwcd_Cd-7ZGu60FSRWpJuIWTcS8JiLInJFJwyk8umgDYiPVCMd7dNeO00Tt1U0vUF0EQcpQKKersaDpWbkMRV9gQaSs8aCJb7ChZh50wJXMwufNAsKI4ksCprtaqFE0B6hMEnhwsUNMlGizlplooNdJoHelgKUh0OtawNI0KuoxKo4FuE44bPaac47VBJtk2Ix2Jx_dRoHatt629nzwVr6rHOaRiZkQeRMvf9gAjo4PAUhjHFUYflSGKgs5NV_XNJwMcm_RhyroA9ZymkdOgyrjq0jD1jbgnHxqAQcyVDWeU_NfTZPu8KUeXtnNrhoxDX06E_q0K7AgUtZ40EWXViVHoQO6UQo6YEvG0-dtB5YfmIRNdYlEV3Yqs7TT3cecN1F_7f5QwYcvxMxsKR4bqH9MjYmh0XL48hCPTTYem0zFXK2nqJmZjJmZWgViqDOYsQJOmzEoJY-2phbjDPVps20hrQp1MJaehtckBlsBfI1pMGJpiIv8BFbhZW4SZpJqDjR0OW22LaeVLegDigDDmwAGfNvyxa_F0kIDWcumj0lRcy3zi2prUUNzoJEsqQ0sC02tCDZ02WEyS2rjCyyIlDUeSXcj094wtpEpHYBFYT1E0JXnENALIYIOqA8oN9FW0egLXUdcodlabNPUz3TMZKf-09IFuWm1tiW9q7Yru0yymx70V4tTlhq03dQTNpsZLF8O1znQDGkz9USdAnXs4csgY1eueSzPG7bmQJZGJ7t1hV4oc3EpbfkK3WJfma-lrce4CkHQ4gqdLdlNJgdgyquuaixdOtl-mz4KfTHsxLnMowCYm-N5l03XgH07LNgMG-Am6zAnVlc3lkaZ4Us9e1lIza7q7XQBZX2GYiiwIFLWeCRPQjJVkXWNTOkAekKtjrJ0gWtVKUDQAf0B5SbaKhp9oYuObXtXTdzUz0ymtrLdp6ULctMqU3P0rg5f-LuvePZy0OZwNb901KCdXWcvl80Mji9kXW194Wh-dLnnWbV77KhjO7_OXvkK0fG84Wr50dHo5LbWGoUeAT6jcLzWcFA3eJ5nHFYOWK95LBtYMWZ4TnSYE02tv-Tpwsl32559F_qPWDR6XhE7SHA-k2ewarRIFhXG6iqbeUCOObG6fnI0yrhekL08Clp1E7qAciHjJrHAgkhZ45HsaMjUd843MqUDuG6p5VRHl7dOlwIEHTAfUG6irWIQKDzAw-cwvpa4HfUzlyk7nfq0dEFuWi2E0LvqNXUZVcpezGlqzQRPDdq7dfby2czgeWj0tSTsaX70mQWfr2VYTx3bh3X2yteHnueNaujwNDr5bbWGLm1VgqIg8FrD474WHlc9Pia2kPEClhaWhW--wOAhvmYVgS6cwra9HLrQSdU42cyeKsjMISM55mas1wI7ATOT42sEjznR1Ww40CgTOkH2CrCMDNUdXHQB5TNNJN8XWBApazySbWKZ-s6HRqb0ErxFVano8tabUoCgA_YDyk20VTT6wiNSjTe9lrg99TOfKTu9_rR0QW5azWVoYgmbxBKyQTtmvLS2Fgs0sYRMYgm1xBJoYgmbxJIv3SIP6VXbDjSxhK2JpVDP4-6MmNl7CmYXeRkQ8AG5g3wVMUewrpbLUGXn1DQeqcHHrYml0OTUkDUiL1YDJM3IVy2BTRfJsjyCmcZlqGKZWK0nIk0sUZJYIt7s2go50MQSMokl9AUWRMoaD5pYQiaxhNDIlF4CiSXWVnWBJpZgSgGCDtgPKDfRVtHoC89h8YFpX70htHYI-pObOrlHkDKrHkMdRrzHlwz0H2-jHh3Qn9KOFSpY__t6WEkljb-vTjWdS__7alPQge73tUalA-oTj4IkfpdSRCFD1MrLSBNC1NX9Vz12gX015dCM8zkwfw7MnwPz58D8fzYwb4jid_bjPLYbBCOrwitqwTz5pd3Bfn-4cd_Poftz6P4cuj-H7v-noXtzRfHxdeHpdRK3Hz-efX_5iuB-zk5OTnLESi-jHM8nvwpHdM7x-OYnTwClUOCmS28w2VBb_SSS4VgximNrSkpPM1QRPMOwV6U3cFz_gjPF-kFelr0jdw9eOgXdQF6OvZ4Qz_DsBUt7SGPSV9Ijr8DekSLkNY4mnGz6GumCxZkSRidKFhm8ZlYyMb2eIXAyG-84-mYDz_VGnfQ1r4wbdym1BzefviaRcdMcq5OdYzhO5x4ShfS9Zoyb5TieQm7jaBrvNLyjHKKlRhjPLCdp7DWI7pnKYuCtswVPsCWUTqYpxxE2E03H9OVKBX6uhJ3J-HmOe5nV13aK6-ZR-gYkIaVxNHuuXG-BY2qmWaEDnMyC5nwJLjOlBkmGZRkVOdBldobb-WXeBFLCvEzl0wBWyeTrOVhlVj4hPwOYlmwN0HFQy9STLLzzcR9pLABeppwcvPArPerhBVsNciRvQuFImCm_AHiXQn7jaDprB4CYBQuKJSzMlJoHEEs2M76sy0daIb8AWJeMn-Fgl6kmI6Bc7iNNBCDMlFMPMJiwHu8Q_LJBkuQVMhwiEzhiCaCEHMfRhri0eVsKAGsKaY2j-0V87ThmZ7o27wCHs-APfQmOM6WmAEeTyeM5kGZ2hkJ-UFroUg3ZFSE1U3oGoDCZ_IFDYeZXTlKOFjAzGcfIQTPBrjXCZe4nkQNMTeBmEFITjlsE0mySJnmbCwfcBJ4OcTWlPKfhdP4eoDdLNlVcHKuUXgC4TFbXdxwuMy-_lGMEXE3GUXFgTdCoR0jN_STqAXcTuAWE3YTjEcE2m6RJ3ojDQTmBZ4_Ym1Ke0_AeUc10AOYppDWO7pcvDG8ypTWsUYD9WfIOXcQATelpwO5kElkO3pm_E1KO0ABiMd44juCZUrCAylnSgSmic6b0HKBqMok8R9XM60DK0QP8JuMYOP4m9Bc6RN7cT6IA8JzATSE6JxzHdodukiZ5nwzH7gSeBiE6pTyn4XT-EVA8SzZliwieKb0ekDfZ_HqOvJmXX8jRdgDRyXrKHcfoBI1aROfcTyIFEJ7AzSGCJxz3iNvZJE3yTh6O7wk8A8J4SnlOw3tFRqsBGVRKbRreL_NYzWFHU-kMQImWPMQVIUVTetCe5xIZjgWa14iUowM8UMaRP3YBi_YA8lnSgS-Cfab0AoB0MokcB-nM60DKMQKaJ-PoOZwn-EhEIM_9JOoB7RO49Qj2Cb3tDiE-m6RJ3gXDoUCBp0LETynPaTh9KtMBKGjJpkIREDSlpwDIk80vciDPvPxSjhoQPxnHnkN-gkY1gn3uJ5EBRFDghg9E8LhFGNAmaZL36XC4UODpEBVUynMa3isyOgtAo1Jq0_B-mccpjmKaSgcPLks9YxWLCKUpPQ_IokwizaFF8xqRcgwAL8o4Go4vmlKIgBla0kFfxA5N6fWA-ckkshzzM68DIUffATgo48g3IsCK0HjEBd1PIgXgocAtIHYoHI-IGNokTfIeF44sCjx7BBCV8pyG0_lrwBgt7cnpiviiKT0DuKBsfoHjguZ3d0g5WgAQZRwjRxCFJ3odYofuJ5EDgFHgphBfFI5rRBVtkiZ5Fw5HHwWeBkFGpTyn4b0io4dtIl5KbRreL_P4joOiptIFADoteYgqAp6m9CIAlTKJFEcqzd8NKcce0EoZR83hStNdMx1AkJZ0UNz-BfQUQIgyiQyHEM3rQMpRA9Yo42g52Cj4CD74t_tJZACLFLg5hCKF4x4BSJukSd7BwoFKgWdAPFIpz2k4nb8FyNKSTZkiXGlKzwHMKJsf38JY0JmUowc8UsYxcEBS0GhEKNL9JILtbcitR7hS2G_SIUhpkzTJe2w4mCnwVIhZKuU5De8VGUMEGFQptWm4IfNsfkQOAKsl67dFoNV0t10HAKnsTvQcITU_WylHBSipbBdvx2FSUwoaoE9LOnBFCNSUngHoUiaR4tCleR1IOVrAOGUcNQc5BfvXCG-6n0QOMFCBm0EIVDhuEfi0SZrkBSwcIBV44jY3J-U5Dafz9wCVWrIpX4RJTekFgDdl87Mc3jQvv5QjbJxl68PgOBAqaNQjBOp-EvWAkwrcAsKkwvGI4KhN0iQvseEgqsCzR6xUKc9peK_I2HcAvyqlNg0Ls8o4mvJVAOsK-0U7RHWF4woRW2GHuUUsVuF-9XF0PPflFQVmvf_tevrp0fDlL7eX83Hk6ubVKMXytj6bv6SEhsuvr0-_eP78We_9k7v7xe3_zIev6kwb_eTi9vp2cfpFN_77KiGxlnhF4Dv_LDyNawK9ObPh2TYCD1i0q-v750_js6fr692Z_-6sq14_fnuQwD4NzzZTiN-HszOzjcLqnj5ooD_7rj9bX_6975WJ7PKVZqcf4eZU-_AjsrVen-uzs5peV1Sfvnlz_duK9tmS4HQnp0lufjT4ZPNbyM1Hv_loNh_1E_JrXvJZbT73ZJhcqQhBFcnnQD4TURSRRRG2mrDVVDJ6DqGjCX1NZNCEvibiKyK_Jp8NoW_I-YbQMVRpZI6GyGCIbIbIb-i8yLWWjFtyviXyWHoLCS9L5LeUJpHTEvktnRe51pFxR853RB5HaDrCyxP5HaVJ5HREfkfm5ci1nox7cr6nNktoesIrEPkDpUnlJPJ7Mi9PryV8A-EbCN9A-EZybSR8A-EbCN9A-AYyX3J6JMPUc9bu_NWj9_8LnSOX3gu0AAA=)
+
+<details>
+  <summary>Click to view as image</summary>
+  <p align="center">
+    <img src="diagrams/ip-address.mermaid-diagram.png" alt="Mermaid diagram for IP Address" />
+  </p>
+</details>
+
+```mermaid
+graph LR
+  accTitle: "Regex: ((^\\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\\s*$)|(^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*$))"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
+
+  %% Nodes
+  start@{ shape: f-circ };
+  fin@{ shape: f-circ };
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  assertion_1("^<br><i>Begins with</i>"):::assertion;
+  char_set_1("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  char_class_1("Any digit"):::char-class;
+  char_class_2("1-9"):::char-class;
+  char_class_3("Any digit"):::char-class;
+  literal_1("1"):::literal;
+  char_class_4("Any digit<br><i>Exactly 2</i>"):::char-class;
+  literal_2("2"):::literal;
+  char_class_5("0-4"):::char-class;
+  char_class_6("Any digit"):::char-class;
+  literal_3("25"):::literal;
+  char_class_7("0-5"):::char-class;
+  literal_4("Any character"):::literal;
+  disjunction_begin_3:::disjunction@{ shape: f-circ };
+  disjunction_end_3:::disjunction@{ shape: f-circ };
+  char_class_8("Any digit"):::char-class;
+  char_class_9("1-9"):::char-class;
+  char_class_10("Any digit"):::char-class;
+  literal_5("1"):::literal;
+  char_class_11("Any digit<br><i>Exactly 2</i>"):::char-class;
+  literal_6("2"):::literal;
+  char_class_12("0-4"):::char-class;
+  char_class_13("Any digit"):::char-class;
+  literal_7("25"):::literal;
+  char_class_14("0-5"):::char-class;
+  char_set_2("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  assertion_2("$<br><i>Ends with</i>"):::assertion;
+  assertion_3("^<br><i>Begins with</i>"):::assertion;
+  char_set_3("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  disjunction_begin_4:::disjunction@{ shape: f-circ };
+  disjunction_end_4:::disjunction@{ shape: f-circ };
+  char_class_15("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_8(":"):::literal;
+  disjunction_begin_5:::disjunction@{ shape: f-circ };
+  disjunction_end_5:::disjunction@{ shape: f-circ };
+  char_class_16("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_9(":"):::literal;
+  char_class_17("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_10(":"):::literal;
+  disjunction_begin_6:::disjunction@{ shape: f-circ };
+  disjunction_end_6:::disjunction@{ shape: f-circ };
+  literal_11(":"):::literal;
+  char_class_18("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  disjunction_begin_7:::disjunction@{ shape: f-circ };
+  disjunction_end_7:::disjunction@{ shape: f-circ };
+  literal_12("25"):::literal;
+  char_class_19("0-5"):::char-class;
+  literal_13("2"):::literal;
+  char_class_20("0-4"):::char-class;
+  char_set_4("Any digit"):::char-set;
+  literal_14("1"):::literal;
+  char_set_5("Any digit"):::char-set;
+  char_set_6("Any digit"):::char-set;
+  char_class_21("1-9<br><i>Optional</i>"):::char-class;
+  char_set_7("Any digit"):::char-set;
+  literal_15("Any character"):::literal;
+  disjunction_begin_8:::disjunction@{ shape: f-circ };
+  disjunction_end_8:::disjunction@{ shape: f-circ };
+  literal_16("25"):::literal;
+  char_class_22("0-5"):::char-class;
+  literal_17("2"):::literal;
+  char_class_23("0-4"):::char-class;
+  char_set_8("Any digit"):::char-set;
+  literal_18("1"):::literal;
+  char_set_9("Any digit"):::char-set;
+  char_set_10("Any digit"):::char-set;
+  char_class_24("1-9<br><i>Optional</i>"):::char-class;
+  char_set_11("Any digit"):::char-set;
+  literal_19(":"):::literal;
+  char_class_25("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_20(":"):::literal;
+  disjunction_begin_9:::disjunction@{ shape: f-circ };
+  disjunction_end_9:::disjunction@{ shape: f-circ };
+  literal_21(":"):::literal;
+  char_class_26("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_22(":"):::literal;
+  disjunction_begin_10:::disjunction@{ shape: f-circ };
+  disjunction_end_10:::disjunction@{ shape: f-circ };
+  literal_23("25"):::literal;
+  char_class_27("0-5"):::char-class;
+  literal_24("2"):::literal;
+  char_class_28("0-4"):::char-class;
+  char_set_12("Any digit"):::char-set;
+  literal_25("1"):::literal;
+  char_set_13("Any digit"):::char-set;
+  char_set_14("Any digit"):::char-set;
+  char_class_29("1-9<br><i>Optional</i>"):::char-class;
+  char_set_15("Any digit"):::char-set;
+  literal_26("Any character"):::literal;
+  disjunction_begin_11:::disjunction@{ shape: f-circ };
+  disjunction_end_11:::disjunction@{ shape: f-circ };
+  literal_27("25"):::literal;
+  char_class_30("0-5"):::char-class;
+  literal_28("2"):::literal;
+  char_class_31("0-4"):::char-class;
+  char_set_16("Any digit"):::char-set;
+  literal_29("1"):::literal;
+  char_set_17("Any digit"):::char-set;
+  char_set_18("Any digit"):::char-set;
+  char_class_32("1-9<br><i>Optional</i>"):::char-class;
+  char_set_19("Any digit"):::char-set;
+  literal_30(":"):::literal;
+  char_class_33("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_31(":"):::literal;
+  disjunction_begin_12:::disjunction@{ shape: f-circ };
+  disjunction_end_12:::disjunction@{ shape: f-circ };
+  literal_32(":"):::literal;
+  char_class_34("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_33(":"):::literal;
+  char_class_35("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_34(":"):::literal;
+  disjunction_begin_13:::disjunction@{ shape: f-circ };
+  disjunction_end_13:::disjunction@{ shape: f-circ };
+  literal_35("25"):::literal;
+  char_class_36("0-5"):::char-class;
+  literal_36("2"):::literal;
+  char_class_37("0-4"):::char-class;
+  char_set_20("Any digit"):::char-set;
+  literal_37("1"):::literal;
+  char_set_21("Any digit"):::char-set;
+  char_set_22("Any digit"):::char-set;
+  char_class_38("1-9<br><i>Optional</i>"):::char-class;
+  char_set_23("Any digit"):::char-set;
+  literal_38("Any character"):::literal;
+  disjunction_begin_14:::disjunction@{ shape: f-circ };
+  disjunction_end_14:::disjunction@{ shape: f-circ };
+  literal_39("25"):::literal;
+  char_class_39("0-5"):::char-class;
+  literal_40("2"):::literal;
+  char_class_40("0-4"):::char-class;
+  char_set_24("Any digit"):::char-set;
+  literal_41("1"):::literal;
+  char_set_25("Any digit"):::char-set;
+  char_set_26("Any digit"):::char-set;
+  char_class_41("1-9<br><i>Optional</i>"):::char-class;
+  char_set_27("Any digit"):::char-set;
+  literal_42(":"):::literal;
+  char_class_42("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_43(":"):::literal;
+  disjunction_begin_15:::disjunction@{ shape: f-circ };
+  disjunction_end_15:::disjunction@{ shape: f-circ };
+  literal_44(":"):::literal;
+  char_class_43("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_45(":"):::literal;
+  char_class_44("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_46(":"):::literal;
+  disjunction_begin_16:::disjunction@{ shape: f-circ };
+  disjunction_end_16:::disjunction@{ shape: f-circ };
+  literal_47("25"):::literal;
+  char_class_45("0-5"):::char-class;
+  literal_48("2"):::literal;
+  char_class_46("0-4"):::char-class;
+  char_set_28("Any digit"):::char-set;
+  literal_49("1"):::literal;
+  char_set_29("Any digit"):::char-set;
+  char_set_30("Any digit"):::char-set;
+  char_class_47("1-9<br><i>Optional</i>"):::char-class;
+  char_set_31("Any digit"):::char-set;
+  literal_50("Any character"):::literal;
+  disjunction_begin_17:::disjunction@{ shape: f-circ };
+  disjunction_end_17:::disjunction@{ shape: f-circ };
+  literal_51("25"):::literal;
+  char_class_48("0-5"):::char-class;
+  literal_52("2"):::literal;
+  char_class_49("0-4"):::char-class;
+  char_set_32("Any digit"):::char-set;
+  literal_53("1"):::literal;
+  char_set_33("Any digit"):::char-set;
+  char_set_34("Any digit"):::char-set;
+  char_class_50("1-9<br><i>Optional</i>"):::char-class;
+  char_set_35("Any digit"):::char-set;
+  literal_54(":"):::literal;
+  char_class_51("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_55(":"):::literal;
+  disjunction_begin_18:::disjunction@{ shape: f-circ };
+  disjunction_end_18:::disjunction@{ shape: f-circ };
+  literal_56(":"):::literal;
+  char_class_52("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_57(":"):::literal;
+  char_class_53("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_58(":"):::literal;
+  disjunction_begin_19:::disjunction@{ shape: f-circ };
+  disjunction_end_19:::disjunction@{ shape: f-circ };
+  literal_59("25"):::literal;
+  char_class_54("0-5"):::char-class;
+  literal_60("2"):::literal;
+  char_class_55("0-4"):::char-class;
+  char_set_36("Any digit"):::char-set;
+  literal_61("1"):::literal;
+  char_set_37("Any digit"):::char-set;
+  char_set_38("Any digit"):::char-set;
+  char_class_56("1-9<br><i>Optional</i>"):::char-class;
+  char_set_39("Any digit"):::char-set;
+  literal_62("Any character"):::literal;
+  disjunction_begin_20:::disjunction@{ shape: f-circ };
+  disjunction_end_20:::disjunction@{ shape: f-circ };
+  literal_63("25"):::literal;
+  char_class_57("0-5"):::char-class;
+  literal_64("2"):::literal;
+  char_class_58("0-4"):::char-class;
+  char_set_40("Any digit"):::char-set;
+  literal_65("1"):::literal;
+  char_set_41("Any digit"):::char-set;
+  char_set_42("Any digit"):::char-set;
+  char_class_59("1-9<br><i>Optional</i>"):::char-class;
+  char_set_43("Any digit"):::char-set;
+  literal_66(":"):::literal;
+  char_class_60("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_67(":"):::literal;
+  disjunction_begin_21:::disjunction@{ shape: f-circ };
+  disjunction_end_21:::disjunction@{ shape: f-circ };
+  literal_68(":"):::literal;
+  char_class_61("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_69(":"):::literal;
+  char_class_62("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_70(":"):::literal;
+  disjunction_begin_22:::disjunction@{ shape: f-circ };
+  disjunction_end_22:::disjunction@{ shape: f-circ };
+  literal_71("25"):::literal;
+  char_class_63("0-5"):::char-class;
+  literal_72("2"):::literal;
+  char_class_64("0-4"):::char-class;
+  char_set_44("Any digit"):::char-set;
+  literal_73("1"):::literal;
+  char_set_45("Any digit"):::char-set;
+  char_set_46("Any digit"):::char-set;
+  char_class_65("1-9<br><i>Optional</i>"):::char-class;
+  char_set_47("Any digit"):::char-set;
+  literal_74("Any character"):::literal;
+  disjunction_begin_23:::disjunction@{ shape: f-circ };
+  disjunction_end_23:::disjunction@{ shape: f-circ };
+  literal_75("25"):::literal;
+  char_class_66("0-5"):::char-class;
+  literal_76("2"):::literal;
+  char_class_67("0-4"):::char-class;
+  char_set_48("Any digit"):::char-set;
+  literal_77("1"):::literal;
+  char_set_49("Any digit"):::char-set;
+  char_set_50("Any digit"):::char-set;
+  char_class_68("1-9<br><i>Optional</i>"):::char-class;
+  char_set_51("Any digit"):::char-set;
+  literal_78(":"):::literal;
+  literal_79(":"):::literal;
+  disjunction_begin_24:::disjunction@{ shape: f-circ };
+  disjunction_end_24:::disjunction@{ shape: f-circ };
+  literal_80(":"):::literal;
+  char_class_69("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_81(":"):::literal;
+  char_class_70("Any digit<br>A-F<br>a-f<br><i>1 to 4</i>"):::char-class;
+  literal_82(":"):::literal;
+  disjunction_begin_25:::disjunction@{ shape: f-circ };
+  disjunction_end_25:::disjunction@{ shape: f-circ };
+  literal_83("25"):::literal;
+  char_class_71("0-5"):::char-class;
+  literal_84("2"):::literal;
+  char_class_72("0-4"):::char-class;
+  char_set_52("Any digit"):::char-set;
+  literal_85("1"):::literal;
+  char_set_53("Any digit"):::char-set;
+  char_set_54("Any digit"):::char-set;
+  char_class_73("1-9<br><i>Optional</i>"):::char-class;
+  char_set_55("Any digit"):::char-set;
+  literal_86("Any character"):::literal;
+  disjunction_begin_26:::disjunction@{ shape: f-circ };
+  disjunction_end_26:::disjunction@{ shape: f-circ };
+  literal_87("25"):::literal;
+  char_class_74("0-5"):::char-class;
+  literal_88("2"):::literal;
+  char_class_75("0-4"):::char-class;
+  char_set_56("Any digit"):::char-set;
+  literal_89("1"):::literal;
+  char_set_57("Any digit"):::char-set;
+  char_set_58("Any digit"):::char-set;
+  char_class_76("1-9<br><i>Optional</i>"):::char-class;
+  char_set_59("Any digit"):::char-set;
+  literal_90(":"):::literal;
+  literal_91("%"):::literal;
+  char_set_60("Any character<br><i>One or more</i>"):::char-set;
+  char_set_61("Any whitespace<br><i>Zero or more</i>"):::char-set;
+  assertion_4("$<br><i>Ends with</i>"):::assertion;
+
+  %% Subgraphs
+  subgraph standard_5 ["Group #5"]
+    disjunction_begin_2
+    disjunction_end_2
+    char_class_1
+    char_class_2
+    char_class_3
+    literal_1
+    char_class_4
+    literal_2
+    char_class_5
+    char_class_6
+    literal_3
+    char_class_7
+  end
+
+  subgraph standard_4 ["Group #4 <i>Exactly 3</i>"]
+    standard_5
+    literal_4
+  end
+
+  subgraph standard_6 ["Group #6"]
+    disjunction_begin_3
+    disjunction_end_3
+    char_class_8
+    char_class_9
+    char_class_10
+    literal_5
+    char_class_11
+    literal_6
+    char_class_12
+    char_class_13
+    literal_7
+    char_class_14
+  end
+
+  subgraph standard_3 ["Group #3"]
+    standard_5
+    standard_4
+    standard_6
+  end
+
+  subgraph standard_2 ["Group #2"]
+    standard_5
+    standard_4
+    standard_6
+    standard_3
+    assertion_1
+    char_set_1
+    char_set_2
+    assertion_2
+  end
+
+  subgraph standard_10 ["Group #10 <i>Exactly 7</i>"]
+    char_class_15
+    literal_8
+  end
+
+  subgraph standard_11 ["Group #11"]
+    disjunction_begin_5
+    disjunction_end_5
+    char_class_16
+    literal_9
+  end
+
+  subgraph standard_9 ["Group #9"]
+    standard_10
+    standard_11
+  end
+
+  subgraph standard_13 ["Group #13 <i>Exactly 6</i>"]
+    char_class_17
+    literal_10
+  end
+
+  subgraph standard_16 ["Group #16"]
+    disjunction_begin_7
+    disjunction_end_7
+    literal_12
+    char_class_19
+    literal_13
+    char_class_20
+    char_set_4
+    literal_14
+    char_set_5
+    char_set_6
+    char_class_21
+    char_set_7
+  end
+
+  subgraph standard_18 ["Group #18"]
+    disjunction_begin_8
+    disjunction_end_8
+    literal_16
+    char_class_22
+    literal_17
+    char_class_23
+    char_set_8
+    literal_18
+    char_set_9
+    char_set_10
+    char_class_24
+    char_set_11
+  end
+
+  subgraph standard_17 ["Group #17 <i>Exactly 3</i>"]
+    standard_18
+    literal_15
+  end
+
+  subgraph standard_15 ["Group #15"]
+    standard_16
+    standard_18
+    standard_17
+  end
+
+  subgraph standard_14 ["Group #14"]
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    disjunction_begin_6
+    disjunction_end_6
+    literal_11
+    char_class_18
+    literal_19
+  end
+
+  subgraph standard_12 ["Group #12"]
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+  end
+
+  subgraph standard_20 ["Group #20 <i>Exactly 5</i>"]
+    char_class_25
+    literal_20
+  end
+
+  subgraph standard_23 ["Group #23 <i>1 to 2</i>"]
+    literal_21
+    char_class_26
+  end
+
+  subgraph standard_22 ["Group #22"]
+    standard_23
+  end
+
+  subgraph standard_25 ["Group #25"]
+    disjunction_begin_10
+    disjunction_end_10
+    literal_23
+    char_class_27
+    literal_24
+    char_class_28
+    char_set_12
+    literal_25
+    char_set_13
+    char_set_14
+    char_class_29
+    char_set_15
+  end
+
+  subgraph standard_27 ["Group #27"]
+    disjunction_begin_11
+    disjunction_end_11
+    literal_27
+    char_class_30
+    literal_28
+    char_class_31
+    char_set_16
+    literal_29
+    char_set_17
+    char_set_18
+    char_class_32
+    char_set_19
+  end
+
+  subgraph standard_26 ["Group #26 <i>Exactly 3</i>"]
+    standard_27
+    literal_26
+  end
+
+  subgraph standard_24 ["Group #24"]
+    standard_25
+    standard_27
+    standard_26
+  end
+
+  subgraph standard_21 ["Group #21"]
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    disjunction_begin_9
+    disjunction_end_9
+    literal_22
+    literal_30
+  end
+
+  subgraph standard_19 ["Group #19"]
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+  end
+
+  subgraph standard_29 ["Group #29 <i>Exactly 4</i>"]
+    char_class_33
+    literal_31
+  end
+
+  subgraph standard_32 ["Group #32 <i>1 to 3</i>"]
+    literal_32
+    char_class_34
+  end
+
+  subgraph standard_31 ["Group #31"]
+    standard_32
+  end
+
+  subgraph standard_34 ["Group #34 <i>Optional</i>"]
+    literal_33
+    char_class_35
+  end
+
+  subgraph standard_36 ["Group #36"]
+    disjunction_begin_13
+    disjunction_end_13
+    literal_35
+    char_class_36
+    literal_36
+    char_class_37
+    char_set_20
+    literal_37
+    char_set_21
+    char_set_22
+    char_class_38
+    char_set_23
+  end
+
+  subgraph standard_38 ["Group #38"]
+    disjunction_begin_14
+    disjunction_end_14
+    literal_39
+    char_class_39
+    literal_40
+    char_class_40
+    char_set_24
+    literal_41
+    char_set_25
+    char_set_26
+    char_class_41
+    char_set_27
+  end
+
+  subgraph standard_37 ["Group #37 <i>Exactly 3</i>"]
+    standard_38
+    literal_38
+  end
+
+  subgraph standard_35 ["Group #35"]
+    standard_36
+    standard_38
+    standard_37
+  end
+
+  subgraph standard_33 ["Group #33"]
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    literal_34
+  end
+
+  subgraph standard_30 ["Group #30"]
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    disjunction_begin_12
+    disjunction_end_12
+    literal_42
+  end
+
+  subgraph standard_28 ["Group #28"]
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+  end
+
+  subgraph standard_40 ["Group #40 <i>Exactly 3</i>"]
+    char_class_42
+    literal_43
+  end
+
+  subgraph standard_43 ["Group #43 <i>1 to 4</i>"]
+    literal_44
+    char_class_43
+  end
+
+  subgraph standard_42 ["Group #42"]
+    standard_43
+  end
+
+  subgraph standard_45 ["Group #45 <i>0 to 2</i>"]
+    literal_45
+    char_class_44
+  end
+
+  subgraph standard_47 ["Group #47"]
+    disjunction_begin_16
+    disjunction_end_16
+    literal_47
+    char_class_45
+    literal_48
+    char_class_46
+    char_set_28
+    literal_49
+    char_set_29
+    char_set_30
+    char_class_47
+    char_set_31
+  end
+
+  subgraph standard_49 ["Group #49"]
+    disjunction_begin_17
+    disjunction_end_17
+    literal_51
+    char_class_48
+    literal_52
+    char_class_49
+    char_set_32
+    literal_53
+    char_set_33
+    char_set_34
+    char_class_50
+    char_set_35
+  end
+
+  subgraph standard_48 ["Group #48 <i>Exactly 3</i>"]
+    standard_49
+    literal_50
+  end
+
+  subgraph standard_46 ["Group #46"]
+    standard_47
+    standard_49
+    standard_48
+  end
+
+  subgraph standard_44 ["Group #44"]
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    literal_46
+  end
+
+  subgraph standard_41 ["Group #41"]
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    disjunction_begin_15
+    disjunction_end_15
+    literal_54
+  end
+
+  subgraph standard_39 ["Group #39"]
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+  end
+
+  subgraph standard_51 ["Group #51 <i>Exactly 2</i>"]
+    char_class_51
+    literal_55
+  end
+
+  subgraph standard_54 ["Group #54 <i>1 to 5</i>"]
+    literal_56
+    char_class_52
+  end
+
+  subgraph standard_53 ["Group #53"]
+    standard_54
+  end
+
+  subgraph standard_56 ["Group #56 <i>0 to 3</i>"]
+    literal_57
+    char_class_53
+  end
+
+  subgraph standard_58 ["Group #58"]
+    disjunction_begin_19
+    disjunction_end_19
+    literal_59
+    char_class_54
+    literal_60
+    char_class_55
+    char_set_36
+    literal_61
+    char_set_37
+    char_set_38
+    char_class_56
+    char_set_39
+  end
+
+  subgraph standard_60 ["Group #60"]
+    disjunction_begin_20
+    disjunction_end_20
+    literal_63
+    char_class_57
+    literal_64
+    char_class_58
+    char_set_40
+    literal_65
+    char_set_41
+    char_set_42
+    char_class_59
+    char_set_43
+  end
+
+  subgraph standard_59 ["Group #59 <i>Exactly 3</i>"]
+    standard_60
+    literal_62
+  end
+
+  subgraph standard_57 ["Group #57"]
+    standard_58
+    standard_60
+    standard_59
+  end
+
+  subgraph standard_55 ["Group #55"]
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    literal_58
+  end
+
+  subgraph standard_52 ["Group #52"]
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    disjunction_begin_18
+    disjunction_end_18
+    literal_66
+  end
+
+  subgraph standard_50 ["Group #50"]
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+  end
+
+  subgraph standard_62 ["Group #62 <i>Exactly 1</i>"]
+    char_class_60
+    literal_67
+  end
+
+  subgraph standard_65 ["Group #65 <i>1 to 6</i>"]
+    literal_68
+    char_class_61
+  end
+
+  subgraph standard_64 ["Group #64"]
+    standard_65
+  end
+
+  subgraph standard_67 ["Group #67 <i>0 to 4</i>"]
+    literal_69
+    char_class_62
+  end
+
+  subgraph standard_69 ["Group #69"]
+    disjunction_begin_22
+    disjunction_end_22
+    literal_71
+    char_class_63
+    literal_72
+    char_class_64
+    char_set_44
+    literal_73
+    char_set_45
+    char_set_46
+    char_class_65
+    char_set_47
+  end
+
+  subgraph standard_71 ["Group #71"]
+    disjunction_begin_23
+    disjunction_end_23
+    literal_75
+    char_class_66
+    literal_76
+    char_class_67
+    char_set_48
+    literal_77
+    char_set_49
+    char_set_50
+    char_class_68
+    char_set_51
+  end
+
+  subgraph standard_70 ["Group #70 <i>Exactly 3</i>"]
+    standard_71
+    literal_74
+  end
+
+  subgraph standard_68 ["Group #68"]
+    standard_69
+    standard_71
+    standard_70
+  end
+
+  subgraph standard_66 ["Group #66"]
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    literal_70
+  end
+
+  subgraph standard_63 ["Group #63"]
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    disjunction_begin_21
+    disjunction_end_21
+    literal_78
+  end
+
+  subgraph standard_61 ["Group #61"]
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+  end
+
+  subgraph standard_75 ["Group #75 <i>1 to 7</i>"]
+    literal_80
+    char_class_69
+  end
+
+  subgraph standard_74 ["Group #74"]
+    standard_75
+  end
+
+  subgraph standard_77 ["Group #77 <i>0 to 5</i>"]
+    literal_81
+    char_class_70
+  end
+
+  subgraph standard_79 ["Group #79"]
+    disjunction_begin_25
+    disjunction_end_25
+    literal_83
+    char_class_71
+    literal_84
+    char_class_72
+    char_set_52
+    literal_85
+    char_set_53
+    char_set_54
+    char_class_73
+    char_set_55
+  end
+
+  subgraph standard_81 ["Group #81"]
+    disjunction_begin_26
+    disjunction_end_26
+    literal_87
+    char_class_74
+    literal_88
+    char_class_75
+    char_set_56
+    literal_89
+    char_set_57
+    char_set_58
+    char_class_76
+    char_set_59
+  end
+
+  subgraph standard_80 ["Group #80 <i>Exactly 3</i>"]
+    standard_81
+    literal_86
+  end
+
+  subgraph standard_78 ["Group #78"]
+    standard_79
+    standard_81
+    standard_80
+  end
+
+  subgraph standard_76 ["Group #76"]
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    literal_82
+  end
+
+  subgraph standard_73 ["Group #73"]
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    disjunction_begin_24
+    disjunction_end_24
+    literal_90
+  end
+
+  subgraph standard_72 ["Group #72"]
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    literal_79
+  end
+
+  subgraph standard_8 ["Group #8"]
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    disjunction_begin_4
+    disjunction_end_4
+  end
+
+  subgraph standard_82 ["Group #82 <i>Optional</i>"]
+    literal_91
+    char_set_60
+  end
+
+  subgraph standard_7 ["Group #7"]
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    standard_8
+    standard_82
+    assertion_3
+    char_set_3
+    char_set_61
+    assertion_4
+  end
+
+  subgraph standard_1 ["Group #1"]
+    standard_5
+    standard_4
+    standard_6
+    standard_3
+    standard_2
+    standard_10
+    standard_11
+    standard_9
+    standard_13
+    standard_16
+    standard_18
+    standard_17
+    standard_15
+    standard_14
+    standard_12
+    standard_20
+    standard_23
+    standard_22
+    standard_25
+    standard_27
+    standard_26
+    standard_24
+    standard_21
+    standard_19
+    standard_29
+    standard_32
+    standard_31
+    standard_34
+    standard_36
+    standard_38
+    standard_37
+    standard_35
+    standard_33
+    standard_30
+    standard_28
+    standard_40
+    standard_43
+    standard_42
+    standard_45
+    standard_47
+    standard_49
+    standard_48
+    standard_46
+    standard_44
+    standard_41
+    standard_39
+    standard_51
+    standard_54
+    standard_53
+    standard_56
+    standard_58
+    standard_60
+    standard_59
+    standard_57
+    standard_55
+    standard_52
+    standard_50
+    standard_62
+    standard_65
+    standard_64
+    standard_67
+    standard_69
+    standard_71
+    standard_70
+    standard_68
+    standard_66
+    standard_63
+    standard_61
+    standard_75
+    standard_74
+    standard_77
+    standard_79
+    standard_81
+    standard_80
+    standard_78
+    standard_76
+    standard_73
+    standard_72
+    standard_8
+    standard_82
+    standard_7
+    disjunction_begin_1
+    disjunction_end_1
+  end
+
+  %% Edges
+  start --- disjunction_begin_1;
+  disjunction_begin_1 --- assertion_1;
+  assertion_1 --- char_set_1;
+  char_set_1 --- disjunction_begin_2;
+  disjunction_begin_2 --- char_class_1;
+  char_class_1 --- disjunction_end_2;
+  disjunction_begin_2 --- char_class_2;
+  char_class_2 --- char_class_3;
+  char_class_3 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_1;
+  literal_1 --- char_class_4;
+  char_class_4 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_2;
+  literal_2 --- char_class_5;
+  char_class_5 --- char_class_6;
+  char_class_6 --- disjunction_end_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- char_class_7;
+  char_class_7 --- disjunction_end_2;
+  disjunction_end_2 --- literal_4;
+  literal_4 --- disjunction_begin_3;
+  disjunction_begin_3 --- char_class_8;
+  char_class_8 --- disjunction_end_3;
+  disjunction_begin_3 --- char_class_9;
+  char_class_9 --- char_class_10;
+  char_class_10 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_5;
+  literal_5 --- char_class_11;
+  char_class_11 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_6;
+  literal_6 --- char_class_12;
+  char_class_12 --- char_class_13;
+  char_class_13 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_7;
+  literal_7 --- char_class_14;
+  char_class_14 --- disjunction_end_3;
+  disjunction_end_3 --- char_set_2;
+  char_set_2 --- assertion_2;
+  assertion_2 --- disjunction_end_1;
+  disjunction_begin_1 --- assertion_3;
+  assertion_3 --- char_set_3;
+  char_set_3 --- disjunction_begin_4;
+  disjunction_begin_4 --- char_class_15;
+  char_class_15 --- literal_8;
+  literal_8 --- disjunction_begin_5;
+  disjunction_begin_5 --- char_class_16;
+  char_class_16 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_9;
+  literal_9 --- disjunction_end_5;
+  disjunction_end_5 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_17;
+  char_class_17 --- literal_10;
+  literal_10 --- disjunction_begin_6;
+  disjunction_begin_6 --- literal_11;
+  literal_11 --- char_class_18;
+  char_class_18 --- disjunction_end_6;
+  disjunction_begin_6 --- disjunction_begin_7;
+  disjunction_begin_7 --- literal_12;
+  literal_12 --- char_class_19;
+  char_class_19 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_13;
+  literal_13 --- char_class_20;
+  char_class_20 --- char_set_4;
+  char_set_4 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_14;
+  literal_14 --- char_set_5;
+  char_set_5 --- char_set_6;
+  char_set_6 --- disjunction_end_7;
+  disjunction_begin_7 --- char_class_21;
+  char_class_21 --- char_set_7;
+  char_set_7 --- disjunction_end_7;
+  disjunction_end_7 --- literal_15;
+  literal_15 --- disjunction_begin_8;
+  disjunction_begin_8 --- literal_16;
+  literal_16 --- char_class_22;
+  char_class_22 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_17;
+  literal_17 --- char_class_23;
+  char_class_23 --- char_set_8;
+  char_set_8 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_18;
+  literal_18 --- char_set_9;
+  char_set_9 --- char_set_10;
+  char_set_10 --- disjunction_end_8;
+  disjunction_begin_8 --- char_class_24;
+  char_class_24 --- char_set_11;
+  char_set_11 --- disjunction_end_8;
+  disjunction_end_8 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_19;
+  literal_19 --- disjunction_end_6;
+  disjunction_end_6 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_25;
+  char_class_25 --- literal_20;
+  literal_20 --- disjunction_begin_9;
+  disjunction_begin_9 --- literal_21;
+  literal_21 --- char_class_26;
+  char_class_26 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_22;
+  literal_22 --- disjunction_begin_10;
+  disjunction_begin_10 --- literal_23;
+  literal_23 --- char_class_27;
+  char_class_27 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_24;
+  literal_24 --- char_class_28;
+  char_class_28 --- char_set_12;
+  char_set_12 --- disjunction_end_10;
+  disjunction_begin_10 --- literal_25;
+  literal_25 --- char_set_13;
+  char_set_13 --- char_set_14;
+  char_set_14 --- disjunction_end_10;
+  disjunction_begin_10 --- char_class_29;
+  char_class_29 --- char_set_15;
+  char_set_15 --- disjunction_end_10;
+  disjunction_end_10 --- literal_26;
+  literal_26 --- disjunction_begin_11;
+  disjunction_begin_11 --- literal_27;
+  literal_27 --- char_class_30;
+  char_class_30 --- disjunction_end_11;
+  disjunction_begin_11 --- literal_28;
+  literal_28 --- char_class_31;
+  char_class_31 --- char_set_16;
+  char_set_16 --- disjunction_end_11;
+  disjunction_begin_11 --- literal_29;
+  literal_29 --- char_set_17;
+  char_set_17 --- char_set_18;
+  char_set_18 --- disjunction_end_11;
+  disjunction_begin_11 --- char_class_32;
+  char_class_32 --- char_set_19;
+  char_set_19 --- disjunction_end_11;
+  disjunction_end_11 --- disjunction_end_9;
+  disjunction_begin_9 --- literal_30;
+  literal_30 --- disjunction_end_9;
+  disjunction_end_9 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_33;
+  char_class_33 --- literal_31;
+  literal_31 --- disjunction_begin_12;
+  disjunction_begin_12 --- literal_32;
+  literal_32 --- char_class_34;
+  char_class_34 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_33;
+  literal_33 --- char_class_35;
+  char_class_35 --- literal_34;
+  literal_34 --- disjunction_begin_13;
+  disjunction_begin_13 --- literal_35;
+  literal_35 --- char_class_36;
+  char_class_36 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_36;
+  literal_36 --- char_class_37;
+  char_class_37 --- char_set_20;
+  char_set_20 --- disjunction_end_13;
+  disjunction_begin_13 --- literal_37;
+  literal_37 --- char_set_21;
+  char_set_21 --- char_set_22;
+  char_set_22 --- disjunction_end_13;
+  disjunction_begin_13 --- char_class_38;
+  char_class_38 --- char_set_23;
+  char_set_23 --- disjunction_end_13;
+  disjunction_end_13 --- literal_38;
+  literal_38 --- disjunction_begin_14;
+  disjunction_begin_14 --- literal_39;
+  literal_39 --- char_class_39;
+  char_class_39 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_40;
+  literal_40 --- char_class_40;
+  char_class_40 --- char_set_24;
+  char_set_24 --- disjunction_end_14;
+  disjunction_begin_14 --- literal_41;
+  literal_41 --- char_set_25;
+  char_set_25 --- char_set_26;
+  char_set_26 --- disjunction_end_14;
+  disjunction_begin_14 --- char_class_41;
+  char_class_41 --- char_set_27;
+  char_set_27 --- disjunction_end_14;
+  disjunction_end_14 --- disjunction_end_12;
+  disjunction_begin_12 --- literal_42;
+  literal_42 --- disjunction_end_12;
+  disjunction_end_12 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_42;
+  char_class_42 --- literal_43;
+  literal_43 --- disjunction_begin_15;
+  disjunction_begin_15 --- literal_44;
+  literal_44 --- char_class_43;
+  char_class_43 --- disjunction_end_15;
+  disjunction_begin_15 --- literal_45;
+  literal_45 --- char_class_44;
+  char_class_44 --- literal_46;
+  literal_46 --- disjunction_begin_16;
+  disjunction_begin_16 --- literal_47;
+  literal_47 --- char_class_45;
+  char_class_45 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_48;
+  literal_48 --- char_class_46;
+  char_class_46 --- char_set_28;
+  char_set_28 --- disjunction_end_16;
+  disjunction_begin_16 --- literal_49;
+  literal_49 --- char_set_29;
+  char_set_29 --- char_set_30;
+  char_set_30 --- disjunction_end_16;
+  disjunction_begin_16 --- char_class_47;
+  char_class_47 --- char_set_31;
+  char_set_31 --- disjunction_end_16;
+  disjunction_end_16 --- literal_50;
+  literal_50 --- disjunction_begin_17;
+  disjunction_begin_17 --- literal_51;
+  literal_51 --- char_class_48;
+  char_class_48 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_52;
+  literal_52 --- char_class_49;
+  char_class_49 --- char_set_32;
+  char_set_32 --- disjunction_end_17;
+  disjunction_begin_17 --- literal_53;
+  literal_53 --- char_set_33;
+  char_set_33 --- char_set_34;
+  char_set_34 --- disjunction_end_17;
+  disjunction_begin_17 --- char_class_50;
+  char_class_50 --- char_set_35;
+  char_set_35 --- disjunction_end_17;
+  disjunction_end_17 --- disjunction_end_15;
+  disjunction_begin_15 --- literal_54;
+  literal_54 --- disjunction_end_15;
+  disjunction_end_15 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_51;
+  char_class_51 --- literal_55;
+  literal_55 --- disjunction_begin_18;
+  disjunction_begin_18 --- literal_56;
+  literal_56 --- char_class_52;
+  char_class_52 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_57;
+  literal_57 --- char_class_53;
+  char_class_53 --- literal_58;
+  literal_58 --- disjunction_begin_19;
+  disjunction_begin_19 --- literal_59;
+  literal_59 --- char_class_54;
+  char_class_54 --- disjunction_end_19;
+  disjunction_begin_19 --- literal_60;
+  literal_60 --- char_class_55;
+  char_class_55 --- char_set_36;
+  char_set_36 --- disjunction_end_19;
+  disjunction_begin_19 --- literal_61;
+  literal_61 --- char_set_37;
+  char_set_37 --- char_set_38;
+  char_set_38 --- disjunction_end_19;
+  disjunction_begin_19 --- char_class_56;
+  char_class_56 --- char_set_39;
+  char_set_39 --- disjunction_end_19;
+  disjunction_end_19 --- literal_62;
+  literal_62 --- disjunction_begin_20;
+  disjunction_begin_20 --- literal_63;
+  literal_63 --- char_class_57;
+  char_class_57 --- disjunction_end_20;
+  disjunction_begin_20 --- literal_64;
+  literal_64 --- char_class_58;
+  char_class_58 --- char_set_40;
+  char_set_40 --- disjunction_end_20;
+  disjunction_begin_20 --- literal_65;
+  literal_65 --- char_set_41;
+  char_set_41 --- char_set_42;
+  char_set_42 --- disjunction_end_20;
+  disjunction_begin_20 --- char_class_59;
+  char_class_59 --- char_set_43;
+  char_set_43 --- disjunction_end_20;
+  disjunction_end_20 --- disjunction_end_18;
+  disjunction_begin_18 --- literal_66;
+  literal_66 --- disjunction_end_18;
+  disjunction_end_18 --- disjunction_end_4;
+  disjunction_begin_4 --- char_class_60;
+  char_class_60 --- literal_67;
+  literal_67 --- disjunction_begin_21;
+  disjunction_begin_21 --- literal_68;
+  literal_68 --- char_class_61;
+  char_class_61 --- disjunction_end_21;
+  disjunction_begin_21 --- literal_69;
+  literal_69 --- char_class_62;
+  char_class_62 --- literal_70;
+  literal_70 --- disjunction_begin_22;
+  disjunction_begin_22 --- literal_71;
+  literal_71 --- char_class_63;
+  char_class_63 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_72;
+  literal_72 --- char_class_64;
+  char_class_64 --- char_set_44;
+  char_set_44 --- disjunction_end_22;
+  disjunction_begin_22 --- literal_73;
+  literal_73 --- char_set_45;
+  char_set_45 --- char_set_46;
+  char_set_46 --- disjunction_end_22;
+  disjunction_begin_22 --- char_class_65;
+  char_class_65 --- char_set_47;
+  char_set_47 --- disjunction_end_22;
+  disjunction_end_22 --- literal_74;
+  literal_74 --- disjunction_begin_23;
+  disjunction_begin_23 --- literal_75;
+  literal_75 --- char_class_66;
+  char_class_66 --- disjunction_end_23;
+  disjunction_begin_23 --- literal_76;
+  literal_76 --- char_class_67;
+  char_class_67 --- char_set_48;
+  char_set_48 --- disjunction_end_23;
+  disjunction_begin_23 --- literal_77;
+  literal_77 --- char_set_49;
+  char_set_49 --- char_set_50;
+  char_set_50 --- disjunction_end_23;
+  disjunction_begin_23 --- char_class_68;
+  char_class_68 --- char_set_51;
+  char_set_51 --- disjunction_end_23;
+  disjunction_end_23 --- disjunction_end_21;
+  disjunction_begin_21 --- literal_78;
+  literal_78 --- disjunction_end_21;
+  disjunction_end_21 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_79;
+  literal_79 --- disjunction_begin_24;
+  disjunction_begin_24 --- literal_80;
+  literal_80 --- char_class_69;
+  char_class_69 --- disjunction_end_24;
+  disjunction_begin_24 --- literal_81;
+  literal_81 --- char_class_70;
+  char_class_70 --- literal_82;
+  literal_82 --- disjunction_begin_25;
+  disjunction_begin_25 --- literal_83;
+  literal_83 --- char_class_71;
+  char_class_71 --- disjunction_end_25;
+  disjunction_begin_25 --- literal_84;
+  literal_84 --- char_class_72;
+  char_class_72 --- char_set_52;
+  char_set_52 --- disjunction_end_25;
+  disjunction_begin_25 --- literal_85;
+  literal_85 --- char_set_53;
+  char_set_53 --- char_set_54;
+  char_set_54 --- disjunction_end_25;
+  disjunction_begin_25 --- char_class_73;
+  char_class_73 --- char_set_55;
+  char_set_55 --- disjunction_end_25;
+  disjunction_end_25 --- literal_86;
+  literal_86 --- disjunction_begin_26;
+  disjunction_begin_26 --- literal_87;
+  literal_87 --- char_class_74;
+  char_class_74 --- disjunction_end_26;
+  disjunction_begin_26 --- literal_88;
+  literal_88 --- char_class_75;
+  char_class_75 --- char_set_56;
+  char_set_56 --- disjunction_end_26;
+  disjunction_begin_26 --- literal_89;
+  literal_89 --- char_set_57;
+  char_set_57 --- char_set_58;
+  char_set_58 --- disjunction_end_26;
+  disjunction_begin_26 --- char_class_76;
+  char_class_76 --- char_set_59;
+  char_set_59 --- disjunction_end_26;
+  disjunction_end_26 --- disjunction_end_24;
+  disjunction_begin_24 --- literal_90;
+  literal_90 --- disjunction_end_24;
+  disjunction_end_24 --- disjunction_end_4;
+  disjunction_end_4 --- literal_91;
+  literal_91 --- char_set_60;
+  char_set_60 --- char_set_61;
+  char_set_61 --- assertion_4;
+  assertion_4 --- disjunction_end_1;
+  disjunction_end_1 --- fin;
+
+  %% Styles
+  %% Node Styling
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
+  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
+  classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+
+  %% Group Styling
+  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+
+  %% Apply Group Classes
+  class standard_5,standard_4,standard_6,standard_3,standard_2,standard_10,standard_11,standard_9,standard_13,standard_16,standard_18,standard_17,standard_15,standard_14,standard_12,standard_20,standard_23,standard_22,standard_25,standard_27,standard_26,standard_24,standard_21,standard_19,standard_29,standard_32,standard_31,standard_34,standard_36,standard_38,standard_37,standard_35,standard_33,standard_30,standard_28,standard_40,standard_43,standard_42,standard_45,standard_47,standard_49,standard_48,standard_46,standard_44,standard_41,standard_39,standard_51,standard_54,standard_53,standard_56,standard_58,standard_60,standard_59,standard_57,standard_55,standard_52,standard_50,standard_62,standard_65,standard_64,standard_67,standard_69,standard_71,standard_70,standard_68,standard_66,standard_63,standard_61,standard_75,standard_74,standard_77,standard_79,standard_81,standard_80,standard_78,standard_76,standard_73,standard_72,standard_8,standard_82,standard_7,standard_1 standard;
 ```
 
 ---
 
 ## Complex Password Requirements
 
-Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long
+Uses positive lookaheads to ensure passwords have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and be at least 8 characters long. Note: Do not rely on regex for validating passwords!
 
-### Pattern
+Source: <https://digitalfortress.tech/tips/top-15-commonly-used-regex/>
+
+### Pattern {#Complex Password Requirements}
 
 ```regex
 (?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}
@@ -2460,7 +3905,7 @@ Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special characte
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61VXVeiQBj-K2-QpQWWgKZopvnRTWfPnnavCjOCSTkRsANu25r99mVgQCfIOHvihpl3eD5mzjsPS85wTcSp3Azr3hwurzQHQDeMn1ZgIxU07grN0B8Vymen5erBzbHYmlQq4SQca-Gz0-N3S7d7B-WKRp-oPFmuyEucHp6-3b2q7XDM7Xe6QvXobELRuvg3GhLWvngds4aTSqW6bAorjaNGhsg3MDFygRyE9QCZ8GwFc8DElxi44hPCT7pl9mrV46pCYARYKsG3cF8-GfuBjoPeEvy57oVbehANCxuwapO1B8v5YMW2glDOntbKGtd3XsCY61g3wlrnHnc7VvcaYRdcDE8uRp0jq6txFVVVKSpiIIipYeu-n5KY1swK4i_JqhitMnLSV8gRkh3oAQ-7UIJb2IMDKEMFNA1uYAJLWIEIUziEU3iDO3gFFdrA_1q4QRv2oQNdEKAKR3C21ar8FVYTEtt9RtjQfbRVUvkKyYRk4XkFJOv_LZkwND5gaG6D0yb-sbiPLmbcyHRCOtoxdWxOa3CjcXwNLrC78KCmcRPy3UbzxtPNTiQV5JixQsroub4VWL_R1HbdR32OdMr9ndbhMqmnGmsThSmlTyjTS5CxLRXWkAtqyBkNOV8j3WfknpfoYUsZRiXDqBR2rRQ9bOkTk9H2eZmalDMm64Ut1YtaYs8tbNqROdtIXhBFcd2QbLZGa5vdmQlOBi2xUfkeLWVykEHLbHq9R8uZaGLQChtE79FKJmUYdJ3NFGatwaZFtBb-lzZCIHix4wOlv7WoYjmzSJKoDdFDQhBCbVvlx63BeWsg-AF2H5HKjxqtmtwUDNd2scofR0-bga_jjzKcK_2TYSNlaI5OBgM5w0Bdxe2WZytpk8TXeCwN1r7GtYEkS9t8JZ0ppp1JmYatoTRqFfTX9zz7hbocEOr4POP9rpNMWN8zYeNKJcO1s9zAFPIiL68o5xUVIfcSZvff5lb_AD3ypb-2CQAA)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61VYVeiQBT9K28xSwtMAU3RTMPcL509e9r9VJgRTMqJgB1w29bst-8MDIJgxjnbfJmZN3PvuzO8uSw5wzURp3AzrHtzuLzSHADdMH5agY0U0LgrNEN_FKicnVZqhzd1oTOpVsmEjDXSvgxKe-Xb_cNKVWMtDE-WK9oJ06PTt7tXpUvG3EGvz9eOzyYMrQt_wyFlHQrXESuZVKu1ZZtfaRwTMkK-gamQr8hBWA-QCc9WMAdMdQmBKzwh_KRb5kCs1Wt1CqPAchm-kXP5dOwHOg4GS_DnukeO9CAYFjZg1aVrD5bzzoox1_HUR8G0UdG4ofMSBnQjQLh3j_s9q3-NsAsuhicXo96x1de4qqIodJdAYAmHYeu-v2YxrZkVpLaGq5sJxU9JSFnI94EBlGAPynAL-3AIFagC_TJwQ7oJLGFFegGmcASn8AZ38AoKdKH0a-EGXTiAHvSBhxocw9lu0dKniI5ZbPcZYUP30e6k8qckjVkWnlckafM_k1KO1jsc7Z0ErLB_LO7DxxoVN5vQKndMHZvTBtyQx4LdhQelhsZN6K50OafmrDRpBDlmlGBN6Lm-FVi_0dR23Ud9jnRG_Z3F4TKOr5MkGgpTih9QJq8ip1ssnEQqmkTKJZG2J1mfVEzdtpgnlHOEcmHVctHbFj_QKKU0SnmNzcKKmkUVbd4aqdkLc5YyYxAEIVWRGb9NVll95rx0Ey9m7DOLF3PWuImXMk6WxUs5l9rEyxlTyuLlnOFs4psZf9lcbWWcI1wlv62UHwQvdnS57K8XRixnFgJpxhF6gNhHCNa2lVJnPGyPhrwfYPcRKaWm2jpX67zh2i5WSvWwdfP4cMYYzuXhyai1ZmhfnKiqlGNgsqLq26YrrhnGOh6PRVVds44bqiiJu3TFZSqsy5QxjToj8aJTUN_Q8-wXplKl1NGFRudNbI1P3hyfel7xMFG21T35bf63LShtC8r81heZP3-XW_0DlHn5AtYJAAA=)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2472,25 +3917,25 @@ Should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special characte
 ```mermaid
 graph LR
   accTitle: "Regex: (?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\\\[\\]{}\\-_+=~`|:;\"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
-  literal_1("Any character<br><i>Zero or more</i>"):::literal;
+  char_set_1("Any character<br><i>Zero or more</i>"):::char-set;
   char_class_1("Any digit"):::char-class;
-  literal_2("Any character<br><i>Zero or more</i>"):::literal;
-  char_class_2("! @ # $ % ^ & * ( ) \ [ ] { } - _ + = ~ ` | : ; #quot; ' < > , . / ?"):::char-class;
-  literal_3("Any character<br><i>Zero or more</i>"):::literal;
+  char_set_2("Any character<br><i>Zero or more</i>"):::char-set;
+  char_class_2("\! @ # $ % ^ & * ( ) \\ [ \] { } \- _ + = ~ ` | : ; #quot; ' < > , . / ?"):::char-class;
+  char_set_3("Any character<br><i>Zero or more</i>"):::char-set;
   char_class_3("Any lowercase"):::char-class;
-  literal_4("Any character<br><i>Zero or more</i>"):::literal;
+  char_set_4("Any character<br><i>Zero or more</i>"):::char-set;
   char_class_4("Any uppercase"):::char-class;
-  literal_5("Any character<br><i>Zero or more</i>"):::literal;
-  literal_6("Any character<br><i>8 or more</i>"):::literal;
+  char_set_5("Any character<br><i>Zero or more</i>"):::char-set;
+  char_set_6("Any character<br><i>8 or more</i>"):::char-set;
 
   %% Subgraphs
-  subgraph standard_1 ["#1 Group 1"]
-    literal_1
+  subgraph standard_1 ["Group #1"]
+    char_set_1
     char_class_1
   end
 
@@ -2499,17 +3944,17 @@ graph LR
   end
 
   subgraph positive_lookahead_2 ["Positive Lookahead"]
-    literal_2
+    char_set_2
     char_class_2
   end
 
   subgraph positive_lookahead_3 ["Positive Lookahead"]
-    literal_3
+    char_set_3
     char_class_3
   end
 
-  subgraph standard_2 ["#2 Group 2"]
-    literal_4
+  subgraph standard_2 ["Group #2"]
+    char_set_4
     char_class_4
   end
 
@@ -2517,8 +3962,8 @@ graph LR
     standard_2
   end
 
-  subgraph standard_3 ["#3 Group 3"]
-    literal_5
+  subgraph standard_3 ["Group #3"]
+    char_set_5
   end
 
   subgraph positive_lookahead_5 ["Positive Lookahead"]
@@ -2526,21 +3971,21 @@ graph LR
   end
 
   %% Edges
-  start --- literal_1;
-  literal_1 --- char_class_1;
-  char_class_1 --- literal_2;
-  literal_2 --- char_class_2;
-  char_class_2 --- literal_3;
-  literal_3 --- char_class_3;
-  char_class_3 --- literal_4;
-  literal_4 --- char_class_4;
-  char_class_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- fin;
+  start --- char_set_1;
+  char_set_1 --- char_class_1;
+  char_class_1 --- char_set_2;
+  char_set_2 --- char_class_2;
+  char_class_2 --- char_set_3;
+  char_set_3 --- char_class_3;
+  char_class_3 --- char_set_4;
+  char_set_4 --- char_class_4;
+  char_class_4 --- char_set_5;
+  char_set_5 --- char_set_6;
+  char_set_6 --- fin;
 
   %% Styles
   %% Node Styling
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
@@ -2556,17 +4001,19 @@ graph LR
 
 ## Phone Number
 
-US and International phone numbers
+Phone Numbers with optional country code/extension. Note: do not use regex for validating phone numbers!
 
-### Pattern
+Source: <https://digitalfortress.tech/tips/top-15-commonly-used-regex/>
+
+### Pattern {#Phone Number}
 
 ```regex
-^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$
+^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$
 ```
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA5VUXW-iQBT9KxNsE03FLR8VRaNV1L5sdpPuvpXWTGHEyVIgwzStMf73zgwDMn6ly4My98y55zCcy1YL0hBprhYRmK3Bz0c_AQAGwV9MY-QCX3tEEfp0wUvTZ9cN_wm3Rtvc8bu8NeZ_zXFRtkSxNX4SWEd_LssHBXt35WtSZ4bygHCdB5QgAikKwQema0C4rE5T_Q2RN4jDe6Nz27E5jROvr8EvZjvn9zmFhN5vQb6GGXO80gNMArAbcGyFkzMIzHNEKE6TpdH0tZfhKxkN8WiKIpzkwsHwBx75Wst13WqrIMaYMp-xoN0UG2RJgU0GT5INCHGEqexuAJoCc9_4FM-SvI81K-QZDND5vTbb25S9f2fcIYwvd7874Wr-CQMab4B1mdpl1Na3xII1JMsgZscmDom9edABerGPY7rAlObO__uqqZjfVOldULFPq-xjwkWuSlISXgqJTOif91cxVEVK5YLHNQkhCZcGePK1hgEeSPqeAQMcnesz59UCpy5NdWnxJUrCSn0eRrX5ALqu1zN_OAMCr5TUoCuYqaZcwSw1yQpmq8lVsDs1owrWVUMosHrAjhKnsB01ZYds8yhJCrunpufgDM3DgAicfXFqCaCbuHgJ8oMlKjiJhCxXnKHVvgUjx7HbmHZnzqTXzilJ_yG30bc825m1gzROidu4FddAaSAdSvqi7037XkWfd_uG1btE309LacCeOLNu1aE3dzzPOuogH6uI76nnKpNe-losTG_va2F4pmWe6zrJMjaURW-PNyyOsXBZG6HydqDtvgDhashmygYAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61YbW-bOhT-KxbZpKCGFmwggVbNEpLsy9UmbffTLV1FwU25l0IEVGvV9r9f2xDAJiQ0XbRmfjkvzzk-Pn7aF8lPAizZ0jr1Nvfgrx9uDIDn-3-HeYRt4Eo_8Bo_2eDXcGqTfy75DKdkoKqvdHwiD680Rb-m44B9vZK5VcynMv1PnsrTKzpQ6Ncp_QJu43N2TQSGlW2m-aKN3grdQ5ov6uhNJsoH5IjE4BU_5UxgSkc4zsIkfn2SD2kyQCeyPP3kSmVyFjjzU5qcrzjGqZfjAPwO83uQ0lwpeaI84PTBC4Mv8FQ9VakaVfz8GXwjuc7oOMu9NP_yArJ7b0PSfKf4YeqDt3O6dxfGHTteluE0J7BvtKEr_bq4TS8vwss5XodxxhBcnIWXriTbtl2JMsUozAnOiKmRJJeK3zdUwItqrVKO6QRh9u9j7DN3t9TFjUYkGqsdIJt6OA56am0RQoJQVdtotvuIRXDSBy48Cm4_Lf_eS2_8iGSZ5ZRcgQIRXVfYei2W4ZwJzeJn4m0d5g1RsscLwj6ChWPIHFv7HaOmvc5z51xsU62zVMu9iqUBqzghhdyjU_IDQHmpzvY7r6Fv3RvvqNUqXH1XuDEGSQoekhQfiNg8LmL9gxE3TBkfNNW-BeioW4DedWnHBPWg-85OyDbtvZ0CVnlqNBjPJ2u9TqBqamphv-joe-ToJXzae5LmnzhJWofGUXVY93d6tz-Vess42Nfdy6fl5-Mte8KL56WcgJjY8r1N_piG8foGgStX-pbESrXkStdUfme3b2-wdl4sV_2anyI6JWIFrAoGee7iwEuJNkXwNU0eN2Cg7XEOdzsvl5vdt7HCGq0wb2tAQaIDMp852MocaNVDGYyQ8mKxTgCfL2Gq98Gi_WEsQqSthPVKkL4T1D84Tfiav-YDNoTD0PltswVGP1BgsFFgsCMPvbJsvueuoN3livhoxvx0wk8toTJUYa4diBw1IkcV1roj9QnaOLa0TKG0UOvgjNaKySEiLWwZrBvsGCiK0mS8IgNm-1V2-E7P9na0tC5iy9mCPCFt2WJdsJclxFPXnpbYakcEsIvrMvlmX2zR1FqC9UmBn_K7UCClO5H3xgJbzJX3hgTK2tMbW-XyrfP8VcSBWlSV0zZ4-slj1AWeyWmaPIsU_eotwihKGC0e2HH-qIvlcXjGPDvbmc9-liY8keP2LJ7DfcCLpgqE7iO2hFag9bTFVsVzMVsEka8KQ2B9Qs-CIqtj--T3-wZty5-joumVfx5gK_S1oYapzwW-q00Q5SiyB3NzMZ5NRlmeJv9he2AhRx8vRn4SJak9UNnnnDNQpqNUX1nO3HIq9aVpaWiyT72RqK2J1cIyzcrESnMggvtM1Ex5G4M-Gy9qC5Pl2HHQQQskzaW-tZpNFrNK33DMuaO29MvMFu_irtTG3GtXmHZWS7hClWlzYS2X833Qtu9elZwVdJxDySmhzTab6LkE6FCDRTkUqRII3EjgasJcE-a6MDdH4nPPRV_H1OCIo5pajRpcYzs8l97-BzZRft1DFAAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2577,67 +4024,171 @@ US and International phone numbers
 
 ```mermaid
 graph LR
-  accTitle: "Regex: ^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accTitle: "Regex: ^(?:(?:\\(?(?:00|\\+)([1-4]\\d\\d|[1-9]\\d?)\\)?)?[\\-\\.\\ \\\\\\/]?)?((?:\\(?\\d{1,}\\)?[\\-\\.\\ \\\\\\/]?){0,})(?:[\\-\\.\\ \\\\\\/]?(?:#|ext\\.?|extension|x)[\\-\\.\\ \\\\\\/]?(\\d+))?$"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
   fin@{ shape: f-circ };
   assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_1("+"):::literal;
-  literal_2("Any digit<br><i>1 to 2</i>"):::literal;
-  literal_3("Any whitespace"):::literal;
-  literal_4("(<br><i>Optional</i>"):::literal;
-  literal_5("Any digit<br><i>Exactly 3</i>"):::literal;
-  literal_6(")<br><i>Optional</i>"):::literal;
-  char_class_1("\s . -"):::char-class;
-  literal_7("Any digit<br><i>Exactly 3</i>"):::literal;
-  char_class_2("\s . -"):::char-class;
-  literal_8("Any digit<br><i>Exactly 4</i>"):::literal;
+  literal_1("\(<br><i>Optional</i>"):::literal;
+  disjunction_begin_1:::disjunction@{ shape: f-circ };
+  disjunction_end_1:::disjunction@{ shape: f-circ };
+  literal_2("00"):::literal;
+  literal_3("\+"):::literal;
+  disjunction_begin_2:::disjunction@{ shape: f-circ };
+  disjunction_end_2:::disjunction@{ shape: f-circ };
+  char_class_1("1-4"):::char-class;
+  char_set_1("Any digit"):::char-set;
+  char_set_2("Any digit"):::char-set;
+  char_class_2("1-9"):::char-class;
+  char_set_3("Any digit<br><i>Optional</i>"):::char-set;
+  literal_4("\)<br><i>Optional</i>"):::literal;
+  char_class_3("\- \. \  \\ \/<br><i>Optional</i>"):::char-class;
+  literal_5("\(<br><i>Optional</i>"):::literal;
+  char_set_4("Any digit<br><i>One or more</i>"):::char-set;
+  literal_6("\)<br><i>Optional</i>"):::literal;
+  char_class_4("\- \. \  \\ \/<br><i>Optional</i>"):::char-class;
+  char_class_5("\- \. \  \\ \/<br><i>Optional</i>"):::char-class;
+  disjunction_begin_3:::disjunction@{ shape: f-circ };
+  disjunction_end_3:::disjunction@{ shape: f-circ };
+  literal_7("#"):::literal;
+  literal_8("ext"):::literal;
+  literal_9("Any character<br><i>Optional</i>"):::literal;
+  literal_10("extension"):::literal;
+  literal_11("x"):::literal;
+  char_class_6("\- \. \  \\ \/<br><i>Optional</i>"):::char-class;
+  char_set_5("Any digit<br><i>One or more</i>"):::char-set;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph standard_1 ["#1 Group 1 <i>Optional</i>"]
-    literal_1
+  subgraph non_capturing_3 ["Non-capturing"]
+    disjunction_begin_1
+    disjunction_end_1
     literal_2
     literal_3
+  end
+
+  subgraph standard_1 ["Group #1"]
+    disjunction_begin_2
+    disjunction_end_2
+    char_class_1
+    char_set_1
+    char_set_2
+    char_class_2
+    char_set_3
+  end
+
+  subgraph non_capturing_2 ["Non-capturing <i>Optional</i>"]
+    non_capturing_3
+    standard_1
+    literal_1
+    literal_4
+  end
+
+  subgraph non_capturing_1 ["Non-capturing <i>Optional</i>"]
+    non_capturing_3
+    standard_1
+    non_capturing_2
+    char_class_3
+  end
+
+  subgraph non_capturing_4 ["Non-capturing <i>Zero or more</i>"]
+    literal_5
+    char_set_4
+    literal_6
+    char_class_4
+  end
+
+  subgraph standard_2 ["Group #2"]
+    non_capturing_4
+  end
+
+  subgraph non_capturing_6 ["Non-capturing"]
+    disjunction_begin_3
+    disjunction_end_3
+    literal_7
+    literal_8
+    literal_9
+    literal_10
+    literal_11
+  end
+
+  subgraph standard_3 ["Group #3"]
+    char_set_5
+  end
+
+  subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
+    non_capturing_6
+    standard_3
+    char_class_5
+    char_class_6
   end
 
   %% Edges
   start --- assertion_1;
   assertion_1 --- literal_1;
-  literal_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- char_class_1;
-  char_class_1 --- literal_7;
-  literal_7 --- char_class_2;
-  char_class_2 --- literal_8;
-  literal_8 --- assertion_2;
+  literal_1 --- disjunction_begin_1;
+  disjunction_begin_1 --- literal_2;
+  literal_2 --- disjunction_end_1;
+  disjunction_begin_1 --- literal_3;
+  literal_3 --- disjunction_end_1;
+  disjunction_end_1 --- disjunction_begin_2;
+  disjunction_begin_2 --- char_class_1;
+  char_class_1 --- char_set_1;
+  char_set_1 --- char_set_2;
+  char_set_2 --- disjunction_end_2;
+  disjunction_begin_2 --- char_class_2;
+  char_class_2 --- char_set_3;
+  char_set_3 --- disjunction_end_2;
+  disjunction_end_2 --- literal_4;
+  literal_4 --- char_class_3;
+  char_class_3 --- literal_5;
+  literal_5 --- char_set_4;
+  char_set_4 --- literal_6;
+  literal_6 --- char_class_4;
+  char_class_4 --- char_class_5;
+  char_class_5 --- disjunction_begin_3;
+  disjunction_begin_3 --- literal_7;
+  literal_7 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_8;
+  literal_8 --- literal_9;
+  literal_9 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_10;
+  literal_10 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_11;
+  literal_11 --- disjunction_end_3;
+  disjunction_end_3 --- char_class_6;
+  char_class_6 --- char_set_5;
+  char_set_5 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
   %% Node Styling
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
+  classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
   classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
 
   %% Apply Group Classes
-  class standard_1 standard;
+  class non_capturing_3,non_capturing_2,non_capturing_1,non_capturing_4,non_capturing_6,non_capturing_5 non-capturing;
+  class standard_1,standard_2,standard_3 standard;
 ```
 
 ---
 
-## Semver
+## Semantic Versioning
 
 Semantic versioning v2.0.0
 
-### Pattern
+Source: <https://semver.org>
+
+### Pattern {#Semantic Versioning}
 
 ```regex
 ^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
@@ -2645,19 +4196,19 @@ Semantic versioning v2.0.0
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA71Ya2-bSBT9KyOnlZKNyZo3OJFTx49-WbVSdz81Ti0CE5suBjTG6mbb_vdlBmyYO4Ax3t2oUsKd-zj3zMDc0-89N_Jwb9hbESdeo98-LUKEHNf9w08CPESL3ie8wn8N0ZfL-7uN8zUio8GPR1mynxbpj_fLFf11Q9f8sHYtdhJ3DdYu74cSXSKY4AA7WzxKLZzLj-zXoyP9PZY-S0-PA8ne_83i8_SnRF2l_-7z0Ou0_PPOD7wNThzPSZxR2fd6X4Azsvg3i15O0hRvXUJJeo9DTJwEe-ibn6wRoZxJSSRtMNk4vvdOvhncaDSMBr59iz6knG_p39vEIcm772i7duKU7hfJ9YmLft7StRc_rFlxtltMEj8Kl_Llovfl7pmM7vzRA1754ZYhuPvVHy16V8Ph8ODKAj1_-3UXuiz0mbov5dSnZK0pWI7DodcyKvCTlJWAgRxkcHITW3bXDlm6QYqQeaR7mPlQu8TsXBYl9RmHrymWlZ_kLX_GJEIRQZuI4KLncpF9tJpH0-SOm9pEV5EcpRM5yknkaEfJUVqQo59FjtGFHLUTOepJ5JhHyVFbkGOdRY6dRkttCNE6EaKd9ioNjjKitWBEls-iRO72LpZA7s9rEH3DxE0__zQJNeziuDBIlU2U0hgQR4ucjXDr-Or0-dA7HQj9tANx_PthtjkQ531AZOPcA2H9OwfC_r8OBCX1uvlOG3TH8jHE7aFYx89mGZb838IqZhP6kXiTR85Cr2kyycei33fPbAzNRqP8AYXOBntL14mTHcFLGT0uehcyYsPoovdEXSsHG3GBTS6Z-UBe9ljmh3dQ6GMamGGswaQwTApiQ3ADJqUak8KX1ARMwEFvg0llmFTEhu8GTGo1JpUvaQqYgINVgylNlyHyw1XG04colA6mBmBaNTANbOBAQAY94JYrQoQuWIw27WintKNXt6MDcOLmm8ADRhhChCVY7DbtqEI7qPKzmLcIuACo1DZnlBF4oaFCBdZkVxpKgibadCpXdvoxprviBA1dnogDwX55klrtinHarhS3gvhlk9vsic72REecNK6hQzx62et4rCe9K_9GFavwhTA5COm1MvNWJbWNJEkqK2ioqNl6xX1SJ6CZ_6E4fzULudgV1JipTKZwd3O1FF4et6zFrFwelRfKNf0rdRqZy6Xx2rYSU3Om8rUnKGGuls4r4Ja1mJXLY_BauKZ_tU4Gc7lMXr5WYmrOVL5iBbHL1bJ4kduyFrNyeWxe7tb0r9WpXv78D4BcrUTVnKt8lQvilq8GXje5Q7ViLAASF2LRBQ0LPQxBnrbEw6w8GhXoz5pd0eukJ59NA5qxEldzrvJEIihMvpoOpGWHasV0A3QmxGIJQhJ62IJGbImHWXk0JhCBwhd7IKpAPoMFtJuQQfzoy-DGUqDOYusvfllIJa9BduXl_9nMLHRApblp2il-KVKkwUEwvHgwpubY6m8TEv2Jhxe2OtHMad-NgogMLwbs55ZLUGIrTzGfT23DOKSYyxNFVZpS5Ezsw-3Jgz05hM8MW1atpvBCfO570MbmtABgzczJRBUy5My8J9EurqSGTRj5eILz1FN7Np6qJ9ATchNOlmQynynzIomRJp091OEbx3HwmqOc0KzZnmb9AlncB5IUPKvgWevDsY9r-bZUh5-A-2D4Bc8qeJbBs9GHoyDH0m3v5z8RPC83khoAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA71YXXObOBT9Kxq7nUm2JgsIsHEyTh1_9GWnnWn3qXGaIaA4dDF4BJ5utu1_rySwQRJgmeyuJzO2rnSPzj2W0T353vOTAPXGvTX2tk_gj4-rGADP9_8MswiNwar3Ea3R32Pw5ez6auN9TfBE_3FraO7diryC387p2wWdC-PGua2X-U_C3Nn1WKNTGGEUIS9FExLhlvzI32497Z-p9lm7u9U1d_-Z5Rfwp2Sdk7_rIvUN2f5hF0bBBmVe4GXepLr2zX4DLsjyX616hUhzlPqYivQOxQh7GQrAtzB7AphqpmWJtkF444XBW_NCv9BpGk18_Rq8J5qn9HOaeTh7-x2kT96WyP2o-SH2wc9LOvcYxg0zXpoinIVJfG-crXpfrh7w5Cqc3KB1GKeMwdXv4WTVOx-Px4elLDEI06-72GepD3T5vUHWVKING1bzUBwoZkVhRlSJGEk9p1OE2LT_5OF7PyIM2QryHeZraFxj8XJZijK2aBo_EzLrMCtq_oxwAhIMNglGZdEMgaRwLMwinU56PonJjGR5zE7ymCfJA4_KY6rIY75MHquLPLCTPPAkeeyj8kAVeeDL5HFIuqYiidVJEuskSYZHJbFUJLG6SXLIt1-Qn9PcI0TJN4R9cgtQFBrYbbdlQGsuI4dxRCIKmMf5llvtdR91-Y3YnQ6EfdKBcI8eiKHKgXBeeCCGLz4Qo3_nQLj_04EwdLIRaSXaLze9O5sPMVInYxw_nlVaxn9Lq2xS6M30qshcxEFbi1L0R592D6wfzXukYgBib4OCe9_bZjuM7g1wu-qxlhT0jVXvji6t7XDkCdbC5OGDePmwqk8lwtoPOiaZOckGUiYjRXth0DdbSJn1pEyeFJRImQIpU4UUpKRYEw76sIUUrCcFeVK2RAoKpGADKYKXUwrjda7U-yTWDqEWZlY9M4tnNpSYWQIzcSzXIkcclWqsU6qx66ux-WpciclQYO8IY7n-kRRxVaqBUjWg9slYVChIwZcxUjmhTL7SC4K-1QButuwo1KBSqFFb6Ict_U68qKXIE3kAsV5eI6Uj5pz2pZS3gvxkU3qU2XQ_ziCDvt0ghyPvoavUZHfV36lTVfgBCRTItbII1hXbDTRNq1pp0Vqz-Zr7pMlJs_WHzfmrWcJiV1ArUlVM6e4uV7CrSTDKiruxKMfa5B1zgwJmk1nmsCBvcms5tSNV7z3JEvMKmIIXVtyNRTnWFm-KGxSATX6Yw7J5H1vLqR2peslKrpdXAAp2V3E3FuVYO7zvbVDAarK_HNaQt621nNqRqpe5ZHJ5BSzB3XbdjTUGgtMVudiSkxVXOJJJVeTDopyKI96ENnwjdpP_5LBc3jfWcmpHqjYkksvkVXQEe9l1N9bcCFZT5DKSrKS4wpVcoiIfFuWf7rpgA6Unti67QB5BuCDkZ7780DeEG8sUfRabfwyrRip7jvIrr_ivM4vQ9pRiU9g5eiwhSHIUjfs3znw4HQ3SDCd_oXHfhTNrOB_4SZTgcV9nr0sOoKJWAbFczl3HOUAsjZkJzTaIQol9uju7cWeH9IXjGnDUll6az30N1nQ4LwmMFsPZDB5FIEeryHeX09F8esi3Z87NTJfyC2Xf4WS3rZWWdShFe4MK6Lm7mM7hCfLGXIeUg8yWC3NZgjgEdHHTxG-63UbPBcsZRc3PRK6XYKsHgqMVxlAYWwOxbeRKvqzsw3fQA6F5FsZQGBvC2BmIrSSn0mXv5y8ZhSUj2xoAAA==)
 
 <details>
   <summary>Click to view as image</summary>
   <p align="center">
-    <img src="diagrams/semver.mermaid-diagram.png" alt="Mermaid diagram for Semver" />
+    <img src="diagrams/semver.mermaid-diagram.png" alt="Mermaid diagram for Semantic Versioning" />
   </p>
 </details>
 
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<major>0|[1-9]\\d*)\\.(?<minor>0|[1-9]\\d*)\\.(?<patch>0|[1-9]\\d*)(?:-(?<prerelease>(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2667,75 +4218,75 @@ graph LR
   disjunction_end_1:::disjunction@{ shape: f-circ };
   literal_1("0"):::literal;
   char_class_1("1-9"):::char-class;
-  literal_2("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_3("Any character"):::literal;
+  char_set_1("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_2("Any character"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_4("0"):::literal;
+  literal_3("0"):::literal;
   char_class_2("1-9"):::char-class;
-  literal_5("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_6("Any character"):::literal;
+  char_set_2("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_4("Any character"):::literal;
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  literal_7("0"):::literal;
+  literal_5("0"):::literal;
   char_class_3("1-9"):::char-class;
-  literal_8("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_9("-"):::literal;
+  char_set_3("Any digit<br><i>Zero or more</i>"):::char-set;
+  literal_6("-"):::literal;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  literal_10("0"):::literal;
+  literal_7("0"):::literal;
   char_class_4("1-9"):::char-class;
-  literal_11("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_12("Any digit<br><i>Zero or more</i>"):::literal;
+  char_set_4("Any digit<br><i>Zero or more</i>"):::char-set;
+  char_set_5("Any digit<br><i>Zero or more</i>"):::char-set;
   char_class_5("Any lowercase<br>Any uppercase<br>-"):::char-class;
   char_class_6("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
-  literal_13("Any character"):::literal;
+  literal_8("Any character"):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  literal_14("0"):::literal;
+  literal_9("0"):::literal;
   char_class_7("1-9"):::char-class;
-  literal_15("Any digit<br><i>Zero or more</i>"):::literal;
-  literal_16("Any digit<br><i>Zero or more</i>"):::literal;
+  char_set_6("Any digit<br><i>Zero or more</i>"):::char-set;
+  char_set_7("Any digit<br><i>Zero or more</i>"):::char-set;
   char_class_8("Any lowercase<br>Any uppercase<br>-"):::char-class;
   char_class_9("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>Zero or more</i>"):::char-class;
-  literal_17("+"):::literal;
+  literal_10("\+"):::literal;
   char_class_10("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
-  literal_18("Any character"):::literal;
+  literal_11("Any character"):::literal;
   char_class_11("Any digit<br>Any lowercase<br>Any uppercase<br>-<br><i>One or more</i>"):::char-class;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["#1 major"]
+  subgraph named_capture_1 ["major #1"]
     disjunction_begin_1
     disjunction_end_1
     literal_1
     char_class_1
-    literal_2
+    char_set_1
   end
 
-  subgraph named_capture_2 ["#2 minor"]
+  subgraph named_capture_2 ["minor #2"]
     disjunction_begin_2
     disjunction_end_2
-    literal_4
+    literal_3
     char_class_2
-    literal_5
+    char_set_2
   end
 
-  subgraph named_capture_3 ["#3 patch"]
+  subgraph named_capture_3 ["patch #3"]
     disjunction_begin_3
     disjunction_end_3
-    literal_7
+    literal_5
     char_class_3
-    literal_8
+    char_set_3
   end
 
   subgraph non_capturing_2 ["Non-capturing"]
     disjunction_begin_4
     disjunction_end_4
-    literal_10
+    literal_7
     char_class_4
-    literal_11
-    literal_12
+    char_set_4
+    char_set_5
     char_class_5
     char_class_6
   end
@@ -2743,20 +4294,20 @@ graph LR
   subgraph non_capturing_4 ["Non-capturing"]
     disjunction_begin_5
     disjunction_end_5
-    literal_14
+    literal_9
     char_class_7
-    literal_15
-    literal_16
+    char_set_6
+    char_set_7
     char_class_8
     char_class_9
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Zero or more</i>"]
     non_capturing_4
-    literal_13
+    literal_8
   end
 
-  subgraph named_capture_4 ["#4 prerelease"]
+  subgraph named_capture_4 ["prerelease #4"]
     non_capturing_2
     non_capturing_4
     non_capturing_3
@@ -2767,15 +4318,15 @@ graph LR
     non_capturing_4
     non_capturing_3
     named_capture_4
-    literal_9
+    literal_6
   end
 
   subgraph non_capturing_6 ["Non-capturing <i>Zero or more</i>"]
-    literal_18
+    literal_11
     char_class_11
   end
 
-  subgraph named_capture_5 ["#5 buildmetadata"]
+  subgraph named_capture_5 ["buildmetadata #5"]
     non_capturing_6
     char_class_10
   end
@@ -2783,7 +4334,7 @@ graph LR
   subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
     non_capturing_6
     named_capture_5
-    literal_17
+    literal_10
   end
 
   %% Edges
@@ -2792,48 +4343,48 @@ graph LR
   disjunction_begin_1 --- literal_1;
   literal_1 --- disjunction_end_1;
   disjunction_begin_1 --- char_class_1;
-  char_class_1 --- literal_2;
-  literal_2 --- disjunction_end_1;
-  disjunction_end_1 --- literal_3;
-  literal_3 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_4;
-  literal_4 --- disjunction_end_2;
+  char_class_1 --- char_set_1;
+  char_set_1 --- disjunction_end_1;
+  disjunction_end_1 --- literal_2;
+  literal_2 --- disjunction_begin_2;
+  disjunction_begin_2 --- literal_3;
+  literal_3 --- disjunction_end_2;
   disjunction_begin_2 --- char_class_2;
-  char_class_2 --- literal_5;
-  literal_5 --- disjunction_end_2;
-  disjunction_end_2 --- literal_6;
-  literal_6 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_7;
-  literal_7 --- disjunction_end_3;
+  char_class_2 --- char_set_2;
+  char_set_2 --- disjunction_end_2;
+  disjunction_end_2 --- literal_4;
+  literal_4 --- disjunction_begin_3;
+  disjunction_begin_3 --- literal_5;
+  literal_5 --- disjunction_end_3;
   disjunction_begin_3 --- char_class_3;
-  char_class_3 --- literal_8;
-  literal_8 --- disjunction_end_3;
-  disjunction_end_3 --- literal_9;
-  literal_9 --- disjunction_begin_4;
-  disjunction_begin_4 --- literal_10;
-  literal_10 --- disjunction_end_4;
+  char_class_3 --- char_set_3;
+  char_set_3 --- disjunction_end_3;
+  disjunction_end_3 --- literal_6;
+  literal_6 --- disjunction_begin_4;
+  disjunction_begin_4 --- literal_7;
+  literal_7 --- disjunction_end_4;
   disjunction_begin_4 --- char_class_4;
-  char_class_4 --- literal_11;
-  literal_11 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_12;
-  literal_12 --- char_class_5;
+  char_class_4 --- char_set_4;
+  char_set_4 --- disjunction_end_4;
+  disjunction_begin_4 --- char_set_5;
+  char_set_5 --- char_class_5;
   char_class_5 --- char_class_6;
   char_class_6 --- disjunction_end_4;
-  disjunction_end_4 --- literal_13;
-  literal_13 --- disjunction_begin_5;
-  disjunction_begin_5 --- literal_14;
-  literal_14 --- disjunction_end_5;
+  disjunction_end_4 --- literal_8;
+  literal_8 --- disjunction_begin_5;
+  disjunction_begin_5 --- literal_9;
+  literal_9 --- disjunction_end_5;
   disjunction_begin_5 --- char_class_7;
-  char_class_7 --- literal_15;
-  literal_15 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_16;
-  literal_16 --- char_class_8;
+  char_class_7 --- char_set_6;
+  char_set_6 --- disjunction_end_5;
+  disjunction_begin_5 --- char_set_7;
+  char_set_7 --- char_class_8;
   char_class_8 --- char_class_9;
   char_class_9 --- disjunction_end_5;
-  disjunction_end_5 --- literal_17;
-  literal_17 --- char_class_10;
-  char_class_10 --- literal_18;
-  literal_18 --- char_class_11;
+  disjunction_end_5 --- literal_10;
+  literal_10 --- char_class_10;
+  char_class_10 --- literal_11;
+  literal_11 --- char_class_11;
   char_class_11 --- assertion_2;
   assertion_2 --- fin;
 
@@ -2843,6 +4394,7 @@ graph LR
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
@@ -2855,104 +4407,13 @@ graph LR
 
 ---
 
-## Stocks
-
-undefined
-
-### Pattern
-
-```regex
-/(\W|^)stock\s{0,3}tip(s){0,1}(\W|$)/gim
-```
-
-### Diagram
-
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA51VXW_aMBT9K1baSkUiLXEgLWmFWgL0ZepDN2kPS4tSx4DXNIlsI4YY_322Y9KYAGXNk30_ju89vsdZWSiLseVbUxrlM_DtKUwBiBD6QXiCfRBaT3iK__jg8jwU38-_Lw3GM_QmN2zVarprTvJz1hBLZ61DThuXU_IeWhppgBmiEukBp5hGHMdgQfgMUAls88x-x_Q9IvGdc9G6aMs0mXh2Bh5FYUyuGY8ov1sBNotyUdPERoQisL6RvglJ93hiwn7PU8RJlo5f8ZSkY8f3_Yr1iDycxkdmJYSL5pKxcx5ajxkHEVhkNAZoFtEICVdoNQSOjlIZEWOYqlNkzsvtK-3dkl5fVsoUQ7eXpFeklaHGUVCkFZdRw96EuCLkPl2CxUwYWB4hrI9pAZ4B9-OEXcltkSxud39ARxZQd9eJh18iHv4X8d4XiJcMnmpGhml8iHY9k9_nr0ooxVzqjRzQNI6omBXwK7ROHPBAs3kOnNB6lnE7Z7HuUMNWmMtpKraVUZEGEVgUVC8AqgKgLgCCzVU7RVfPJnznEzRXobkazT3QDtzdDjTP87bbgUYBgt9hPK1oHti2vYu7ffpW8SV3pi5rWIrug0gV2rcVeySashpVQVPChs81tWv42qY0DV_HVOUe1uA-cRpYnimqnX0eRqrc7rbcjkRTVhUrXveK9vgyKYZD_xyUhaRTaUKJOGeAJ1UgkZ4k_sloNOh6XpNxmr1hsXUC6MImypKM-ict9d0YELr7TXo36HeDMn3odR33-lB62bAG6HuDq_vrEqDrBu2rQQ1A91VIbVdjG1WWXY1gEHzWlUa9z_NkqbEDCVjwqLArr1fz4x1pVh6BzfLGWv8DJPTQsi8IAAA=)
-
-<details>
-  <summary>Click to view as image</summary>
-  <p align="center">
-    <img src="diagrams/stocks.mermaid-diagram.png" alt="Mermaid diagram for Stocks" />
-  </p>
-</details>
-
-```mermaid
-graph LR
-  accTitle: "Regex: /(\\W|^)stock\\s{0,3}tip(s){0,1}(\\W|$)/gim"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
-
-  %% Nodes
-  start@{ shape: f-circ };
-  fin@{ shape: f-circ };
-  disjunction_begin_1:::disjunction@{ shape: f-circ };
-  disjunction_end_1:::disjunction@{ shape: f-circ };
-  literal_1("Not a word character"):::literal;
-  assertion_1("^<br><i>Begins with</i>"):::assertion;
-  literal_2("stock"):::literal;
-  literal_3("Any whitespace<br><i>0 to 3</i>"):::literal;
-  literal_4("tip"):::literal;
-  literal_5("s"):::literal;
-  disjunction_begin_2:::disjunction@{ shape: f-circ };
-  disjunction_end_2:::disjunction@{ shape: f-circ };
-  literal_6("Not a word character"):::literal;
-  assertion_2("$<br><i>Ends with</i>"):::assertion;
-
-  %% Subgraphs
-  subgraph standard_1 ["#1 Group 1"]
-    disjunction_begin_1
-    disjunction_end_1
-    literal_1
-    assertion_1
-  end
-
-  subgraph standard_2 ["#2 Group 2 <i>0 to 1</i>"]
-    literal_5
-  end
-
-  subgraph standard_3 ["#3 Group 3"]
-    disjunction_begin_2
-    disjunction_end_2
-    literal_6
-    assertion_2
-  end
-
-  %% Edges
-  start --- disjunction_begin_1;
-  disjunction_begin_1 --- literal_1;
-  literal_1 --- disjunction_end_1;
-  disjunction_begin_1 --- assertion_1;
-  assertion_1 --- disjunction_end_1;
-  disjunction_end_1 --- literal_2;
-  literal_2 --- literal_3;
-  literal_3 --- literal_4;
-  literal_4 --- literal_5;
-  literal_5 --- disjunction_begin_2;
-  disjunction_begin_2 --- literal_6;
-  literal_6 --- disjunction_end_2;
-  disjunction_begin_2 --- assertion_2;
-  assertion_2 --- disjunction_end_2;
-  disjunction_end_2 --- fin;
-
-  %% Styles
-  %% Node Styling
-  classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
-  classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
-  classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
-
-  %% Group Styling
-  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
-
-  %% Apply Group Classes
-  class standard_1,standard_2,standard_3 standard;
-```
-
----
-
 ## URL (RFC3987)
 
 Absolute IRIs (internationalized)
 
-### Pattern
+Source: <https://stackoverflow.com/a/190405>
+
+### Pattern {#URL (RFC3987)}
 
 ```regex
 /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i
@@ -2960,7 +4421,7 @@ Absolute IRIs (internationalized)
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61a6VPbOBT_V7yhnWm2MViHr9BpgBD6pdOdaffTQsq4iQFv0yTjmG1Z4H9fSXEOPR2Rw3ra1JLe_Z4u__rYGs3Geavbui2z-Z338fPV1POy0ejPoprkXe-q9Tm_zX91vaOvb3rd5Z-7qpovek831bzdbfeu2HMkftpsjL98ectelm-_t3sn7Z5g-439ouAJ4XhFd8h_xo-oQ57bj-xvTROlYhCH9AmlWLyjKNEyYcGE4iUVZ76M_HT4JNrjJ3IZ-Gho5uxeIkYtuntPSPy7ZMSXARrWr-zdJxshXElvJQk_c1KfrmhD1giHbS5-i96iRWaljPVpGePLzP838EUk7oMgQ754u2HP0Dx07Q8fg07EfOtZ-IVZ7be1Eh3FI-48C6peu71K5Zh1hs8il5dHvYPhKr2vjoqrVl0z5_liVPKa-ZBP8zKr8rH3s6juvJKXkF_N_B95-SMrxifoMDiknI0zvn7tfWIluODviyorq5NHb3GXzVn13fijohx5z8d87KaYGkayxSIvq2I2vUZvrlpf330r378r3p_lt8V0ISx4d1S8v2q1u93umlQwjovF3_fTkWD9xsmvEaPZ6jUo3ObLp2NHrklRsahMhJF8Di0tqnslCswoFrUbf8y5yGyy8UHHQRjHjU0kZQRd83DIho-OzOMRG_80q7yfd6xjMc9G-cq8ae7NSu_HrMztFsZ2AxKTgr_ycuamIWUiTtRhNcl4ryQ351pqI3tpI81KKmC-o8AcG8SLjq29FgpedKfTB290l5XZiHVaaElNOy5ui6pOFPKqmUf0KVKjQveKCm0WFV70bD_he4nFGV77bKfhu4yFKmoQnrhheNaMfBaw7ezQJYLhXhEMm0WQzymkWsODcD2asNVUrGZs013S8H5f9MvrGS9PzDc-85LH5RCrJl6gbEO3a2pQxfjlVRztlQM3ri3PuaFoV4ypxhu3zQOLGSDOJbYMRSKJtgxxEwJvR4akyWFRx-cCtusLRUUQu750d0WoiY33SmzcaHIRsWg32-aRqWTxDka8M3mRCCa1BpMQt-QRXgk4tOqLhb7Qri_cJ3nJXslLms7KxGFWkmjvWUlil1lJkp2JTV0Sm7ollga7EysOIyaF23SrYp7MfublKFuII58UrM3dRNxMdkrETSXyrmvPrxMT8JkUbU0liyryvxi_jivaXejb2qlOu8Y35hRWT88mI5TNs1HBUmI_4lPdDoV5yEO94G2HxQXF63kHdg_C_a8Rm1skD8Ormm8wHdvukPUF9sv9N_H9ZHmJrRvelMkaZfPqviymt9fEu-S2Tf1111VryOm191B1QFw0l93r45ncxHKT8CbjWlppsAorVnlKwmsrgTuyMuqiDJlDoBUOTJU1hi4aQ3f31hdVuZm4qKH7RjGUlUVyM3XRHTepK6KvK5BMdpOU28jFkEQbhMEvtpJMHlZnahBsBJKKTEWb32ZV8U9-PZnNvmd3eTaui6nu9z6u-g2BjnWdTrlNm8SX6uNLgZew7VTLKLAGGOsDDEoKxc4Bxo0CnOo6l4W00zHUJMShPsRgJqHanu09BKyWoMgxUjiwk_V4j7RgUPfYve5Jo7QgpO2F085pJqBGW1ikz1OkRBksPhhMDgwyi1UJkAMs4ThRONwmXNjE31jvL7CFgKojoCoJVmwFM5iAeBGqcMRO3tEGdQsDAwLstFGhRjtVog-nmsoEhAOGCyZAlZACCtCmgbqUuK1rket5B0Ej3eozdT92SPcutcttpdPv8AoEoHdRsyDDM6TTMQMH5qhKVyQg3MlF54yZzxOe9rDScMvUCsHNF3jd_qGlJ7Z5DhcOWwnDKWCrBVhe2lN_YFohsH6FcMozRs0vBhSWq9OdB-P9JilYYqm8IrA752B8uwWaer7vbwOhEBgV45p7pgkHFfTr44EMCkhjWP7aqugR11YnLUT-IuUoSfRKcqj8SUAaC2XUUxqLZMRTGotlLFMaS2QgUxpLZYTSkAVsAioN9MQENcpZCwBGqI2ooyxQAshRluiVJWEAO8qjBACNhghQE6woS6MAD9Ra7SgrBKihoyzRK0uKALIoj8YAS5RHEwAYGuITmkBDWVoK0D4xur0KKd_htF67acMBAAVfIgsB9BBajhX00FGb6JV1gSVOrlhMAKhoyEhkghCh5URB_2R9FMB-Wr_s2jZXK4ADvkRWBNBC6BdV0EKZPwYw4UtsSQCUCG0JFSTRUZvolXWlAG405D82IY3yHhgAiFAeRQAN1FrtqAkDgBDGKFIAQpkfbNfkJbZQgB5CW2IFPHTUJnplXSFAGA35SkzgIrQtUXBBWV8EAEGt5XZtm7ssQAhfIisBOCL0K1VwRJk_BQDiC2yhAQAZlX0oUEFGR32iV0trP3VJF2YVulRosApGKjRERRHlOCAACioSqIoEyhIwQPQcPRe9siQCwD15FByylRmLQhXCkyWEALkDNxgMQTkxflNso27Vw2R5Bar_D6no4Xd2rpkrPc9vNiIY82TSPTiLzuPTpLOoytn3vHuQkj6Nzzuj2WRWdg8C8RxLArbiVIu4uDhPo2gt4gL1McE2EbWXK_a0f5b21-yDKEUksbFv0M6VD_Q0Pt8YkAzifp8oEurIfChn93NtaKbSrXQpun8xwBdkLTo6TweDM5txq08M_voTw8pN2mfPxs0gYo_JyNP5fPJQm9rnopeJXToNwMEOuGGDNgLtELQpaMegnYB2CuUHsANqRIpJ0GYEjULQKgTNQhHsUAyDlmNoKRSBoeXscCsVxfFWEjRftTq6r1QdLWihlslx6_k_WsRtB34wAAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA61aW2_bNhT-K5rTAvVqJSIp6uIUdRPb6UvRAe2elqSBaiuJVtc2ZKVtluS_j6RkyzwkZcqpsWUSee7n8HL07aEzWUzTTr9zkyfLW-fDp4u54ySTyd9ZMUv7zkXnU3qT_uo7R19eDfrlP7dFsVwNHq-LZbffHVyw35H402Vz_OHza_ZQPv3ZHbzrDgTbH-wv8h4RDtd0h_zP9AH1yFP3gf1b0QSxmMTUf0QxFs8oiLRMWDChsKTizOeBG18-ivfpIzn3XHRp5uyfI0YthgePSPy3ZMTnHrqsHtmzS2ohXMlgLQk_cVLXX9NS9kIvu1z8Fn2DFpnVZ6yPZYzPE_c_zxWRuPO8BLni6Zr9Ls1TV-7lg9cLmG-DBn5hVvd1pURH8YB7T4Jq0O2uUzllg_RJ5PL8aHBwuU7vi6PsolPVzChdTXJeM-_TeZonRTp1fmbFrZPzEnKLhfs9zb8n2fQdPvQOPc7GGV--dD6yElzx51WR5MW7B2d1myxZ9V27kyyfOE_HfO46mxtmktUqzYtsMb9Cry46X958zd--yd6epjfZfCUseHOUvb3odPv9_oZUME6z1b9384lg_crJrxCj2Ro1KNzmS-dTS65ZVrCozISRfA2VFlWjEgVmFKvKjb-WXGQyq33QcRDGcd0k0mcEffM0ZdNiHR-pNJPbJL9apYUw_OOicH7estnVMpmkaxvnqbPIne-LPK3NnKc3vARczu4ydklfoDdnowqbVP2T5ouWukIm652qS00-3iv57blKbWQvbaRVqUXMdeSZ0x7zeRyaCZDHKE7m9yIzyYQNNiSNVLTT7CYrqnwhp1g4pM6UlCE1KP5eQfHbrT9ex-KY4YdMg--8CMURxA-gBjrSIkZ-2xhttHBOcdQd2tQy3SuQtF0g-a6BDM5OZmyvFVsGO5K3_BLjshi-GeCGmNHtmDWFiK900mgPTym7FDTbE7XIZ_D8mg_2SpUd15brvEqRIRUbd0KNO-oJpI9-3FANXHa0I40bwtgy39hrKJzSab5oPAc1O73Z5HYq5OWMmzVSUWGkscIw3l1hap2Ee9VJ2GpJY1ElVlePOnzItAbwjpLB_s4EBiKc_o4EYtsE8uxg2qgxFBppcwKDfRIY7ZXAqO1Cj2wWOiL7r3Qc7ljpyLdd6sh2b8fRzlKJrUolsFUY7y4VsXE0qqzo1itktviZ5pNkJW6zUvTrLkz0YDsl4rYS-dCV41aZ9vjyDOD61Ksiv8X4Tadie6OstPs67RrfmFNYbQxMRiBoRLtuC-9oX5DuHMU85tSwtrZd5mviyBk4BztKOfoNTVLdO3OfXlQCxvNpU-dcte2f776Kr0Zl6169OHMma5Isi7s8m99cEeecGzl3N0MXnUtOr-2-1QnRXpfDm4uG_IrlV8JfGVdppcEqrFjlKMmvrATuyMp8G2XIHAKtcGCqrJHaaKT27m0a8vK1bsBt9Pj7hpECbSCloY3ysE1lEX1lgXRG8mtsY0akjcH4F9tVZvfrLgAEm7Xksv-mouUrNvuRXs0Wi2_JbZpMq2Kqxp0P63FDnEPdYGTjVtwmur4-uj7wGq5jqxpDXmOAsT7ABATYtw4wbhXgWDdYpnenY6hNiKk-xBT4vb2wqtMEUMCFDiWEigS7NOF90hQBYwLrNJFWaVqXHrQZmGO3nbc60gJ93gIlyrBiQ2BbDOZh6GJwKnqKBh9uuh5gQQqL1WmDaJuAhPqAAHcxDAfcPLCvGAsrG6YXq4vD6qBBfovShqEBJtitpVZHW6QPaKQ4CysGgdMPh5BAqRjojqoElul6v6nbKnWHstsuA9trFIK1FFjJj-0vM1Jrpw7ZJVl_cVCgFL2LmiiCbBKrqGLPHFWpCwPCkY1w64yZrymO9g7U8iTWCsHtzwndMaSlJ017AdxcmkoYLoGmWoDlpW0mPNMugvW7iFUpY9S-3yAYbhRWezHG-61SpeGQL8GsmR1Pb7YwaMd13W1cGeLMYl7TwJpgZUG_Ocvl7-bSHJY_Qil6RD9spYXInywsJYlRSY4v48jSHJVBZDFXxxh8rpA4AxkOljkxAIMlzlAGdw2ZwCaM10BPTCitpDuS0VVtTO0kxTIOaylJjMq15AG8Vo4kAQitwXvfBMfKukDhIq3VlrIwwFotZYlRWRIBaKwcAR_grzKvDzBWQ3yoCWWVpVEAj9aWVNuQ8qlP67WltgCgqLLfFGCoz9EUApgV-oUVmNVSmxiVdUUAi5W9CgD6ashXYIJaoeVEQUllfSGAR7V-NWurOzgAl8qaIgCWyrMxQEifYQf2AIgKY-IrICrY1z0Inz7HGgQQVmgNVQBWS21iVNYFDlfTWRCaAFhZGgHIKYgSPP70a91Slw9wUxilQMFNgTUYIqbPsYYCUBVaEyqYqqU2MSrrCgDwashZZMJcoW2RApeCSBEIlGptb9ZXt9QAOAW6fIibgnkK0dLn2BIBQBVGJlYAVWBNAKHU51gTA7RVOSs9FW211CdGtbTNt0KprVcxXIUGq6isQkNUOFW-pXsAHVUk-CokKktAANq09FyMypIwQDlB_kMIciq2UhXLBDIiiGGCTgtDVFLMX2fbsGNxPytbtep_HRYj_OsCl8zVjtLrWgRjns36B6fBKDyJeqsiX3xL-wcxGfrhqDdZzBZ5_8ATv2NJwFasKhFnZ6M4CDYiztAQE9wkoorkmj0ensbDDfs4iBGJmtghYFvJGZ_FJ_FJLYeSmFBZTjXpTpMV482T-75DHSpLB1Ljs5NoVEulw-B06DVZV8PS6wj7J-GoDk80DodDokio8vY-X9wttYmbS819KXp4NsZnZCM6GMXj8enO0GU_UnfzqWadBH_IfnXwvID9LINXmX6yXM7uKweGXGFZjGUoAKLbA58vwDsC7xS8--A9BO8ReI-hfA8OQI1IMQnajKBRCFqFoFkogAOKYdByDC2FIjC0nF3fpFI53kqC5pthT_cNsKdFltTiOe48_Q--vA0hKTMAAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -2972,7 +4433,7 @@ Absolute IRIs (internationalized)
 ```mermaid
 graph LR
   accTitle: "Regex: /^(?:(?:(?:https?|ftp):)?\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\\u00a1-\\uffff][a-z0-9\\u00a1-\\uffff_-]{0,62})?[a-z0-9\\u00a1-\\uffff]\\.)+(?:[a-z\\u00a1-\\uffff]{2,}\\.?))(?::\\d{2,5})?(?:[/?#]\\S*)?$/i"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -2984,76 +4445,81 @@ graph LR
   literal_2("s<br><i>Optional</i>"):::literal;
   literal_3("ftp"):::literal;
   literal_4(":"):::literal;
-  literal_5("//"):::literal;
-  literal_6("Not whitespace<br><i>One or more</i>"):::literal;
-  literal_7(":"):::literal;
-  literal_8("Not whitespace<br><i>Zero or more</i>"):::literal;
-  literal_9("@"):::literal;
+  literal_5("\/\/"):::literal;
+  char_set_1("Not whitespace<br><i>One or more</i>"):::negated-char-set;
+  literal_6(":"):::literal;
+  char_set_2("Not whitespace<br><i>Zero or more</i>"):::negated-char-set;
+  literal_7("@"):::literal;
   disjunction_begin_2:::disjunction@{ shape: f-circ };
   disjunction_end_2:::disjunction@{ shape: f-circ };
   disjunction_begin_3:::disjunction@{ shape: f-circ };
   disjunction_end_3:::disjunction@{ shape: f-circ };
-  literal_10("10"):::literal;
-  literal_11("127"):::literal;
-  literal_12("Any character"):::literal;
-  literal_13("Any digit<br><i>1 to 3</i>"):::literal;
+  literal_8("10"):::literal;
+  literal_9("127"):::literal;
+  literal_10("Any character"):::literal;
+  char_set_3("Any digit<br><i>1 to 3</i>"):::char-set;
   disjunction_begin_4:::disjunction@{ shape: f-circ };
   disjunction_end_4:::disjunction@{ shape: f-circ };
-  literal_14("169.254"):::literal;
-  literal_15("192.168"):::literal;
-  literal_16("Any character"):::literal;
-  literal_17("Any digit<br><i>1 to 3</i>"):::literal;
-  literal_18("172."):::literal;
+  literal_11("169\.254"):::literal;
+  literal_12("192\.168"):::literal;
+  literal_13("Any character"):::literal;
+  char_set_4("Any digit<br><i>1 to 3</i>"):::char-set;
+  literal_14("172\."):::literal;
   disjunction_begin_5:::disjunction@{ shape: f-circ };
   disjunction_end_5:::disjunction@{ shape: f-circ };
-  literal_19("1"):::literal;
+  literal_15("1"):::literal;
   char_class_1("6-9"):::char-class;
-  literal_20("2\d"):::literal;
-  literal_21("3"):::literal;
+  literal_16("2"):::literal;
+  char_set_5("Any digit"):::char-set;
+  literal_17("3"):::literal;
   char_class_2("0-1"):::char-class;
-  literal_22("Any character"):::literal;
-  literal_23("Any digit<br><i>1 to 3</i>"):::literal;
+  literal_18("Any character"):::literal;
+  char_set_6("Any digit<br><i>1 to 3</i>"):::char-set;
   disjunction_begin_6:::disjunction@{ shape: f-circ };
   disjunction_end_6:::disjunction@{ shape: f-circ };
   char_class_3("1-9"):::char-class;
-  literal_24("Any digit<br><i>Optional</i>"):::literal;
-  literal_25("1\d\d"):::literal;
-  literal_26("2"):::literal;
+  char_set_7("Any digit<br><i>Optional</i>"):::char-set;
+  literal_19("1"):::literal;
+  char_set_8("Any digit"):::char-set;
+  char_set_9("Any digit"):::char-set;
+  literal_20("2"):::literal;
   char_class_4("0 1"):::char-class;
-  literal_27("Any digit"):::literal;
-  literal_28("22"):::literal;
+  char_set_10("Any digit"):::char-set;
+  literal_21("22"):::literal;
   char_class_5("0-3"):::char-class;
-  literal_29("Any character"):::literal;
+  literal_22("Any character"):::literal;
   disjunction_begin_7:::disjunction@{ shape: f-circ };
   disjunction_end_7:::disjunction@{ shape: f-circ };
-  literal_30("1<br><i>Optional</i>"):::literal;
-  literal_31("Any digit<br><i>1 to 2</i>"):::literal;
-  literal_32("2"):::literal;
+  literal_23("1<br><i>Optional</i>"):::literal;
+  char_set_11("Any digit<br><i>1 to 2</i>"):::char-set;
+  literal_24("2"):::literal;
   char_class_6("0-4"):::char-class;
-  literal_33("Any digit"):::literal;
-  literal_34("25"):::literal;
+  char_set_12("Any digit"):::char-set;
+  literal_25("25"):::literal;
   char_class_7("0-5"):::char-class;
-  literal_35("Any character"):::literal;
+  literal_26("Any character"):::literal;
   disjunction_begin_8:::disjunction@{ shape: f-circ };
   disjunction_end_8:::disjunction@{ shape: f-circ };
   char_class_8("1-9"):::char-class;
-  literal_36("Any digit<br><i>Optional</i>"):::literal;
-  literal_37("1\d\d"):::literal;
-  literal_38("2"):::literal;
+  char_set_13("Any digit<br><i>Optional</i>"):::char-set;
+  literal_27("1"):::literal;
+  char_set_14("Any digit"):::char-set;
+  char_set_15("Any digit"):::char-set;
+  literal_28("2"):::literal;
   char_class_9("0-4"):::char-class;
-  literal_39("Any digit"):::literal;
-  literal_40("25"):::literal;
+  char_set_16("Any digit"):::char-set;
+  literal_29("25"):::literal;
   char_class_10("0-4"):::char-class;
   char_class_11("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
   char_class_12("Any lowercase<br>Any digit<br>\u00a1-\uffff<br>_ -<br><i>0 to 62</i>"):::char-class;
   char_class_13("Any lowercase<br>Any digit<br>\u00a1-\uffff"):::char-class;
-  literal_41("Any character"):::literal;
+  literal_30("Any character"):::literal;
   char_class_14("Any lowercase<br>\u00a1-\uffff<br><i>2 or more</i>"):::char-class;
-  literal_42("Any character<br><i>Optional</i>"):::literal;
-  literal_43(":"):::literal;
-  literal_44("Any digit<br><i>2 to 5</i>"):::literal;
+  literal_31("Any character<br><i>Optional</i>"):::literal;
+  literal_32(":"):::literal;
+  char_set_17("Any digit<br><i>2 to 5</i>"):::char-set;
   char_class_15("/ ? #"):::char-class;
-  literal_45("Not whitespace<br><i>Zero or more</i>"):::literal;
+  char_set_18("Not whitespace<br><i>Zero or more</i>"):::negated-char-set;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
@@ -3077,26 +4543,26 @@ graph LR
   end
 
   subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
-    literal_7
-    literal_8
+    literal_6
+    char_set_2
   end
 
   subgraph non_capturing_4 ["Non-capturing <i>Optional</i>"]
     non_capturing_5
-    literal_6
-    literal_9
+    char_set_1
+    literal_7
   end
 
   subgraph non_capturing_7 ["Non-capturing"]
     disjunction_begin_3
     disjunction_end_3
-    literal_10
-    literal_11
+    literal_8
+    literal_9
   end
 
   subgraph non_capturing_8 ["Non-capturing <i>Exactly 3</i>"]
-    literal_12
-    literal_13
+    literal_10
+    char_set_3
   end
 
   subgraph negative_lookahead_1 ["Negative Lookahead"]
@@ -3107,13 +4573,13 @@ graph LR
   subgraph non_capturing_9 ["Non-capturing"]
     disjunction_begin_4
     disjunction_end_4
-    literal_14
-    literal_15
+    literal_11
+    literal_12
   end
 
   subgraph non_capturing_10 ["Non-capturing <i>Exactly 2</i>"]
-    literal_16
-    literal_17
+    literal_13
+    char_set_4
   end
 
   subgraph negative_lookahead_2 ["Negative Lookahead"]
@@ -3124,70 +4590,75 @@ graph LR
   subgraph non_capturing_11 ["Non-capturing"]
     disjunction_begin_5
     disjunction_end_5
-    literal_19
+    literal_15
     char_class_1
-    literal_20
-    literal_21
+    literal_16
+    char_set_5
+    literal_17
     char_class_2
   end
 
   subgraph non_capturing_12 ["Non-capturing <i>Exactly 2</i>"]
-    literal_22
-    literal_23
+    literal_18
+    char_set_6
   end
 
   subgraph negative_lookahead_3 ["Negative Lookahead"]
     non_capturing_11
     non_capturing_12
-    literal_18
+    literal_14
   end
 
   subgraph non_capturing_13 ["Non-capturing"]
     disjunction_begin_6
     disjunction_end_6
     char_class_3
-    literal_24
-    literal_25
-    literal_26
+    char_set_7
+    literal_19
+    char_set_8
+    char_set_9
+    literal_20
     char_class_4
-    literal_27
-    literal_28
+    char_set_10
+    literal_21
     char_class_5
   end
 
   subgraph non_capturing_15 ["Non-capturing"]
     disjunction_begin_7
     disjunction_end_7
-    literal_30
-    literal_31
-    literal_32
+    literal_23
+    char_set_11
+    literal_24
     char_class_6
-    literal_33
-    literal_34
+    char_set_12
+    literal_25
     char_class_7
   end
 
   subgraph non_capturing_14 ["Non-capturing <i>Exactly 2</i>"]
     non_capturing_15
-    literal_29
+    literal_22
   end
 
   subgraph non_capturing_17 ["Non-capturing"]
     disjunction_begin_8
     disjunction_end_8
     char_class_8
-    literal_36
-    literal_37
-    literal_38
+    char_set_13
+    literal_27
+    char_set_14
+    char_set_15
+    literal_28
     char_class_9
-    literal_39
-    literal_40
+    char_set_16
+    literal_29
     char_class_10
   end
 
   subgraph non_capturing_16 ["Non-capturing"]
     non_capturing_17
-    literal_35
+    literal_26
   end
 
   subgraph non_capturing_19 ["Non-capturing <i>Optional</i>"]
@@ -3198,12 +4669,12 @@ graph LR
   subgraph non_capturing_18 ["Non-capturing <i>One or more</i>"]
     non_capturing_19
     char_class_13
-    literal_41
+    literal_30
   end
 
   subgraph non_capturing_20 ["Non-capturing"]
     char_class_14
-    literal_42
+    literal_31
   end
 
   subgraph non_capturing_6 ["Non-capturing"]
@@ -3229,13 +4700,13 @@ graph LR
   end
 
   subgraph non_capturing_21 ["Non-capturing <i>Optional</i>"]
-    literal_43
-    literal_44
+    literal_32
+    char_set_17
   end
 
   subgraph non_capturing_22 ["Non-capturing <i>Optional</i>"]
     char_class_15
-    literal_45
+    char_set_18
   end
 
   %% Edges
@@ -3248,89 +4719,94 @@ graph LR
   literal_3 --- disjunction_end_1;
   disjunction_end_1 --- literal_4;
   literal_4 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- literal_7;
-  literal_7 --- literal_8;
-  literal_8 --- literal_9;
-  literal_9 --- disjunction_begin_2;
+  literal_5 --- char_set_1;
+  char_set_1 --- literal_6;
+  literal_6 --- char_set_2;
+  char_set_2 --- literal_7;
+  literal_7 --- disjunction_begin_2;
   disjunction_begin_2 --- disjunction_begin_3;
-  disjunction_begin_3 --- literal_10;
-  literal_10 --- disjunction_end_3;
-  disjunction_begin_3 --- literal_11;
-  literal_11 --- disjunction_end_3;
-  disjunction_end_3 --- literal_12;
-  literal_12 --- literal_13;
-  literal_13 --- disjunction_begin_4;
-  disjunction_begin_4 --- literal_14;
-  literal_14 --- disjunction_end_4;
-  disjunction_begin_4 --- literal_15;
-  literal_15 --- disjunction_end_4;
-  disjunction_end_4 --- literal_16;
-  literal_16 --- literal_17;
-  literal_17 --- literal_18;
-  literal_18 --- disjunction_begin_5;
-  disjunction_begin_5 --- literal_19;
-  literal_19 --- char_class_1;
+  disjunction_begin_3 --- literal_8;
+  literal_8 --- disjunction_end_3;
+  disjunction_begin_3 --- literal_9;
+  literal_9 --- disjunction_end_3;
+  disjunction_end_3 --- literal_10;
+  literal_10 --- char_set_3;
+  char_set_3 --- disjunction_begin_4;
+  disjunction_begin_4 --- literal_11;
+  literal_11 --- disjunction_end_4;
+  disjunction_begin_4 --- literal_12;
+  literal_12 --- disjunction_end_4;
+  disjunction_end_4 --- literal_13;
+  literal_13 --- char_set_4;
+  char_set_4 --- literal_14;
+  literal_14 --- disjunction_begin_5;
+  disjunction_begin_5 --- literal_15;
+  literal_15 --- char_class_1;
   char_class_1 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_20;
-  literal_20 --- disjunction_end_5;
-  disjunction_begin_5 --- literal_21;
-  literal_21 --- char_class_2;
+  disjunction_begin_5 --- literal_16;
+  literal_16 --- char_set_5;
+  char_set_5 --- disjunction_end_5;
+  disjunction_begin_5 --- literal_17;
+  literal_17 --- char_class_2;
   char_class_2 --- disjunction_end_5;
-  disjunction_end_5 --- literal_22;
-  literal_22 --- literal_23;
-  literal_23 --- disjunction_begin_6;
+  disjunction_end_5 --- literal_18;
+  literal_18 --- char_set_6;
+  char_set_6 --- disjunction_begin_6;
   disjunction_begin_6 --- char_class_3;
-  char_class_3 --- literal_24;
-  literal_24 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_25;
-  literal_25 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_26;
-  literal_26 --- char_class_4;
-  char_class_4 --- literal_27;
-  literal_27 --- disjunction_end_6;
-  disjunction_begin_6 --- literal_28;
-  literal_28 --- char_class_5;
+  char_class_3 --- char_set_7;
+  char_set_7 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_19;
+  literal_19 --- char_set_8;
+  char_set_8 --- char_set_9;
+  char_set_9 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_20;
+  literal_20 --- char_class_4;
+  char_class_4 --- char_set_10;
+  char_set_10 --- disjunction_end_6;
+  disjunction_begin_6 --- literal_21;
+  literal_21 --- char_class_5;
   char_class_5 --- disjunction_end_6;
-  disjunction_end_6 --- literal_29;
-  literal_29 --- disjunction_begin_7;
-  disjunction_begin_7 --- literal_30;
-  literal_30 --- literal_31;
-  literal_31 --- disjunction_end_7;
-  disjunction_begin_7 --- literal_32;
-  literal_32 --- char_class_6;
-  char_class_6 --- literal_33;
-  literal_33 --- disjunction_end_7;
-  disjunction_begin_7 --- literal_34;
-  literal_34 --- char_class_7;
+  disjunction_end_6 --- literal_22;
+  literal_22 --- disjunction_begin_7;
+  disjunction_begin_7 --- literal_23;
+  literal_23 --- char_set_11;
+  char_set_11 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_24;
+  literal_24 --- char_class_6;
+  char_class_6 --- char_set_12;
+  char_set_12 --- disjunction_end_7;
+  disjunction_begin_7 --- literal_25;
+  literal_25 --- char_class_7;
   char_class_7 --- disjunction_end_7;
-  disjunction_end_7 --- literal_35;
-  literal_35 --- disjunction_begin_8;
+  disjunction_end_7 --- literal_26;
+  literal_26 --- disjunction_begin_8;
   disjunction_begin_8 --- char_class_8;
-  char_class_8 --- literal_36;
-  literal_36 --- disjunction_end_8;
-  disjunction_begin_8 --- literal_37;
-  literal_37 --- disjunction_end_8;
-  disjunction_begin_8 --- literal_38;
-  literal_38 --- char_class_9;
-  char_class_9 --- literal_39;
-  literal_39 --- disjunction_end_8;
-  disjunction_begin_8 --- literal_40;
-  literal_40 --- char_class_10;
+  char_class_8 --- char_set_13;
+  char_set_13 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_27;
+  literal_27 --- char_set_14;
+  char_set_14 --- char_set_15;
+  char_set_15 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_28;
+  literal_28 --- char_class_9;
+  char_class_9 --- char_set_16;
+  char_set_16 --- disjunction_end_8;
+  disjunction_begin_8 --- literal_29;
+  literal_29 --- char_class_10;
   char_class_10 --- disjunction_end_8;
   disjunction_end_8 --- disjunction_end_2;
   disjunction_begin_2 --- char_class_11;
   char_class_11 --- char_class_12;
   char_class_12 --- char_class_13;
-  char_class_13 --- literal_41;
-  literal_41 --- char_class_14;
-  char_class_14 --- literal_42;
-  literal_42 --- disjunction_end_2;
-  disjunction_end_2 --- literal_43;
-  literal_43 --- literal_44;
-  literal_44 --- char_class_15;
-  char_class_15 --- literal_45;
-  literal_45 --- assertion_2;
+  char_class_13 --- literal_30;
+  literal_30 --- char_class_14;
+  char_class_14 --- literal_31;
+  literal_31 --- disjunction_end_2;
+  disjunction_end_2 --- literal_32;
+  literal_32 --- char_set_17;
+  char_set_17 --- char_class_15;
+  char_class_15 --- char_set_18;
+  char_set_18 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -3338,11 +4814,13 @@ graph LR
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef disjunction fill:#FFD966,stroke:#F1C232,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
+  classDef negated-char-set fill:#EF9A9A,stroke:#E53935,color:#000000,stroke-dasharray: 5 5;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
 
   %% Group Styling
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
-  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000;
+  classDef negative-lookahead fill:#F4CCCC,stroke:#E06666,color:#000000,stroke-dasharray: 5 5;
 
   %% Apply Group Classes
   class non_capturing_3,non_capturing_2,non_capturing_1,non_capturing_5,non_capturing_4,non_capturing_7,non_capturing_8,non_capturing_9,non_capturing_10,non_capturing_11,non_capturing_12,non_capturing_13,non_capturing_15,non_capturing_14,non_capturing_17,non_capturing_16,non_capturing_19,non_capturing_18,non_capturing_20,non_capturing_6,non_capturing_21,non_capturing_22 non-capturing;
@@ -3355,7 +4833,7 @@ graph LR
 
 A simplified URL
 
-### Pattern
+### Pattern {#URL}
 
 ```regex
 ^(?<protocol>https?:\/\/)?(?<domain>[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?<path>\/.*)?$
@@ -3363,7 +4841,7 @@ A simplified URL
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41UW2_aMBT-K1ZopbJhLgmFkiIoJawv0yZ1e2rTIjcxibUQR45Rx1D_-2zHhTgpbfOAsI-_i0_Ol50V0BBbrhUxlMXg-62fAoCC4DfhCXaBb93iCP91wePZdJwxymlAk0nMeZZPXV88HfXTnIpySNeIpJN7BP_N4F0Xjtrw4asst_XWw85uvTQlEeLxRAHbX5rTE9_Soh7OAyZFb3CKGeI4BM-Ex4BJD5BTuMZMaIRXvXa33ZcwCTw9BT_EHXL5P-eI8asdyGOUCfsrGBAWgJdLWVuR9EgF5TlmnNB02TvzrcfxE5uMyeQaRyTNlYNxh0x8q-m67v6oAiaEC5-JgsmmFGf0rnHCFidyTfwzkwQoObC-hXAEwu106geCGLFlkAgnSneWbkFCnzELUI6lgtzYZJm5EZKIcLloA_hqI8WAMrCmDB-cSHKoyA0zfS0kyygQe-_asj9lS1iwP23gXFB2jjdrUPWnBe4wo3WNMsPh3UvXJxq3SMP33rweu1-bJxWbYvT0AqRojcNlgDK-YXjZA_e-1eiB1_CA2gA8SHRplsylbS4ducRpWHg4omkrTRsUidwrlAfHZO3XDtif0XGUjgNknj-817m5HBgCopmLMCplGEAIy7ms5lTV9y0zw2jUbDOGRs0xA6dq5SbV4mag-2ZCqmi7lgoDfW6Ot1EbmLNd6YVdnVtVF1-30mDybVI0U38c1Q5JI2VJuvHw6kAhwEniNq4H3nB20co5o3-w2xg58_7Qa4mZpcxtdNVzaRBohxr-bTS_Hs338MVg1HMu3oMfov5qoD8beoM9w8ViOJ87NQZ9rRtGN9mb91JDCvWQampvtJh5zkd309SzLEu2WmAuWYteFlYr8W5VoteqRsRwc2m9_AfWit-ucgcAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA41U7W-iMBj_VxrcknknTsE3mNEhuH253CW7-7SxmQ46bQ4pKTXbbtn_fm3pkOLU8cHYPv299OH58WZEJEaGaywpzFbgx02YAgCj6A9mCXJBaNygJXpxwcPZdJxRwkhEksmKsSyfuiF_zuVPc8rLMVlDnE7uoPnPM287ptM277-Lcltt3b9ZrfemIIJsNZHA9rfm9CQ0lGiA8ogK0WuUIgoZisEzZitAhQeTEXONKNeIL612p90RMAE8PQU_-R1y8T9nkLLLN5CvYMbtP5kRphF4vxC1J5zuqcA8R5Rhki66Z6HxMH6kkzGezNASp7l0MD7Hk9Bouq5bHpXABDPuM5Ew0ZTijNrVTlj8RK6If2WCACZb1s8QNke4ssHnu4eiFaSLKOFupLaXvoKEPCMawRwJFbGxyTJ9I8ZLzMSiDcwPKykChII1oWjrRpCbklwz1FNCogwjvnfQlvUlW9yC9WUDfU65vxs5YmUvSotK4xZRskeGw2ozIJyfKOA8jQ9NgBq_35tHGZ9iBNUCpHCN4kUEM7ahaNEFd6HxkSDQ6IKdQbgX6MpM6UtLX9piidK48LBH0xKaRSxBwyoVqsOjs_Z2Dlhf0bHl3XioQcM-eq9-RUO-M02Bd3MeLythBqZpVgNaD6yslz3TU6nVLD2PWs3Wkydr1S7tZE5D9_SY1NHWTjQ0dF-f8S1aNqc237VuWPXRlXX-oavMJntNinaq76TcwelSEgs_AXraUnBwkriN2SAYeqNWzij5i9yGY_u9YdDik0uo2-jI50IjUP4V_MrxZ45fwucDp2uPDsG3if8w0POGwaBkGM2Hvm8fZeA9UnjnyhsFXonv-4OZ39nBq7ZcU7LJPu2LnHNTzbmiDpy5F9jHeqOovSxLXpWAL1iLd1FctfaFaNXS26qnTHNzYbz_B7Jd6Hu9BwAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -3375,7 +4853,7 @@ A simplified URL
 ```mermaid
 graph LR
   accTitle: "Regex: ^(?<protocol>https?:\\/\\/)?(?<domain>[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})(?<path>\\/.*)?$"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
@@ -3383,30 +4861,30 @@ graph LR
   assertion_1("^<br><i>Begins with</i>"):::assertion;
   literal_1("http"):::literal;
   literal_2("s<br><i>Optional</i>"):::literal;
-  literal_3("://"):::literal;
+  literal_3(":\/\/"):::literal;
   char_class_1("Any lowercase<br>Any uppercase<br>Any digit<br>. -<br><i>One or more</i>"):::char-class;
   literal_4("Any character"):::literal;
   char_class_2("Any lowercase<br>Any uppercase<br><i>2 or more</i>"):::char-class;
-  literal_5("/"):::literal;
-  literal_6("Any character<br><i>Zero or more</i>"):::literal;
+  literal_5("\/"):::literal;
+  char_set_1("Any character<br><i>Zero or more</i>"):::char-set;
   assertion_2("$<br><i>Ends with</i>"):::assertion;
 
   %% Subgraphs
-  subgraph named_capture_1 ["#1 protocol <i>Optional</i>"]
+  subgraph named_capture_1 ["protocol #1 <i>Optional</i>"]
     literal_1
     literal_2
     literal_3
   end
 
-  subgraph named_capture_2 ["#2 domain"]
+  subgraph named_capture_2 ["domain #2"]
     char_class_1
     literal_4
     char_class_2
   end
 
-  subgraph named_capture_3 ["#3 path <i>Optional</i>"]
+  subgraph named_capture_3 ["path #3 <i>Optional</i>"]
     literal_5
-    literal_6
+    char_set_1
   end
 
   %% Edges
@@ -3418,8 +4896,8 @@ graph LR
   char_class_1 --- literal_4;
   literal_4 --- char_class_2;
   char_class_2 --- literal_5;
-  literal_5 --- literal_6;
-  literal_6 --- assertion_2;
+  literal_5 --- char_set_1;
+  char_set_1 --- assertion_2;
   assertion_2 --- fin;
 
   %% Styles
@@ -3427,6 +4905,7 @@ graph LR
   classDef assertion fill:#B6D7A8,stroke:#93C47D,color:#000000;
   classDef literal fill:#F9CB9C,stroke:#E69138,color:#000000;
   classDef char-class fill:#B4A7D6,stroke:#8E7CC3,color:#000000;
+  classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
   classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
@@ -3441,7 +4920,9 @@ graph LR
 
 Universal Unique Identifier
 
-### Pattern
+Source: <https://regex101.com/library/lL7hC7>
+
+### Pattern {#UUID}
 
 ```regex
 [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}
@@ -3449,7 +4930,7 @@ Universal Unique Identifier
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA62TW2vCMBSA_0qoCBsszl7UGkXUqnsZe3B7W4dkaWzDYitpYIr439fUoqZFdGBf0ly-fIdzTnYGSQJqICMUeB2B17kfA4AJ-WCSUwR8Y05DukHgswm7GC5HcPa1c_fwfOr8Z2pae98oHBOaEqEcLzSmAksagF8mIyCUEsoErqhYYRYMzUaz4ShMgfU6eMtCTtV_KrGQwx1II7zOol1CwgQB-57aW7L4wg6JsFgQjtN0YT74xijegoCFTPa_xSCLUw1ZrGros8F0g4nkW-D2n9nANx4RQoqHOZ9fx5nMouf5XfBwolgq26ybbc5Vm3XVZt_RZl-1OXe0OVdtrZttpnVBV_TSNAjPeglACLX-qDRMfuJYcr0ByrRVaQCNtvSClmm7UlCNtvUClWmnUiCNdvSEl-lWJeH5iexNnTL3Lrf8kLriSeYrLA5zVFETugSnnGc056g2dkadSfsplSL5oajmTjueZz-RhCcC1Zr519NuKIIs8FnXG3e9Iz5td03bLeHG_g8IF1j21wQAAA==)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA62TW2vCMBSA_0qoCBsszl68RRHvexl7cHtbh2RpbMNiK2lgivjf18SipkV0YF_SXL58h3NOdhZJAmohKxR4HYHXuR8DgAn5YJJTBHxrTkO6QeCzDjsYLodw9rVr7-H51PvP1Hb2vpU7JjQlQjleaEwFljQAv0xGQCgllAlcUbHCLBg4tXqtrjAFVqvgLQs5Vf-pxEIOdiCN8DqLdgkJEwTsu2pvyeILOyTCYkE4TtOF_eBbw3gLAhYy2fsW_SxONWSxqqHH-tMNJpJvQbv3zPq-9YgQUjzUvL6OM5lFz_Vd8HAiXyranJtt3lWbc9Xm3tHmXrV5d7R5V22Nm222c0GX99I0CM96CUAIjf4oNYw-cSy52QBF2ik1gEE7ZkGLtFsqqEG7ZoGKtFcqkEF7ZsKLdKOUcH0ie1OnzL3LLT-kLn-SeoXFoUYVNaFLcMp5RnOOKiNv2Jo0n1Ipkh-KKu1pazx2n0jCE4Eqdf11jRvyIHN81hmPOuMjPm12bLddwK39H3DGRZDXBAAA)
 
 <details>
   <summary>Click to view as image</summary>
@@ -3461,7 +4942,7 @@ Universal Unique Identifier
 ```mermaid
 graph LR
   accTitle: "Regex: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
-  accDescr: "Generated with regex-to-mermaid@1.0.4"
+  accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
   start@{ shape: f-circ };
