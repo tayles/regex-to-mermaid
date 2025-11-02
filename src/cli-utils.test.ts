@@ -177,14 +177,6 @@ describe('CLI', () => {
       expect(output).toContain('graph');
     });
 
-    test('respects pcre flavor option', async () => {
-      await runCLI(['node', 'cli.ts', '/[0-9]+/', '--flavor', 'pcre']);
-      expect(consoleLogSpy).toHaveBeenCalled();
-      const output = consoleLogSpy.mock.calls[0]?.[0];
-      expect(output).toBeDefined();
-      expect(output).toContain('graph');
-    });
-
     test('accepts short form -f for flavor', async () => {
       await runCLI(['node', 'cli.ts', '[0-9]+', '-f', 'regexp']);
       expect(consoleLogSpy).toHaveBeenCalled();

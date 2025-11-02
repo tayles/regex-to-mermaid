@@ -10,7 +10,7 @@ import { DEFAULT_OPTIONS, DIRECTIONS, FLAVORS, THEMES } from './types';
  * @param pattern - Regular expression pattern (string or RegExp object)
  * @param options - Configuration options
  * @param options.direction - Diagram direction: 'LR' (left-right) or 'TD' (top-down). Default: 'LR'
- * @param options.flavor - Regex flavor: 'regexp' (JavaScript), 'pcre' (PCRE), or 'auto' (detect automatically). Default: 'auto'
+ * @param options.flavor - Regex flavor: 'regexp' (ECMAScript), or 'auto' (detect automatically). Default: 'auto'
  * @param options.theme - Mermaid theme: 'default', 'neutral', 'dark', 'forest', or 'none'. Default: 'default'
  * @returns Mermaid diagram as a string
  *

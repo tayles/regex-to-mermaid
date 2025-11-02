@@ -30,7 +30,7 @@ function createCLI(): Command {
     )
     .option(
       '-f, --flavor <flavor>',
-      'Regex flavor: regexp (JavaScript), pcre (PCRE), or auto (detect automatically)',
+      'Regex flavor: regexp (ECMAScript), or auto (detect automatically)',
       DEFAULT_OPTIONS.flavor,
     )
     .action((regex: string, options: CLIOptions) => {

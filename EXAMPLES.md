@@ -245,12 +245,12 @@ Source: <https://regex101.com/library/vcxVpP>
 ### Pattern {#Conventional Commits}
 
 ```regex
-\A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?P<scope>[\w-]+)\))?(?P<breaking>!)?:\s(?P<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?P<BLANK_LINE>\n^$\n)(?P<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?P<BLANK_LINE2>\n^$\n)(?:(?P<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?P<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
+\A(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\((?<scope>[\w-]+)\))?(?<breaking>!)?:\s(?<subject>\b[\w#<> ./\t\\-]{3,}(?:\b|\.))$)(?:(?:(?<BLANK_LINE>\n^$\n)(?<body>(?:^.{3,}(?:\b|\.)$\n?){1,3}))?(?<BLANK_LINE2>\n^$\n)(?:(?<breaking_change>^BREAKING\sCHANGE:\s[\s\w]+(?:\b|\.)$)\n)?(?:(?<footer>^\w+:\s[\w#-]+(?:\b|\.))))?\n?|)\Z
 ```
 
 ### Diagram
 
-[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-Va_W-bOBj-V1i6SY2WdMHmM6vSJWm6mzb1Ttv9tHWtCCEtuwwioNdVTf_3sw0B_BoTSKTTSRdNG7ZfP36__GLz7KnjhguvM-zcRs76Tvn0-SpQFMd1__STlTdUrjqfvVvvF3kgv_Hx2ZD8uT4---M0eVx7o6XnJJul_2vj-hv3Loy8zSJ0403ixckmTh5X3ibylo6bhNFmfu-vFpu1Fy1J399elHQJEgU9pmixGxK4b7T90P_-uksfut0zOjSPPOcvP7gdveimE2I24X7-w3OTEe2Yp_OOTkfKyRv6mFxlv_73J9x7zhaab-jfJ93uy25qB8WZfBpffrz59OFyxqCC65fsny5bOVw8jqi9JxUoqdxZ90nt4edM1QIMQbRh2ZQb984Jbr3R9eTzbPzxw-V7Ztb0t_Hl-1lqIrMoZmZ9fw1X7qagZxnqMgwTLxpdM-nXpfkPR31hMvmdpZpvGMzXq04W8HMvdiMa8Pde4EVO4i2UBz-5UyIa_34S9n960U_HX7xDJ4OTAZ1GJ756pVyS_Inpc5w4UfLuSYnvnDVJnWXf9SNXeX5Lx5Z-IBlZ-UR7Z3WjHhPMq_FVpzscDrNOJrDw4x_3gZv4YXAz92794EYlEqVeCXB5nhcsGs5y4pgkJ51DFbomMRud-qMJXTdmDjl9449SJXNRiZpoLzWbzdp6DREl6S4U3baVwFTC_yUX0IiA68vHdTpON7dcxCAidOfLJUwiQcuCXMIiEqxmyEVsIrItKHIpdUDEWLmpkaHBpcWoRgSx1WipqhHCLGuPRQmyxaMbd0VyhCXSOHhUHsJowfqJAV5EM6ufpdfvgaeEkfKTOLlILyrZZwj8khpbslujFI3Yi5pxGq6hROXYSwqF78hovHZcr6QREQAbBTGFJpktl2GiOKmt8_A-WDjRo2zLlHyEpD46Uk6VkfKFaqGcKG_IiyhhLyNl6zy803Xi1sR7bU3csoLgfR2TR8rM3JJ7RIxasRxNjJfZYrNgUV-u8iXovrv0HlZ-4NWB6-2qYTHR2Esru5lWZjut8gxH0K87cmmb9GImaXtlktYyk6xDMwkN2mSSvU_MkFrEbFvX1lTKWRVTq-oRQs2CzQr7XjnIyn17g3BDvVA7vXJ8umHzI6C8HOMm5TgHpRt1e5SUY2pNMEv1WdSB2ltdsRu-0MS9pO-1l_S257qDyzIy2mwmda-6jMyGyafvWQJ16Ru3Nn5Cvlk7DhNGy0zTak4C_YPSy9grvYy26WUcnF727vTKT_eDPYsuTu9bX6FEdqn7cj9nHwTSi13WoDc8agG5SynfyEUxCu_XypF61flOpSqvQOIAu-Ok3bnBfBPzTY1v6nzT4Jsm37T4ps031QFoq6DNFCMKp24R3YBKbkC5G8pH_2qAgPjBddbJfUS_BmCKchkG_bxLEcKYQRcrA02Bz1Rth-a4pDmWLlfcKJrYoQl21GQGrs6MrLt0hgaamDsM00qGafn6QFG4CBICh5oYjOQGFzulOnAgA4AQrtG6sBRaAbPXKFnFrnVwwq4k0Uu-1MWksCCeDjvA5lTtJl612qSRVp1Ggm9AIUCDJpqYlRtTVZJQwdw-AQbAxU0QCAQFQF1C6o7AGKXAGPVaAIuamG3sUY_0diqUZho7bDVLtppCEiLBl9uiXj79gzm4iRfUQZs81KvzUNgRsFCjXeZbJfMtSagrTIZvWA2kIFRDB-OaUBGFyix7x_C62c2TqdqowhNA5Ua5rKI2UTSqo2gIpoPChuwdUbRLUbRlBoupDKMCzj7IAuOGELVGMVJVuZOqdSwMa4Kv__sFBQoZQMhsk3Igo5s7RpBqdB5U_wvHCnDS-f9EB_bqsmKhVhcL8LLB_EmDXK1mi9sSX6b0-_3igMR_BGVjFQvLaDEmXyof8GYqwUMy_orTDfF3VAGL3esaIWH-InoAksYTWQcg6TzldQCSwTNjByCZPIN2AJLFM20HINk8IXcAkjoArN0hWGDjqIdgIUADNsRivTwSBlwhGy1_HRCYQn6-Bog_flQHpB8_agDKr1ibXQUB4QcqB4IMH9QcCfydpLZgGQEHVsSQOqv0ej1a8Y0AkGgNsVgv0EuDHBu_kgW4NDBbhyQaGDcgV8aj24ATA7NNSIbxMUaA8pJESJMRW2A1C1JSlV6tRyuu34CcaojFeoFeNuSu-JVUwFHxo-ClhuAbdCBQUFBCeMmCFTCglOB8JJBJ_HwNUEZ8jDFgivi5OmCG-LkaYITgHscCByTJIF1G50BbscDEVMa9Hq-4OQNOpiEW64WaaQJnw69lAm4GztcFVob3tQ64Fx7dAowKP9cAfAqMkyYwKJI4GTJeBFpjCJRGpW_r8Yq7MSA3GmKxXv7cOADURyVS_el4tzTr5ddVAXPCRpd-UKJL6H9cikv_IY710JsbDQ2Nyrm33CKQqavV8OjCnk7saS9OovAvb3g0M2wVWz03XIXR8GjAfm-56SUttxAX57Zh5BAX6hRhVAeRxzQDmBjn5tjKAWw81czzOoCCZNsiaGPzvFDBmpnTKd6JQBI5m29fjK3zcT5fnxqT6UCYn3k2_YJS5drtzS53zAWaTls4JuC-TqQg04sZusA5iHFuz2YTmWrj9Xr1mCk4pahpOqSuKq7tveLGXjzi4lErHvXi0SgezeLR6pW-L20fC7Pgx4AeuPeDNgJtC7RN0DZ68HoOOmwoAFdQVdChQwE-LG87z_8Aph3xga4sAAA=)
+[View in Mermaid Live Editor](https://mermaid.live/edit#pako:H4sIAAAAAAACA-1aW2_bNhT-K2zcATEapxapqxs4c2ynG1ZkQLunLU2gyHSizZUMSVka1P3vIynZEg9FRbIftocFRRuShx_PjUckv347CuIFPRod3Sf--gF9-HgdIeQHwW9htqIjdH30kd7Tr-wX9jM5Ph-xPzfH52fZ85qOl9TPNsvw6yYIN8FDnNDNIg7STUbTbJNmzyu6SejSD7I42dw9hqvFZk2TJev7myZZnwFxzGMGlgYxQ_uDN58Gn9_0-S_9_jkbuUuo_1cY3Y9f9XPxlIs_3v1Jg2zM23f5rN7ZGJ2-5b9m18XP4PM3cvK9WOVuw_8-7fdf93MbGMzFh8nVL7cffr6aC6To5rX4p8-XjRfPY27paQ1GLnbe_2ackO-5miUUhlijihW3wYMf3dPxzcXH-eSXn6_eC4umP02u3s9z64Q1qTDp8xu4bj_HPM9Bl3Gc0WR8I4TfVKY_9QbKXPZznqu9ESi_Xx8VcZ7RNEh4nN_TiCZ-RhfoKcweUMLDPsjiwReafPHDxY_4dHg65NP4xB9-QFcsbVL-e5r5SfbjN5Q--GuWMctBECYB-v6Ojy3DSDOyCpn2_urWOGaY15Pro_5oNCo6hcAiTP98jIIsjKPbO3ofRrcGk6j0aoCr82i0aDnLT1OWlHwOV-iGhWx8Fo4v-LqpcMjZ23CcK7kT1aiJ91Kz3ayt1zBTku8-1W1bCcIlwq96AZMJBKF-3OLjfFPrRWwmwne8XsJhErwc6CVcJiFqhV7EYyLbQqKXMoZMTJSZBhkeXF6EGkSwWI2XqAYhIrL2WJVgOzy5DVYsR0QiTaJn9BQnC9HPDKAJz6xBkV6_RhTFCfrCnFymF5ccCAR5SVMs2W9QikfsVcM4D9dIo3JKs1LhBzaarv2AVjRiAmCjYKHQRWHLVZwhP7f1Ln6MFn7yrNsyFR9hrY966AyN0SeuBTpFb9n3JxPfILR1HnnRderWJHttTdKxgpB9HbOLlFO4ZecRNWrlcjwxXheLzaNFc7naLcH33RV9WoURbQK3ulXDcqK9l1ZeO62cblrtMhxDv76QS9ukVzPJ3CuTzI6Z5B6aSXjYJZO8fWKGjTJm27q25lL-qpxaV48wbhdsUdj3ykFR7rsbRFrqhbvptcPnG3Z3AtSXY9KmHO9A-UbdniT1mGYbzEp9VnXg9tZX7JYfNHUvWXvtJavrue7gsoztLpvJ2KsuY6dl8ll7lkBL-8VtjJ-Sb-4Lhwm7Y6aZDSeBwUHpZe-VXnbX9LIPTi_v5fTane6HexZdkt-3focSxaXu0-OdeAfIL3ZFA0X-F7q4Dfx19pjQWwP9wQ717P6Pesb10WcuWXsNUgfEPSfv3hktN4ncNOWmJTdtuenITVduenLTGIK2AdpCMaZw7hqNKzB3hXi9QD2880X1DqBBYc7IMfirAOEoV3E02HUhJZ4FNFge6Ay8Z5htbBCrb18oUI9o1y7vGW2MMhWjGnKF1OdK0V05WQNNnDYGCk2KNyPUM0tfyvrCtbASTNzGbqy3G2yjhoiC_KiTJA1GAPuhZTDV7Yql4h4IJ7TKI4sbXj6EoZ6lZo4LkS3YAfa04bXxudsl18z6XFO8BOoHHrbRxKndygbKYkTkjSwbABd3QEgwFADlDBttQmSLrR4vnlHPbtYEWNXGdHvfKmZ10wNOt9tY7sjJiVHPUbITK07efiSqNwowh7RxjTHskqBWfYIqWwWWe9zKE2613BcP0qjnatKhxgPwA26CVIVaWWDcVOqqUua1Hy5JN69DwtUaBRwD9G6V9AbuElm7PrK2Yj-ogthrE1nhj5wVQD1PZ7ua5DBA4JSFXTBuKwFsFS7DaPgy1uoIzGuziPVvFiEoaddJOp0zEmR9R48poq2OpMZ_9RQDDlv_h1LptXTVx6ivPuCLRuRzDrsTzhf3FaIPDQaD8ngmv96KsZqFdXyekK9UInil1uBhHfEm6Ybly7WCJS6jrZCIfIM-AMmUGbgDkCyZqzsAyZYpvQOQHJn6OwDJlSnCA5A8mUk8AMkYArrxECywcYxDsDDgL1tiiV4ZiQCSU4xWXzMUilOebwLGUh61AFspj9qAqyzXFldSwFSCyoEhNQk1xwrxqKktRMccghUJ5Pxqvd6MVj5jAPavJZboBXqZkByUV3IBCQhmW5D9A-M2JPlkdA-QeWC2A1k8OcYYcHWaCJk6Rg6s5kIurdarzWjl5R-wai2xRC_Qy4Okm7ySAcg1eRR81DD8gg4V7gxKKB9ZsAIBXBicjxUWTJ5vAq5LjjEBFJc81wKUljzXBFQW3ONEIa80GWTpeChoK1EopNq4N-OV13NAJrXEEr1QM1Mhm-S1HEAqwfmWQifJvrYAaSSju4AKkufagAiCcTIV6kcTJ1tH6EBrbIWLqfVtM1552QasTEss0SufG4eAs6lFaj4dvywteuV1DUD5iNFlGFV4Hv4_rtLK_-QTPfyax0PDozKjyy0Cm7pajXqX3vTCm56kWRL_RUe9ue0ZxD0J4lWcjHpD8fNOml7RcgtxOfNsewdxaUwxwU0Qu5gWABf2zJm4OwCPTE1n1gRQsoNbBHPizEoV3LkznZIXEVgiF_O9y4k7m-zmW1P7YjpU5heefZ_Ej-ta14rrXXG7pgX0zJtPZqSDcZH00JGDTC_n-LIEsRno_EKn32S9Xj0XWk45ap4Tub_ARf8E3PFBm4C2CdoWaNug7YC2ewJftySXvavoKT8znIDHBNDGoO2CtgPa9gm834MODwrAFQwDdFhQQA7ku6Pv_wD8o4GKlS0AAA==)
 
 <details>
   <summary>Click to view as image</summary>
@@ -261,7 +261,7 @@ Source: <https://regex101.com/library/vcxVpP>
 
 ```mermaid
 graph LR
-  accTitle: "Regex: \\A(?:(?:^(?P<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?P<scope>[\\w-]+)\\))?(?P<breaking>!)?:\\s(?P<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?P<BLANK_LINE>\\n^$\\n)(?P<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?P<BLANK_LINE2>\\n^$\\n)(?:(?P<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?P<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z"
+  accTitle: "Regex: \\A(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z"
   accDescr: "Generated with regex-to-mermaid@2.0.0"
 
   %% Nodes
@@ -338,7 +338,7 @@ graph LR
   literal_31("\Z"):::literal;
 
   %% Subgraphs
-  subgraph standard_1 ["Group #1"]
+  subgraph named_capture_1 ["type #1"]
     disjunction_begin_2
     disjunction_end_2
     literal_2
@@ -354,17 +354,17 @@ graph LR
     literal_12
   end
 
-  subgraph standard_2 ["Group #2"]
+  subgraph named_capture_2 ["scope #2"]
     char_class_1
   end
 
   subgraph non_capturing_3 ["Non-capturing <i>Optional</i>"]
-    standard_2
+    named_capture_2
     literal_13
     literal_14
   end
 
-  subgraph standard_3 ["Group #3 <i>Optional</i>"]
+  subgraph named_capture_3 ["breaking #3 <i>Optional</i>"]
     literal_15
   end
 
@@ -375,26 +375,26 @@ graph LR
     literal_17
   end
 
-  subgraph standard_4 ["Group #4"]
+  subgraph named_capture_4 ["subject #4"]
     non_capturing_4
     assertion_2
     char_class_2
   end
 
   subgraph non_capturing_2 ["Non-capturing"]
-    standard_1
-    standard_2
+    named_capture_1
+    named_capture_2
     non_capturing_3
-    standard_3
+    named_capture_3
     non_capturing_4
-    standard_4
+    named_capture_4
     assertion_1
     literal_16
     char_set_1
     assertion_4
   end
 
-  subgraph standard_5 ["Group #5"]
+  subgraph named_capture_5 ["BLANK_LINE #5"]
     literal_18
     assertion_5
     assertion_6
@@ -416,19 +416,19 @@ graph LR
     literal_21
   end
 
-  subgraph standard_6 ["Group #6"]
+  subgraph named_capture_6 ["body #6"]
     non_capturing_8
     non_capturing_7
   end
 
   subgraph non_capturing_6 ["Non-capturing <i>Optional</i>"]
-    standard_5
+    named_capture_5
     non_capturing_8
     non_capturing_7
-    standard_6
+    named_capture_6
   end
 
-  subgraph standard_7 ["Group #7"]
+  subgraph named_capture_7 ["BLANK_LINE2 #7"]
     literal_22
     assertion_10
     assertion_11
@@ -442,7 +442,7 @@ graph LR
     literal_26
   end
 
-  subgraph standard_8 ["Group #8"]
+  subgraph named_capture_8 ["breaking_change #8"]
     non_capturing_10
     assertion_12
     literal_24
@@ -455,7 +455,7 @@ graph LR
 
   subgraph non_capturing_9 ["Non-capturing <i>Optional</i>"]
     non_capturing_10
-    standard_8
+    named_capture_8
     literal_27
   end
 
@@ -466,7 +466,7 @@ graph LR
     literal_29
   end
 
-  subgraph standard_9 ["Group #9"]
+  subgraph named_capture_9 ["footer #9"]
     non_capturing_12
     assertion_15
     char_set_5
@@ -477,43 +477,43 @@ graph LR
 
   subgraph non_capturing_11 ["Non-capturing"]
     non_capturing_12
-    standard_9
+    named_capture_9
   end
 
   subgraph non_capturing_5 ["Non-capturing <i>Optional</i>"]
-    standard_5
+    named_capture_5
     non_capturing_8
     non_capturing_7
-    standard_6
+    named_capture_6
     non_capturing_6
-    standard_7
+    named_capture_7
     non_capturing_10
-    standard_8
+    named_capture_8
     non_capturing_9
     non_capturing_12
-    standard_9
+    named_capture_9
     non_capturing_11
   end
 
   subgraph non_capturing_1 ["Non-capturing"]
-    standard_1
-    standard_2
+    named_capture_1
+    named_capture_2
     non_capturing_3
-    standard_3
+    named_capture_3
     non_capturing_4
-    standard_4
+    named_capture_4
     non_capturing_2
-    standard_5
+    named_capture_5
     non_capturing_8
     non_capturing_7
-    standard_6
+    named_capture_6
     non_capturing_6
-    standard_7
+    named_capture_7
     non_capturing_10
-    standard_8
+    named_capture_8
     non_capturing_9
     non_capturing_12
-    standard_9
+    named_capture_9
     non_capturing_11
     non_capturing_5
     disjunction_begin_1
@@ -617,11 +617,11 @@ graph LR
   classDef char-set fill:#9FA8DA,stroke:#5C6BC0,color:#000000;
 
   %% Group Styling
-  classDef standard fill:#FFF2CC,stroke:#F1C232,color:#000000;
+  classDef named-capture fill:#D9EAD3,stroke:#93C47D,color:#000000;
   classDef non-capturing fill:#CFE2F3,stroke:#6D9EEB,color:#000000;
 
   %% Apply Group Classes
-  class standard_1,standard_2,standard_3,standard_4,standard_5,standard_6,standard_7,standard_8,standard_9 standard;
+  class named_capture_1,named_capture_2,named_capture_3,named_capture_4,named_capture_5,named_capture_6,named_capture_7,named_capture_8,named_capture_9 named-capture;
   class non_capturing_3,non_capturing_4,non_capturing_2,non_capturing_8,non_capturing_7,non_capturing_6,non_capturing_10,non_capturing_9,non_capturing_12,non_capturing_11,non_capturing_5,non_capturing_1 non-capturing;
 ```
 

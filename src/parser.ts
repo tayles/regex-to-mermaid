@@ -20,7 +20,6 @@ import type {
   Node,
   Quantifier,
 } from '@eslint-community/regexpp/ast';
-import pcreToRegexp from 'pcre-to-regexp';
 import type {
   DiagramData,
   DiagramEdge,
@@ -49,24 +48,10 @@ export function parseJavaScriptRegex(regex: string): RegExp {
 }
 
 export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
-  if (flavor === 'pcre') {
-    // PCRE: Convert using pcre-to-regexp
-    return pcreToRegexp(regex);
-  } else if (flavor === 'regexp') {
-    // JavaScript RegExp: Parse directly
-    return parseJavaScriptRegex(regex);
-  } else {
-    // Auto: Try JavaScript RegExp first, fallback to PCRE
-    try {
+  switch (flavor) {
+    default:
+      // JavaScript RegExp: Parse directly
       return parseJavaScriptRegex(regex);
-    } catch (regexpError) {
-      try {
-        return pcreToRegexp(regex);
-      } catch {
-        // If both fail, throw the original RegExp error
-        throw regexpError;
-      }
-    }
   }
 }
 

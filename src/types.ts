@@ -52,7 +52,7 @@ export interface DiagramData {
 export const DIRECTIONS = ['LR', 'TD'] as const;
 export type Direction = (typeof DIRECTIONS)[number];
 
-export const FLAVORS = ['regexp', 'pcre', 'auto'] as const;
+export const FLAVORS = ['regexp', 'auto'] as const;
 export type Flavor = (typeof FLAVORS)[number];
 
 export const THEMES = ['default', 'neutral', 'dark', 'forest', 'none'] as const;

@@ -1,19 +1,19 @@
 {
   "type": "RegExpLiteral",
   "start": 0,
-  "end": 269,
-  "raw": "/\\A(?:(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z/",
+  "end": 366,
+  "raw": "/\\A(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z/",
   "pattern": {
     "type": "Pattern",
     "start": 1,
-    "end": 268,
-    "raw": "\\A(?:(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z",
+    "end": 365,
+    "raw": "\\A(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z",
     "alternatives": [
       {
         "type": "Alternative",
         "start": 1,
-        "end": 268,
-        "raw": "\\A(?:(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z",
+        "end": 365,
+        "raw": "\\A(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)\\Z",
         "elements": [
           {
             "type": "Character",
@@ -25,28 +25,28 @@
           {
             "type": "Group",
             "start": 3,
-            "end": 266,
-            "raw": "(?:(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)",
+            "end": 363,
+            "raw": "(?:(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?|)",
             "modifiers": null,
             "alternatives": [
               {
                 "type": "Alternative",
                 "start": 6,
-                "end": 264,
-                "raw": "(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?",
+                "end": 361,
+                "raw": "(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?\\n?",
                 "elements": [
                   {
                     "type": "Group",
                     "start": 6,
-                    "end": 130,
-                    "raw": "(?:^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)",
+                    "end": 166,
+                    "raw": "(?:^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$)",
                     "modifiers": null,
                     "alternatives": [
                       {
                         "type": "Alternative",
                         "start": 9,
-                        "end": 129,
-                        "raw": "^(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\(([\\w-]+)\\))?(!)?:\\s(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$",
+                        "end": 165,
+                        "raw": "^(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)(?:\\((?<scope>[\\w-]+)\\))?(?<breaking>!)?:\\s(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))$",
                         "elements": [
                           {
                             "type": "Assertion",
@@ -58,41 +58,41 @@
                           {
                             "type": "CapturingGroup",
                             "start": 10,
-                            "end": 72,
-                            "raw": "(feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)",
-                            "name": null,
+                            "end": 79,
+                            "raw": "(?<type>feat|fix|ci|chore|docs|test|style|refactor|build|perf|revert)",
+                            "name": "type",
                             "alternatives": [
                               {
                                 "type": "Alternative",
-                                "start": 11,
-                                "end": 15,
+                                "start": 18,
+                                "end": 22,
                                 "raw": "feat",
                                 "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 11,
-                                    "end": 12,
+                                    "start": 18,
+                                    "end": 19,
                                     "raw": "f",
                                     "value": 102
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 12,
-                                    "end": 13,
+                                    "start": 19,
+                                    "end": 20,
                                     "raw": "e",
                                     "value": 101
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 13,
-                                    "end": 14,
+                                    "start": 20,
+                                    "end": 21,
                                     "raw": "a",
                                     "value": 97
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 14,
-                                    "end": 15,
+                                    "start": 21,
+                                    "end": 22,
                                     "raw": "t",
                                     "value": 116
                                   }
@@ -100,28 +100,28 @@
                               },
                               {
                                 "type": "Alternative",
-                                "start": 16,
-                                "end": 19,
+                                "start": 23,
+                                "end": 26,
                                 "raw": "fix",
                                 "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 16,
-                                    "end": 17,
+                                    "start": 23,
+                                    "end": 24,
                                     "raw": "f",
                                     "value": 102
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 17,
-                                    "end": 18,
+                                    "start": 24,
+                                    "end": 25,
                                     "raw": "i",
                                     "value": 105
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 18,
-                                    "end": 19,
+                                    "start": 25,
+                                    "end": 26,
                                     "raw": "x",
                                     "value": 120
                                   }
@@ -129,21 +129,21 @@
                               },
                               {
                                 "type": "Alternative",
-                                "start": 20,
-                                "end": 22,
+                                "start": 27,
+                                "end": 29,
                                 "raw": "ci",
                                 "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 20,
-                                    "end": 21,
+                                    "start": 27,
+                                    "end": 28,
                                     "raw": "c",
                                     "value": 99
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 21,
-                                    "end": 22,
+                                    "start": 28,
+                                    "end": 29,
                                     "raw": "i",
                                     "value": 105
                                   }
@@ -151,157 +151,157 @@
                               },
                               {
                                 "type": "Alternative",
-                                "start": 23,
-                                "end": 28,
+                                "start": 30,
+                                "end": 35,
                                 "raw": "chore",
                                 "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 23,
-                                    "end": 24,
-                                    "raw": "c",
-                                    "value": 99
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 24,
-                                    "end": 25,
-                                    "raw": "h",
-                                    "value": 104
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 25,
-                                    "end": 26,
-                                    "raw": "o",
-                                    "value": 111
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 26,
-                                    "end": 27,
-                                    "raw": "r",
-                                    "value": 114
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 27,
-                                    "end": 28,
-                                    "raw": "e",
-                                    "value": 101
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "Alternative",
-                                "start": 29,
-                                "end": 33,
-                                "raw": "docs",
-                                "elements": [
-                                  {
-                                    "type": "Character",
-                                    "start": 29,
-                                    "end": 30,
-                                    "raw": "d",
-                                    "value": 100
-                                  },
-                                  {
-                                    "type": "Character",
                                     "start": 30,
                                     "end": 31,
-                                    "raw": "o",
-                                    "value": 111
+                                    "raw": "c",
+                                    "value": 99
                                   },
                                   {
                                     "type": "Character",
                                     "start": 31,
                                     "end": 32,
-                                    "raw": "c",
-                                    "value": 99
+                                    "raw": "h",
+                                    "value": 104
                                   },
                                   {
                                     "type": "Character",
                                     "start": 32,
                                     "end": 33,
-                                    "raw": "s",
-                                    "value": 115
+                                    "raw": "o",
+                                    "value": 111
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 33,
+                                    "end": 34,
+                                    "raw": "r",
+                                    "value": 114
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 34,
+                                    "end": 35,
+                                    "raw": "e",
+                                    "value": 101
                                   }
                                 ]
                               },
                               {
                                 "type": "Alternative",
-                                "start": 34,
-                                "end": 38,
-                                "raw": "test",
+                                "start": 36,
+                                "end": 40,
+                                "raw": "docs",
                                 "elements": [
-                                  {
-                                    "type": "Character",
-                                    "start": 34,
-                                    "end": 35,
-                                    "raw": "t",
-                                    "value": 116
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 35,
-                                    "end": 36,
-                                    "raw": "e",
-                                    "value": 101
-                                  },
                                   {
                                     "type": "Character",
                                     "start": 36,
                                     "end": 37,
-                                    "raw": "s",
-                                    "value": 115
+                                    "raw": "d",
+                                    "value": 100
                                   },
                                   {
                                     "type": "Character",
                                     "start": 37,
                                     "end": 38,
-                                    "raw": "t",
-                                    "value": 116
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "Alternative",
-                                "start": 39,
-                                "end": 44,
-                                "raw": "style",
-                                "elements": [
+                                    "raw": "o",
+                                    "value": 111
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 38,
+                                    "end": 39,
+                                    "raw": "c",
+                                    "value": 99
+                                  },
                                   {
                                     "type": "Character",
                                     "start": 39,
                                     "end": 40,
                                     "raw": "s",
                                     "value": 115
-                                  },
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "Alternative",
+                                "start": 41,
+                                "end": 45,
+                                "raw": "test",
+                                "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 40,
-                                    "end": 41,
+                                    "start": 41,
+                                    "end": 42,
                                     "raw": "t",
                                     "value": 116
                                   },
                                   {
                                     "type": "Character",
-                                    "start": 41,
-                                    "end": 42,
-                                    "raw": "y",
-                                    "value": 121
-                                  },
-                                  {
-                                    "type": "Character",
                                     "start": 42,
                                     "end": 43,
-                                    "raw": "l",
-                                    "value": 108
+                                    "raw": "e",
+                                    "value": 101
                                   },
                                   {
                                     "type": "Character",
                                     "start": 43,
                                     "end": 44,
+                                    "raw": "s",
+                                    "value": 115
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 44,
+                                    "end": 45,
+                                    "raw": "t",
+                                    "value": 116
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "Alternative",
+                                "start": 46,
+                                "end": 51,
+                                "raw": "style",
+                                "elements": [
+                                  {
+                                    "type": "Character",
+                                    "start": 46,
+                                    "end": 47,
+                                    "raw": "s",
+                                    "value": 115
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 47,
+                                    "end": 48,
+                                    "raw": "t",
+                                    "value": 116
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 48,
+                                    "end": 49,
+                                    "raw": "y",
+                                    "value": 121
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 49,
+                                    "end": 50,
+                                    "raw": "l",
+                                    "value": 108
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 50,
+                                    "end": 51,
                                     "raw": "e",
                                     "value": 101
                                   }
@@ -309,106 +309,106 @@
                               },
                               {
                                 "type": "Alternative",
-                                "start": 45,
-                                "end": 53,
+                                "start": 52,
+                                "end": 60,
                                 "raw": "refactor",
                                 "elements": [
-                                  {
-                                    "type": "Character",
-                                    "start": 45,
-                                    "end": 46,
-                                    "raw": "r",
-                                    "value": 114
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 46,
-                                    "end": 47,
-                                    "raw": "e",
-                                    "value": 101
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 47,
-                                    "end": 48,
-                                    "raw": "f",
-                                    "value": 102
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 48,
-                                    "end": 49,
-                                    "raw": "a",
-                                    "value": 97
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 49,
-                                    "end": 50,
-                                    "raw": "c",
-                                    "value": 99
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 50,
-                                    "end": 51,
-                                    "raw": "t",
-                                    "value": 116
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 51,
-                                    "end": 52,
-                                    "raw": "o",
-                                    "value": 111
-                                  },
                                   {
                                     "type": "Character",
                                     "start": 52,
                                     "end": 53,
                                     "raw": "r",
                                     "value": 114
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "Alternative",
-                                "start": 54,
-                                "end": 59,
-                                "raw": "build",
-                                "elements": [
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 53,
+                                    "end": 54,
+                                    "raw": "e",
+                                    "value": 101
+                                  },
                                   {
                                     "type": "Character",
                                     "start": 54,
                                     "end": 55,
-                                    "raw": "b",
-                                    "value": 98
+                                    "raw": "f",
+                                    "value": 102
                                   },
                                   {
                                     "type": "Character",
                                     "start": 55,
                                     "end": 56,
-                                    "raw": "u",
-                                    "value": 117
+                                    "raw": "a",
+                                    "value": 97
                                   },
                                   {
                                     "type": "Character",
                                     "start": 56,
                                     "end": 57,
-                                    "raw": "i",
-                                    "value": 105
+                                    "raw": "c",
+                                    "value": 99
                                   },
                                   {
                                     "type": "Character",
                                     "start": 57,
                                     "end": 58,
-                                    "raw": "l",
-                                    "value": 108
+                                    "raw": "t",
+                                    "value": 116
                                   },
                                   {
                                     "type": "Character",
                                     "start": 58,
                                     "end": 59,
+                                    "raw": "o",
+                                    "value": 111
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 59,
+                                    "end": 60,
+                                    "raw": "r",
+                                    "value": 114
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "Alternative",
+                                "start": 61,
+                                "end": 66,
+                                "raw": "build",
+                                "elements": [
+                                  {
+                                    "type": "Character",
+                                    "start": 61,
+                                    "end": 62,
+                                    "raw": "b",
+                                    "value": 98
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 62,
+                                    "end": 63,
+                                    "raw": "u",
+                                    "value": 117
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 63,
+                                    "end": 64,
+                                    "raw": "i",
+                                    "value": 105
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 64,
+                                    "end": 65,
+                                    "raw": "l",
+                                    "value": 108
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 65,
+                                    "end": 66,
                                     "raw": "d",
                                     "value": 100
                                   }
@@ -416,66 +416,16 @@
                               },
                               {
                                 "type": "Alternative",
-                                "start": 60,
-                                "end": 64,
+                                "start": 67,
+                                "end": 71,
                                 "raw": "perf",
                                 "elements": [
                                   {
                                     "type": "Character",
-                                    "start": 60,
-                                    "end": 61,
-                                    "raw": "p",
-                                    "value": 112
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 61,
-                                    "end": 62,
-                                    "raw": "e",
-                                    "value": 101
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 62,
-                                    "end": 63,
-                                    "raw": "r",
-                                    "value": 114
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 63,
-                                    "end": 64,
-                                    "raw": "f",
-                                    "value": 102
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "Alternative",
-                                "start": 65,
-                                "end": 71,
-                                "raw": "revert",
-                                "elements": [
-                                  {
-                                    "type": "Character",
-                                    "start": 65,
-                                    "end": 66,
-                                    "raw": "r",
-                                    "value": 114
-                                  },
-                                  {
-                                    "type": "Character",
-                                    "start": 66,
-                                    "end": 67,
-                                    "raw": "e",
-                                    "value": 101
-                                  },
-                                  {
-                                    "type": "Character",
                                     "start": 67,
                                     "end": 68,
-                                    "raw": "v",
-                                    "value": 118
+                                    "raw": "p",
+                                    "value": 112
                                   },
                                   {
                                     "type": "Character",
@@ -495,6 +445,56 @@
                                     "type": "Character",
                                     "start": 70,
                                     "end": 71,
+                                    "raw": "f",
+                                    "value": 102
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "Alternative",
+                                "start": 72,
+                                "end": 78,
+                                "raw": "revert",
+                                "elements": [
+                                  {
+                                    "type": "Character",
+                                    "start": 72,
+                                    "end": 73,
+                                    "raw": "r",
+                                    "value": 114
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 73,
+                                    "end": 74,
+                                    "raw": "e",
+                                    "value": 101
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 74,
+                                    "end": 75,
+                                    "raw": "v",
+                                    "value": 118
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 75,
+                                    "end": 76,
+                                    "raw": "e",
+                                    "value": 101
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 76,
+                                    "end": 77,
+                                    "raw": "r",
+                                    "value": 114
+                                  },
+                                  {
+                                    "type": "Character",
+                                    "start": 77,
+                                    "end": 78,
                                     "raw": "t",
                                     "value": 116
                                   }
@@ -505,73 +505,73 @@
                           },
                           {
                             "type": "Quantifier",
-                            "start": 72,
-                            "end": 89,
-                            "raw": "(?:\\(([\\w-]+)\\))?",
+                            "start": 79,
+                            "end": 104,
+                            "raw": "(?:\\((?<scope>[\\w-]+)\\))?",
                             "min": 0,
                             "max": 1,
                             "greedy": true,
                             "element": {
                               "type": "Group",
-                              "start": 72,
-                              "end": 88,
-                              "raw": "(?:\\(([\\w-]+)\\))",
+                              "start": 79,
+                              "end": 103,
+                              "raw": "(?:\\((?<scope>[\\w-]+)\\))",
                               "modifiers": null,
                               "alternatives": [
                                 {
                                   "type": "Alternative",
-                                  "start": 75,
-                                  "end": 87,
-                                  "raw": "\\(([\\w-]+)\\)",
+                                  "start": 82,
+                                  "end": 102,
+                                  "raw": "\\((?<scope>[\\w-]+)\\)",
                                   "elements": [
                                     {
                                       "type": "Character",
-                                      "start": 75,
-                                      "end": 77,
+                                      "start": 82,
+                                      "end": 84,
                                       "raw": "\\(",
                                       "value": 40
                                     },
                                     {
                                       "type": "CapturingGroup",
-                                      "start": 77,
-                                      "end": 85,
-                                      "raw": "([\\w-]+)",
-                                      "name": null,
+                                      "start": 84,
+                                      "end": 100,
+                                      "raw": "(?<scope>[\\w-]+)",
+                                      "name": "scope",
                                       "alternatives": [
                                         {
                                           "type": "Alternative",
-                                          "start": 78,
-                                          "end": 84,
+                                          "start": 93,
+                                          "end": 99,
                                           "raw": "[\\w-]+",
                                           "elements": [
                                             {
                                               "type": "Quantifier",
-                                              "start": 78,
-                                              "end": 84,
+                                              "start": 93,
+                                              "end": 99,
                                               "raw": "[\\w-]+",
                                               "min": 1,
                                               "max": null,
                                               "greedy": true,
                                               "element": {
                                                 "type": "CharacterClass",
-                                                "start": 78,
-                                                "end": 83,
+                                                "start": 93,
+                                                "end": 98,
                                                 "raw": "[\\w-]",
                                                 "unicodeSets": false,
                                                 "negate": false,
                                                 "elements": [
                                                   {
                                                     "type": "CharacterSet",
-                                                    "start": 79,
-                                                    "end": 81,
+                                                    "start": 94,
+                                                    "end": 96,
                                                     "raw": "\\w",
                                                     "kind": "word",
                                                     "negate": false
                                                   },
                                                   {
                                                     "type": "Character",
-                                                    "start": 81,
-                                                    "end": 82,
+                                                    "start": 96,
+                                                    "end": 97,
                                                     "raw": "-",
                                                     "value": 45
                                                   }
@@ -585,8 +585,8 @@
                                     },
                                     {
                                       "type": "Character",
-                                      "start": 85,
-                                      "end": 87,
+                                      "start": 100,
+                                      "end": 102,
                                       "raw": "\\)",
                                       "value": 41
                                     }
@@ -597,29 +597,29 @@
                           },
                           {
                             "type": "Quantifier",
-                            "start": 89,
-                            "end": 93,
-                            "raw": "(!)?",
+                            "start": 104,
+                            "end": 119,
+                            "raw": "(?<breaking>!)?",
                             "min": 0,
                             "max": 1,
                             "greedy": true,
                             "element": {
                               "type": "CapturingGroup",
-                              "start": 89,
-                              "end": 92,
-                              "raw": "(!)",
-                              "name": null,
+                              "start": 104,
+                              "end": 118,
+                              "raw": "(?<breaking>!)",
+                              "name": "breaking",
                               "alternatives": [
                                 {
                                   "type": "Alternative",
-                                  "start": 90,
-                                  "end": 91,
+                                  "start": 116,
+                                  "end": 117,
                                   "raw": "!",
                                   "elements": [
                                     {
                                       "type": "Character",
-                                      "start": 90,
-                                      "end": 91,
+                                      "start": 116,
+                                      "end": 117,
                                       "raw": "!",
                                       "value": 33
                                     }
@@ -631,124 +631,124 @@
                           },
                           {
                             "type": "Character",
-                            "start": 93,
-                            "end": 94,
+                            "start": 119,
+                            "end": 120,
                             "raw": ":",
                             "value": 58
                           },
                           {
                             "type": "CharacterSet",
-                            "start": 94,
-                            "end": 96,
+                            "start": 120,
+                            "end": 122,
                             "raw": "\\s",
                             "kind": "space",
                             "negate": false
                           },
                           {
                             "type": "CapturingGroup",
-                            "start": 96,
-                            "end": 128,
-                            "raw": "(\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))",
-                            "name": null,
+                            "start": 122,
+                            "end": 164,
+                            "raw": "(?<subject>\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.))",
+                            "name": "subject",
                             "alternatives": [
                               {
                                 "type": "Alternative",
-                                "start": 97,
-                                "end": 127,
+                                "start": 133,
+                                "end": 163,
                                 "raw": "\\b[\\w#<> ./\\t\\\\-]{3,}(?:\\b|\\.)",
                                 "elements": [
                                   {
                                     "type": "Assertion",
-                                    "start": 97,
-                                    "end": 99,
+                                    "start": 133,
+                                    "end": 135,
                                     "raw": "\\b",
                                     "kind": "word",
                                     "negate": false
                                   },
                                   {
                                     "type": "Quantifier",
-                                    "start": 99,
-                                    "end": 118,
+                                    "start": 135,
+                                    "end": 154,
                                     "raw": "[\\w#<> ./\\t\\\\-]{3,}",
                                     "min": 3,
                                     "max": null,
                                     "greedy": true,
                                     "element": {
                                       "type": "CharacterClass",
-                                      "start": 99,
-                                      "end": 114,
+                                      "start": 135,
+                                      "end": 150,
                                       "raw": "[\\w#<> ./\\t\\\\-]",
                                       "unicodeSets": false,
                                       "negate": false,
                                       "elements": [
                                         {
                                           "type": "CharacterSet",
-                                          "start": 100,
-                                          "end": 102,
+                                          "start": 136,
+                                          "end": 138,
                                           "raw": "\\w",
                                           "kind": "word",
                                           "negate": false
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 102,
-                                          "end": 103,
+                                          "start": 138,
+                                          "end": 139,
                                           "raw": "#",
                                           "value": 35
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 103,
-                                          "end": 104,
+                                          "start": 139,
+                                          "end": 140,
                                           "raw": "<",
                                           "value": 60
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 104,
-                                          "end": 105,
+                                          "start": 140,
+                                          "end": 141,
                                           "raw": ">",
                                           "value": 62
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 105,
-                                          "end": 106,
+                                          "start": 141,
+                                          "end": 142,
                                           "raw": " ",
                                           "value": 32
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 106,
-                                          "end": 107,
+                                          "start": 142,
+                                          "end": 143,
                                           "raw": ".",
                                           "value": 46
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 107,
-                                          "end": 108,
+                                          "start": 143,
+                                          "end": 144,
                                           "raw": "/",
                                           "value": 47
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 108,
-                                          "end": 110,
+                                          "start": 144,
+                                          "end": 146,
                                           "raw": "\\t",
                                           "value": 9
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 110,
-                                          "end": 112,
+                                          "start": 146,
+                                          "end": 148,
                                           "raw": "\\\\",
                                           "value": 92
                                         },
                                         {
                                           "type": "Character",
-                                          "start": 112,
-                                          "end": 113,
+                                          "start": 148,
+                                          "end": 149,
                                           "raw": "-",
                                           "value": 45
                                         }
@@ -757,21 +757,21 @@
                                   },
                                   {
                                     "type": "Group",
-                                    "start": 118,
-                                    "end": 127,
+                                    "start": 154,
+                                    "end": 163,
                                     "raw": "(?:\\b|\\.)",
                                     "modifiers": null,
                                     "alternatives": [
                                       {
                                         "type": "Alternative",
-                                        "start": 121,
-                                        "end": 123,
+                                        "start": 157,
+                                        "end": 159,
                                         "raw": "\\b",
                                         "elements": [
                                           {
                                             "type": "Assertion",
-                                            "start": 121,
-                                            "end": 123,
+                                            "start": 157,
+                                            "end": 159,
                                             "raw": "\\b",
                                             "kind": "word",
                                             "negate": false
@@ -780,14 +780,14 @@
                                       },
                                       {
                                         "type": "Alternative",
-                                        "start": 124,
-                                        "end": 126,
+                                        "start": 160,
+                                        "end": 162,
                                         "raw": "\\.",
                                         "elements": [
                                           {
                                             "type": "Character",
-                                            "start": 124,
-                                            "end": 126,
+                                            "start": 160,
+                                            "end": 162,
                                             "raw": "\\.",
                                             "value": 46
                                           }
@@ -802,8 +802,8 @@
                           },
                           {
                             "type": "Assertion",
-                            "start": 128,
-                            "end": 129,
+                            "start": 164,
+                            "end": 165,
                             "raw": "$",
                             "kind": "end"
                           }
@@ -813,84 +813,84 @@
                   },
                   {
                     "type": "Quantifier",
-                    "start": 130,
-                    "end": 261,
-                    "raw": "(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?",
+                    "start": 166,
+                    "end": 358,
+                    "raw": "(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))?",
                     "min": 0,
                     "max": 1,
                     "greedy": true,
                     "element": {
                       "type": "Group",
-                      "start": 130,
-                      "end": 260,
-                      "raw": "(?:(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.))))",
+                      "start": 166,
+                      "end": 357,
+                      "raw": "(?:(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))))",
                       "modifiers": null,
                       "alternatives": [
                         {
                           "type": "Alternative",
-                          "start": 133,
-                          "end": 259,
-                          "raw": "(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(\\n^$\\n)(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.)))",
+                          "start": 169,
+                          "end": 356,
+                          "raw": "(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?(?<BLANK_LINE2>\\n^$\\n)(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.)))",
                           "elements": [
                             {
                               "type": "Quantifier",
-                              "start": 133,
-                              "end": 176,
-                              "raw": "(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?",
+                              "start": 169,
+                              "end": 232,
+                              "raw": "(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))?",
                               "min": 0,
                               "max": 1,
                               "greedy": true,
                               "element": {
                                 "type": "Group",
-                                "start": 133,
-                                "end": 175,
-                                "raw": "(?:(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))",
+                                "start": 169,
+                                "end": 231,
+                                "raw": "(?:(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}))",
                                 "modifiers": null,
                                 "alternatives": [
                                   {
                                     "type": "Alternative",
-                                    "start": 136,
-                                    "end": 174,
-                                    "raw": "(\\n^$\\n)((?:^.{3,}(?:\\b|\\.)$\\n?){1,3})",
+                                    "start": 172,
+                                    "end": 230,
+                                    "raw": "(?<BLANK_LINE>\\n^$\\n)(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3})",
                                     "elements": [
                                       {
                                         "type": "CapturingGroup",
-                                        "start": 136,
-                                        "end": 144,
-                                        "raw": "(\\n^$\\n)",
-                                        "name": null,
+                                        "start": 172,
+                                        "end": 193,
+                                        "raw": "(?<BLANK_LINE>\\n^$\\n)",
+                                        "name": "BLANK_LINE",
                                         "alternatives": [
                                           {
                                             "type": "Alternative",
-                                            "start": 137,
-                                            "end": 143,
+                                            "start": 186,
+                                            "end": 192,
                                             "raw": "\\n^$\\n",
                                             "elements": [
                                               {
                                                 "type": "Character",
-                                                "start": 137,
-                                                "end": 139,
+                                                "start": 186,
+                                                "end": 188,
                                                 "raw": "\\n",
                                                 "value": 10
                                               },
                                               {
                                                 "type": "Assertion",
-                                                "start": 139,
-                                                "end": 140,
+                                                "start": 188,
+                                                "end": 189,
                                                 "raw": "^",
                                                 "kind": "start"
                                               },
                                               {
                                                 "type": "Assertion",
-                                                "start": 140,
-                                                "end": 141,
+                                                "start": 189,
+                                                "end": 190,
                                                 "raw": "$",
                                                 "kind": "end"
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 141,
-                                                "end": 143,
+                                                "start": 190,
+                                                "end": 192,
                                                 "raw": "\\n",
                                                 "value": 10
                                               }
@@ -901,78 +901,78 @@
                                       },
                                       {
                                         "type": "CapturingGroup",
-                                        "start": 144,
-                                        "end": 174,
-                                        "raw": "((?:^.{3,}(?:\\b|\\.)$\\n?){1,3})",
-                                        "name": null,
+                                        "start": 193,
+                                        "end": 230,
+                                        "raw": "(?<body>(?:^.{3,}(?:\\b|\\.)$\\n?){1,3})",
+                                        "name": "body",
                                         "alternatives": [
                                           {
                                             "type": "Alternative",
-                                            "start": 145,
-                                            "end": 173,
+                                            "start": 201,
+                                            "end": 229,
                                             "raw": "(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}",
                                             "elements": [
                                               {
                                                 "type": "Quantifier",
-                                                "start": 145,
-                                                "end": 173,
+                                                "start": 201,
+                                                "end": 229,
                                                 "raw": "(?:^.{3,}(?:\\b|\\.)$\\n?){1,3}",
                                                 "min": 1,
                                                 "max": 3,
                                                 "greedy": true,
                                                 "element": {
                                                   "type": "Group",
-                                                  "start": 145,
-                                                  "end": 168,
+                                                  "start": 201,
+                                                  "end": 224,
                                                   "raw": "(?:^.{3,}(?:\\b|\\.)$\\n?)",
                                                   "modifiers": null,
                                                   "alternatives": [
                                                     {
                                                       "type": "Alternative",
-                                                      "start": 148,
-                                                      "end": 167,
+                                                      "start": 204,
+                                                      "end": 223,
                                                       "raw": "^.{3,}(?:\\b|\\.)$\\n?",
                                                       "elements": [
                                                         {
                                                           "type": "Assertion",
-                                                          "start": 148,
-                                                          "end": 149,
+                                                          "start": 204,
+                                                          "end": 205,
                                                           "raw": "^",
                                                           "kind": "start"
                                                         },
                                                         {
                                                           "type": "Quantifier",
-                                                          "start": 149,
-                                                          "end": 154,
+                                                          "start": 205,
+                                                          "end": 210,
                                                           "raw": ".{3,}",
                                                           "min": 3,
                                                           "max": null,
                                                           "greedy": true,
                                                           "element": {
                                                             "type": "CharacterSet",
-                                                            "start": 149,
-                                                            "end": 150,
+                                                            "start": 205,
+                                                            "end": 206,
                                                             "raw": ".",
                                                             "kind": "any"
                                                           }
                                                         },
                                                         {
                                                           "type": "Group",
-                                                          "start": 154,
-                                                          "end": 163,
+                                                          "start": 210,
+                                                          "end": 219,
                                                           "raw": "(?:\\b|\\.)",
                                                           "modifiers": null,
                                                           "alternatives": [
                                                             {
                                                               "type": "Alternative",
-                                                              "start": 157,
-                                                              "end": 159,
+                                                              "start": 213,
+                                                              "end": 215,
                                                               "raw": "\\b",
                                                               "elements": [
                                                                 {
                                                                   "type": "Assertion",
-                                                                  "start": 157,
-                                                                  "end": 159,
+                                                                  "start": 213,
+                                                                  "end": 215,
                                                                   "raw": "\\b",
                                                                   "kind": "word",
                                                                   "negate": false
@@ -981,14 +981,14 @@
                                                             },
                                                             {
                                                               "type": "Alternative",
-                                                              "start": 160,
-                                                              "end": 162,
+                                                              "start": 216,
+                                                              "end": 218,
                                                               "raw": "\\.",
                                                               "elements": [
                                                                 {
                                                                   "type": "Character",
-                                                                  "start": 160,
-                                                                  "end": 162,
+                                                                  "start": 216,
+                                                                  "end": 218,
                                                                   "raw": "\\.",
                                                                   "value": 46
                                                                 }
@@ -998,23 +998,23 @@
                                                         },
                                                         {
                                                           "type": "Assertion",
-                                                          "start": 163,
-                                                          "end": 164,
+                                                          "start": 219,
+                                                          "end": 220,
                                                           "raw": "$",
                                                           "kind": "end"
                                                         },
                                                         {
                                                           "type": "Quantifier",
-                                                          "start": 164,
-                                                          "end": 167,
+                                                          "start": 220,
+                                                          "end": 223,
                                                           "raw": "\\n?",
                                                           "min": 0,
                                                           "max": 1,
                                                           "greedy": true,
                                                           "element": {
                                                             "type": "Character",
-                                                            "start": 164,
-                                                            "end": 166,
+                                                            "start": 220,
+                                                            "end": 222,
                                                             "raw": "\\n",
                                                             "value": 10
                                                           }
@@ -1036,42 +1036,42 @@
                             },
                             {
                               "type": "CapturingGroup",
-                              "start": 176,
-                              "end": 184,
-                              "raw": "(\\n^$\\n)",
-                              "name": null,
+                              "start": 232,
+                              "end": 254,
+                              "raw": "(?<BLANK_LINE2>\\n^$\\n)",
+                              "name": "BLANK_LINE2",
                               "alternatives": [
                                 {
                                   "type": "Alternative",
-                                  "start": 177,
-                                  "end": 183,
+                                  "start": 247,
+                                  "end": 253,
                                   "raw": "\\n^$\\n",
                                   "elements": [
                                     {
                                       "type": "Character",
-                                      "start": 177,
-                                      "end": 179,
+                                      "start": 247,
+                                      "end": 249,
                                       "raw": "\\n",
                                       "value": 10
                                     },
                                     {
                                       "type": "Assertion",
-                                      "start": 179,
-                                      "end": 180,
+                                      "start": 249,
+                                      "end": 250,
                                       "raw": "^",
                                       "kind": "start"
                                     },
                                     {
                                       "type": "Assertion",
-                                      "start": 180,
-                                      "end": 181,
+                                      "start": 250,
+                                      "end": 251,
                                       "raw": "$",
                                       "kind": "end"
                                     },
                                     {
                                       "type": "Character",
-                                      "start": 181,
-                                      "end": 183,
+                                      "start": 251,
+                                      "end": 253,
                                       "raw": "\\n",
                                       "value": 10
                                     }
@@ -1082,194 +1082,194 @@
                             },
                             {
                               "type": "Quantifier",
-                              "start": 184,
-                              "end": 230,
-                              "raw": "(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?",
+                              "start": 254,
+                              "end": 318,
+                              "raw": "(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)?",
                               "min": 0,
                               "max": 1,
                               "greedy": true,
                               "element": {
                                 "type": "Group",
-                                "start": 184,
-                                "end": 229,
-                                "raw": "(?:(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)",
+                                "start": 254,
+                                "end": 317,
+                                "raw": "(?:(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n)",
                                 "modifiers": null,
                                 "alternatives": [
                                   {
                                     "type": "Alternative",
-                                    "start": 187,
-                                    "end": 228,
-                                    "raw": "(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n",
+                                    "start": 257,
+                                    "end": 316,
+                                    "raw": "(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)\\n",
                                     "elements": [
                                       {
                                         "type": "CapturingGroup",
-                                        "start": 187,
-                                        "end": 226,
-                                        "raw": "(^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)",
-                                        "name": null,
+                                        "start": 257,
+                                        "end": 314,
+                                        "raw": "(?<breaking_change>^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$)",
+                                        "name": "breaking_change",
                                         "alternatives": [
                                           {
                                             "type": "Alternative",
-                                            "start": 188,
-                                            "end": 225,
+                                            "start": 276,
+                                            "end": 313,
                                             "raw": "^BREAKING\\sCHANGE:\\s[\\s\\w]+(?:\\b|\\.)$",
                                             "elements": [
                                               {
                                                 "type": "Assertion",
-                                                "start": 188,
-                                                "end": 189,
+                                                "start": 276,
+                                                "end": 277,
                                                 "raw": "^",
                                                 "kind": "start"
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 189,
-                                                "end": 190,
+                                                "start": 277,
+                                                "end": 278,
                                                 "raw": "B",
                                                 "value": 66
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 190,
-                                                "end": 191,
+                                                "start": 278,
+                                                "end": 279,
                                                 "raw": "R",
                                                 "value": 82
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 191,
-                                                "end": 192,
+                                                "start": 279,
+                                                "end": 280,
                                                 "raw": "E",
                                                 "value": 69
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 192,
-                                                "end": 193,
+                                                "start": 280,
+                                                "end": 281,
                                                 "raw": "A",
                                                 "value": 65
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 193,
-                                                "end": 194,
+                                                "start": 281,
+                                                "end": 282,
                                                 "raw": "K",
                                                 "value": 75
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 194,
-                                                "end": 195,
+                                                "start": 282,
+                                                "end": 283,
                                                 "raw": "I",
                                                 "value": 73
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 195,
-                                                "end": 196,
+                                                "start": 283,
+                                                "end": 284,
                                                 "raw": "N",
                                                 "value": 78
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 196,
-                                                "end": 197,
+                                                "start": 284,
+                                                "end": 285,
                                                 "raw": "G",
                                                 "value": 71
                                               },
                                               {
                                                 "type": "CharacterSet",
-                                                "start": 197,
-                                                "end": 199,
+                                                "start": 285,
+                                                "end": 287,
                                                 "raw": "\\s",
                                                 "kind": "space",
                                                 "negate": false
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 199,
-                                                "end": 200,
+                                                "start": 287,
+                                                "end": 288,
                                                 "raw": "C",
                                                 "value": 67
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 200,
-                                                "end": 201,
+                                                "start": 288,
+                                                "end": 289,
                                                 "raw": "H",
                                                 "value": 72
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 201,
-                                                "end": 202,
+                                                "start": 289,
+                                                "end": 290,
                                                 "raw": "A",
                                                 "value": 65
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 202,
-                                                "end": 203,
+                                                "start": 290,
+                                                "end": 291,
                                                 "raw": "N",
                                                 "value": 78
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 203,
-                                                "end": 204,
+                                                "start": 291,
+                                                "end": 292,
                                                 "raw": "G",
                                                 "value": 71
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 204,
-                                                "end": 205,
+                                                "start": 292,
+                                                "end": 293,
                                                 "raw": "E",
                                                 "value": 69
                                               },
                                               {
                                                 "type": "Character",
-                                                "start": 205,
-                                                "end": 206,
+                                                "start": 293,
+                                                "end": 294,
                                                 "raw": ":",
                                                 "value": 58
                                               },
                                               {
                                                 "type": "CharacterSet",
-                                                "start": 206,
-                                                "end": 208,
+                                                "start": 294,
+                                                "end": 296,
                                                 "raw": "\\s",
                                                 "kind": "space",
                                                 "negate": false
                                               },
                                               {
                                                 "type": "Quantifier",
-                                                "start": 208,
-                                                "end": 215,
+                                                "start": 296,
+                                                "end": 303,
                                                 "raw": "[\\s\\w]+",
                                                 "min": 1,
                                                 "max": null,
                                                 "greedy": true,
                                                 "element": {
                                                   "type": "CharacterClass",
-                                                  "start": 208,
-                                                  "end": 214,
+                                                  "start": 296,
+                                                  "end": 302,
                                                   "raw": "[\\s\\w]",
                                                   "unicodeSets": false,
                                                   "negate": false,
                                                   "elements": [
                                                     {
                                                       "type": "CharacterSet",
-                                                      "start": 209,
-                                                      "end": 211,
+                                                      "start": 297,
+                                                      "end": 299,
                                                       "raw": "\\s",
                                                       "kind": "space",
                                                       "negate": false
                                                     },
                                                     {
                                                       "type": "CharacterSet",
-                                                      "start": 211,
-                                                      "end": 213,
+                                                      "start": 299,
+                                                      "end": 301,
                                                       "raw": "\\w",
                                                       "kind": "word",
                                                       "negate": false
@@ -1279,21 +1279,21 @@
                                               },
                                               {
                                                 "type": "Group",
-                                                "start": 215,
-                                                "end": 224,
+                                                "start": 303,
+                                                "end": 312,
                                                 "raw": "(?:\\b|\\.)",
                                                 "modifiers": null,
                                                 "alternatives": [
                                                   {
                                                     "type": "Alternative",
-                                                    "start": 218,
-                                                    "end": 220,
+                                                    "start": 306,
+                                                    "end": 308,
                                                     "raw": "\\b",
                                                     "elements": [
                                                       {
                                                         "type": "Assertion",
-                                                        "start": 218,
-                                                        "end": 220,
+                                                        "start": 306,
+                                                        "end": 308,
                                                         "raw": "\\b",
                                                         "kind": "word",
                                                         "negate": false
@@ -1302,14 +1302,14 @@
                                                   },
                                                   {
                                                     "type": "Alternative",
-                                                    "start": 221,
-                                                    "end": 223,
+                                                    "start": 309,
+                                                    "end": 311,
                                                     "raw": "\\.",
                                                     "elements": [
                                                       {
                                                         "type": "Character",
-                                                        "start": 221,
-                                                        "end": 223,
+                                                        "start": 309,
+                                                        "end": 311,
                                                         "raw": "\\.",
                                                         "value": 46
                                                       }
@@ -1319,8 +1319,8 @@
                                               },
                                               {
                                                 "type": "Assertion",
-                                                "start": 224,
-                                                "end": 225,
+                                                "start": 312,
+                                                "end": 313,
                                                 "raw": "$",
                                                 "kind": "end"
                                               }
@@ -1331,8 +1331,8 @@
                                       },
                                       {
                                         "type": "Character",
-                                        "start": 226,
-                                        "end": 228,
+                                        "start": 314,
+                                        "end": 316,
                                         "raw": "\\n",
                                         "value": 10
                                       }
@@ -1343,49 +1343,49 @@
                             },
                             {
                               "type": "Group",
-                              "start": 230,
-                              "end": 259,
-                              "raw": "(?:(^\\w+:\\s[\\w#-]+(?:\\b|\\.)))",
+                              "start": 318,
+                              "end": 356,
+                              "raw": "(?:(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.)))",
                               "modifiers": null,
                               "alternatives": [
                                 {
                                   "type": "Alternative",
-                                  "start": 233,
-                                  "end": 258,
-                                  "raw": "(^\\w+:\\s[\\w#-]+(?:\\b|\\.))",
+                                  "start": 321,
+                                  "end": 355,
+                                  "raw": "(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))",
                                   "elements": [
                                     {
                                       "type": "CapturingGroup",
-                                      "start": 233,
-                                      "end": 258,
-                                      "raw": "(^\\w+:\\s[\\w#-]+(?:\\b|\\.))",
-                                      "name": null,
+                                      "start": 321,
+                                      "end": 355,
+                                      "raw": "(?<footer>^\\w+:\\s[\\w#-]+(?:\\b|\\.))",
+                                      "name": "footer",
                                       "alternatives": [
                                         {
                                           "type": "Alternative",
-                                          "start": 234,
-                                          "end": 257,
+                                          "start": 331,
+                                          "end": 354,
                                           "raw": "^\\w+:\\s[\\w#-]+(?:\\b|\\.)",
                                           "elements": [
                                             {
                                               "type": "Assertion",
-                                              "start": 234,
-                                              "end": 235,
+                                              "start": 331,
+                                              "end": 332,
                                               "raw": "^",
                                               "kind": "start"
                                             },
                                             {
                                               "type": "Quantifier",
-                                              "start": 235,
-                                              "end": 238,
+                                              "start": 332,
+                                              "end": 335,
                                               "raw": "\\w+",
                                               "min": 1,
                                               "max": null,
                                               "greedy": true,
                                               "element": {
                                                 "type": "CharacterSet",
-                                                "start": 235,
-                                                "end": 237,
+                                                "start": 332,
+                                                "end": 334,
                                                 "raw": "\\w",
                                                 "kind": "word",
                                                 "negate": false
@@ -1393,54 +1393,54 @@
                                             },
                                             {
                                               "type": "Character",
-                                              "start": 238,
-                                              "end": 239,
+                                              "start": 335,
+                                              "end": 336,
                                               "raw": ":",
                                               "value": 58
                                             },
                                             {
                                               "type": "CharacterSet",
-                                              "start": 239,
-                                              "end": 241,
+                                              "start": 336,
+                                              "end": 338,
                                               "raw": "\\s",
                                               "kind": "space",
                                               "negate": false
                                             },
                                             {
                                               "type": "Quantifier",
-                                              "start": 241,
-                                              "end": 248,
+                                              "start": 338,
+                                              "end": 345,
                                               "raw": "[\\w#-]+",
                                               "min": 1,
                                               "max": null,
                                               "greedy": true,
                                               "element": {
                                                 "type": "CharacterClass",
-                                                "start": 241,
-                                                "end": 247,
+                                                "start": 338,
+                                                "end": 344,
                                                 "raw": "[\\w#-]",
                                                 "unicodeSets": false,
                                                 "negate": false,
                                                 "elements": [
                                                   {
                                                     "type": "CharacterSet",
-                                                    "start": 242,
-                                                    "end": 244,
+                                                    "start": 339,
+                                                    "end": 341,
                                                     "raw": "\\w",
                                                     "kind": "word",
                                                     "negate": false
                                                   },
                                                   {
                                                     "type": "Character",
-                                                    "start": 244,
-                                                    "end": 245,
+                                                    "start": 341,
+                                                    "end": 342,
                                                     "raw": "#",
                                                     "value": 35
                                                   },
                                                   {
                                                     "type": "Character",
-                                                    "start": 245,
-                                                    "end": 246,
+                                                    "start": 342,
+                                                    "end": 343,
                                                     "raw": "-",
                                                     "value": 45
                                                   }
@@ -1449,21 +1449,21 @@
                                             },
                                             {
                                               "type": "Group",
-                                              "start": 248,
-                                              "end": 257,
+                                              "start": 345,
+                                              "end": 354,
                                               "raw": "(?:\\b|\\.)",
                                               "modifiers": null,
                                               "alternatives": [
                                                 {
                                                   "type": "Alternative",
-                                                  "start": 251,
-                                                  "end": 253,
+                                                  "start": 348,
+                                                  "end": 350,
                                                   "raw": "\\b",
                                                   "elements": [
                                                     {
                                                       "type": "Assertion",
-                                                      "start": 251,
-                                                      "end": 253,
+                                                      "start": 348,
+                                                      "end": 350,
                                                       "raw": "\\b",
                                                       "kind": "word",
                                                       "negate": false
@@ -1472,14 +1472,14 @@
                                                 },
                                                 {
                                                   "type": "Alternative",
-                                                  "start": 254,
-                                                  "end": 256,
+                                                  "start": 351,
+                                                  "end": 353,
                                                   "raw": "\\.",
                                                   "elements": [
                                                     {
                                                       "type": "Character",
-                                                      "start": 254,
-                                                      "end": 256,
+                                                      "start": 351,
+                                                      "end": 353,
                                                       "raw": "\\.",
                                                       "value": 46
                                                     }
@@ -1503,16 +1503,16 @@
                   },
                   {
                     "type": "Quantifier",
-                    "start": 261,
-                    "end": 264,
+                    "start": 358,
+                    "end": 361,
                     "raw": "\\n?",
                     "min": 0,
                     "max": 1,
                     "greedy": true,
                     "element": {
                       "type": "Character",
-                      "start": 261,
-                      "end": 263,
+                      "start": 358,
+                      "end": 360,
                       "raw": "\\n",
                       "value": 10
                     }
@@ -1521,8 +1521,8 @@
               },
               {
                 "type": "Alternative",
-                "start": 265,
-                "end": 265,
+                "start": 362,
+                "end": 362,
                 "raw": "",
                 "elements": []
               }
@@ -1530,8 +1530,8 @@
           },
           {
             "type": "Character",
-            "start": 266,
-            "end": 268,
+            "start": 363,
+            "end": 365,
             "raw": "\\Z",
             "value": 90
           }
@@ -1541,8 +1541,8 @@
   },
   "flags": {
     "type": "Flags",
-    "start": 269,
-    "end": 269,
+    "start": 366,
+    "end": 366,
     "raw": "",
     "global": false,
     "ignoreCase": false,

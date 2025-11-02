@@ -75,8 +75,7 @@
   },
   "dependencies": {
     "@eslint-community/regexpp": "^4.12.2",
-    "commander": "^14.0.1",
-    "pcre-to-regexp": "^1.1.0"
+    "commander": "^14.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.6",

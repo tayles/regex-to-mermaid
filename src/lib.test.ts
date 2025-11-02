@@ -135,11 +135,6 @@ describe('regexToMermaid', () => {
       expect(result).toContain('graph');
     });
 
-    test('accepts pcre flavor', () => {
-      const result = regexToMermaid('/[0-9]+/', { flavor: 'pcre' });
-      expect(result).toContain('graph');
-    });
-
     test('accepts auto flavor explicitly', () => {
       const result = regexToMermaid('[0-9]+', { flavor: 'auto' });
       expect(result).toContain('graph');
@@ -154,7 +149,7 @@ describe('regexToMermaid', () => {
     test('error message includes valid flavors', () => {
       expect(() => {
         regexToMermaid('test', { flavor: 'INVALID' as unknown as Flavor });
-      }).toThrow('regexp, pcre, auto');
+      }).toThrow('regexp, auto');
     });
   });
 
@@ -404,7 +399,7 @@ describe('Exported constants', () => {
 
   test('FLAVORS is exported', () => {
     expect(FLAVORS).toBeDefined();
-    expect(FLAVORS).toEqual(['regexp', 'pcre', 'auto']);
+    expect(FLAVORS).toEqual(['regexp', 'auto']);
   });
 
   test('THEMES is exported', () => {
