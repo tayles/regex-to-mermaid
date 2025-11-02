@@ -20,6 +20,7 @@ import type {
   Node,
   Quantifier,
 } from '@eslint-community/regexpp/ast';
+import { convertFlavor } from './convert-flavor';
 import type {
   DiagramData,
   DiagramEdge,
@@ -48,11 +49,11 @@ export function parseJavaScriptRegex(regex: string): RegExp {
 }
 
 export function parseRegexByFlavor(regex: string, flavor: Flavor): RegExp {
-  switch (flavor) {
-    default:
-      // JavaScript RegExp: Parse directly
-      return parseJavaScriptRegex(regex);
-  }
+  // Convert from the specified flavor to JavaScript RegExp
+  const convertedPattern = convertFlavor(regex, flavor);
+
+  // Parse the converted pattern as JavaScript RegExp
+  return parseJavaScriptRegex(convertedPattern);
 }
 
 /**

@@ -66,12 +66,12 @@ regex-to-mermaid 'foo|bar' \
 
 ### Options
 
-| Short | Argument      | Description                                                           | Default   |
-| ----- | ------------- | --------------------------------------------------------------------- | --------- |
-| `-d`  | `--direction` | Diagram direction: `LR` (left-right) or `TD` (top-down)               | `LR`      |
-| `-f`  | `--flavor`    | Regex flavor: `regexp` (ECMAScript), or `auto` (detect automatically) | `auto`    |
-| `-t`  | `--theme`     | Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`      | `default` |
-| `-o`  | `--output`    | Output file (if not specified, outputs to stdout)                     | `stdout`  |
+| Short | Argument      | Description                                                                                    | Default   |
+| ----- | ------------- | ---------------------------------------------------------------------------------------------- | --------- |
+| `-d`  | `--direction` | Diagram direction: `LR` (left-right) or `TD` (top-down)                                        | `LR`      |
+| `-f`  | `--flavor`    | Regex flavor: one of [supported flavors](#supported-flavors), or `auto` (detect automatically) | `auto`    |
+| `-t`  | `--theme`     | Mermaid theme: `default`, `neutral`, `dark`, `forest`, or `none`                               | `default` |
+| `-o`  | `--output`    | Output file (if not specified, outputs to stdout)                                              | `stdout`  |
 
 ### Image Generation
 
@@ -123,7 +123,18 @@ function regexToMermaid(
   pattern: string | RegExp,
   options?: {
     direction?: 'LR' | 'TD'; // Default: 'LR'
-    flavor?: 'regexp' | 'auto'; // Default: 'auto'
+    flavor?:
+      | 'regexp'
+      | 'pcre'
+      | 'bre'
+      | 'ere'
+      | 'python'
+      | 'rust'
+      | 're2'
+      | 'java'
+      | 'dotnet'
+      | 'ruby'
+      | 'auto'; // Default: 'auto'
     theme?: 'default' | 'neutral' | 'dark' | 'forest' | 'none'; // Default: 'default'
   },
 ): string;
@@ -135,19 +146,19 @@ See available [THEMES.md](./THEMES.md).
 
 ## Supported Flavors
 
-| Flavor                                       | Usage          | Support                                  |
-| -------------------------------------------- | -------------- | ---------------------------------------- |
-| RegExp _(ECMAScript)_                        | JavaScript     | ✅ Supported, up to and including ES2025 |
-| PCRE2                                        | PHP >= 7.3     | 🚧 Limited support                       |
-| PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support                       |
-| BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support                       |
-| ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support                       |
-| Python                                       | Python         | 🚧 Limited support                       |
-| RE2                                          | Go             | 🚧 Limited support                       |
-| Rust                                         | Rust           | 🚧 Limited support                       |
-| Java                                         | Java           | 🚧 Limited support                       |
-| .NET                                         | .NET / C#      | 🚧 Limited support                       |
-| Ruby                                         | Ruby           | 🚧 Limited support                       |
+| Name     | Flavor                                       | Usage          | Support                                  |
+| -------- | -------------------------------------------- | -------------- | ---------------------------------------- |
+| `regexp` | RegExp _(ECMAScript)_                        | JavaScript     | ✅ Supported, up to and including ES2025 |
+| `pcre2`  | PCRE2                                        | PHP >= 7.3     | 🚧 Limited support                       |
+| `pcre`   | PCRE _(Perl Compatible Regular Expressions)_ | PHP < 7.3, R   | 🚧 Limited support                       |
+| `bre`    | BRE _(POSIX Basic)_                          | sed, grep, etc | 🚧 Limited support                       |
+| `ere`    | ERE _(POSIX Extended)_                       | egrep, etc     | 🚧 Limited support                       |
+| `python` | Python                                       | Python         | 🚧 Limited support                       |
+| `re2`    | RE2                                          | Go             | 🚧 Limited support                       |
+| `rust`   | Rust                                         | Rust           | 🚧 Limited support                       |
+| `java`   | Java                                         | Java           | 🚧 Limited support                       |
+| `dotnet` | .NET                                         | .NET / C#      | 🚧 Limited support                       |
+| `ruby`   | Ruby                                         | Ruby           | 🚧 Limited support                       |
 
 > [!WARNING]
 > Only the `RegExp` flavor is supported at this time. Other flavors are supported where there is overlap with the `RegExp` syntax
