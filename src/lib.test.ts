@@ -149,7 +149,7 @@ describe('regexToMermaid', () => {
     test('error message includes valid flavors', () => {
       expect(() => {
         regexToMermaid('test', { flavor: 'INVALID' as unknown as Flavor });
-      }).toThrow('regexp, auto');
+      }).toThrow('regexp, pcre, bre, ere, python, rust, re2, java, dotnet, ruby, auto');
     });
   });
 
@@ -399,7 +399,19 @@ describe('Exported constants', () => {
 
   test('FLAVORS is exported', () => {
     expect(FLAVORS).toBeDefined();
-    expect(FLAVORS).toEqual(['regexp', 'auto']);
+    expect(FLAVORS).toEqual([
+      'regexp',
+      'pcre',
+      'bre',
+      'ere',
+      'python',
+      'rust',
+      're2',
+      'java',
+      'dotnet',
+      'ruby',
+      'auto',
+    ]);
   });
 
   test('THEMES is exported', () => {
